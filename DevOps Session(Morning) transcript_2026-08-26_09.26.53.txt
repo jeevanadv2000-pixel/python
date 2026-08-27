@@ -1,0 +1,3330 @@
+[rochak agrawal] 07:38:02
+Hey, good morning, everyone. So, we'll just start.
+
+[rochak agrawal] 07:38:17
+Uh, guys, uh, can you please confirm if I'm audible and my screen is visible?
+
+[rochak agrawal] 07:38:22
+Okay, perfect.
+
+[rochak agrawal] 07:38:25
+Yesterday, we talked about, uh…
+
+[rochak agrawal] 07:38:28
+the web server and the application server. Now, today, we will talk about the reverse proxy and the forward proxy, then we will talk about the networking model. Now, before that, we need to understand some of the common networking terminology, like what is a modem, what's switch.
+
+[rochak agrawal] 07:38:43
+what is a router, and different other things, so we'll discuss that. But before that, let's discuss what is a forward and what is a reverse proxy.
+
+[rochak agrawal] 07:38:56
+So now, you understand that, uh…
+
+[rochak agrawal] 07:38:59
+If you see this diagram.
+
+[rochak agrawal] 07:39:02
+Proxy play an important role in managing the data flow between the client and the server.
+
+[rochak agrawal] 07:39:08
+Okay, so most of our internet work on a client-server architecture. When I'm saying a client-server architecture, so let's say…
+
+[rochak agrawal] 07:39:19
+When you are going to any of the website.
+
+[rochak agrawal] 07:39:25
+Okay? Google.com, Amazon.in, etc, etc. You are making that request from your laptop, let's say, browser.
+
+[rochak agrawal] 07:39:36
+So, laptop, uh, your browser will send a request to the website.
+
+[rochak agrawal] 07:39:46
+So you'll send a request.
+
+[rochak agrawal] 07:39:52
+And you will get a response in it.
+
+[rochak agrawal] 07:39:57
+So, this is called the client…
+
+[rochak agrawal] 07:40:03
+server architecture. So this is your client, your browser, and the website will be hosted on some of the server.
+
+[rochak agrawal] 07:40:11
+So this, uh, and whole internet works on the client-server architecture.
+
+[rochak agrawal] 07:40:15
+Okay, so that is where…
+
+[rochak agrawal] 07:40:20
+We need to understand the forward proxy and the reverse proxy. Both forward proxy and reverse proxies are used in different ways to help control and optimize this flow.
+
+[rochak agrawal] 07:40:32
+So forward proxy acts on the behalf of the customer, uh, clients.
+
+[rochak agrawal] 07:40:38
+to enhance privacy and control access while the reverse proxy acts on a behalf of the server to optimize the performance and security. So forward proxy, if I talk about a forward proxy also called a proxy server.
+
+[rochak agrawal] 07:40:54
+Is a server that sits between the customer.
+
+[rochak agrawal] 07:40:59
+Planes?
+
+[rochak agrawal] 07:41:02
+and the internet, any server. When a client sent a request to access a website or an online resource, the request is forwarded to the proxy first. So your requests don't go directly to the servers.
+
+[rochak agrawal] 07:41:19
+Request first go to the forward proxy, then forward proxy. Request is directed to the forward proxy first. The proxy then forward the request to the destination server on the behalf of the customer.
+
+[rochak agrawal] 07:41:34
+Now, one use case of a forward proxy is… now, if you are, uh, let's say a working professional, and you are working on your…
+
+[rochak agrawal] 07:41:45
+Office laptop. Now, you must have noticed that from your office laptop, you…
+
+[rochak agrawal] 07:41:52
+Can access some of the website.
+
+[rochak agrawal] 07:41:55
+And then cannot access some of the website. Like, for example, many of the office laptop, if you say, uh, ChatGPT will be blocked, um, Instagram will be blocked, or, um, Facebook.com will be blocked, or some other type of, uh.
+
+[rochak agrawal] 07:42:10
+website will be blocked, right? Now, the reason for that is why this is blocked, because when you're connected with your office network, uh, you try to send any traffic to internet, the traffic does not go directly, it goes to a forward proxy.
+
+[rochak agrawal] 07:42:27
+Now forward proxy can be a firewall as well.
+
+[rochak agrawal] 07:42:35
+And in your forward proxy, you will configure many rules. Like for example, I say I want to block instagram.com. So if someone is making a request to instagram.com, the request goes to the forward proxy, then the forward proxy will evaluate as per the route.
+
+[rochak agrawal] 07:42:52
+the rules configured in the proxy, and then it sees, okay, I need to block the Instagram.com. So the request will not be forwarded to the Instagram.com servers, but if someone says Google.com.
+
+[rochak agrawal] 07:43:04
+Uh, again, the request goes to the forward proxy, and then forward proxy will see, okay, this is allowed, and it is going to send, uh, send this to the…
+
+[rochak agrawal] 07:43:15
+respective servers. So that is the work of the forward proxy, enhancing client anonymity, accessing geoblocked or the restricted content, content filtering, monitoring in the organization, reducing bandwidth consumption through caching on the proxy server.
+
+[rochak agrawal] 07:43:33
+And logging and tracking user activity for the compliance purpose. There can be many use cases, but you need to understand whenever you are sending any traffic to the internet.
+
+[rochak agrawal] 07:43:43
+it goes to the, uh… and it is not an internet, okay? Internet is just one example. It could be any server. So instead of sending the direct, uh, traffic to your destination server.
+
+[rochak agrawal] 07:43:55
+there will be a proxy server in between. You make a request to the proxy server, then proxy server is going to forward your request to the destination server.
+
+[rochak agrawal] 07:44:07
+Second is a reverse proxy. Now, reverse proxy works opposite of a forward proxy. Reverse proxy acts… while a forward proxy acts on behalf of a customer.
+
+[rochak agrawal] 07:44:20
+Reverse proxy acts on the behalf of the server. It is used to protect and manage the server by ensuring that client.
+
+[rochak agrawal] 07:44:31
+directly do not
+
+[rochak agrawal] 07:44:32
+communicate with the origin server. Now, understand the use case. Let's say I am running my website with.
+
+[rochak agrawal] 07:44:38
+5 web servers, right? So, instead of…
+
+[rochak agrawal] 07:44:42
+My customer directly reaching out to.
+
+[rochak agrawal] 07:44:47
+My web server, I can create a load balancer in between.
+
+[rochak agrawal] 07:44:53
+Okay, or let's say if in a three-tier architecture, you can create a web server, which is then forwarding the traffic, uh…
+
+[rochak agrawal] 07:45:01
+to your backend server. So the use case of a forward proxy is load balancing across multiple servers, caching content to improve server performance, protecting backend server from direct exposure to internet.
+
+[rochak agrawal] 07:45:16
+So, both have their own use cases. So, forward proxy acts on the behalf of a client to control access and enhance privacy. Reverse proxy acts on the behalf of the server.
+
+[rochak agrawal] 07:45:29
+To optimize the performance and improve the security, forward proxy sits between.
+
+[rochak agrawal] 07:45:37
+The client and the server.
+
+[rochak agrawal] 07:45:39
+While reverse proxy sits between the server and the client.
+
+[rochak agrawal] 07:45:43
+Okay.
+
+[rochak agrawal] 07:45:50
+The client is aware of… in the forward proxy, client will be aware about the proxy, and I need to must configure it. While in the reverse proxy, client is not aware about the reverse proxy. They… for them, this is a URL.
+
+[rochak agrawal] 07:46:05
+And they are going to access this URL and then reverse proxy will sending the request to the backend server.
+
+[rochak agrawal] 07:46:11
+So that is the forward proxy and the reverse proxy.
+
+[rochak agrawal] 07:46:15
+Any question in the forward and reverse proxy?
+
+[rochak agrawal] 07:46:22
+Very, very important interview question.
+
+[rochak agrawal] 07:46:28
+Yes, I'm here.
+
+[Amiya Nanda] 07:46:32
+Hello Rojak, good morning.
+
+[Amiya Nanda] 07:46:36
+Ah, so, ah, ah, can you please give a, ah, example of forward and, ah.
+
+[rochak agrawal] 07:46:40
+Amir, you are very… your voice is very low.
+
+[Amiya Nanda] 07:46:43
+Uh, hello, now is…
+
+[Amiya Nanda] 07:46:45
+Okay.
+
+[rochak agrawal] 07:46:45
+It is still low.
+
+[Amiya Nanda] 07:46:47
+Still low. Okay.
+
+[rochak agrawal] 07:46:54
+Okay, I can manage, uh, tell me.
+
+[Amiya Nanda] 07:46:58
+Ah, so, ah, Rocha, can you please give a example of real-time scenario of forward proxy and reverse proxy in real-time?
+
+[rochak agrawal] 07:47:05
+Yeah, see, uh, both of, uh, we have used the real-time example only. Uh, so, for example, we discussed that when you are connected with your office network, right, uh, you are not able to access certain type of website.
+
+[Amiya Nanda] 07:47:20
+Yes.
+
+[rochak agrawal] 07:47:20
+That is because of the forward proxy, because when you're connected with your network, so you will be on a private network, correct? Uh, your office network.
+
+[Amiya Nanda] 07:47:27
+Office network, yes.
+
+[rochak agrawal] 07:47:29
+Right? When you try to access to internet, your traffic does not go directly like this.
+
+[rochak agrawal] 07:47:33
+It goes to a forward proxy. Now, in your forward proxy, you will, uh…
+
+[rochak agrawal] 07:47:39
+Firewall can act as a forward proxy, okay? So when you try to access, let's say.
+
+[Amiya Nanda] 07:47:42
+Okay.
+
+[rochak agrawal] 07:47:48
+So, let's say you have this, your network.
+
+[Amiya Nanda] 07:47:51
+Umm.
+
+[rochak agrawal] 07:47:52
+You have a multiple computer connected to it, right? Now this is a forward proxy.
+
+[rochak agrawal] 07:48:01
+Where I am, I will define rules, like, uh…
+
+[rochak agrawal] 07:48:05
+Instagram.
+
+[rochak agrawal] 07:48:06
+dot com.
+
+[rochak agrawal] 07:48:08
+Block.
+
+[rochak agrawal] 07:48:13
+Rest all things will be allowed, for example, let's say, facebook.com.
+
+[Amiya Nanda] 07:48:16
+Okay.
+
+[rochak agrawal] 07:48:23
+Block.
+
+[rochak agrawal] 07:48:24
+et cetera, et cetera. Now.
+
+[rochak agrawal] 07:48:27
+on the internet.
+
+[rochak agrawal] 07:48:34
+You will have a different server for facebook.com, you will have a different server for instagram.com, google.com and something right. So when someone make a request to google.com it does not go directly to google.com server it goes via the forward proxy.
+
+[rochak agrawal] 07:48:49
+Okay, so…
+
+[Amiya Nanda] 07:48:50
+Okay.
+
+[rochak agrawal] 07:48:52
+then, uh, Forward Proxy will check against the rule you have created. Okay, it says Google.com is not blocked, and it is going to allow you to access the Google.com server. But when someone.
+
+[Amiya Nanda] 07:49:03
+Okay.
+
+[rochak agrawal] 07:49:04
+try to access the Instagram.com, it will see that Instagram.com is blocked, right? So, it will block your request.
+
+[Amiya Nanda] 07:49:11
+Yes.
+
+[Amiya Nanda] 07:49:14
+Okay.
+
+[rochak agrawal] 07:49:14
+Okay, if you're working… if you're a working professional, you must have noticed this.
+
+[Amiya Nanda] 07:49:19
+Yes, yes, yes, correct.
+
+[rochak agrawal] 07:49:20
+That is…
+
+[rochak agrawal] 07:49:22
+Forward proxy is the only reason to block this.
+
+[Amiya Nanda] 07:49:25
+Okay, okay.
+
+[rochak agrawal] 07:49:26
+Okay? So it… you… it…
+
+[Amiya Nanda] 07:49:29
+Though there is some there is certain rules they will implement in the proxy server so that that will be blocked that URL.
+
+[rochak agrawal] 07:49:33
+Got it.
+
+[Amiya Nanda] 07:49:37
+Order.
+
+[rochak agrawal] 07:49:39
+And see, I am just giving you one use case of a forward proxy. Now, another use case can be, let's say.
+
+[Amiya Nanda] 07:49:41
+Ha ha.
+
+[rochak agrawal] 07:49:54
+Let's say I'm interacting with another computer network. Okay, so this is company A.
+
+[rochak agrawal] 07:50:05
+let's say you are working with multiple vendors, and your vendors also will have their own IT infrastructure, and then, uh…
+
+[rochak agrawal] 07:50:15
+Uh, what you can say is, um, you need to interact with some of the application running in the customer V's network, correct? Now, forward proxy can be used, so…
+
+[rochak agrawal] 07:50:33
+I have, let's say, this forward proxy. Okay, so now, let's say I want to interact with them directly.
+
+[rochak agrawal] 07:50:43
+But I do not want to expose the IP of my server, for example. Okay, so if they will be interacting directly, then this server will know from where the request is coming, correct?
+
+[Amiya Nanda] 07:50:56
+Yes.
+
+[rochak agrawal] 07:50:57
+So then I will redirect this traffic via the forward proxy. So I'll send the traffic to the forward proxy, and forward proxy will send the request to the server, similar to this.
+
+[rochak agrawal] 07:51:09
+this. So your destination server will not know the request is coming from server A, server B, server C. For them, the request is always coming from customer A network.
+
+[rochak agrawal] 07:51:20
+So there can be many examples for the use cases for the forward proxy.
+
+[rochak agrawal] 07:51:26
+It is just, you understand, I am not directly interacting with my destination server. I am setting up a device in between. I am interacting with that device, and then you, uh…
+
+[rochak agrawal] 07:51:40
+Your device is interacting with your server.
+
+[Amiya Nanda] 07:51:43
+Okay.
+
+[rochak agrawal] 07:51:44
+Okay, it is very similar to, like, for example, let's say if I need to go to point A to point B, one option is I drive directly.
+
+[rochak agrawal] 07:51:52
+Okay, I… I took out my car, uh, then…
+
+[rochak agrawal] 07:51:57
+I'm just driving it, okay? Another option is…
+
+[rochak agrawal] 07:52:01
+I book a Uber.
+
+[rochak agrawal] 07:52:02
+I am sitting in the Uber, now Uber is taking me out.
+
+[Amiya Nanda] 07:52:07
+Okay.
+
+[rochak agrawal] 07:52:08
+Okay?
+
+[rochak agrawal] 07:52:09
+Then if you talk about the reverse proxy, so reverse proxy is again, basically, let's say I have a website running with these three web servers.
+
+[rochak agrawal] 07:52:26
+Okay, now…
+
+[rochak agrawal] 07:52:30
+You customer, let's say you, you, uh, you deployed a website.
+
+[rochak agrawal] 07:52:36
+Come by example.com. Okay. Now, when you deploy a website.
+
+[rochak agrawal] 07:52:41
+Then you need to give the URL to your users or the IP to your users, and they will start accessing it. Correct. Now, the first problem with this is this server will have its own IP, this server will have its own IP, and this server will have its own IP.
+
+[rochak agrawal] 07:52:57
+So, if you give 3 different IPs to a user, then…
+
+[rochak agrawal] 07:53:02
+how they are going to distribute the load, alright? Um…
+
+[rochak agrawal] 07:53:07
+Second is, let's say if… let's say I'm giving the IP also, okay? Somehow I'm managing it. But if your load is dynamic in nature, then after some time, you added the fourth server.
+
+[rochak agrawal] 07:53:21
+Then, how you are going to…
+
+[rochak agrawal] 07:53:24
+supply the IP of this food server. Or, let's say your load is, uh, decreased, then…
+
+[rochak agrawal] 07:53:30
+you deleted this server and this server, because you can now work with two servers only, because there is a minimum load. So now the people who are hitting the server 1 IP.
+
+[rochak agrawal] 07:53:40
+They will get a downtime.
+
+[rochak agrawal] 07:53:42
+Because they were hitting the IP. So that is where you don't…
+
+[rochak agrawal] 07:53:46
+Again, when you are deploying an application, you cannot just.
+
+[rochak agrawal] 07:53:51
+leave that application open for your end users, right? Your end users need a way by which they can distribute the traffic. So, for example, I will deploy a load balancer here.
+
+[rochak agrawal] 07:54:09
+Okay? A load balancer will have a IP. Now, that's a single IP.
+
+[rochak agrawal] 07:54:16
+Okay, now request your users will get this IP instead of getting these three IPs. So they will hit this IP.
+
+[rochak agrawal] 07:54:29
+And your load balancer will take those requests and forward that to the backend server.
+
+[rochak agrawal] 07:54:36
+Okay.
+
+[Amiya Nanda] 07:54:38
+Okay.
+
+[rochak agrawal] 07:54:38
+And it is, of course, based on the algorithm you will define in the load balancer, it is going to distribute the traffic. So, if you are not defining anything, uh…
+
+[rochak agrawal] 07:54:48
+The default algorithm is the round-robin algorithm, and it is going to, uh…
+
+[rochak agrawal] 07:54:55
+distribute the traffic evenly, so if the 100 requests is coming, 33, 33, 34 requests will go to all the servers. If you have 4 servers, so approximately 25, 25, 25 requests go. Now, you see the difference.
+
+[rochak agrawal] 07:55:10
+Forward proxy was dealing with the outgoing request.
+
+[rochak agrawal] 07:55:15
+Correct?
+
+[Amiya Nanda] 07:55:16
+Correct.
+
+[rochak agrawal] 07:55:17
+While reverse proxy is dealing with the incoming request.
+
+[rochak agrawal] 07:55:23
+So now.
+
+[rochak agrawal] 07:55:25
+Your… whatever the request coming to your server.
+
+[rochak agrawal] 07:55:29
+you're… you're not directly interacting with the server. There is something in between.
+
+[rochak agrawal] 07:55:35
+They…
+
+[rochak agrawal] 07:55:36
+This load balancer is nothing but an example of a reverse proxy.
+
+[Amiya Nanda] 07:55:42
+Okay.
+
+[rochak agrawal] 07:55:47
+In which your origin servers are not directly exposed.
+
+[rochak agrawal] 07:55:53
+to your clients, client will not know there is three server or 300 server, right? Because they are interacting with the load balancer and load balancer will forward the request to the backend server. Now after some time, if let's say I delete this server.
+
+[rochak agrawal] 07:56:08
+Then that's okay. Instead of 33, 33, 33, now load balancer will start sending the 50, 50% request to these servers, right? So for client, there is no downtime.
+
+[rochak agrawal] 07:56:22
+Okay?
+
+[Amiya Nanda] 07:56:23
+Okay.
+
+[rochak agrawal] 07:56:27
+So…
+
+[rochak agrawal] 07:56:28
+Yes, I did.
+
+[Aditya Sharma] 07:56:32
+So, can I say, like, forward proxy act as a, like, on behalf of the client, and the reverse proxy will, like, act as a behalf of the servers? Can I say?
+
+[rochak agrawal] 07:56:42
+Yes, B mentioned that point, Adit, yes.
+
+[Aditya Sharma] 07:56:45
+No problem.
+
+[rochak agrawal] 07:56:45
+Okay? So if you see this diagram also, uh…
+
+[rochak agrawal] 07:56:55
+Okay, this is not the one. So, for example.
+
+[rochak agrawal] 07:56:59
+Let me draw it.
+
+[rochak agrawal] 07:57:02
+Let's say you are having a network.
+
+[Aditya Sharma] 07:57:06
+Right.
+
+[rochak agrawal] 07:57:09
+Where you will…
+
+[rochak agrawal] 07:57:12
+I have multiple servers.
+
+[rochak agrawal] 07:57:14
+Now you want to access google.com.
+
+[rochak agrawal] 07:57:20
+Google will have also its multiple servers, correct?
+
+[rochak agrawal] 07:57:27
+Now, in between, there is…
+
+[rochak agrawal] 07:57:30
+Internet.
+
+[rochak agrawal] 07:57:36
+Because your traffic flows via internet only, right? So, see, what is going to happen?
+
+[rochak agrawal] 07:57:43
+Here, there is a forward proxy.
+
+[rochak agrawal] 07:57:46
+Which is part of your network.
+
+[rochak agrawal] 07:57:49
+your system, so your customer will reach out to the forward proxy, and then basis on the configuration you have done in your forward proxy, your traffic will go flow via the internet, correct?
+
+[rochak agrawal] 07:58:01
+Then…
+
+[rochak agrawal] 07:58:02
+From Google side also, there will be a reverse proxy.
+
+[rochak agrawal] 07:58:10
+Which is going to take all the traffic and distribute the load to the Google server.
+
+[rochak agrawal] 07:58:14
+So this is a forward proxy.
+
+[rochak agrawal] 07:58:19
+And this is your reverse proxy.
+
+[rochak agrawal] 07:58:26
+So, forward proxy acting on a behalf of the customers, which is your clients.
+
+[rochak agrawal] 07:58:35
+And this is your server.
+
+[rochak agrawal] 07:58:39
+And reverse proxy is acting on behalf of your servers. So, yes.
+
+[Aditya Sharma] 07:58:46
+Okay, got it.
+
+[rochak agrawal] 07:58:53
+Yes, I think.
+
+[ajinkya phuke] 07:58:54
+Sir, does VPN or, uh, forward proxy works on the same principles?
+
+[rochak agrawal] 07:59:01
+Uh… see, um…
+
+[rochak agrawal] 07:59:02
+VPN is something different, um, Ajink. Uh, VPN is something… so let's say, uh, this is my office network.
+
+[ajinkya phuke] 07:59:04
+Okay.
+
+[rochak agrawal] 07:59:10
+Okay, this is my office network.
+
+[ajinkya phuke] 07:59:12
+Okay.
+
+[rochak agrawal] 07:59:14
+Uh, and I have a laptop, which I want to connect to my VPN, uh, connect to my office network. So, to establish the private connectivity between the office network and the remote device, we need to create something called the VPN.
+
+[ajinkya phuke] 07:59:19
+Hmm.
+
+[ajinkya phuke] 07:59:29
+Okay.
+
+[rochak agrawal] 07:59:30
+So that is a little… I would not say a little different, it's a very different thing for a forward proxy.
+
+[rochak agrawal] 07:59:41
+Uh, yes, you are.
+
+[Jeeva Koli] 07:59:44
+Is there any dedicated devices, uh, in the market for our policy and, uh…
+
+[Jeeva Koli] 07:59:50
+Reverse Foxy. Reverse Foxy, I can say that, uh…
+
+[rochak agrawal] 07:59:51
+There are many.
+
+[rochak agrawal] 07:59:53
+There are many, uh, Jeeva. So, for example, for the forward proxy, I can use a Palo Alto firewall, or a F5 firewall, uh…
+
+[rochak agrawal] 08:00:01
+There is Imperva also. So you can use any devices. Then for the reverse proxy, any load balancer for any web server can also act as a forward reverse proxy. So Nginx or your Apache HTTPD.
+
+[rochak agrawal] 08:00:18
+Web server is a reverse proxy only, because your application will be running on the application server if it is a dynamic application, and your request goes via the web server to the reverse application server. So your web server also works as a reverse proxy.
+
+[rochak agrawal] 08:00:33
+And then there are the load balancers. So for example, if you are using Amazon AWS, so your Elastic Load Balancer, if you're using Azure, so your Azure Application Gateway, they also work as a reverse proxy. So to answer your question, yes, there are many type of devices.
+
+[rochak agrawal] 08:00:51
+And devices can be of both type. They can be of the software devices also, or hardware devices also. So there are multiple type of devices available, which can work as a forward proxy or a reverse proxy.
+
+[Jeeva Koli] 08:01:06
+Okay, got it.
+
+[rochak agrawal] 08:01:07
+Yeah?
+
+[rochak agrawal] 08:01:10
+Okay.
+
+[rochak agrawal] 08:01:11
+Now.
+
+[rochak agrawal] 08:01:13
+Are we clear? Any other question on forward or reverse proxy?
+
+[rochak agrawal] 08:01:23
+Because this is one of the common interview questions from the networking section.
+
+[rochak agrawal] 08:01:29
+Because, see, when we will be deploying our application, some of the content I'm going to deploy on web server, some of the content I'm going to deploy on application server. So my web server is nothing but a reverse proxy.
+
+[rochak agrawal] 08:01:41
+So I have seen people who was working on the pipeline, but they don't know what is a reverse proxy or…
+
+[rochak agrawal] 08:01:47
+So these are some of the basic concepts that we should be aware about.
+
+[rochak agrawal] 08:01:52
+Okay?
+
+[rochak agrawal] 08:01:56
+Now, what we need to understand is the seven layers of the OSI model.
+
+[rochak agrawal] 08:02:03
+But before that, I am going to introduce you some of the most fundamental networking related concepts because there are many things in this OSI model which we would not understand at this moment.
+
+[rochak agrawal] 08:02:17
+Okay, so we need to establish our networking fundamentals, and then we will come back to this OSI model. So I have a, like, just a very small type of a note.
+
+[rochak agrawal] 08:02:28
+where we are going to discuss, uh, what are the networks and what are the, uh, terminology. So, but before, uh, I go through this document.
+
+[rochak agrawal] 08:02:38
+I would like to understand from you, are you aware about various networking terms? For example, if someone is asking what is the difference between a switch and a router?
+
+[rochak agrawal] 08:02:49
+Can anyone tell me? Or I'll be aware about it?
+
+[rochak agrawal] 08:02:57
+What is the bus topology? What is the star topology? All these things.
+
+[rochak agrawal] 08:03:07
+Yes, it is.
+
+[Shreyas Ks] 08:03:09
+The topology is the, uh, keyword where it's a connection of various computers.
+
+[Shreyas Ks] 08:03:15
+2-in-1 network, like, for example, star topology in the sense that we have the star shape, like, different system connected.
+
+[rochak agrawal] 08:03:15
+Mm-hmm.
+
+[Shreyas Ks] 08:03:21
+Like, uh, I meant to say that. Topology is nothing but the way of connecting of a network to a server.
+
+[rochak agrawal] 08:03:29
+Correct. But are you aware about what is the difference between a router and a switch?
+
+[Shreyas Ks] 08:03:35
+I'm aware of the keyword, but I don't exact definitions. Router is the one which, uh…
+
+[rochak agrawal] 08:03:37
+I don't know exactly. Understood.
+
+[rochak agrawal] 08:03:40
+Yeah, yeah, that's okay.
+
+[Shreyas Ks] 08:03:40
+predicts the…
+
+[rochak agrawal] 08:03:42
+So, see, that's why, uh, before jumping into the OSI model, we need to establish our, uh, fundamental baseline, uh, right? Uh…
+
+[rochak agrawal] 08:03:53
+What are the different type of the keywords which you are going to?
+
+[rochak agrawal] 08:03:59
+come through across when you will be doing the troubleshooting. So, someone is saying, I need to check the MAC address. Uh, someone is saying, um, uh.
+
+[rochak agrawal] 08:04:10
+public IP is listening, but my private IP is not listening. So then you should note the difference between the public IP and the private IP.
+
+[rochak agrawal] 08:04:16
+Right? So that is where we'll understand, uh, uh, some of the fundamental networking-related course, uh, terminologies. Very simple. Um, so introduction to networks, very simple. So, uh, what is a network?
+
+[rochak agrawal] 08:04:31
+The collection of the interconnected computer is called the computer network. Two computers are said to be interconnected if they are capable of sharing and exchanging information.
+
+[rochak agrawal] 08:04:40
+Now, the very important thing in the computer network is there is two type of computer networks.
+
+[rochak agrawal] 08:04:50
+One is…
+
+[rochak agrawal] 08:04:53
+Public network?
+
+[rochak agrawal] 08:04:57
+One is a private thing.
+
+[rochak agrawal] 08:05:06
+Okay, so now…
+
+[rochak agrawal] 08:05:11
+What is a public network and what is a private network? So let's say this is an organization A.
+
+[rochak agrawal] 08:05:19
+And this is the organization view.
+
+[rochak agrawal] 08:05:24
+Now…
+
+[rochak agrawal] 08:05:25
+Let's say this is some company.
+
+[rochak agrawal] 08:05:29
+Org A.
+
+[rochak agrawal] 08:05:35
+Or B.
+
+[rochak agrawal] 08:05:39
+Organization A will have multiple computers.
+
+[rochak agrawal] 08:05:53
+Organization, we will also… will have multiple computers.
+
+[rochak agrawal] 08:06:00
+Okay, now these computers can connect with each other because they are on the same network.
+
+[rochak agrawal] 08:06:07
+Similarly, these computers, when I'm saying the computers, it means the devices. Like device can be anything. It can be a printer, it can be your servers, it can be your workstation, anything.
+
+[rochak agrawal] 08:06:24
+Great.
+
+[rochak agrawal] 08:06:27
+But this computer would not be connected with this computer.
+
+[rochak agrawal] 08:06:35
+Why? The reason for that is Organization A is having.
+
+[rochak agrawal] 08:06:41
+A private network organization B is also having a private network. So what is a private network? Private network is a network in which resources within a private network.
+
+[rochak agrawal] 08:06:53
+can talk to each other, but resource in one private network cannot talk to resource in another private network.
+
+[rochak agrawal] 08:07:02
+Okay.
+
+[rochak agrawal] 08:07:05
+You can set up that connectivity, uh, separately, but by default.
+
+[rochak agrawal] 08:07:11
+Resources in Bun…
+
+[rochak agrawal] 08:07:13
+Private network cannot talk to a resource in another private network.
+
+[rochak agrawal] 08:07:19
+That is a private network. On the other hand, we have something called the public network.
+
+[rochak agrawal] 08:07:26
+Public internet.
+
+[rochak agrawal] 08:07:28
+Like…
+
+[rochak agrawal] 08:07:28
+Currently, if you see, um, I am on this public internet, you are also in public internet, and I…
+
+[rochak agrawal] 08:07:38
+I am connected with you.
+
+[rochak agrawal] 08:07:39
+Right? See, we are connected on the same session right now. Why? Because we are on the same public internet. And there is one public internet across the world.
+
+[rochak agrawal] 08:07:49
+There is no…
+
+[rochak agrawal] 08:07:53
+There are hundreds and thousands of private networks, but there is only one public network, which is…
+
+[rochak agrawal] 08:08:01
+Internet.
+
+[rochak agrawal] 08:08:08
+So, everyone is connected with this internet, okay?
+
+[rochak agrawal] 08:08:13
+So, you, like, there are 30 people in this call. We all are connected via the public internet.
+
+[rochak agrawal] 08:08:20
+We call it as a public internet but internet is you can say internet is a public network basically right. So we all are connected with the public internet. Now let's say there is a server for google.com. There will be a server for facebook.com.
+
+[rochak agrawal] 08:08:37
+So, your private network also can talk to.
+
+[rochak agrawal] 08:08:42
+The resources in the public network?
+
+[rochak agrawal] 08:08:47
+But they cannot talk to up.
+
+[rochak agrawal] 08:08:51
+resource in another private network.
+
+[rochak agrawal] 08:08:53
+Okay.
+
+[rochak agrawal] 08:08:55
+Clear? Till now.
+
+[rochak agrawal] 08:09:04
+Yes, it is.
+
+[Shreyas Ks] 08:09:05
+Sir, is this similar to the intranet and internet? Like, intranet…
+
+[rochak agrawal] 08:09:08
+You can say that. So that's what your public network is a internet and your private network will be called as a intranet. So every organization will have their intranets.
+
+[rochak agrawal] 08:09:23
+Right?
+
+[rochak agrawal] 08:09:27
+Okay?
+
+[rochak agrawal] 08:09:30
+Kilia till now?
+
+[rochak agrawal] 08:09:38
+Okay, now there is a very, very, very important concept of the.
+
+[rochak agrawal] 08:09:46
+IP.
+
+[rochak agrawal] 08:09:50
+What is an IP?
+
+[rochak agrawal] 08:09:51
+Can anyone tell me?
+
+[rochak agrawal] 08:09:58
+Yes, it is.
+
+[Shreyas Ks] 08:09:59
+Sir, it's an address of a user, basically.
+
+[rochak agrawal] 08:10:02
+Address of a user, okay?
+
+[rochak agrawal] 08:10:06
+Mmm… I would say no.
+
+[rochak agrawal] 08:10:11
+Yes, I did.
+
+[Aditya Sharma] 08:10:12
+It's a protocol, uh, like, internet protocol, like, how to access the devices and all.
+
+[rochak agrawal] 08:10:19
+Okay, so IP is in, uh, protocol, uh, okay, right? But what is an IP address?
+
+[Aditya Sharma] 08:10:29
+It's a physical address of the devices, uh, like, MAC address, like…
+
+[Aditya Sharma] 08:10:35
+internet ID with the DSCP connected, DSCP provided the address, uh, to the…
+
+[rochak agrawal] 08:10:38
+Mm-hmm.
+
+[rochak agrawal] 08:10:41
+Uh, Aditi, you're mixing too many things.
+
+[Aditya Sharma] 08:10:43
+Okay.
+
+[rochak agrawal] 08:10:45
+Hmm. Okay, no problem. I'll explain. Uh, let me hear others' thought.
+
+[rochak agrawal] 08:10:53
+Yes, Nami.
+
+[Naveen Kr Nair] 08:10:55
+I think IP is an address of a laptop which will be published on the internet so that we can communicate, or others can communicate to us.
+
+[rochak agrawal] 08:11:04
+Okay.
+
+[rochak agrawal] 08:11:05
+Perfect, uh, but it is, uh, the half of the definition, but what you're telling is correct.
+
+[rochak agrawal] 08:11:11
+I will extend to this, but yes.
+
+[rochak agrawal] 08:11:16
+Yes, Ganesh.
+
+[Ganesh Katkar] 08:11:20
+The address is, like, the unique identification of the device that can be reached out through that device.
+
+[rochak agrawal] 08:11:23
+Mm-hmm.
+
+[rochak agrawal] 08:11:26
+Yeah, same thing, yes.
+
+[rochak agrawal] 08:11:28
+Okay, so now let me explain.
+
+[rochak agrawal] 08:11:34
+So…
+
+[rochak agrawal] 08:11:35
+First thing, okay?
+
+[rochak agrawal] 08:11:39
+Let's say this is my laptop.
+
+[rochak agrawal] 08:11:42
+or any device anywhere.
+
+[rochak agrawal] 08:11:48
+It will have 2 actors.
+
+[rochak agrawal] 08:11:52
+Bun is a MAC address.
+
+[rochak agrawal] 08:11:58
+Another is going to have the IP address.
+
+[rochak agrawal] 08:12:02
+Okay, we can see it from the…
+
+[rochak agrawal] 08:12:09
+MAC address, a media access control address, is a hardware identification number.
+
+[rochak agrawal] 08:12:15
+That uniquely identifies each device on a network.
+
+[rochak agrawal] 08:12:21
+So, MAC address, you can say, is a physical address or the hardware address of the machine.
+
+[rochak agrawal] 08:12:27
+And MAC address of a machine is not going to change ever.
+
+[rochak agrawal] 08:12:33
+While an IP address, each computer on the internet is identified by a unique number called the IP address.
+
+[rochak agrawal] 08:12:42
+Okay.
+
+[rochak agrawal] 08:12:49
+So you're… when you create a machine, anywhere.
+
+[rochak agrawal] 08:12:52
+Okay.
+
+[rochak agrawal] 08:12:54
+Your machine…
+
+[rochak agrawal] 08:12:56
+will have a MAC address, which is a physical address.
+
+[rochak agrawal] 08:13:01
+And it is going to have an IP address also.
+
+[rochak agrawal] 08:13:07
+Just give me a second.
+
+[rochak agrawal] 08:13:41
+Okay? So, MAC address…
+
+[rochak agrawal] 08:13:45
+finds your specific physical device, physical device, with that, within that local network, while an IP address finds your general network location on the global internet.
+
+[rochak agrawal] 08:13:56
+Now, why… what is the difference when we have the same thing? IP address can change, okay? IP address change whenever you move to a new network or a new location, but your MAC address is never going to change. A MAC address is a permanent.
+
+[rochak agrawal] 08:14:14
+burned into your device hardware at the factory. So when your laptop is being assembled, being created.
+
+[rochak agrawal] 08:14:22
+At that time itself, a MAC address is going to assign to that machine.
+
+[rochak agrawal] 08:14:26
+But your IP address will depend which network you are connected.
+
+[rochak agrawal] 08:14:33
+While an IP address will be shared outside on the internet, MAC address is more of a local traffic.
+
+[rochak agrawal] 08:14:41
+So…
+
+[rochak agrawal] 08:14:42
+Any machine will have these two IP address, MAC address and the IP address. MAC address is a permanent address. IP or we will call it as a physical address. IP address is more of a identification over the over a network.
+
+[rochak agrawal] 08:14:58
+Okay? Clear about these two, MAC and IP.
+
+[rochak agrawal] 08:15:04
+Now.
+
+[rochak agrawal] 08:15:05
+Mac is not very useful for us as.
+
+[rochak agrawal] 08:15:08
+because we don't deal with the hardwares, we are more concerned about the IP address.
+
+[rochak agrawal] 08:15:16
+Okay.
+
+[rochak agrawal] 08:15:18
+And we should be very, um…
+
+[rochak agrawal] 08:15:23
+What you can say is, uh…
+
+[rochak agrawal] 08:15:27
+Very much aware what an IP address is telling you. Okay, so we'll not go in detail about the MAC address because it is not very relevant for us. But you need to understand MAC address is a physical address which is assigned to a device while the device is being created.
+
+[rochak agrawal] 08:15:42
+And then this MAC address is never going to change.
+
+[rochak agrawal] 08:15:47
+While an IP address, we will discuss in detail also.
+
+[rochak agrawal] 08:15:52
+Uh, is that, uh…
+
+[rochak agrawal] 08:15:55
+it can change depending on where your network… where you are connecting to your laptop. So if I… right now, I'm connected to a laptop, uh…
+
+[rochak agrawal] 08:16:03
+on a public internet, my IP will be different, but if I go connect this laptop in some company's network, my IP will change, but my MAC address will not change.
+
+[rochak agrawal] 08:16:14
+Okay, now IP address again is of there is different different classification for the IP address. One is IPv4.
+
+[rochak agrawal] 08:16:33
+Another is IPv6.
+
+[rochak agrawal] 08:16:38
+Okay?
+
+[rochak agrawal] 08:16:41
+So, IPv4 and IPv6. Now, IPv4 address will something, uh, looks like, uh.
+
+[rochak agrawal] 08:16:50
+10.6.7.8, something like this. So it's a version 4 of IP address, and it is a version 6 of the IP address.
+
+[rochak agrawal] 08:17:01
+So, it is, um, uh, the total IP address is 32 bits, and if you see, it is divided into 4.
+
+[rochak agrawal] 08:17:09
+bloat.
+
+[rochak agrawal] 08:17:13
+It is divided into 4 blocks.
+
+[rochak agrawal] 08:17:18
+8 bit octet each. Okay. And then there is a IPv6. IPv6 is very complicated. So example of IPv6 if you see.
+
+[rochak agrawal] 08:17:33
+So this is…
+
+[rochak agrawal] 08:17:35
+An example of a full IPv6 address.
+
+[rochak agrawal] 08:17:42
+You can see.
+
+[rochak agrawal] 08:17:43
+It is…
+
+[rochak agrawal] 08:17:45
+way too complicated.
+
+[rochak agrawal] 08:17:48
+In terms of, uh, if in comparison to IPv4.
+
+[rochak agrawal] 08:17:53
+Now, what is the difference? See, there is no difference between the IPv4 and IPv6.
+
+[rochak agrawal] 08:17:59
+It is just, uh, since now everything is having an IP. For example, whatever is connected to a network will have an IP. And nowadays, if you see in your household.
+
+[rochak agrawal] 08:18:10
+Everything is connected to the internet. Your fridge, your TV, your laptop, your machine, your washing machine, your microwave.
+
+[rochak agrawal] 08:18:21
+Uh, Alexa, um, your friends.
+
+[rochak agrawal] 08:18:25
+AC, right? Because you can control them from your phone. How are you controlling them from your phone? Because there is a connection between them. Since there is a connection, there is an IP, right? So, now everything is…
+
+[rochak agrawal] 08:18:40
+having an IP, uh, there was a crunch for the IPv4 addresses, because we can have a limited IPv4 number of the IP addresses, and so that is where IPv6 address has been.
+
+[rochak agrawal] 08:18:55
+Introduced?
+
+[rochak agrawal] 08:18:57
+so that, uh, like, if you do not have the enough number of the IPv4 left, we can assign the IPv6.
+
+[rochak agrawal] 08:19:05
+But, having said that, uh, IPv6 is still not…
+
+[rochak agrawal] 08:19:11
+In so much of use.
+
+[rochak agrawal] 08:19:14
+99% of the time, you are going to work with the IPv4 address.
+
+[rochak agrawal] 08:19:20
+Okay? So, to give you the context, I am working from last 15 years. I never worked with IPv6.
+
+[rochak agrawal] 08:19:29
+I'm always working with the IPv4. So, in the near-term future, I don't see the need to work with IPv6. Your work mostly be done with the IPv4, but…
+
+[rochak agrawal] 08:19:42
+In… in the long future, when…
+
+[rochak agrawal] 08:19:45
+there will be more technological advancement, and there is everything on the IP.
+
+[rochak agrawal] 08:19:50
+then probably we'll need IPv6. There are companies still using the IPv6, but it is not of much in use, so we will focus on the IPv4.
+
+[rochak agrawal] 08:20:05
+So, IPv4, again, have a classification. They have two types.
+
+[rochak agrawal] 08:20:15
+Ban is a private IP.
+
+[rochak agrawal] 08:20:20
+And another is a public IP.
+
+[rochak agrawal] 08:20:26
+Okay.
+
+[rochak agrawal] 08:20:27
+Now, what is the private IP and what is the public IP?
+
+[rochak agrawal] 08:20:32
+Do you see here?
+
+[rochak agrawal] 08:20:37
+If organization A has a private network.
+
+[rochak agrawal] 08:20:41
+Organization B has a private network.
+
+[rochak agrawal] 08:20:44
+Now
+
+[rochak agrawal] 08:20:46
+devices within the private network. So, let's say one.
+
+[rochak agrawal] 08:20:52
+They both are part of the same network, same private network.
+
+[rochak agrawal] 08:20:57
+If they want to communicate to each other, they can communicate over the public IP also, but they should communicate over the private IP.
+
+[rochak agrawal] 08:21:08
+Private IP, you can communicate only within a private network.
+
+[rochak agrawal] 08:21:14
+But…
+
+[rochak agrawal] 08:21:15
+Let's say there is an application running on that server.
+
+[rochak agrawal] 08:21:22
+And from the internet, if I want to access that application.
+
+[rochak agrawal] 08:21:28
+Then, I need to have a public ID.
+
+[rochak agrawal] 08:21:38
+Okay?
+
+[rochak agrawal] 08:21:40
+But if this…
+
+[rochak agrawal] 08:21:43
+If your user is within your private network and they want to access this application, they do not need a public IP, they can access over a private IP.
+
+[rochak agrawal] 08:21:58
+So anything, any communication within the network can happen over the private IP, but any communication happening outside of the network.
+
+[rochak agrawal] 08:22:08
+will happen on the public IP.
+
+[rochak agrawal] 08:22:11
+Elliot and Lao?
+
+[rochak agrawal] 08:22:21
+So I I use an I I generally use an analogy for the family for, IP and the private IP. Public, private IP to every if you're working in an organization.
+
+[rochak agrawal] 08:22:41
+Private IP.
+
+[rochak agrawal] 08:22:44
+is like your employee ID.
+
+[rochak agrawal] 08:22:50
+Right? So every… within the network, everyone can know you with the help of your employee ID. If you need to raise any requests, generally, your employee ID is needed. Correct?
+
+[rochak agrawal] 08:23:01
+But…
+
+[rochak agrawal] 08:23:03
+You understand your public IP?
+
+[rochak agrawal] 08:23:07
+Like your Aadhaar.
+
+[rochak agrawal] 08:23:09
+Or Vanguard, for example.
+
+[rochak agrawal] 08:23:12
+Your employee ID does not have any value.
+
+[rochak agrawal] 08:23:15
+Outside of your organization, right?
+
+[rochak agrawal] 08:23:18
+But, let's say, um, if I need to interact with a third-party system, so, for example, I need to interact with the PF department, then I am going to work with the employee ID or the other number.
+
+[rochak agrawal] 08:23:31
+other number, right? Because that is publicly recognizable. Similar is the case with the public IP and the private IP. Private IP is if you have any communication within the network.
+
+[rochak agrawal] 08:23:44
+then you can use the private IP, but if you want to interact something outside of the network, you would not… you would need a.
+
+[rochak agrawal] 08:23:58
+Yes, I'm here.
+
+[Amiya Nanda] 08:24:04
+Ah, so, ah, ah, private IP is, ah, belongs to within a network, right, ah, ah, if, ah.
+
+[rochak agrawal] 08:24:10
+private IP belongs to?
+
+[Amiya Nanda] 08:24:13
+Within one organization, within one.
+
+[rochak agrawal] 08:24:14
+Within one organization
+
+[Amiya Nanda] 08:24:16
+Correct?
+
+[rochak agrawal] 08:24:16
+Yes.
+
+[Amiya Nanda] 08:24:17
+And, uh, public IP is outside the world.
+
+[rochak agrawal] 08:24:19
+Is routable over the internet.
+
+[Amiya Nanda] 08:24:21
+So if I'm belongs to one, ah, ah, this current company and I want to, ah, ah, use the current company website, so.
+
+[Amiya Nanda] 08:24:31
+That can happen within the private network.
+
+[rochak agrawal] 08:24:34
+Correct, yes. See, for example, you must have noticed there will be certain website in your organization which you can access only within a company network, but if you try to access it from a public network, you will not be able to access it.
+
+[Amiya Nanda] 08:24:35
+Private IP.
+
+[Amiya Nanda] 08:24:42
+Hmm. Okay.
+
+[Amiya Nanda] 08:24:50
+Yah.
+
+[rochak agrawal] 08:24:51
+Right? Why? Because the communication is happening over the private IP in the back end.
+
+[Amiya Nanda] 08:24:51
+So.
+
+[Amiya Nanda] 08:24:56
+Yes.
+
+[Amiya Nanda] 08:24:57
+And in the example you have mentioned, ah, if, ah, from server, ah, if.
+
+[Amiya Nanda] 08:25:04
+We want to, ah, ah, access any other, ah, website from.
+
+[Amiya Nanda] 08:25:10
+our, ah, internal, ah, from our, within the organization, so that we'll have a, ah, public IP.
+
+[rochak agrawal] 08:25:18
+Correct. Any… see, the rule of thumb is any communication within the network can happen on a private IP, any communication outside the network.
+
+[Amiya Nanda] 08:25:28
+Hmhm.
+
+[rochak agrawal] 08:25:28
+will happen on a public IP.
+
+[Amiya Nanda] 08:25:30
+Okay, so, ah, so 1 machine or 1 server can have 2 IP or.
+
+[rochak agrawal] 08:25:35
+Yes, correct. I'm coming to that, yes.
+
+[Amiya Nanda] 08:25:37
+Okay, okay.
+
+[rochak agrawal] 08:25:39
+Okay, so till now we are clear.
+
+[Amiya Nanda] 08:25:39
+Yeah, okay.
+
+[Amiya Nanda] 08:25:40
+Yes, yes.
+
+[rochak agrawal] 08:25:42
+Yes and get out.
+
+[Ankita Saxena] 08:25:46
+Uh, is there any certain range fixed for the private IP allocation?
+
+[rochak agrawal] 08:25:49
+Yes.
+
+[Ankita Saxena] 08:25:55
+I'm out of it.
+
+[rochak agrawal] 08:25:56
+Yes, yes, you are audible, um…
+
+[rochak agrawal] 08:25:59
+Yeah, so Ankita, I'm coming to that. Yes, there is a range fix. So by looking at the IP, you can decide that either it's a public IP or it's a private IP. Yes. So I'm coming to that, both of the part.
+
+[Ankita Saxena] 08:26:10
+Okay.
+
+[rochak agrawal] 08:26:14
+Now…
+
+[rochak agrawal] 08:26:15
+Let's say…
+
+[rochak agrawal] 08:26:25
+This is one server, okay?
+
+[rochak agrawal] 08:26:29
+Another server. So, we discussed that.
+
+[rochak agrawal] 08:26:32
+Any communication happening within the network.
+
+[rochak agrawal] 08:26:37
+can happen on a private IP, and any communication happening outside of.
+
+[rochak agrawal] 08:26:42
+The network should happen on a.
+
+[rochak agrawal] 08:26:45
+public IP, okay? So your server can have both.
+
+[rochak agrawal] 08:26:50
+They can have the public IP.
+
+[rochak agrawal] 08:26:54
+As well as they can have a private IP. Both.
+
+[rochak agrawal] 08:27:00
+Okay.
+
+[rochak agrawal] 08:27:02
+So, for the internal users, they can use the private IP. For the external communication, they can have the private IP.
+
+[rochak agrawal] 08:27:09
+Uh, sorry, public IP. So, all the server…
+
+[rochak agrawal] 08:27:15
+can have two IPs. Public IP, private IP. Public IP, private IP. But again, uh, the keyword is can have. For example, let's say…
+
+[rochak agrawal] 08:27:28
+It depends on the use case, if you need it or not. So, for example, let's say…
+
+[rochak agrawal] 08:27:37
+Let's say this is my private network, and uh… I am running a 3-tier application on this.
+
+[rochak agrawal] 08:27:43
+This is my web server.
+
+[rochak agrawal] 08:27:46
+This is my app server.
+
+[rochak agrawal] 08:27:49
+And this is my database server.
+
+[rochak agrawal] 08:27:51
+Correct. Now the request comes to the web server. Web server send the request to app server and app server send the request to DB server. Correct.
+
+[rochak agrawal] 08:28:02
+Now, out of these three.
+
+[rochak agrawal] 08:28:05
+Only web server is having the external communication, correct? So your web server, we will assign the web server a public IP.
+
+[rochak agrawal] 08:28:15
+As well as a private IP, because it is internally communicating with the…
+
+[rochak agrawal] 08:28:20
+But these two servers, they are only interacting internally, so I do not need to assign a public IP to them. I will assign only a private IP.
+
+[rochak agrawal] 08:28:31
+Right? So…
+
+[rochak agrawal] 08:28:33
+A server can have both public IP as well as a private IP.
+
+[rochak agrawal] 08:28:39
+Depending on your use case, you can choose to assign it or not assign it, it is up to you.
+
+[rochak agrawal] 08:28:45
+Okay?
+
+[rochak agrawal] 08:28:46
+Second thing.
+
+[rochak agrawal] 08:28:52
+the question, Ankita, I was asking.
+
+[rochak agrawal] 08:28:55
+How will I come to know that this IP is a public IP, this IP is a private IP?
+
+[rochak agrawal] 08:29:02
+So, for that.
+
+[rochak agrawal] 08:29:04
+Universally, there are certain range which is fixed, okay?
+
+[rochak agrawal] 08:29:10
+Which you will see, and you will get to know, okay, this is a private IP. Now, what is that range?
+
+[rochak agrawal] 08:29:22
+So if you see these three range.
+
+[rochak agrawal] 08:29:50
+So, your total IP range is…
+
+[rochak agrawal] 08:29:54
+0.0.0.02.
+
+[rochak agrawal] 08:29:58
+255.255.255.255.
+
+[rochak agrawal] 08:30:03
+Okay.
+
+[rochak agrawal] 08:30:06
+Now, out of this range, these three range.
+
+[rochak agrawal] 08:30:10
+is fixed for the private IP.
+
+[rochak agrawal] 08:30:13
+10.0.0.0 to 10.255.255.255. 172.16.0.0 to 172.13.255.255. 192.168.0.0 to 192.168.255.255.
+
+[rochak agrawal] 08:30:32
+So, if you are part of these, um, three ranges.
+
+[rochak agrawal] 08:30:37
+Okay.
+
+[rochak agrawal] 08:30:38
+Then.
+
+[rochak agrawal] 08:30:40
+It is…
+
+[rochak agrawal] 08:30:43
+Private IP? Apart from these three ranges, any IP would be the public IP.
+
+[rochak agrawal] 08:30:49
+So we have a very clear defined range. Now there is one very, very important point we need to remember.
+
+[rochak agrawal] 08:30:58
+Let's say…
+
+[rochak agrawal] 08:31:03
+We have two networks. We will have multiple networks, but let's assume there's a two network.
+
+[rochak agrawal] 08:31:10
+And I have a device there.
+
+[rochak agrawal] 08:31:17
+Okay.
+
+[rochak agrawal] 08:31:22
+When you assign a public IP.
+
+[rochak agrawal] 08:31:26
+To any server.
+
+[rochak agrawal] 08:31:28
+We need to remember that over the whole internet.
+
+[rochak agrawal] 08:31:33
+No two machines can have the same public IP.
+
+[rochak agrawal] 08:31:38
+So if my machine's public IP is, let's say, 5.7.9.10.
+
+[rochak agrawal] 08:31:43
+Then, over the whole internet. I'm seeing over the whole internet.
+
+[rochak agrawal] 08:31:49
+Whole world
+
+[rochak agrawal] 08:31:50
+No machine will have the same public IP.
+
+[rochak agrawal] 08:31:53
+Public ID.
+
+[rochak agrawal] 08:31:54
+Okay? So, for example, if I go check, uh, what is my IP.
+
+[rochak agrawal] 08:32:08
+You can see, uh, your IP address is 122.161.69.241, okay?
+
+[rochak agrawal] 08:32:17
+And you can see this is not in this range, in these three ranges, and it's a public IP. This is not in these three ranges.
+
+[rochak agrawal] 08:32:24
+Okay, so till that time, my machine is having this 122.161.69.241.
+
+[rochak agrawal] 08:32:33
+At this moment, no other machine over the whole internet will have this IP.
+
+[rochak agrawal] 08:32:41
+You can see, visible from the IP address, it is ISP.TL, and we are getting all those details.
+
+[rochak agrawal] 08:32:47
+And I have been assigned an IPv6 also.
+
+[rochak agrawal] 08:32:52
+In IPv6, there is no concept of a public IP or a private IP. In IPv6, every IP is a public IP only.
+
+[rochak agrawal] 08:33:00
+But we are not going into the IPv6. So, right now, this IP address will be exclusive to me, no other device in the whole internet, in the whole world.
+
+[rochak agrawal] 08:33:12
+can have this public IP. It is one-to-one relationship. Now, going forward, if I change my network, let's say I'm using a Jio right now, Airtel right now, after a month, if I go change my network connection, right, I install a Jio Wi-Fi.
+
+[rochak agrawal] 08:33:28
+My IP can change, okay? But whatever my IP will be at that time, again, that IP will not be assigned to anyone else in the whole world.
+
+[rochak agrawal] 08:33:40
+So, public IP is XTR.
+
+[rochak agrawal] 08:33:42
+But, on the other hand.
+
+[rochak agrawal] 08:33:49
+Let's say my private IP is 10.0.0.4.
+
+[rochak agrawal] 08:34:06
+Or one.
+
+[rochak agrawal] 08:34:11
+All of it.
+
+[rochak agrawal] 08:34:14
+Now.
+
+[rochak agrawal] 08:34:15
+We discussed public IP will be exclusive over the whole internet.
+
+[rochak agrawal] 08:34:21
+While the private IP will be exclusive to the private network.
+
+[rochak agrawal] 08:34:26
+Two different private network can have the same private IDs because they're not talking to each other. Right now it may happen that your company is having someone employee ID 12567 and my company is also having a person with the employee ID 12567.
+
+[rochak agrawal] 08:34:45
+But their Aadhaar number will not be the same.
+
+[rochak agrawal] 08:34:48
+Headache?
+
+[rochak agrawal] 08:34:49
+So the public IP will be exclusive.
+
+[rochak agrawal] 08:34:53
+to the whole internet, while the private IP… now, I cannot have a same server here.
+
+[rochak agrawal] 08:35:00
+uh, another server here having the same IP within this network. But another network can have the IP, because we have a limited range.
+
+[rochak agrawal] 08:35:07
+Correct? And these networks are not aware about each other.
+
+[rochak agrawal] 08:35:12
+They don't know that network tool is also present because private IP is anyways for the internal communication.
+
+[rochak agrawal] 08:35:22
+Clear? Till now? Any question?
+
+[rochak agrawal] 08:35:38
+Yes, you got it.
+
+[Jeeva Koli] 08:35:41
+So, public IP would… someone could provide, right? They will make sure that the IP address.
+
+[rochak agrawal] 08:35:46
+Yes.
+
+[rochak agrawal] 08:35:49
+That IP is not assigned to someone else, correct?
+
+[rochak agrawal] 08:35:51
+So you can see, you can see it here, this IP is managed by my ISP.
+
+[Jeeva Koli] 08:35:52
+Right.
+
+[rochak agrawal] 08:35:59
+Okay, so your ISP will have the pool of the public IEPs, and they will keep assigning the IEPs to the devices which is connected to their network.
+
+[rochak agrawal] 08:36:08
+So even if you go to AWS, AWS will have the certain pool of the IP which is allocated to AWS. Now, someone is creating a public IP on AWS, so they'll assign that IP which is available at that time to that person.
+
+[Jeeva Koli] 08:36:24
+So, uh, this Airtel and, uh, this AWS will be having the same IP address, but they communicate individually.
+
+[rochak agrawal] 08:36:31
+No, they will have their own pools.
+
+[Jeeva Koli] 08:36:34
+pools, right?
+
+[rochak agrawal] 08:36:36
+They will have their own pools.
+
+[Jeeva Koli] 08:36:39
+Okay.
+
+[rochak agrawal] 08:36:40
+Okay?
+
+[rochak agrawal] 08:36:42
+See, this whole IP address is being managed by an organization called IANA.
+
+[Jeeva Koli] 08:36:42
+Yes.
+
+[rochak agrawal] 08:36:50
+So it says Internet Assigned Numbers Authority. This is a global standard. So this is a non-profit organization which manages the IP allocation across the world.
+
+[rochak agrawal] 08:37:04
+Okay? And then there is another, uh, organization called ICANL.
+
+[rochak agrawal] 08:37:12
+Internet Corporation for the assigned name and the numbers. So this is the organization, this IANA and this ICANN. So basically, ICANN is the part of IANA only, and this is an organization which is responsible.
+
+[rochak agrawal] 08:37:27
+to distribute that pool across the vendors, for example, AWS, Azure, GCP, uh, your Airtel, Geo, so that is being handled.
+
+[rochak agrawal] 08:37:39
+by this organization.
+
+[Jeeva Koli] 08:37:41
+Okay, and uh… this public IP, chargeable, and the private IP, we can send.
+
+[rochak agrawal] 08:37:45
+Yes, it is chargeable.
+
+[Jeeva Koli] 08:37:48
+Hazmatage.
+
+[rochak agrawal] 08:37:48
+Public IP is chargeable, yes, uh, private IP is free.
+
+[Jeeva Koli] 08:37:54
+Okay.
+
+[rochak agrawal] 08:37:54
+Okay? But, see, uh…
+
+[rochak agrawal] 08:37:58
+to set up the private IP, uh, you need to have a private network, right? Um, so…
+
+[rochak agrawal] 08:38:05
+You can set up a private network using the networking devices. If you want to set up in an on-premises environment, it would be a very complex affair. But if you are using the cloud, then you can set up the private network within minutes.
+
+[rochak agrawal] 08:38:19
+But yes, to answer your question, public IP will be chargeable. So, of course, depending on the platform to platform, for example, if I'm using this.
+
+[rochak agrawal] 08:38:30
+Airtel is not charging me for the IP, Airtel is charging me for the bandwidth they are giving it to me.
+
+[rochak agrawal] 08:38:35
+Right? So, see, sometimes the charges will not be direct to you.
+
+[Ankita Saxena] 08:38:36
+Thank you.
+
+[Jeeva Koli] 08:38:43
+Okay.
+
+[rochak agrawal] 08:38:43
+Okay, so for example, Airtel has given me this IP address, but Airtel is not saying me, I am charging you this much amount for this IP. See, they have given me a plan, let's say 700 rupees for 100 Mbps bandwidth.
+
+[rochak agrawal] 08:39:00
+990 rupees for 200 Mbps bandwidth, right? So they are not saying… they are charging for the IP.
+
+[rochak agrawal] 08:39:07
+But if you, let's say, use any of the cloud service provider, uh, for example, I go to Geo, uh, sorry, uh, AWS, Azure, or GCP, and I will say, okay, I want to have some public IP, so yes, they are going to charge you.
+
+[rochak agrawal] 08:39:23
+on an IP allocation basis.
+
+[rochak agrawal] 08:39:35
+Animesh?
+
+[Animesh Jain] 08:39:39
+Yeah, uh, hi sir, so, uh, there is one question, uh, regarding, like, uh, uh, is our IP address is, uh, changing, uh, time by time by changing the internet, right?
+
+[rochak agrawal] 08:39:54
+Okay, so no one, uh, anyways, we can control that, okay? Um, uh, IP allocation can be static, and it can be dynamic both.
+
+[rochak agrawal] 08:40:03
+Uh, so because, uh, let's say if I'm, um, changing the IP, let's say someone want to reach out to me, uh, I will give this IP, but if my IP will change, then the person is having the old IP, they will not be able to reach out to my server, correct? So the IP allocation can be both, uh, if you want a static IP.
+
+[rochak agrawal] 08:40:23
+that you want that your IP is not going to change, we can achieve that.
+
+[Animesh Jain] 08:40:28
+Okay, sir.
+
+[rochak agrawal] 08:40:30
+Okay?
+
+[rochak agrawal] 08:40:35
+Ankita, you have a question?
+
+[rochak agrawal] 08:40:46
+Okay. So…
+
+[rochak agrawal] 08:40:51
+The important point is…
+
+[rochak agrawal] 08:40:52
+Public IP will be exclusive to the whole internet.
+
+[rochak agrawal] 08:40:57
+Private IP is exclusive to a private network.
+
+[rochak agrawal] 08:41:00
+That's it. So your Organization 1 and Organization 2 can have the same private IP addresses, because they are not aware about each other's presence, right? But public IP will… if you are assigning some public IP to someone, then it should be.
+
+[rochak agrawal] 08:41:16
+Exactly the same.
+
+[rochak agrawal] 08:41:18
+Oh, sorry, uh, it should be…
+
+[rochak agrawal] 08:41:21
+Unique across the whole internet.
+
+[rochak agrawal] 08:41:28
+So this IP addressing will be very, very important for any of the troubleshooting things.
+
+[rochak agrawal] 08:41:35
+Clear till now?
+
+[rochak agrawal] 08:41:42
+Any other question?
+
+[rochak agrawal] 08:41:46
+Okay.
+
+[rochak agrawal] 08:41:50
+Now…
+
+[rochak agrawal] 08:41:50
+So public IP and private IP, we are clear. Now there's another one very, very important thing is.
+
+[rochak agrawal] 08:42:11
+IP addressing.
+
+[rochak agrawal] 08:42:16
+Okay.
+
+[rochak agrawal] 08:42:19
+Um, so let's say…
+
+[rochak agrawal] 08:42:23
+This is a network, right?
+
+[rochak agrawal] 08:42:26
+I have this IP… this multiple server.
+
+[rochak agrawal] 08:42:36
+So it should… now I'm talking about the private IP. Public IP is… keep that aside for a moment.
+
+[rochak agrawal] 08:42:42
+Now, let's say I… I…
+
+[rochak agrawal] 08:42:47
+10.0.0.4.
+
+[rochak agrawal] 08:42:52
+192.168.
+
+[rochak agrawal] 08:42:57
+dot one dot zero.
+
+[rochak agrawal] 08:42:59
+172… what was the second range? 172…
+
+[rochak agrawal] 08:43:08
+Load 168.
+
+[rochak agrawal] 08:43:11
+dot one dot one.
+
+[rochak agrawal] 08:43:12
+Okay, now…
+
+[rochak agrawal] 08:43:21
+Can anyone tell me this? Is this possible?
+
+[rochak agrawal] 08:43:29
+Yes, Ganesh?
+
+[Ganesh Katkar] 08:43:31
+It's… no, no, these are the different networks. Not able to communicate with each other.
+
+[rochak agrawal] 08:43:36
+Okay? But, uh, why this is not possible?
+
+[Ganesh Katkar] 08:43:41
+These are the different networks for this, uh, for this, uh, communication.
+
+[rochak agrawal] 08:43:43
+But I'm not… I'm not talking about the network, I am talking about the IP.
+
+[rochak agrawal] 08:43:48
+These are the IPs, right? These are not the networks.
+
+[Ganesh Katkar] 08:43:50
+Yes.
+
+[rochak agrawal] 08:43:51
+So, I want to assign these IPs to my three… these three machines. Is this possible or not?
+
+[Ganesh Katkar] 08:44:02
+Uh, yes, it is possible.
+
+[rochak agrawal] 08:44:04
+Yes, it is possible.
+
+[rochak agrawal] 08:44:06
+Uh, anyone else want to give it a try?
+
+[Ganesh Katkar] 08:44:12
+That 172 would say that that's the wrong address, please.
+
+[rochak agrawal] 08:44:15
+Yeah, it is 16.1.1.
+
+[Ganesh Katkar] 08:44:20
+Ah, yes, yes.
+
+[rochak agrawal] 08:44:26
+Yes, you are.
+
+[Jeeva Koli] 08:44:29
+Actually, you can assign this IP 170 to 160 at one point.
+
+[Jeeva Koli] 08:44:36
+Yeah, it is Gateway, actually.
+
+[rochak agrawal] 08:44:38
+No, no, forget about the individual IP. So, the question is, uh…
+
+[Jeeva Koli] 08:44:39
+And, uh…
+
+[rochak agrawal] 08:44:44
+Can I assign these 3 different IP to these 3 different machines in the same network?
+
+[rochak agrawal] 08:44:49
+That is the question.
+
+[Jeeva Koli] 08:44:50
+Same network, you cannot assign it, actually.
+
+[rochak agrawal] 08:44:53
+Why?
+
+[Jeeva Koli] 08:44:55
+Uh, you should have a certain IP ranges, IP ranges, or uh…
+
+[Jeeva Koli] 08:45:00
+That can communicate, uh, each individual.
+
+[rochak agrawal] 08:45:03
+Mm-hmm.
+
+[Jeeva Koli] 08:45:04
+But if you wanted to assign it individually, you can assign it, but for same network, it is not possible. You have to select…
+
+[rochak agrawal] 08:45:07
+Hmm?
+
+[Jeeva Koli] 08:45:11
+you have a limitation to select IP addresses in the same network.
+
+[rochak agrawal] 08:45:14
+Okay? But, uh, see, this IP is a private IP, this IP is a private IP, correct?
+
+[rochak agrawal] 08:45:23
+They can communicate to each other over a private IP.
+
+[Jeeva Koli] 08:45:23
+Uh, correct, yes.
+
+[Jeeva Koli] 08:45:28
+Uh, yes. Uh, if you wanted to assign the IP address within the, uh, for… in the same network for all the remaining all devices, you should have a, uh…
+
+[rochak agrawal] 08:45:35
+Mm-hmm.
+
+[Jeeva Koli] 08:45:38
+uh, dedicated IP address that start from the 10.0.0 and last few digits.
+
+[Jeeva Koli] 08:45:45
+Like, yeah.
+
+[rochak agrawal] 08:45:45
+Oh, um…
+
+[Jeeva Koli] 08:45:47
+That event change, and then assign those accordingly. Otherwise, if you keep any other IP address to the device, it cannot communicate to the remaining device, actually.
+
+[rochak agrawal] 08:45:54
+Hmm?
+
+[rochak agrawal] 08:45:57
+But why? Because, see, we discussed and we said this is a private IP 10.0.0.4, and this is also a private IP, so then why they cannot communicate with each other?
+
+[Jeeva Koli] 08:46:12
+The communication starts from the, like, uh…
+
+[Jeeva Koli] 08:46:17
+that IP address that we provide, uh, I'm not remembering that exact word, but yeah.
+
+[rochak agrawal] 08:46:19
+Okay.
+
+[rochak agrawal] 08:46:21
+Sure, no problem. Let me explain. See, um…
+
+[rochak agrawal] 08:46:26
+They can communicate with each other.
+
+[rochak agrawal] 08:46:28
+That is a separate topic, but we cannot assign the IPs in this way.
+
+[rochak agrawal] 08:46:35
+Now, the reason for that is when you are part of the network.
+
+[rochak agrawal] 08:46:39
+Okay? When you're part of the network, you do not assign the IP on an individual server level.
+
+[rochak agrawal] 08:46:52
+Okay, so let's say I have these 3 machines.
+
+[rochak agrawal] 08:46:57
+In this network, A.
+
+[rochak agrawal] 08:47:01
+I am going to assign a network range to network A, that my network range is 10.0.0.0 slash 16.
+
+[rochak agrawal] 08:47:11
+Now…
+
+[rochak agrawal] 08:47:13
+Whatever… I will explain this, what is this, like, 16, but whatever, um…
+
+[rochak agrawal] 08:47:20
+Devices now being created as part of this network.
+
+[rochak agrawal] 08:47:24
+They are going to take the IP from this range.
+
+[rochak agrawal] 08:47:30
+So that is the reason that you cannot assign the different IP to the different machine because you assigns the IP at the network level because that's why they are a part of the same network. If I assign different different IPS, they can communicate with each other because they both have the private IP.
+
+[rochak agrawal] 08:47:46
+But then they are not part of the same network, okay?
+
+[rochak agrawal] 08:47:51
+There should be some commonality, right? That's why I can say, okay.
+
+[rochak agrawal] 08:47:56
+My employee ID is 1234, your employee ID is 1235. There is some pattern, right?
+
+[rochak agrawal] 08:48:04
+So that is the reason that we cannot assign different IPs to different individual machines. But your range is coming from the network.
+
+[rochak agrawal] 08:48:13
+Okay. Now, what is this 10.0.0.0 slash 16?
+
+[rochak agrawal] 08:48:18
+This is very important to understand.
+
+[rochak agrawal] 08:48:22
+Can anyone tell me what is this? 10.0.0.0 slash 16.
+
+[rochak agrawal] 08:48:28
+Yes, Ganesh.
+
+[Ganesh Katkar] 08:48:31
+Uh, 16 is like the subject mask. So, uh…
+
+[rochak agrawal] 08:48:33
+What is the subnet mask?
+
+[Ganesh Katkar] 08:48:37
+The next mask is, like, uh, we can define the type ranges from, like, uh, 10.0.0.1 to 10.
+
+[Ganesh Katkar] 08:48:47
+0.25522255.
+
+[rochak agrawal] 08:48:50
+Okay.
+
+[rochak agrawal] 08:48:52
+We are kind of close, yes.
+
+[rochak agrawal] 08:48:55
+Yes, you are.
+
+[Jeeva Koli] 08:48:58
+Uh, subnet mask is nothing but a network within the network, okay?
+
+[Jeeva Koli] 08:49:03
+So, if I provided the IP address of private IP address, uh…
+
+[Jeeva Koli] 08:49:09
+Then, within that IP address, I wanted to communicate the other devices in the same network, so I will provide the subnet mask for that, actually. Means, network within the network.
+
+[rochak agrawal] 08:49:22
+Diva, I'm not, uh…
+
+[rochak agrawal] 08:49:24
+getting…
+
+[Ganesh Katkar] 08:49:25
+Not the network, the internet, which can divide, uh, network, which, uh, we can divide one network into subparts.
+
+[rochak agrawal] 08:49:28
+It is, it is, it is, uh, it is, uh…
+
+[rochak agrawal] 08:49:32
+No, no, no. Uh, so, okay, I'll… let me explain.
+
+[rochak agrawal] 08:49:37
+So, we… in the start, we discussed that this is…
+
+[rochak agrawal] 08:49:42
+Four octets. One.
+
+[rochak agrawal] 08:49:45
+3, 4.
+
+[rochak agrawal] 08:49:47
+So.
+
+[rochak agrawal] 08:49:48
+See, if you remember, we have a number system.
+
+[rochak agrawal] 08:49:52
+We have…
+
+[rochak agrawal] 08:49:54
+The number system, like, uh, decimal, which we use in our daily, day-to-day use, correct? 1, 2, 3, 4, 5, 6, 7, 8, 9, 10…
+
+[rochak agrawal] 08:50:04
+Eleventh time.
+
+[rochak agrawal] 08:50:06
+Computer does not understand the decimal.
+
+[rochak agrawal] 08:50:09
+What they understand is binary.
+
+[rochak agrawal] 08:50:12
+01.
+
+[rochak agrawal] 08:50:13
+Correct?
+
+[rochak agrawal] 08:50:15
+So, whatever the number you are looking at here, this is for our.
+
+[rochak agrawal] 08:50:20
+readability purpose. Computer does not understand it.
+
+[rochak agrawal] 08:50:25
+For computer, your IP address is…
+
+[rochak agrawal] 08:50:40
+For computer, your IP address is this.
+
+[rochak agrawal] 08:50:48
+Okay.
+
+[rochak agrawal] 08:50:54
+So, you see one…
+
+[rochak agrawal] 08:50:56
+2345678.
+
+[rochak agrawal] 08:51:00
+So, it is an octet of 8 bits each.
+
+[rochak agrawal] 08:51:06
+So you can see?
+
+[rochak agrawal] 08:51:09
+8…
+
+[rochak agrawal] 08:51:17
+Any number you say, uh, so you, you give any number, for example, I'll say.
+
+[rochak agrawal] 08:51:23
+55.67.78.98.
+
+[rochak agrawal] 08:51:29
+You will read this IP, but computer is not reading it. For computer, it is this.
+
+[rochak agrawal] 08:51:34
+Can you see? In a binary format.
+
+[rochak agrawal] 08:51:37
+Okay, how breakdown, so 50, uh…
+
+[rochak agrawal] 08:51:43
+55 is 32.16.4.2.1, so the number is coming.
+
+[rochak agrawal] 08:51:51
+So, your IP address is a 32-bit.
+
+[rochak agrawal] 08:51:59
+Octane?
+
+[rochak agrawal] 08:52:00
+32-bit IP address with.
+
+[rochak agrawal] 08:52:04
+Equally 4 octet of 8 bits each.
+
+[rochak agrawal] 08:52:08
+Okay, now when you define this 10.0.0.0 slash 16, it could be anything, it could be 24 also. Uh, so let me take an example with 24, which would be much easier.
+
+[rochak agrawal] 08:52:22
+Now, I'll set 10.0.0.0/24.
+
+[rochak agrawal] 08:52:27
+Now, what does it mean is, it is… you can say it is a network mask or a subnet mask.
+
+[rochak agrawal] 08:52:34
+So, what we are saying, we are saying we are reserving the 24 bits for our network address. Remaining is available for your IP addresses, okay? So then, in that case.
+
+[rochak agrawal] 08:52:49
+What will be my 24 bits? 10.0.088824 bits.
+
+[rochak agrawal] 08:52:57
+24 bits is fixed for my network address, okay? Then the 8 bits.
+
+[rochak agrawal] 08:53:04
+Remaining 8 bits is for your IP address. So 8 bit will be 10.0.0.
+
+[rochak agrawal] 08:53:12
+One and dot zero dot zero dot.
+
+[rochak agrawal] 08:53:17
+2, and it will go to 10.0.0.255.
+
+[rochak agrawal] 08:53:20
+Okay, because, um…
+
+[rochak agrawal] 08:53:24
+If you…
+
+[rochak agrawal] 08:53:26
+The minimum range for a bit will be 00345678212345678.
+
+[rochak agrawal] 08:53:40
+This is in a binary format. If you translate them into this, it will become 0 to 255.
+
+[rochak agrawal] 08:53:49
+Okay.
+
+[rochak agrawal] 08:53:51
+Now
+
+[rochak agrawal] 08:53:51
+If you are reserving 24 bits, so then you will have these 3 bits.
+
+[rochak agrawal] 08:53:58
+8, 8, 8.
+
+[rochak agrawal] 08:54:00
+bill reserved for your network address. So, you can see that your network address is.
+
+[rochak agrawal] 08:54:07
+10.0.0.0, 10.0.0.1, 0.2, 0.255. But instead of 24, if I pick up.
+
+[rochak agrawal] 08:54:21
+10.0.0.0 slash 16. Okay, then my IP address range will become.
+
+[rochak agrawal] 08:54:30
+10.0.0.0.
+
+[rochak agrawal] 08:54:34
+10.0.0.
+
+[rochak agrawal] 08:54:48
+to 10 dot…
+
+[rochak agrawal] 08:54:50
+0.0.
+
+[rochak agrawal] 08:54:54
+to 10.0.0.255, and it will move to 10.0.1.0.
+
+[rochak agrawal] 08:55:02
+N.0…
+
+[rochak agrawal] 08:55:04
+dot…
+
+[rochak agrawal] 08:55:09
+Boom.
+
+[rochak agrawal] 08:55:11
+to 10.0.1.255.
+
+[rochak agrawal] 08:55:14
+And it will go move till 10.0.255.255.
+
+[rochak agrawal] 08:55:21
+So now.
+
+[rochak agrawal] 08:55:22
+when you define a network address, so my network address is, let's say, 10.0.0.0 slash 16, then my… when I'm creating a machine in that network.
+
+[rochak agrawal] 08:55:34
+it is going to take an IP from this range itself.
+
+[rochak agrawal] 08:55:42
+from this range itself. Now we do not need to calculate much. There are very nice.
+
+[rochak agrawal] 08:55:50
+IP address calculators are there.
+
+[rochak agrawal] 08:55:57
+So you will just get your, uh…
+
+[rochak agrawal] 08:56:00
+Now you can say 10.0.0.0/24.
+
+[rochak agrawal] 08:56:05
+So you can say it is called… you can call it as a subnet mask, you can call it as a network mask, anything.
+
+[rochak agrawal] 08:56:13
+And you can see the address net mask is because since it's a 24 bits, so it is your network mask. Build card is the last bit 0.0.0.255.
+
+[rochak agrawal] 08:56:26
+And you can say.
+
+[rochak agrawal] 08:56:29
+10.0, uh… so…
+
+[rochak agrawal] 08:56:33
+the range will become… you will have a 254 address will be there. So the first and last address will be reserved for the, uh, internal users of, uh.
+
+[rochak agrawal] 08:56:44
+The network. So you will have a available 10.0.0.1 to 10.0.254.
+
+[rochak agrawal] 08:56:51
+But the total address will be 10.0.0.0 to 255. 0 and 255 network will reserve for.
+
+[rochak agrawal] 08:57:00
+It's internal users.
+
+[rochak agrawal] 08:57:02
+But if I give it, let's say, 16.
+
+[rochak agrawal] 08:57:09
+then you can see the range. So 10.0.0.1 to 10.0.255.254, because, again, the first and last address. But if you give, let's say, 32.
+
+[rochak agrawal] 08:57:20
+Then how many IP address will be there?
+
+[rochak agrawal] 08:57:25
+Only one.
+
+[rochak agrawal] 08:57:28
+Only one.
+
+[rochak agrawal] 08:57:30
+Because I'm giving just one, uh…
+
+[rochak agrawal] 08:57:35
+Bennett?
+
+[rochak agrawal] 08:57:35
+So, and it's not like you need to give 16, uh, 32, or 24. You can give anything. Let's say I can create a range with 25.
+
+[rochak agrawal] 08:57:46
+So then you can see total range is 126, and it is going to start with 10.0.0.1 to 10.0.0.126.
+
+[rochak agrawal] 08:57:56
+So we can give any range. Now, you sometimes will be asked.
+
+[rochak agrawal] 08:58:01
+That, uh…
+
+[rochak agrawal] 08:58:06
+So, for example, you have 500 servers, right? Um, so they will ask, what should be my network range?
+
+[rochak agrawal] 08:58:12
+So you know that, uh, if you are running it with slash 24.
+
+[rochak agrawal] 08:58:18
+you are going to have 250 servers, so you need a bigger network. You'll go 22.
+
+[rochak agrawal] 08:58:24
+Okay, I'll check the 23.
+
+[rochak agrawal] 08:58:27
+So, yeah?
+
+[rochak agrawal] 08:58:29
+So, if you have a 500 server, then you need to address it with the 23, uh…
+
+[rochak agrawal] 08:58:39
+slash 23 address.
+
+[rochak agrawal] 08:58:40
+So, most of the time, we are going to use either slash 16 or slash 24, most of the time, okay? And in that, slash 24 is the most common one, which has, uh…
+
+[rochak agrawal] 08:58:53
+For example, if you see…
+
+[rochak agrawal] 08:58:55
+Slash 24 is at 254 addresses, until and unless I'm not running a very, very big workload.
+
+[rochak agrawal] 08:59:02
+254 IPs are enough, like, I'm not running an application with more than 250 servers. Correct. So 24 slash 24 is the IP which is most commonly used, like, depending on your requirement.
+
+[rochak agrawal] 08:59:14
+Uh, you can actually choose to have any one of them.
+
+[rochak agrawal] 08:59:18
+So that is how it is, uh, but this is very important to understand. If you have any question, uh, please, uh, let us know, because, uh, when you will be working on, um.
+
+[rochak agrawal] 08:59:31
+troubleshooting, or when you will be working on the cloud side. In cloud, it is of utmost importance, okay, because in cloud.
+
+[rochak agrawal] 08:59:41
+Then you become a cloud engineer. Uh, in cloud, there is not a separate networking team. It is us only who is going to prepare everything. Correct? So that is where, uh…
+
+[rochak agrawal] 08:59:53
+it is very important for us to understand this IP addressing-related concern. What's a private IP? So, IPv6, we don't work with, as I said.
+
+[rochak agrawal] 09:00:04
+You will probably not going to get a chance in your career to work on IPv6 because it is not very commonly adopted as of now.
+
+[rochak agrawal] 09:00:12
+IPv4, we have two types of IP. One is a public IP, one is a private IP, and based on the range, we have fixed range. You can look at the IP and.
+
+[rochak agrawal] 09:00:21
+can tell if it is a public IP or a private IP.
+
+[rochak agrawal] 09:00:29
+Clear, any question?
+
+[rochak agrawal] 09:00:46
+Yes, it is.
+
+[Shreyas Ks] 09:00:47
+Sir, study materials for this will be provided, like, later on.
+
+[rochak agrawal] 09:00:50
+Yeah, yeah, I'll provide you that for that.
+
+[rochak agrawal] 09:00:53
+And we will provide you, uh, also, like, how you can do those calculations and other things. So, yeah, I'll provide you the study material for this.
+
+[rochak agrawal] 09:01:10
+Yes, you will.
+
+[Jeeva Koli] 09:01:12
+So, uh, while, uh, you are, uh, architecturing any of the application and designing that.
+
+[Jeeva Koli] 09:01:21
+Um, how you would decide that, how many IP address would require for my application?
+
+[rochak agrawal] 09:01:25
+Okay.
+
+[rochak agrawal] 09:01:26
+Mm-hmm.
+
+[Jeeva Koli] 09:01:27
+And, uh…
+
+[rochak agrawal] 09:01:28
+Okay, yeah, go ahead.
+
+[Jeeva Koli] 09:01:31
+Yeah, I mean, uh, what kind of, like, uh…
+
+[Jeeva Koli] 09:01:35
+IP address we need to assign, and the deciding point.
+
+[rochak agrawal] 09:01:39
+Okay. See, the deciding point, uh, would be…
+
+[rochak agrawal] 09:01:44
+Your network design.
+
+[rochak agrawal] 09:01:46
+Okay, so when I'm saying the network design, uh, so there is a concept of a subnet.
+
+[rochak agrawal] 09:01:54
+So, for example…
+
+[rochak agrawal] 09:01:59
+Let's say this is my network.
+
+[rochak agrawal] 09:02:04
+Okay.
+
+[rochak agrawal] 09:02:06
+Now, inside my network, I can create something called the subnets.
+
+[rochak agrawal] 09:02:15
+Subnet is nothing, but uh…
+
+[rochak agrawal] 09:02:22
+you can say a smaller part of your network only, okay? So, resources in one subnet.
+
+[rochak agrawal] 09:02:29
+So, let's say I have this here, this here.
+
+[rochak agrawal] 09:02:36
+This here. Resources in one subnet can talk to each other by default.
+
+[rochak agrawal] 09:02:50
+By default, they, uh, if you have 3 subnets.
+
+[rochak agrawal] 09:02:54
+All the resources in these three subnets can talk to each other over the private IP.
+
+[rochak agrawal] 09:02:58
+But we can control that flow. If I want… so, for example, I created a BAB.
+
+[rochak agrawal] 09:03:07
+DB. I created 3 subnets. Now, I do not want my web server to directly communicate to my database server. So, I can control the flow of that traffic on a subnet level. Okay. Now, when you say, um…
+
+[rochak agrawal] 09:03:21
+how I am going to decide how many IP address you need.
+
+[rochak agrawal] 09:03:25
+So Jeeva, it will totally depend on your network design. So when I'm saying about your network design, let's say you created a three-tier architecture, three-tier application. Now in your, so for example.
+
+[rochak agrawal] 09:03:41
+Like, it will depend on how many servers you are running.
+
+[rochak agrawal] 09:03:45
+You need to do that capacity planning first, right? If I'm running, let's say.
+
+[rochak agrawal] 09:03:51
+10… 5 servers here.
+
+[rochak agrawal] 09:03:56
+3… 5 servers here.
+
+[rochak agrawal] 09:04:07
+Total IP I need, 15.
+
+[rochak agrawal] 09:04:11
+Plus…
+
+[rochak agrawal] 09:04:12
+some IP for the internal users of your private network. So in a cloud, generally five IPs are going to reserve for the cloud private network internal users. And then like you say, okay, if the load will increase from the five, I will go to the 1010 servers.
+
+[rochak agrawal] 09:04:29
+So then, 15 you need right now, but in case of auto-scaling, you go… you will need 30… 30 servers, right? So then, 30 plus 5, you need 35 IPs.
+
+[rochak agrawal] 09:04:43
+Correct. So then for 35 IPs, what should be my address? It should be around 29.
+
+[rochak agrawal] 09:04:53
+8…
+
+[Jeeva Koli] 09:04:54
+27
+
+[rochak agrawal] 09:04:56
+14 and 27.
+
+[Jeeva Koli] 09:04:58
+Okay, yes.
+
+[rochak agrawal] 09:05:01
+Right? But in this case, you see, it is… that is the trick, and that is the type of the question is asked if you're going for a certification or an interview.
+
+[rochak agrawal] 09:05:10
+Now, you are okay, you say, uh, I need the 30 IPs, and slash 27 is giving you the 30 IP. Will that work for you? No. The reason for that is.
+
+[rochak agrawal] 09:05:21
+you need these 5 IPs also, which Cloud uses for their internal users. So you cannot work with 27, you need slash 26.
+
+[rochak agrawal] 09:05:31
+which is going to give you 62 IPs. Some IPs, you will keep them as spare.
+
+[rochak agrawal] 09:05:37
+So…
+
+[rochak agrawal] 09:05:40
+Zima, when we say how many IPs we need.
+
+[rochak agrawal] 09:05:45
+So, then we need to decide. First, we need to do our capacity planning, that, uh, how many servers are… am I going to run? Then, how many IPs I'm going to keep in a spare? Because, see.
+
+[rochak agrawal] 09:05:56
+be…
+
+[rochak agrawal] 09:05:58
+not only keep the current demands in the mind, because in the future, your infrastructure can expand, right? So how much it can expand, we need to take care of that also. Otherwise, let's say if I create it with the 35 IPs only.
+
+[rochak agrawal] 09:06:13
+Uh, somehow, for example. And then, um, going forward, instead of 10 servers, I need 20 servers in each, uh, area, for example. Then…
+
+[rochak agrawal] 09:06:24
+I would not be able to accommodate that, because once the IP range is created, you cannot change it.
+
+[rochak agrawal] 09:06:29
+Okay. So either you will create a new application, you migrate your servers to a new network and do something like that. So you need to be very sure about how much IP you need. And this is you are going to achieve with the help of the capacity planning. And this is not your decision alone.
+
+[rochak agrawal] 09:06:46
+You will sit with your application team, you will sit with your business team, and collectively you will take a decision, okay, this much server I need to run, this much I will keep in reserve for our future uses, and so this is the IP number which I need.
+
+[rochak agrawal] 09:07:02
+Okay?
+
+[Jeeva Koli] 09:07:02
+Okay.
+
+[Jeeva Koli] 09:07:04
+Yeah, well.
+
+[rochak agrawal] 09:07:08
+Yes, an image.
+
+[Animesh Jain] 09:07:11
+Uh, sir, uh, why the, uh, host network is…
+
+[Animesh Jain] 09:07:15
+Going lower when we increase the… the…
+
+[Animesh Jain] 09:07:19
+CIDR notation, like, if we are putting the 24, it's getting lower, and while we are putting the 16, it's getting higher.
+
+[rochak agrawal] 09:07:27
+Got it. Okay.
+
+[Animesh Jain] 09:07:28
+Uh, and we can sort it.
+
+[rochak agrawal] 09:07:28
+Yeah, yeah, I'll explain. So, for example, when you're putting up 16.
+
+[Animesh Jain] 09:07:33
+Yep.
+
+[rochak agrawal] 09:07:35
+you are getting a 65,000 IP address, correct?
+
+[Animesh Jain] 09:07:39
+Okay
+
+[rochak agrawal] 09:07:40
+But when I'm putting 24.
+
+[rochak agrawal] 09:07:45
+you will get only 254 IP address, correct? That's the reason you want to know?
+
+[Animesh Jain] 09:07:49
+Yes, yes.
+
+[rochak agrawal] 09:07:50
+Yeah. C.
+
+[rochak agrawal] 09:07:52
+let's say…
+
+[rochak agrawal] 09:07:57
+I have a…
+
+[rochak agrawal] 09:08:04
+Just a second.
+
+[rochak agrawal] 09:08:07
+So…
+
+[rochak agrawal] 09:08:11
+You can see we have two range. One is less 24.
+
+[rochak agrawal] 09:08:15
+And another is less 60.
+
+[rochak agrawal] 09:08:26
+So, if you see in the first one.
+
+[rochak agrawal] 09:08:29
+Your range is 10.0.0.02.
+
+[rochak agrawal] 09:08:40
+10.0.0.255.
+
+[rochak agrawal] 09:08:43
+Correct?
+
+[Animesh Jain] 09:08:45
+Yes, sir.
+
+[rochak agrawal] 09:08:46
+So you have only 0 to 255, only 256 addresses there.
+
+[rochak agrawal] 09:08:52
+Correct? Understood?
+
+[Animesh Jain] 09:08:54
+Yep.
+
+[rochak agrawal] 09:08:56
+But if you see this range.
+
+[rochak agrawal] 09:08:58
+Here you have 10.0.0.02.
+
+[rochak agrawal] 09:09:04
+10.0.255.255. Here you have.
+
+[rochak agrawal] 09:09:11
+2:56.
+
+[rochak agrawal] 09:09:13
+into 256.
+
+[rochak agrawal] 09:09:17
+Around 65,000 address.
+
+[rochak agrawal] 09:09:21
+You got it now?
+
+[Animesh Jain] 09:09:23
+Yes, sir.
+
+[rochak agrawal] 09:09:24
+65P address. So the lower you will keep the subnet mask, and if you do it 8.
+
+[rochak agrawal] 09:09:32
+You see the number.
+
+[Animesh Jain] 09:09:32
+It's getting million, uh, I think.
+
+[rochak agrawal] 09:09:34
+It will…
+
+[rochak agrawal] 09:09:36
+You see?
+
+[rochak agrawal] 09:09:39
+Because in 65K, now 256 times address is increased more.
+
+[rochak agrawal] 09:09:46
+Okay? And if you do it with 32.
+
+[rochak agrawal] 09:09:51
+One address.
+
+[Animesh Jain] 09:09:51
+There is only one.
+
+[rochak agrawal] 09:09:53
+There's only one.
+
+[rochak agrawal] 09:09:54
+So that's why… because…
+
+[rochak agrawal] 09:09:58
+The higher the number you are increasing.
+
+[rochak agrawal] 09:10:02
+The lower…
+
+[rochak agrawal] 09:10:03
+address you are.
+
+[rochak agrawal] 09:10:06
+Sparing it for your address. Everything you're giving into the network.
+
+[rochak agrawal] 09:10:11
+Right?
+
+[Animesh Jain] 09:10:13
+Yes.
+
+[rochak agrawal] 09:10:15
+So that is the reason that when you hire the network mask, lower will be the address count.
+
+[rochak agrawal] 09:10:25
+Okay?
+
+[Animesh Jain] 09:10:26
+Yes, sir.
+
+[rochak agrawal] 09:10:28
+So, any other question with the IP addressing? Because that will be a very integral part of any of the concepts we are going to cover, and it will be very, very helpful.
+
+[rochak agrawal] 09:10:41
+From a troubleshooting perspective as well.
+
+[rochak agrawal] 09:10:50
+Yes, I'm here.
+
+[Amiya Nanda] 09:10:53
+Ah, yeah, Rojak, so in real-time scenarios, ah, we need to calculate.
+
+[Amiya Nanda] 09:10:58
+Uh, this…
+
+[rochak agrawal] 09:10:59
+Yes, so that is what I was discussing with Jeeva. So, you need to calculate this? Yes, absolutely, because based on the number of the servers you are running in your.
+
+[rochak agrawal] 09:11:12
+Infrastructure, right? You will need those IP addresses only. So for example, if I'm running 20 server, I'll go with something like slash 2728 type of subnet mask because see the more IP addresses you are going to have spare.
+
+[rochak agrawal] 09:11:29
+The more is your attack surface.
+
+[rochak agrawal] 09:11:32
+Correct, your hacker can exploit it, right? Otherwise, I will always go create a…
+
+[rochak agrawal] 09:11:39
+address range of slash 8. Multiple IP addresses I am going to have, and uh…
+
+[rochak agrawal] 09:11:45
+If I'm not using it, using it or not using it, how does it matter? But no, you need to have only those IP numbers which you are required.
+
+[Amiya Nanda] 09:11:54
+I'll be treated.
+
+[rochak agrawal] 09:11:55
+So, like, if you're running 10 server, 20 server, 100 servers.
+
+[rochak agrawal] 09:11:59
+And not about the servers. Your storage devices, your…
+
+[rochak agrawal] 09:12:07
+uh, private endpoints, so there is multiple things which we… which will be consuming this private IP, okay? So you need to do a capacity planning to come to a conclusion, and uh…
+
+[rochak agrawal] 09:12:17
+How many IP addresses you need and not only about your current requirement, you need to leave a scope for the future expansion also, correct? So that's where you will come to a mutual agreed number across different teams and accordingly you will create your network with that particular number of IPs.
+
+[Amiya Nanda] 09:12:38
+Okay.
+
+[rochak agrawal] 09:12:39
+Okay?
+
+[rochak agrawal] 09:12:44
+Yes, Dharmendra.
+
+[rochak agrawal] 09:12:58
+Yes, you are.
+
+[Jeeva Koli] 09:13:01
+So, this distributing of IP address within the subnet, what we call as a CIDR.
+
+[rochak agrawal] 09:13:09
+Yes, it is called the CIDR and we call it as a the full form of a CIDR is a classless.
+
+[rochak agrawal] 09:13:16
+uh… I'm forgetting… classless inter-domain routing, something like that.
+
+[Jeeva Koli] 09:13:21
+Okay, okay.
+
+[rochak agrawal] 09:13:24
+C-I-D-R, full phone.
+
+[rochak agrawal] 09:13:26
+Classless inter-domain, yeah, classless inter-domain routing.
+
+[rochak agrawal] 09:13:30
+So this is a CIDR method only, yes. So this is a CIDR we can say.
+
+[rochak agrawal] 09:13:38
+And these two words you are going to use interchangeably. So whenever you see 10.0.0/24, somewhere you will call it as an address range also, and somewhere it will be referred as a CIDR.
+
+[rochak agrawal] 09:13:53
+Because CIDR is also in the end range only, uh, routing range.
+
+[rochak agrawal] 09:13:58
+Okay?
+
+[Jeeva Koli] 09:14:00
+And can further be distributed, like, uh, the…
+
+[Jeeva Koli] 09:14:05
+the IP address standpoint, 0./24, that can be further distributed within the small network.
+
+[rochak agrawal] 09:14:07
+Mm-hmm.
+
+[rochak agrawal] 09:14:11
+Yeah, see, of course, that is what a role of a subnet. So, for example, when you, uh…
+
+[rochak agrawal] 09:14:19
+Create a network.
+
+[rochak agrawal] 09:14:24
+And this is what exactly we have to do. So, for example, this is my network, and I created 3 subnets. So, for the network, I will give a range, something like 10.0.
+
+[rochak agrawal] 09:14:37
+dot 0.0 slash 16, for example, okay? Then you need to give the network range for the subnet also, so I will give this something like 10.0.1.0.
+
+[rochak agrawal] 09:14:48
+Slash 24.
+
+[rochak agrawal] 09:14:52
+N.0.2.
+
+[rochak agrawal] 09:14:56
+dot zero slash twenty four.
+
+[rochak agrawal] 09:15:01
+10.0.3.0/24.
+
+[rochak agrawal] 09:15:06
+Something like that. The only condition is your subnet range should be part of this bigger range.
+
+[rochak agrawal] 09:15:15
+And that's what…
+
+[Jeeva Koli] 09:15:16
+Uh, yeah, but the IP address that you provided, that cannot fit under the, uh, the under 16, right?
+
+[rochak agrawal] 09:15:22
+No, this can be fit. See, uh, what is this range?
+
+[rochak agrawal] 09:15:29
+If you see this range, this is 10.0.0.0 to 10.0.0, uh, sorry, 255.255, correct?
+
+[Jeeva Koli] 09:15:42
+416, right, yes.
+
+[rochak agrawal] 09:15:44
+For the 16th. And this, you see.
+
+[Jeeva Koli] 09:15:45
+Right, right, yeah.
+
+[Jeeva Koli] 09:15:47
+I, I was thinking 24.
+
+[rochak agrawal] 09:15:49
+Yeah, uh, and this you see, this is…
+
+[rochak agrawal] 09:15:54
+10.0.
+
+[rochak agrawal] 09:15:57
+3.02…
+
+[rochak agrawal] 09:16:01
+10.0.D.255, correct?
+
+[Jeeva Koli] 09:16:05
+Alright.
+
+[rochak agrawal] 09:16:07
+And this is between this range only.
+
+[rochak agrawal] 09:16:09
+Correct? Somewhere.
+
+[Jeeva Koli] 09:16:12
+Somewhere I read somewhere that I think slash at the last, you can do something like slash, not slash, minus something you can put that can…
+
+[rochak agrawal] 09:16:12
+Right?
+
+[Jeeva Koli] 09:16:23
+I can distribute that.
+
+[Jeeva Koli] 09:16:24
+I'm not, uh, sure on that.
+
+[rochak agrawal] 09:16:28
+Okay. No, no, you see.
+
+[rochak agrawal] 09:16:32
+It depends on the type of networking devices you are using, Jeeva.
+
+[rochak agrawal] 09:16:38
+we are not going into the core networking, for example, Juniper devices or Cisco devices kind of a thing. Every device can have their own standards, okay?
+
+[Jeeva Koli] 09:16:47
+Okay, okay.
+
+[rochak agrawal] 09:16:49
+we are focused here how we are going to do it in cloud. What you are saying, I need to look into it, how does it work. In cloud, there's nothing like you can do a minus or something like that.
+
+[rochak agrawal] 09:17:04
+So you can create a big network, then you can divide it into a multiple smaller network altogether. That's how we do it in cloud.
+
+[rochak agrawal] 09:17:16
+So, clear now, this point, Jeeva, for you.
+
+[rochak agrawal] 09:17:28
+Yes, I'm here.
+
+[Amiya Nanda] 09:17:31
+Yeah, Rochak, so, ah, we can, ah, ah, ah, do it, like, ah, subnet-wise or whole internet-wise?
+
+[rochak agrawal] 09:17:39
+subnet wise. So, see, if you, um, how it is going to happen is.
+
+[Amiya Nanda] 09:17:40
+Ohh subnetways we need to do.
+
+[rochak agrawal] 09:17:45
+If you are not defining any subnet, for example.
+
+[rochak agrawal] 09:17:54
+So, let's say when you will create a network.
+
+[rochak agrawal] 09:18:00
+Then it will create a default subnet for you.
+
+[rochak agrawal] 09:18:03
+So, if you say, I don't know anything about the subnet, I have some resources I want to run, and I'm just only focused on the network, perfectly fine.
+
+[rochak agrawal] 09:18:15
+Everything will go inside this subnetwork.
+
+[rochak agrawal] 09:18:17
+Okay.
+
+[Amiya Nanda] 09:18:19
+Okay
+
+[rochak agrawal] 09:18:19
+But you say, but if you have a use case where you want to segregate the traffic, like we discussed in this example, that you have a web tier, you have an app tier and a DB tier, and you say, okay, I do not want to communicate between the web and DB. See, in the end, they're all part of the same network.
+
+[rochak agrawal] 09:18:36
+Correct?
+
+[Amiya Nanda] 09:18:37
+Yes.
+
+[rochak agrawal] 09:18:38
+So they can also talk to each other, web can talk to DB directly, but… and…
+
+[rochak agrawal] 09:18:44
+But when you are dividing the subnet, we can control the flow of the traffic between the subnet. So subnet is an optional thing, you can say.
+
+[Amiya Nanda] 09:18:52
+Okay.
+
+[rochak agrawal] 09:18:53
+If you…
+
+[rochak agrawal] 09:18:53
+But when I'm saying the subnet is an optional thing, when you will be creating a network, a default subnet will be there. So everything will go inside a subnet only. But you don't need to do anything in that case. It is a default thing.
+
+[Amiya Nanda] 09:19:04
+Okay.
+
+[rochak agrawal] 09:19:08
+But if you want to control the flow of the traffic between your network also, so then you can create your own custom subnets inside your network.
+
+[Amiya Nanda] 09:19:18
+So we can, ah, create, ah, ah, this role for, ah, web server wise, application server wise.
+
+[rochak agrawal] 09:19:26
+No, it is up… it is up to you. It is… we have given just one example. So, for example, I can create… let's say I am running three applications between.
+
+[Amiya Nanda] 09:19:27
+It is up to uh huh.
+
+[Amiya Nanda] 09:19:30
+Ah, yeah.
+
+[rochak agrawal] 09:19:38
+3 applications within my network, for example.
+
+[rochak agrawal] 09:19:46
+Right? And I won't… I don't want, uh… so I'll create App1 subnet.
+
+[rochak agrawal] 09:19:54
+App to subnet.
+
+[rochak agrawal] 09:19:58
+F3 submit.
+
+[rochak agrawal] 09:20:03
+Now by default servers for app one, app two, app three can communicate because they are part of the same network. But I can control the flow of the traffic within the subnet so that they will not be able to talk to each other.
+
+[Amiya Nanda] 09:20:16
+Okay, I mean, ah, downstream of trip application, ah.
+
+[rochak agrawal] 09:20:18
+No, it is not downstream, okay? So you don't think of something running in sequence, right? So it's a piece of pie. You understand it like this. It's not a downstream. So let's say this is your network.
+
+[Amiya Nanda] 09:20:32
+Hmhm.
+
+[rochak agrawal] 09:20:33
+Now, inside this, I can create 3 subnets, something like this.
+
+[rochak agrawal] 09:20:38
+Subnet 1?
+
+[rochak agrawal] 09:20:40
+3.
+
+[rochak agrawal] 09:20:41
+Now, they can talk to each other.
+
+[rochak agrawal] 09:20:43
+By default. But let's say if you want my subnet resources in subnet one cannot talk to subnet two or subnet one cannot talk to subnet three. We can control all of that.
+
+[Amiya Nanda] 09:20:54
+Okay.
+
+[rochak agrawal] 09:20:55
+The second question is, you always need to create a subnet tier-wise, like BabAppDB? No. You can create subnet as per your requirement. If you are running multiple applications in your same network, then you can create a different subnet for different applications, and you control the flow of the traffic between them.
+
+[rochak agrawal] 09:21:13
+Then you can create the subnet as per your, uh…
+
+[rochak agrawal] 09:21:19
+Uh, what you can say, as per your environment, for example, you create one subnet for development environment, one subnet for production environment, something like that.
+
+[rochak agrawal] 09:21:27
+Up to you.
+
+[Amiya Nanda] 09:21:30
+Okay, okay.
+
+[rochak agrawal] 09:21:31
+See, that is where that is the role of an architect will come into the picture.
+
+[rochak agrawal] 09:21:36
+AbleLive platform, any platform, if you talk about, they are going to give you some functionalities and features.
+
+[rochak agrawal] 09:21:44
+Okay.
+
+[Amiya Nanda] 09:21:46
+Okay.
+
+[rochak agrawal] 09:21:46
+how I want to use it.
+
+[rochak agrawal] 09:21:50
+I need to understand and analyze my organizational requirements.
+
+[rochak agrawal] 09:21:55
+And accordingly, I need to design a solution.
+
+[Amiya Nanda] 09:21:59
+Correct.
+
+[rochak agrawal] 09:21:59
+Okay? See, that's the only role of a solution architect.
+
+[Amiya Nanda] 09:22:00
+Yeah.
+
+[rochak agrawal] 09:22:04
+Because there can be a solution which is good for organization one, but which may not be very useful for organization B.
+
+[rochak agrawal] 09:22:13
+So a solution architect role is not to design the solution. The solution architect role is to design the solution which suits your organizational requirements.
+
+[rochak agrawal] 09:22:25
+Okay?
+
+[Amiya Nanda] 09:22:26
+Okay, okay, doctor, got it, thank you.
+
+[Jeevana D V] 09:22:33
+Yeah, hi, Dobchuk. Can you explain CIDR once again?
+
+[rochak agrawal] 09:22:33
+Yes, you can.
+
+[rochak agrawal] 09:22:34
+Hi.
+
+[rochak agrawal] 09:22:36
+See CIDR is nothing, it is just another name for this IP address range.
+
+[Jeevana D V] 09:22:44
+Okay.
+
+[rochak agrawal] 09:22:45
+It is a method, you can say it.
+
+[rochak agrawal] 09:22:47
+It is the method name by which we are assigning the addresses, nothing else.
+
+[Jeevana D V] 09:22:56
+Okay.
+
+[rochak agrawal] 09:22:56
+Okay.
+
+[Amiya Nanda] 09:23:02
+And Rothek will get this document, right? Ah, okay.
+
+[rochak agrawal] 09:23:02
+Cool, uh…
+
+[rochak agrawal] 09:23:04
+Yeah, yeah, I'll share this document, and apart from it also, I will share, uh, uh, study material related how you can calculate, uh, IP addresses, range, and everything. So, I'll share that.
+
+[Amiya Nanda] 09:23:17
+Yes, yes.
+
+[rochak agrawal] 09:23:18
+Okay.
+
+[Amiya Nanda] 09:23:19
+Ah, in our drive, right?
+
+[rochak agrawal] 09:23:21
+Uh, that link I have not got yet, but yeah, mostly it will be in drive only.
+
+[Amiya Nanda] 09:23:23
+Oh.
+
+[Amiya Nanda] 09:23:24
+Fine fine fine.
+
+[rochak agrawal] 09:23:25
+Yeah?
+
+[Amiya Nanda] 09:23:26
+Fine, fine, yeah, thank you, thank you.
+
+[rochak agrawal] 09:23:28
+Perfect. Okay, so now we still remain with the OSI model, so now I'll just explain why we need the OSI model. Because you see, there are multiple type of networking devices are there.
+
+[rochak agrawal] 09:23:41
+Okay? Uh, we have routers, we have switches, modems, gateways, and…
+
+[rochak agrawal] 09:23:47
+There are, uh, big organization who's manufacturing those devices. For example, Cisco is, uh, one of the leading, uh, provider of the networking devices. Then Juniper is one of them. There is others also.
+
+[rochak agrawal] 09:24:00
+Now, the problem was, if every organization follows their own standards of communication.
+
+[rochak agrawal] 09:24:07
+Communicating between the heterogeneous networks, which is using different different network devices, would have not been possible.
+
+[rochak agrawal] 09:24:16
+Correct? That is where…
+
+[rochak agrawal] 09:24:18
+industry come together and they created a standard.
+
+[rochak agrawal] 09:24:23
+Which is called the OSI model of networking.
+
+[rochak agrawal] 09:24:30
+Open Source Interconnect Model.
+
+[rochak agrawal] 09:24:33
+And it has been decided that no matter what type of networking devices you are using.
+
+[rochak agrawal] 09:24:40
+Every device need to follow this model.
+
+[rochak agrawal] 09:24:42
+Okay, so if a traffic need to go from point A to point B, it is going to follow this model.
+
+[rochak agrawal] 09:24:51
+Nothing else. So that you are using Juniper devices, you are using Cisco devices, you are using Palo Alto devices does not matter because everything is the same in that performance wise they can difference. But the working wise.
+
+[rochak agrawal] 09:25:06
+they all follow the OSI model. So we need to understand the OSI model, although it is not of… we do not need to go in depth about the OSI model, because the cloud networking is mostly software-driven, but sometimes this OSI model, when you go, say.
+
+[rochak agrawal] 09:25:24
+You're working on the…
+
+[rochak agrawal] 09:25:27
+load balancers, application gateway in AWS and Azure. And if someone is asking what is an OSI model, people are not able to answer it, right? So that's where we need to understand what is an OSI model, what are the different layers of the OSI model.
+
+[rochak agrawal] 09:25:40
+And, uh…
+
+[rochak agrawal] 09:25:43
+How they fit in in the communication. So we'll take it in tomorrow's class.
+
+[rochak agrawal] 09:25:54
+Yes, an image.
+
+[Animesh Jain] 09:25:57
+Uh, sir, uh, this is my first class, um, I just want to know, uh, what are the topics which I left, because, uh, originally my page was started from 31st August, but, uh, while talking.
+
+[rochak agrawal] 09:26:09
+Okay.
+
+[Animesh Jain] 09:26:12
+Uh, to some of the support, uh, member. He tells me that, uh, there is… there are some prerequisites, uh, are going through this week, so…
+
+[rochak agrawal] 09:26:18
+Okay, correct. So anyways, there's nothing to worry. We have done our first class yesterday and where we have covered only about the basics definition of the waterfall model, SDLC model. So you can go through the recording and if you have any question, we can cover those questions.
+
+[Animesh Jain] 09:26:21
+Yep.
+
+[Animesh Jain] 09:26:25
+Okay.
+
+[Animesh Jain] 09:26:39
+Uh, where I can, uh, find those recording…
+
+[rochak agrawal] 09:26:41
+I will ask the ops team to connect with you, or to give me the recording.
+
+[Animesh Jain] 09:26:46
+Yeah, okay.
+
+[rochak agrawal] 09:26:47
+Okay.
+
+[Animesh Jain] 09:26:49
+Perfect, sure.
+
+[rochak agrawal] 09:26:50
+Okay, thank you guys!
+
