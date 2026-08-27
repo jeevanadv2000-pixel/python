@@ -1,0 +1,3081 @@
+[rochak agrawal] 07:40:32
+Hey, good morning, everyone. So, we'll just start.
+
+[rochak agrawal] 07:40:43
+So, as we discussed yesterday, uh…
+
+[rochak agrawal] 07:40:46
+We've talked about the IP addressing.
+
+[rochak agrawal] 07:40:53
+In our status class, we understood about the private IP, public IP, private network, public network.
+
+[rochak agrawal] 07:40:59
+Uh, then we talked about the CIDR notation, subnet mask, how to create that network, and other thing. Today, we are going to talk about the OSI model.
+
+[rochak agrawal] 07:41:09
+Okay, uh, because as we discussed, there are multiple companies in the market, multiple vendors in the market, which are creating the networking-related devices, like modems, switches. Uh, main two players, if we talk about, they are Juniper and Cisco.
+
+[rochak agrawal] 07:41:24
+So if every company follows their own standards, then there can be a problem. Like, there will be heterogeneous communication between the devices. Then you need to explicitly set it up.
+
+[rochak agrawal] 07:41:36
+That is where industry has, uh…
+
+[rochak agrawal] 07:41:39
+Decided that, uh, no matter whatever the devices that you're using.
+
+[rochak agrawal] 07:41:45
+Every…
+
+[rochak agrawal] 07:41:46
+communication from point A to point B is going to happen with the help of these several layers of the OSI model.
+
+[rochak agrawal] 07:41:54
+Okay? Now…
+
+[rochak agrawal] 07:41:58
+The OSI model is a conceptual framework created by ISO to describe how data is transmitted across a network.
+
+[rochak agrawal] 07:42:09
+Using a structured 7-layer architecture.
+
+[rochak agrawal] 07:42:13
+It divides network communication into seven functional layers.
+
+[rochak agrawal] 07:42:18
+And it assigns specific responsibility to each of these layers. And by the way, these layers are fixed, like, there is no…
+
+[rochak agrawal] 07:42:28
+such thing that you do not have a data layer, or you do not have a transport layer. And it promotes compatibility between different networking systems. Now, that's the main purpose of, uh…
+
+[rochak agrawal] 07:42:41
+having the OSI model, and it simplifies network design, implementation, and troubleshooting.
+
+[rochak agrawal] 07:42:47
+Okay, so we will start, uh, with the…
+
+[rochak agrawal] 07:42:50
+So you can remember once you go through it three, four times, you already know what type of layers are there because for example, when you work on the cloud computing, you are going to work on the load balancer. So there are certain type of the load balancer.
+
+[rochak agrawal] 07:43:14
+There are the certain type of the load balancer which works on the application layer. Then there's a certain type of load balancer which works on a transport layer, etcetera, etcetera. So you will get familiar once you'll start working on the networking.
+
+[rochak agrawal] 07:43:27
+So we'll start with the first layer, which is a physical layer.
+
+[rochak agrawal] 07:43:31
+Now, as the name is suggesting, the physical layer.
+
+[rochak agrawal] 07:43:34
+is the foundation of the OSI model.
+
+[rochak agrawal] 07:43:37
+It acts as a bridge for actual physical connection between devices. Okay, actual physical connection. Its primary mission is a transmission of raw.
+
+[rochak agrawal] 07:43:51
+unstructured bitstream over a physical medium from one point to another point.
+
+[rochak agrawal] 07:43:57
+The core responsibility of a physical layer is it manages the hardware-level transmission of the individual data bits.
+
+[rochak agrawal] 07:44:08
+So, you can also see in the diagram, it converts the data into bits to carry across physical network equipment.
+
+[rochak agrawal] 07:44:16
+Okay, so common devices users at this level include hubs, routers, modems, cables.
+
+[rochak agrawal] 07:44:25
+And it ensures the sender and receiver are in sync by providing a clock signal that controls the timing of the bit transmission. It also dictates the transmission speed.
+
+[rochak agrawal] 07:44:40
+Define as a number of the bits sent per second.
+
+[rochak agrawal] 07:44:44
+So, for example, you are having an internet connection, you… you might be, uh, hearing about, uh, that my internet is a 10 Mbps, 5 Mbps, now it is 100 and 200 Mbps also coming.
+
+[rochak agrawal] 07:44:56
+That's nothing but a physical layer of the OSI model.
+
+[rochak agrawal] 07:45:00
+And it determines the direction of data flow utilizing nodes like one way communication, two way communication and simultaneous two way communication. So physical layer.
+
+[rochak agrawal] 07:45:12
+is basically…
+
+[rochak agrawal] 07:45:20
+So physical layer is basically convert the data in the pits and send the data from point A to point B using the physical devices. So if I say.
+
+[rochak agrawal] 07:45:33
+If there is no physical layer, then there will not be no transmission of data, would not be an incorrect state.
+
+[rochak agrawal] 07:45:43
+Earlier about the physical layer, any question?
+
+[rochak agrawal] 07:45:56
+Okay, now…
+
+[rochak agrawal] 07:45:59
+I mean, as a question.
+
+[rochak agrawal] 07:46:03
+Yes or no?
+
+[Amiya Nanda] 07:46:07
+Uh, so, uh, hi, Rachel, good morning. Uh, so, can you please give a, uh, one example, uh, of, uh, any flow?
+
+[rochak agrawal] 07:46:08
+Good morning.
+
+[rochak agrawal] 07:46:14
+So, see, about, um…
+
+[rochak agrawal] 07:46:15
+This is, uh, Amir, this is a very logical framework, and if you say, example, like, we have given any physical device, like, for example, when you open, uh, a wireless connection at your home, what is the first thing that you use? A modem.
+
+[Amiya Nanda] 07:46:19
+Okay.
+
+[rochak agrawal] 07:46:31
+If your modem is not at your home, then your Wi-Fi is not going to work, correct? Your internet connection is not going to work. With the help of this modem, your device is connected to that modem, and modem is sending the data.
+
+[Amiya Nanda] 07:46:31
+Yes!
+
+[rochak agrawal] 07:46:47
+to further public internet, correct? So that modem is nothing but a part of the physical layer.
+
+[Amiya Nanda] 07:46:53
+Okay, okay, okay, yeah.
+
+[rochak agrawal] 07:46:54
+Okay so all those physical devices like your physical cables with the help of Wi-Fi not Wi-Fi let's say if I'm using a wired connection so you will use some physical cables. Everything data at a physical layer.
+
+[rochak agrawal] 07:47:10
+in the real world, data is transmitting. See, all those layers, when we go higher, we will say it's application-related. So, for example, what is happening at my node?
+
+[rochak agrawal] 07:47:20
+Physical layer is the last layer where data leaves my node and going somewhere else.
+
+[Amiya Nanda] 07:47:29
+Okay.
+
+[rochak agrawal] 07:47:30
+Okay?
+
+[Amiya Nanda] 07:47:31
+Yeah.
+
+[rochak agrawal] 07:47:33
+Now, second layer is a data link layer.
+
+[rochak agrawal] 07:47:36
+data link layer.
+
+[rochak agrawal] 07:47:38
+Now, understand the data link in the physical layer.
+
+[rochak agrawal] 07:47:42
+difference. So, data link… physical link layer says they convert the data into bits to carry it across the physical network equipment.
+
+[rochak agrawal] 07:47:51
+Okay, so let's say we have discussed the example of.
+
+[rochak agrawal] 07:47:58
+Uh, public internet. With the help of our modem, we are connected with our public internet.
+
+[rochak agrawal] 07:48:03
+Then be…
+
+[rochak agrawal] 07:48:05
+So if you want to connect across the network, if you want to send the data across multiple network, then physical layers comes into the picture. But if you are on the same network.
+
+[rochak agrawal] 07:48:21
+This handles node-to-node data transfer between the devices on the same network. So the data link layer serves as the bridge between the physical hardware.
+
+[rochak agrawal] 07:48:39
+Between the physical hardware, and…
+
+[rochak agrawal] 07:48:43
+The logical network ensuring reliable node-to-node delivery of data.
+
+[rochak agrawal] 07:48:49
+Its primary goal to ensure that the data transfer is error-free.
+
+[rochak agrawal] 07:48:55
+Across the physical medium, within the same network. So what it does, it does the data packaging. For example, at this layer, data packets are received from the network layer.
+
+[rochak agrawal] 07:49:07
+are divided into manageable units called the Frames.
+
+[rochak agrawal] 07:49:11
+This is done by adding specific start and stop bits so the receiver can recognize where one unit of the data ends and the next begin.
+
+[rochak agrawal] 07:49:22
+Addressing in the hardware, the data link layer uses the MAC address to identify different physical hosts.
+
+[rochak agrawal] 07:49:29
+It encapsulates the sender's and receiver's MAC address into the frame address, so you will get to know from which device within the same network data is coming.
+
+[rochak agrawal] 07:49:40
+Common devices operating at the data link layer are the switches.
+
+[rochak agrawal] 07:49:45
+Switches and routers. Routers, I would not say the router, but the switches. Switches are the common devices which is being used at the data link layer. Then it does the error control.
+
+[rochak agrawal] 07:49:57
+Flow control and the access control. When multiple devices share the same communication channel, the MAC sublayer dictates which device has the right to transmit.
+
+[rochak agrawal] 07:50:08
+at any given time to avoid collision. Now I'll give you an example of a data link layer.
+
+[rochak agrawal] 07:50:14
+So, let's say…
+
+[rochak agrawal] 07:50:20
+You have a device here?
+
+[rochak agrawal] 07:50:23
+And you have a device here.
+
+[rochak agrawal] 07:50:28
+Now, they are saying… we are saying they are part of the same network.
+
+[rochak agrawal] 07:50:34
+Now, let's say there is a video there.
+
+[rochak agrawal] 07:50:39
+Of 10 minutes, or let's say 2 minutes.
+
+[rochak agrawal] 07:50:48
+Now let's say there is an application which is playing this video of two minutes, okay. Now when you try to access this data.
+
+[rochak agrawal] 07:50:57
+Since they are in the same network.
+
+[rochak agrawal] 07:51:01
+So you see, your video size will be…
+
+[rochak agrawal] 07:51:04
+maybe 10 MB…
+
+[rochak agrawal] 07:51:07
+100 MB or whatsoever.
+
+[rochak agrawal] 07:51:09
+So, when you try to download or play the video.
+
+[rochak agrawal] 07:51:12
+it is not going to happen that your 10MB is going to download it at once.
+
+[rochak agrawal] 07:51:19
+Okay, your data is divided into something called the packets.
+
+[rochak agrawal] 07:51:28
+Okay, and your 10 MB will be divided into.
+
+[rochak agrawal] 07:51:32
+there are multiple networking-related algorithms out there, which will decide the size of the packet, but your 10MB will not go as it is, okay? So, 10MB will go into multiple packets.
+
+[rochak agrawal] 07:51:48
+Packets is the most important thing in a data transmission.
+
+[rochak agrawal] 07:51:57
+Okay? There will be multiple packets.
+
+[rochak agrawal] 07:52:00
+Now.
+
+[rochak agrawal] 07:52:03
+It may happen that your first… this packet delivers?
+
+[rochak agrawal] 07:52:08
+Then this packet delivers, and then this packet delivers.
+
+[rochak agrawal] 07:52:11
+Correct.
+
+[rochak agrawal] 07:52:13
+And then later.
+
+[rochak agrawal] 07:52:16
+these packets got delivered. So then you can see if the packets are not getting delivered.
+
+[rochak agrawal] 07:52:22
+in a linear fashion, then the flow of your video will get disrupted.
+
+[rochak agrawal] 07:52:29
+And that is where…
+
+[rochak agrawal] 07:52:31
+Your data link layer comes into the picture.
+
+[rochak agrawal] 07:52:35
+It actually converts the package into something called the frames.
+
+[rochak agrawal] 07:52:45
+Okay? So…
+
+[rochak agrawal] 07:52:49
+data packet received from the network layer are divided into manageable unit called the frames. So, packet is being convertible in the frames, and here you are going to.
+
+[rochak agrawal] 07:53:03
+Add by specific start and stop bit, so the receiver can recognize where one unit of the data end, and where the next begin, what is there in between.
+
+[rochak agrawal] 07:53:13
+If the data link layer is not there, if the frames conversion, packet-to-frame conversion of the data is not there, then maintaining the data sequence will be a very challenging.
+
+[rochak agrawal] 07:53:28
+Problem.
+
+[rochak agrawal] 07:53:29
+And as I said, uh…
+
+[rochak agrawal] 07:53:32
+Switch is a…
+
+[rochak agrawal] 07:53:35
+Primary device, which we use.
+
+[rochak agrawal] 07:53:39
+The switch, uh, can be a physical device that controls the flow of.
+
+[rochak agrawal] 07:53:45
+Of the traffic.
+
+[rochak agrawal] 07:53:50
+In a network. So, be…
+
+[rochak agrawal] 07:53:53
+We can actually use a switch for multiple things.
+
+[rochak agrawal] 07:53:59
+And the switch, router…
+
+[rochak agrawal] 07:54:02
+These are the devices which is being used here in this layer. So a network such as a hardware device that connects multiple devices like computer, printer, servers together.
+
+[rochak agrawal] 07:54:14
+within the same network and forward data to its exact destination and switch works on the MAC address.
+
+[rochak agrawal] 07:54:22
+And this is one of the questions which is being asked in the interviews, what is the difference between a switch and a router? So, switch connects the devices within the same network.
+
+[rochak agrawal] 07:54:34
+While router connects your local network.
+
+[rochak agrawal] 07:54:37
+to other network or the internet using your IP addresses. So you can understand your router, your modem acts as a router. Switch is something like, uh… so let's say, uh…
+
+[rochak agrawal] 07:54:51
+I have a printer, I have a, um…
+
+[rochak agrawal] 07:54:57
+Nowadays, USB connectors are coming. So let's say I use a USB connector, and I have connected everything to that USB connector. So that USB connector is going to act as the…
+
+[rochak agrawal] 07:55:09
+your switch.
+
+[rochak agrawal] 07:55:12
+Now, if we see that these two layers.
+
+[rochak agrawal] 07:55:16
+are mostly talking about.
+
+[rochak agrawal] 07:55:19
+the physical transmission of your data. Data link layer within the same network.
+
+[rochak agrawal] 07:55:25
+If it is a different network, then physical layer comes into the picture. But that is, these are the layer which is going to decide.
+
+[rochak agrawal] 07:55:38
+How my…
+
+[rochak agrawal] 07:55:39
+Data is being transmitted.
+
+[rochak agrawal] 07:55:42
+Now, as we move further.
+
+[rochak agrawal] 07:55:44
+When we go to the network layer.
+
+[rochak agrawal] 07:55:49
+These are the logical layer. There is nothing physical now. Everything related to the software. So the network layer manages the data transmission.
+
+[rochak agrawal] 07:55:59
+between the host by handling the logical addressing and the path finding.
+
+[rochak agrawal] 07:56:05
+Okay, logical addressing using assigns unique IP addresses to the packet header to identify the devices globally.
+
+[rochak agrawal] 07:56:15
+Determines the most efficient physical path from source to the destination across internet connector.
+
+[rochak agrawal] 07:56:23
+Primarily implemented by the router and switches, and it facilitates the communication between different networks by directing the traffic to the correct destination.
+
+[rochak agrawal] 07:56:34
+Now when let's say data need to go to point A.
+
+[rochak agrawal] 07:56:39
+to point B.
+
+[rochak agrawal] 07:56:41
+Now, how would you tell that.
+
+[rochak agrawal] 07:56:44
+it need to go to point B. So, at the network layer.
+
+[rochak agrawal] 07:56:49
+When a packet is being transferred, an IP will be associated with this data.
+
+[rochak agrawal] 07:56:55
+That… this is your destination IP.
+
+[rochak agrawal] 07:56:57
+So then with the help of data link layer and the physical layer, we are going to find the most optimal route to that path. Once the path has been established, because we know the destination with the help of IP, then your data transmission will begin at a data link at the physical layer level.
+
+[rochak agrawal] 07:57:16
+So it says, conduct routing between different networks, determining the most efficient path. It not only finds the most efficient path, it also finds, uh…
+
+[rochak agrawal] 07:57:28
+The destination, because we will be assigning.
+
+[rochak agrawal] 07:57:31
+the destination IP address to each data packet which is going to be transmitted.
+
+[rochak agrawal] 07:57:38
+That is a network layer.
+
+[rochak agrawal] 07:57:42
+Now comes the transport layer.
+
+[rochak agrawal] 07:57:45
+Transport layer?
+
+[rochak agrawal] 07:57:46
+Here you can see handles the data transmission between the devices using the UDP and TCP protocol.
+
+[rochak agrawal] 07:57:55
+Very important to understand.
+
+[rochak agrawal] 07:57:56
+The transport layer ensures end-to-end delivery of the entire message or data.
+
+[rochak agrawal] 07:58:04
+It acts as a lysian, providing services to the application layer, while utilizing the infrastructure of network layer to ensure.
+
+[rochak agrawal] 07:58:13
+data reach the correct application on the destination host.
+
+[rochak agrawal] 07:58:18
+Okay, data unit, data is broken into the segment called packets.
+
+[rochak agrawal] 07:58:24
+Transport layer uses the port number to ensure data is delivered to the specific process or application, not just the device.
+
+[rochak agrawal] 07:58:33
+For example, if, let's say.
+
+[rochak agrawal] 07:58:37
+At B, there is a database running.
+
+[rochak agrawal] 07:58:41
+Now the data is reaching to the B of no use until unless it is not reaching to that particular database. Now your database will be running on a specific port.
+
+[rochak agrawal] 07:58:57
+So, in the transport layer, it has been told to your data that you need to… in the network layer, we are giving the IP. In the transport layer, we are saying.
+
+[rochak agrawal] 07:59:08
+You need to reach to a particular port.
+
+[rochak agrawal] 07:59:10
+So, let's say a device is an apartment building. Now, in an apartment building, you will be living in a particular flat. So, your apartment building is your IP address.
+
+[rochak agrawal] 07:59:22
+And your apartment number is a port number.
+
+[rochak agrawal] 07:59:24
+Okay? Until and unless someone is coming to the apartment but not reaching to my flat, is of no use to me.
+
+[rochak agrawal] 07:59:32
+Correct? So that is where transport layer gives you.
+
+[rochak agrawal] 07:59:39
+the port number at Ensure, and it not only sends the data, it also waits for the data.
+
+[rochak agrawal] 07:59:48
+Once the data is received, it waits for the acknowledgement also, so it ensures the end-to-end delivery of the entire message.
+
+[rochak agrawal] 07:59:56
+Now.
+
+[rochak agrawal] 07:59:57
+There is two type of protocol we are going to use here.
+
+[rochak agrawal] 08:00:01
+And that is again a very very important interview question. What is the difference?
+
+[rochak agrawal] 08:00:08
+BitBean.
+
+[rochak agrawal] 08:00:10
+TCP and UDP.
+
+[rochak agrawal] 08:00:14
+Okay, the PCP and UDP are, uh…
+
+[rochak agrawal] 08:00:20
+two protocols by which… now, again, everything at a software level. The TCP and UDP.
+
+[rochak agrawal] 08:00:28
+are two types of a protocol which communicate the data. So, when you want the.
+
+[rochak agrawal] 08:00:34
+Guaranteed delivery of data.
+
+[rochak agrawal] 08:00:37
+Then you use the TCP protocol, but when you need the performance.
+
+[rochak agrawal] 08:00:41
+then you are going to use the UDP protocol. I'll give you an example for that.
+
+[rochak agrawal] 08:00:47
+So now, let's say…
+
+[rochak agrawal] 08:00:50
+I want to communicate a message.
+
+[rochak agrawal] 08:00:53
+To 10 people.
+
+[rochak agrawal] 08:00:55
+Okay. One day is, I will call every one of them.
+
+[rochak agrawal] 08:01:00
+And I will pass my message to them.
+
+[rochak agrawal] 08:01:03
+Second ways, I will create either a WhatsApp list, or I will create a message list, or I will create an email distribution list.
+
+[rochak agrawal] 08:01:13
+Type my message, and send it to everyone.
+
+[rochak agrawal] 08:01:17
+Right?
+
+[rochak agrawal] 08:01:18
+Now the second method is a fast. I'll just type the message.
+
+[rochak agrawal] 08:01:23
+And we'll send it to everyone. Correct? But…
+
+[rochak agrawal] 08:01:28
+I am not sure, I will not be sure, that.
+
+[rochak agrawal] 08:01:32
+someone read my message or not? Let's say I sent you an email. Now, there is… I sent the message, but there is no guarantee that you read the message or not.
+
+[rochak agrawal] 08:01:41
+But in case of a phone call.
+
+[rochak agrawal] 08:01:44
+If you picked up the phone, then there is a guarantee that you have listened to what I am saying.
+
+[rochak agrawal] 08:01:50
+Correct. So that is, the phone call is a TCP protocol, while sending the email is a UDP protocol. In a TCP protocol, there is a guarantee that your message is going to deliver.
+
+[rochak agrawal] 08:02:02
+Okay.
+
+[rochak agrawal] 08:02:03
+So, how does that happen? Because before sending any data.
+
+[rochak agrawal] 08:02:09
+Okay, before sending any data.
+
+[rochak agrawal] 08:02:14
+It is… TCP is a connection-oriented. Now, what does it mean?
+
+[rochak agrawal] 08:02:18
+See, I'm calling you. If you are not picking up the call, that means the connection is not established, and I will not be communicating with you. Once you pick up the phone, okay, then my connection is established.
+
+[rochak agrawal] 08:02:32
+Okay.
+
+[rochak agrawal] 08:02:33
+then I will start sending the data. So it is… it requires something called the handshake. So if a server A is sending the data to server B.
+
+[rochak agrawal] 08:02:43
+Then what the TCP protocol does, it sends first the handshake message.
+
+[rochak agrawal] 08:02:48
+If the server B is down, for example, or the application is not running, then the handshake message will not get complete. You will not get the acknowledge of the handshake message.
+
+[rochak agrawal] 08:02:58
+Okay.
+
+[rochak agrawal] 08:03:00
+Once you receive the acknowledgement of the handshake message that, okay, server is ready to listen to the communication, then only you will start sending the data.
+
+[rochak agrawal] 08:03:11
+Because you know that server B is listening, okay? TCP is reliable, ensures data delivery and order.
+
+[rochak agrawal] 08:03:21
+Segments and acknowledgement are transmitted and retransmitted if they are getting lost. Extensive checksum, uh, and…
+
+[rochak agrawal] 08:03:31
+Maintains order of the packet. Very important.
+
+[rochak agrawal] 08:03:38
+Now, UDP…
+
+[rochak agrawal] 08:03:40
+is a connectionless protocol. Boss, I am sending the data.
+
+[rochak agrawal] 08:03:44
+I don't know if the server B is…
+
+[rochak agrawal] 08:03:48
+Uh, listening to it or not.
+
+[rochak agrawal] 08:03:50
+Then, unreliable, there is no delivery guarantee.
+
+[rochak agrawal] 08:03:54
+Okay? Datagram sent without acknowledgement, it is faster. But if when you want performance, it is okay.
+
+[rochak agrawal] 08:04:02
+And there is no guaranteed order of the data is also there.
+
+[rochak agrawal] 08:04:07
+So when we are loading a web page, TCP ensures there is no data is being missing. But when you are on a video call, it is being UDP protocol and it allows smooth flow because it is faster.
+
+[rochak agrawal] 08:04:23
+Sometime you will, uh, you will notice that when you are on a video call, your quality is getting disrupted. Why? Because, uh…
+
+[rochak agrawal] 08:04:33
+Some of the packet is being lost in the transmission.
+
+[rochak agrawal] 08:04:37
+Okay? And UDP, if you are using a TCP protocol in the video call, then because of the network speed, whatever the data is being lost.
+
+[rochak agrawal] 08:04:48
+TCP will try to send them again, because it maintains the order, and your video call will become messier, right? But with the UDP, if the data is lost because of the network bandwidth, it's okay.
+
+[rochak agrawal] 08:05:03
+They are… that's lost. So that is about the transport layer, and uh… we will see, uh, your network load… there is a type of a load balancer, we call it as a network load balancer.
+
+[rochak agrawal] 08:05:15
+Now, people get a confusion that Network Load Balancer works on the network layer, but Network Load Balancer works on the transport layer.
+
+[rochak agrawal] 08:05:24
+I'm not sure why it has not been called the Transport Load Balancer, and it is called the Network Load Balancer, but the Network Load Balancer works on the Layer 4, which is a Transport Layer.
+
+[rochak agrawal] 08:05:36
+Then comes the session, dear.
+
+[rochak agrawal] 08:05:39
+So, session layer, as the name is suggesting.
+
+[rochak agrawal] 08:05:47
+It maintains the session of a state, okay? So, for example.
+
+[rochak agrawal] 08:05:53
+The session layer acts as a dialogue manager.
+
+[rochak agrawal] 08:05:57
+governing the opening, closing, and security of communication channels.
+
+[rochak agrawal] 08:06:03
+between two devices. For example, session lifecycle. Manage the establishment, maintenance, termination of connection between application.
+
+[rochak agrawal] 08:06:14
+Ensures that the communication parties are verified and the connection is secure.
+
+[rochak agrawal] 08:06:20
+Dialogue control. So, let's say in a web-based message, the session layer maintains the active link.
+
+[rochak agrawal] 08:06:27
+Between your browser and the server.
+
+[rochak agrawal] 08:06:30
+Ensuring that your traffic chat remains open, synchronized while handling background encryption and data conversion.
+
+[rochak agrawal] 08:06:38
+Session maintenance… session management is everywhere. So, for example, you…
+
+[rochak agrawal] 08:06:44
+create a… you are watching a movie on Netflix, a two-hour movie, you watch the movie for half an hour, and then you go start doing something else. Now, when you come back.
+
+[rochak agrawal] 08:06:57
+There is an option that you say, continue watching.
+
+[rochak agrawal] 08:07:02
+So there is something which knows that you have watched this movie for half an hour, and it is going to continue from there.
+
+[rochak agrawal] 08:07:09
+Correct. Now, that is being done with the help of a session layer. It manages the connection and the opening and closing session between the devices.
+
+[rochak agrawal] 08:07:19
+Then the sixth layer is a presentation layer.
+
+[rochak agrawal] 08:07:24
+Also called as a translation layer. 90% of the places you will find it as a presentation layer, but at some of the places it is being called as a translation layer also.
+
+[rochak agrawal] 08:07:39
+Ensures that data is formatted, secured, and compressed.
+
+[rochak agrawal] 08:07:45
+so that the receiving application can correctly interpret it.
+
+[rochak agrawal] 08:07:51
+Now, if you notice that, uh, sometime on your Outlook.
+
+[rochak agrawal] 08:07:57
+There are certain emails are coming.
+
+[rochak agrawal] 08:08:00
+Which says, images are not getting displayed, show the images, or show blocked data, something like of that option.
+
+[rochak agrawal] 08:08:09
+So, presentation layer handles how data is formatted.
+
+[rochak agrawal] 08:08:14
+Secured and compressed so that the receiving application can correctly.
+
+[rochak agrawal] 08:08:19
+interpret it. So what it does, it does the translation, it extracts data from the application layer.
+
+[rochak agrawal] 08:08:26
+And convert it into a standardized format for the network transmission, bridging difference in a data representation between different systems.
+
+[rochak agrawal] 08:08:35
+Standards and format handles the encoding of media using standards such as JPEG, MPEG, and GIF.
+
+[rochak agrawal] 08:08:44
+Then, it handles the encryption and decryption, provides security by converting the plain text into the encrypted text, and back again using the key values.
+
+[rochak agrawal] 08:08:54
+And it also does the compression, reduces the total number of the bit required for the transmission, which increases the network efficiency.
+
+[rochak agrawal] 08:09:05
+And speed.
+
+[rochak agrawal] 08:09:06
+Okay. Now in the last.
+
+[rochak agrawal] 08:09:10
+We have the application there.
+
+[rochak agrawal] 08:09:12
+So the application layer sits on the top of the OSI stack.
+
+[rochak agrawal] 08:09:19
+And serves as the direct interface between the software user and the network.
+
+[rochak agrawal] 08:09:25
+it produces the data that will be sent and displays the information received from other layers. Basically, it is your application that you will be interacting with.
+
+[rochak agrawal] 08:09:36
+So, it provides user interface, like, as we are saying, it's a, uh, application.
+
+[rochak agrawal] 08:09:42
+Acts as a window for the network-based application, like web browser or the email client to access the network services.
+
+[rochak agrawal] 08:09:49
+Core protocol here are the HTTP or the HTTPS.
+
+[rochak agrawal] 08:09:54
+DNS, Domain Name Resolution System, SMTP, and FTP, File Transfer Protocol.
+
+[rochak agrawal] 08:10:01
+Now…
+
+[rochak agrawal] 08:10:02
+It provides the framework.
+
+[rochak agrawal] 08:10:05
+for the users to retrieve, manage, and manipulate files stored on the remote computers. So it acts as protocol used by application to communicate data to the end user.
+
+[rochak agrawal] 08:10:18
+Now.
+
+[rochak agrawal] 08:10:20
+we understood all the layers, so now we are going to understand how we are going to… how data flows. So when we transfer information from one device to another.
+
+[rochak agrawal] 08:10:32
+It… it is going to travel.
+
+[rochak agrawal] 08:10:35
+all the seven layers of the OSI model. First, data travel. So how it is going to be, uh…
+
+[rochak agrawal] 08:10:44
+So, for example, let's say there is a point A.
+
+[rochak agrawal] 08:10:49
+to point B data is going.
+
+[rochak agrawal] 08:10:52
+So, first, their first, second.
+
+[rochak agrawal] 08:10:56
+3, 4, 5, 6, 7.
+
+[rochak agrawal] 08:10:59
+1, 2, 3, 4, 5, 6, 7. So here also 7, 6.
+
+[rochak agrawal] 08:11:06
+5, 4, 3, 2, 1. Here also there will be 7, 5, 6, 5, 4.
+
+[rochak agrawal] 08:11:17
+So, data will flow via these layers first.
+
+[rochak agrawal] 08:11:21
+Honor A.
+
+[rochak agrawal] 08:11:22
+It goes there, and again, it will flow backward.
+
+[rochak agrawal] 08:11:27
+Okay, so that is how data flows.
+
+[rochak agrawal] 08:11:31
+So it travels through the seven layers of the OSI model. First, data travels down through the seven layers from the sender's end and then climb back seven layers on the receiver's end also. Data flows through the OSI model in a step-by-step process.
+
+[rochak agrawal] 08:11:47
+At the application layer, application creates the data, right? So that's a layer where data is getting created.
+
+[rochak agrawal] 08:11:55
+Presentation layer, data is formatted and encrypted. Session layer, connections are established and managed.
+
+[rochak agrawal] 08:12:03
+Transport layer. Data is broken into segment for the delivery.
+
+[rochak agrawal] 08:12:08
+Network layer segments are packaged into.
+
+[rochak agrawal] 08:12:12
+packets and routed. Now in the data link layer packets are framed and sent to the next device.
+
+[rochak agrawal] 08:12:19
+while the physical layer frames are converted into bits and transmitted physically.
+
+[rochak agrawal] 08:12:26
+Each layer adds specific information to ensure that the data reaches its destination correctly. And these steps are going to be reversed upon arrival. For example, at the point B.
+
+[rochak agrawal] 08:12:41
+Physical layer will receive the frame. Sorry, physical layer will receive the bits and convert it to the frame. Data link layer.
+
+[rochak agrawal] 08:12:50
+Frames will be converted into the packet.
+
+[rochak agrawal] 08:12:52
+Network layer packet.
+
+[rochak agrawal] 08:12:55
+will be converted into data transport layer. Data acknowledgement is there.
+
+[rochak agrawal] 08:13:02
+Session layer session is already maintained, and presentation layer data will be presented in the prescribed format, and the application layer is the application where your data will be displayed.
+
+[rochak agrawal] 08:13:14
+Right? So we can understand how data flows through OSI model with the help of an example.
+
+[rochak agrawal] 08:13:19
+Let's say, let's suppose person A sends an email to his person.
+
+[rochak agrawal] 08:13:26
+For, uh, his friend, person B.
+
+[rochak agrawal] 08:13:28
+Okay, now what is going to happen?
+
+[rochak agrawal] 08:13:33
+Step 1. Person A interacts with an email application, like Gmail, Outlook, write an email to send. Correct? Now, that is an application layer. This is going to happen at an application layer.
+
+[rochak agrawal] 08:13:46
+At step 2, at presentation layer, mail application prepares for the data transmission, like, it will encrypt the message, it will compress the message, so that is happening at the.
+
+[rochak agrawal] 08:13:58
+So that is going to happen.
+
+[rochak agrawal] 08:14:02
+At the presentation there.
+
+[rochak agrawal] 08:14:04
+Then at the session layer, there is a connection established between the sender.
+
+[rochak agrawal] 08:14:10
+and the receiver over the internet.
+
+[rochak agrawal] 08:14:14
+Then, at the transport layer, email data is broken into the smaller segment. It adds sequence number, error checking information to maintain the reliability of the information.
+
+[rochak agrawal] 08:14:27
+Is that fine?
+
+[rochak agrawal] 08:14:28
+At the network layer, addressing of the packet is done in order to find the best route for the transfer.
+
+[rochak agrawal] 08:14:35
+At the data link layer, data packets are encapsulated into the frames. Then the MAC address is added for the local device and then it checks for the error using error detection. Then in the step seven at the physical layer.
+
+[rochak agrawal] 08:14:51
+Frames are transmitted into the form of the electrical optical signals over a physical network medium like Ethernet cable of the Wi-Fi. Again, after the email reaches the receiver.
+
+[rochak agrawal] 08:15:06
+the person… the process will reverse and decrypt the email content, and at last, the email will be shown on the person B email application, which will again happen at the…
+
+[rochak agrawal] 08:15:19
+your door.
+
+[rochak agrawal] 08:15:21
+Email layer, or application layer. So, physical layer establishes physical connection between devices.
+
+[rochak agrawal] 08:15:29
+and transmit raw bits over the physical medium.
+
+[rochak agrawal] 08:15:32
+Okay, protocol unit here, it will be VIX.
+
+[rochak agrawal] 08:15:37
+Then the data link layer provide node to node delivery and error detection connection. Here, the frames are getting transmitted. Network layer handles the logical addressing and routing of the data between different network.
+
+[rochak agrawal] 08:15:52
+Here, packets are being transmitted.
+
+[rochak agrawal] 08:15:54
+Then in the transport layer, ensure end-to-end communication, segmentation, flow control.
+
+[rochak agrawal] 08:16:00
+And here, data being, uh, established in the form of a TCP or UDP.
+
+[rochak agrawal] 08:16:05
+While the session layer establishes, manages, and terminates communication between the application. Presentation layer translates, encrypts, and formats the data for the application layer. And finally, application layer is your application.
+
+[rochak agrawal] 08:16:21
+which provide network services directly to your end user application. So at the application layer, presentation layer, session layer.
+
+[rochak agrawal] 08:16:32
+data is not being converted into some smaller unit, data will remain as it is. Then, at the transport layer, it gets started using the TCP and UDP protocol. First, it got drawn.
+
+[rochak agrawal] 08:16:45
+Transmitted in a form of a packet, then the frame, and finally into the bits.
+
+[rochak agrawal] 08:16:51
+So this is the OSI model. Now.
+
+[rochak agrawal] 08:16:56
+Again, it is very frequently asked in the interviews. So, when you say you are working on the load balancer, so…
+
+[rochak agrawal] 08:17:03
+Load balancer, we have not covered it now, we will cover in the cloud. So, there is two types of load balancer we generally use. One is the application load balancer, one is the network load balancer.
+
+[rochak agrawal] 08:17:13
+As you say, then people will ask, what is the difference between the application load balancer and the network load balancer? So, we'll say application load balancer works on the layer 7, and it handles the application traffic.
+
+[rochak agrawal] 08:17:27
+And network load balancer works on the transport layer, it's a layer 4 load balancer. As you say layer 7, because that's the only difference, okay, as you will say, L7 and L4.
+
+[rochak agrawal] 08:17:40
+The next follow-up question, 99%, it would be, what is this L7 and L4? Then you need to explain.
+
+[rochak agrawal] 08:17:47
+the OSI model, saying that these are the layers in the OSI model. So there are total 7 layers, and you can name those layers. So this is one of the very most common interview questions that is being asked.
+
+[rochak agrawal] 08:18:00
+So, of course, we do not need to go in depth about, uh, how data is being converted into frames, um, and, uh, frames in converted into the bits, because that is purely will be a job of a network engineer, because there, there are a lot of algorithm, a lot of protocols, there is.
+
+[rochak agrawal] 08:18:18
+Border Gateway Protocol, we call it as a BGP. There is MPLS. I'm not remembering the full form of the MPLS protocol. So MPLS, there are multiple types of protocols. So if you have heard there is.
+
+[rochak agrawal] 08:18:33
+There are specific certifications also, CCNA.
+
+[rochak agrawal] 08:18:39
+Cisco Certified Network Administrator, CCNP, right? So these guys, who are the network administrator, they will maintain all of this.
+
+[rochak agrawal] 08:18:49
+We just need to understand it from a conceptual point of view. And we are going to manage the application layer.
+
+[rochak agrawal] 08:18:57
+Presentation layer, and the session layer.
+
+[rochak agrawal] 08:19:02
+Because this is related to your application data. Remaining 99% your network team is going to manage.
+
+[rochak agrawal] 08:19:10
+So, with that, uh, OSI model is done. Any question on the OSI model?
+
+[rochak agrawal] 08:19:32
+Yes, Raul.
+
+[raghav nayak] 08:19:35
+Oh, yeah, I'm audible.
+
+[rochak agrawal] 08:19:36
+Yes, yes, hi.
+
+[raghav nayak] 08:19:38
+Uh, can I show, uh, the, uh, image once again, uh, regarding the sender and the reachable… sender and reachable B?
+
+[rochak agrawal] 08:19:46
+This image?
+
+[raghav nayak] 08:19:47
+Uh, no, no, uh, the sender one, where the data is getting transmitted from sender to receiver B.
+
+[rochak agrawal] 08:19:55
+Yeah?
+
+[raghav nayak] 08:19:55
+Yeah, uh, here, actually, in the presentation, and the, uh, I'm talking about the session layer. So, you told, like, in the session layer, the connection is getting established between the sender and the receiver, right?
+
+[rochak agrawal] 08:20:00
+Mm-hmm.
+
+[rochak agrawal] 08:20:06
+Mm-hmm, correct.
+
+[raghav nayak] 08:20:08
+Uh, yeah, but, but, uh, actually, uh, in the transport layer, as well as in the, uh, network layer, uh, we are getting, like, IP address of the other, uh, receiver, as well as in the transport layer, we are getting the port, as well as the, uh, exact process where the packet has to be… segment has to be sent.
+
+[rochak agrawal] 08:20:16
+Got it.
+
+[rochak agrawal] 08:20:25
+Correct. Correct.
+
+[raghav nayak] 08:20:25
+Uh, and in the data link layer, uh, we are knowing, uh, the MAC address. So, if you're not knowing, uh, right from the sender point of view, if you're, if you're, uh, not knowing all these things, then how in the session layer, uh, the connection is established between sender and receiver?
+
+[rochak agrawal] 08:20:29
+Pardon?
+
+[rochak agrawal] 08:20:33
+Mm-hmm.
+
+[rochak agrawal] 08:20:37
+Okay. See, um…
+
+[rochak agrawal] 08:20:43
+So you see what's going to happen.
+
+[rochak agrawal] 08:20:46
+Now…
+
+[rochak agrawal] 08:20:48
+you already know where you need to send the data. Understand this logically. See, if I am sending you the email, Raghav, I know, let's say, your email address, ragamnayat at the red gmail dot com, something.
+
+[rochak agrawal] 08:21:00
+I know the destination, correct?
+
+[rochak agrawal] 08:21:03
+It is just my data packet does not know.
+
+[rochak agrawal] 08:21:05
+You understand? See, here…
+
+[rochak agrawal] 08:21:16
+First, there is data.
+
+[rochak agrawal] 08:21:19
+Then there is packets.
+
+[rochak agrawal] 08:21:23
+There is flames.
+
+[rochak agrawal] 08:21:25
+And then there is a…
+
+[rochak agrawal] 08:21:31
+Bits. Hey!
+
+[rochak agrawal] 08:21:32
+It is just, um…
+
+[rochak agrawal] 08:21:36
+You know the destination, your exit does not know the destination.
+
+[rochak agrawal] 08:21:41
+You understand this? So…
+
+[rochak agrawal] 08:21:44
+Even if you see the transport layer.
+
+[rochak agrawal] 08:21:48
+Which is your fourth layer.
+
+[rochak agrawal] 08:21:50
+even when you say TCP protocol, right? In the network layer, I am giving the IP address to my packets, right? But…
+
+[rochak agrawal] 08:21:59
+After the session, also, we are doing a handshake, correct?
+
+[raghav nayak] 08:22:10
+Yeah, yeah, yeah, yeah.
+
+[rochak agrawal] 08:22:11
+Hello.
+
+[rochak agrawal] 08:22:12
+Understood. So, I know the IP address, I know my destination, but my data packets, my data frame, and my bits does not.
+
+[raghav nayak] 08:22:13
+Yes.
+
+[raghav nayak] 08:22:22
+Okay, okay.
+
+[rochak agrawal] 08:22:23
+Okay, so I already establishing a session. See, when I'm sending you the email, I already know your destination, correct?
+
+[raghav nayak] 08:22:28
+Okay.
+
+[rochak agrawal] 08:22:29
+When I'm hitting the google.com, I know I need to hit google.com.
+
+[rochak agrawal] 08:22:34
+But when the data is seek.
+
+[rochak agrawal] 08:22:37
+If I'm right, if I have a video file.
+
+[rochak agrawal] 08:22:41
+Your video file is not going to be transmitted as it is, correct?
+
+[rochak agrawal] 08:22:48
+Your video file is being fragmented into something called the data packets.
+
+[rochak agrawal] 08:22:53
+Once I establish the connection, I establish the session. After that, my data is being fragmented into something called the packets. Now, my packet does not know where I need to go.
+
+[rochak agrawal] 08:23:04
+So that is where I am attaching the IP and the port number with these packets and frame in the lower layers.
+
+[rochak agrawal] 08:23:13
+Got it?
+
+[raghav nayak] 08:23:13
+Okay, and second thing, uh, in the transport layer, you mentioned, like, uh, see, there are high chances, like, in the transport layer, the segment, uh, uh, will, will, will… some of the segment will get lost.
+
+[rochak agrawal] 08:23:24
+If you're using the UDP protocol.
+
+[raghav nayak] 08:23:24
+uh, like, uh…
+
+[raghav nayak] 08:23:27
+Ah, if you… if I'm making this second, you did the protocol. So, uh, what if… if, suppose, uh, some… if I pass somewhere about 6 to 7 segments, and if, uh, one or two segments got lost, then what are the recovery chances of that particular segment?
+
+[rochak agrawal] 08:23:40
+So there is no recovery chance. See, that's what… if you are using the… see, that is what I'm saying, there will be, uh… uh… these two things, if you see… if you say, no, I want the 100% delivery of my message, for example.
+
+[raghav nayak] 08:23:43
+Uh, huh.
+
+[rochak agrawal] 08:23:55
+then you will not use the UDP protocol. You will always use the TCP protocol, because in the TCP protocol, if some packets are being lost.
+
+[rochak agrawal] 08:24:07
+They've been retransmitted.
+
+[rochak agrawal] 08:24:10
+But in the UDP protocol, if something is getting lost, it is lost.
+
+[rochak agrawal] 08:24:16
+Okay, very basic example is, let's say, we do video call, right? Now, let's say your network speed is very low, uh, and uh…
+
+[rochak agrawal] 08:24:30
+whatever the video you are receiving, it is very blurry. Now, the reason for that is, um…
+
+[raghav nayak] 08:24:33
+Okay.
+
+[rochak agrawal] 08:24:37
+Because the data you are receiving, uh…
+
+[rochak agrawal] 08:24:41
+your network is not able to handle some of the data, it is dropping some of the data, and it is showing you some minimum data, right? So you see the bloody images everywhere, correct?
+
+[rochak agrawal] 08:24:51
+Now, you do not need to recover that data because your video call is constantly running, right? So, for example, if I'm 7.50, I do not need the data for 7.48.
+
+[raghav nayak] 08:24:58
+Okay. All right.
+
+[raghav nayak] 08:25:03
+All right.
+
+[rochak agrawal] 08:25:04
+Right? So you are going to use the UDP protocol only in a case where you can lose the data. For example, you are watching the IPL match, and suddenly your network got disconnected. So either it will start buffering.
+
+[rochak agrawal] 08:25:17
+Correct? Or, let's say, the quality will get hampered. Now, if you say you are watching the match live.
+
+[raghav nayak] 08:25:19
+Yep.
+
+[rochak agrawal] 08:25:25
+Right? And then, um, when the… when it will start buffering, let's say, um, it is… it got stuck. And when your connection will come back, you will start where the live match is running. Between one minute, your data is lost for you.
+
+[raghav nayak] 08:25:37
+Right.
+
+[rochak agrawal] 08:25:41
+Understood. So again if you need no no if something is lost I need to get it back. Then you need to use the TCP while you don't go with the UDP one.
+
+[raghav nayak] 08:25:42
+Yep.
+
+[raghav nayak] 08:25:49
+Yes, sir.
+
+[raghav nayak] 08:25:52
+Okay, uh, and one last question, like, um, uh, we are managing the sequence of that, uh, segment in TCP. Uh, where we are exactly managing the sequence? Like, in TCP network or, uh, data link, uh, where we are introducing the frames and all?
+
+[raghav nayak] 08:26:06
+The, uh, I'm talking about the sequence of the data.
+
+[rochak agrawal] 08:26:09
+In data link layer.
+
+[raghav nayak] 08:26:10
+Data link, yeah. Okay, okay, okay.
+
+[rochak agrawal] 08:26:10
+Yes. See, how it is going to happen…
+
+[rochak agrawal] 08:26:18
+So, in most of the cases, let's say…
+
+[rochak agrawal] 08:26:22
+This is your network.
+
+[rochak agrawal] 08:26:25
+Now, let's say you are working in an organization, so you will have your network, right? Uh, some other person will have their network, then people like us who are on the public internet.
+
+[rochak agrawal] 08:26:36
+And we also have something called a modem.
+
+[rochak agrawal] 08:26:39
+Bait?
+
+[rochak agrawal] 08:26:43
+So, when you…
+
+[rochak agrawal] 08:26:48
+There will be multiple computers at here.
+
+[rochak agrawal] 08:26:55
+So, when a person, when a device.
+
+[rochak agrawal] 08:27:00
+From one network, want to communicate to another network.
+
+[rochak agrawal] 08:27:05
+device in another network. The communication doesn't happen directly.
+
+[rochak agrawal] 08:27:10
+Okay.
+
+[rochak agrawal] 08:27:12
+There will be networking devices in between, like the routers or the switches.
+
+[rochak agrawal] 08:27:18
+So your… and here also, there will be router.
+
+[rochak agrawal] 08:27:22
+So, your request will go to the router.
+
+[rochak agrawal] 08:27:26
+Router, router will talk to each other.
+
+[raghav nayak] 08:27:28
+Okay.
+
+[rochak agrawal] 08:27:30
+Because they are using the networking protocols, all the networking protocols. And then, it will send the request to your destination server.
+
+[rochak agrawal] 08:27:39
+And you can see it also, let's say, if I'm hitting the google.com.
+
+[rochak agrawal] 08:27:44
+I directly don't go to Google.com.
+
+[rochak agrawal] 08:27:49
+There will be multiple, you can say, intermediary hops in between.
+
+[raghav nayak] 08:27:56
+Okay.
+
+[rochak agrawal] 08:27:56
+So my data will go through multiple networking hops, which, so for example, let's say if I'm using ISP Airtel, so first my request will go to the Airtel, then maybe if the Google server is in US, so Airtel may have a tie up with some.
+
+[rochak agrawal] 08:28:14
+US ISP, like Level 3 Communication or AT&T, then my request will go to the AT&T, then it will go to the Google. Something like that. So it goes through multiple networking devices, your request.
+
+[rochak agrawal] 08:28:24
+Although, the process is so fast that we don't realize it.
+
+[rochak agrawal] 08:28:31
+Okay?
+
+[rochak agrawal] 08:28:45
+Yes, you will.
+
+[Jeeva Koli] 08:28:50
+Uh, as a DevOps engineer.
+
+[Jeeva Koli] 08:28:52
+When we are architecturing regarding the deployment.
+
+[rochak agrawal] 08:28:56
+Hmm?
+
+[Jeeva Koli] 08:28:57
+So, uh, considering these OSI models.
+
+[rochak agrawal] 08:29:00
+Mm-hmm.
+
+[Jeeva Koli] 08:29:01
+What are the things that we… normally comes into interaction, that this needs to be included into the R&D's architecture?
+
+[rochak agrawal] 08:29:08
+Got it.
+
+[rochak agrawal] 08:29:09
+Mm-hmm.
+
+[Jeeva Koli] 08:29:11
+And what are the, uh, those devices or applications that we need to place while architecturing that application?
+
+[rochak agrawal] 08:29:18
+Yeah, I like Spain.
+
+[Jeeva Koli] 08:29:20
+Yeah.
+
+[rochak agrawal] 08:29:20
+So, Jeeva, as I mentioned, these three layers.
+
+[rochak agrawal] 08:29:24
+Physical layer.
+
+[rochak agrawal] 08:29:26
+Data link clear.
+
+[rochak agrawal] 08:29:28
+And network layer.
+
+[rochak agrawal] 08:29:30
+99% of the time, you will not be interacting with, okay?
+
+[rochak agrawal] 08:29:36
+Majorly, you will be interacting with these two layers, application layer.
+
+[rochak agrawal] 08:29:41
+And the transport.
+
+[rochak agrawal] 08:29:43
+Okay, so we have certain type of a load balancer, which either work on an application layer.
+
+[rochak agrawal] 08:29:51
+Or work on a transport layer.
+
+[rochak agrawal] 08:29:53
+That is one thing.
+
+[rochak agrawal] 08:29:55
+Okay, so in AWS also, uh, in Azure, if you say, so we have, uh.
+
+[rochak agrawal] 08:30:04
+Something called the Azure Load Balancer.
+
+[rochak agrawal] 08:30:08
+Which is a transport layer load balancer, then we have application gateway.
+
+[rochak agrawal] 08:30:13
+Which is an application load balancer, which works on the layer 7.
+
+[rochak agrawal] 08:30:17
+These two things, uh, which we need to interact.
+
+[rochak agrawal] 08:30:21
+In a big way. So we are going to set up how my application request is going to route to the backend server, everything, we will set it up on these two, uh, devices. Okay, in AWS, we call it as the ELB, and inside the ELB, again, you have a, uh.
+
+[rochak agrawal] 08:30:37
+application load balancer and the network load balancer. Terminology will be different from provider to provider, but there is two types of the load balancer. One will be working on an application layer, another would be working on a transport layer. The load balancer which works on a transport layer is being called as a network load balancer.
+
+[rochak agrawal] 08:30:57
+But don't get confused, it is not going to run on a network layer, it is going to run on a transport layer.
+
+[rochak agrawal] 08:31:04
+Then, presentation layer mostly handles in your application logic.
+
+[rochak agrawal] 08:31:14
+Okay.
+
+[rochak agrawal] 08:31:18
+But sometime you will get some issues that, uh…
+
+[rochak agrawal] 08:31:23
+You're, uh, you need to set up, uh, um…
+
+[rochak agrawal] 08:31:26
+you need to… you will see some format-related issues. Let's say your receiver can only accept the JPEG request, JPEG images, but you are sending them the SVG images, right? So then you need to troubleshoot, and if you are able to find the error, then you will sit with our application team.
+
+[rochak agrawal] 08:31:43
+and rectified. But mostly this presentation layer logic will be there in an application.
+
+[rochak agrawal] 08:31:49
+Now comes the session layer.
+
+[rochak agrawal] 08:31:52
+session layer nowadays is being maintained very dynamically, and that is also one of the things which we need to maintain. Now, what's going to happen?
+
+[rochak agrawal] 08:32:03
+Let's say…
+
+[rochak agrawal] 08:32:04
+I… I'll take the example of Netflix again. Um, I logged into Netflix, and I, um…
+
+[rochak agrawal] 08:32:15
+I watch a movie, right? Two hour movie. I watched for half an hour. And then after some time, I say, okay, I'll continue it later, continue it later on. And then I just logged out, logged out.
+
+[rochak agrawal] 08:32:30
+I just leave it as it is. Now, if you see in most of the application, you are going to have something called of a timeout, right? So, let's say after 30 minutes of activity, if something is not there.
+
+[rochak agrawal] 08:32:42
+For example, your bank's website, right? If you log in to your bank website, and then, uh…
+
+[rochak agrawal] 08:32:50
+You're not doing anything after 5 minutes or 10 minutes, depending on their configuration.
+
+[rochak agrawal] 08:32:56
+You might have noticed that, that your session is going to be terminated, you will log out, and then you need to log in again, correct? But in case of a Netflix, even if you go after 2 months, or I would say 2 years.
+
+[rochak agrawal] 08:33:09
+Okay.
+
+[rochak agrawal] 08:33:11
+you are going to find that movie exactly at that place. Agree?
+
+[Jeeva Koli] 08:33:18
+Correct.
+
+[rochak agrawal] 08:33:19
+Right? So, that is where, as a DevOps engineer, we… again, see, it is…
+
+[rochak agrawal] 08:33:26
+It is, you can say, a joint responsibility between our application team and the DevOps team. So how does it work? I'll just give you a high-level, uh…
+
+[rochak agrawal] 08:33:37
+overview. So, for example.
+
+[rochak agrawal] 08:33:41
+Let's see…
+
+[rochak agrawal] 08:33:47
+This is my demo.
+
+[rochak agrawal] 08:33:49
+Where my movies and everything are there.
+
+[rochak agrawal] 08:33:53
+This is my app server.
+
+[rochak agrawal] 08:33:59
+Okay, so now user is coming here.
+
+[rochak agrawal] 08:34:02
+And the app server says, okay, person is watching the movie, let's say, The Dark Knight.
+
+[rochak agrawal] 08:34:09
+Person looks after the movie for half an hour, and they bent away.
+
+[rochak agrawal] 08:34:13
+Now.
+
+[rochak agrawal] 08:34:14
+how Netflix is going to ensure that if you're coming even after two years.
+
+[rochak agrawal] 08:34:22
+you are going to exactly find the state which you left.
+
+[rochak agrawal] 08:34:27
+So that is where we are going to maintain your sessions in something called.
+
+[rochak agrawal] 08:34:37
+the cache.
+
+[rochak agrawal] 08:34:44
+Okay, so what is going to happen? Your app server directly don't interact with the database.
+
+[rochak agrawal] 08:34:52
+it fast.
+
+[rochak agrawal] 08:34:54
+load, so…
+
+[rochak agrawal] 08:34:56
+Now, once you have logged in into the Netflix, watch a movie for a minute or whatsoever.
+
+[rochak agrawal] 08:35:02
+Your session is being stored in this cache database.
+
+[rochak agrawal] 08:35:06
+Okay, now the next time you are going to come, you come after one minute, you come after one day, you come after one week, you come after one year, does not matter.
+
+[rochak agrawal] 08:35:17
+When you say application server, it will come here.
+
+[rochak agrawal] 08:35:21
+It is going to load your session from the cache.
+
+[rochak agrawal] 08:35:25
+And then, Cache will be connected to your database.
+
+[rochak agrawal] 08:35:30
+So…
+
+[rochak agrawal] 08:35:31
+This is one of the pattern. Now, as a DevOps engineer, it will be our responsibility to maintain this cache from an infrastructure point of view.
+
+[rochak agrawal] 08:35:40
+Now how application server, how your application is calling this cache will be written in the application logic. So that is where I would say it would be a joint responsibility for the session management. So these are some of the tasks.
+
+[rochak agrawal] 08:35:55
+Majorly, it is about the load balancer. Uh, networking-related tasks, there will be a separate networking team. But of course, uh, so for example, if you are, uh…
+
+[rochak agrawal] 08:36:06
+working in a cloud completely, so then you will manage the firewalls also, where you will be allowing and blocking the IP addresses. So those small, small tasks would be there to maintain.
+
+[rochak agrawal] 08:36:24
+Okay.
+
+[rochak agrawal] 08:36:25
+Yes, Raghav.
+
+[raghav nayak] 08:36:28
+Uh, yeah, just now you mentioned, like, about the, uh, session. Uh, so why can't in the application layer only, uh, we are having, uh, uh, session storage in the browser, uh, user's browser application. So why can't we…
+
+[rochak agrawal] 08:36:39
+Browser has a timeout, though.
+
+[raghav nayak] 08:36:41
+Okay, okay, okay. Yeah, yeah, yeah, I got it.
+
+[rochak agrawal] 08:36:43
+Your browser will have a maximum… and see, uh, and when you say browser.
+
+[rochak agrawal] 08:36:49
+Now, you… we were continuing the example of a Netflix. Let's say… let's keep aside the timeout. Let's say you store the session in your browser. What's going to happen if I open the Netflix on my TV?
+
+[raghav nayak] 08:37:04
+The session will get lost. Uh, I mean, the session will be intact in the same browser, but on the other device, I mean, yeah.
+
+[rochak agrawal] 08:37:05
+Correct?
+
+[rochak agrawal] 08:37:09
+Other… correct. But nowadays, applications are multi-devices.
+
+[raghav nayak] 08:37:13
+Alright, alright, alright, alright.
+
+[rochak agrawal] 08:37:13
+Right? I can, uh… I can have the same session of Netflix on my TV, on my laptop, on my iPad. Why? Because my session is stored somewhere. So when I am loading my application, first my session is being loaded.
+
+[raghav nayak] 08:37:22
+Yeah.
+
+[raghav nayak] 08:37:27
+All right.
+
+[rochak agrawal] 08:37:28
+Understood.
+
+[raghav nayak] 08:37:29
+Yes, yes, yes.
+
+[rochak agrawal] 08:37:31
+So, that's the reason. So, two problems, one will be the timeout, and then it will be browser-specific.
+
+[rochak agrawal] 08:37:38
+We don't want that. And this is one of the patterns. There can be many patterns.
+
+[rochak agrawal] 08:37:46
+Okay? So we use the… something called the cookies also.
+
+[raghav nayak] 08:37:50
+Yes, please.
+
+[rochak agrawal] 08:37:52
+Right? So, if you are using an application, uh… so, let's say I'm…
+
+[rochak agrawal] 08:37:57
+using… this is a Netflix application, but if I'm using, uh, something called… some… some… some application. So I can save the cookies, which is going to maintain my session at my browser. We can do that as well. It is requirement to requirement.
+
+[raghav nayak] 08:38:08
+Right.
+
+[rochak agrawal] 08:38:11
+Okay.
+
+[raghav nayak] 08:38:13
+Okay, yes.
+
+[rochak agrawal] 08:38:16
+Yes, Animesh.
+
+[Animesh Jain] 08:38:18
+Uh, sir, uh, is Redis is also using the same protocol as you are, as you are saying?
+
+[rochak agrawal] 08:38:21
+Yes.
+
+[rochak agrawal] 08:38:23
+Correct. Cache… Redis is a cache only, so we are going… see, you can use… there are multiple types of caches there, so… yes, you are right, Redis… here we can use Redis.
+
+[Animesh Jain] 08:38:35
+Yeah, so, uh, in the Redis, we are using, uh, we are using the same protocol, uh, as you were saying, like, uh, we stole it.
+
+[rochak agrawal] 08:38:43
+No, no, no, no. See, Redis? No. Understand this. See, it is about… Redis is a database. Redis is a cache database, okay? So, Redis, to connect…
+
+[rochak agrawal] 08:38:55
+Here, whatever the protocol we discussed, it is about how your data are flowing, okay? We have not discussed the application-related protocols, or the ports.
+
+[Animesh Jain] 08:39:07
+Yeah, yeah, okay. Yes.
+
+[rochak agrawal] 08:39:08
+Okay.
+
+[rochak agrawal] 08:39:13
+Yes, it is.
+
+[Shreyas Ks] 08:39:14
+So, what's the difference between this cash and cookies?
+
+[rochak agrawal] 08:39:18
+Uh, between cache and…
+
+[Shreyas Ks] 08:39:20
+Cookies.
+
+[rochak agrawal] 08:39:23
+Cookies. Okay, so cache, uh…
+
+[rochak agrawal] 08:39:25
+you can say on a very high level it's the same thing, but the mechanism is a different. Cache is a complete database, okay, while cookie is a browser-based mechanism to maintain the session.
+
+[rochak agrawal] 08:39:37
+Okay.
+
+[Shreyas Ks] 08:39:38
+In the browser also, the cache will be present, right?
+
+[rochak agrawal] 08:39:41
+Correct, see, that's what I'm saying. On a high-level conceptual thing, they are all the same. It is just cache database, if I'm talking about, they… see, cookies…
+
+[rochak agrawal] 08:39:52
+session management is their important functionality. They do the session management. But for the cache database, session management is just one of the activity. They… cache database, for example, if I talk about Redis, the main responsibility of a cache database is to increase the database performance.
+
+[rochak agrawal] 08:40:10
+Session management is just a side work for them.
+
+[Shreyas Ks] 08:40:14
+Where do I get the slides, sir?
+
+[rochak agrawal] 08:40:15
+Sorry?
+
+[Shreyas Ks] 08:40:16
+So it works in a sense, like…
+
+[Shreyas Ks] 08:40:18
+Can I give you an example for this business?
+
+[rochak agrawal] 08:40:20
+Okay, so for example, let's say, uh…
+
+[rochak agrawal] 08:40:25
+Your database can have.
+
+[rochak agrawal] 08:40:28
+Maybe 1 million records.
+
+[rochak agrawal] 08:40:32
+Okay? If I go search something in the database.
+
+[rochak agrawal] 08:40:37
+then it is… it is going to scan everything in those 1 million records, and then it will give you the result. Correct?
+
+[rochak agrawal] 08:40:44
+Now, scanning 1 million records is going to take a lot of time.
+
+[rochak agrawal] 08:40:47
+Okay, so the records which are getting very frequently accessed. So, for example.
+
+[rochak agrawal] 08:40:54
+in the world, there are millions of the website will be there, but let's say, what website I do use? I use my bank.
+
+[rochak agrawal] 08:41:01
+website, I use Netflix.com, I use Instagram.com, very few websites on a daily, day-to-day basis, right? Similarly.
+
+[rochak agrawal] 08:41:11
+In the Netflix also. In the Netflix database, there will be, um…
+
+[rochak agrawal] 08:41:16
+And this is separate from the session management, okay?
+
+[rochak agrawal] 08:41:20
+In the Netflix, there will be…
+
+[rochak agrawal] 08:41:23
+Thousands of the movies are there, if not millions, right? But what movies people are watching, which are very famous first.
+
+[rochak agrawal] 08:41:32
+Second.
+
+[rochak agrawal] 08:41:33
+which are recently released.
+
+[rochak agrawal] 08:41:35
+Correct.
+
+[rochak agrawal] 08:41:36
+So then those movies, like, if I need to search a movie in 1 million title, it is going to take a lot of time, because your scanning will take a lot of time, right? But if I store the movie, which is getting very frequently accessed at a cache.
+
+[rochak agrawal] 08:41:50
+So instead of going to the database again and again, people will start reading the content from the cache itself.
+
+[rochak agrawal] 08:41:57
+So it increases the database performance that way.
+
+[rochak agrawal] 08:42:03
+It is… see, you can understand cache is like the index.
+
+[rochak agrawal] 08:42:09
+of your database.
+
+[Shreyas Ks] 08:42:13
+And how does the cookies work in this way?
+
+[rochak agrawal] 08:42:16
+See, how does it work means, again, it is written in the application logic.
+
+[rochak agrawal] 08:42:22
+Application code.
+
+[Shreyas Ks] 08:42:23
+Okay.
+
+[Shreyas Ks] 08:42:23
+Even it also stores the previous memory, right? Whatever we have visited.
+
+[rochak agrawal] 08:42:28
+Yes, see see that's what I'm saying cache is now we discussed there's a two two type of work for this session management.
+
+[rochak agrawal] 08:42:36
+Session storage, basically.
+
+[rochak agrawal] 08:42:43
+And then…
+
+[rochak agrawal] 08:42:45
+Caching of your data.
+
+[rochak agrawal] 08:42:52
+See, cache is very similar to, like, in our laptop, you have a RAM.
+
+[rochak agrawal] 08:42:56
+Hey!
+
+[rochak agrawal] 08:42:59
+one thing you have in your hard disk, one thing is in your RAM, which is going to be faster, the thing which is in your RAM, correct?
+
+[rochak agrawal] 08:43:08
+So cache is nothing but the RAM for the database.
+
+[Shreyas Ks] 08:43:14
+Okay, and the cookies.
+
+[rochak agrawal] 08:43:20
+Okay?
+
+[Shreyas Ks] 08:43:22
+And, uh, what about this, uh…
+
+[rochak agrawal] 08:43:26
+Sirius, I'm not getting your voice very clearly.
+
+[Shreyas Ks] 08:43:29
+Uh, and what about the cookies? You told, like, it's still, like, a RAM.
+
+[rochak agrawal] 08:43:32
+Cookies is… cookies is being maintained by the browser. See, the mechanism is very different.
+
+[rochak agrawal] 08:43:38
+Here, we are talking about completely… see, when you, uh…
+
+[rochak agrawal] 08:43:43
+access Netflix from your TV. There is no browser, correct? Cookies is a browser-based mechanism.
+
+[rochak agrawal] 08:43:51
+Okay?
+
+[rochak agrawal] 08:43:57
+Now, after this, we have one more important concept to cover.
+
+[rochak agrawal] 08:44:09
+Which is a DNS.
+
+[rochak agrawal] 08:44:19
+Which is a domain name system.
+
+[rochak agrawal] 08:44:26
+Anyone has an idea about what is a domain name system?
+
+[rochak agrawal] 08:44:37
+Yes, you are.
+
+[Jeeva Koli] 08:44:42
+Yeah, it is, uh…
+
+[Jeeva Koli] 08:44:45
+The system provided by, like, uh…
+
+[Jeeva Koli] 08:44:47
+Normally, there are different, different, um, maybe applications, but they, um, in terms of, uh.
+
+[rochak agrawal] 08:44:50
+Mm-hmm.
+
+[Jeeva Koli] 08:44:54
+Microsoft is…
+
+[Jeeva Koli] 08:44:55
+bring it first time, maybe, that, uh, IP addresses that converts into the name. Like, for example, if you have a phone.
+
+[rochak agrawal] 08:45:04
+Mm-hmm.
+
+[Jeeva Koli] 08:45:05
+And, uh, you wanted to…
+
+[Jeeva Koli] 08:45:08
+You wanted to… you can't remember the phone numbers of each and every friend or your families.
+
+[rochak agrawal] 08:45:13
+Correct.
+
+[Jeeva Koli] 08:45:14
+So, you will save the, uh, their numbers with their names, okay?
+
+[Jeeva Koli] 08:45:19
+So it will be very easy that, uh… to dial and everything, like this way. So it's a domain name system, it's nothing but the same thing.
+
+[rochak agrawal] 08:45:27
+Mm-hmm.
+
+[Jeeva Koli] 08:45:27
+Uh, it is a place where, uh…
+
+[Jeeva Koli] 08:45:31
+uh, the IP addresses will be named into the particular name, like.
+
+[rochak agrawal] 08:45:38
+Understood. So yeah, what you're saying is correct, but, uh, do we…
+
+[Jeeva Koli] 08:45:38
+Uh, with the particular name. So, it will convert.
+
+[rochak agrawal] 08:45:41
+Do we understand how does it work?
+
+[Jeeva Koli] 08:45:42
+Wait for a sec.
+
+[rochak agrawal] 08:45:46
+So let's say if I am, uh, typing google.com in my browser.
+
+[rochak agrawal] 08:45:51
+And you're saying your IP is going to, uh, your name is going to be converted into IP, correct?
+
+[Jeeva Koli] 08:45:59
+Right.
+
+[rochak agrawal] 08:46:00
+So how does that conversion will happen?
+
+[Jeeva Koli] 08:46:08
+like, if you search for the… you can't remember the Google's IP address, right? So you search the Google name, right? Once you search.
+
+[rochak agrawal] 08:46:12
+Correct.
+
+[rochak agrawal] 08:46:13
+Understood. So my… yes, yes, definitely. My… my question is, if I am typing google.com, right?
+
+[rochak agrawal] 08:46:21
+Because we do not remember the IP of Google. We cannot, right? I don't know what is the IP of Instagram.com, what is the IP of Facebook.com, right?
+
+[rochak agrawal] 08:46:30
+I know google.com. Now, but computer does not understand this name. Computer networks understand the IP, correct?
+
+[Jeeva Koli] 08:46:40
+Right.
+
+[rochak agrawal] 08:46:41
+So how does google.com is being translated into its corresponding IP?
+
+[Jeeva Koli] 08:46:42
+So, uh, this…
+
+[rochak agrawal] 08:46:49
+That is the question.
+
+[Jeeva Koli] 08:46:50
+Uh, this request…
+
+[Jeeva Koli] 08:46:52
+this request goes to the… that particular IP address where the, uh, servers are hosted by Google company, right?
+
+[rochak agrawal] 08:46:55
+But… but till the time you do not know the IP address, how the request will go to the IP address? That's the question, right?
+
+[Jeeva Koli] 08:47:06
+No, no, you are searching for the Google, right? Right.
+
+[rochak agrawal] 08:47:06
+I know Google.com.
+
+[rochak agrawal] 08:47:08
+Correct? Now… now how my browser will know that, let's say, google.com is…
+
+[rochak agrawal] 08:47:16
+5.6.7.8. Once it knows the IP, then only it will go to that particular IP, correct?
+
+[Jeeva Koli] 08:47:24
+Yeah, this IP address and that name has been, uh…
+
+[Jeeva Koli] 08:47:29
+established in the DNS, right?
+
+[rochak agrawal] 08:47:31
+Where is DNS? That is the question. That is what I'm asking.
+
+[Jeeva Koli] 08:47:32
+Connection.
+
+[rochak agrawal] 08:47:37
+How does that conversion is happening? That is the question.
+
+[rochak agrawal] 08:47:43
+Okay.
+
+[Jeeva Koli] 08:47:44
+In deep, I am not sure, actually.
+
+[rochak agrawal] 08:47:45
+Okay, no problem.
+
+[rochak agrawal] 08:47:47
+So yeah, but what you are saying about the DNS is correct.
+
+[rochak agrawal] 08:47:52
+Yes, Raghav.
+
+[raghav nayak] 08:47:55
+Uh, yeah, so what happened, like, uh, if you just type, uh, you took an example of a Google.com, uh, so, like, if you are working on a browser called Chrome, if you type, uh, www.google.com, so what exactly happened? First, it will check the browser cache, memory cache.
+
+[rochak agrawal] 08:48:08
+Okay.
+
+[raghav nayak] 08:48:09
+Like, if this domain is present in the memory cache or not. If yes, then definitely we'll get the IP address associated with that domain. If not, then it will ask the DNS resolver to provide that IP address. Then DNS resolver will then go further to the root server, like Google.com, which mostly.
+
+[rochak agrawal] 08:48:14
+Okay.
+
+[rochak agrawal] 08:48:16
+Mmhm.
+
+[rochak agrawal] 08:48:21
+Hmm.
+
+[raghav nayak] 08:48:29
+carisd.com websites, uh, the root server will reply to the .com server, and then the resolver will ask that TLD server, where I can exactly found that, uh, google.com.
+
+[raghav nayak] 08:48:40
+So, TLD server, uh, it already knows, because, uh, all the .com, uh, thing, uh, is present within the TLD server. So, in this way, like, TLD server will, uh, uh, resolve back to the, uh, uh, this, uh, Google server.
+
+[rochak agrawal] 08:48:53
+Absolutely.
+
+[raghav nayak] 08:48:56
+uh, it will ask the Google server, and Google server will, uh, give the IP address. Then, in this way, the IP address will give, uh, get back to the ISP, and finally, that ISP will give that IP address to the browser.
+
+[rochak agrawal] 08:49:08
+Absolutely. That is absolutely correct. I'll just find a good image and I'll explain.
+
+[Jeeva Koli] 08:49:14
+But where is the DNS server?
+
+[rochak agrawal] 08:49:17
+I'll… I'll explain this.
+
+[rochak agrawal] 08:49:28
+Okay.
+
+[rochak agrawal] 08:49:30
+Now you see.
+
+[rochak agrawal] 08:49:33
+Yes.
+
+[rochak agrawal] 08:49:35
+So…
+
+[rochak agrawal] 08:49:36
+What is going to happen?
+
+[rochak agrawal] 08:49:43
+Let's say a user. It puts up a DNS query called the example.com.
+
+[rochak agrawal] 08:49:48
+Okay, like what we were discussing, in your…
+
+[rochak agrawal] 08:49:53
+Google.com. So, first, as, uh…
+
+[rochak agrawal] 08:49:57
+Anime said go.
+
+[rochak agrawal] 08:49:59
+it looks into your browser cache, okay? Now, there will be some records which we are constantly using. It… your browser.
+
+[rochak agrawal] 08:50:10
+keeps cache those IP addresses translation within your browser cache history.
+
+[rochak agrawal] 08:50:15
+If the result is in a browser cache, then it is going to go to your browser.
+
+[rochak agrawal] 08:50:22
+It is going to resolve, there's nothing going to happen, but if the result is not in a browser cache.
+
+[rochak agrawal] 08:50:28
+It goes to your DNS resolver.
+
+[rochak agrawal] 08:50:31
+Okay, now DNS resolver.
+
+[rochak agrawal] 08:50:35
+It depends on your network.
+
+[rochak agrawal] 08:50:37
+For example, uh…
+
+[rochak agrawal] 08:50:41
+I am using Airtel. So my request will go to the Airtel's DNS server. If you use… so basically, it's dependent on your internet service provider.
+
+[rochak agrawal] 08:50:51
+That is in a case of a public internet, but if you are maintaining your private network, then you are going to set up your own DNS server.
+
+[rochak agrawal] 08:51:10
+So, companies which is running with a large network, they will have their own DNS server.
+
+[rochak agrawal] 08:51:16
+Okay? So after the browser cache, the request will go to the DNS server.
+
+[rochak agrawal] 08:51:21
+If the DNS server has that record, then the translation will happen.
+
+[rochak agrawal] 08:51:26
+And you will get the response. But if the result is not there in the DNS server altogether.
+
+[rochak agrawal] 08:51:33
+Okay.
+
+[rochak agrawal] 08:51:35
+If the result is also not there in a DNS server, then the hunt will begin.
+
+[rochak agrawal] 08:51:40
+So first the request will go to the root DNS server.
+
+[rochak agrawal] 08:51:44
+Okay.
+
+[rochak agrawal] 08:51:45
+root DNS server is being maintained, so there is two organizations called.
+
+[rochak agrawal] 08:51:52
+I-A-N-N.
+
+[rochak agrawal] 08:51:59
+Um, what is the name?
+
+[rochak agrawal] 08:52:02
+IAN, sorry.
+
+[rochak agrawal] 08:52:05
+Internet Assigned Number Authority.
+
+[rochak agrawal] 08:52:07
+Okay, so the INA function coordinate the internet's globally unique identifier, and are provided by the public technical identifier, and affiliate of ICANN. So if you search for ICANN.
+
+[rochak agrawal] 08:52:23
+Internet Corporation for the assigned name and number. So both of these organizations are worldwide recognized organizations, non-profit organizations, which maintains these root servers across the world.
+
+[rochak agrawal] 08:52:40
+Okay.
+
+[rochak agrawal] 08:52:42
+root server across the world. So your request will go to the nearest root server. Nearest root server. Again, which is managed by…
+
+[rochak agrawal] 08:52:52
+Aye, aye, ay.
+
+[rochak agrawal] 08:52:58
+Or I-C-A-N-N.
+
+[rochak agrawal] 08:53:03
+So we will probably have a root server in Mumbai, Bandit, Delhi. I'm just giving you a hypothetical location. So we are not sure where this… and I don't need to know, okay? But the request will go to your nearest root DNS server.
+
+[rochak agrawal] 08:53:16
+Now, in the root DNS server, your name resolution will not happen, okay? So, from the root DNS server, your request will go to the TLD server.
+
+[rochak agrawal] 08:53:28
+TLD is nothing but the…
+
+[rochak agrawal] 08:53:34
+Top level domain.
+
+[rochak agrawal] 08:53:38
+So what does the root server will tell you? Root will say, okay, I don't know, uh…
+
+[rochak agrawal] 08:53:44
+What is the IP for example dot com? But I can help you. OK, I am sending you to the dot com house. There you will find the address. OK, so the top level dot com top level domains are like dot com.
+
+[rochak agrawal] 08:54:01
+dot Au.
+
+[rochak agrawal] 08:54:04
+dot I N.
+
+[rochak agrawal] 08:54:06
+dot zob dot.
+
+[rochak agrawal] 08:54:09
+And I see…
+
+[rochak agrawal] 08:54:11
+Multiple type. So every top level domain will have its own DNS server where it might have the record.
+
+[rochak agrawal] 08:54:20
+So root DNS server will not resolute your request. Root DNS server will help you to go to the .com TLD server. If my request will be example.in, then it will send me to the .in.
+
+[rochak agrawal] 08:54:35
+TLD server.
+
+[rochak agrawal] 08:54:37
+Since it is a .com TLD.
+
+[rochak agrawal] 08:54:41
+root DNS server will go.
+
+[rochak agrawal] 08:54:42
+It will give you the TLD name, server names, and example.com will go to the TLD servers.
+
+[rochak agrawal] 08:54:51
+Clear? Then, in the TLD server also, because in your…
+
+[rochak agrawal] 08:55:00
+Internet. There are millions.
+
+[rochak agrawal] 08:55:03
+Of the website, right, nowadays.
+
+[rochak agrawal] 08:55:06
+With the dot com, uh…
+
+[rochak agrawal] 08:55:09
+Extension. So, it might happen that, uh…
+
+[rochak agrawal] 08:55:17
+It's just give me a call, uh, just give me a second, I'm getting a call. I need to take this.
+
+[rochak agrawal] 08:55:24
+2 minutes.
+
+[rochak agrawal] 08:56:01
+Okay, so…
+
+[rochak agrawal] 08:56:04
+com TLD server also will have millions of the record. So, again, it will say, okay, I don't have this record, but…
+
+[rochak agrawal] 08:56:12
+I am going to give you a server name where you are going to find this address. So then it is going to give you this authoritative DNS resolver server name, and then here you will find that translation, and your request will go to your recursive DNS resolver.
+
+[rochak agrawal] 08:56:29
+And finally, it will go to your end user.
+
+[rochak agrawal] 08:56:33
+Now here you will see a term.
+
+[rochak agrawal] 08:56:35
+Call the authoritative DNS resolver.
+
+[rochak agrawal] 08:56:39
+Okay, so there is two type of resolver will be there. One is authoritative.
+
+[rochak agrawal] 08:56:44
+And another will be non-authoritative. So this will be your non.
+
+[rochak agrawal] 08:56:54
+Now what does it mean? So authoritative DNS resolver is a place where DNS records has been created.
+
+[rochak agrawal] 08:57:09
+Now whatever this DNS record 192.0.0.16 will go and cached in this recursive DNS resolver. So that is called the non-authoritative DNS where you are not going to create the record, the records are getting cached.
+
+[rochak agrawal] 08:57:25
+Now, let's say if someone goes, changes the record in the authoritative DNS resolver, your recursive DNS resolver record will also change after some time, correct?
+
+[rochak agrawal] 08:57:36
+So that is this term.
+
+[rochak agrawal] 08:57:40
+Authoritative DNS is a source of control. It stores the original record configured by the domain owner. It's managed directly by the DNS hosting provider or the DNS registrars, and it gives final definitive answer when queried by the resolver.
+
+[rochak agrawal] 08:57:56
+While non-authoritative DS contains the cache data, relies on the information saved from the previous lookups.
+
+[rochak agrawal] 08:58:05
+And…
+
+[rochak agrawal] 08:58:08
+So that is how, uh, the request will go to your root DNS server, then it will redirect the request to the .com TLD server.
+
+[rochak agrawal] 08:58:18
+Then it will go to your authoritative DNS server and then at the DNS resolver your request will be resolved and sent to your ISP DNS resolver where the record will be cached and then the request will come to your browser and in the browser also you can cache this record.
+
+[rochak agrawal] 08:58:36
+So there is a term in the DNS record called the TTL.
+
+[rochak agrawal] 08:58:46
+which is called the time to live. So depending on the TTL you are selecting so you can select like depending on the platform you are using you can select a very high to very low TTL. So for example if I'm storing TTL is equal to.
+
+[rochak agrawal] 08:59:03
+5 minutes.
+
+[rochak agrawal] 08:59:04
+Then during the next five minutes, if I am doing that example.com again, it will not go resolve this. It is again going to get it from the browser cache itself. So that is on a high level overview.
+
+[rochak agrawal] 08:59:20
+That exactly how this is work DNS.
+
+[rochak agrawal] 08:59:23
+So, root DNS server, TLD name servers are going to be managed by these IANA or ICANN, which is a non-profit organization, and these are not, uh…
+
+[rochak agrawal] 08:59:36
+These are one of its type. These are recognized worldwide by every country of the world.
+
+[rochak agrawal] 08:59:43
+Okay?
+
+[rochak agrawal] 08:59:51
+And one more point, uh, here, here, whatever the name resolution is happening, it is happening for public IP.
+
+[rochak agrawal] 09:00:08
+If you want to, let's say, resolute your private IP, then you need to set up your DNS configuration by yourself.
+
+[rochak agrawal] 09:00:16
+Yes, you are.
+
+[Jeeva Koli] 09:00:19
+Uh, who manages the top-level domains?
+
+[rochak agrawal] 09:00:23
+We mentioned here, are these IANA, ICANA?
+
+[Jeeva Koli] 09:00:28
+Root DNS also, uh, managed by same thing, right?
+
+[rochak agrawal] 09:00:30
+Route 20 LDOT, yes.
+
+[Jeeva Koli] 09:00:33
+Okay.
+
+[rochak agrawal] 09:00:37
+Okay?
+
+[rochak agrawal] 09:00:41
+Yes, Raul.
+
+[raghav nayak] 09:00:43
+Uh, so, just now I mentioned about TTL, uh, but suppose if I'm having cache in the, uh, um, recursive DNS resolver as well as browser.
+
+[raghav nayak] 09:00:53
+So, uh, who manages this, uh, TTL? Like, uh, when… like, someone has to follow, like, if my cache is following, but who is authorizing this, uh, TTL? Who is sending this TTL?
+
+[rochak agrawal] 09:01:06
+Who is creating the DNS record?
+
+[raghav nayak] 09:01:09
+And where exactly it is happening? Like…
+
+[rochak agrawal] 09:01:12
+In the DNS server, see. See, for example, this DNS resolver.
+
+[raghav nayak] 09:01:13
+Okay.
+
+[rochak agrawal] 09:01:18
+Right.
+
+[rochak agrawal] 09:01:20
+Someone would be the owner of this example.com who knows where it is running, correct?
+
+[raghav nayak] 09:01:24
+Yes.
+
+[rochak agrawal] 09:01:25
+So they will go create the DNS record here.
+
+[rochak agrawal] 09:01:29
+In the DNS resolver.
+
+[rochak agrawal] 09:01:32
+Correct?
+
+[raghav nayak] 09:01:34
+Yes.
+
+[rochak agrawal] 09:01:36
+And they will decide what would be the TTL of my record.
+
+[rochak agrawal] 09:01:40
+So, uh, and we will see that also, there are multiple platforms where we can create these records. So, if you see in Amazon, we have Route 53.
+
+[rochak agrawal] 09:01:52
+In Azure, we have Azure DNS, so depending on the platform, but whoever is creating the DNS record.
+
+[rochak agrawal] 09:01:59
+Bill set up this TTL.
+
+[rochak agrawal] 09:02:02
+Okay?
+
+[rochak agrawal] 09:02:08
+Yes, you will.
+
+[Jeevana D V] 09:02:11
+Yeah, hi. Uh, just, uh, one note. Uh, the browser cache is different, and, uh, DNS resolver cache is different.
+
+[rochak agrawal] 09:02:17
+Got it.
+
+[rochak agrawal] 09:02:19
+It is different, yes.
+
+[Jeevana D V] 09:02:20
+Okay, when the user sends a request, first it's checked in a browser cache. If it's not there, then it checks for the cache in the DNS resolver.
+
+[rochak agrawal] 09:02:24
+Browser cache?
+
+[rochak agrawal] 09:02:28
+in the correct DNS resolver. Now, depending on the type of the setup you are having, this DNS resolver, you can also manage, like, for example, if you are part of a very.
+
+[rochak agrawal] 09:02:39
+big private network, right, then you can manage your own DNS resolvers. Every big organization is managing their own DNS resolver. But for us, we are the individual, we will be relying on the ISP's DNS resolver.
+
+[Jeevana D V] 09:02:42
+Hmm?
+
+[rochak agrawal] 09:02:55
+So, for example, if I need to resolve any DNS to IP, my request will go to my internet service provider DNS server.
+
+[Jeevana D V] 09:03:04
+Okay, what does root DNS server contains?
+
+[rochak agrawal] 09:03:07
+Root DNS server contains the…
+
+[rochak agrawal] 09:03:11
+DNS servers for the TLD. So, for example, you can see it here. So, request goes to example.com to the root DNS server. Root DNS server will say, okay, I don't know anything about example.com, but I am sending you the.
+
+[Jeevana D V] 09:03:17
+Hmm.
+
+[rochak agrawal] 09:03:27
+TLD.com TLD server, where you will find the record.
+
+[Jeevana D V] 09:03:31
+Okay, okay, okay, yeah.
+
+[rochak agrawal] 09:03:32
+So, it contains the record, it contains the DNS server, DNS resolver address for all the top-level domains. So.com.au.in.gov.nic.pk.
+
+[Jeevana D V] 09:03:45
+Okay.
+
+[rochak agrawal] 09:03:46
+Not CA whatsoever.
+
+[rochak agrawal] 09:03:48
+And, of course, like, there will not be a single root server, as I said. Your request will go to your nearest root DNS server.
+
+[Jeevana D V] 09:03:59
+Okay, yeah, it changes, uh, basically the address, or where they can find the .com servers, right?
+
+[rochak agrawal] 09:04:00
+Okay?
+
+[rochak agrawal] 09:04:07
+Correct. Dot com servers.
+
+[Jeevana D V] 09:04:08
+Yeah, then it changed for .com TLD name server. Uh…
+
+[rochak agrawal] 09:04:13
+dot com TLD name server and dot com TLD name server also you will not find the record because there are millions of the records will be there with the dot com right. So then it bases on your request it will say I don't have the record you.
+
+[Jeevana D V] 09:04:23
+Yes?
+
+[rochak agrawal] 09:04:28
+We'll find the record in this name server name.
+
+[rochak agrawal] 09:04:31
+So then your request will be forwarded to the authoritative server name, and here your resolution will happen.
+
+[Jeevana D V] 09:04:42
+Okay, then what's the use of .com TLD name server?
+
+[rochak agrawal] 09:04:46
+Because it is redirecting you to this, uh, your DNS resolver server.
+
+[rochak agrawal] 09:04:51
+Variable resolution is happening.
+
+[rochak agrawal] 09:04:54
+You cannot… see, there is no way direct, right?
+
+[Jeevana D V] 09:04:58
+Yeah.
+
+[rochak agrawal] 09:05:00
+There is no way direct. You… you are coming first to .com server.com TLD, and from the .com TLD is telling you the server name.
+
+[Jeevana D V] 09:05:09
+Okay, okay, okay, I understood. Basically, firstly, uh, whenever we are going to authoritative DNS resolver, it checks for only .com, uh, domains, instead of checking for the complete other top-level domains. Yeah, okay, I understood.
+
+[rochak agrawal] 09:05:11
+Understood.
+
+[rochak agrawal] 09:05:23
+Because there will not be any other top-level domain will be there in these resolvers.
+
+[rochak agrawal] 09:05:30
+Because, see, uh, here…
+
+[rochak agrawal] 09:05:41
+There will be another TLD server.
+
+[Jeevana D V] 09:05:44
+Hmm.
+
+[rochak agrawal] 09:05:44
+4.in.
+
+[Jeevana D V] 09:05:45
+Yes.
+
+[rochak agrawal] 09:05:45
+Correct.
+
+[rochak agrawal] 09:05:47
+There will be another TLD server for .us.
+
+[rochak agrawal] 09:05:50
+So if your request is coming for example.in, instead of sending it here.
+
+[rochak agrawal] 09:05:58
+root DNS will server send you here.
+
+[rochak agrawal] 09:06:01
+If it is a example.us, it will send you here.
+
+[rochak agrawal] 09:06:05
+Then the server will tell you where to go for your DNS resolution.
+
+[rochak agrawal] 09:06:09
+Where your authoritative DNS resolver will be there.
+
+[Jeevana D V] 09:06:13
+Okay, we'll be having the multiple DNS resolvers, right? Authoritative.
+
+[rochak agrawal] 09:06:17
+Yes, yes, because we have multiple websites, millions of the websites available in the world, correct? And it, depending on the platform, which platform you are using, uh, so, uh, like, these DNS server resolution, uh.
+
+[rochak agrawal] 09:06:31
+how DNS server resolution will happen, you need to create a record somewhere, correct?
+
+[Jeevana D V] 09:06:35
+Hmm.
+
+[rochak agrawal] 09:06:36
+my IP, see, for example, example.com, is mapped to this, uh, 8.192.0.16. Correct?
+
+[rochak agrawal] 09:06:48
+So I can create this record in Amazon Route 53. I can create this record in GoDaddy. I can create this record in Azure DNS, multiple places. So then this TLD server will know that for example.com, I need to go to GoDaddy or Amazon Route 53.
+
+[Jeevana D V] 09:07:05
+Yes.
+
+[rochak agrawal] 09:07:05
+Once you go to the Route 53, there your name resolution will happen.
+
+[Jeevana D V] 09:07:11
+Okay, yeah, understood. Thank you.
+
+[rochak agrawal] 09:07:13
+I'm missing, yeah.
+
+[rochak agrawal] 09:07:14
+So if you see and of course very important thing is very very important.
+
+[rochak agrawal] 09:07:20
+If you need to create a record in an authoritative DNS resolver, okay, then you need to be the owner of this domain.
+
+[rochak agrawal] 09:07:34
+That is very important. For example, I cannot go to GoDaddy and create a record for Facebook.com.
+
+[rochak agrawal] 09:07:43
+I cannot go and create a record for google.com.
+
+[rochak agrawal] 09:07:47
+Correct? Because otherwise, it will be cures all around. So, wherever you are creating the record, they will first check if the domain belongs to you or not.
+
+[rochak agrawal] 09:07:58
+Then only they will allow you to create the record.
+
+[rochak agrawal] 09:08:03
+Otherwise, I can also create a record for Google.com. You will also create the record for Google.com with the dummy IPs, and Google.com will build down.
+
+[rochak agrawal] 09:08:12
+Nate?
+
+[rochak agrawal] 09:08:14
+So, very first thing is, you need to be the owner of this domain to create any DNS record in the authoritative DNS resolver. If you go try.
+
+[rochak agrawal] 09:08:26
+It is not going to work.
+
+[rochak agrawal] 09:08:28
+So, for example, let me see if that is open.
+
+[rochak agrawal] 09:09:04
+So, you can see, from here, I can purchase the domain. So, for example, if you try to see example.com.
+
+[rochak agrawal] 09:09:14
+You can see example.com is taken.
+
+[rochak agrawal] 09:09:18
+And this is not only on GoDaddy. You will not be able to purchase this anywhere.
+
+[rochak agrawal] 09:09:25
+Right? This is taken means it is not available on internet.
+
+[rochak agrawal] 09:09:30
+What is there?
+
+[rochak agrawal] 09:09:35
+This is exampleinfo.com is available only one rupee.
+
+[rochak agrawal] 09:09:39
+Example4u.com is available. Example-pro.com is available.
+
+[rochak agrawal] 09:09:44
+ForExample.com, ExampleMe.com. So these are available. So first you and you see ExampleCom.com. It is costly. It is 3 lakhs per year.
+
+[rochak agrawal] 09:09:57
+It is 9 lakhs per year, but there are some DNS, some name which is only 1 rupee.
+
+[rochak agrawal] 09:10:08
+Once you purchase this domain, then only I can go create the record for this. For example, if I search for example.in.
+
+[rochak agrawal] 09:10:22
+So you see example.in is also taken.
+
+[rochak agrawal] 09:10:26
+And example4.in is available, 2.in, exampletest.in, so…
+
+[rochak agrawal] 09:10:32
+So.
+
+[rochak agrawal] 09:10:33
+You can see it here. Whatever the name is available, you can purchase it, and then you need to… then only you can create a record. If you search for google.com.
+
+[rochak agrawal] 09:10:48
+Google.com is unavailable.
+
+[rochak agrawal] 09:10:53
+So you can see, googleg.com is available.
+
+[rochak agrawal] 09:11:01
+So, that way, you need to be the owner of,
+
+[rochak agrawal] 09:11:05
+the domain, then I can create a record. Otherwise, it will be a Mahima all across. Everyone can… if everyone would have been creating the DNS record for every domain, then…
+
+[rochak agrawal] 09:11:18
+The internet has gone.
+
+[rochak agrawal] 09:11:20
+Okay? So
+
+[rochak agrawal] 09:11:23
+Any question with DNS?
+
+[rochak agrawal] 09:11:36
+Yes, I'm here.
+
+[Amiya Nanda] 09:11:38
+Yeah, yeah, Rojak, so, ah, every companies or organization will, ah, ah, create their, ah, DNS, ah, details in the authoritative DNS resolver, right?
+
+[rochak agrawal] 09:11:49
+Got it.
+
+[rochak agrawal] 09:11:51
+See, if they want to be…
+
+[rochak agrawal] 09:11:54
+accessible over the internet. So, for example, I created a website.
+
+[rochak agrawal] 09:11:59
+Now I want everyone to use that website. Then yes, they need to. So for example, I launch myhappyfoods.com, something like that. Then this happyfoods.com should have a record on some DNS resolver.
+
+[rochak agrawal] 09:12:15
+Then only my users will be able to reach out, correct?
+
+[Amiya Nanda] 09:12:19
+Okay.
+
+[rochak agrawal] 09:12:20
+So, yes.
+
+[Amiya Nanda] 09:12:20
+And that the details will be maintained by this I A N A and I C I C A N A.
+
+[rochak agrawal] 09:12:25
+No, IANA and ICNA manage this one.
+
+[Amiya Nanda] 09:12:31
+Okay.
+
+[rochak agrawal] 09:12:31
+Okay, now for DNS resolver, we have multiple platforms like GoDaddy is there, Amazon Route 53 is there, Infoblox is there, where we can go and create our records.
+
+[Amiya Nanda] 09:12:32
+Okay, okay, okay.
+
+[Amiya Nanda] 09:12:40
+Okay.
+
+[Amiya Nanda] 09:12:45
+Okay, we can create our records.
+
+[rochak agrawal] 09:12:47
+Yes, our record we need to create because I know my IP correct where my application is running.
+
+[Amiya Nanda] 09:12:52
+Mm-hmm, mm-hmm, mm-hmm, mm.
+
+[rochak agrawal] 09:12:53
+So I can use the platform, but I will create my records.
+
+[Amiya Nanda] 09:12:53
+Okay.
+
+[Amiya Nanda] 09:13:02
+And that is chargeable from.
+
+[rochak agrawal] 09:13:04
+Yes, that will be chargeable.
+
+[rochak agrawal] 09:13:06
+So if I show you the Route 53 charges.
+
+[rochak agrawal] 09:13:13
+Amazon route would be 3.
+
+[rochak agrawal] 09:13:17
+public…
+
+[rochak agrawal] 09:13:18
+zone pricing.
+
+[rochak agrawal] 09:13:28
+You see, authoritative DNS. It says $0.50 per month for the first 25 zones.
+
+[rochak agrawal] 09:13:35
+Okay, and uh… what is for DNS queries? Extended queries. So it's very nominal. It says, uh…
+
+[Amiya Nanda] 09:13:44
+And paying to whom Rochak actually.
+
+[rochak agrawal] 09:13:47
+Depending on the platform you're using, if you're using Route 53, you will pay to AWS, if you're using GoDaddy, you will pay to GoD.
+
+[Amiya Nanda] 09:13:54
+Okay.
+
+[Amiya Nanda] 09:13:54
+Okay, okay.
+
+[rochak agrawal] 09:13:55
+Okay, so these are very minimal prices will be there.
+
+[rochak agrawal] 09:14:02
+So, uh, GoDaddy pricing also we can see.
+
+[rochak agrawal] 09:14:19
+So, see, it typically starts with 570 rupees per month.
+
+[rochak agrawal] 09:14:23
+And it will, uh, standard DNS is free, cost is zero, including with the domain purchase. Now, premium DNS feature is coming as $570 per month.
+
+[Amiya Nanda] 09:14:24
+Okay.
+
+[rochak agrawal] 09:14:35
+So different. See, we have only understand from a process point of view. There are multiple features. For example, I will say, let's say gemetto.com. I want to be only. See, once you enable the access, enable a DNS record, it is over the public Internet, right?
+
+[Amiya Nanda] 09:14:41
+Okay.
+
+[rochak agrawal] 09:14:54
+But you say, no, no, I do not want anyone to access my website in Pakistan, for example. So we can apply certain security policies also on our names. So those are additional features. The more feature you will configure, the cost is going to increase.
+
+[rochak agrawal] 09:15:10
+And, like…
+
+[rochak agrawal] 09:15:12
+around 5 years back, GoDaddy was the only domain registrar which was available. You can only purchase the domain name with the GoDaddy. But nowadays, there are others also, Route 53, Infoblox, and other type of DNS servers, DNS.
+
+[rochak agrawal] 09:15:30
+providers are there, but GoDaddy is still the biggest one.
+
+[Amiya Nanda] 09:15:34
+Okay, so these are DNS providers.
+
+[rochak agrawal] 09:15:36
+Yes, DNS… domain name provider and the DNS providers both.
+
+[Amiya Nanda] 09:15:41
+Oh, okay, okay.
+
+[rochak agrawal] 09:15:43
+Because first you need to purchase the domain, then you will create the DNS record for it.
+
+[rochak agrawal] 09:15:49
+Correct?
+
+[Amiya Nanda] 09:15:50
+Mm-hmm. Okay. Okay.
+
+[rochak agrawal] 09:15:58
+Yes, you will.
+
+[Jeeva Koli] 09:16:01
+As a DevOps engineer, at what level of, uh, DNS, uh, concept extent will be, uh, in the use?
+
+[Jeeva Koli] 09:16:10
+Your normal day-to-day work.
+
+[rochak agrawal] 09:16:11
+Okay, so Jeeva, so right now we are discussing something called the public DNS.
+
+[rochak agrawal] 09:16:25
+Now, what is a public DNS? Public DNS is something which is…
+
+[rochak agrawal] 09:16:31
+Uh, which is routable over, uh…
+
+[rochak agrawal] 09:16:34
+The whole internet, right?
+
+[rochak agrawal] 09:16:38
+If I'm creating a record, my record is available across everywhere, correct?
+
+[Jeeva Koli] 09:16:38
+Right.
+
+[rochak agrawal] 09:16:43
+But…
+
+[rochak agrawal] 09:16:45
+You might have noticed that when you're working in an organization that there will be certain application you can only access when you are in company's network.
+
+[rochak agrawal] 09:16:56
+Have you encountered such type of scenario?
+
+[Jeeva Koli] 09:17:02
+Uh, can you come again?
+
+[rochak agrawal] 09:17:04
+So there will be certain applications you might have noticed. You will be able to access them only when you are working from a company laptop, you're connected with a VPN, or you are in office.
+
+[Jeeva Koli] 09:17:08
+Correct.
+
+[rochak agrawal] 09:17:16
+From the public internet, you will not be able to access it. Have you encountered such thing?
+
+[Jeeva Koli] 09:17:16
+Yes, yes, yes. Correct.
+
+[Jeeva Koli] 09:17:20
+Got it.
+
+[rochak agrawal] 09:17:21
+So that is, let's say, my timesheet.example.com, right? Uh, salary.example.com, which you will be able to access only when you are in the company's network, correct?
+
+[Jeeva Koli] 09:17:21
+Exactly.
+
+[Jeeva Koli] 09:17:33
+Right.
+
+[rochak agrawal] 09:17:34
+That concept is called the private DNS.
+
+[rochak agrawal] 09:17:46
+So, private DNS is something where you will be able to resolve a particular name.
+
+[rochak agrawal] 09:17:52
+within the domain itself, within the network itself, like the private IP.
+
+[rochak agrawal] 09:17:56
+Okay.
+
+[rochak agrawal] 09:18:00
+Correct? So, as a DevOps engineer, private DNS setup… see, in the private DNS, there is no good ID, there is no root server, because it's within your network, correct?
+
+[rochak agrawal] 09:18:12
+So that is something which a DevOps engineer need to maintain.
+
+[Jeeva Koli] 09:18:12
+Right.
+
+[Jeeva Koli] 09:18:19
+Okay.
+
+[rochak agrawal] 09:18:20
+Okay, uh, but the working is very similar here. Uh, you… in the end, you are going to create the records only. So, uh, for the public DNS, you create something called the public zones, like here, if you see in the Route 53.
+
+[rochak agrawal] 09:18:35
+So, there is something called…
+
+[rochak agrawal] 09:18:43
+Where are the Jones?
+
+[rochak agrawal] 09:18:55
+So you can see?
+
+[rochak agrawal] 09:18:57
+Posted June, send the record.
+
+[rochak agrawal] 09:19:01
+However, any queries on the public hosted zone… so, when you create a public hosted zone, it means that the record will be available for the whole internet, but if you create a private hosted zone.
+
+[rochak agrawal] 09:19:14
+Then the record will be only available within your organization.
+
+[rochak agrawal] 09:19:19
+Eric, so…
+
+[rochak agrawal] 09:19:21
+Private hosted zone is… will be our responsibility.
+
+[rochak agrawal] 09:19:25
+Now, depending on the platform to platform, which platform your organization is using.
+
+[rochak agrawal] 09:19:30
+You need to maintain and set it up.
+
+[Jeeva Koli] 09:19:34
+So, is there any, uh…
+
+[rochak agrawal] 09:19:35
+So, for some of your application.
+
+[Jeeva Koli] 09:19:40
+Yeah, yeah, go ahead.
+
+[rochak agrawal] 09:19:41
+Uh, for some of the application, uh, like, every organization will have some internet-facing application, some internal application, right? So you need to set up the public DNS and the private DNS separately for both type of application. So, for example, even if you talk about.
+
+[rochak agrawal] 09:19:56
+Any bank, icacbank.com. So now this is a public facing application. Everyone can go log into your bank website. But then there will be multiple other application which is for their internal employees.
+
+[rochak agrawal] 09:20:12
+Now, for those type of application, you will use the private DNS.
+
+[Jeeva Koli] 09:20:19
+Okay.
+
+[rochak agrawal] 09:20:20
+Okay?
+
+[Jeeva Koli] 09:20:21
+I mean, is there any facility if my users are both, like, uh, some of the employees will go at home and they will access from there? When employees in the office, they will access from the, this, uh, private, uh, network, right? So, based on that, the charges will differ, or it will be same?
+
+[rochak agrawal] 09:20:29
+Mm-hmm.
+
+[rochak agrawal] 09:20:35
+Mm-hmm.
+
+[rochak agrawal] 09:20:37
+Yes, so there is, uh, yes, uh, so, uh, Jeeva, there are multiple… what you are saying is, uh, so that is… that concept is called the split horizon DNS routing.
+
+[rochak agrawal] 09:20:47
+Okay, uh, so depending on a user from where they are accessing the URL.
+
+[rochak agrawal] 09:20:55
+They will be routed.
+
+[rochak agrawal] 09:20:57
+to the public DNS or the private DNS, okay? So yeah, of course, those facilities are available, and the charges, as you will see, charges for the public DNS and the private DNS will be different.
+
+[rochak agrawal] 09:21:12
+And one more thing, uh, you need to remember, uh, if you see…
+
+[rochak agrawal] 09:21:17
+This DNS resolver.
+
+[rochak agrawal] 09:21:23
+For example, either forget about the public or the private. If you are… let's say if I am… I set up a small company, for example, 5-10 people.
+
+[rochak agrawal] 09:21:34
+I would not set up my own DNS resolver. I would be relying on, let's say, Airtel's DNS resolver, or the Jio's DNS resolver. But if you are setting up your own DNS resolver.
+
+[rochak agrawal] 09:21:45
+Let's say I am… I have a very big company, 5,000, 10,000 people are there. Then you will set up your own DNS resolver. Then you need to bear the cost for this DNS resolver also.
+
+[rochak agrawal] 09:21:58
+Okay?
+
+[rochak agrawal] 09:22:09
+Yes, I'm here.
+
+[Naveen Kr Nair] 09:22:12
+Hi, Rochak. My doubt here is, like, you said the private DNS here. So when, as a DevOps, when we set up this private DNS, that will include this DNS resolver, the root DNS, the TLD server, and the authoritative DNS resolver. These are all the setups that will come in that scope.
+
+[rochak agrawal] 09:22:32
+In that case, Naveen, you do not need anything, because your need is not being resolved over the internet, right? Secondly, Naveen, we will…
+
+[Naveen Kr Nair] 09:22:41
+Okay.
+
+[rochak agrawal] 09:22:47
+in AWS, in Azure, in GCP, we all will have this, uh, private DNS setup, classes, uh, modules, concept. Here, we are just understanding what is DNS right now.
+
+[Naveen Kr Nair] 09:22:54
+Okay.
+
+[Naveen Kr Nair] 09:22:58
+Okay, okay, okay. So, okay.
+
+[rochak agrawal] 09:22:59
+Right? We will go in detail about how we are going to set up this private DNS.
+
+[Naveen Kr Nair] 09:23:02
+Okay, okay, so as per my understanding, since it's private, so it will be within the company network, so we will not need other, like, root TLDs and all, it will be just the DNS resolver when it comes to… yeah, okay, got it, yeah.
+
+[rochak agrawal] 09:23:08
+Within the network.
+
+[rochak agrawal] 09:23:11
+We don't need anything.
+
+[rochak agrawal] 09:23:12
+We don't need anything. Yes, yes, we don't need anything.
+
+[rochak agrawal] 09:23:16
+Even though if you're using the domain called example.com, or example.in, or examples.something.
+
+[rochak agrawal] 09:23:21
+you need the root server, TLD server, when you are using the public DNS, when your name is routable over the internet.
+
+[Naveen Kr Nair] 09:23:28
+Yeah, yeah. And when we want to route it to the internet, that's when all this root TLD and alternative comes, and at that time, do we use this Amazon Route 53?
+
+[rochak agrawal] 09:23:35
+Got it.
+
+[rochak agrawal] 09:23:40
+Yes, so in Amazon Route 53, uh, we can use the public DNS and private DNS both.
+
+[Naveen Kr Nair] 09:23:45
+Okay, got it, got it.
+
+[rochak agrawal] 09:23:47
+Even in GoDaddy, like, all the platforms, they will give you the similar type of a feature.
+
+[Naveen Kr Nair] 09:23:53
+Okay.
+
+[rochak agrawal] 09:23:53
+Okay.
+
+[Naveen Kr Nair] 09:23:54
+Yeah, got it.
+
+[rochak agrawal] 09:23:55
+So okay, now we have covered some basic fundamental prerequisite type of the concept. Now from tomorrow we will start with Linux. Okay, so before even starting with the Linux, we are going to cover what is an operating system.
+
+[rochak agrawal] 09:24:12
+What is the things that an operating system does?
+
+[rochak agrawal] 09:24:15
+what is the responsibility of an operating system, and then we will move to, uh, Unix. We will see the different flavors of Unix, and…
+
+[rochak agrawal] 09:24:25
+We will start with the Linux. We are going to start with the absolute fundamentals, Linux fundamentals.
+
+[rochak agrawal] 09:24:32
+Okay, uh, so even if you do not know anything about Linux.
+
+[rochak agrawal] 09:24:37
+There is nothing to worry. We will start from the very basics. How to write the commands, what are the common commands would be there, how to make a file, how to copy a file, what are the permissions are there. So all those see, of course.
+
+[rochak agrawal] 09:24:53
+Uh, in the limited time, we will not make you a Linux expert. Uh…
+
+[rochak agrawal] 09:24:58
+But we will enable you to learn more. We are going to enable you to do your daily day-to-day work.
+
+[rochak agrawal] 09:25:06
+as a DevOps engineer, because most of the project you will see, they will be Linux-based. Linux, when I'm saying it can be Ubuntu, it can be Fedora, it is one or other flavor of Unix, okay? So, that is where Linux is very fundamental.
+
+[rochak agrawal] 09:25:22
+Because any tool which we are going to learn, any tool, Jenkins, Kubernetes, Ansible.
+
+[rochak agrawal] 09:25:31
+they are going to be operated from the command line, okay? And when I'm saying the command line, they need to be, uh, mostly Linux-based flavor, so we should be familiar with the Linux commands. So that is where it should… it will be our first module, and then we will go further from there.
+
+[rochak agrawal] 09:25:53
+Okay, cool, I think we're good.
+
