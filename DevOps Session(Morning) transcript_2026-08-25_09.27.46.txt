@@ -1,0 +1,3042 @@
+[rochak agrawal] 07:40:21
+Hey, good morning, everyone.
+
+[rochak agrawal] 07:40:23
+So let's just start. I'll share my screen.
+
+[rochak agrawal] 07:40:29
+Please confirm if you're able to share my, uh, see my screen and, uh, are able to hear me.
+
+[rochak agrawal] 07:40:44
+Okay.
+
+[rochak agrawal] 07:40:46
+So we will be starting with our first module, which will be DevOps engineering.
+
+[rochak agrawal] 07:40:53
+Now, couple of sessions, couple of starting sessions, we will, uh, talk about, before going deep dive into the DevOps, what are the prerequisites we have, um…
+
+[rochak agrawal] 07:41:03
+What are the things you need to become a good DevOps engineer? A kind of a foundation we are going to build in couple of first session.
+
+[rochak agrawal] 07:41:13
+Right? What is DevOps? Why DevOps? What was happening before the DevOps? Some common terminologies, like, what is a web server? What is an app server? What is a forward proxy? What is a reverse proxy? So we are going to discuss all of that.
+
+[rochak agrawal] 07:41:29
+fundamental, uh, preliminary concept, uh, so that when we are going to discuss about the DevOps architectures and other things.
+
+[rochak agrawal] 07:41:38
+we should be very clear about these things, right? Uh, the only request from you guys is, uh, let's be interactive whenever you are facing any.
+
+[rochak agrawal] 07:41:48
+difficulty, you have any question, please raise your hand and ask your questions. Because that's the only way, uh, we are going to gain from this, uh, class. Otherwise, recorded session, you can find it anywhere.
+
+[rochak agrawal] 07:42:04
+So, let's just be interactive.
+
+[rochak agrawal] 07:42:06
+Okay.
+
+[rochak agrawal] 07:42:08
+So, anything… before we start, our first thing, anyone would like to discuss anything?
+
+[rochak agrawal] 07:42:17
+Suggestion, pointers…
+
+[rochak agrawal] 07:42:24
+Okay.
+
+[rochak agrawal] 07:42:27
+So…
+
+[rochak agrawal] 07:42:29
+Now, before, uh…
+
+[rochak agrawal] 07:42:33
+We understand.
+
+[rochak agrawal] 07:42:34
+What is DevOps?
+
+[rochak agrawal] 07:42:38
+We need to understand why we need a DevOps, okay?
+
+[rochak agrawal] 07:42:44
+Anyone has any understanding about what is DevOps?
+
+[rochak agrawal] 07:42:54
+Have you heard about this term?
+
+[rochak agrawal] 07:43:10
+Yes, I'm here.
+
+[Amiya Nanda] 07:43:15
+Eh, yes, I, I, eh, don't have much, eh, but, eh, much idea on divorce, but, eh, what I, what I know, I can tell you.
+
+[Amiya Nanda] 07:43:22
+So, uh, DevOps is, uh, like, it is a continuous integration and continuous development.
+
+[rochak agrawal] 07:43:22
+Hmm, yes.
+
+[Amiya Nanda] 07:43:29
+Uh, without, uh, minimum downtime in production environment, all the deployment, uh, all the changes will be, uh, uh, deployed into production environment.
+
+[Amiya Nanda] 07:43:40
+And ah.
+
+[rochak agrawal] 07:43:46
+Okay, so you're kind of right, Amir, but the thing is…
+
+[rochak agrawal] 07:43:52
+These are the things you are going to achieve with the help of DevOps, whatever you are seeing, okay? So that exactly is not the…
+
+[Amiya Nanda] 07:43:57
+Yes, yes.
+
+[rochak agrawal] 07:44:02
+Now, let me tell you. So before you see…
+
+[rochak agrawal] 07:44:06
+If you compare our softwares.
+
+[rochak agrawal] 07:44:10
+10, 15 years back, our softwares were not very complex in nature. So let's say you're deploying a website, uh, for a business, for a education institute.
+
+[rochak agrawal] 07:44:21
+Once you develop a website, and…
+
+[rochak agrawal] 07:44:24
+that website is going to be live. Now then, even if you talk about the hospital management system, restaurant management system type of the software.
+
+[rochak agrawal] 07:44:34
+which is not going to be changing at a very fast pace, right? So once the developer develops the software, your operations team, your deployment team deploys that application to production so that your end user is going to use it.
+
+[rochak agrawal] 07:44:51
+Now, since there was no dynamism, there is no need to deploy these changes very frequently, because your software is not going to change at a very fast pace, right?
+
+[rochak agrawal] 07:45:05
+But, if you see today's environment.
+
+[rochak agrawal] 07:45:08
+Today's environment, if you pick up any application like Netflix, you pick up Jepto, you pick up Gemetto, your application forget about monthly or weekly.
+
+[rochak agrawal] 07:45:20
+They are changing on a daily basis.
+
+[rochak agrawal] 07:45:22
+Okay, so if I open my Zoometto app today, and.
+
+[rochak agrawal] 07:45:28
+tomorrow, let's say there is a Rakshabandhan festival, I will see the products accordingly, right?
+
+[rochak agrawal] 07:45:36
+For example, Netflix. Netflix, every Friday, there is a movie being released. There are movies being released. And those movies will come up on your front page.
+
+[rochak agrawal] 07:45:46
+something is getting changed, that's why I am able to see those movies, right? And moreover.
+
+[rochak agrawal] 07:45:53
+If you see these e-commerce application, they are changing based on the location, they are changing based on your user purchase history, right? There are many factors.
+
+[rochak agrawal] 07:46:05
+which is changing the way I am seeing my application, correct? If I open Gemato app in Delhi.
+
+[rochak agrawal] 07:46:12
+I am going to see the restaurant based out of Delhi, but if you are based out of Mumbai, you are based out of Bangalore, and you are going to open your application in.
+
+[rochak agrawal] 07:46:23
+Those locations, then you are going to see a different set of applications.
+
+[rochak agrawal] 07:46:29
+strange, right? It's the same application, geometto.com, but you can see, based on the location, my application is… the content of my application is getting changing, uh, changed, right? So, you see.
+
+[rochak agrawal] 07:46:43
+In this dynamic world.
+
+[rochak agrawal] 07:46:47
+We needed a mechanism.
+
+[rochak agrawal] 07:46:49
+by which we can deploy our changes at a fast pace.
+
+[rochak agrawal] 07:46:56
+For our end user.
+
+[rochak agrawal] 07:46:57
+Okay.
+
+[rochak agrawal] 07:46:59
+Simple, this is DevOps, okay? DevOps.
+
+[rochak agrawal] 07:47:03
+We will talk more about it, but right now you understand. We, in this dynamic world.
+
+[rochak agrawal] 07:47:11
+Changing state of your applications.
+
+[rochak agrawal] 07:47:15
+We need to have a mechanism by which.
+
+[rochak agrawal] 07:47:18
+You are going to.
+
+[rochak agrawal] 07:47:22
+Deploy your changes, your application for your end user at a fast pace.
+
+[rochak agrawal] 07:47:26
+That's the whole objective of DevOps now before DevOps was there
+
+[rochak agrawal] 07:47:34
+If you see, before DevOps was there, your development team and operations team.
+
+[rochak agrawal] 07:47:42
+No, there was no collaboration between them. So, developer team was building the application, and they were giving.
+
+[rochak agrawal] 07:47:49
+the final executable to the operations team, which is kind of your deployment team. And they were then deploying the application on…
+
+[rochak agrawal] 07:47:59
+the server, which is then becoming available to all the users. Now.
+
+[rochak agrawal] 07:48:04
+there was certain problem in this. So, for example.
+
+[rochak agrawal] 07:48:10
+Let's say my developer is writing the code.
+
+[rochak agrawal] 07:48:15
+On a Windows machine.
+
+[rochak agrawal] 07:48:20
+But your production server is on Linux.
+
+[rochak agrawal] 07:48:29
+Now, you might have also noticed that if you're changing the operating system, there was certain product.
+
+[rochak agrawal] 07:48:37
+Uh, certain features which will not work as expected, because.
+
+[rochak agrawal] 07:48:42
+they might be OS-dependent, right? So when the developer was working on a Windows machine, when the code was working absolutely fine on his system, but when he sent the artifact.
+
+[rochak agrawal] 07:48:55
+For deployment, which is a Linux server.
+
+[rochak agrawal] 07:48:59
+there are… there were the chances that these changes are going to break. Not every time, but.
+
+[rochak agrawal] 07:49:04
+Some of the time. Because there was no collaboration, your developer does not know, um…
+
+[rochak agrawal] 07:49:10
+What is the detail of the production server? Your operations team did not know.
+
+[rochak agrawal] 07:49:18
+What is happening on the development server?
+
+[rochak agrawal] 07:49:20
+Second is, and this is very, very, very important in today's world.
+
+[rochak agrawal] 07:49:26
+Infrastructure was provisioned manually.
+
+[rochak agrawal] 07:49:28
+Okay, now what does this mean?
+
+[rochak agrawal] 07:49:32
+So, for example.
+
+[rochak agrawal] 07:49:35
+Let's say…
+
+[rochak agrawal] 07:49:39
+Infrastructure was provisioned manually.
+
+[rochak agrawal] 07:49:42
+Now your application were deployed on two servers.
+
+[rochak agrawal] 07:49:50
+So, what you need to do, you need to purchase these two servers, okay?
+
+[rochak agrawal] 07:49:57
+Then configure it, and then you will deploy your application on these two servers. Now, let's say the load is getting increased.
+
+[rochak agrawal] 07:50:05
+And you need an additional server, so then you need to follow the complete process. You will, let's say, purchase a new hardware.
+
+[rochak agrawal] 07:50:14
+Put up your configuration on it, and then you are going to, um…
+
+[rochak agrawal] 07:50:20
+use that server. So you need to follow the complete process. It was totally, totally manual.
+
+[rochak agrawal] 07:50:25
+But
+
+[rochak agrawal] 07:50:26
+that was okay in the old times, but now if you compare it with the application like Jio.
+
+[rochak agrawal] 07:50:34
+Hotstar. Okay. Now, everyone knows that.
+
+[rochak agrawal] 07:50:41
+On month of April and May.
+
+[rochak agrawal] 07:50:44
+What is going to broadcast on Hotstar? IPL.
+
+[rochak agrawal] 07:50:49
+Great.
+
+[rochak agrawal] 07:50:50
+And you also have noticed, like, I'm assuming that almost 80 90% people are watching IPL, right? If not the complete IPL barn to be at the weekend, everyone is watching the matches, right?
+
+[rochak agrawal] 07:51:05
+And now, if you see, on… there is a counter which tells how many people are coming and watching the IPL.
+
+[rochak agrawal] 07:51:13
+If you notice that the number sometimes is 10 CL.
+
+[rochak agrawal] 07:51:21
+Okay.
+
+[rochak agrawal] 07:51:23
+But do you think these 10 CR people is coming to the Hotstar app once the IPL is over?
+
+[rochak agrawal] 07:51:33
+There might be only one 2CRP thing.
+
+[rochak agrawal] 07:51:43
+In the rest of the year. Correct?
+
+[rochak agrawal] 07:51:46
+So you can say… you can see it here, when the IPL is starting. And this is, like…
+
+[rochak agrawal] 07:51:54
+in different cases, will be applicable to all the applications. For example, let's say Netflix. Netflix, every Friday, they release new web series, they release new.
+
+[rochak agrawal] 07:52:05
+Movies. So the weekend, there will be much of the load, but once the weekend is over, Monday, Tuesday, the load will get almost…
+
+[rochak agrawal] 07:52:15
+half, not even half, 1 5th or 1 10th, right? Similar is the case with the hot star. Now, let's say, um, IPL is a very common example.
+
+[rochak agrawal] 07:52:24
+Now, you can see my load is getting almost 5 times.
+
+[rochak agrawal] 07:52:30
+5 to 10 times. Now, if I'm running with the N number of the servers.
+
+[rochak agrawal] 07:52:35
+And suddenly, my load is increasing.
+
+[rochak agrawal] 07:52:40
+5 or 10x, I would need the additional servers, correct?
+
+[rochak agrawal] 07:52:46
+But if I follow this infrastructure was provisioned manually.
+
+[rochak agrawal] 07:52:53
+But there were certain problems with that.
+
+[rochak agrawal] 07:52:58
+What was the problem? Let's say…
+
+[rochak agrawal] 07:53:03
+Hotstar was running on two servers.
+
+[rochak agrawal] 07:53:06
+I'm just giving some hypothetical numbers. Of course, it would not be running on two servers.
+
+[rochak agrawal] 07:53:14
+And now…
+
+[rochak agrawal] 07:53:16
+You see?
+
+[rochak agrawal] 07:53:18
+The load is getting increased, um…
+
+[rochak agrawal] 07:53:24
+So, you need to purchase additional services.
+
+[rochak agrawal] 07:53:31
+Since the load is getting increased 5x, 10x, you need much more servers.
+
+[rochak agrawal] 07:53:43
+Right?
+
+[rochak agrawal] 07:53:44
+Now the first problem is.
+
+[rochak agrawal] 07:53:52
+Purchasing?
+
+[rochak agrawal] 07:53:55
+this server.
+
+[rochak agrawal] 07:53:59
+Would take a lot of…
+
+[rochak agrawal] 07:54:04
+Then you configure all the servers.
+
+[rochak agrawal] 07:54:09
+Hey!
+
+[rochak agrawal] 07:54:10
+So, it is going to take a lot of time until the time your server would be ready, maybe your IPL is over.
+
+[rochak agrawal] 07:54:17
+or let's say if you start the process, uh, in just January or February itself, then you will have those servers ready by the IPL.
+
+[rochak agrawal] 07:54:25
+But the problem is, but the main problem is, once your IPL is over, during the IPL, let's say 10 CR people is coming.
+
+[rochak agrawal] 07:54:39
+Once the IPL is over, you again will start… can do with the Bansir people.
+
+[rochak agrawal] 07:54:45
+And you can…
+
+[rochak agrawal] 07:54:47
+Now run your Hotstar app with the one CRM.
+
+[rochak agrawal] 07:54:52
+Oh, sorry, with these two servers.
+
+[rochak agrawal] 07:54:55
+You don't need those additional servers, because the load is, again, come down to 1 CRP bill.
+
+[rochak agrawal] 07:55:01
+But since you already purchased the soft, uh, these hardware.
+
+[rochak agrawal] 07:55:10
+Right? Since you already purchased these servers.
+
+[rochak agrawal] 07:55:14
+These servers…
+
+[rochak agrawal] 07:55:20
+would be…
+
+[rochak agrawal] 07:55:21
+unutilized.
+
+[rochak agrawal] 07:55:24
+Correct? It is, like, just the wastage of money.
+
+[rochak agrawal] 07:55:30
+Understood till now, any question?
+
+[rochak agrawal] 07:55:39
+Okay? So, this is just like the wastage of money.
+
+[rochak agrawal] 07:55:44
+Now, so that is where this practice and you, you, you heard, you will hear about the cloud.
+
+[rochak agrawal] 07:55:57
+So our focus is not on the cloud in this module. Cloud we will cover separately. But here you see the difference between, and this is called the on-prem traditional computing.
+
+[rochak agrawal] 07:56:15
+Traditional computing. So in the traditional computing, you were purchasing the hardware when you need it.
+
+[rochak agrawal] 07:56:20
+But when you come back to your original state, since you already purchased the hardware.
+
+[rochak agrawal] 07:56:26
+It is like, you…
+
+[rochak agrawal] 07:56:29
+I've gapped up your investment, and then, uh, you're stuck.
+
+[rochak agrawal] 07:56:34
+That's where cloud comes into the picture. Now, every one of us is using the cloud.
+
+[rochak agrawal] 07:56:42
+The very basic example of a cloud is, let's say you need to store.
+
+[rochak agrawal] 07:56:47
+2,000 images, uh, and your phone does not have, uh, that type of storage available, so what you can do is either you will transfer those files into a laptop, and then.
+
+[rochak agrawal] 07:56:58
+You attach an external hard disk.
+
+[rochak agrawal] 07:57:02
+And then you copy those images to that external hard disk. Now, after… if you do not have the hard disk, you need to purchase the hard disk. But let's say after 10 or 15 days, you need to… those images are not very useful to you, and you need to delete it.
+
+[rochak agrawal] 07:57:16
+You will delete it, but then you already purchased the hard disk. Now, it is being unutilized, underutilized in your wardrobe, correct?
+
+[rochak agrawal] 07:57:24
+Second option is you upload those images to Google Drive, or the Google Photos, or the iPhotos, correct? Anywhere.
+
+[rochak agrawal] 07:57:34
+iCloud on… in, uh…
+
+[rochak agrawal] 07:57:39
+In Apple, we call it the iCloud altogether.
+
+[rochak agrawal] 07:57:44
+Now you see.
+
+[rochak agrawal] 07:57:46
+what we are doing. Instead of owning the infrastructure, the hard disk.
+
+[rochak agrawal] 07:57:52
+I am just sending the images.
+
+[rochak agrawal] 07:57:55
+to my cloud service provider, which in our example was Google Drive or Google…
+
+[rochak agrawal] 07:58:03
+For both.
+
+[rochak agrawal] 07:58:04
+So instead of owning the infrastructure, and we will be paying for that.
+
+[rochak agrawal] 07:58:09
+Instead of owning the infrastructure, the companies will start renting the infrastructure.
+
+[rochak agrawal] 07:58:17
+Okay, now what will happen when you rent the infrastructure?
+
+[rochak agrawal] 07:58:22
+Buns?
+
+[rochak agrawal] 07:58:24
+The IPL will start, BotStar will go to any cloud service provider, and they will say, Boss, I need 8 servers.
+
+[rochak agrawal] 07:58:33
+Now, the cloud service provider will provision those 8 servers for you.
+
+[rochak agrawal] 07:58:38
+Hotstar is going to use it, but once the IPL is over, since this is a rented server.
+
+[rochak agrawal] 07:58:46
+Hotstar is going to return those servers to the cloud service provider. I was needing it for this time only.
+
+[rochak agrawal] 07:58:53
+Right? So now your whole investment in purchasing those servers were not stuck. That's the first thing. Second thing is, since you're using the cloud, you can procure your servers.
+
+[rochak agrawal] 07:59:05
+Within minutes.
+
+[rochak agrawal] 07:59:07
+Within minutes, I'm saying, okay, you will just go and launch your servers at any point of time.
+
+[rochak agrawal] 07:59:14
+So, you are saving on the money, then you are saving on the time as well, because you do not need to invest your…
+
+[rochak agrawal] 07:59:22
+time in procuring, uh, doing all this process again and again. So that at any point of time.
+
+[rochak agrawal] 07:59:30
+you need to have… server means it could be anything. It could be a database, it could be a storage server, it could be, um…
+
+[rochak agrawal] 07:59:39
+a virtual machine, there are many types of servers can be available. So whatever you need, whenever you need, you can go to your cloud service provider, and they are going to provision your resources.
+
+[rochak agrawal] 07:59:53
+within minutes, right? Now, second thing is, even we are using this cloud service provider.
+
+[rochak agrawal] 08:00:00
+I… I'm not going to do it manually, okay? So then there was a concept of…
+
+[rochak agrawal] 08:00:11
+I A C.
+
+[rochak agrawal] 08:00:14
+Which is called infrastructure.
+
+[rochak agrawal] 08:00:19
+as a…
+
+[rochak agrawal] 08:00:20
+And what does it mean? So let's say…
+
+[rochak agrawal] 08:00:23
+So my first problem is solved.
+
+[rochak agrawal] 08:00:27
+Right? I do not need to purchase the software, so that purchasing time is now being solved. There is no such thing.
+
+[rochak agrawal] 08:00:39
+Now, the second option is configuring all the servers.
+
+[rochak agrawal] 08:00:44
+you
+
+[rochak agrawal] 08:00:46
+your application is not going to use the server as it is, right? Uh, there is a certain things you need to install. So, for example, if I'm running a Java-based application, I need to install Java first, then only I can run the Java-based application. Then your all database credential, database URLs.
+
+[rochak agrawal] 08:01:03
+Blah blah blah, multiple things we need to do, correct? And this is going to take, again, a lot of time. You can purchase, procure the servers now within a minute, but configuration is, again, going to take a lot of time.
+
+[rochak agrawal] 08:01:17
+And since you are configuring multiple servers, right, and if you configure it manually, you might.
+
+[rochak agrawal] 08:01:26
+make some mistake.
+
+[rochak agrawal] 08:01:28
+Got it?
+
+[rochak agrawal] 08:01:29
+For example, on one server, I can install Java 15, another server, I will install Java 17, something like that. There are chances of human errors.
+
+[rochak agrawal] 08:01:40
+When you need to install multiple components on multiple servers.
+
+[rochak agrawal] 08:01:44
+Now, that is where infrastructure as a code comes into the picture.
+
+[rochak agrawal] 08:01:49
+we do not configure anything manually. We are going to write everything, whatever I need, in.
+
+[rochak agrawal] 08:02:00
+In a template.
+
+[rochak agrawal] 08:02:01
+Okay? We will discuss those templates in detail when we will cover the infrastructure as a code. Right now, we are just only understanding the concept.
+
+[rochak agrawal] 08:02:11
+we will write this, everything is in a template. What type of server I want, what should be there on that server.
+
+[rochak agrawal] 08:02:19
+Et cetera, et cetera. Now, everything. Now, whenever I…
+
+[rochak agrawal] 08:02:24
+To have the infrastructure. What I need to do?
+
+[rochak agrawal] 08:02:27
+I just need to run this template.
+
+[rochak agrawal] 08:02:32
+Right? When you run this template, now everything written in this template will already be created for you.
+
+[rochak agrawal] 08:02:39
+Now, these templates are reusable, so let's say you run this template and…
+
+[rochak agrawal] 08:02:45
+2025.
+
+[rochak agrawal] 08:02:49
+Now, in 2026, also IPL is starting. You don't need to do anything, you will just run the template again.
+
+[rochak agrawal] 08:02:56
+Because it's a reusable code for you. So this is called the infrastructure as a code. And this has gone a lot of popularity nowadays. And we have discussed the example of a manual.
+
+[rochak agrawal] 08:03:14
+Uh, adding of the server, or the manual removing of the server.
+
+[rochak agrawal] 08:03:20
+Your application now, because of the IAC, can add or remove the servers as and when needed without any manual intervention also, which will be called the auto scaling. So we can define certain parameters.
+
+[rochak agrawal] 08:03:37
+Like, for example, CPU utilization, we can define conditions like if my CPU utilization is going more than 75%.
+
+[rochak agrawal] 08:03:46
+add one more server, something like that. So that concept will be called as a auto-scaling, and uh…
+
+[rochak agrawal] 08:03:56
+Infrastructure, once you implement your DevOps practices, infrastructure, you are not going to provision it manually.
+
+[rochak agrawal] 08:04:06
+Any question?
+
+[rochak agrawal] 08:04:09
+Again, remember, we are only covering the concept. We will have the detailed, uh, like, for IAC, there is a tool called, uh, Terraform. Uh, so, we will cover all these things in great detail. Right now, we are only covering.
+
+[rochak agrawal] 08:04:24
+the high-level overview.
+
+[rochak agrawal] 08:04:26
+we are just making familiar… making you familiar… familiarize with the terms right now. So, IAC, Terraform, these are the terms which we will use going further.
+
+[rochak agrawal] 08:04:42
+Okay? Then the third and fourth, if you see, these are very generic, like build and release process was time consuming because there was no automations available. Everything you were doing manually, right? So of course.
+
+[rochak agrawal] 08:04:58
+uh, the build and release process would have been the time consuming, because once you complete one step, then you go to second and third and fourth, uh, because you are doing everything manually, right? And then, really, since the build process was very slow.
+
+[rochak agrawal] 08:05:14
+Naturally, if something is not built, I cannot release it for my end user, correct? And that is where, um…
+
+[rochak agrawal] 08:05:23
+Releases are also very slow and infrequent, which would have not been survived in today's environment. If Zomato.
+
+[rochak agrawal] 08:05:33
+Will become, uh… is not releasing the new product on some…
+
+[rochak agrawal] 08:05:40
+festival occasions, some weekends, right? It's not going to survive.
+
+[rochak agrawal] 08:05:44
+Similarly, Hotstar, all the e-commerce applications, if you see. Now, let's say Amazon, every year, they…
+
+[rochak agrawal] 08:05:53
+push a big billion-day sale. Now, before the big billion-day sale, if they're not able to release the products which they want to sell out.
+
+[rochak agrawal] 08:06:02
+they are going to lose the revenue, right? So, that was the thing, uh, when the software was not very complex, they were not very dynamic in nature.
+
+[rochak agrawal] 08:06:13
+Since…
+
+[rochak agrawal] 08:06:14
+Now the software.
+
+[rochak agrawal] 08:06:20
+We'll show you one more thing.
+
+[rochak agrawal] 08:06:28
+Any question till now?
+
+[rochak agrawal] 08:06:36
+Okay, now, uh, let's introduce one more term.
+
+[rochak agrawal] 08:06:45
+There is something called a SDLC.
+
+[rochak agrawal] 08:06:49
+SDLC is…
+
+[rochak agrawal] 08:06:56
+Software.
+
+[rochak agrawal] 08:07:00
+Development.
+
+[rochak agrawal] 08:07:02
+Life cycle.
+
+[rochak agrawal] 08:07:04
+Okay. Now, what is the software development lifecycle? See, it's a plan by which you are going to.
+
+[rochak agrawal] 08:07:13
+create your software, build your software. So whenever you take a project, like, you want to build a road, right? So there will be certain steps in it, you will just, um…
+
+[rochak agrawal] 08:07:27
+take, finalize the design of the road, then you will purchase the raw material, then you will assemble your.
+
+[rochak agrawal] 08:07:36
+labors and everything, and then finally you start constructing the road. Now, what is it? It is a road construction lifecycle, for example. Similarly, software development lifecycle.
+
+[rochak agrawal] 08:07:47
+are the stage which a software need to go through once it becomes completed in development, right? Now.
+
+[rochak agrawal] 08:07:56
+And if you see, um…
+
+[rochak agrawal] 08:07:59
+It is… the term is called the software development lifecycle. It's a development lifecycle. It talks about.
+
+[rochak agrawal] 08:08:06
+what… how your software is being developed. It does not talk about how your software will be deployed to your end user.
+
+[rochak agrawal] 08:08:15
+Now, there are two very, uh, common… there are multiple models are available for the software development lifecycle, but for us, there are two.
+
+[rochak agrawal] 08:08:25
+very popular models are available. One is the waterfall model.
+
+[rochak agrawal] 08:08:33
+And another is the agile model.
+
+[rochak agrawal] 08:08:35
+Okay. Agile…
+
+[rochak agrawal] 08:08:38
+Or somewhere it will be called as a scram also.
+
+[rochak agrawal] 08:08:43
+There are multiple, uh, names for it. And DevOps, we will discuss, is nothing but an extension of the Agile only.
+
+[rochak agrawal] 08:08:50
+Now, if you're coming from an IT background, if you have taken CSID in the college, then you must have heard these terms. If not agile, then waterfall model, definitely you must have heard.
+
+[rochak agrawal] 08:09:04
+Anyone has any understanding about the waterfall?
+
+[rochak agrawal] 08:09:16
+What is the waterfall model?
+
+[rochak agrawal] 08:09:27
+No?
+
+[rochak agrawal] 08:09:39
+Okay.
+
+[rochak agrawal] 08:09:41
+So, uh, be clear about what is SDLC.
+
+[rochak agrawal] 08:09:44
+Correct. So these these are the two SDLC models.
+
+[rochak agrawal] 08:09:56
+Funny… yes, yes, funny.
+
+[phani kumar] 08:10:00
+Um, actually, waterfall model is nothing but, uh, you know, the projects will, uh, you know, take some time, kind of, uh, you know, six months or one year. It's a kind of long-term project. Whereas agile is nothing but, uh, uh, it's going to be, you know, there in, uh, phases-wise.
+
+[rochak agrawal] 08:10:11
+Mm-hmm.
+
+[phani kumar] 08:10:17
+Something like it will not take much time. The development and, uh, you know, the development and operations will go parallelly, one after another, so it will be kind of a quick process, Azure model.
+
+[rochak agrawal] 08:10:28
+Okay. So, Vani, what you are saying, uh, is a little incomplete.
+
+[rochak agrawal] 08:10:34
+Because if you see, uh, when you're saying development and operation will go in parallel.
+
+[phani kumar] 08:10:34
+Okay.
+
+[rochak agrawal] 08:10:40
+we very clearly says this is a SDLC model. It only talks about the development. It is nothing. It is talking about the operations.
+
+[rochak agrawal] 08:10:49
+Okay? And your Agile can also…
+
+[phani kumar] 08:10:50
+Okay.
+
+[rochak agrawal] 08:10:54
+take a lot of time, uh, depending on the complexity of the software. So it is not like Waterfall is going to take a time, and Agile is…
+
+[rochak agrawal] 08:11:04
+not going to take a time. That is not something which is a classification between these models.
+
+[rochak agrawal] 08:11:11
+So, let me explain, let me explain.
+
+[rochak agrawal] 08:11:14
+So, if you see…
+
+[rochak agrawal] 08:11:17
+This is a waterfall model.
+
+[rochak agrawal] 08:11:21
+Okay.
+
+[rochak agrawal] 08:11:24
+steps, you see requirement analysis, system design, implementation, testing, deployment, and maintenance. Okay, now if you see.
+
+[rochak agrawal] 08:11:34
+Uh, requirement analysis, so…
+
+[rochak agrawal] 08:11:38
+First thing is the requirement analysis in any of the software development model.
+
+[rochak agrawal] 08:11:43
+So, let's say someone… one client is coming to you, and they say, I want to create a software.
+
+[rochak agrawal] 08:11:50
+What is the first thing you are going to ask them? What type of software? What is?
+
+[rochak agrawal] 08:11:56
+What is that something your software need to do?
+
+[rochak agrawal] 08:12:00
+Correct. So all those requirement gathering will be done in this first phase, which is a requirement analysis.
+
+[rochak agrawal] 08:12:07
+In the requirement analysis, you will, uh, you will…
+
+[rochak agrawal] 08:12:12
+Define what your software is going to do. So, for example, if it is an e-commerce website, then you will say what type of product you need to sell, in which country you need to sell. Then there is the payment gateway should be integrated, what payment method you would be supporting.
+
+[rochak agrawal] 08:12:28
+Correct. All of that. So for example, let's say if I'm creating an e-commerce website and my requirement says I am only going to allow the cash on delivery. Correct. Then while you will be implementing, then you do not need to.
+
+[rochak agrawal] 08:12:45
+Integrate any of the payment gateway with your website.
+
+[rochak agrawal] 08:12:49
+Correct.
+
+[rochak agrawal] 08:12:50
+So, requirement analysis is the very first step where you are going to take the business input from your users, and that is where you will lock.
+
+[rochak agrawal] 08:13:02
+You will know what you need to create.
+
+[rochak agrawal] 08:13:07
+Then the second phase is a system design. In the system design.
+
+[rochak agrawal] 08:13:12
+phase, you will…
+
+[rochak agrawal] 08:13:14
+Design the sofa.
+
+[rochak agrawal] 08:13:16
+You will design your software, basically. How many components will be there, how might you…
+
+[rochak agrawal] 08:13:25
+Uh, how my one component is going to interact with one another. So you will completely design it. Like, for example, when you want to create a bridge.
+
+[rochak agrawal] 08:13:34
+The first, the design is completed. Once the design is approved, then you go do actual construction of a bridge or a road. So that is a system design.
+
+[rochak agrawal] 08:13:43
+then the implementation. So that is the actual part where you're in the waterfall model, your coding will be done, okay? Once your design is ready, then you will code, right?
+
+[rochak agrawal] 08:13:57
+Then, once the coding is done, implementation is done, then you need to test your product.
+
+[rochak agrawal] 08:14:04
+how I'm going to test the product, whatever I gather in a requirement analysis.
+
+[rochak agrawal] 08:14:10
+Right? I said you want to…
+
+[rochak agrawal] 08:14:12
+I want to sell my product in.
+
+[rochak agrawal] 08:14:15
+Let's say India, but my website is not working in India, right? So all those things I'm going to test in the testing phase. Once testing is completed, then I am going to deploy my application.
+
+[rochak agrawal] 08:14:30
+to my end user. And maintenance is, of course, you can say, like, you want to add something. So maintenance is nothing but, um… maintenance can be of two types. One is…
+
+[rochak agrawal] 08:14:47
+adding…
+
+[rochak agrawal] 08:14:49
+New features?
+
+[rochak agrawal] 08:14:53
+So, for example, let's say, uh, as an e-commerce website, you already… you did, while you released your, uh, product, you had only the integration with the Visa.
+
+[rochak agrawal] 08:15:03
+Right? But now, going forward, you want to add the integration with the MasterCard also.
+
+[rochak agrawal] 08:15:09
+Something similar. So you can… you can keep adding the new features, and then…
+
+[rochak agrawal] 08:15:16
+Second type of maintenance is if there is any bug.
+
+[rochak agrawal] 08:15:25
+In your…
+
+[rochak agrawal] 08:15:29
+Current features.
+
+[rochak agrawal] 08:15:33
+Then you are going to rectify those bugs, correct?
+
+[rochak agrawal] 08:15:38
+It is called the waterfall model.
+
+[rochak agrawal] 08:15:41
+Now, in waterfall model.
+
+[rochak agrawal] 08:15:45
+You there about till now?
+
+[rochak agrawal] 08:15:51
+Are we good till now? What are the phases of the waterfall model?
+
+[rochak agrawal] 08:15:55
+Okay. Now…
+
+[rochak agrawal] 08:15:59
+this looks a pretty straightforward model, okay? You'll see, okay, now, what's the problem in that?
+
+[rochak agrawal] 08:16:05
+See, the problem in that is…
+
+[rochak agrawal] 08:16:08
+Your final product will be available to you after the deployment.
+
+[rochak agrawal] 08:16:16
+Okay.
+
+[rochak agrawal] 08:16:18
+Now…
+
+[rochak agrawal] 08:16:19
+Let's see.
+
+[rochak agrawal] 08:16:22
+If it is taking 1 month, this is taking 2 months, this is taking 6 months, and this is taking 2 months, then your product will be available after, let's say, 1 month. So your product will be available after 12 months.
+
+[rochak agrawal] 08:16:43
+Right?
+
+[rochak agrawal] 08:16:45
+Now, it may happen to you.
+
+[rochak agrawal] 08:16:48
+Or you want to test your product also, then your testing would be available after 9 months.
+
+[rochak agrawal] 08:17:00
+Because testing is a phase where you will get to know what your application is supposed to be and what your application is currently, correct?
+
+[rochak agrawal] 08:17:11
+Now, 9 months is a lot of time, some time, um, because…
+
+[rochak agrawal] 08:17:16
+You've done the requirement analysis, and then you are developing your software, but when you go to your testing phase, you will realize, okay, we have made a completely different product.
+
+[rochak agrawal] 08:17:27
+Now, when you will get to know these things? After 9 months. Right?
+
+[rochak agrawal] 08:17:31
+So if something mismatch is there in the alignment of the expectation.
+
+[rochak agrawal] 08:17:39
+Then you will get to know this at a very, very… after a very, very long time.
+
+[rochak agrawal] 08:17:44
+So this 9, if…
+
+[rochak agrawal] 08:17:47
+During the testing, you are going to find out that there is a difference between what is supposed to be and what it is currently.
+
+[rochak agrawal] 08:17:57
+then you already wasted 9 months of the time. Correct? Second problem with the waterfall model is.
+
+[rochak agrawal] 08:18:06
+Once your requirement analysis is done, okay.
+
+[rochak agrawal] 08:18:10
+then you will do the system design, you do the implementation and testing and all of those things. There is no room for adding the new requirement.
+
+[rochak agrawal] 08:18:21
+Right? Because once the requirement analysis is done, you move to the system design phase. Correct? Everything moves sequentially.
+
+[rochak agrawal] 08:18:31
+So there is no scope for adding the new requirement.
+
+[rochak agrawal] 08:18:39
+And sometime, what is going to happen is… see, this 12 months is a very long period of the time. Sometime during these 12 months, the complete requirement of organization got changed, right? So you are working on, um…
+
+[rochak agrawal] 08:18:55
+some product, and you are working in any regulated industry, like pharma or finance, and there is a new guidelines coming from.
+
+[rochak agrawal] 08:19:06
+from your, um, compliance, like RBI or ERITA or something.
+
+[rochak agrawal] 08:19:12
+Now you need to implement a new change.
+
+[rochak agrawal] 08:19:14
+In a waterfall model, that is not possible.
+
+[rochak agrawal] 08:19:18
+So, in a conclusion, we can say waterfall model is a very good model, but.
+
+[rochak agrawal] 08:19:24
+It is a good model.
+
+[rochak agrawal] 08:19:27
+For the softwares, which is not very complex in nature, which can be completed in two, three months so that we can do everything in a very quick pace, complete it and move to something else.
+
+[rochak agrawal] 08:19:41
+Okay, it is not suitable for a very large, complex project, which is…
+
+[rochak agrawal] 08:19:49
+Going to span across multiple years, because during those years, you will not be able to change your requirements, you will not be able to deploy anything new, and you will be stuck, and you will get to know.
+
+[rochak agrawal] 08:20:04
+If what you intended to build is coming out correct or not.
+
+[rochak agrawal] 08:20:08
+So that is where waterfall model is not good.
+
+[rochak agrawal] 08:20:15
+Very large, complex coordinates.
+
+[rochak agrawal] 08:20:18
+Clear? Any questions at all?
+
+[rochak agrawal] 08:20:33
+Guys, please ask questions.
+
+[rochak agrawal] 08:20:38
+Even if it is, like, if you're thinking it's a silly question, there is no such thing as a silly question. A question is a question.
+
+[rochak agrawal] 08:20:46
+But if you are not asking the question, it's not of much benefit.
+
+[rochak agrawal] 08:21:03
+Okay.
+
+[rochak agrawal] 08:21:09
+Now, who…
+
+[rochak agrawal] 08:21:12
+overcome.
+
+[rochak agrawal] 08:21:24
+Overcome the shortcoming of the waterfall model.
+
+[rochak agrawal] 08:21:29
+There was an introduction about the Agile model.
+
+[rochak agrawal] 08:21:33
+Now, in Agile.
+
+[rochak agrawal] 08:21:35
+And a few guys are coming from, uh… if you're working in… already in, uh…
+
+[rochak agrawal] 08:21:40
+in some IT role, you must have heard this term, called the sprint term.
+
+[rochak agrawal] 08:21:45
+No.
+
+[rochak agrawal] 08:21:47
+In Agile model, what we say…
+
+[rochak agrawal] 08:21:51
+We are not going to double up.
+
+[rochak agrawal] 08:21:54
+The full product at one go, okay?
+
+[rochak agrawal] 08:21:58
+We will develop the product in multiple iterations.
+
+[rochak agrawal] 08:22:04
+Right. See, in the waterfall model, what you are doing, you are first doing your complete requirement analysis, then you are doing the system design, testing, implementation, testing and deployment. So after the deployment, what the product is coming out is your final product.
+
+[rochak agrawal] 08:22:20
+It would have all the features which you wanted in your requirement analysis, okay?
+
+[rochak agrawal] 08:22:25
+And that's where we discussed there could be, since you are getting a final product after the twelve months, and you are doing your testing after the nine months, there could be surprises at the end of the testing phase or at at the end of the deployment that.
+
+[rochak agrawal] 08:22:41
+This is not what I was expecting, right? So that is where…
+
+[rochak agrawal] 08:22:47
+What we can do is, we can divide our software into.
+
+[rochak agrawal] 08:22:52
+Multiple…
+
+[rochak agrawal] 08:22:56
+iterations. So, for example, I can… I'm deploying an e-commerce website, so the first iteration would be only creating the main page, home page.
+
+[rochak agrawal] 08:23:07
+Uh, your branding and everything, and you… you will get delivered those, maybe in 10 days, for example, so that you get to know, okay, yeah, this is good.
+
+[rochak agrawal] 08:23:17
+Now, if you have the problem with the main page itself, you will stop the further development, and you will say, first fix this.
+
+[rochak agrawal] 08:23:26
+Right? So that when you will be getting the final product, there will not be any surprises.
+
+[rochak agrawal] 08:23:33
+So, in a waterfall mod… in an agile model.
+
+[rochak agrawal] 08:23:36
+What's going to happen is… so you can see…
+
+[rochak agrawal] 08:23:44
+It is a waterfall model only.
+
+[rochak agrawal] 08:23:46
+But.
+
+[rochak agrawal] 08:23:48
+in the iterations. So, you can see iteration 1, iteration 2, iteration 3. Here, you do requirement analysis, then planning, then testing, building, or designing. Same steps you are doing.
+
+[rochak agrawal] 08:24:00
+So, it is like you are doing the waterfall model in multiple iterations. So, this iteration is called nothing but sprint.
+
+[rochak agrawal] 08:24:16
+Okay. And every sprint will have a clear objective that after this sprint, I will achieve this. After a sprint two, I will achieve this. After a sprint three, I will achieve this. Now you see in the sprint itself, there is a testing.
+
+[rochak agrawal] 08:24:32
+Hey.
+
+[rochak agrawal] 08:24:34
+So…
+
+[rochak agrawal] 08:24:36
+Whatever is the final product of a spring bun.
+
+[rochak agrawal] 08:24:38
+it is already validated with your users. So that is the agile model in which.
+
+[rochak agrawal] 08:24:46
+I'm not going to deploy everything at once, okay? I will…
+
+[rochak agrawal] 08:24:53
+Create a workable copy with a first iteration with the, um…
+
+[rochak agrawal] 08:24:59
+With all the minimal features, get it tested, get it validated from my users, and then, uh…
+
+[rochak agrawal] 08:25:11
+Just a second, I'm getting…
+
+[rochak agrawal] 08:25:59
+Yeah, so every iteration will have a workable product with, of course, with not all the features. Features we are going to increase in every iteration.
+
+[rochak agrawal] 08:26:10
+So that is called the agile model of working.
+
+[rochak agrawal] 08:26:14
+Clear about Waterfall and Agile, the difference. Any question on this?
+
+[rochak agrawal] 08:26:20
+Nowadays, for every software, uh, waterfall is not being used much.
+
+[rochak agrawal] 08:26:26
+It is everywhere you are going to use Agile.
+
+[rochak agrawal] 08:26:35
+Any questions till now?
+
+[rochak agrawal] 08:26:45
+Yes, I'm here.
+
+[Amiya Nanda] 08:26:52
+Ah, yes, Rojak. So, ah, in, ah, agile method, ah, the development of the application will be in, ah, different, different pages, right?
+
+[rochak agrawal] 08:26:59
+Iterations.
+
+[rochak agrawal] 08:27:02
+Solid different.
+
+[Amiya Nanda] 08:27:03
+Fizzes.
+
+[rochak agrawal] 08:27:05
+Uh, what do you mean by different phases?
+
+[Amiya Nanda] 08:27:09
+Ah, means in 1 phase we can, ah, develop 1 phase of publication, then we can test, then.
+
+[rochak agrawal] 08:27:13
+Yes, so you can say that, but you don't call it as a phase, you call it as an iteration or a sprint.
+
+[Amiya Nanda] 08:27:18
+Sprint yeah yeah yeah.
+
+[rochak agrawal] 08:27:20
+Yeah.
+
+[rochak agrawal] 08:27:21
+So, it is like… so, see, if you need to create an e-commerce website.
+
+[Amiya Nanda] 08:27:21
+Okay.
+
+[rochak agrawal] 08:27:28
+Uh, I will first develop a very basic e-commerce website, uh, with just the homepage and, uh, with integration with BunVendor, like this. Then once that is approved, then I will add more features. I will integrate, uh, Visa and MasterCard for the credit card.
+
+[rochak agrawal] 08:27:46
+Then, in the third iteration, I will add the integration with the UPI also, something like that. So, you will not release all the features at once, you will deploy it into multiple iterations. So.
+
+[Amiya Nanda] 08:27:51
+Okay.
+
+[rochak agrawal] 08:28:01
+what our aim after the first iteration will be to develop the MVP.
+
+[rochak agrawal] 08:28:10
+Now, what is an MVP? MVP is a minimum viable product.
+
+[rochak agrawal] 08:28:21
+Again, so for example, if I'm creating a Zomato app.
+
+[rochak agrawal] 08:28:26
+Then, at least, I should have 2-3 restaurant.
+
+[rochak agrawal] 08:28:29
+I will have some rider listed, and I have…
+
+[rochak agrawal] 08:28:32
+some payment method, correct? With that, I will go and, uh, release my first iteration, then in the next iteration, I will add, uh, the location-by-sorting, I will add, uh.
+
+[rochak agrawal] 08:28:46
+restaurant review, I will add in another release. Then in the Sprint 3, I'm going to classify based on the cuisine also. I can add multiple things, right?
+
+[rochak agrawal] 08:28:58
+So, that is, yes, we are going to…
+
+[rochak agrawal] 08:29:02
+do in multiple iterations.
+
+[rochak agrawal] 08:29:09
+Yes, Ankita.
+
+[ankita saxena] 08:29:12
+Hi, Rochak. Uh, actually, I have studied many of the, uh, these SDLC models, like, uh, Spiral and, uh, Prototype. Why are you focusing only on these, uh, these two, Waterfall and AJ?
+
+[rochak agrawal] 08:29:23
+Correct?
+
+[rochak agrawal] 08:29:28
+Got it. Okay.
+
+[ankita saxena] 08:29:28
+Yes.
+
+[rochak agrawal] 08:29:30
+We are focusing on these two because if you see those.
+
+[rochak agrawal] 08:29:36
+prototype, those spiral, everything is part of Agile only. As I said, Agile has multiple submodels.
+
+[rochak agrawal] 08:29:44
+Okay? And even though, uh…
+
+[rochak agrawal] 08:29:49
+So those spiral, those prototype. Here, if you see, what we are seeing is a minimum viable product. It's a prototype only.
+
+[ankita saxena] 08:29:57
+Okay.
+
+[rochak agrawal] 08:29:58
+Okay, so I…
+
+[ankita saxena] 08:29:58
+So, it's… it's not a complete, I think, the…
+
+[rochak agrawal] 08:30:02
+It's not a complete product, yes.
+
+[rochak agrawal] 08:30:05
+See, that is what… see, there are different, different terminology are there. So, prototype, minimum, build product, it's… it's the same thing.
+
+[rochak agrawal] 08:30:13
+So that's the first thing because and moreover, we are not focused on the SDLC. So we need to learn something called the DevOps lifecycle.
+
+[rochak agrawal] 08:30:27
+Okay? Okay, so that is where… and all those prototype or spiral is… everything is a form of agile only.
+
+[rochak agrawal] 08:30:35
+So we need to have an understanding of Agile, and then Agile, how it is getting integrated with the DevOps, is our approach.
+
+[rochak agrawal] 08:30:44
+So you do not need to know about those spiral or prototype model. You know Agile, that is more than enough.
+
+[ankita saxena] 08:30:50
+Okay, just to get familiar with these, uh, models, this is what…
+
+[rochak agrawal] 08:30:51
+Because…
+
+[rochak agrawal] 08:30:54
+See there are 50 type of models is there. It is that because CB you are not going to use these models right Ankita.
+
+[rochak agrawal] 08:31:03
+When you implement the DevOps, you are not going to use the SDLC at all.
+
+[ankita saxena] 08:31:11
+Okay.
+
+[rochak agrawal] 08:31:11
+you are going to use something called the DevOps lifecycle.
+
+[ankita saxena] 08:31:16
+Okay.
+
+[rochak agrawal] 08:31:18
+Okay, so that is… we will see…
+
+[rochak agrawal] 08:31:22
+So, when some organization already implement… in process of implementing the DevOps.
+
+[rochak agrawal] 08:31:28
+or is…
+
+[rochak agrawal] 08:31:30
+already implemented the DevOps.
+
+[rochak agrawal] 08:31:33
+they don't use any of the SDLC. They use the DevOps lifecycle.
+
+[rochak agrawal] 08:31:37
+Okay, and in the SDLC also, see, there can be 10 types of model is there. There is something called the extreme programming is there, there is something called XP programming is there, which is not relevant for us.
+
+[ankita saxena] 08:31:51
+Okay.
+
+[rochak agrawal] 08:31:51
+Okay, because we don't aim to become the developers, we aim to become the DevOps engineers.
+
+[ankita saxena] 08:32:00
+Got it.
+
+[rochak agrawal] 08:32:01
+And what you mentioned is it just just the different versions of Agile only.
+
+[ankita saxena] 08:32:08
+Hmm.
+
+[rochak agrawal] 08:32:08
+Okay?
+
+[ankita saxena] 08:32:10
+Okay, I just wanted to ask why you focused on these two only, that's why.
+
+[rochak agrawal] 08:32:13
+Because, yeah, because our focus will be on the DevOps lifecycle, not on the SDLC. It is just, since we want to transition into the DevOps lifecycle, um…
+
+[rochak agrawal] 08:32:24
+we need to have an understanding of the SDLC, and these are the two primary SDLC models are there, Waterfall and Agile. After that, everything is a…
+
+[rochak agrawal] 08:32:36
+Say, derivation from these two models only.
+
+[ankita saxena] 08:32:39
+Yeah, okay, understood.
+
+[rochak agrawal] 08:32:45
+Yes, you were
+
+[Jeeva Koli] 08:32:49
+Hey, am I audible?
+
+[rochak agrawal] 08:32:50
+Yes, Jiva, you are audible.
+
+[Jeeva Koli] 08:32:52
+Yeah, thanks. Uh, you were explaining, uh, like, good, uh, concepts, actually. So, what, what expectation is, uh.
+
+[rochak agrawal] 08:32:58
+Mm-hmm.
+
+[Jeeva Koli] 08:33:03
+After completion, or before moving to the next concept.
+
+[rochak agrawal] 08:33:06
+Mm-hmm.
+
+[Jeeva Koli] 08:33:07
+Uh, we wanted, like, uh, what kind of interpretations will be asked on this kind of, uh, concept, and what is the expectation on the, uh, to that answer, like, minimum.
+
+[rochak agrawal] 08:33:13
+Sure.
+
+[rochak agrawal] 08:33:16
+Done, done, done.
+
+[rochak agrawal] 08:33:19
+Got it. So, yeah, yeah. Point taken, Jeeva. So, see, what what's going to happen is, even when we go to the cloud modules and the DevOps module.
+
+[Jeeva Koli] 08:33:19
+Yeah. Okay.
+
+[rochak agrawal] 08:33:30
+Uh, questions will not be asked, like, the very straightforward.
+
+[rochak agrawal] 08:33:34
+You need to mix two, three concepts, and then, uh…
+
+[rochak agrawal] 08:33:40
+Questions will be on a scenario-based. So, we need to reach to some level. So, for example, uh, no one will ask.
+
+[rochak agrawal] 08:33:48
+you what is an SDLC, okay, in an interview. They might ask you what is the difference between the SDLC and a DevOps lifecycle.
+
+[rochak agrawal] 08:33:58
+That's the one thing. How DevOps is different from Agile.
+
+[rochak agrawal] 08:34:04
+That can be one of the questions. So yes, uh, point taken, but, uh, like, we, uh.
+
+[rochak agrawal] 08:34:10
+I have taken your feedback, and I will keep explaining wherever I feel there can be an interview question.
+
+[rochak agrawal] 08:34:19
+So next, we will go to, uh… okay, Shreyas is having a question. Yes, Shreyas?
+
+[Shreyas Ks] 08:34:28
+For constant, uh, DevOps lifecycle only…
+
+[Shreyas Ks] 08:34:32
+Uh, what do you call this? The jail and the waterfall is sufficient, or do we need to go across again for a spiral? As you told that, uh…
+
+[Shreyas Ks] 08:34:41
+Spell the submodels of a child.
+
+[rochak agrawal] 08:34:43
+Mm-hmm.
+
+[Shreyas Ks] 08:34:44
+So do we need to… if you… like, do we just… is this sufficient only for these two models, or do we need to understand further?
+
+[Shreyas Ks] 08:34:52
+So that we can get a grip on the DevOps website.
+
+[rochak agrawal] 08:34:54
+No, this is sufficient. So once we reach out to the DevOps lifecycle, so as I said, nowadays, almost 90, 95% projects are using the Agile methodology.
+
+[rochak agrawal] 08:35:07
+you call it as a scrum also. Waterfall is not being used, uh, very heavily nowadays. Uh, some legacy project which is already using Waterfall, they keep doing it.
+
+[rochak agrawal] 08:35:19
+But, uh…
+
+[rochak agrawal] 08:35:21
+Uh, most of the time, you will be dealing with Agile.
+
+[Shreyas Ks] 08:35:25
+So, you may say that, uh, parallel is not sufficient, it's not required.
+
+[rochak agrawal] 08:35:29
+No, not required. See, even if it is required, we are more focused on the DevOps lifecycle, right? We aim to become a DevOps engineer. As I was explaining it to Ankita also, even if someone is using the spiral, that's a development team will use it.
+
+[Shreyas Ks] 08:35:37
+Yeah.
+
+[rochak agrawal] 08:35:45
+I will be following the DevOps lifecycle.
+
+[Shreyas Ks] 08:35:49
+I meant to say that I understand, for the fundamentals, Azure is sufficient, you might say, not Spiral.
+
+[rochak agrawal] 08:35:53
+Agile is sufficient, yes.
+
+[rochak agrawal] 08:35:55
+Okay?
+
+[rochak agrawal] 08:35:59
+Now, if you see, there is one problem in this agile field, and that is where we have the, as we are discussing with the people, there are multiple versions.
+
+[rochak agrawal] 08:36:15
+derivations of the Agile in form of the spiral, in form of prototype, uh, in terms of, uh, extreme programming, in terms of, uh…
+
+[rochak agrawal] 08:36:26
+There are a couple of others also. Peer programming is there.
+
+[rochak agrawal] 08:36:32
+But I will talk in terms of the DevOps lifecycle. So if you see, even after the first iteration.
+
+[rochak agrawal] 08:36:43
+Because the focus is on developing the product, right? So after the Sprint 1, I will have a MVP, which is, let's say, my minimum viable product. Then in the Sprint 2, Iteration 2, I will add some more features into it.
+
+[rochak agrawal] 08:36:58
+Iteration 3, IAM, add some more features. Now, depending on the complexity of your software, you might have 3 iterations or 30 iterations, correct?
+
+[rochak agrawal] 08:37:08
+But still, if you see this model, this model is not talking about how I am going to deploy.
+
+[rochak agrawal] 08:37:17
+how I'm going to make my application available to the user.
+
+[rochak agrawal] 08:37:21
+Correct. So you are doing the planning, you are doing the requirement analysis, you are doing the designing, you are building the application and you are testing the application.
+
+[rochak agrawal] 08:37:32
+But, after the testing, what…
+
+[rochak agrawal] 08:37:34
+Right? So this model is…
+
+[rochak agrawal] 08:37:37
+Don't talk about, uh…
+
+[rochak agrawal] 08:37:41
+how I will make this available to my end users.
+
+[rochak agrawal] 08:37:43
+Got it.
+
+[rochak agrawal] 08:37:44
+And that is where one interview question, uh…
+
+[rochak agrawal] 08:37:50
+Uh, becomes…
+
+[rochak agrawal] 08:37:52
+What is the difference of DevOps and Agile? Okay, a very common interview question.
+
+[rochak agrawal] 08:37:58
+So, you see, DevOps and Agile is not different.
+
+[rochak agrawal] 08:38:03
+Agile DevOps you can say is a superset of Agile or you can say Agile is a subset of DevOps.
+
+[rochak agrawal] 08:38:13
+Where Agile only talks about how you…
+
+[rochak agrawal] 08:38:17
+are going to develop your application, okay? While DevOps.
+
+[rochak agrawal] 08:38:23
+Not only talks about how you are going to develop your application, it also talks about how you are going to release it to your users.
+
+[rochak agrawal] 08:38:32
+So, that is where we have something called the DevOps lifecycle.
+
+[rochak agrawal] 08:38:45
+You can see it here. So this is called the DevOps lifecycle.
+
+[rochak agrawal] 08:38:49
+And very, very, very importantly, you see, uh, you notice the shape.
+
+[rochak agrawal] 08:38:58
+What does this signifies? This is an infinite loop.
+
+[rochak agrawal] 08:39:04
+What does it mean? It means that, uh, so let me explain the stages.
+
+[rochak agrawal] 08:39:09
+So first we are we are having a plan stage. Then you have a code stage.
+
+[rochak agrawal] 08:39:15
+Build stage, test stage, this is where these tasks your developers are doing.
+
+[rochak agrawal] 08:39:24
+Right? Your planning, your requirement analysis, your coding, your once your code is ready, you need to build your application. We will go through these steps in details. Then your testing is there.
+
+[rochak agrawal] 08:39:39
+So this is a role of a development team. So this is your dev.
+
+[rochak agrawal] 08:39:44
+The left-hand side is your development team.
+
+[rochak agrawal] 08:39:48
+And then, once your testing is done, that… and you remember, uh…
+
+[rochak agrawal] 08:39:53
+till this point your Agile talks about.
+
+[rochak agrawal] 08:39:58
+Plan, code, build, test.
+
+[rochak agrawal] 08:40:00
+Once the testing is done.
+
+[rochak agrawal] 08:40:02
+you need to release this software to your end user. You release it, you deploy it, you operate it, you monitor it. And this is a…
+
+[rochak agrawal] 08:40:17
+So total, this becomes the DevOps, okay? Now, that does not mean.
+
+[rochak agrawal] 08:40:23
+the DevOps will do both, right? It is just… this part will be done by the development team, and this part will be done by the operations team, but they are…
+
+[rochak agrawal] 08:40:34
+collaborated with each other, with multiple, uh, uh, you can say, um, multiple mechanism, right? So, and now, if you talk about this.
+
+[rochak agrawal] 08:40:47
+This is an infinite loop, so this life cycle, if you're seeing, this is an infinite loop, means…
+
+[rochak agrawal] 08:40:55
+So these are the, this is.
+
+[rochak agrawal] 08:40:57
+representing the iterations, right? So you…
+
+[rochak agrawal] 08:41:02
+I have planned something, you deploy, code something, you build it, you test it, and you deploy it.
+
+[rochak agrawal] 08:41:06
+Now the next iteration, now the third iteration, fourth iteration. Secondly.
+
+[rochak agrawal] 08:41:12
+That is the one thing, it's a iteration.
+
+[rochak agrawal] 08:41:14
+Second thing is, let's say you deploy something to production. Does not mean your work is over. It's an infinite loop. You might get some feedback, okay, this is not working. So then you will again plan it, code it in next iteration.
+
+[rochak agrawal] 08:41:29
+And, uh…
+
+[rochak agrawal] 08:41:33
+You can see we have multiple concept here. So for example, for the source code, we will use the versioning control. For the building, we'll use the automation testing quality control. Release phase is very important where you are going to see the continuous integration.
+
+[rochak agrawal] 08:41:51
+Continuous delivery or deployment. CICD. That's the most fundamental thing in the DevOps, which we will discuss, and you are going to get a lot of interview questions on that. What's the difference between CICD? What is CI? What is CD?
+
+[rochak agrawal] 08:42:06
+and all of that. Then, um, uh, deploy phase, you will create your infrastructure, and on that infrastructure, you are going to, um.
+
+[rochak agrawal] 08:42:16
+Deploy your code, then operate, and then finally you will keep monitoring it. So this DevOps is a complete life cycle, which not only talks about how your application is being developed.
+
+[rochak agrawal] 08:42:32
+It is going to talk about how you are going to deploy and operate these applications altogether.
+
+[rochak agrawal] 08:42:42
+Now.
+
+[rochak agrawal] 08:42:42
+Apart from this life cycle.
+
+[rochak agrawal] 08:42:45
+You can see there are you are going to find some tools.
+
+[rochak agrawal] 08:42:50
+Right? Here you can see. For coding we have Git, GitLab. For building we have Gradle, Sonar-type Nexus. For testing we have different tools. For releasing we have Jenkins. For deploy we have Docker, AWS. For operating we have Chef, Ansible, Kubernetes.
+
+[rochak agrawal] 08:43:09
+and for monitoring Grafana and Kerala. Now the point here is.
+
+[rochak agrawal] 08:43:15
+So, if I need to define a DevOps.
+
+[rochak agrawal] 08:43:17
+So, you can say DevOps, and we need to understand one thing very carefully, um…
+
+[rochak agrawal] 08:43:25
+DevOps is not a technology, okay?
+
+[rochak agrawal] 08:43:33
+DevOps.
+
+[rochak agrawal] 08:43:36
+is not…
+
+[rochak agrawal] 08:43:41
+This is the very first thing we need to understand.
+
+[rochak agrawal] 08:43:45
+Okay, so it is not like Java. So for example, you are learning Java, I am learning Java.
+
+[rochak agrawal] 08:43:53
+We both will learn the same thing, right?
+
+[rochak agrawal] 08:43:57
+DevOps?
+
+[rochak agrawal] 08:43:58
+Maybe slightly different, because it is not the same body. What it is?
+
+[rochak agrawal] 08:44:05
+It is…
+
+[rochak agrawal] 08:44:06
+A framework.
+
+[rochak agrawal] 08:44:13
+It is…
+
+[rochak agrawal] 08:44:15
+set of guiding principles.
+
+[rochak agrawal] 08:44:22
+Now…
+
+[rochak agrawal] 08:44:24
+when I'm saying it is a set of guiding principles. Now, whatever the principles you are seeing in this screen, so for example.
+
+[rochak agrawal] 08:44:32
+IAC, provisioning, configuration management, and we will talk about every one of them, virtualization, containerization. So these are the principle which will help you achieve the DevOps maturity.
+
+[rochak agrawal] 08:44:44
+But if someone is saying, okay, I will have everything, but I will not have the configuration management.
+
+[rochak agrawal] 08:44:50
+Someone, second person can come in, okay, I will implement DevOps, but I will not implement infrastructure as a code, right? So, the point here is.
+
+[rochak agrawal] 08:45:01
+Since it is not a technology, it's a framework, it's a set of guiding principle, you can choose to have the guiding principle which you want.
+
+[rochak agrawal] 08:45:11
+If I'm not using the infrastructure as a code, it is okay, I will, uh…
+
+[rochak agrawal] 08:45:19
+It, uh… my infrastructure manually.
+
+[rochak agrawal] 08:45:21
+Right? For example, uh, this is a step, uh, for building, I'm, uh…
+
+[rochak agrawal] 08:45:28
+I'm using the automation, for example. You say, no, I will build manually. Perfect. You can do what you want. That's okay. So see, there will be a different DevOps maturity state for a organization. So if a DevOps, if your organization is very mature in DevOps.
+
+[rochak agrawal] 08:45:46
+They are going to use all of them. But you cannot say, without implementing all of them, I am not going to achieve the goals.
+
+[rochak agrawal] 08:45:53
+So the aim of DevOps is to increase the deployment frequency.
+
+[rochak agrawal] 08:45:58
+So that my… the product which I'm building, uh…
+
+[rochak agrawal] 08:46:02
+should be readily available to my users. That's the end goal.
+
+[rochak agrawal] 08:46:07
+Now, to achieve the end goal, we have different, different tools are available, which we have seen.
+
+[rochak agrawal] 08:46:13
+here as well, uh, Git, Gradle, OpenStack, Jenkins, Grafana, Ansible, Shep, Docker. So, if I need to define DevOps, I would say DevOps is a rich ecosystem of tools.
+
+[rochak agrawal] 08:46:28
+With the help of these tools.
+
+[rochak agrawal] 08:46:31
+I am going to accelerate my software deployment frequency.
+
+[rochak agrawal] 08:46:37
+with all the necessary checks in the mind, okay? Now, whatever the tools you are going to see in the… this example.
+
+[rochak agrawal] 08:46:48
+So for every stage, there will be certain tools are available. So for example, if you say for coding, for coding, we need to do the version control. For version control, there are multiple tools are available. Git is there, GitLab, GitHub.
+
+[rochak agrawal] 08:47:03
+Bitbucket, uh, AWS CodeCommit, uh, Azure Repos, multiple. So, for building also, uh, Gradle, Maven, and, uh.
+
+[rochak agrawal] 08:47:14
+Sonatype Nexus, as mentioned, and NPM.
+
+[rochak agrawal] 08:47:20
+for release also, Azure Pipeline, Jenkins, GitLab CI, GitHub Actions, AWS CodeBuild, CodeDeploy, Octopus Deploy, multiple tools are available, okay, for every stage.
+
+[rochak agrawal] 08:47:34
+Okay. So.
+
+[rochak agrawal] 08:47:37
+In the end, we will understand DevOps as a rich ecosystem of the tools, where, um…
+
+[rochak agrawal] 08:47:41
+With the help of these tools, we are going to achieve the DevOps maturity, and uh…
+
+[rochak agrawal] 08:47:49
+The end goal is to increase the development, faster and reliable delivery of your software.
+
+[rochak agrawal] 08:47:54
+That's it.
+
+[rochak agrawal] 08:47:56
+In one line, if I need to say what is DevOps, DevOps helps you achieve faster and reliable delivery of your software to your end user. That's it.
+
+[rochak agrawal] 08:48:05
+How you are going to do it? You can do it without any tools, perfectly fine. You can do it without any tools.
+
+[rochak agrawal] 08:48:11
+You want to use all the tools available in the market, up to you.
+
+[rochak agrawal] 08:48:16
+Now understand one thing of course we will not be covering each and every tool which is available in the market.
+
+[rochak agrawal] 08:48:25
+with the time constraint, we… it is not possible for us, okay? And even if you ask me, I don't know all of the tools, right? So, what do you need to do, and what you should be focused on?
+
+[rochak agrawal] 08:48:39
+We are going to pick one area.
+
+[rochak agrawal] 08:48:42
+For example, for coding, we will learn Git and GitHub, which is, let's say, the most common one, so that… so I'll let… I'll write down what are the tools we are going to cover.
+
+[rochak agrawal] 08:48:54
+So, in the Git, uh, coding phase.
+
+[rochak agrawal] 08:48:59
+We are going to cover Git.
+
+[rochak agrawal] 08:49:01
+And…
+
+[rochak agrawal] 08:49:03
+GitHub.
+
+[rochak agrawal] 08:49:06
+For Bill?
+
+[rochak agrawal] 08:49:09
+We are going to cover Maven for release.
+
+[rochak agrawal] 08:49:17
+We are going to cover Jenkins.
+
+[rochak agrawal] 08:49:30
+For deployment.
+
+[rochak agrawal] 08:49:33
+We are going to cover doctor.
+
+[rochak agrawal] 08:49:39
+Operate.
+
+[rochak agrawal] 08:49:42
+We are going to cover Kubernetes.
+
+[rochak agrawal] 08:49:46
+And, uh, Sybil? Both?
+
+[rochak agrawal] 08:49:50
+To monitor…
+
+[rochak agrawal] 08:49:53
+We are going to cover Grafana.
+
+[rochak agrawal] 08:49:59
+And for IAC, we are going to cover telephone as well.
+
+[rochak agrawal] 08:50:02
+Okay. Now.
+
+[rochak agrawal] 08:50:07
+See, the point is, um…
+
+[rochak agrawal] 08:50:09
+when we are saying we are going to cover the tools, we are going to cover the tools with respect to their fundamental knowledge also. So we'll… so let's say if I'm going to cover Jenkins, so what is the… what is, uh, continuous integration, what's the continuous delivery, what is, uh…
+
+[rochak agrawal] 08:50:28
+difference between them.
+
+[rochak agrawal] 08:50:30
+Everything we are going to cover, how my CICD pipeline looks like, what should be the necessary steps in this, all of that we are going to cover.
+
+[rochak agrawal] 08:50:38
+It is just…
+
+[rochak agrawal] 08:50:41
+We are covering it with respect to Jenkins. You might use, in future, Azure DevOps, Azure Web Apps, or something else. See, the syntax is going to change from tool to tool, but the fundamental, the core concept is going to remain the same.
+
+[rochak agrawal] 08:50:54
+So if I talk about any of the configuration management tool, they are absolutely, absolutely same. Of course, there may be some syntactical changes here and there, and.
+
+[rochak agrawal] 08:51:07
+But on a conceptual level, they all are very similar to each other. So we have picked up the tool which is most commonly and most accepted.
+
+[rochak agrawal] 08:51:19
+Tool in that particular area, and we will cover all the concepts around it.
+
+[rochak agrawal] 08:51:24
+But yes, uh, you need to be open in DevOps. See, uh, DevOps is, uh, the field is ever evolving as of now, and, uh, maybe after six months, there will be another tool is there in market. I'm telling you in monitoring, there are every tool, uh, every two, three months, there is a new tool coming in the market.
+
+[rochak agrawal] 08:51:44
+So, when you say you learn DevOps, you know DevOps.
+
+[rochak agrawal] 08:51:48
+That would be a half statement. You can see, you know the concept of DevOps, and it is a continuous learning journey for everyone. Like, I'm still learning.
+
+[rochak agrawal] 08:52:00
+Right? So…
+
+[rochak agrawal] 08:52:05
+Yes, honey?
+
+[phani kumar] 08:52:10
+Um, actually, sorry, actually, I was stuck to, you know, before that, Agile and, you know, DevOps model. So, um, actually, as per my understanding, like, I worked on Agile, like, few years back, so, um, actually, even the same thing we'll do in Agile also, right? Let's say, for example.
+
+[rochak agrawal] 08:52:20
+Okay?
+
+[rochak agrawal] 08:52:26
+Correct.
+
+[phani kumar] 08:52:27
+Yeah, same.
+
+[rochak agrawal] 08:52:27
+See, that is what, that is what we, we have, uh, discussed here.
+
+[rochak agrawal] 08:52:33
+this is nothing but Agile only, right? If you see it here.
+
+[rochak agrawal] 08:52:39
+this part.
+
+[rochak agrawal] 08:52:41
+This is a giant only.
+
+[phani kumar] 08:52:43
+Here.
+
+[rochak agrawal] 08:52:44
+Correct. See, that is the difference. The if someone is asking you what is the difference between Agile and DevOps. So the difference is Agile only talks about the development of your software. Agile doesn't talk about how your software is going to be available to your end user.
+
+[phani kumar] 08:52:45
+Yeah
+
+[rochak agrawal] 08:53:00
+Whether DevOps talks about the development, as well as how you are going to make this available to your end user. So, Agile is a subset of DevOps.
+
+[rochak agrawal] 08:53:13
+Okay?
+
+[rochak agrawal] 08:53:22
+Yes, it is.
+
+[Shreyas Ks] 08:53:24
+Uh, sir, are we going to use, say, our cloud for this DevOps, then? Like, I mean, say…
+
+[Shreyas Ks] 08:53:29
+Hosted on the cloud, or deployed on the cloud.
+
+[rochak agrawal] 08:53:32
+Yeah, we are going to… so whatever, uh, the servers we will be needing, uh, we are going to host it on a cloud only, yes.
+
+[rochak agrawal] 08:53:40
+But it won't matter for us, but Shreyas, see, in the end, you consider it as a server. Now, it does not matter for us where we are going to create that server. We can create that server anywhere.
+
+[Shreyas Ks] 08:53:40
+Or is it on the booth?
+
+[rochak agrawal] 08:53:54
+So the focus will, uh… we are going to use cloud as a platform, okay? But, uh…
+
+[rochak agrawal] 08:54:01
+In the end, you consider that we are using the server.
+
+[rochak agrawal] 08:54:06
+I can… so, for example, I can, uh, install the Oracle VirtualBox on my laptop also, and I can create a server out of it.
+
+[Shreyas Ks] 08:54:07
+Except for…
+
+[rochak agrawal] 08:54:13
+But then it will unnecessarily slow down my laptop.
+
+[rochak agrawal] 08:54:19
+So that is the reason… see, it has nothing to do with the cloud, okay? So if you do not know the cloud, that is absolutely okay. We are not going to focus on the cloud. It is just we will create a server, we'll use that server.
+
+[rochak agrawal] 08:54:30
+That's it.
+
+[rochak agrawal] 08:54:33
+And that server can be anywhere.
+
+[rochak agrawal] 08:54:35
+It could be on AWS, it could be Azure, it could be GCP, it could be your on-premises machine, it could be any VMware software also.
+
+[Shreyas Ks] 08:54:45
+Okay.
+
+[rochak agrawal] 08:54:45
+Okay?
+
+[rochak agrawal] 08:55:03
+Yes, you raised your hand.
+
+[rochak agrawal] 08:55:09
+Yes, yes, you are audible.
+
+[Jeeva Koli] 08:55:09
+Am I audible?
+
+[Jeeva Koli] 08:55:12
+Okay.
+
+[Jeeva Koli] 08:55:13
+So, we are still following Agile methodology.
+
+[rochak agrawal] 08:55:16
+Mm-hmm.
+
+[Jeeva Koli] 08:55:18
+Uh, where we…
+
+[Jeeva Koli] 08:55:19
+we use the iteration, sprint, everything in the DevOps also, right?
+
+[rochak agrawal] 08:55:22
+Correct.
+
+[rochak agrawal] 08:55:24
+In a DevOps also, correct. See, that is what exactly I'm saying. This is still Agile.
+
+[rochak agrawal] 08:55:29
+for, uh… for development, you are still following the Agile. But…
+
+[rochak agrawal] 08:55:34
+DevOps is an extension of Agile, which is also talking about how I am going to make my application available to my end users.
+
+[Jeeva Koli] 08:55:46
+Okay. So it is, uh, DevOps is talking regarding the, uh, till end of the, like, releasing the product, and the using the number of tools.
+
+[rochak agrawal] 08:55:46
+Okay.
+
+[rochak agrawal] 08:55:53
+Got it.
+
+[Jeeva Koli] 08:55:56
+To make it faster.
+
+[rochak agrawal] 08:55:58
+To make it faster, yes.
+
+[rochak agrawal] 08:56:00
+See, for example, if I have in Agile, if you see, there are four stages out there, right?
+
+[rochak agrawal] 08:56:11
+plan?
+
+[rochak agrawal] 08:56:12
+4th?
+
+[rochak agrawal] 08:56:14
+Bing?
+
+[rochak agrawal] 08:56:15
+And test, right?
+
+[rochak agrawal] 08:56:17
+I can still use the code, for example, uh…
+
+[rochak agrawal] 08:56:21
+I'm not using DevOps, let's say, for example, okay?
+
+[rochak agrawal] 08:56:26
+I am still use the Git here.
+
+[rochak agrawal] 08:56:29
+Or, let's say, uh, Jira here.
+
+[rochak agrawal] 08:56:37
+And Maven here.
+
+[rochak agrawal] 08:56:42
+And Selenium Health.
+
+[rochak agrawal] 08:56:45
+Or Playwright is now getting a popularity.
+
+[rochak agrawal] 08:56:48
+Right? So you can see it here.
+
+[rochak agrawal] 08:56:51
+That's why I said.
+
+[rochak agrawal] 08:56:53
+DevOps is not a hard and fast technology. That…
+
+[rochak agrawal] 08:56:57
+You need to implement all of that.
+
+[rochak agrawal] 08:57:00
+It is…
+
+[rochak agrawal] 08:57:02
+What it is, it is a framework. It is a set of guiding principle. DevOps is saying you should have all of this, but you say, no, I'll see how I'm going to deploy it. Okay, you don't need to worry. I'm not using any code. I will write a shell script.
+
+[rochak agrawal] 08:57:17
+Or I will write a Python automation script, and with the help of that script, I'm going to do that. Okay, you do it. No problem.
+
+[rochak agrawal] 08:57:25
+Okay, so the point I am trying to make is we are going to learn the standards, right? So this is a standard DevOps lifecycle.
+
+[rochak agrawal] 08:57:37
+But someone is coming and saying, I… I'm not using the containerization or virtualization. Okay, perfectly fine.
+
+[rochak agrawal] 08:57:44
+So, the point here is this is a complete DevOps lifecycle.
+
+[rochak agrawal] 08:57:48
+But when you go to project, it might happen that your project is not using one or other step.
+
+[rochak agrawal] 08:57:58
+Okay?
+
+[rochak agrawal] 08:58:08
+Okay. Now, before I go deep dive into this, uh, uh, DevOps is, uh.
+
+[rochak agrawal] 08:58:17
+there are some terms we need to get familiar, okay? Because, um…
+
+[rochak agrawal] 08:58:24
+These are the common things which we are going to use on a daily day to day basis.
+
+[rochak agrawal] 08:58:28
+So first thing is a web server.
+
+[rochak agrawal] 08:58:32
+and application server.
+
+[rochak agrawal] 08:58:44
+Then we have reverse proxy.
+
+[rochak agrawal] 08:58:49
+And forward proxy.
+
+[rochak agrawal] 08:58:56
+Then, OSAE.
+
+[rochak agrawal] 08:58:58
+networking mode.
+
+[rochak agrawal] 08:58:59
+Now, this has nothing to do with the DevOps, but when you will be working as a DevOps engineer, you will be dealing with… see, in the end, you will be deploying your application on a web server or an application server. Your load balancer is going to work as a reverse proxy or the forward proxy.
+
+[rochak agrawal] 08:59:19
+And OSI networking model is a very fundamental things. It is going to help you very much in troubleshooting. So this is not directly related to DevOps, but you should be very, very well aware about these terms. I have seen people who are deploying the application, but.
+
+[rochak agrawal] 08:59:35
+When you go ask him what is a reverse proxy.
+
+[rochak agrawal] 08:59:37
+they are working on a reverse proxy, and they will not be able to tell you what is the reverse proxy. And this is a pattern I've seen in the interviews. You go and you tell, I'm working in a project where you have a web server which is taking the request, and.
+
+[rochak agrawal] 08:59:53
+sending the request to the application server, and application server is sending the request to a database, right? And when someone asks you what is a reverse proxy, which is working as a reverse proxy here, and people don't know what is a reverse proxy. So.
+
+[rochak agrawal] 09:00:09
+We should be first very clear about the basics and then we should be moving towards the advanced concepts.
+
+[rochak agrawal] 09:00:16
+So, anyone can give me any definition about the web server, application server, or the reverse proxy and the forward proxy.
+
+[rochak agrawal] 09:00:42
+Yes, I'm here.
+
+[Amiya Nanda] 09:00:46
+Ah, yeah, Rochak, so, ah, I have understanding of web server and application server, so whenever we'll, ah, log into any URL.
+
+[rochak agrawal] 09:00:51
+Mm-hmm.
+
+[Amiya Nanda] 09:00:56
+or it will launch any URL, it will go to the web server with the HTTP request or HTTPS request.
+
+[rochak agrawal] 09:00:59
+Okay.
+
+[Amiya Nanda] 09:01:04
+Okay, and it will, ah, log in the access log in the server.
+
+[Amiya Nanda] 09:01:09
+And, uh, after that, it'll, uh, the request will go to the application server.
+
+[rochak agrawal] 09:01:13
+Okay.
+
+[Amiya Nanda] 09:01:14
+And, ah, and, ah, if we'll do any operation in the application, so it will be, ah, logging in the application server.
+
+[rochak agrawal] 09:01:22
+Mm-hmm.
+
+[Amiya Nanda] 09:01:24
+Or if we need any data, or any data-related transaction, or any data-related things, it will go to the database, the request will go to the database, face the database, or it will display in the application.
+
+[rochak agrawal] 09:01:39
+Mm-hmm.
+
+[Amiya Nanda] 09:01:40
+So, ah, in this way, ah, ah, ah, ah, the, ah, things will work.
+
+[rochak agrawal] 09:01:44
+Okay. See, Amir, what you're telling is absolutely correct. The flow, whatever you told, is correct. But still.
+
+[rochak agrawal] 09:01:53
+What is the difference? Why you need the web server, and why you need the application server?
+
+[Amiya Nanda] 09:01:59
+To manage the load.
+
+[rochak agrawal] 09:02:00
+Mm-hmm.
+
+[rochak agrawal] 09:02:02
+Okay, so you're saying without the web server, you will not be able to manage the load?
+
+[Amiya Nanda] 09:02:07
+Ah, ah, like a 2 tier or 3 tier architecture is there, so it belongs to 3 tier architecture where web sphere and application server.
+
+[Amiya Nanda] 09:02:16
+Ah, take place.
+
+[rochak agrawal] 09:02:17
+Okay.
+
+[rochak agrawal] 09:02:19
+Understood. Again, whatever you are saying is absolutely correct, but still, we are missing the core point.
+
+[Amiya Nanda] 09:02:29
+Okay.
+
+[rochak agrawal] 09:02:29
+Okay, uh, I'll explain. Jeeva, you want to try?
+
+[Amiya Nanda] 09:02:32
+Yeah.
+
+[Jeeva Koli] 09:02:34
+Ah, yes.
+
+[Jeeva Koli] 09:02:36
+Uh, web server is used in the scenario of if you have a website, okay?
+
+[rochak agrawal] 09:02:40
+Okay.
+
+[Jeeva Koli] 09:02:42
+Where we can install the IIS roles on the server, and you can host that website. Okay?
+
+[rochak agrawal] 09:02:46
+Okay.
+
+[rochak agrawal] 09:02:48
+Okay. Mm-hmm.
+
+[Jeeva Koli] 09:02:50
+And if you have an application, like mobile application, any other applications, which are built in the created package, and you can deploy onto the application server.
+
+[rochak agrawal] 09:02:57
+Mm-hmm.
+
+[rochak agrawal] 09:03:00
+Okay, so now, Jeeva, my follow-up question to you is, so for example, I go amazon.in.
+
+[rochak agrawal] 09:03:09
+Okay. Amazon.in is the website.
+
+[Jeeva Koli] 09:03:10
+Mm-hmm.
+
+[Jeeva Koli] 09:03:13
+Right.
+
+[rochak agrawal] 09:03:14
+So it is running on a web server or an application server?
+
+[Jeeva Koli] 09:03:19
+It is running on a web server.
+
+[rochak agrawal] 09:03:21
+Okay.
+
+[rochak agrawal] 09:03:24
+Uh, no.
+
+[rochak agrawal] 09:03:25
+Yes, it will be running.
+
+[Jeeva Koli] 09:03:27
+Um, might be… might be possible that, uh, see, if I'm running the web, uh, on the, uh, this website on the desktop, it might go to the web server. If I'm running that application into the mobile.
+
+[rochak agrawal] 09:03:27
+Mm-hmm.
+
+[rochak agrawal] 09:03:36
+Mm-hmm.
+
+[rochak agrawal] 09:03:38
+Mm-hmm.
+
+[Jeeva Koli] 09:03:39
+Or if I install that application in my PC also, that might go to the application server. Correct me if I'm wrong.
+
+[rochak agrawal] 09:03:44
+No. Jiva… no, no, it is not correct.
+
+[rochak agrawal] 09:03:48
+I'll explain. Anurag also raised his hand. So Anurag, yes.
+
+[Anurag Jaga] 09:03:54
+Is that a web server? I think it's designed to deliver static content.
+
+[rochak agrawal] 09:03:57
+Anurag, I'm not able to hear you.
+
+[rochak agrawal] 09:04:03
+Uh, you are very… your voice is very low.
+
+[Anurag Jaga] 09:04:09
+So, Gleeve server is designed to deliver static content.
+
+[Anurag Jaga] 09:04:13
+And the application server is designed to deliver dynamic content.
+
+[rochak agrawal] 09:04:17
+Uh, Anna, I'm sorry, we are not able to hear you.
+
+[rochak agrawal] 09:04:24
+No worries, let me explain.
+
+[rochak agrawal] 09:04:27
+So you see.
+
+[rochak agrawal] 09:04:33
+So, Amiya, what you told, uh, the flow and everything is correct, but again, uh, um…
+
+[rochak agrawal] 09:04:39
+We are missing the core point, and uh…
+
+[rochak agrawal] 09:04:43
+Jeeva, what you were saying is completely different.
+
+[rochak agrawal] 09:04:47
+First, we will explain the web server and the application server.
+
+[rochak agrawal] 09:04:51
+Okay.
+
+[rochak agrawal] 09:04:53
+Now, I have again a follow-up question.
+
+[rochak agrawal] 09:05:06
+So, Jeeva, do you know what is the, uh, static content and what is the dynamic content?
+
+[rochak agrawal] 09:05:37
+Okay, let me explain.
+
+[rochak agrawal] 09:05:40
+Audit has raised the hand.
+
+[rochak agrawal] 09:05:42
+Yes, I did.
+
+[Aditya Sharma] 09:05:45
+Uh, static is a, uh, like, fixed, fixed content, which we can, uh, see on the website, or something is a fixed, like, account, and all. And dynamic is a, like, advertisement, what we need is a, like, changeable.
+
+[rochak agrawal] 09:05:52
+Mm-hmm.
+
+[rochak agrawal] 09:06:00
+Okay, yeah, we can say that. So your static content is like your images, videos. So for example, Netflix is uploading a movie that will be static. Like the movie is not going to.
+
+[rochak agrawal] 09:06:14
+But, uh, if you see what is the dynamic content, so… dynamic content can change based on user-to-user. So, for example, if I log in to amazon.in.
+
+[rochak agrawal] 09:06:25
+And I go to my cart.
+
+[rochak agrawal] 09:06:26
+So the cart is going to display the product which I have added. But if you go log in into your amazon.in and you go to your cart, then you are going to see.
+
+[rochak agrawal] 09:06:39
+your products.
+
+[rochak agrawal] 09:06:41
+Correct, which you have added. So the cart.
+
+[rochak agrawal] 09:06:44
+is a dynamic content in Amazon.in. But if, let's say, there is a picture which is being displayed for a product, that.
+
+[rochak agrawal] 09:06:55
+Picture will be static content.
+
+[rochak agrawal] 09:06:56
+So there is two type of content on a website.
+
+[rochak agrawal] 09:07:00
+Clear. Now, why do you need the web server and why do you need the application server?
+
+[rochak agrawal] 09:07:06
+Okay, so you can see web server and application servers handle different part of an application infrastructure. A web server is designed, very important to understand, a web server is designed.
+
+[rochak agrawal] 09:07:22
+To deliver.
+
+[rochak agrawal] 09:07:25
+static web content.
+
+[rochak agrawal] 09:07:27
+Only static web content. So, if you have only static web content, so, for example, you created a website for your college. Now, on that, you will have the department list, your HOD images, your alumni images, or something, which is not going to change for anyone.
+
+[rochak agrawal] 09:07:46
+So that type of website you can deploy on a web server.
+
+[rochak agrawal] 09:07:50
+Okay, while an application server is built.
+
+[rochak agrawal] 09:07:56
+To execute business logic and generate dynamic content by communicating with the database.
+
+[rochak agrawal] 09:08:05
+It is… my cart is showing you my product, because that product will be stored somewhere in the database. You will log in, you will get your products. That's a dynamic content, right?
+
+[rochak agrawal] 09:08:28
+So.
+
+[rochak agrawal] 09:08:28
+The primary role of a web server is to deliver static web pages, while the primary role of an application server is to run application code and the logic.
+
+[rochak agrawal] 09:08:28
+Okay?
+
+[rochak agrawal] 09:08:29
+So web server handles the HTTP traffic, acts as a first. So as Amiya, you were explaining, in a three-tier architecture, mostly web server will be your first point of contact, which will take the request from the user and send it to the application server.
+
+[rochak agrawal] 09:08:45
+Okay, so act as the first point of contact for a user's web browser. Serves file quickly, grabs file directly from the local file system and return them. And it manages your certifications, TLS encryption, caching, and basic load balancing.
+
+[rochak agrawal] 09:09:02
+Basic load balancing. While your application server executes the code.
+
+[rochak agrawal] 09:09:07
+runs the backend server-side languages like Java, Python, C Sharp, or Node.js, manages the database connection.
+
+[rochak agrawal] 09:09:15
+Opens, maintain, and pull connections to safely patch or update the database info.
+
+[rochak agrawal] 09:09:21
+And ensure the security dictates user authorization, handles the session state, and controls the transaction safely.
+
+[rochak agrawal] 09:09:30
+So that is a difference between the web server and the application server. And if you want to have an example of what is the web server and what is the application server, so…
+
+[rochak agrawal] 09:09:45
+NGINX?
+
+[rochak agrawal] 09:09:47
+Apache, HTTPD.
+
+[rochak agrawal] 09:09:52
+IAS?
+
+[rochak agrawal] 09:09:54
+IBM HTTP server.
+
+[rochak agrawal] 09:09:59
+are the example of the web servers. While.
+
+[rochak agrawal] 09:10:03
+Bablogic.
+
+[rochak agrawal] 09:10:06
+Bevis Pierre.
+
+[rochak agrawal] 09:10:09
+Gibos.
+
+[rochak agrawal] 09:10:19
+And, uh, Tongkat.
+
+[rochak agrawal] 09:10:24
+These are the examples of the application server.
+
+[rochak agrawal] 09:10:31
+Yes, you are.
+
+[Jeeva Koli] 09:10:35
+Uh, so, uh, what would be the deciding point of whether I need a static content or dynamic content if, in case, uh, I wanted to launch one of the websites for university?
+
+[rochak agrawal] 09:10:45
+Mm-hmm.
+
+[Jeeva Koli] 09:10:47
+application, uh, website. So…
+
+[Jeeva Koli] 09:10:51
+What would be deciding point? Whether it is needed?
+
+[rochak agrawal] 09:10:52
+If your website does not have a dynamic content, then yeah, you can go for the web server.
+
+[Jeeva Koli] 09:10:59
+Okay, can you use some more example for the dynamic content?
+
+[rochak agrawal] 09:11:02
+See, dynamic content is like this, for example, if you go to amazon.in, right?
+
+[rochak agrawal] 09:11:07
+Uh, I am logged into my appli- uh, this, uh…
+
+[rochak agrawal] 09:11:12
+my login, correct? Now, if I go, uh, if I… if you see, click on…
+
+[Jeeva Koli] 09:11:13
+Correct.
+
+[rochak agrawal] 09:11:17
+For example, my business.
+
+[rochak agrawal] 09:11:21
+Now, it is giving me some wishlist, correct? But when you open your wishlist.
+
+[rochak agrawal] 09:11:26
+You will get a different wishlist, correct?
+
+[Jeeva Koli] 09:11:29
+Right.
+
+[rochak agrawal] 09:11:30
+So, it is generating dynamic… dynamically based on my user account.
+
+[Jeeva Koli] 09:11:36
+Correct.
+
+[rochak agrawal] 09:11:37
+Similarly, if I go to, uh…
+
+[rochak agrawal] 09:11:40
+For example, if you go to your bank website.
+
+[rochak agrawal] 09:11:45
+Now…
+
+[rochak agrawal] 09:11:46
+You might have a certain amount in your account.
+
+[Jeeva Koli] 09:11:51
+Right.
+
+[rochak agrawal] 09:11:51
+Based on your user login, it is going to show you your account balance.
+
+[rochak agrawal] 09:11:55
+Correct?
+
+[Jeeva Koli] 09:11:57
+Correct.
+
+[rochak agrawal] 09:11:58
+That is… see, dynamic content is a type of the content which is changing based on user-to-user, and I would not say user-to-user. For example, let's say if you open Geometto, for example, now.
+
+[rochak agrawal] 09:12:16
+Not sure this is so good.
+
+[rochak agrawal] 09:12:18
+From the website.
+
+[rochak agrawal] 09:12:28
+Okay, so you can see here, not only on a user base, so for example, currently I am sitting in Noida, which is part of NCR, so here you are seeing, you will see.
+
+[rochak agrawal] 09:12:41
+I click on something, and you are going to see the restaurant, which is in Noida. Good long.
+
+[rochak agrawal] 09:12:48
+NCR, correct? But if you are sitting in Bangalore, I am doing nothing, correct? I have done nothing. Uh, but based on the location, uh, it is going to show you the restaurant which is in Bangalore, if you are sitting in Bangalore, correct?
+
+[Jeeva Koli] 09:13:02
+Uh, got it, correct.
+
+[rochak agrawal] 09:13:03
+So this is that dynamic because it is being changing based on.
+
+[rochak agrawal] 09:13:09
+Some parameter.
+
+[rochak agrawal] 09:13:11
+Now, another example can be your user preference. So, for example, uh, Netflix. Now, on the Netflix, if I am watching only the comedy movies.
+
+[rochak agrawal] 09:13:21
+then in the recommendation, Netflix will show me the comedy movies, but if you are watching the sci-fi, then in your recommendation, Netflix will show you the sci-fi, correct?
+
+[rochak agrawal] 09:13:33
+That's a dynamic content.
+
+[rochak agrawal] 09:13:36
+Static is, I uploaded a website, uh, for example, if you go something… I'll… let me try to open…
+
+[rochak agrawal] 09:13:43
+any website.
+
+[rochak agrawal] 09:13:47
+Now, if you go on this website, right?
+
+[rochak agrawal] 09:13:50
+most of the thing is static. This is not going to change, this is not going to change, this is not going to change, this is not going to change, correct? So all those programs will be common for everyone.
+
+[rochak agrawal] 09:14:01
+Now, if you see who says yes to MAT online, this is all a static content. These are some HTML, CSS pages, some images, correct?
+
+[rochak agrawal] 09:14:11
+Now, this website, I can totally, uh…
+
+[rochak agrawal] 09:14:15
+Deploy on our web server.
+
+[rochak agrawal] 09:14:20
+So you got it now?
+
+[rochak agrawal] 09:14:44
+Okay. Now, I have, uh, my, um…
+
+[rochak agrawal] 09:14:49
+One more analogy I did. So web server have two works, okay? One, it is going to act as a, so if you have a static website, you can run it on a web server. Second is if you have a three tier architecture, then web server can be acting as the entry point in your application.
+
+[rochak agrawal] 09:15:07
+So, web server will take the request from the user, and forward your request.
+
+[rochak agrawal] 09:15:13
+To your application server.
+
+[rochak agrawal] 09:15:15
+Two roles. While your application server, if you have some business logic to run, then it is going to run, um…
+
+[rochak agrawal] 09:15:22
+your dorm.
+
+[rochak agrawal] 09:15:25
+It is going to run on the application server. So I'll use this analogy multiple times with respect to the application server.
+
+[rochak agrawal] 09:15:33
+So we need to run the application servers like the movie theaters. For example.
+
+[rochak agrawal] 09:15:41
+when you…
+
+[rochak agrawal] 09:15:44
+So our director, actors, acts in a movie, uh, director direct the movie. Once the movie is…
+
+[rochak agrawal] 09:15:52
+created, right? So, let's understand your movie as a software product.
+
+[rochak agrawal] 09:15:58
+Once your movie is created, then you need to release it to end user.
+
+[rochak agrawal] 09:16:03
+Correct?
+
+[rochak agrawal] 09:16:04
+Now, your end user, how you're going to release it? You need to release your software onto some server, like you release your movie onto.
+
+[rochak agrawal] 09:16:15
+in a theater. Now, a theater is going to give you.
+
+[rochak agrawal] 09:16:20
+User authentication. Only the user who is having the correct ticket can go and watch the movie. Your theater is going to provide you the runtime facilities, like in terms of the AC, in terms of the speaker.
+
+[rochak agrawal] 09:16:35
+Correct? Uh, Dolby Digital Sound, if it is a IMAX, IMAX, uh, experience. So it's a runtime capabilities it is going to provide to your application. Similarly, these application servers, uh.
+
+[rochak agrawal] 09:16:49
+they are going to provide the runtime capabilities. Uh, so for example, these application servers, if you see WebLogic, WebSphere, and JBoss, they are the J2EE application server. What does it mean? You can run only.
+
+[rochak agrawal] 09:17:06
+you can run only the Java-based application on these application servers. And Tomcat is another Spring Boot-based application also.
+
+[rochak agrawal] 09:17:14
+So because.
+
+[rochak agrawal] 09:17:16
+Your application server handles all the code, application code-related, uh, changes also, and… so that you do not need to… so, for example.
+
+[rochak agrawal] 09:17:28
+when I go to a movie theater, there is a beverage is available, there is a popcorn available, so that I do not need to bring it from my home.
+
+[rochak agrawal] 09:17:38
+Similarly, these application servers, they handle many things based on your application, like your database connections, your caching strategies, your user authentications, and multiple other things.
+
+[rochak agrawal] 09:17:50
+So, when you want to run your application logic, you need to run your application on your.
+
+[rochak agrawal] 09:17:59
+Application server. Web server is only for running the static websites, static content, or you want to act as a entry point for your end users. So your end user is going to reach out to your web server. Web server then forward your request to your application server.
+
+[rochak agrawal] 09:18:16
+Clear?
+
+[rochak agrawal] 09:18:20
+One of the most common question, uh, what is the difference between the web server and the application server? Give me, uh, which is… is the NGINX is a web server or an application server?
+
+[rochak agrawal] 09:18:32
+Something like that.
+
+[rochak agrawal] 09:18:39
+Yes, I mean…
+
+[Amiya Nanda] 09:18:42
+Ah, yes, Roshak. So, uh, in, uh, web server, we can see the dynamic content of the application, right? In web server.
+
+[rochak agrawal] 09:18:48
+Yeah, yeah. See, we can see if you are using a three tier architecture. So web server will take the request from your user. It will forward the request to your application server. Application server send the response to the web server. Web server will.
+
+[Amiya Nanda] 09:18:53
+Yes.
+
+[Amiya Nanda] 09:18:56
+Yeah, okay.
+
+[rochak agrawal] 09:19:04
+send the response to the user. So, when you say, uh, the response you are seeing on the web server, web server is act… can act as an intermediary to sending the request and response.
+
+[Amiya Nanda] 09:19:07
+Okay, so, uh…
+
+[Amiya Nanda] 09:19:18
+Okay, so, ah, in, ah.
+
+[Amiya Nanda] 09:19:22
+Ah, so the application, like, ah, banking application, let's say, which is, we need to log in.
+
+[rochak agrawal] 09:19:25
+Mm-hmm.
+
+[rochak agrawal] 09:19:28
+Mm-hmm.
+
+[Amiya Nanda] 09:19:29
+Okay. After that, we can see the application page. Okay. So, uh, once we launch the URL, so the request will go to the web server, right?
+
+[rochak agrawal] 09:19:32
+Got it.
+
+[rochak agrawal] 09:19:36
+Mm-hmm.
+
+[rochak agrawal] 09:19:40
+Correct. It can be, if it is using the 3DR architecture, then yes.
+
+[Amiya Nanda] 09:19:41
+And the static page of login page.
+
+[Amiya Nanda] 09:19:45
+Ah, yeah, yeah. And the login page will be the dynamic content, where we'll use to give the username and password. That will be the static.
+
+[rochak agrawal] 09:19:50
+Got it.
+
+[rochak agrawal] 09:19:55
+Got it.
+
+[Amiya Nanda] 09:19:57
+Then, after using the… after entering our username and password, the request will go to the application, and after that, it will go to the application server.
+
+[rochak agrawal] 09:20:06
+Hmm.
+
+[Amiya Nanda] 09:20:07
+Right.
+
+[rochak agrawal] 09:20:08
+Got it.
+
+[Amiya Nanda] 09:20:09
+And, uh, while, uh, we'll, uh, uh, entering username or password, it will log in in the access log in the web server, right?
+
+[rochak agrawal] 09:20:17
+Correct see your request will keep if you're using both web server as a and the application server it is going to be interacting between both servers so wherever it is needed to go. So for example.
+
+[Amiya Nanda] 09:20:23
+Yes.
+
+[rochak agrawal] 09:20:33
+what you are thinking. It is, uh… so when you are go to amazon.in.
+
+[rochak agrawal] 09:20:38
+Do you think it is a one application?
+
+[rochak agrawal] 09:20:45
+No. Nowadays, if you, if you heard about, uh, uh, organization uses the microservices-based architecture, correct? You heard about the term microservices?
+
+[Amiya Nanda] 09:20:45
+No.
+
+[Amiya Nanda] 09:20:54
+Yes, I heard. Yes.
+
+[rochak agrawal] 09:20:57
+Right. So, when you say on Amazon.in, if I'm not wrong, uh…
+
+[rochak agrawal] 09:21:03
+It is no less than…
+
+[rochak agrawal] 09:21:06
+Almost 500 applications working together.
+
+[Amiya Nanda] 09:21:10
+Oh, it did. Okay. Okay.
+
+[rochak agrawal] 09:21:10
+Yes. Okay, I'll show you a very small website.
+
+[rochak agrawal] 09:21:18
+So this is a very…
+
+[rochak agrawal] 09:21:19
+I'm not sure if it is open from here or not. Yeah, it is opening. So if you see, this is a very…
+
+[rochak agrawal] 09:21:30
+Small website, like…
+
+[rochak agrawal] 09:21:32
+Similar to over here, where you can just open, uh, create, uh, purchase phones and Wi-Fi and other stuff. Now, this website is running…
+
+[Amiya Nanda] 09:21:40
+Okay.
+
+[rochak agrawal] 09:21:44
+Services.
+
+[rochak agrawal] 09:21:45
+And every microservices is a different application in itself.
+
+[rochak agrawal] 09:21:49
+So, these microservices are stitched in a UI. So, on the UI, you are thinking that, uh…
+
+[Amiya Nanda] 09:21:49
+Okay.
+
+[rochak agrawal] 09:21:56
+You are… you are using the same… single application, correct? But…
+
+[rochak agrawal] 09:22:01
+Every call, so for example, when I'm clicking on pay bill.
+
+[rochak agrawal] 09:22:05
+In the backend, the call is going to pay microservices.
+
+[rochak agrawal] 09:22:11
+Okay, so this…
+
+[rochak agrawal] 09:22:13
+What you are asking, Amiya, is it will totally depend on how your application is stitched, but to answer your question, yes, your request, it is not like that your web server will only pass the request to the application server, and the work of an application server will be over.
+
+[rochak agrawal] 09:22:29
+No, it will keep switching between. So when, let's say, you need to serve a…
+
+[rochak agrawal] 09:22:34
+Image.
+
+[rochak agrawal] 09:22:35
+After going, you've done the login, right? And after that, you go and click on gallery, for example. Many websites have this gallery option available. If you click on a gallery, which is going to serve you the images, again, the request will be served from the web server.
+
+[rochak agrawal] 09:22:55
+Okay.
+
+[PaperLive Learning] 09:23:03
+Uh, hello everyone, sorry for the interruption. So, I'm going to launch the poll right now, so I request everyone to please submit the poll. We request everyone to please participate in the poll, because the poll is very important.
+
+[PaperLive Learning] 09:23:15
+Thank you.
+
+[rochak agrawal] 09:23:19
+Yes, you are.
+
+[Jeeva Koli] 09:23:21
+Hello?
+
+[rochak agrawal] 09:23:22
+Yes, you may.
+
+[Jeeva Koli] 09:23:26
+Am I audible?
+
+[rochak agrawal] 09:23:27
+Yeah, yeah, you are audible.
+
+[rochak agrawal] 09:23:33
+Jeeva, you are audible. I can hear you.
+
+[Jeeva Koli] 09:23:36
+Go check your mouth.
+
+[rochak agrawal] 09:23:38
+Yes, yes, I can hear you, Yuval.
+
+[rochak agrawal] 09:23:55
+Jeeva, I can hear you, I'm not sure though.
+
+[rochak agrawal] 09:24:11
+So, this is about the web server and the application server, okay? Um, now, uh, we don't have time.
+
+[rochak agrawal] 09:24:20
+Givanna has
+
+[rochak agrawal] 09:24:22
+Yes, Jivna.
+
+[Jeevana D V] 09:24:26
+Can you explain the WebBrand Application Server again?
+
+[rochak agrawal] 09:24:29
+Sure. See, we discussed there is a two type of content. One is a static content, one is a dynamic content. Static content is like your images, videos, PDF file, which is going to be same for every user. While the dynamic content can be changed on some parameter, like we discussed.
+
+[Jeevana D V] 09:24:44
+India.
+
+[rochak agrawal] 09:24:48
+If you are opening the Zomato app without doing anything, it will pick up your location and it is going to show you the nearby restaurant. That's a dynamic content, right? So web server is, we are going to use the web server when we have only the static content to show.
+
+[Jeevana D V] 09:24:58
+Yes.
+
+[rochak agrawal] 09:25:06
+It can only host the static content, okay? While application server we are going to use when we want to serve the dynamic content to our application, right? And so application server will provide you some programming and runtime capabilities for our applications.
+
+[Jeevana D V] 09:25:08
+Yes.
+
+[rochak agrawal] 09:25:24
+Like database management, cache management, user authentication, and other type of runtime facilities to your applications.
+
+[Jeevana D V] 09:25:29
+Hmm.
+
+[Jeevana D V] 09:25:36
+Okay, okay. Uh, but as you mentioned, uh, now Nginx or HTTPD, we usually differentiate them as, like, we'll be using for our web server and application servers, right? How do we differentiate them?
+
+[rochak agrawal] 09:25:38
+Okay?
+
+[rochak agrawal] 09:25:43
+Mm-hmm.
+
+[rochak agrawal] 09:25:46
+Web server.
+
+[rochak agrawal] 09:25:49
+Correct. Yeah. So these, uh, these are the web servers.
+
+[rochak agrawal] 09:25:55
+So these are the web servers.
+
+[rochak agrawal] 09:25:57
+And these are the example servers. So we have taken only few. There are other web servers and application servers also, but these are the most commonly used web and application servers.
+
+[rochak agrawal] 09:26:10
+Okay?
+
+[Jeevana D V] 09:26:13
+Thank you.
+
+[rochak agrawal] 09:26:17
+Uh, yes, Shimon?
+
+[Shivam Malusare] 09:26:22
+Yeah, hello, sir.
+
+[rochak agrawal] 09:26:25
+Hello?
+
+[Shivam Malusare] 09:26:26
+Yeah, so, uh, like, is it good to say that, uh, the application servers come into picture whenever there is some kind of, uh, user interaction? Means not all the time, but, uh…
+
+[Shivam Malusare] 09:26:38
+Most of the times.
+
+[rochak agrawal] 09:26:41
+Uh, you can say that… see, in the end, whenever you are accessing any of the website, there will always be the user interaction.
+
+[rochak agrawal] 09:26:51
+Thanks.
+
+[Shivam Malusare] 09:26:51
+Yeah, correct.
+
+[rochak agrawal] 09:26:52
+Even if I'm going to a, uh, for example, we go to this…
+
+[rochak agrawal] 09:26:57
+MIT.com website.
+
+[Shivam Malusare] 09:27:00
+Hmm. Okay.
+
+[rochak agrawal] 09:27:01
+Then, then also, as a user, I am going to this website, correct?
+
+[Shivam Malusare] 09:27:05
+Correct.
+
+[rochak agrawal] 09:27:07
+So, user interaction will always be there.
+
+[Shivam Malusare] 09:27:11
+Okay.
+
+[rochak agrawal] 09:27:12
+Okay?
+
+[Shivam Malusare] 09:27:15
+Got it.
+
+[rochak agrawal] 09:27:17
+Okay, cool, guys. Uh, so tomorrow, uh, what we are going to cover is, uh, we will start, uh, the difference between the forward proxy and reverse proxy, which is very, uh, close to, uh.
+
+[Shivam Malusare] 09:27:19
+Yeah, thank you.
+
+[rochak agrawal] 09:27:29
+the web server, so our web server can act as a forward proxy as well as a reverse proxy. We'll understand both of them. And then, our focus tomorrow will be on the OSI networking model, which is going to help you.
+
+[rochak agrawal] 09:27:46
+Very much in going… when we will do the troubleshooting, because
+
