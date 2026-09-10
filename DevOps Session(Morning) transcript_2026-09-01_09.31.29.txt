@@ -1,0 +1,1401 @@
+[rochak agrawal] 08:46:14
+No, I have not enabled it, it is… when I click on the transcript button, it is getting generated for me.
+
+[Jeevana D V] 08:46:16
+Yeah, uh, for me, right, I don't have that option until you click on it.
+
+[rochak agrawal] 08:46:19
+Okay.
+
+[rochak agrawal] 08:46:20
+Ah, okay, okay.
+
+[Jeevana D V] 08:46:21
+Previously, I was seeing the option to request you in the other links, but with the new link, maybe from, yeah, Monday, I'm not able to see that.
+
+[rochak agrawal] 08:46:25
+Hmm.
+
+[rochak agrawal] 08:46:33
+Understood. Okay, so this is, I think, a new webinar for us as well, so in a day or so, we will be habitual, or accustomed, I would say.
+
+[rochak agrawal] 08:46:41
+So…
+
+[Jeevana D V] 08:46:41
+Hmm.
+
+[rochak agrawal] 08:46:42
+Yeah, I'll take care of that. In the starting only, I'll click on the transcript so that it will enable… it is going to be enabled for everyone. Okay?
+
+[Jeevana D V] 08:46:51
+Okay, yeah, okay, thank you.
+
+[rochak agrawal] 08:46:59
+So now, I have, uh…
+
+[rochak agrawal] 08:47:02
+We have covered the graph. Now graph, as I said, it is going to find the pattern in a file.
+
+[rochak agrawal] 08:47:09
+Now, you say, okay, finding a pattern is one thing. Let's say you want to find a file itself.
+
+[rochak agrawal] 08:47:16
+Then we have this another command.
+
+[rochak agrawal] 08:47:19
+Called the find. Okay. Now, uh, find is, uh, for example.
+
+[rochak agrawal] 08:47:26
+Again, FIND has, uh, will have multiple options, so you can say, let, let me, uh.
+
+[rochak agrawal] 08:47:34
+Create the syntax for it. Now find all the text file.
+
+[rochak agrawal] 08:47:42
+In your home directory.
+
+[rochak agrawal] 08:47:54
+Okay, so I'll take this command.
+
+[rochak agrawal] 08:48:00
+Leah?
+
+[rochak agrawal] 08:48:04
+Now, let's say, instead of this, I am replacing this.
+
+[rochak agrawal] 08:48:11
+Boom.
+
+[rochak agrawal] 08:48:11
+Okay, so now this command is doing. So I'm saying, find…
+
+[rochak agrawal] 08:48:17
+the file inside this home directory. What is the type?
+
+[rochak agrawal] 08:48:22
+they should end with the .txt extension, okay? Type is file, and the name should be something.txt. Now, if you run this.
+
+[rochak agrawal] 08:48:33
+You can see, I am going to find two files.
+
+[rochak agrawal] 08:48:37
+Now, same thing we can do, for example, let's say I can do it, I want to find some log.
+
+[rochak agrawal] 08:48:46
+And I'll say route.
+
+[rochak agrawal] 08:48:49
+So it is going to find… so you can see, you are getting permission denied, because I'm running this as…
+
+[rochak agrawal] 08:48:56
+normal route, but here you can see in the bear.log, you have the cloud init log, you have the cloud init output log, you have a DNF log.
+
+[rochak agrawal] 08:49:06
+Multiple things, right? So, find is a command which is going to find the files for you. While grab is a command which is going to find the pattern within the file for you. Okay? Now, very interesting…
+
+[rochak agrawal] 08:49:20
+Point with the file is…
+
+[rochak agrawal] 08:49:24
+Now we have multiple options with the find command again.
+
+[rochak agrawal] 08:49:32
+Just give me a second.
+
+[rochak agrawal] 08:50:04
+Yeah? Okay. So, Biba Singh, um…
+
+[rochak agrawal] 08:50:08
+So this is where I want to find it. You can give any directory wherever you want to find it. And then, um, with the type of file. So it says type, and then name.
+
+[rochak agrawal] 08:50:20
+Which is start.log, right? Now, again, we can use, uh…
+
+[rochak agrawal] 08:50:26
+Something with the name, uh, with the type of the file, uh, or…
+
+[rochak agrawal] 08:50:34
+Type with the name.
+
+[rochak agrawal] 08:50:35
+File modified in the last day, for example, so…
+
+[rochak agrawal] 08:50:40
+we have created the server, so we are going to find all the files. So let's say, uh, I want to find…
+
+[rochak agrawal] 08:50:50
+Duh.
+
+[rochak agrawal] 08:50:55
+most heavy files.
+
+[rochak agrawal] 08:50:58
+In your directory.
+
+[rochak agrawal] 08:51:11
+Give me only final.
+
+[rochak agrawal] 08:51:25
+It's not giving me a simple command.
+
+[rochak agrawal] 08:51:42
+So we can search, find the file with the name, with the size also, okay? Search by the file size, and then we can search for the modification time. We can search for the username.
+
+[rochak agrawal] 08:51:56
+So, um, we can very easily find the files, um, which belong to a particular user. We can find for the file which belong to, um.
+
+[rochak agrawal] 08:52:07
+Again, um…
+
+[rochak agrawal] 08:52:09
+when these files are modified, we can belong to… so, for example, I go, and here I will search a file, let's say, instead of saying.
+
+[rochak agrawal] 08:52:20
+Type B means directly. Now, I'm not searching for the file, and I will say ETC, for example.
+
+[rochak agrawal] 08:52:32
+So it is finding everywhere, and here, you see?
+
+[rochak agrawal] 08:52:36
+This it has find there here.
+
+[rochak agrawal] 08:52:39
+Here.
+
+[rochak agrawal] 08:52:42
+Right? So, you can see, multiple… at multiple places, we are getting permission denied, because we have given this as a root user. So, you can see it here, uh, we can not only file.
+
+[rochak agrawal] 08:52:55
+Find the file, we can find the directory, and also, not only with the name, with the size also, we can find it.
+
+[rochak agrawal] 08:53:02
+Right? So…
+
+[rochak agrawal] 08:53:04
+This is about the find and grab.
+
+[rochak agrawal] 08:53:11
+process, I will take a little later.
+
+[rochak agrawal] 08:53:16
+Okay.
+
+[rochak agrawal] 08:53:19
+Uh, clear till now, any questions? So, we have some questions.
+
+[rochak agrawal] 08:53:26
+Just a second.
+
+[rochak agrawal] 08:53:35
+Yes, Pooja?
+
+[rochak agrawal] 08:53:54
+It's this.
+
+[Shreyas Ks] 08:53:58
+Did we get any questions on these commands, sir?
+
+[Shreyas Ks] 08:54:02
+Like, interview questions?
+
+[rochak agrawal] 08:54:04
+See, generally, uh, in the interviews, uh, I, I, as I keep, uh, explaining the interview question in between, so most of the time, you will not get that direct question, uh, on the interviews in, uh, Linux, uh, because, uh.
+
+[rochak agrawal] 08:54:20
+Some of the questions we discussed… see, most of the questions you are going to get related to the permissions, which we are yet to cover. So, I'll keep telling you about the interview question, maybe we'll get it, okay?
+
+[rochak agrawal] 08:54:37
+Pooja, you have a question?
+
+[rochak agrawal] 08:54:50
+Yes, Adif.
+
+[arif] 08:55:08
+Yeah, Rochak, so what is that which Python 3 command does?
+
+[rochak agrawal] 08:55:13
+Yeah, I'm coming to that. So, for example.
+
+[rochak agrawal] 08:55:22
+It is like, um…
+
+[rochak agrawal] 08:55:24
+When you install something on your system, so for example.
+
+[rochak agrawal] 08:55:28
+Let's say which Java if I run.
+
+[rochak agrawal] 08:55:32
+So it says, uh…
+
+[rochak agrawal] 08:55:35
+no Java in here, because Java is not installed on my system. But if you run which Python 3.
+
+[rochak agrawal] 08:55:45
+It says user bin python. So basically which command, okay, which is, uh, uh, which command, uh, is going to tell you the software where is its executable is there.
+
+[rochak agrawal] 08:56:00
+That's it. So, it is only going to tell about the software which is installed on your system.
+
+[arif] 08:56:06
+Okay, only for the software.
+
+[rochak agrawal] 08:56:07
+only for the software which is installed. Now, apart from the which, there is a command called who I… who also… so it says…
+
+[rochak agrawal] 08:56:15
+Who is currently logged on onto your system from when? And then there is who am I?
+
+[rochak agrawal] 08:56:21
+So it will just give you the name of the user which you are currently logged in as.
+
+[rochak agrawal] 08:56:26
+Multiple commands are there in this.
+
+[arif] 08:56:28
+Version also we can version also we can see software version.
+
+[rochak agrawal] 08:56:32
+Yes, yes. So there is a command called uname-a.
+
+[rochak agrawal] 08:56:36
+which is going to tell you all the system related information. So it says Linux you are using then this is the batch number Amazon. So this complete information GNU Linux you are using.
+
+[rochak agrawal] 08:56:54
+Okay.
+
+[arif] 08:56:54
+So, uh, there are no show commands in Linux.
+
+[rochak agrawal] 08:56:57
+What do we mean by shortcomings?
+
+[arif] 08:57:00
+Uh, because, uh, let's see, this is the proper, uh, Linux server, but what happens is some of the networking devices are also running on Linux.
+
+[rochak agrawal] 08:57:04
+Hmm?
+
+[rochak agrawal] 08:57:08
+Mm-hmm, correct.
+
+[arif] 08:57:09
+So, on those devices, we are having those such commands, like, show interfaces, show everything, like… So, this is a specific…
+
+[rochak agrawal] 08:57:20
+Oh, okay, understood. See, um…
+
+[rochak agrawal] 08:57:23
+First, uh, Arif, uh, what you're asking is, uh.
+
+[rochak agrawal] 08:57:29
+If you are asking about the particular command, so that may be related to that device. For example, uh, right now, if you would not be able to run Terraform.
+
+[rochak agrawal] 08:57:40
+Okay? Because Terraform is not installed on my system right now. You would not be able to run kubectl.
+
+[rochak agrawal] 08:57:48
+Right? Because again, kubectl and terraform are the command which is specific to Terraform and Kubernetes. Once we will install Terraform and Kubernetes, I would be able to run those commands.
+
+[rochak agrawal] 08:58:02
+Right? But if you are asking any particular networking interface-related commands, so we have commands like ifconfig.
+
+[rochak agrawal] 08:58:11
+Which is going to show you the interface, network interface, IP addresses, and everything.
+
+[rochak agrawal] 08:58:16
+You can see.
+
+[rochak agrawal] 08:58:19
+The local loopback address.
+
+[rochak agrawal] 08:58:24
+So, there was, I think, uh, there is some show command is there.
+
+[rochak agrawal] 08:58:31
+show interface, uh, command in Linux.
+
+[rochak agrawal] 08:58:34
+There's something like that is there.
+
+[rochak agrawal] 08:58:38
+So, IP link is there, IP, uh, check… So, this command, if you're asking, IP address, so…
+
+[arif] 08:58:49
+Uh, no, I think that starts with show only, but I think this…
+
+[rochak agrawal] 08:58:52
+So then, it might be, uh, uh, with the…
+
+[rochak agrawal] 08:58:56
+So ETH0 does not exist, but that might be specific to that particular device.
+
+[arif] 08:58:57
+Specific to that.
+
+[arif] 08:59:06
+So that's the Linux admin job, right? What to do?
+
+[rochak agrawal] 08:59:08
+That's a Linux admin, or a networking admin, John. So, for example, even… you would not run this IEF config, or IP address show, dev, AT0, um…
+
+[rochak agrawal] 08:59:18
+Right, so it is going to give you all the networking-related details, like what is the IP, uh…
+
+[rochak agrawal] 08:59:25
+IP, MAC address, multiple things. So, yes, as a DevOps engineer, you would not, uh, dig down to these details altogether.
+
+[rochak agrawal] 08:59:34
+Because, see, even if it is AWS networking, so then AWS networking, I can manage it from console. Like, I need to attach an interface, I need to delete an interface.
+
+[arif] 08:59:34
+Okay.
+
+[rochak agrawal] 08:59:43
+You can do that.
+
+[rochak agrawal] 08:59:45
+Right?
+
+[arif] 08:59:47
+Mm-hmm. Okay.
+
+[arif] 08:59:50
+So, uh, actually, Ruchak, so can you tell me about this, what is Shell, uh, and this Bash?
+
+[rochak agrawal] 08:59:58
+Okay, so see, um, like in every operating system, what is going to happen?
+
+[rochak agrawal] 09:00:09
+So you… in the end, it is all about the hardware, right?
+
+[rochak agrawal] 09:00:15
+See, all our instructions which we are giving, it is going to hardware.
+
+[rochak agrawal] 09:00:21
+Now, in Linux, how does it happen?
+
+[rochak agrawal] 09:00:25
+So, out of the hardware, there is a layer called Cardinal.
+
+[rochak agrawal] 09:00:34
+Okay? And out of the kernel, there is a layer called shell.
+
+[rochak agrawal] 09:00:43
+Then, in the outer layer, you have your programs, like beer running, your CPE.
+
+[rochak agrawal] 09:00:49
+your MB
+
+[rochak agrawal] 09:00:51
+your PWD.
+
+[rochak agrawal] 09:00:54
+et cetera, et cetera, right? Whatever the commands we have seen, find.
+
+[rochak agrawal] 09:01:02
+Grab.
+
+[rochak agrawal] 09:01:05
+And then, finally, you will have your users.
+
+[rochak agrawal] 09:01:09
+See, Linux is a multi-user system. Windows is also, but Linux, since we are talking about Linux, so Linux is your multi-user system. On your one server, you can have your multiple users.
+
+[rochak agrawal] 09:01:22
+Okay, so your users, they run…
+
+[rochak agrawal] 09:01:26
+So…
+
+[rochak agrawal] 09:01:28
+These are the system programs, CP, MB, which is already there. Then you can create your application program. Let's say I install Terraform also.
+
+[rochak agrawal] 09:01:37
+Correct?
+
+[rochak agrawal] 09:01:38
+Now, kernel is a layer which interacts with the hardware.
+
+[rochak agrawal] 09:01:44
+Okay, while the shell is a layer, which is a bridge between your kernel.
+
+[rochak agrawal] 09:01:51
+and your programs. So whenever you give any instructions, you give the instructions, for example, I say CP, uh, copy 1, 2, 3. So it goes to the shell, and shell passes that, uh.
+
+[rochak agrawal] 09:02:07
+instruction to the kernel, and kernel passes it to the hardware. Now, if I run it here also.
+
+[rochak agrawal] 09:02:16
+Which shall…
+
+[rochak agrawal] 09:02:17
+So you see?
+
+[rochak agrawal] 09:02:22
+There is no shell coming.
+
+[rochak agrawal] 09:02:25
+You see, user win bash. Now, in Linux, there are multiple types of shell is there.
+
+[rochak agrawal] 09:02:35
+So, you, you clear till now?
+
+[arif] 09:02:37
+Yeah, yeah.
+
+[rochak agrawal] 09:02:38
+Now, in Linux, there is multiple type of shells is there. Bash is there.
+
+[rochak agrawal] 09:02:45
+Uh, Gordon Shell is there.
+
+[rochak agrawal] 09:02:54
+JSH cell is there.
+
+[rochak agrawal] 09:02:57
+SheShare is there. Okay, there are more also. I'm just recollecting some of the names here. Now.
+
+[rochak agrawal] 09:03:05
+Most of the time, 99% of the time, you are going to work on this.
+
+[rochak agrawal] 09:03:10
+Okay, with this cell. Now, these are for very specific users. So, for example, if you are doing the assembly line programming, then you use the con shell or Jeda cells. If you're working on a C programming, then you are going to use the C shell.
+
+[rochak agrawal] 09:03:25
+But for our daily common uses, we are going to rely on the bash shell. Bash is your common shell, which you are going to use it. So that is what a shell does. So the main responsibility of a shell to.
+
+[rochak agrawal] 09:03:43
+act as a bridge between your user's commands and your kernel. Because kernel, see, we are not getting a visibility of a hardware, right? Your kernel is talking to the hardware. So it's a shell's responsibility to pass those instructions to the kernel.
+
+[rochak agrawal] 09:04:02
+Okay?
+
+[arif] 09:04:05
+Angel, one question. So, C-Shell is only, uh, like, if I have a program in C language, then only I can use C-Shell. I cannot use Bash. Is it true?
+
+[rochak agrawal] 09:04:06
+Mm-hmm.
+
+[rochak agrawal] 09:04:15
+No, you see, yes, uh…
+
+[rochak agrawal] 09:04:18
+Again, um, like…
+
+[rochak agrawal] 09:04:21
+See, most of these shell are common in nature. All the basic command like we are doing, you can run in every shell. But there will be certain functionality which you require. For example, advanced garbage collection will not be there in a bash shell, but that will be there in a shell.
+
+[rochak agrawal] 09:04:39
+So it is recommended that if you are doing the C programming, then instead of using the bash shell, you use the C shell. It does not mean that you are not going to run your C program with the bash shell. You can run it.
+
+[rochak agrawal] 09:04:50
+But maybe there may be some of the features which might not be available, which you need. So it is recommended that you use the shell.
+
+[arif] 09:04:58
+Okay, so most of the commands will be the same for all the shots. Okay.
+
+[rochak agrawal] 09:05:01
+Most of the command will be the same.
+
+[rochak agrawal] 09:05:03
+Okay. Yeah.
+
+[arif] 09:05:04
+Noted.
+
+[rochak agrawal] 09:05:09
+So, and when you will be writing the shell script, so you will, we will see that the shell script.
+
+[rochak agrawal] 09:05:20
+The very first line, we will write something like.
+
+[rochak agrawal] 09:05:28
+Uh, hash, exclamation, slash, bin.
+
+[rochak agrawal] 09:05:32
+slash bash.
+
+[rochak agrawal] 09:05:34
+Okay, this is like, um, something like this, we will write the very first line to our shell script, which is going to tell, uh, that, uh.
+
+[rochak agrawal] 09:05:46
+Use the bash script to run that shell, uh, run that shell script. Okay. This is called the shebang line. Uh, so this is again, if you do not give this line also, the script is going to run fine. But again, as.
+
+[rochak agrawal] 09:06:01
+as a best practice, it is always good to give this as a shebang line, uh, so that your shell knows, uh, sorry, your script knows which shell it is going to use. And, um, again, uh.
+
+[rochak agrawal] 09:06:16
+In one system, you can have multiple shells. On the same server, you can have a batch shell, you can have a shell.
+
+[rochak agrawal] 09:06:22
+And you can use it, uh, use these both shells for the different, different purposes.
+
+[rochak agrawal] 09:06:32
+Okay?
+
+[arif] 09:06:37
+Okay.
+
+[rochak agrawal] 09:06:38
+Yep.
+
+[rochak agrawal] 09:06:40
+Now, before I want to go to processes, uh…
+
+[rochak agrawal] 09:06:46
+Yeah. Now, this is very important. I'm not sure if we have the time or not. This is very important. You will get multiple interview questions also on that.
+
+[rochak agrawal] 09:06:58
+If you go here, anywhere, for example, right now, I am here.
+
+[rochak agrawal] 09:07:04
+I… you create a file, you are going to see this.
+
+[rochak agrawal] 09:07:08
+Okay.
+
+[rochak agrawal] 09:07:12
+Now, if I copy this.
+
+[rochak agrawal] 09:07:22
+So you can see it here.
+
+[rochak agrawal] 09:07:24
+These are the.
+
+[rochak agrawal] 09:07:26
+Permissions. So we have 3, 3, 3. Total 9 permissions are there divided into 3, 3, 3.
+
+[rochak agrawal] 09:07:35
+So first three permissions are for user.
+
+[rochak agrawal] 09:07:40
+Okay.
+
+[rochak agrawal] 09:07:42
+Now, understand this very carefully, this is very critical.
+
+[rochak agrawal] 09:07:46
+First three permissions. So first we will have a three type of permission. Read.
+
+[rochak agrawal] 09:07:52
+Right?
+
+[rochak agrawal] 09:07:54
+X.
+
+[rochak agrawal] 09:07:55
+What does it mean?
+
+[rochak agrawal] 09:07:58
+You will have 3 types of permissions.
+
+[rochak agrawal] 09:08:01
+Read.
+
+[rochak agrawal] 09:08:04
+Right?
+
+[rochak agrawal] 09:08:06
+And execute.
+
+[rochak agrawal] 09:08:07
+Okay? It means that you have a read permission on it, you have a write permission on it, and you have a execute permission on it. Means you can execute it.
+
+[rochak agrawal] 09:08:17
+Similarly, you divide those permissions at 3 levels. So, you can see RW, then R… and R… So, you define your permission at 3 levels.
+
+[rochak agrawal] 09:08:28
+User.
+
+[rochak agrawal] 09:08:30
+Group.
+
+[rochak agrawal] 09:08:32
+and others.
+
+[rochak agrawal] 09:08:34
+Okay, user means?
+
+[rochak agrawal] 09:08:37
+Owner of the file?
+
+[rochak agrawal] 09:08:45
+Group means?
+
+[rochak agrawal] 09:08:47
+Permission of a group for which owner is part of the group.
+
+[rochak agrawal] 09:08:55
+The group?
+
+[rochak agrawal] 09:08:59
+File owner is part of.
+
+[rochak agrawal] 09:09:05
+And others means everyone else.
+
+[rochak agrawal] 09:09:12
+Okay, and that is where… how would you know who is the owner of the file?
+
+[rochak agrawal] 09:09:18
+That is where this is the owner.
+
+[rochak agrawal] 09:09:20
+And this is a group.
+
+[rochak agrawal] 09:09:23
+Elliot till now?
+
+[arif] 09:09:33
+So, uh, can you repeat this? This EC2 user is a user, and the other one is the group.
+
+[rochak agrawal] 09:09:38
+Other one is a group. So in this case, the name of user and the group is same, but you will have something, let's say, Rochak is a user and developer is a group, for example.
+
+[arif] 09:09:47
+So, have we created this group, EC2 user group?
+
+[rochak agrawal] 09:09:48
+Okay.
+
+[rochak agrawal] 09:09:50
+This is by default created when you are… when this machine is created. So this is… I have not created this user also, correct?
+
+[rochak agrawal] 09:09:58
+So we will see how we are going to create the user and the group, but this user and the group is by default created alongside with when you created the machine.
+
+[rochak agrawal] 09:10:05
+So this is, you can say, the default user.
+
+[arif] 09:10:08
+Okay.
+
+[rochak agrawal] 09:10:09
+Okay, so this v.txt, the owner of this file is EC2 user, and the group name is also the EC2 user.
+
+[rochak agrawal] 09:10:19
+Okay, and then these permissions, so, uh…
+
+[rochak agrawal] 09:10:23
+this has read-write, but even if you say owner also does not have the executive permission. So, for example, uh, let's say I'm writing a very.
+
+[rochak agrawal] 09:10:33
+Very simple script. So VI script.sh.
+
+[rochak agrawal] 09:10:41
+Don't worry about the BI or the script. I'll just write PWD.
+
+[rochak agrawal] 09:10:45
+Nothing is.
+
+[rochak agrawal] 09:10:47
+Now, if you try to execute the script.
+
+[rochak agrawal] 09:10:57
+You'll see, permission denied, even though.
+
+[rochak agrawal] 09:11:00
+You are the owner of this script.
+
+[rochak agrawal] 09:11:04
+Why permission denied? Because you do not have the executable permissions, correct?
+
+[rochak agrawal] 09:11:12
+So you have a read permission, you have a write permission, but you cannot execute it.
+
+[rochak agrawal] 09:11:18
+Till here till now?
+
+[arif] 09:11:24
+So this is the by default nature, right? If we create…
+
+[rochak agrawal] 09:11:26
+This is by default, yeah. You can change it also, but this is by default.
+
+[arif] 09:11:30
+Okay.
+
+[rochak agrawal] 09:11:30
+Okay. Now, we can change the permission also. How we can change the permission? So, we are clear now, right?
+
+[rochak agrawal] 09:11:39
+Yeah. So, uh, now this is a default.
+
+[rochak agrawal] 09:11:44
+nature, that when you are creating a file, these permissions will be given to you. Okay? Whenever you are creating a file, these… these are the default permissions which will be given to you.
+
+[rochak agrawal] 09:11:54
+Now, I can change it, we will see that also, but as of now, you understand it's a default permission given. Okay, now, when you… there are two ways in which we are going to define this permission.
+
+[rochak agrawal] 09:12:05
+Okay. So when you see R.
+
+[rochak agrawal] 09:12:09
+W…
+
+[rochak agrawal] 09:12:10
+X.
+
+[rochak agrawal] 09:12:12
+There are three permissions out there.
+
+[rochak agrawal] 09:12:14
+So…
+
+[rochak agrawal] 09:12:17
+They are denoted by something like 4.
+
+[rochak agrawal] 09:12:21
+Two, one.
+
+[rochak agrawal] 09:12:23
+2 to the power 0?
+
+[rochak agrawal] 09:12:25
+2 to the power 1.
+
+[rochak agrawal] 09:12:28
+2 to the power.
+
+[rochak agrawal] 09:12:31
+Okay, so the total number sum of them is seven.
+
+[rochak agrawal] 09:12:35
+So if someone has a permission, every permission, read, write, X, it will have a 7 permission. But if someone has a read plus write, then it will have a 6 permission, correct?
+
+[rochak agrawal] 09:12:49
+The sum. But if someone has the read plus execute, they will have a file permission.
+
+[rochak agrawal] 09:12:54
+So we can change the permission by giving these number. So if I go now changing the command of changing the permission is CH mode.
+
+[rochak agrawal] 09:13:05
+So, if I go, now, I will give…
+
+[rochak agrawal] 09:13:08
+So, they already have a 4 permission. So, currently, my permission is.
+
+[rochak agrawal] 09:13:14
+644. Okay? 644, you understood?
+
+[rochak agrawal] 09:13:22
+Because my, uh…
+
+[rochak agrawal] 09:13:24
+User is read-write, so 6. Read plus write, 6.
+
+[rochak agrawal] 09:13:29
+Group is read, which is 4.
+
+[rochak agrawal] 09:13:33
+Others is also lead, which is 4. So, our current permission is 644.
+
+[rochak agrawal] 09:13:40
+Clear?
+
+[rochak agrawal] 09:13:44
+Now, if I want to give executable permission also, so I need to give user 7, and the remaining will remain the same. So, I need to change it to 744.
+
+[rochak agrawal] 09:13:55
+Very simply, I will just go… it is very simple. CH mode 744.
+
+[rochak agrawal] 09:14:02
+Scripted.sh.
+
+[rochak agrawal] 09:14:05
+Now, if you see the permissions.
+
+[rochak agrawal] 09:14:07
+You can see, I have an executable permission also.
+
+[rochak agrawal] 09:14:11
+Can you see?
+
+[rochak agrawal] 09:14:15
+So if I run it this time, it is going to run it, which is I just given a PWD. So it is showing me the present working directory.
+
+[rochak agrawal] 09:14:24
+So 4, 2, 1, 7, if I give, let's say, CH mode 7, 7, 7.
+
+[rochak agrawal] 09:14:33
+Now you see the permissions.
+
+[rochak agrawal] 09:14:36
+Everyone will have every permission. Read, write X, RWX, RWX.
+
+[rochak agrawal] 09:14:42
+If you go, I can change it to CH mode 766.
+
+[rochak agrawal] 09:14:47
+Now, what would be the permission?
+
+[rochak agrawal] 09:14:55
+Read-write X, because it's 7, and then read-write, read-write. 66.
+
+[rochak agrawal] 09:15:01
+Clear now?
+
+[rochak agrawal] 09:15:04
+With this numerical value.
+
+[rochak agrawal] 09:15:06
+So, very simple how I am going to assign the permission. You find out what is the number that you want to give, and then you give those numbers.
+
+[rochak agrawal] 09:15:13
+So first number is for, again, for user.
+
+[rochak agrawal] 09:15:17
+Second is for group and third is for the others.
+
+[rochak agrawal] 09:15:27
+Megha has a question. Yes, Megha?
+
+[rochak agrawal] 09:15:40
+Megha Puja.
+
+[pooja.dole01@gmail.com] 09:15:43
+Hello?
+
+[pooja.dole01@gmail.com] 09:15:44
+Yeah, hi, Rochak.
+
+[rochak agrawal] 09:15:45
+Yes? Yeah, hi, Pooja.
+
+[pooja.dole01@gmail.com] 09:15:48
+Uh, Rochak, actually, I'm new to this DevOps session, because today is my second session, so I'm quite confusing this, uh, in Linux.
+
+[pooja.dole01@gmail.com] 09:15:56
+So, can you tell me, like, which environment I have to use for Linux practicing?
+
+[rochak agrawal] 09:16:00
+Okay, so in our last class we discussed, so we can actually create an AWS free tier account, okay? And I'll share the document also how I'm going to, how I have provisioned this Linux instance. So I'll upload that documentation, Pooja.
+
+[rochak agrawal] 09:16:17
+Nobody.
+
+[pooja.dole01@gmail.com] 09:16:19
+Okay, and these Linux questions are asked in, uh, interviews also?
+
+[rochak agrawal] 09:16:19
+Yep.
+
+[rochak agrawal] 09:16:24
+No, it is not asked very frequently, but yeah, some of the questions are being asked. But see, DevOps is a fundamental platform, or the… sorry, Linux is a fundamental platform where all my subsequent DevOps tools are going to run. So, for example, I need to install Jenkins.
+
+[pooja.dole01@gmail.com] 09:16:36
+Mm-hmm.
+
+[rochak agrawal] 09:16:41
+So I come here, install the Jenkins. Now for that, uh, you need to have a, uh, understanding about your daily, day-to-day commands. Correct? So that is where, uh, Linux is very important as a pre… you can say it's… it's a prerequisite to DevOps.
+
+[pooja.dole01@gmail.com] 09:16:51
+Okay, okay.
+
+[pooja.dole01@gmail.com] 09:16:59
+Okay, okay.
+
+[rochak agrawal] 09:17:00
+Okay.
+
+[pooja.dole01@gmail.com] 09:17:01
+And please share that documents for the next involvement. Yeah. Yeah. Okay. Thank you.
+
+[rochak agrawal] 09:17:03
+Yeah, yeah, I'll do that.
+
+[rochak agrawal] 09:17:05
+Yeah, okay.
+
+[rochak agrawal] 09:17:08
+So be clear about this numerical permissions. So RWX421, total is seven. Now, depending on the combination, what you want to give to your user, RW, RX, WX, RWX, you will come to a number.
+
+[rochak agrawal] 09:17:25
+And then you will assign it, like this, 755644.
+
+[rochak agrawal] 09:17:28
+Anything.
+
+[rochak agrawal] 09:17:33
+Clear? Any question, anyone?
+
+[arif] 09:17:38
+So, Roshak, this is only applicable for the file permissions, or also for the directory?
+
+[rochak agrawal] 09:17:42
+Directory permissions also.
+
+[arif] 09:17:44
+So, directories, uh, the execute permission, uh, will be there.
+
+[rochak agrawal] 09:17:49
+Yes, the directory executable permission means anything inside the directory can become, uh, can be executable.
+
+[arif] 09:17:54
+Okay, okay, okay.
+
+[rochak agrawal] 09:17:55
+OK, so again, and same thing like we did in the copy and MB. Like, for example, if you want to give permission inside of everything inside the directory, so you will use chmod -r. So you can give recursively permissions.
+
+[arif] 09:18:13
+Okay.
+
+[rochak agrawal] 09:18:13
+Okay. Now there is another way. Okay. So this is one way I by which I can assign the permission 755740. What is the number? You calculate the number and you can give it the permission.
+
+[rochak agrawal] 09:18:27
+Second way is…
+
+[rochak agrawal] 09:18:31
+be assigned, uh…
+
+[Anthony Joseph] 09:18:32
+So, just
+
+[rochak agrawal] 09:18:33
+Yes, Anthony.
+
+[Anthony Joseph] 09:18:33
+Hello?
+
+[Anthony Joseph] 09:18:35
+I just wanted to ask you, what is that others means? User group and others?
+
+[rochak agrawal] 09:18:38
+Others means… yes. So, for example, uh…
+
+[rochak agrawal] 09:18:42
+Let's say I have five users on my system.
+
+[Anthony Joseph] 09:18:46
+Okay.
+
+[rochak agrawal] 09:18:46
+8?
+
+[rochak agrawal] 09:18:50
+E. Okay? Now, out of those 5 users, you go…
+
+[rochak agrawal] 09:18:56
+Created a group.
+
+[rochak agrawal] 09:18:57
+Let's say you created a dev group.
+
+[rochak agrawal] 09:18:59
+In which you added a?
+
+[rochak agrawal] 09:19:02
+B.
+
+[rochak agrawal] 09:19:04
+C.
+
+[rochak agrawal] 09:19:05
+Okay.
+
+[rochak agrawal] 09:19:05
+Now when you create a file whose owner is A.
+
+[Anthony Joseph] 09:19:09
+Okay.
+
+[rochak agrawal] 09:19:10
+So, A is a user.
+
+[rochak agrawal] 09:19:16
+Group is Deb, where you have A, B, C.
+
+[Anthony Joseph] 09:19:22
+Okay.
+
+[rochak agrawal] 09:19:24
+And others will be DND.
+
+[Anthony Joseph] 09:19:26
+Now, when you say, uh, group dev, does it mean it's, uh, is it a directory, or…
+
+[Anthony Joseph] 09:19:32
+Or does the user always belong to a group?
+
+[rochak agrawal] 09:19:35
+No, user always belong to a group. So, for example, here also you see, uh, we have a user and a group. So, your user will always belong to a particular group.
+
+[Anthony Joseph] 09:19:45
+But when you create… by default, when you create a user, you just add user, whatever Linux command it is, it just creates a group. We don't specify the group name, no.
+
+[rochak agrawal] 09:19:46
+So, in this case…
+
+[rochak agrawal] 09:19:51
+Yes.
+
+[rochak agrawal] 09:19:54
+You know, we can change the group, no?
+
+[rochak agrawal] 09:19:56
+Anthony. We'll see that.
+
+[Anthony Joseph] 09:19:58
+Okay, okay.
+
+[Anthony Joseph] 09:19:59
+And the other thing I wanted to ask is, like, when you create a file, when a root user creates a file, does he have the entire permission, or you need to assign a permission to that file?
+
+[rochak agrawal] 09:20:00
+Okay, we… so if…
+
+[rochak agrawal] 09:20:08
+Okay, so I'll come to that. Okay, first I'll finish that and I'll come to your question. We understood about others, right?
+
+[Anthony Joseph] 09:20:11
+Okay, uh…
+
+[Anthony Joseph] 09:20:15
+Sure, sure.
+
+[Anthony Joseph] 09:20:18
+Correct.
+
+[rochak agrawal] 09:20:18
+Yeah. Now, we have another options, uh, like, after the numeric. So, we have 3 things. Now, user…
+
+[rochak agrawal] 09:20:26
+Group.
+
+[rochak agrawal] 09:20:27
+and other.
+
+[rochak agrawal] 09:20:29
+And we have three permissions. Read, write, and execute. Correct. Now, whoever… whatever the permission I want to give, I will go, for example…
+
+[rochak agrawal] 09:20:44
+Let's say my script has all the permission, correct? Now, I want to remove.
+
+[rochak agrawal] 09:20:50
+Execute permission, or let's say, uh, execute first, let's see this, execute permission from the user. So I'll say user.
+
+[rochak agrawal] 09:20:59
+minus execute permission and script.sh.
+
+[rochak agrawal] 09:21:05
+Now, if you see this.
+
+[rochak agrawal] 09:21:07
+My executable permissions are born.
+
+[rochak agrawal] 09:21:10
+Now, if you want to add this.
+
+[rochak agrawal] 09:21:16
+So you say, user…
+
+[rochak agrawal] 09:21:20
+I want to add…
+
+[rochak agrawal] 09:21:24
+executable permission.
+
+[rochak agrawal] 09:21:27
+Edit. Now, your permission will be back.
+
+[rochak agrawal] 09:21:30
+expiration. Similarly, I can do it with the group also, and others.
+
+[rochak agrawal] 09:21:39
+You say, I want to add it, uh, maybe syntax we need to check. For the group and the others, please add the executable permissions.
+
+[rochak agrawal] 09:21:46
+Okay, now you see.
+
+[rochak agrawal] 09:21:50
+Everyone has this permission. You say, I want to remove the right permission for everyone.
+
+[rochak agrawal] 09:21:56
+CH mode.
+
+[rochak agrawal] 09:21:59
+If I signed out.
+
+[rochak agrawal] 09:22:26
+Right? So, we were discussing, uh, if I need to remove, uh.
+
+[rochak agrawal] 09:22:31
+User?
+
+[rochak agrawal] 09:22:32
+Grow others. Right?
+
+[rochak agrawal] 09:22:35
+I want to remove the right permission. So for removing minus.
+
+[rochak agrawal] 09:22:39
+Write permission, plus you want to remove the executable permission also. X.
+
+[rochak agrawal] 09:22:46
+script.sh.
+
+[rochak agrawal] 09:22:49
+You see?
+
+[rochak agrawal] 09:22:50
+Only now the read permissions is there.
+
+[rochak agrawal] 09:22:54
+Can you see?
+
+[rochak agrawal] 09:22:59
+It's… so, that is where, uh…
+
+[rochak agrawal] 09:23:03
+You can either change the permission numerically.
+
+[rochak agrawal] 09:23:07
+By given 644755 or something. Or you can use this way, where you have user, group, and others. Read, write permission. You can use the plus-minus combination. And so, it is not like that we need to use it this one. For example, I go…
+
+[rochak agrawal] 09:23:23
+Uh, I can say CH mode, user.
+
+[rochak agrawal] 09:23:28
+plus X.
+
+[rochak agrawal] 09:23:29
+And, uh, group plus right.
+
+[rochak agrawal] 09:23:34
+and script.sh.
+
+[rochak agrawal] 09:23:37
+I think I am doing syntax, I will check.
+
+[rochak agrawal] 09:23:49
+Yeah, comma we need to give.
+
+[rochak agrawal] 09:23:53
+Right? So in the same command only, uh, we can give multiple permissions. So here you can see user, I'm giving the lead, uh, execute permission. Group, I am giving the…
+
+[rochak agrawal] 09:24:04
+Write permission. And if you see…
+
+[rochak agrawal] 09:24:09
+Now, it has the execute permission, it has the write permission.
+
+[rochak agrawal] 09:24:13
+So, we can give it anyway. I generally prefer giving it numerically, because I am more comfortable with that, but it is up to you what type of permission you want to give RWX user group user. But that is how we are going to change the permission for our file.
+
+[rochak agrawal] 09:24:32
+Now, user management and group management, we will see tomorrow. Where we will see, we can… so when you create a user, a default group will be created for your user. Like, in our case, we have an EC2 user, which is belonging to the EC2 user group altogether.
+
+[rochak agrawal] 09:24:47
+But we can create our own group. So, for example, you will have a group like Backup Administrator, you will have a group like Network Administrator, and you will add the required or the right users to that particular groups. We can do that. We can create our own custom groups.
+
+[rochak agrawal] 09:25:04
+And we can, uh, move users to that particular group altogether.
+
+[rochak agrawal] 09:25:09
+And also, right now we discussed about changing the permissions. We can change the owner of the file also, which also we are going to see.
+
+[rochak agrawal] 09:25:21
+Okay? But any question about this permission, numerically as well as alphabetically, you can give in any ways.
+
+[arif] 09:25:32
+So, Rucha, I think this seems like a job of an administrator, right? What DevOps?
+
+[rochak agrawal] 09:25:38
+No, this is not a job of an administrator, Arif. See, sometimes what is going to happen that you are working on Terraform, and then there are certain logs file which is getting generated, you are not able to read those files. So then you will go find that, okay, the read permissions are not there.
+
+[rochak agrawal] 09:25:55
+Or you want to share those files with someone who's not able to read them. So you need to assign the read permissions for others. So, when you say it is a work for administrator, maybe for the…
+
+[rochak agrawal] 09:26:06
+System file, they will manage it, but your file, you will manage the permission.
+
+[arif] 09:26:10
+Okay, okay.
+
+[rochak agrawal] 09:26:11
+Yeah?
+
+[rochak agrawal] 09:26:13
+Okay, but again, user management and other things will be the part of the admin activity, but we will have a fair understanding about that.
+
+[rochak agrawal] 09:26:24
+Because we will keep changing the owners of the file as and when needed.
+
+[rochak agrawal] 09:26:31
+Okay, so we will again cover the user management tomorrow. Then the process management is a very important task. And then we will see some system utilities, like how to monitor the utilization, CPU utilization, and other things. What is a different command?
+
+[rochak agrawal] 09:26:48
+Now, there's a one very common interview question which is being asked, what is the load average? Very common interview question. So, we will discuss about that as well. And then, um…
+
+[rochak agrawal] 09:26:59
+Uh, we will start with the, um…
+
+[rochak agrawal] 09:27:03
+shell… see, as I told you, shell scripting is nothing. It is just, instead of… see, currently what we are doing, we are writing every command on the screen, right?
+
+[rochak agrawal] 09:27:13
+In the Shell script, you are going to run multiple commands together, and you are going to run them in a sequence. That's it. Shell script is the sequence of the commands.
+
+[rochak agrawal] 09:27:24
+Okay, so…
+
+[rochak agrawal] 09:27:27
+We'll see that tomorrow.
+
+[arif] 09:27:31
+So, one last question, Ruchak. So, we have learned a lot of commands. So, these commands we can run together, or only the specific commands can be written together?
+
+[rochak agrawal] 09:27:45
+Uh, can you, can you repeat your question, Arif?
+
+[arif] 09:27:48
+Like, I want to, uh, give a command grab or something.
+
+[rochak agrawal] 09:27:51
+Mm-hmm.
+
+[arif] 09:27:51
+And I want to, uh, run another command also, like, multiple commands can be run, uh…
+
+[rochak agrawal] 09:27:56
+Together.
+
+[arif] 09:27:57
+Together.
+
+[rochak agrawal] 09:27:59
+See, uh…
+
+[rochak agrawal] 09:28:01
+When you see multiple commands run together, so for example.
+
+[rochak agrawal] 09:28:08
+let's say LS-LRT, and, uh, you give who am I?
+
+[rochak agrawal] 09:28:13
+So you can see I'm running multiple commands together. Correct?
+
+[arif] 09:28:17
+Mmhm.
+
+[arif] 09:28:18
+So this is work plan.
+
+[rochak agrawal] 09:28:18
+Is that what you are asking?
+
+[arif] 09:28:20
+Yeah, yeah, multiple commands. So this is what, uh, comma or semicolon is?
+
+[rochak agrawal] 09:28:24
+Semicolon, semicolon.
+
+[rochak agrawal] 09:28:26
+Okay, now, but very important thing here. Uh, these commands are independent of each other, right? ls hyphen lit and whoami. Like, the output of one command is not…
+
+[rochak agrawal] 09:28:39
+impacting the output of another command, correct? In this example.
+
+[rochak agrawal] 09:28:44
+So basically, these are two independent commands I'm just running together to save some time. Correct?
+
+[arif] 09:28:44
+Mm-hmm. Okay.
+
+[arif] 09:28:51
+Okay.
+
+[rochak agrawal] 09:28:51
+What if…
+
+[rochak agrawal] 09:28:53
+The output of one command will act as an input to another command.
+
+[rochak agrawal] 09:28:57
+Can we do that? So the answer to that is yes, we can do that also. So that process is called the piping, which also we are going to see.
+
+[arif] 09:29:07
+Okay.
+
+[rochak agrawal] 09:29:07
+So I'll just give you a basic example of a piping. So let's say you want to know how many files are there in your…
+
+[rochak agrawal] 09:29:18
+Directly.
+
+[rochak agrawal] 09:29:19
+How can you do that? Currently, I have 3 files, I can count it, but let's say you have a 3000 file.
+
+[rochak agrawal] 09:29:25
+How can I do that? So, I will do ls-lat pipe.
+
+[rochak agrawal] 09:29:30
+WC-L. Now, WC-L command, what it does, it counts the line. So this, the output of this command, will act as an input to WC-L, and it will give you.
+
+[rochak agrawal] 09:29:41
+the count.
+
+[rochak agrawal] 09:29:44
+4. There's one hidden file also.
+
+[rochak agrawal] 09:29:46
+So that is a piping we will discuss in detail, but I just give you a intro.
+
+[arif] 09:29:52
+And, uh, in the grab command, uh, like, uh, you said that we can search a single keyword, so if I want to search multiple keywords in, uh, all the files, uh, can we do that also?
+
+[rochak agrawal] 09:30:02
+See, multiple keywords, like, uh, so for example, uh, if the string is together, so for example.
+
+[rochak agrawal] 09:30:09
+I live.
+
+[rochak agrawal] 09:30:10
+Now, there's two words, but as a string, it's… it's… it's together, right? So, I can do that. But if you say, I want to search for Delhi and Mumbai together.
+
+[rochak agrawal] 09:30:22
+Uh, that, I need to see, uh, if there is any option for that or not. I will come back to you on that.
+
+[rochak agrawal] 09:30:29
+There might be, but I'm not remembering the exact option for that.
+
+[rochak agrawal] 09:30:34
+There might be something for that, but I need to check the correct option for this.
+
+[arif] 09:30:34
+Okay.
+
+[arif] 09:30:40
+Okay, fine. Thanks.
+
+[rochak agrawal] 09:30:41
+Okay.
+
+[rochak agrawal] 09:30:42
+Sure.
+
+[PaperLive Learning] 09:30:44
+Uh, hello everyone, sorry to disturb.
+
+[PaperLive Learning] 09:30:47
+Uh, so right now, I'll be launching a poll, okay? So you need to submit the poll, cause your feedback is very important. I request each and every one to participate in the poll.
+
+[PaperLive Learning] 09:30:57
+The poll is launched. Please provide your valuable feedback. Thank you.
+
+[rochak agrawal] 09:31:04
+Yes, Pueblo.
+
+[rochak agrawal] 09:31:15
+So once you're done with your hands-on, please stop the server so that you're not consuming the credits.
+
+[rochak agrawal] 09:31:24
+So I'll go stop my server, and I'll restart it tomorrow.
+
+[rochak agrawal] 09:31:31
+So I'll go
+
