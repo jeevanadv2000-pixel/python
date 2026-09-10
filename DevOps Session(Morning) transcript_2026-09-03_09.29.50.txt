@@ -1,0 +1,3408 @@
+[rochak agrawal] 07:35:13
+Hey, good morning, everyone.
+
+[rochak agrawal] 07:35:17
+I'll just share my screen and we'll start.
+
+[rochak agrawal] 07:35:23
+Okay. Now, before starting the topic, so we had, uh…
+
+[rochak agrawal] 07:35:29
+discussion yesterday regarding the question raised. So, we have come up with the guidelines regarding the question answers, what we are going to do from this session.
+
+[rochak agrawal] 07:35:39
+We will have a session for 30 minutes, and then after 30 minutes, we will have a question and answer for 10 minutes.
+
+[rochak agrawal] 07:35:45
+10 minutes is… will not be a fixed number, but, uh, like, so in those 10 minutes, we will… we are going to take the questions from everyone.
+
+[rochak agrawal] 07:35:54
+And that is what we are going to follow. So every 30 minutes we are going to have a 10 minute question answer session.
+
+[rochak agrawal] 07:36:00
+Okay, and uh, like, I have talked to the team, uh, they cannot go to the previous team due to some licensing issues and other things, so we are going to continue on this link.
+
+[rochak agrawal] 07:36:15
+But that is what we are going to follow. 30 minute of session followed by a 10 minute of question answer.
+
+[rochak agrawal] 07:36:22
+So that we will be able to cover maximum questions, whatever we can.
+
+[rochak agrawal] 07:36:29
+So…
+
+[rochak agrawal] 07:36:31
+Today, we are going to start the shell scripting. There will be certain command, uh…
+
+[rochak agrawal] 07:36:38
+which is there, but we'll cover it alongside with the Shell script. Now.
+
+[rochak agrawal] 07:36:43
+So shell script as I keep saying.
+
+[rochak agrawal] 07:36:47
+It is…
+
+[rochak agrawal] 07:36:49
+Nothing, but it is the commands which you are writing in a sequence to achieve something.
+
+[rochak agrawal] 07:36:56
+A meaningful like.
+
+[rochak agrawal] 07:36:58
+So, for example, you go…
+
+[rochak agrawal] 07:37:02
+PWD is showing you…
+
+[rochak agrawal] 07:37:06
+The present working directory.
+
+[rochak agrawal] 07:37:08
+Uh, let's have a question and answer session on 9AM.
+
+[rochak agrawal] 07:37:12
+We'll take the questions then.
+
+[rochak agrawal] 07:37:16
+PWD, it is showing you the present working directly, and then…
+
+[rochak agrawal] 07:37:21
+If you see ls-lrt.
+
+[rochak agrawal] 07:37:24
+It is going to give you.
+
+[rochak agrawal] 07:37:29
+the total number of the file, which is there in your file, uh, directly. So if you say H.
+
+[rochak agrawal] 07:37:34
+File1, file.txt.
+
+[rochak agrawal] 07:37:38
+Something like that.
+
+[rochak agrawal] 07:37:39
+Now a shell script is nothing so you go.
+
+[rochak agrawal] 07:37:45
+dot SH.
+
+[rochak agrawal] 07:37:48
+So in your shell scripts, first thing is.
+
+[rochak agrawal] 07:37:52
+We are going to start with the Shivan line, okay, which is this.
+
+[rochak agrawal] 07:37:58
+Bin Bash. So this is nothing but telling your, uh…
+
+[rochak agrawal] 07:38:14
+This is nothing but to tell your script in which, um…
+
+[rochak agrawal] 07:38:20
+Shell, it need to run it. This is an optional thing, but it is a good practice if you are always starting your script with this line. Again, it is optional. If you don't give it, then also it is going to run it fine. And then you run certain commands.
+
+[rochak agrawal] 07:38:36
+That's hyphen LRT.
+
+[rochak agrawal] 07:38:42
+File 2.page. Something like that.
+
+[rochak agrawal] 07:38:46
+Second thing in your script is…
+
+[rochak agrawal] 07:38:50
+You need to make it executable.
+
+[rochak agrawal] 07:38:54
+If you do not make your script executable, it is not going to run.
+
+[rochak agrawal] 07:39:05
+You can see, I'll mention it.
+
+[rochak agrawal] 07:39:07
+I need to change the permission for myself.
+
+[rochak agrawal] 07:39:15
+Now, if you try to run…
+
+[rochak agrawal] 07:39:18
+So, you see, the first command is executed, second command is executed, and if you see, my third command, which is touchfile2.txt, will also be executed.
+
+[rochak agrawal] 07:39:30
+So, two things, CVANG line, and you need to make the shell script executable. Third is.
+
+[rochak agrawal] 07:39:37
+You always…
+
+[rochak agrawal] 07:39:39
+Execute your script this way.
+
+[rochak agrawal] 07:39:42
+So you give…
+
+[rochak agrawal] 07:39:44
+Something like this. Okay? If it is in a projected directory.
+
+[rochak agrawal] 07:39:48
+Let's say if you are somewhere and you want to give a…
+
+[rochak agrawal] 07:39:54
+And you want to run a particular script. So, for example, if I come out of this.
+
+[rochak agrawal] 07:39:58
+And,
+
+[rochak agrawal] 07:40:00
+I want to run a script.
+
+[rochak agrawal] 07:40:02
+Uh, script.ss. So what I'm going to do, I'm going to run it like this.
+
+[rochak agrawal] 07:40:11
+Okay.
+
+[rochak agrawal] 07:40:13
+I'll do 2.h3 is already there, so that's why it is giving you an error. You got the point. So you… you always start with this dot slash, and then you give the path of the script, wherever the script is.
+
+[rochak agrawal] 07:40:25
+And it is going to run successfully. So it is not that you need to be in the present working directory.
+
+[rochak agrawal] 07:40:34
+to, uh…
+
+[rochak agrawal] 07:40:37
+to run the script. You can be anywhere, and you can give the path of the script, and your script is going to run successfully. No problem in that.
+
+[rochak agrawal] 07:40:47
+And then comments, uh, so you can write the comments. So, comments, as you see, comments are the very important part of any.
+
+[rochak agrawal] 07:40:56
+program. See, in the end, your script is also a program, so we can give the comments.
+
+[rochak agrawal] 07:41:03
+in our script so that whoever is…
+
+[rochak agrawal] 07:41:12
+Whoever is going to write, read your scripts, they'll know what it is doing. So, for giving the commands.
+
+[rochak agrawal] 07:41:21
+Your line is going to start with the hash.
+
+[rochak agrawal] 07:41:25
+This is my first.
+
+[rochak agrawal] 07:41:30
+Okay, so you can give multiple comments like this.
+
+[rochak agrawal] 07:41:36
+This is…
+
+[rochak agrawal] 07:41:39
+to create…
+
+[rochak agrawal] 07:41:44
+File, for example.
+
+[rochak agrawal] 07:41:47
+So, you can give multiple comments, and it is a good practice that you are giving the comments. So, for example.
+
+[rochak agrawal] 07:41:55
+Here, this…
+
+[rochak agrawal] 07:41:58
+command is…
+
+[rochak agrawal] 07:42:04
+the content in their…
+
+[rochak agrawal] 07:42:09
+So that now, whoever is coming to this script, they are going to know.
+
+[rochak agrawal] 07:42:15
+what this script is doing. So they say, if you're aware about Linux, well and good, but let's say if some general person is.
+
+[rochak agrawal] 07:42:22
+Opening the script, so they will read the script, and they are going to…
+
+[rochak agrawal] 07:42:28
+And they're going to…
+
+[rochak agrawal] 07:42:32
+read the comment, and they'll know, okay, this is to create the file, this is… So, basically, comment…
+
+[rochak agrawal] 07:42:38
+increase the readability of your file, of your script, so it is… it is a good practice that you give a good amount of comment wherever necessary. We should not over-comment also, but.
+
+[rochak agrawal] 07:42:52
+If you are defining a function, then…
+
+[rochak agrawal] 07:42:54
+There you need to give the commands.
+
+[rochak agrawal] 07:42:57
+So, this is how your cell script structure is going to be. Now, we will not be focused on the comments, we'll not give comments and other things, but executable script.
+
+[rochak agrawal] 07:43:08
+And, uh…
+
+[rochak agrawal] 07:43:11
+Prefix, uh, so we are going to run everything from our, uh, what you can say.
+
+[rochak agrawal] 07:43:19
+From the present working directly only.
+
+[rochak agrawal] 07:43:21
+Now.
+
+[rochak agrawal] 07:43:27
+So, that is the structure CellScript is going to follow. Now, there is very important things in…
+
+[rochak agrawal] 07:43:34
+Linux is called the Eco. Let's say.
+
+[rochak agrawal] 07:43:38
+You want to print something on a screen.
+
+[rochak agrawal] 07:43:41
+Okay, so you are going to give ECO.
+
+[rochak agrawal] 07:43:47
+A new one.
+
+[rochak agrawal] 07:43:50
+So whatever you give with the echo command, it is going to print on the screen.
+
+[rochak agrawal] 07:43:56
+Okay, so what I can do, I can, um…
+
+[rochak agrawal] 07:44:00
+Go to my script again.
+
+[rochak agrawal] 07:44:05
+So you… you always also use the Eco very frequently in your…
+
+[rochak agrawal] 07:44:12
+I'll say equal.
+
+[rochak agrawal] 07:44:16
+this…
+
+[rochak agrawal] 07:44:19
+is…
+
+[rochak agrawal] 07:44:20
+going to display.
+
+[rochak agrawal] 07:44:25
+present.
+
+[rochak agrawal] 07:44:30
+And you need to wrap it in a double coat.
+
+[rochak agrawal] 07:44:35
+People?
+
+[rochak agrawal] 07:44:38
+This will…
+
+[rochak agrawal] 07:44:42
+list.
+
+[rochak agrawal] 07:44:51
+in the rent.
+
+[rochak agrawal] 07:44:53
+Directly.
+
+[rochak agrawal] 07:44:57
+And finally, you go in the end.
+
+[rochak agrawal] 07:45:00
+Eco.
+
+[rochak agrawal] 07:45:03
+file has been…
+
+[rochak agrawal] 07:45:13
+Very simple, nothing much. So now what C?
+
+[rochak agrawal] 07:45:17
+Whatever you write with the echo that is not going to be sorry whatever you write with the echo that is going to be printed on a screen. Simple. That's a it is like a print command.
+
+[rochak agrawal] 07:45:32
+You see, first, you see, this is going to display my present working directory, then it executes PWD, then this will list the content.
+
+[rochak agrawal] 07:45:42
+In the current directory.
+
+[rochak agrawal] 07:45:44
+This, and then once the file has been created.
+
+[rochak agrawal] 07:45:48
+So, see, the point here is, if you see the script.
+
+[rochak agrawal] 07:45:54
+Everything goes into a sequence.
+
+[rochak agrawal] 07:46:01
+Everything goes into the sequence. It will not happen that first it will print file has been created and then.
+
+[rochak agrawal] 07:46:07
+It will go… this is going to display my present working directly. No.
+
+[rochak agrawal] 07:46:13
+So Shell is now there is two things, if you have heard about it.
+
+[rochak agrawal] 07:46:20
+Compiler and interpreter. Okay, now these are general terms. So…
+
+[rochak agrawal] 07:46:30
+Compiler?
+
+[rochak agrawal] 07:46:32
+So, all your general programming language, they…
+
+[rochak agrawal] 07:46:36
+compile their program. So, in that, what is happening? So, let's say you have written the program.
+
+[rochak agrawal] 07:46:50
+There may be 5 lines, there may be 500 lines, whatever. When it goes to the compiler.
+
+[rochak agrawal] 07:47:03
+It takes the full program.
+
+[rochak agrawal] 07:47:06
+and compile all the code at once, okay? So if any issue comes at the 500th line.
+
+[rochak agrawal] 07:47:15
+any error is there, then your command is not… your compilation is not going to happen. It will say…
+
+[rochak agrawal] 07:47:25
+that there is some issue, okay? So, it is going to work as a whole program. So, all your Python, C, Java, they all.
+
+[rochak agrawal] 07:47:35
+these all programs are getting compiled. So you write a Java file, you give it to your Java compiler. If there is any error at the last line also.
+
+[rochak agrawal] 07:47:46
+It is not going to run. It will give you an error. While…
+
+[rochak agrawal] 07:47:52
+Our scripting is interpreter. Works with the interpreter.
+
+[rochak agrawal] 07:47:58
+Now, what does it mean?
+
+[rochak agrawal] 07:48:05
+Whatever content you have.
+
+[rochak agrawal] 07:48:08
+It is going to execute line by line.
+
+[rochak agrawal] 07:48:12
+First line executed, second line executed, third line executed, fourth line executed. Now, at the fifth line, there is any error, okay, no problem. It will display the error for this, and the sixth line will execute.
+
+[rochak agrawal] 07:48:25
+So that is how it is going to work. And when I'm saying line by line, so for example, of course when you write the advanced shell scripts, you are writing a block function block. So that function block will go together. Now here also if we see.
+
+[rochak agrawal] 07:48:51
+Now, let's see…
+
+[rochak agrawal] 07:48:55
+I make this…
+
+[rochak agrawal] 07:48:59
+an incorrect statement. So LS hyphen LIT, I'm not giving the space.
+
+[rochak agrawal] 07:49:10
+Now, if you run this…
+
+[rochak agrawal] 07:49:14
+You see what's going to happen. First line executed.
+
+[rochak agrawal] 07:49:16
+PWD executed. Third line executed.
+
+[rochak agrawal] 07:49:21
+Line 7, ls-lrt, this command not found. This is a long command.
+
+[rochak agrawal] 07:49:26
+Right? That does not mean, uh… after line 7, line 8 and 9 will not be executed. Which is executed?
+
+[rochak agrawal] 07:49:36
+So, whichever line will have a problem will not be executed, but…
+
+[rochak agrawal] 07:49:42
+After that, everything will be executed. So, scripts are executed line by line.
+
+[rochak agrawal] 07:49:48
+It's not the complete script, which is going to be executed in the backend. When you execute, like, when you give the command.
+
+[rochak agrawal] 07:49:56
+it is going to be executed line by line. This is very important to remember. If you know any of the programming language, uh, so that is a difference between the script and the program.
+
+[rochak agrawal] 07:50:08
+Program is executed.
+
+[rochak agrawal] 07:50:11
+All at once, they are going to get compiled, while your scripts, they are interpreted.
+
+[rochak agrawal] 07:50:18
+Okay?
+
+[rochak agrawal] 07:50:21
+Now.
+
+[rochak agrawal] 07:50:24
+I will go again to my script, delete everything.
+
+[rochak agrawal] 07:50:35
+So we have seen the echo now.
+
+[rochak agrawal] 07:50:37
+we can define the variable also. So, for example, I can define x is equal to 10.
+
+[rochak agrawal] 07:50:46
+By is equal to?
+
+[rochak agrawal] 07:50:48
+20.
+
+[rochak agrawal] 07:50:49
+And if I need to get the value, so I'll say echo.
+
+[rochak agrawal] 07:50:55
+The venue?
+
+[rochak agrawal] 07:51:04
+X…
+
+[rochak agrawal] 07:51:05
+is…
+
+[rochak agrawal] 07:51:09
+Okay.
+
+[rochak agrawal] 07:51:11
+Now, if you've done this, then I'll explain.
+
+[rochak agrawal] 07:51:16
+So you can see?
+
+[rochak agrawal] 07:51:19
+The value of X is equal to 10. So now what we did…
+
+[rochak agrawal] 07:51:26
+You can define a variable, and whenever you want to get the value of this variable, you need to give the dollar name. Dollar and the variable name.
+
+[rochak agrawal] 07:51:35
+Very simple.
+
+[rochak agrawal] 07:51:38
+If you want to get a value of buy, you will say dollar buy.
+
+[rochak agrawal] 07:51:41
+Okay, so this is a simple text.
+
+[rochak agrawal] 07:51:45
+And this is going to fetch the value from the X itself.
+
+[rochak agrawal] 07:51:50
+Now, there is something very important.
+
+[rochak agrawal] 07:51:53
+Um, and which is going to make your scripts.
+
+[rochak agrawal] 07:51:58
+Interactive.
+
+[rochak agrawal] 07:52:00
+this is very important, okay? Now, there is one. One way is you can define the variable. Now, in this case, your value will always be X, right?
+
+[rochak agrawal] 07:52:11
+Now, you say, I… I want to run my script every time… every time you are going to run, your value will display as N, correct? Because you… you hard-coded this value.
+
+[rochak agrawal] 07:52:22
+Now in some of the cases when you when you will write the script you.
+
+[rochak agrawal] 07:52:27
+would not want the hard-coded value. So, for example, you want to copy a file from a directory. Now, every time.
+
+[rochak agrawal] 07:52:36
+You would like to copy another file, right? There can be a use case.
+
+[rochak agrawal] 07:52:41
+If I give the file name in the script itself, then it is hard-coded, then every time I'm running the script, file A will be copied to my remote directory. But that is not the case. I want to copy.
+
+[rochak agrawal] 07:52:54
+Different file every time, right? So what we are going to do…
+
+[rochak agrawal] 07:53:04
+Instead of…
+
+[rochak agrawal] 07:53:10
+Giving the value, I will say equal… sorry.
+
+[rochak agrawal] 07:53:18
+So I'll go press I, insert mode. We discussed the BI mode.
+
+[rochak agrawal] 07:53:23
+I'll say equal.
+
+[rochak agrawal] 07:53:26
+Print.
+
+[rochak agrawal] 07:53:28
+the value…
+
+[rochak agrawal] 07:53:30
+of X.
+
+[rochak agrawal] 07:53:32
+Okay.
+
+[rochak agrawal] 07:53:43
+And… so Eco, that will give you…
+
+[rochak agrawal] 07:53:46
+Then there is a command called read.
+
+[rochak agrawal] 07:53:50
+Read.
+
+[rochak agrawal] 07:53:52
+Simple.
+
+[rochak agrawal] 07:53:54
+Now, if you run this.
+
+[rochak agrawal] 07:54:01
+So, first the equal statement, print the value of X, then when you say read X. Now, read is a command which is going to take the input from you.
+
+[rochak agrawal] 07:54:12
+I will say X is equal to 20.
+
+[rochak agrawal] 07:54:16
+See? The value of X is 20. If you run it again.
+
+[rochak agrawal] 07:54:21
+Rent the value of X.
+
+[rochak agrawal] 07:54:23
+30.
+
+[rochak agrawal] 07:54:26
+The value of x is 30. Simple.
+
+[rochak agrawal] 07:54:30
+You can make it more interactive with Go.
+
+[rochak agrawal] 07:54:44
+You see?
+
+[rochak agrawal] 07:54:57
+Enter your name.
+
+[rochak agrawal] 07:55:21
+You see, see, within ECO, you can write anything. Here, you can write interior, full name, whatever you want to give. It is just what you are giving with the read.
+
+[rochak agrawal] 07:55:33
+and whatever you are printing with dollar. So this name and this name should be same. That's it. What you are writing inside an ego does not matter. Ego is just…
+
+[rochak agrawal] 07:55:43
+Informational statement, the print statement.
+
+[rochak agrawal] 07:55:46
+And I… see? I run it.
+
+[rochak agrawal] 07:55:50
+You see, enter your name, say project.
+
+[rochak agrawal] 07:55:53
+Good morning, Gauteng.
+
+[rochak agrawal] 07:55:55
+Right, so now my scripts has become, with the help of.
+
+[rochak agrawal] 07:56:03
+what you can say, with the help of read command, since I'm giving the input to my script, my script will become reusable.
+
+[rochak agrawal] 07:56:13
+Correct?
+
+[rochak agrawal] 07:56:25
+Yes, ma'am.
+
+[Vaibhav Gupta] 07:56:29
+Well, yeah, hi Rutu, good morning. Uh, can you please repeat that, uh, good morning, please, that we have…
+
+[rochak agrawal] 07:56:34
+Yay.
+
+[rochak agrawal] 07:56:36
+Correct. So, like, it is similar to your previous, uh.
+
+[rochak agrawal] 07:56:43
+X example only. So if you go here, first I'm printing EO, enter your name. Very simple, right?
+
+[Vaibhav Gupta] 07:56:49
+Yes.
+
+[rochak agrawal] 07:56:50
+Then I am giving read name. Now this line what it says.
+
+[rochak agrawal] 07:56:54
+that you take the input from the command line, let's say, right?
+
+[rochak agrawal] 07:57:00
+Then, I'm just…
+
+[Vaibhav Gupta] 07:57:01
+Reed is used for the input.
+
+[rochak agrawal] 07:57:04
+Read is used to take the input. So, for example, if you run the script.
+
+[rochak agrawal] 07:57:10
+So, first line executed, enter your name, correct?
+
+[Vaibhav Gupta] 07:57:13
+Okay.
+
+[rochak agrawal] 07:57:14
+Then, it's saying read name. Whenever you will give the read.
+
+[rochak agrawal] 07:57:19
+The script will expect an input from your side.
+
+[rochak agrawal] 07:57:25
+Okay, so whatever input I will give here, that is going to be stored in a variable called name, because we have given the name, correct?
+
+[rochak agrawal] 07:57:37
+Hello, everyone?
+
+[rochak agrawal] 07:57:40
+And then our once you enter.
+
+[rochak agrawal] 07:57:43
+Then it says, good morning, and the dollar name, because what is stored in the name? Roger. Now, if you say, I will give your name.
+
+[rochak agrawal] 07:57:57
+And it's a memo.
+
+[rochak agrawal] 07:57:59
+So, whatever you give a help.
+
+[rochak agrawal] 07:58:01
+Good morning, Bevo.
+
+[rochak agrawal] 07:58:06
+Billy, you know, before?
+
+[Vaibhav Gupta] 07:58:08
+Yeah.
+
+[rochak agrawal] 07:58:11
+Yes, Bill?
+
+[Vyom Gupta] 07:58:14
+In this, we can take any type of input that can be there.
+
+[rochak agrawal] 07:58:21
+So, by default, it takes a string. So, for example, if you say…
+
+[rochak agrawal] 07:58:28
+Good morning, Tim.
+
+[rochak agrawal] 07:58:32
+Okay, now if you want to do the numerical operations, so there are commands for that. So if you run those operations, see by default it takes everything as a string shell script.
+
+[Vyom Gupta] 07:58:33
+Okay.
+
+[rochak agrawal] 07:58:46
+So here, the 10 you are seeing, it's not a numerical, it's a…
+
+[rochak agrawal] 07:58:53
+It's a string only. So we need to, if we want to do any numerical operations, so then, uh, we would…
+
+[rochak agrawal] 07:59:00
+Need to convert those strings to your.
+
+[rochak agrawal] 07:59:05
+numerical values.
+
+[rochak agrawal] 07:59:07
+It's a simple command, expr is there. So, with the help of that, you can do that. But by default, everything is a string.
+
+[rochak agrawal] 07:59:26
+Yes, Varun?
+
+[varun pandian] 07:59:29
+Yeah, Rajuk, what are we using in real time? Self-scripting? In which case?
+
+[rochak agrawal] 07:59:34
+See, yes. So Barun, we use the telegraph scripts as what you can say.
+
+[rochak agrawal] 07:59:41
+For the supporting tasks, so for example, I need to take nowadays see there are tools are also available, but let's say I am maintaining a Kubernetes cluster, five node Kubernetes cluster I am maintaining. Now that Kubernetes cluster is generating the logs.
+
+[rochak agrawal] 07:59:59
+So I…
+
+[rochak agrawal] 08:00:00
+I would like a script where I will create a script, which is…
+
+[rochak agrawal] 08:00:05
+Collecting the logs from all the five servers and then jipping them so that this is consuming less space.
+
+[rochak agrawal] 08:00:14
+that can be one example. Then monitoring scripts you write, uh, so to… now for… if you're not using any of the tools like Nagios, uh, Prometheus, Grafana, so then, with the help of shell scripts, you can completely monitor, uh.
+
+[rochak agrawal] 08:00:28
+the CPU memory, uh, disk space utilization altogether. So, if you say what is the real-life use cases of the shell scripts, now.
+
+[rochak agrawal] 08:00:39
+the usage has been reduced substantially, because there are ready-made tools that are available. So, for example, if I need to monitor my server, and if I'm running my server on…
+
+[rochak agrawal] 08:00:49
+AWS, then in AWS, there is a service called CloudWatch is already available, which will monitor everything for you.
+
+[rochak agrawal] 08:00:56
+Right? But any supporting, any housekeeping…
+
+[rochak agrawal] 08:00:59
+type of the task you want to do, you can do with the shell scripts.
+
+[rochak agrawal] 08:01:05
+Okay.
+
+[varun pandian] 08:01:08
+That's what I'm thinking, there's a lot of tools, the way we have to learn the subscription, how much…
+
+[rochak agrawal] 08:01:13
+No, see, when you say how much, there is not a limit, but whatever is necessary for your daily, day-to-day operation.
+
+[rochak agrawal] 08:01:21
+Is so, for example, we will cover now your control flow, your looping, and then we will discuss, keep discussing the example. And of course you will use those type of examples only in your real life. And nowadays you just need to understand the syntax, right?
+
+[rochak agrawal] 08:01:37
+So, for example, uh, I can give you the list of the IPs where you need to find that those IPs are reachable or not. Now, that can be an example. Now, one way is I have given you 100 IPs, and you need to see if you… if you are able to do SSEC or…
+
+[varun pandian] 08:01:38
+Okay.
+
+[varun pandian] 08:01:49
+Okay.
+
+[rochak agrawal] 08:01:53
+in them or not, right? Now, one way is you will.
+
+[rochak agrawal] 08:01:58
+Do SSC IP.
+
+[rochak agrawal] 08:01:59
+manually and then read your like note record your output correct.
+
+[rochak agrawal] 08:02:07
+Second way is, I will write a script.
+
+[rochak agrawal] 08:02:10
+You give… now you have 100 IP, 200 IP, 2000 IP. You will run the script, and it will give you the output once it is completed.
+
+[rochak agrawal] 08:02:18
+So those type of tasks we do with the scripting.
+
+[rochak agrawal] 08:02:24
+Okay.
+
+[rochak agrawal] 08:02:29
+Anthony?
+
+[Anthony Joseph] 08:02:30
+Uh, sir…
+
+[Anthony Joseph] 08:02:33
+In this scripting, when you are defining the variable, can it define the type of variable, or it just take it as it is?
+
+[rochak agrawal] 08:02:41
+It… just take it as it is. By default, it is a string. See, again, uh…
+
+[rochak agrawal] 08:02:47
+This is not a full-fledged programming language.
+
+[Anthony Joseph] 08:02:50
+Correct, correct.
+
+[rochak agrawal] 08:02:50
+Correct. So, uh, there, there will be certain limitations of the scripting, uh, which we cannot, uh, like, overcome. So it's, it's not a programming language, so you cannot use, like, load or something. Yeah.
+
+[Anthony Joseph] 08:02:51
+Right.
+
+[Anthony Joseph] 08:03:02
+Right, right, right. So, does it have a C compiler also built in?
+
+[rochak agrawal] 08:03:07
+Uh, what does it mean when you say C compiler built-in?
+
+[Anthony Joseph] 08:03:09
+Suppose if I… if I write a program in C, and if I want to compile, does it compile?
+
+[rochak agrawal] 08:03:13
+Hmm?
+
+[rochak agrawal] 08:03:16
+And no, so for that, uh, see, some of the Linux will come with the C compiler, but again, that is a optional thing, I would say, Anthony. You need to check in your operating system if that is there or not. So, for example, if you go to this.
+
+[rochak agrawal] 08:03:30
+That is, Python is there.
+
+[Anthony Joseph] 08:03:32
+Okay.
+
+[rochak agrawal] 08:03:33
+Okay.
+
+[rochak agrawal] 08:03:35
+this is… we have not installed it, but this is coming, uh, built in. So you need to check on your operating system, uh, let's say if you're using some platform, uh, which is giving you the C, maybe it will be there, but.
+
+[Anthony Joseph] 08:03:37
+It's built in. Built in.
+
+[rochak agrawal] 08:03:49
+Mandatory, it would not be there. It will depend on the platform and the operating system you are using, the version you are using.
+
+[Anthony Joseph] 08:03:49
+Depends, sir.
+
+[Anthony Joseph] 08:03:55
+Got it. And one more thing I wanted to ask is, what does touch command do exactly? Touch?
+
+[rochak agrawal] 08:04:00
+Okay, I'll explain.
+
+[rochak agrawal] 08:04:03
+So, touch command basically creates the empty file.
+
+[Anthony Joseph] 08:04:08
+Okay.
+
+[rochak agrawal] 08:04:09
+Okay, so touch file dot txt.
+
+[Anthony Joseph] 08:04:13
+Okay.
+
+[rochak agrawal] 08:04:14
+So, if you go see this file, you see zero.
+
+[Anthony Joseph] 08:04:17
+Ah, okay.
+
+[rochak agrawal] 08:04:19
+So, it is going to create… first, there are two uses of the touch command. One, it is going to create the empty file. Okay.
+
+[Anthony Joseph] 08:04:26
+Okay.
+
+[rochak agrawal] 08:04:27
+Now…
+
+[rochak agrawal] 08:04:29
+people may ask why you want to create the empty file. So, this is being used at the time of a setup. So, for example, I am, uh, setting up NGINX, and I need to give a login file, right? Now, when you are installing.
+
+[rochak agrawal] 08:04:44
+there will be no traffic coming to your NGINX server, so there will be no logs getting generated. So at that time, you create an empty file, and you tell NGINX any logs coming, you should redirect to this particular file. That's one thing.
+
+[Anthony Joseph] 08:04:58
+Okay.
+
+[rochak agrawal] 08:04:58
+Second thing is, let's say.
+
+[rochak agrawal] 08:05:04
+You have a particular application in your server, for example.
+
+[rochak agrawal] 08:05:10
+Now you want to know.
+
+[rochak agrawal] 08:05:14
+when this server was last accessed. Just an example, there can be multiple examples, right?
+
+[Anthony Joseph] 08:05:16
+Okay.
+
+[rochak agrawal] 08:05:20
+Now you want to know when this server was last accessed, okay? So what you did, you created a file, and whenever someone is trying to access that application, a log entry will go into that particular log file.
+
+[Anthony Joseph] 08:05:24
+Okay.
+
+[rochak agrawal] 08:05:33
+Okay.
+
+[Anthony Joseph] 08:05:34
+Okay.
+
+[rochak agrawal] 08:05:36
+Then
+
+[rochak agrawal] 08:05:37
+what I'm going to do with the help of touch command. So now you see, if I run the touch…
+
+[rochak agrawal] 08:05:43
+file.txt.
+
+[rochak agrawal] 08:05:45
+Same command, my file is already there, correct?
+
+[Anthony Joseph] 08:05:48
+Yeah.
+
+[rochak agrawal] 08:05:48
+If you see 234 is there.
+
+[rochak agrawal] 08:05:55
+2 35.
+
+[Anthony Joseph] 08:05:56
+Okay.
+
+[rochak agrawal] 08:05:58
+it is going to update the timestamp of a file. The file already exists.
+
+[rochak agrawal] 08:06:04
+Okay? You got it?
+
+[Anthony Joseph] 08:06:07
+Yes, yes, yes.
+
+[rochak agrawal] 08:06:08
+So, two use cases for touch command.
+
+[Anthony Joseph] 08:06:11
+Got it.
+
+[Anthony Joseph] 08:06:12
+But you can create a blank file through VI also.
+
+[rochak agrawal] 08:06:15
+Yeah, you can do that.
+
+[Anthony Joseph] 08:06:17
+Okay.
+
+[Anthony Joseph] 08:06:18
+But that's long, like, you have to create a file, then you have to save it, and other stuff. This is just a…
+
+[rochak agrawal] 08:06:19
+See, um…
+
+[rochak agrawal] 08:06:22
+Correct. No, but, but, uh, Anthony, the limitation with the VI is you cannot VI with the script.
+
+[Anthony Joseph] 08:06:29
+Okay, yeah.
+
+[rochak agrawal] 08:06:31
+BIE is like a notepad, you need… you can work on it.
+
+[rochak agrawal] 08:06:36
+Right.
+
+[Anthony Joseph] 08:06:36
+Understood. Thanks.
+
+[rochak agrawal] 08:06:37
+I can… I can create a file with Kettle, see?
+
+[rochak agrawal] 08:06:40
+There will be, like, if you see…
+
+[rochak agrawal] 08:06:45
+there will be more than one solution for a thing. There can be. It is up to us what I want to follow.
+
+[rochak agrawal] 08:06:53
+Okay?
+
+[Anthony Joseph] 08:06:54
+Got it, thanks.
+
+[rochak agrawal] 08:06:59
+Sorry.
+
+[rochak agrawal] 08:07:06
+Uh, Jeeva?
+
+[Jeeva Koli] 08:07:09
+Uh, yeah, uh, hi. Actually, the question got, uh, resolved, uh, in the previous question.
+
+[rochak agrawal] 08:07:11
+Hi.
+
+[rochak agrawal] 08:07:15
+Okay, okay.
+
+[Jeeva Koli] 08:07:16
+That's fine.
+
+[rochak agrawal] 08:07:16
+Sure.
+
+[rochak agrawal] 08:07:19
+Uh, Daniel?
+
+[Dhanu] 08:07:20
+Uh, yes, Rochak. I didn't receive any study material in the recording session.
+
+[Dhanu] 08:07:27
+Related to AWS and the DevOps as well, because you have, in the extra session you told, you have already uploaded it.
+
+[rochak agrawal] 08:07:32
+Yeah, yeah, I've shown you, I talked to the team, they told me that has been shared. Uh, I will again check, uh, specifically for you, okay?
+
+[Dhanu] 08:07:43
+Yeah, sure.
+
+[rochak agrawal] 08:07:47
+Sure.
+
+[Vaibhav Gupta] 08:07:48
+Hey, Rajab, uh, I also don't receive any, uh, like, PPT of this.
+
+[Debasis Patra] 08:07:53
+Yeah, yeah, I also… I'm not also receiving.
+
+[Vaibhav Gupta] 08:07:53
+So, that's why.
+
+[rochak agrawal] 08:07:58
+No problem, I'll check, because yesterday they told me they have shared it.
+
+[rochak agrawal] 08:08:02
+But, because I have shown you whatever the Google Drive link they have given me, I have uploaded it. Let me talk, I'll make sure that today it is going to be done.
+
+[rochak agrawal] 08:08:14
+Okay.
+
+[Vaibhav Gupta] 08:08:16
+So, Chuck, I want to ask one thing, like, is there any, uh, specifics, any, uh, I mean, any website or any platform, like, where we, uh, search out the commands, like, for example, echo, read, so we can, uh, I mean, go through that, and we can practice our.
+
+[rochak agrawal] 08:08:29
+Hmm?
+
+[Vaibhav Gupta] 08:08:35
+So, uh, I mean, day-to-day practice, we use it, so we can utilize the things that this command is used for this particular use, and this command is used for this particular use.
+
+[rochak agrawal] 08:08:43
+So, I've given you the notes for that, we've written, uh, it is there, written in those notes.
+
+[rochak agrawal] 08:08:48
+Okay, once you will access to these notes, I am… see, if you go to internet, there are many websites, so if you go W3Schools.
+
+[Vaibhav Gupta] 08:08:49
+Okay.
+
+[Vaibhav Gupta] 08:08:57
+Yeah, so we can go through the things, like, this command is particularly used for this.
+
+[rochak agrawal] 08:08:57
+Shell…
+
+[rochak agrawal] 08:08:59
+Yeah, so…
+
+[rochak agrawal] 08:09:01
+So if you go to this batch tutorial, it is going to give you all the commands LS, CD, PWD, ECO, CAD, CP, MB, RM, Touch. You can see we cover all of that, right? Grab be covered. Some of them may still head will be covered.
+
+[Vaibhav Gupta] 08:09:11
+Okay.
+
+[rochak agrawal] 08:09:18
+SEDAWKB yet not. You can see, so this is a link which you can refer, where, uh, all the common commands which you are going to use, it is listed out there.
+
+[Vaibhav Gupta] 08:09:29
+Okay.
+
+[rochak agrawal] 08:09:29
+Okay?
+
+[Vaibhav Gupta] 08:09:31
+Okay.
+
+[rochak agrawal] 08:09:31
+So, there is multiple websites. I… I like this website, but, uh, like, if you find another one, you can use that. It's very simple, uh, simply written, so this W3Schools.
+
+[rochak agrawal] 08:09:43
+It's good.
+
+[Vaibhav Gupta] 08:09:44
+Yeah, yeah. During my college time, I used the website so much in development also.
+
+[rochak agrawal] 08:09:46
+No? Yeah, I am.
+
+[rochak agrawal] 08:09:50
+Sure.
+
+[Dhanu] 08:09:52
+Uh, Ruchik, one more thing.
+
+[Dhanu] 08:09:54
+Uh, like, how this training section is going to be taken, like…
+
+[Dhanu] 08:09:58
+I have that doubt.
+
+[rochak agrawal] 08:10:00
+Uh, when you say how this, uh, uh, can you elaborate that question a bit?
+
+[Dhanu] 08:10:06
+Uh, in the sense, uh, almost we have covered AWS. We didn't have one training session also.
+
+[rochak agrawal] 08:10:12
+Yeah?
+
+[Dhanu] 08:10:12
+Since we are moving with the DevOps concepts.
+
+[rochak agrawal] 08:10:15
+So, uh, Danu, that communication will come to you from the support team only, when we will have the next class for AWS and the project. So, I can talk right now about the DevOps class. So, what we are going to do, uh, so we have the content, uh.
+
+[rochak agrawal] 08:10:31
+Uh, we will go tool by tool once we cover the Linux, then we will start with the Git.
+
+[rochak agrawal] 08:10:37
+Maven, and Jenkins. Once we finish these three, so we will do a project on these three, and then we will move to, uh, Jenkins.
+
+[rochak agrawal] 08:10:47
+Uh, sorry, Jenkins, we already mentioned. Git, Maven, Jenkins. Then we move to Docker and Kubernetes, and in the last, we will cover Ansible and Terraform.
+
+[Dhanu] 08:10:58
+Okay, okay, like that.
+
+[rochak agrawal] 08:10:59
+Okay.
+
+[rochak agrawal] 08:11:00
+Yeah.
+
+[Dhanu] 08:11:01
+Oh, so we'll be covering with the projects.
+
+[rochak agrawal] 08:11:04
+Yes, yes, we will be covering the projects.
+
+[Dhanu] 08:11:07
+Okay, but what if we tend to forget things?
+
+[Debasis Patra] 08:11:08
+Yeah, uh, is there something…
+
+[Megha Uthaman] 08:11:09
+Yeah.
+
+[rochak agrawal] 08:11:13
+Yeah, yeah.
+
+[Dhanu] 08:11:13
+Since we are going with the theory itself, we'll tend to forget it, right?
+
+[rochak agrawal] 08:11:16
+Huh?
+
+[rochak agrawal] 08:11:18
+No, no, see, in the end, if you talk about whatever concept we are covering on a daily basis, you can do a hands-on, right? See, it's a long course, right? I understand, but somehow it…
+
+[rochak agrawal] 08:11:34
+Uh, see, what I can do is, uh, uh, for this batch, uh, in the material section only, I will upload a list of the topic day-wise.
+
+[rochak agrawal] 08:11:44
+What we are going to cover, okay?
+
+[Dhanu] 08:11:48
+Okay.
+
+[rochak agrawal] 08:11:48
+Which probably is going to help you.
+
+[Dhanu] 08:11:51
+Okay, sure, I think that might help.
+
+[rochak agrawal] 08:11:52
+Yeah? Sure.
+
+[rochak agrawal] 08:11:54
+Yeah, yeah. Okay.
+
+[Megha Uthaman] 08:11:57
+Yeah, hi Roshak, good morning.
+
+[rochak agrawal] 08:11:58
+Yeah, hi, Megha. Good morning.
+
+[Megha Uthaman] 08:12:00
+Yeah, so two questions I had. One was regarding the lab. Is it, like, we'll have to default, I mean, uh…
+
+[Megha Uthaman] 08:12:07
+We'll have to take some platform and do it on a daily basis, or any particular class for performing the lab.
+
+[Megha Uthaman] 08:12:14
+Like, uh, trying all these commands and all.
+
+[rochak agrawal] 08:12:15
+No, you need to do it on a daily basis, because there will be a mentorship session also, but then in mentorship session, if that mentorship session is happening once a week.
+
+[rochak agrawal] 08:12:28
+Right? Uh, we… from a hands-on perspective, you're not going to cover everything in that one hour… one or two hour, correct? So, it is better to keep doing the hands-on on a daily basis.
+
+[Megha Uthaman] 08:12:35
+Mm-hmm.
+
+[Megha Uthaman] 08:12:41
+Okay, and mentorship session means you're covering some lab over the weekend. So is that the meaning?
+
+[rochak agrawal] 08:12:47
+Um, yes, kind of. Question, answers, and lefts.
+
+[Megha Uthaman] 08:12:52
+Okay.
+
+[rochak agrawal] 08:12:53
+Yep.
+
+[Megha Uthaman] 08:12:54
+Okay, and yeah, the second question was regarding, like, whenever you type…
+
+[Megha Uthaman] 08:13:01
+Type some command, right? Say in this case, like, touchfile.tx. You can see, like, total 4. So 4 is like, uh, what is it? It's a list of all the files, right? Uh, but here I can see 3 files. Can you just, uh, explain on that listing?
+
+[rochak agrawal] 08:13:12
+One file is hidden.
+
+[Megha Uthaman] 08:13:15
+Sorry.
+
+[rochak agrawal] 08:13:17
+then it is going to count the hidden file also. So, it counts this root direct, uh, dot file, if you see here.
+
+[rochak agrawal] 08:13:25
+So, it counts all the hidden files also as one file.
+
+[Megha Uthaman] 08:13:26
+Okay.
+
+[rochak agrawal] 08:13:30
+So that's why 4 you are seeing. 3 plus 1.
+
+[Megha Uthaman] 08:13:36
+And the latest files are shown below, right? The latest as per the date creation, like file.txt, you create it at the end. Like, what is the order?
+
+[rochak agrawal] 08:13:45
+So, yes, so all the latest file you will see, uh, at the end.
+
+[Megha Uthaman] 08:13:45
+Display.
+
+[rochak agrawal] 08:13:51
+Last modified file, not the last created file.
+
+[Megha Uthaman] 08:13:54
+Oh, okay.
+
+[rochak agrawal] 08:13:55
+Yeah?
+
+[Megha Uthaman] 08:13:56
+Yeah, okay.
+
+[rochak agrawal] 08:13:57
+Okay. Yeah.
+
+[rochak agrawal] 08:13:59
+So, uh…
+
+[Vaibhav Gupta] 08:14:01
+Hello. I just noticed one thing. Like, I connected with the operation team regarding the AWS, uh, we have left. So, they told, like, uh, they, uh, first we covered the Linux, and according to that Linux, we used some commands in the products, that's why they start the Linux.
+
+[rochak agrawal] 08:14:06
+Mm-hmm.
+
+[Vaibhav Gupta] 08:14:17
+So, after Linux, I told, like, we continue the AWS. The rest topics, as we discussed in the class, like, one week…
+
+[rochak agrawal] 08:14:17
+Hmm?
+
+[rochak agrawal] 08:14:23
+No, on top of that, that, uh, that communication come, uh, from those guys only.
+
+[Vaibhav Gupta] 08:14:29
+No, no, I discussed with that, so I can just confirm that this, uh, in the AWS period, is that, is that Linux command is used or not?
+
+[rochak agrawal] 08:14:36
+Well, it is used, but those sessions will be independent of this DevOps session.
+
+[Vaibhav Gupta] 08:14:42
+Okay, okay, okay.
+
+[rochak agrawal] 08:14:43
+Yeah?
+
+[rochak agrawal] 08:14:44
+Okay.
+
+[Vaibhav Gupta] 08:14:45
+Okay.
+
+[rochak agrawal] 08:14:48
+Okay, so now, uh, we know how to make our script.
+
+[rochak agrawal] 08:14:55
+reusable with the help of… I can give the inputs to my script. So, for example.
+
+[rochak agrawal] 08:15:03
+Just give me a second.
+
+[rochak agrawal] 08:15:17
+Okay, now…
+
+[rochak agrawal] 08:15:20
+what we are going to understand is, even if I cover the slides also, so…
+
+[rochak agrawal] 08:15:29
+So there are conditions, okay? So there are, uh…
+
+[rochak agrawal] 08:15:34
+In any programming language, conditions are being written with the if-else statement.
+
+[rochak agrawal] 08:15:41
+Sorry, uh, so let's say, uh, you are a teacher, and you want to know the grade of a student, and you want a script which will give you, uh.
+
+[rochak agrawal] 08:15:55
+You input, uh, the number as a, uh, number…
+
+[rochak agrawal] 08:15:59
+read the number from the input, and then you will tell the grade of the student, right? So then you can write a complete script for that. Let me ask Gemini to write the script.
+
+[rochak agrawal] 08:16:15
+I'll explain that.
+
+[rochak agrawal] 08:16:53
+Why it is giving me seeds?
+
+[rochak agrawal] 08:17:05
+Okay, yeah.
+
+[rochak agrawal] 08:17:07
+So you can see it here.
+
+[rochak agrawal] 08:17:12
+Very simple script.
+
+[rochak agrawal] 08:17:19
+VA?
+
+[rochak agrawal] 08:17:23
+Great dot message.
+
+[rochak agrawal] 08:17:29
+Okay? Forget about this as of now.
+
+[rochak agrawal] 08:17:39
+Okay. So the first line is shebang. No problem. Second line echo enter your marks again like enter your name period. Read the marks.
+
+[rochak agrawal] 08:17:49
+So, whatever you give with the wheel, it is going to come as your, uh…
+
+[rochak agrawal] 08:17:56
+input. Now, what about the marks you have defined? Here, you can say we have defined the if-else block. Now, here.
+
+[rochak agrawal] 08:18:05
+Dennis, uh…
+
+[rochak agrawal] 08:18:07
+Three keywords. If, elif.
+
+[rochak agrawal] 08:18:10
+Ls and Fi. Okay. Now, how does it work?
+
+[rochak agrawal] 08:18:20
+Four keywords are there, right? So your…
+
+[rochak agrawal] 08:18:24
+statement goes inside if, and it is going to block, uh, it is going to end with the FI.
+
+[rochak agrawal] 08:18:31
+Now whatever goes inside this if marks is less than 90 sorry greater than 90.
+
+[rochak agrawal] 08:18:49
+Great.
+
+[rochak agrawal] 08:18:51
+is…
+
+[rochak agrawal] 08:18:53
+A, for example.
+
+[rochak agrawal] 08:18:54
+So…
+
+[rochak agrawal] 08:18:55
+And then you can write one condition else.
+
+[rochak agrawal] 08:19:01
+Grade is equal to F. Something like that. Okay.
+
+[rochak agrawal] 08:19:05
+So this is a normal if-else statement. If-else FI. Okay. Now, but you can have certain intermediary conditions also in between. You can say Marx is 90.
+
+[rochak agrawal] 08:19:22
+Those conditions I am going to define with something called elif.
+
+[rochak agrawal] 08:19:27
+Okay, my access…
+
+[rochak agrawal] 08:19:30
+Greater than 80.
+
+[rochak agrawal] 08:19:32
+And…
+
+[rochak agrawal] 08:19:35
+Mark says…
+
+[rochak agrawal] 08:19:38
+Less than 90.
+
+[rochak agrawal] 08:19:40
+Then grade will be…
+
+[rochak agrawal] 08:19:43
+B.
+
+[rochak agrawal] 08:19:44
+Hey!
+
+[rochak agrawal] 08:19:45
+Elif… see, I can define multiple intermediary conditions, like this, with the help of elif statement, E-L-I-F.
+
+[rochak agrawal] 08:19:52
+Mark says…
+
+[rochak agrawal] 08:19:54
+Greater than 70.
+
+[rochak agrawal] 08:19:56
+And…
+
+[rochak agrawal] 08:19:59
+Marks is…
+
+[rochak agrawal] 08:20:02
+Less than you.
+
+[rochak agrawal] 08:20:03
+Great is good.
+
+[rochak agrawal] 08:20:07
+So, either you can define only one FLS if…
+
+[rochak agrawal] 08:20:11
+Uh, there is… so, for example, if else is black and white conditions. If there is darkness, there would be light, right?
+
+[rochak agrawal] 08:20:20
+If there is sun, it's a daytime.
+
+[rochak agrawal] 08:20:23
+It's a black and white conditions. But when you want to… those conditions will be defined if, uh, there is some…
+
+[rochak agrawal] 08:20:30
+Current time is day. Else, this is night. Something like that, right? But if you have multiple conditions in between, then you are going to define it with the if-elif statement, and similarly, what we are doing here.
+
+[rochak agrawal] 08:20:45
+And this, you see, this is how we are going to define greater than equal to. Similarly, there is LE.
+
+[rochak agrawal] 08:20:55
+Okay, so this denotes greater than equal to. So if marks is greater than equal to 90, then.
+
+[rochak agrawal] 08:21:03
+Grade is A+. If marks is greater than 80, then grade is A. If marks is greater than 70, then grade is B. Uh, marks is greater than 60.
+
+[rochak agrawal] 08:21:15
+Grader C, if mark is greater than 50, then.
+
+[rochak agrawal] 08:21:19
+D, but if you mark… so, as you see, your script is going to be executed line by line. We discussed that, right? So then, when you go.
+
+[rochak agrawal] 08:21:32
+read marks, you will give your input. First, this condition will be checked.
+
+[rochak agrawal] 08:21:37
+If this condition is successful, this grid will be executed and you will come out of this, right? Because you you will not go into the then statement. Then if this is not successful, this will be checked. If this is not successful, this will be checked.
+
+[rochak agrawal] 08:21:52
+et cetera, et cetera, right? So let's run this.
+
+[rochak agrawal] 08:21:58
+Again, you need to assign permissions.
+
+[rochak agrawal] 08:22:05
+So, if you see grade.sh.
+
+[rochak agrawal] 08:22:09
+Enter your marks, I'll say 95.
+
+[rochak agrawal] 08:22:12
+You see grade A+. If you see grade…
+
+[rochak agrawal] 08:22:17
+85.
+
+[rochak agrawal] 08:22:24
+Go ahead.
+
+[rochak agrawal] 08:22:26
+You can see, grade is F.
+
+[rochak agrawal] 08:22:28
+So basis on the conditions which we defined.
+
+[rochak agrawal] 08:22:36
+Very simple condition. And that is where I can define multiple type of the condition. So in Unix, these are called the relational operators. So we have what you can say.
+
+[rochak agrawal] 08:22:55
+Multiple type of the relational operator, so…
+
+[rochak agrawal] 08:23:05
+If I say what is the multi relational operator in shell, so equal to EQ.
+
+[rochak agrawal] 08:23:19
+not equal to…
+
+[rochak agrawal] 08:23:21
+Greater than?
+
+[rochak agrawal] 08:23:25
+Less than?
+
+[rochak agrawal] 08:23:30
+Greater than equal to and less than equal to.
+
+[rochak agrawal] 08:23:34
+So we have these operators available. So equal to means check if the value of two variables are equal or not. If yes, the conditions become true, not equal to there. This is going to check. So this is pretty straightforward.
+
+[rochak agrawal] 08:23:50
+Uh, and then, uh, GT…
+
+[rochak agrawal] 08:23:54
+greater than LT less than G is checks at the value of greater than and equal to.
+
+[rochak agrawal] 08:24:01
+Right now one more thing is here now tell the scripts whatever we are using we are giving only one variable correct.
+
+[rochak agrawal] 08:24:12
+In your script, you can get multiple variables, okay? So, let me take an example.
+
+[rochak agrawal] 08:24:38
+Very simple, it fails.
+
+[rochak agrawal] 08:24:52
+So you can see, sibling line. Here, you will say, enter first number.
+
+[rochak agrawal] 08:24:56
+So, whatever you will write it here, it will go into number 1.
+
+[rochak agrawal] 08:25:00
+equals second number, whatever you write after this line, it will go into number 2. And then, with the relationship operator equals, if number 1 is equal to number 2.
+
+[rochak agrawal] 08:25:12
+both numbers are equal if otherwise both numbers are not equal. I'll run this.
+
+[rochak agrawal] 08:25:35
+You see, enter first number, I'll say 43, enter second number, 45.
+
+[rochak agrawal] 08:25:41
+So you can see first variable, this will go into first variable called number one. This will go to second variable as number two.
+
+[rochak agrawal] 08:25:50
+Can you see it?
+
+[rochak agrawal] 08:25:52
+It's the both numbers are not equal.
+
+[rochak agrawal] 08:25:53
+But if you get the…
+
+[rochak agrawal] 08:25:57
+55? 55?
+
+[rochak agrawal] 08:25:58
+You see? Both numbers are equal. So we…
+
+[rochak agrawal] 08:26:02
+we can give as many input to my script as I want.
+
+[rochak agrawal] 08:26:09
+Clear?
+
+[rochak agrawal] 08:26:16
+Now.
+
+[rochak agrawal] 08:26:20
+There is one more thing.
+
+[rochak agrawal] 08:26:25
+So this is a variable, okay? Now, there is something called the command line arguments, or the runtime arguments. This is also very important to understand.
+
+[rochak agrawal] 08:26:35
+Okay? You say, I do not want to give this, like, a prompt, okay?
+
+[rochak agrawal] 08:26:40
+I'm… I'm not very convinced with the… the…
+
+[rochak agrawal] 08:26:46
+giving the input every time. I'll just say, run the script. Now, when you are running the…
+
+[rochak agrawal] 08:26:53
+commands.
+
+[rochak agrawal] 08:27:00
+You have an option to add the arguments.
+
+[rochak agrawal] 08:27:04
+Correct? Similarly, like, if I'm running ls-lrt, with the default no arguments, it will show me the content of my present working directory.
+
+[rochak agrawal] 08:27:15
+Um, but if I give ls-lrt slash etc, which is an argument, so it is going to show me the content of the slash etc40, correct? So your script can also run with the arguments.
+
+[rochak agrawal] 08:27:29
+Okay. Now.
+
+[rochak agrawal] 08:27:31
+Let me ask to create.
+
+[rochak agrawal] 08:27:57
+Now you see it here.
+
+[rochak agrawal] 08:28:00
+I'll explain.
+
+[rochak agrawal] 08:28:23
+Okay.
+
+[rochak agrawal] 08:28:33
+Now, we need to understand this very, very carefully. I'll take the questions after that.
+
+[rochak agrawal] 08:28:38
+Okay, uh…
+
+[rochak agrawal] 08:28:40
+So…
+
+[rochak agrawal] 08:28:41
+When you run the script, right now, I was running scripts like this.
+
+[rochak agrawal] 08:28:52
+You see?
+
+[rochak agrawal] 08:28:54
+It is not taking an import, and it is giving me both number equal.
+
+[rochak agrawal] 08:28:59
+Now I can run a script like this.
+
+[rochak agrawal] 08:29:04
+I can give multiple arguments to my script.
+
+[rochak agrawal] 08:29:08
+Okay.
+
+[rochak agrawal] 08:29:10
+Now, by default, and uh…
+
+[rochak agrawal] 08:29:13
+understand this very carefully. So when you run a script with an argument.
+
+[rochak agrawal] 08:29:23
+Of course, you will give the, uh…
+
+[rochak agrawal] 08:29:26
+Arguments only necessary for your script.
+
+[rochak agrawal] 08:29:33
+When you run a script like this.
+
+[rochak agrawal] 08:29:38
+Shell, automatically.
+
+[rochak agrawal] 08:29:39
+This is by design.
+
+[rochak agrawal] 08:29:41
+This will be zero.
+
+[rochak agrawal] 08:29:45
+This will be first argument. This will be second argument.
+
+[rochak agrawal] 08:29:49
+And this will be third argument, this will be fourth argument, this will be fifth argument, and so on and so forth, right?
+
+[rochak agrawal] 08:29:57
+Now.
+
+[rochak agrawal] 08:29:58
+To get the value of this?
+
+[rochak agrawal] 08:30:00
+You will use dollar one?
+
+[rochak agrawal] 08:30:03
+dollar two.
+
+[rochak agrawal] 08:30:06
+Okay, and that's exactly what we are doing it here.
+
+[rochak agrawal] 08:30:11
+More?
+
+[rochak agrawal] 08:30:16
+via saying.
+
+[rochak agrawal] 08:30:17
+If $1 equals to $2.
+
+[rochak agrawal] 08:30:22
+Since we are not giving it any number here, it says both number of equal, because both is… it is counting as zero, or, uh, I will say null. But if you run your script like this.
+
+[rochak agrawal] 08:30:38
+10 and 12.
+
+[rochak agrawal] 08:30:40
+You see, both numbers are not equal, because 10 value will go into $1.
+
+[rochak agrawal] 08:30:45
+And 12 value will go into dollar.
+
+[rochak agrawal] 08:30:50
+Right? So, if you… if I give 10, 10.
+
+[rochak agrawal] 08:30:55
+It's if both numbers are equal.
+
+[rochak agrawal] 08:30:58
+Why? Because now you have this, uh…
+
+[rochak agrawal] 08:31:04
+$1 is equal to 10, and $2 is also equal to 10, and they are satisfying this condition.
+
+[rochak agrawal] 08:31:11
+So these are called the shell arguments, or you can say the special variables also, and we can define them.
+
+[rochak agrawal] 08:31:21
+then you will be running multiple files, uh, you must have seen. So, for example, I can write a script, uh, which is going to start the server, which is going to stop the server, which is going to restart the server. So, I will just say.
+
+[rochak agrawal] 08:31:37
+Either I can take the, uh, the input with the help of lead variable, or I will just simply say, uh, script…
+
+[rochak agrawal] 08:31:45
+Dot S H.
+
+[rochak agrawal] 08:31:48
+Which is going to start the server. So, start value will go into $1, and you will leverage this start functionality everywhere. So, these are two ways in which I can provide the input to my script.
+
+[rochak agrawal] 08:32:02
+Either with the help of read input, read function, or read command, or I can pass those values as the shell argument.
+
+[rochak agrawal] 08:32:13
+Both are correct, there is no right and wrong. Whatever you want to do.
+
+[rochak agrawal] 08:32:20
+It is up to you.
+
+[rochak agrawal] 08:32:22
+Right? Same script, we run it.
+
+[rochak agrawal] 08:32:25
+So, same script, we run it with the numbers, uh, right, with the read command, in which you give it from the command line, you will type it.
+
+[rochak agrawal] 08:32:35
+Second is, while running the script only, I will pass it, which will go into $1 and $1.
+
+[rochak agrawal] 08:32:42
+Of course, like, the…
+
+[rochak agrawal] 08:32:44
+Now, here, we can also do one more thing, okay?
+
+[rochak agrawal] 08:32:51
+Modify this script.
+
+[rochak agrawal] 08:33:13
+Now, you see, interestingly.
+
+[rochak agrawal] 08:33:40
+So this is going to be same.
+
+[rochak agrawal] 08:33:47
+Now, before I explain, let me try to run this.
+
+[rochak agrawal] 08:33:58
+You see, now alert is coming.
+
+[rochak agrawal] 08:34:01
+You see, your users should be like this.
+
+[rochak agrawal] 08:34:05
+Argument.sh, number 1 and number 2. If you give like this, then only this is going to run.
+
+[rochak agrawal] 08:34:12
+You get…
+
+[rochak agrawal] 08:34:13
+10, 12. And let's say both number are not equal, right? So it is giving you very specific error. Please provide exactly two numbers.
+
+[rochak agrawal] 08:34:22
+Uses will be like this, number 1 and number 2. How this is being achieved?
+
+[rochak agrawal] 08:34:27
+So, here, if you see…
+
+[rochak agrawal] 08:34:36
+That is, we have used something called the dollar hash.
+
+[rochak agrawal] 08:34:40
+Okay.
+
+[rochak agrawal] 08:34:42
+Now, what does dollar health do?
+
+[rochak agrawal] 08:34:46
+whatever arguments you are going to give. Okay? So, for example.
+
+[rochak agrawal] 08:34:53
+If I'm running a script like this.
+
+[rochak agrawal] 08:34:56
+There is no number of the arguments.
+
+[rochak agrawal] 08:34:59
+It is zero.
+
+[rochak agrawal] 08:35:00
+But if you give this, the number of the arguments is 1. If you give this, the number of the arguments is 2.
+
+[rochak agrawal] 08:35:09
+Number of the arguments is 3. Number of the arguments is 4.
+
+[rochak agrawal] 08:35:16
+6… 7…
+
+[rochak agrawal] 08:35:18
+8…
+
+[rochak agrawal] 08:35:20
+9…
+
+[rochak agrawal] 08:35:21
+10. Right? I can give as many number of the arguments as I want to my shell script.
+
+[rochak agrawal] 08:35:30
+Whatever the arguments you are given here, the count of this argument will be passed to a variable called the dollar hash.
+
+[rochak agrawal] 08:35:41
+Okay.
+
+[rochak agrawal] 08:35:44
+I'll do one thing. So, you see, it will give you an error. Now, if I go…
+
+[rochak agrawal] 08:35:51
+Before doing anything, let's print the value of dollar hash.
+
+[rochak agrawal] 08:36:00
+Equal?
+
+[rochak agrawal] 08:36:03
+Dollar?
+
+[rochak agrawal] 08:36:05
+Okay.
+
+[rochak agrawal] 08:36:09
+Now, I'll run this.
+
+[rochak agrawal] 08:36:12
+You can see, 10.
+
+[rochak agrawal] 08:36:15
+And then it is giving you the error, because your script is not running.
+
+[rochak agrawal] 08:36:18
+You run it with…
+
+[rochak agrawal] 08:36:22
+7.
+
+[rochak agrawal] 08:36:24
+So, dollar hash is a number.
+
+[rochak agrawal] 08:36:27
+total number of the argument you are passing to your script, right? And then we have put up a condition.
+
+[rochak agrawal] 08:36:37
+That if dollar hash is not equals to 2, because we need…
+
+[rochak agrawal] 08:36:43
+exactly two arguments to run my script, right? Depending on your, uh, whatever scripts functionality you would be creating, uh, you need to decide, but this script exactly need two arguments.
+
+[rochak agrawal] 08:36:55
+Hey!
+
+[rochak agrawal] 08:36:57
+So we are saying if the total number of the arguments are not equal to 2.
+
+[rochak agrawal] 08:37:03
+Boss, this is not going to run.
+
+[rochak agrawal] 08:37:06
+Okay, so that's where you see, uh, the scripts are interpreted.
+
+[rochak agrawal] 08:37:11
+Line by line.
+
+[rochak agrawal] 08:37:14
+If it is equal to 2, then this block is not going to execute at all.
+
+[rochak agrawal] 08:37:19
+It will go to this block, and here, the conditions will be checked.
+
+[rochak agrawal] 08:37:24
+So the… and uh… not only dollar hash, there are multiple.
+
+[rochak agrawal] 08:37:30
+Uh, shell special variables are there.
+
+[rochak agrawal] 08:37:34
+And this is being asked very frequently in the interview.
+
+[rochak agrawal] 08:37:41
+Okay? So, as I said, dollar zero, which is your, uh…
+
+[rochak agrawal] 08:37:48
+Name of the script, then whatever the argument you are giving, $1, $2, $3, $4, $5.
+
+[rochak agrawal] 08:37:55
+Like that, right? And then, so dollar zero, name of the current script, dollar one, dollar two, positional argument passed to the script.
+
+[rochak agrawal] 08:38:04
+dollar hash total number of the positional argument which we have used in our script also.
+
+[rochak agrawal] 08:38:09
+Connect?
+
+[rochak agrawal] 08:38:11
+Then comes the dollar question mark. This is the most important one from an interview perspective. Okay.
+
+[rochak agrawal] 08:38:22
+Now…
+
+[rochak agrawal] 08:38:25
+When a command runs.
+
+[rochak agrawal] 08:38:32
+Very important to understand this.
+
+[rochak agrawal] 08:38:35
+When a command runs.
+
+[rochak agrawal] 08:38:39
+What can be the outcome? There can be two outcomes. One is…
+
+[rochak agrawal] 08:38:44
+Either it will run successfully.
+
+[rochak agrawal] 08:38:55
+Or it is going to give you an error.
+
+[rochak agrawal] 08:39:00
+Correct, there is no third way.
+
+[rochak agrawal] 08:39:06
+Yes.
+
+[rochak agrawal] 08:39:10
+Now, if this gives you an error.
+
+[rochak agrawal] 08:39:14
+There must be an error code, maybe 404. Although 404 is not the command error status, just I'm giving 305…
+
+[rochak agrawal] 08:39:26
+27… there may be… there will be some error code associated if there is an error coming.
+
+[rochak agrawal] 08:39:32
+Okay.
+
+[rochak agrawal] 08:39:34
+When the command successfully executed, every command I'm talking about, okay, any command you are giving in Linux, and this is not only true about Linux, this is a general concept.
+
+[rochak agrawal] 08:39:45
+When the command executes successfully, it returns a zero status.
+
+[rochak agrawal] 08:39:52
+Okay.
+
+[rochak agrawal] 08:39:55
+Any operating system flavor you are using, sorry…
+
+[rochak agrawal] 08:40:00
+Anywhere you're using.
+
+[rochak agrawal] 08:40:03
+If something runs successfully, it returns a zero status. If a non-zero status is coming.
+
+[rochak agrawal] 08:40:10
+It means your…
+
+[rochak agrawal] 08:40:14
+Command has not been executed successfully.
+
+[rochak agrawal] 08:40:18
+How we can verify if my command has been executed successfully or not.
+
+[rochak agrawal] 08:40:24
+Now…
+
+[rochak agrawal] 08:40:26
+Let's say…
+
+[rochak agrawal] 08:40:30
+Do a LS-LRT.
+
+[rochak agrawal] 08:40:32
+Now my command is executed successfully.
+
+[rochak agrawal] 08:40:35
+Correct? Now, if I go equal…
+
+[rochak agrawal] 08:40:40
+at… oh, sorry, dollar.
+
+[rochak agrawal] 08:40:41
+Question mark.
+
+[rochak agrawal] 08:40:44
+You see?
+
+[rochak agrawal] 08:40:46
+Zero.
+
+[rochak agrawal] 08:40:47
+Because my command has executed, and very importantly, it is going to give you the status of the last executed command.
+
+[rochak agrawal] 08:40:57
+Very…
+
+[rochak agrawal] 08:40:59
+Critical point to remember. Okay, for example, if I run PWT, and if I run ls-lrt, and now if you run echo dollar.
+
+[rochak agrawal] 08:41:10
+Question mark.
+
+[rochak agrawal] 08:41:11
+Again, it is running successfully.
+
+[rochak agrawal] 08:41:15
+So, you run two commands, but it is giving me the status of this ls-alarm.
+
+[rochak agrawal] 08:41:23
+Okay, not of the PWB, so the last executed command.
+
+[rochak agrawal] 08:41:27
+So, Jiru means my command has been executed successfully.
+
+[rochak agrawal] 08:41:32
+Then, if…
+
+[rochak agrawal] 08:41:35
+Let's say I'll do ls-lrt, wrong command, right?
+
+[rochak agrawal] 08:41:40
+There's an error, ls hyphen alert command note. Now, if you run…
+
+[rochak agrawal] 08:41:45
+You see, it is giving some 127.
+
+[rochak agrawal] 08:41:48
+But just…
+
+[rochak agrawal] 08:41:50
+some error code, right? I don't know
+
+[rochak agrawal] 08:41:52
+But that… right now, it tells me that my command has not been executed successfully. As simple as that. Now, instead of PWD, I say PWDE.
+
+[rochak agrawal] 08:42:04
+Come on, you do echo question mark.
+
+[rochak agrawal] 08:42:08
+See, again, 127. If you run PWD.
+
+[rochak agrawal] 08:42:12
+Zero.
+
+[rochak agrawal] 08:42:14
+executed successfully, right? So, with the help of a dollar question mark, you are going to get the execution status of your last command.
+
+[rochak agrawal] 08:42:25
+What has happened? Now this dollar question mark is going to be executed.
+
+[rochak agrawal] 08:42:33
+in your scripts very, very, very highly, okay? Because, see, script is nothing but the sequence of events, right?
+
+[rochak agrawal] 08:42:43
+Now, if your previous events has not occurred successfully, then…
+
+[rochak agrawal] 08:42:49
+you should not progress. For example, if you're copying one… some file into some directory, and you're creating a directory. Now, your directory creation is not successful, then can you copy those files to that directory?
+
+[rochak agrawal] 08:43:02
+No. Right? So that's where dollar question mark will keep check.
+
+[rochak agrawal] 08:43:08
+wherever you want to check, okay? So let me, uh, take a simple script.
+
+[rochak agrawal] 08:43:57
+Okay, now if you see…
+
+[rochak agrawal] 08:44:00
+Let me run this file.
+
+[rochak agrawal] 08:44:19
+Now, you go creating a file, touch myfile.txt, and you are just doing a echo, right? Now, if you go run this.
+
+[rochak agrawal] 08:44:39
+You see? First, it says creating a file, and it's file created successfully. Now, if you go run it.
+
+[rochak agrawal] 08:44:47
+I…
+
+[rochak agrawal] 08:44:48
+Give a wrong command.
+
+[rochak agrawal] 08:44:53
+Okay.
+
+[rochak agrawal] 08:44:56
+Now, if you donate…
+
+[rochak agrawal] 08:45:02
+You see, command not found, error, file creation failed.
+
+[rochak agrawal] 08:45:07
+So…
+
+[rochak agrawal] 08:45:09
+This is going to be used.
+
+[rochak agrawal] 08:45:13
+Dollar question mark, you remember, this is one of the most favorite interview questions. If someone is asking you a question in Linux, very high chances that they are going to.
+
+[rochak agrawal] 08:45:24
+They might, uh…
+
+[rochak agrawal] 08:45:27
+ask you this question. Dollar question mark is going to give you the status of your last executed command. So you see, if it is equal to zero, it means my command has been executed successfully. If not zero, it could be anything.
+
+[rochak agrawal] 08:45:42
+I don't bother about the error code. If it is a non-zero, it is an error.
+
+[rochak agrawal] 08:45:47
+As simple as that.
+
+[rochak agrawal] 08:45:48
+Okay, so that is it.
+
+[rochak agrawal] 08:45:52
+what the dollar question mark does. Now, apart from the dollar question mark, what is important for us is.
+
+[rochak agrawal] 08:45:59
+This dollar…
+
+[rochak agrawal] 08:46:03
+at the rate. Now.
+
+[rochak agrawal] 08:46:09
+Okay. Now, this is very close to…
+
+[rochak agrawal] 08:46:16
+dollar star, dollar at the rate, and dollar hash. So if I go to my script again.
+
+[rochak agrawal] 08:46:35
+dollar…
+
+[rochak agrawal] 08:46:41
+Equal.
+
+[rochak agrawal] 08:46:43
+Bono.
+
+[rochak agrawal] 08:46:48
+Okay, and let's run this.
+
+[rochak agrawal] 08:46:58
+Hmm? Let's see.
+
+[rochak agrawal] 08:47:05
+So you can see it here.
+
+[rochak agrawal] 08:47:09
+Dollar had, uh, sorry.
+
+[rochak agrawal] 08:47:10
+What was this?
+
+[rochak agrawal] 08:47:16
+I also forgot.
+
+[rochak agrawal] 08:47:18
+Dollar hash is going to give you the total number of the positional argument, which is 7.
+
+[rochak agrawal] 08:47:23
+So, we can count 1, 2, 3, 4, 5…
+
+[rochak agrawal] 08:47:28
+6, 7. Then the dollar question mark, uh, sorry, dollar hash, and dollar argument.
+
+[rochak agrawal] 08:47:35
+Now all argument flattened into a single string, printing all arguments into a text log.
+
+[rochak agrawal] 08:47:43
+Okay? And our argument preserved as an individual element. Now, for you, right now.
+
+[rochak agrawal] 08:47:52
+This looks like the same output, okay, but the difference between the dollar.
+
+[rochak agrawal] 08:48:00
+Star and the dollar at the rate is…
+
+[rochak agrawal] 08:48:02
+this is a single string, okay? So what it does is, it preserves everything in a single string.
+
+[rochak agrawal] 08:48:09
+But there, with the dollar at the rate, it is going to, um…
+
+[rochak agrawal] 08:48:18
+Preserved as an individual element. Okay, so I can next when we will go to loop, we will understand about the looping, then we will we can create a loop. So for example, you're given five arguments and you create a loop out of these arguments with the help of dollar.
+
+[rochak agrawal] 08:48:34
+At the rate, because… and you say…
+
+[rochak agrawal] 08:48:38
+What is a loop? And you want to do something specific so that loop is going to run for all the argument. So that is a difference between them. Now others is not very important for us right now. So I'll not go into detail, but dollar hash.
+
+[rochak agrawal] 08:48:55
+And this positional parameters though, of course, if you want to run any script, so that is very, very important. Then dollar hash and dollar question marks. These four is very important for us. And sometime we use this dollar at the rate.
+
+[rochak agrawal] 08:49:10
+Also.
+
+[rochak agrawal] 08:49:11
+Which is an all argument preserved as an individual element.
+
+[rochak agrawal] 08:49:14
+But dollar question mark, you remember, this is…
+
+[rochak agrawal] 08:49:19
+If you are giving two, three interviews, one interview, that's a question coming on the other question mark.
+
+[rochak agrawal] 08:49:26
+Okay?
+
+[rochak agrawal] 08:49:28
+So…
+
+[rochak agrawal] 08:49:30
+Babo, you have a question?
+
+[Vaibhav Gupta] 08:49:34
+Not now, Ruchak.
+
+[rochak agrawal] 08:49:35
+Okay.
+
+[rochak agrawal] 08:49:41
+Yes, Avidesh.
+
+[avadhesh pathak] 08:49:48
+Yeah, hi, Rachel. So, can you please, uh…
+
+[avadhesh pathak] 08:49:51
+Elaborate the dollar at the once.
+
+[rochak agrawal] 08:49:54
+Dollar at the rate. Okay, so if you see, uh…
+
+[avadhesh pathak] 08:49:56
+We are.
+
+[rochak agrawal] 08:49:58
+See, forget about the dollar hash, uh, sorry, dollar star for now.
+
+[rochak agrawal] 08:50:22
+When you are running those scripts, you are giving arguments, right?
+
+[pooja.dole01@gmail.com] 08:50:25
+Hello?
+
+[rochak agrawal] 08:50:28
+Yeah, Pooja, just a minute. I'll just take Abhay's question, and then I'll come to you.
+
+[rochak agrawal] 08:50:36
+So, what about the arguments it's giving?
+
+[rochak agrawal] 08:50:40
+Dollar hash is going to give you the number of the arguments. The dollar at the rate is going to print what arguments you are giving.
+
+[rochak agrawal] 08:50:50
+So you can see it is going to give you the number of the arguments and then it is going to print the individual arguments. So that is what dollar at the rate does.
+
+[avadhesh pathak] 08:51:00
+Okay, it means the total number of pounds, right?
+
+[rochak agrawal] 08:51:06
+Uh, Abhishek's voice is not very clear to me.
+
+[avadhesh pathak] 08:51:06
+the argument number.
+
+[avadhesh pathak] 08:51:11
+Just a second.
+
+[avadhesh pathak] 08:51:14
+So, it is, uh, like, the number of argument we are passing, right?
+
+[rochak agrawal] 08:51:19
+Yeah so four is the number of the argument we are passing and this is the argument that we are passing. So the dollar hash gives you the number of the argument. Dollar at the rate prints the argument that we are passing. If I print a different argument.
+
+[avadhesh pathak] 08:51:25
+Awesome.
+
+[avadhesh pathak] 08:51:32
+Okay, okay.
+
+[rochak agrawal] 08:51:34
+For example…
+
+[rochak agrawal] 08:51:38
+You see? My number is not changed, but the argument has been changed.
+
+[rochak agrawal] 08:51:43
+Okay.
+
+[avadhesh pathak] 08:51:44
+Understood, understood, understood. Thank you.
+
+[rochak agrawal] 08:51:47
+Yes, Pooja?
+
+[pooja.dole01@gmail.com] 08:51:52
+Hello? So, previously, I have, uh, asked you regarding the environment, like, where we have to write that all the comments and a script. So, can you guide us, like, which environment I have to use?
+
+[rochak agrawal] 08:51:54
+Yes, please.
+
+[rochak agrawal] 08:52:03
+Yeah, so Pooja, uh, like, as I mentioned to you yesterday also, uh, so that is there, I have uploaded the document, which will help you to create the environment, uh, create the AWS environment, and create the EC2 instance, where I am writing this script.
+
+[pooja.dole01@gmail.com] 08:52:12
+Mm-hmm.
+
+[rochak agrawal] 08:52:17
+Unfortunately, that document has not been shared with you people till now. I will again check after this class, and I will make sure that by today.
+
+[pooja.dole01@gmail.com] 08:52:17
+Okay.
+
+[rochak agrawal] 08:52:28
+whatever the difficulty team is facing, we are going to resolve it. So once you go through that document, that is mentioned, everything is mentioned in that.
+
+[pooja.dole01@gmail.com] 08:52:35
+Okay. Okay. Okay. Yeah. Thank you.
+
+[rochak agrawal] 08:52:36
+Yeah?
+
+[rochak agrawal] 08:52:37
+Okay.
+
+[Rajesh Chandran] 08:52:38
+Hey, Roderick?
+
+[rochak agrawal] 08:52:39
+Yes, Rajesh.
+
+[Rajesh Chandran] 08:52:40
+Rajat, I have one question, general question. Actually, this Wednesday classes will be there from now onwards, right?
+
+[rochak agrawal] 08:52:46
+No, again, Rajesh, I think that is for this and next week, but that communication will come to you from the support team.
+
+[Rajesh Chandran] 08:52:54
+No, I did not get any communication. I was not aware that yesterday class was there, actually. So I thought Wednesday means mentorship session, so I did not attend. Then later I saw this recording session.
+
+[rochak agrawal] 08:52:58
+Okay?
+
+[rochak agrawal] 08:53:03
+Uh, okay, okay. No, I think, uh, then they need to… first, in their communication, I will pass it as a feedback to them.
+
+[Rajesh Chandran] 08:53:10
+Okay. And these materials, what do you have to share, right? So these things are not… see, we have a drive like PL72 material, so there are nothing is available. So…
+
+[rochak agrawal] 08:53:11
+Yeah?
+
+[rochak agrawal] 08:53:17
+Huh?
+
+[rochak agrawal] 08:53:19
+See, that's what, like, I said, I will check again with them, Rajesh. They told me yesterday that they have shared the material, but if, like, everyone is saying material is not available, I need to check with them. But…
+
+[Rajesh Chandran] 08:53:33
+Yeah, that's right, Roger, because I want to inform you, because I am not getting the proper response from them.
+
+[rochak agrawal] 08:53:35
+No, no, of course. Correct, correct. No, no, I will check. I will make sure that before coming for today's class, I will inform them just right after this class. I will follow up in the afternoon and evening also.
+
+[Rajesh Chandran] 08:53:37
+Okay.
+
+[rochak agrawal] 08:53:48
+And we'll make sure that the material is there, because that is important.
+
+[Rajesh Chandran] 08:53:52
+Right. And one more clarity I need, actually, this DevOps… right now you are taking the DevOps, right? So this will be finished fully before moving to something else, like Azure or something, because AWS was not fully finished, right? So I checked with them why it was not…
+
+[rochak agrawal] 08:53:53
+Yeah?
+
+[rochak agrawal] 08:53:57
+Getting…
+
+[rochak agrawal] 08:54:04
+Correct. AWS, there are 2-3 sessions are there, we will take that. Uh, so…
+
+[Rajesh Chandran] 08:54:07
+Right.
+
+[rochak agrawal] 08:54:09
+Yes, uh, we will do it fully this time.
+
+[Rajesh Chandran] 08:54:12
+Okay. Because I did not get a clear roadmap till now. I asked why this AWS was stopped in between, but there is no response. So I just want to ask you.
+
+[rochak agrawal] 08:54:13
+Yeah?
+
+[rochak agrawal] 08:54:20
+No, no, no, this will be finished, and the remaining AWS sessions also will be covered.
+
+[Rajesh Chandran] 08:54:25
+Okay, fine. Thank you, Roger. Yeah.
+
+[rochak agrawal] 08:54:25
+Okay, sure. Thank you.
+
+[rochak agrawal] 08:54:30
+Now, uh…
+
+[rochak agrawal] 08:54:33
+Uh, there is something called the loops, right? So, loops is something…
+
+[rochak agrawal] 08:54:41
+So, like, we all know what is a loop in general language. So, loop is, like, you're doing something.
+
+[rochak agrawal] 08:54:46
+Again and again, again and again. So, um…
+
+[rochak agrawal] 08:54:53
+In shell also, we can do the looping.
+
+[rochak agrawal] 08:55:01
+There are different types of loops available.
+
+[rochak agrawal] 08:55:06
+Like any other programming language, we have poll loops.
+
+[rochak agrawal] 08:55:16
+While loops?
+
+[rochak agrawal] 08:55:20
+and unblocks.
+
+[rochak agrawal] 08:55:26
+Okay.
+
+[rochak agrawal] 08:55:27
+And then, no.
+
+[rochak agrawal] 08:55:30
+So these three is there. Four loops.
+
+[rochak agrawal] 08:55:34
+Allows you to iterate over a list of items.
+
+[rochak agrawal] 08:55:38
+Or a range of number. So they are useful for repetitive tasks, or for a specific number of time. Okay, so I'll say for a…
+
+[rochak agrawal] 08:55:49
+Let's take an example, okay? We'll do it with an example.
+
+[rochak agrawal] 08:56:05
+Okay, so very simple.
+
+[rochak agrawal] 08:56:18
+Okay, so now, in this, poor and always remember.
+
+[rochak agrawal] 08:56:24
+If you want, if you know already.
+
+[rochak agrawal] 08:56:28
+How many times you need to run the loop?
+
+[rochak agrawal] 08:56:32
+you can use the for loop, but you are not certain that how many times you need to run the loop, right? Then you will go with the while loop. In the while loops.
+
+[rochak agrawal] 08:56:42
+uh, as long as the condition will become true, you keep running the loop, okay? And while loops can become infinite loop also, we'll discuss, right? So for.
+
+[rochak agrawal] 08:56:55
+Here, my little.
+
+[rochak agrawal] 08:56:57
+Range is limited, right? I'm saying for I in um.
+
+[rochak agrawal] 08:57:03
+1, 2, 3, 4, 5…
+
+[rochak agrawal] 08:57:06
+do, and these are going to be run by do and done. Okay, so while we'll also…
+
+[rochak agrawal] 08:57:13
+And within a do-and-done block, so this is a syntax for 4. Now, if I'm going to run this…
+
+[rochak agrawal] 08:57:30
+Okay? This is number 1, number 2, number 3, number 4, number 5. Now, we have just given an echo statement. If you are, let's say, copying some file, jipping some file, right?
+
+[rochak agrawal] 08:57:42
+That command is going to be executed multiple times.
+
+[rochak agrawal] 08:57:47
+Now, one more thing is, in the four days.
+
+[rochak agrawal] 08:57:53
+You can find the, uh, range.
+
+[rochak agrawal] 08:57:59
+Let's say if it is very big number, 100 number, so you don't need to write it completely. What you can do is the range.
+
+[rochak agrawal] 08:58:16
+Okay.
+
+[rochak agrawal] 08:58:20
+So, here I am saying, for I in between 1 to 100, print number.
+
+[rochak agrawal] 08:58:27
+And if you run it again.
+
+[rochak agrawal] 08:58:30
+You see?
+
+[rochak agrawal] 08:58:32
+It is going to run multiple number of the time.
+
+[rochak agrawal] 08:58:35
+So that is about… but still, remember this. You already know, before running the loop.
+
+[rochak agrawal] 08:58:43
+that how many times it is going to run. So when you have a definitive condition.
+
+[rochak agrawal] 08:58:49
+you are going to run it with the for loops. But when you have infinite, uh, when you have indefinite conditions, you say till the time.
+
+[rochak agrawal] 08:59:00
+I am not satisfied, I'll keep running it.
+
+[rochak agrawal] 08:59:04
+So for example, there can be any example, right? You say till the time outside temperature is not 40, I'm not going to turn on my AC. Now your outside temperature can be 40 on the first day.
+
+[rochak agrawal] 08:59:20
+It can be AC, uh, it can be 40 on 10th day, or it can be 40 on 100th day. You don't know. But you say, till the time when it is not 40, I'm not going to turn on my AC.
+
+[rochak agrawal] 08:59:33
+So, that type of condition, if you have those type of conditions, you are going to do it with the help of BILO.
+
+[rochak agrawal] 08:59:43
+Okay, I'll do a while loop.
+
+[rochak agrawal] 08:59:50
+So, I'll see.
+
+[rochak agrawal] 08:59:53
+Count.
+
+[rochak agrawal] 08:59:54
+is equal to 1.
+
+[rochak agrawal] 08:59:57
+Okay, and I'll say while…
+
+[rochak agrawal] 09:00:08
+Count. Again, I want to refer to count value, so I'll need to give it with the dollar sign.
+
+[rochak agrawal] 09:00:13
+Count is less than…
+
+[rochak agrawal] 09:00:29
+Equal.
+
+[rochak agrawal] 09:00:35
+Again, dollar count.
+
+[rochak agrawal] 09:00:42
+Keeps them meaningful.
+
+[rochak agrawal] 09:00:49
+Here, we will do a count plus plus.
+
+[rochak agrawal] 09:01:05
+And you sit back.
+
+[rochak agrawal] 09:01:06
+Maybe syntactically, I need to check, but we try to run it.
+
+[rochak agrawal] 09:01:12
+C H mode.
+
+[rochak agrawal] 09:01:15
+744Y.
+
+[rochak agrawal] 09:01:20
+Now it will run wild.
+
+[rochak agrawal] 09:01:39
+Should be okay.
+
+[rochak agrawal] 09:01:54
+No space before this and count should not have a space around.
+
+[rochak agrawal] 09:02:09
+Okay, and what is the second party screen?
+
+[rochak agrawal] 09:02:25
+Yeah, now I will be right.
+
+[rochak agrawal] 09:02:31
+You see? Number is 1, the number is 2, number is 3, number is 4, number is 5, 6, 7, 8, 9, 10. Now, what is happening here, if you see…
+
+[rochak agrawal] 09:02:43
+Count is equal to 1, while count is less than 10, you do number is count, so we say number is 1, okay? And we are adding the value.
+
+[rochak agrawal] 09:02:53
+of count by one. So next time count is two. Again, the loop is occurring. Next time count is three, count is four, count is five, count is six, count is seven, count is eight, nine, and 10. Once count is 10, then your count is not.
+
+[rochak agrawal] 09:03:08
+this condition is not true. Your loop will come out. So that is what while loop does.
+
+[rochak agrawal] 09:03:16
+The problem with the while loop is…
+
+[rochak agrawal] 09:03:32
+Your while loop, if you are not defining your condition correctly.
+
+[rochak agrawal] 09:03:37
+It is going to become an infinite loop.
+
+[rochak agrawal] 09:04:00
+Okay. Now, if you see this…
+
+[rochak agrawal] 09:04:07
+If you run this.
+
+[rochak agrawal] 09:04:11
+It's an infinite loop.
+
+[rochak agrawal] 09:04:14
+It is never going to stop until you manually stop this.
+
+[rochak agrawal] 09:04:20
+You can see.
+
+[rochak agrawal] 09:04:23
+5,000, 6,000, 7,000, 8,000.
+
+[rochak agrawal] 09:04:28
+It is never going to stop.
+
+[rochak agrawal] 09:04:37
+Again, so let me do a Ctrl C.
+
+[rochak agrawal] 09:04:55
+Let me refresh the page.
+
+[rochak agrawal] 09:04:56
+So you can see it can it while loops becomes infinite loop. In the for loop, your conditions will always define like how many iterations you want to run.
+
+[rochak agrawal] 09:05:09
+By loop is, uh, very tricky to work with, okay? So that is where, uh…
+
+[rochak agrawal] 09:05:15
+There is two statement called break and continue.
+
+[rochak agrawal] 09:05:22
+Okay, so I'll say, break this.
+
+[rochak agrawal] 09:05:39
+So, why it is going into the, uh, infinite loop? Because my condition is always true. Okay.
+
+[rochak agrawal] 09:05:46
+count is equal to 1, 1, after 1, it will 2, 3, 4, 5, it's a non-zero number. So the condition is always true.
+
+[rochak agrawal] 09:05:53
+I am not getting a condition to come out of this loop, correct? Which we see that, uh, once you run it, it is… it will go into the infinite loop.
+
+[rochak agrawal] 09:06:04
+But we have a statement called the break statement. Once you use this break statement.
+
+[rochak agrawal] 09:06:19
+Okay.
+
+[rochak agrawal] 09:06:20
+So it says you are doing the same thing, but here what is going to happen?
+
+[rochak agrawal] 09:06:29
+Your number is increasing 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12. And it is going to check this condition. It says if count will become 1,000, then I'm going to break this loop.
+
+[rochak agrawal] 09:06:48
+You see? That's running.
+
+[rochak agrawal] 09:06:53
+Once it comes on 999.
+
+[rochak agrawal] 09:06:57
+It got stopped by itself.
+
+[rochak agrawal] 09:07:00
+So that is about the loops. So we have two types of the loops. Break, uh, also is there. Break is not a loop, it is just a…
+
+[rochak agrawal] 09:07:11
+What you can say is, uh…
+
+[rochak agrawal] 09:07:15
+It is going to help breaking them.
+
+[rochak agrawal] 09:07:20
+Okay, and then we have the continue statement also. Uh, I'll use the continue also, and we will see what is the difference between break and continue.
+
+[rochak agrawal] 09:07:51
+So here, my count is equal to 1.
+
+[rochak agrawal] 09:07:54
+I am seeing a condition while count is less than 10, so it means 1, 2, 3, 4, 5, 6, 7, 8, 9, okay?
+
+[rochak agrawal] 09:08:03
+Do if count is equal to five, then continue. Okay. And the number is count. Let's see. Let's run this and then we'll see. We'll explain what's what what has happened.
+
+[rochak agrawal] 09:08:32
+You see, number is 1, 2, 3, 4, 5. No, there is no 5.
+
+[rochak agrawal] 09:08:41
+4, 6, 7, 8, 9, 10. Now, why 5 is not there, and the reason is a continue block.
+
+[rochak agrawal] 09:08:49
+If you see what is happening, we are seeing our loop is going to run and the count is less than 10. Perfect. So we have 12345678910 because it is not LT, it is LE. So less than equal to 10, right?
+
+[rochak agrawal] 09:09:06
+If the count is equal to 5, then continue.
+
+[rochak agrawal] 09:09:10
+What does it mean? So, continue, uh, keyword what it is going to do.
+
+[rochak agrawal] 09:09:18
+It is going to skip the condition, skip that particular iteration, and move to the next iteration.
+
+[rochak agrawal] 09:09:27
+So here the condition is, if the count is equal to 5, then continue.
+
+[rochak agrawal] 09:09:32
+It means when the count is equal to 5, don't run this loop.
+
+[rochak agrawal] 09:09:37
+move to the next condition. So that's where the number is 1, 2, 3, 4. When the count was 5, it moved to the next condition, and it has not skipped the condition.
+
+[rochak agrawal] 09:09:50
+The count was equal to five.
+
+[rochak agrawal] 09:09:53
+Okay. Now, when I'm going to use this.
+
+[rochak agrawal] 09:09:58
+There can be multiple use cases, again. You can think about anything, for example, uh…
+
+[rochak agrawal] 09:10:04
+let's say…
+
+[rochak agrawal] 09:10:07
+You are running a jipping application, which is doing… jipping your…
+
+[rochak agrawal] 09:10:14
+files in your folder. Now you will have the log folders, you will have your txt folder, sorry, files, right? Multiple others. Now you know txt files are very small in size. There is no need to compare, compress them.
+
+[rochak agrawal] 09:10:30
+So then you can create a loop which will say, uh, JIP everything, but…
+
+[rochak agrawal] 09:10:36
+When the extension is .txt, break. Sorry, continue. So then…
+
+[rochak agrawal] 09:10:41
+When the TXT file will come, it's not going to…
+
+[rochak agrawal] 09:10:46
+Compress them, but move to another file.
+
+[rochak agrawal] 09:10:49
+Right? So, and break, we discussed, break is, if you want to break.
+
+[rochak agrawal] 09:10:55
+the movement of a loop. Something goes… going into the infinite loop, or not into the infinite loop, very big loop, and you already got your result. Break it.
+
+[rochak agrawal] 09:11:05
+Right? So these… so we have two loops, for and while. For you are going to use when you have, uh…
+
+[rochak agrawal] 09:11:13
+When you know the definitive conditions you want to run.
+
+[rochak agrawal] 09:11:17
+In the for loop, you know how many iterations you are going to run while in a while loop, until and unless conditions are… condition is not getting satisfied.
+
+[rochak agrawal] 09:11:28
+uh, your loop will continue running, and it can become an infinite loop also, as we see, as we saw. And then, uh, with the help of break and continue, with the help of break.
+
+[rochak agrawal] 09:11:39
+I can break the execution of my loop and then with the help of continue, my current condition will skip and I will move to the next condition.
+
+[rochak agrawal] 09:12:02
+Here's an image.
+
+[Animesh Jain] 09:12:09
+Uh, hello?
+
+[Animesh Jain] 09:12:13
+Hello?
+
+[rochak agrawal] 09:12:16
+Yes.
+
+[Animesh Jain] 09:12:18
+Uh, hi, sir. Uh, uh, I just have one question. Uh, can you please explain, uh, why we're using, uh, this, uh, two, uh, brackets before the count plus plus?
+
+[Animesh Jain] 09:12:30
+This is a little confusing for me.
+
+[rochak agrawal] 09:12:32
+It is just a syntactical thing.
+
+[Animesh Jain] 09:12:35
+Just a syntactical, not just… there is nothing logic behind this, right?
+
+[rochak agrawal] 09:12:37
+Yeah.
+
+[rochak agrawal] 09:12:39
+No, no, no, no logic. So, logic is count plus plus, where we are increasing the number of the count by one.
+
+[Animesh Jain] 09:12:44
+Okay, and just like the other programming language, is there also the indentation things are there, or we can write it somewhere we want?
+
+[Animesh Jain] 09:12:58
+While we are…
+
+[rochak agrawal] 09:12:58
+We can write it, we can write it, but uh… see, indentation matters. So, for example, when we give in, count like this. For example, if you go…
+
+[Animesh Jain] 09:13:03
+Mm-hmm.
+
+[rochak agrawal] 09:13:12
+So, when we did like this…
+
+[rochak agrawal] 09:13:26
+You see, you're getting an error.
+
+[rochak agrawal] 09:13:31
+Correct? Now it is taking count as a command, but if I give it like this…
+
+[Animesh Jain] 09:13:31
+Yes.
+
+[rochak agrawal] 09:13:45
+Then it is going to run fine, correct?
+
+[rochak agrawal] 09:13:48
+So yes, indentation matters here as well.
+
+[Animesh Jain] 09:13:51
+Okay.
+
+[rochak agrawal] 09:13:51
+But it is not very strict like it is in Python. So, for example, if your if is here or here, it will not create a difference.
+
+[Animesh Jain] 09:13:56
+Yeah, ma'am.
+
+[rochak agrawal] 09:14:04
+In Python, that is also… in YAML, in Python, that is also necessary, right?
+
+[Animesh Jain] 09:14:04
+Yeah, the…
+
+[Animesh Jain] 09:14:08
+Yeah, this is the reason, uh, in our… in my company, that there is my, uh, one of my colleagues says that we, uh, we have to use Python, because, uh, in Shell, there are some… there are some normal indentations, so it gives impact on our product, so…
+
+[Animesh Jain] 09:14:24
+Therefore, we are using Python in our… in our area for giving for the scripting things.
+
+[rochak agrawal] 09:14:30
+Now, Python also you can use for the scripting, absolutely no problem.
+
+[Animesh Jain] 09:14:33
+Yeah.
+
+[Animesh Jain] 09:14:34
+The same, yeah, the same thing you said, like, there is a little, uh, there's not as much thickness in the shell, so therefore…
+
+[Animesh Jain] 09:14:43
+There was some time we are using Python, and some of the use cases we are using Shell.
+
+[rochak agrawal] 09:14:43
+Yes, yes.
+
+[rochak agrawal] 09:14:46
+So, see, Python is a… Python is a scripting plus programming language, okay? So, for example, let's say you… in a Python, you can do advanced things. For example, I have written a…
+
+[Animesh Jain] 09:14:52
+Yeah.
+
+[rochak agrawal] 09:14:59
+uh, let's say server monitoring script, okay? Now, with the help, I can do all the monitoring and everything, uh, in a shell script, and I run the script, it will give me the output, alright? But…
+
+[rochak agrawal] 09:15:12
+With the Python, I can create a web app on top of that.
+
+[rochak agrawal] 09:15:16
+Correct. Which will give you a nice dashboard kind of a thing.
+
+[Animesh Jain] 09:15:19
+Mm-hmm.
+
+[rochak agrawal] 09:15:21
+So yes, Python has its own advantage, but then Python will be more memory, will consume more memory and CPU in comparison to CPU.
+
+[Animesh Jain] 09:15:29
+Yeah.
+
+[rochak agrawal] 09:15:30
+So it is… it is… see, there is nothing, like, you need to use shell only or Python only.
+
+[Animesh Jain] 09:15:31
+You are right.
+
+[rochak agrawal] 09:15:38
+It is just a period of.
+
+[Animesh Jain] 09:15:39
+But, uh…
+
+[Animesh Jain] 09:15:40
+Yeah, but if you need to, uh, consume the low memory, uh, so we need to… because, uh, we are using, uh, the particular bashes, because, uh, sometimes we need to manage the state, and state… state, if you… if you are, uh, aware of… you… you are already aware of what is in the Terraform.
+
+[Animesh Jain] 09:15:59
+there are some kind of states, and, uh, for the state, we need to, uh, for managing those, we need to, uh, write our own base script for the customer, for the client server side. So, sometimes, uh, it takes low memory, therefore, we are using that.
+
+[rochak agrawal] 09:16:16
+Correct, correct. So, see, every, uh, as I keep saying, you pick up any product, there will be more than one way of doing a particular thing.
+
+[rochak agrawal] 09:16:26
+Okay. Writing a script also I can see it is up to your style also what you prefer. We talked about the editor. There are two editors. BI is there, Nano is there. So you use BI, you use Nano.
+
+[Animesh Jain] 09:16:28
+You're right.
+
+[rochak agrawal] 09:16:43
+Uh, here also we see, uh, while passing, uh, the imports, I can use the read command, or I can use it as an argument. There is nothing right and wrong.
+
+[rochak agrawal] 09:16:52
+Okay, these are just different ways of doing the things, and uh…
+
+[rochak agrawal] 09:16:57
+Like, whatever suits you, it is up to you.
+
+[Animesh Jain] 09:17:02
+Yeah, right.
+
+[rochak agrawal] 09:17:02
+Okay, so Python and Shell, uh, there are advanced things which you can do in Python, because Python is a full-fledged programming language as well, which…
+
+[rochak agrawal] 09:17:13
+Scripting is not.
+
+[Animesh Jain] 09:17:17
+Yeah, right.
+
+[rochak agrawal] 09:17:18
+Okay?
+
+[Animesh Jain] 09:17:20
+And Rojak, one more thing, like, let's suppose we are, uh, just like the shell and, uh, shell scripting, uh, Linux commands and all, uh, how… is there questions, uh, coming in the AWS exam or not?
+
+[Animesh Jain] 09:17:37
+A question from
+
+[rochak agrawal] 09:17:38
+So, in AWS exam, there will not be any question on Linux, okay? Uh…
+
+[rochak agrawal] 09:17:44
+But sometime in the interview, people ask one or two questions. Again, it will not be a major focus area.
+
+[rochak agrawal] 09:17:51
+But sometime they will ask a question like we discuss what are the permissions, how the permissions are defined. And then they might ask about this dollar question mark. What's the difference between dollar hash and dollar at the rate? What are the positional parameters?
+
+[Animesh Jain] 09:17:51
+Mm-hmm.
+
+[rochak agrawal] 09:18:07
+Right? So, some general questions they are… they may ask, but again, in a DevOps interview, uh, shell scripting will not be a major focus area.
+
+[rochak agrawal] 09:18:18
+Okay, and I have uploaded, uh, the interview question related to the Unix, uh, related to the Linux also, so you can go through these questions as well.
+
+[Animesh Jain] 09:18:18
+Yeah, right.
+
+[Animesh Jain] 09:18:26
+Mm-hmm.
+
+[Animesh Jain] 09:18:29
+Yeah, sure.
+
+[rochak agrawal] 09:18:30
+Sure? Okay. Now, there is one very important thing, uh, how to check the, uh.
+
+[Animesh Jain] 09:18:30
+Thank you. Yeah.
+
+[rochak agrawal] 09:18:39
+Start with the resources, okay?
+
+[rochak agrawal] 09:18:42
+So, there are multiple commands to check.
+
+[rochak agrawal] 09:18:46
+So, for example, there is 3 things. Always remember when you are checking for the server resources.
+
+[rochak agrawal] 09:18:51
+There are three things.
+
+[rochak agrawal] 09:18:55
+CPU?
+
+[rochak agrawal] 09:18:58
+Memory?
+
+[rochak agrawal] 09:18:59
+and disk.
+
+[rochak agrawal] 09:19:00
+Okay.
+
+[rochak agrawal] 09:19:01
+Now, again, there will be multiple commands to check these parameters.
+
+[rochak agrawal] 09:19:06
+So if you want to check the disk uses, there is a command called df hyphen h.
+
+[rochak agrawal] 09:19:13
+DF is a command, hyphen H is an option with this, and it is going to show you what are the mount point you have in your server and what is the size of them and what is the availability. So you can see I have only one system which is coming from root. It is of.
+
+[rochak agrawal] 09:19:28
+8 GB and currently it is used 1.7 GB and 6.4.
+
+[rochak agrawal] 09:19:34
+uh, gigabyte is available, so use percent is 20%, uh, 21% around, and remaining of all them is the system-related, uh, folders, right? Similarly, we have a command called DU.
+
+[rochak agrawal] 09:19:48
+Now, DU is…
+
+[rochak agrawal] 09:19:54
+BU is a command, uh…
+
+[rochak agrawal] 09:20:00
+Bye.
+
+[rochak agrawal] 09:20:01
+Okay.
+
+[rochak agrawal] 09:20:12
+So it is going to see dot, if you see with the du command, you are going to, you can check what is the disk utilization this command, this particular folder is having.
+
+[rochak agrawal] 09:20:27
+So currently, it is only holding 84 KB memory. But if you go, for example, if you get…
+
+[rochak agrawal] 09:20:33
+Give it here. Then it will give you the individual folder memory, uh, disk space also. You can see.
+
+[rochak agrawal] 09:20:43
+with every folder it is. Now, for the some folder, we are getting the permission denied, but it will go in each and every folder, and it will give you.
+
+[rochak agrawal] 09:20:52
+What space it is having.
+
+[rochak agrawal] 09:20:54
+Okay, so I'll just do a control C for now.
+
+[rochak agrawal] 09:21:01
+Got stuck
+
+[rochak agrawal] 09:21:02
+Because in root, there will be many files, and of course, we…
+
+[rochak agrawal] 09:21:07
+Need to find, uh, which files we need to, uh, get in status on.
+
+[rochak agrawal] 09:21:12
+Then there is a command called…
+
+[rochak agrawal] 09:21:16
+SAR 55 not 55 is not the command. Command is SAR. Then it takes two arguments.
+
+[rochak agrawal] 09:21:24
+You can give any number.
+
+[rochak agrawal] 09:21:26
+And you do not need to give the same number also. I can give 10, 5, 5, 10, whatever. Now, the first argument, it is going to give you.
+
+[rochak agrawal] 09:21:37
+the CPU utilization 5 times, then the second argument in the interval of 5 seconds.
+
+[rochak agrawal] 09:21:44
+Do you see?
+
+[rochak agrawal] 09:21:48
+So, currently, 2 CPU is there.
+
+[rochak agrawal] 09:21:52
+So you see, 100% idle. I'm not running anything. So within the interval of 5 seconds, it is going to give you the CPU utilization.
+
+[rochak agrawal] 09:22:03
+Okay. Some process 99.4%. So it is almost, um.
+
+[rochak agrawal] 09:22:11
+100%. And then, uh, there is a very important command called TOP. TOP is a command which is going to be asked in the interviews.
+
+[rochak agrawal] 09:22:23
+Here, there are… it will give you… it is like the task manager, it will give you everything, okay? So, you see, total 105, total task is there, 1 is running, 104 is sleeping, means they are running in background.
+
+[rochak agrawal] 09:22:37
+Right? And CPU utilization, currently, almost zero. Like, we have verified this in… with the SAR…
+
+[rochak agrawal] 09:22:43
+command also, but almost there's nothing, right?
+
+[rochak agrawal] 09:22:50
+and memory space. So basically, this is a command which is going to tell you everything, and this is… these are the processes. Now, if you compare it with the task manager.
+
+[rochak agrawal] 09:23:06
+Same type of the process. You are seeing it from here also. Correct. So 40 39% CPU. So top you can understand the task manager of the Linux. Now there is one very important thing is.
+
+[rochak agrawal] 09:23:35
+Just giving.
+
+[rochak agrawal] 09:23:40
+So here you see uptime is a command.
+
+[rochak agrawal] 09:23:45
+Which gives you two information, uh, like, from where, from what time it is, uh…
+
+[rochak agrawal] 09:23:52
+Your server is up.
+
+[rochak agrawal] 09:23:55
+When it last rebooted, so I refreshed this almost 2 minutes back, so that's why it is giving me 1.59. One user is logged in currently, and the most important part is the load average.
+
+[rochak agrawal] 09:24:07
+Okay.
+
+[rochak agrawal] 09:24:09
+Now, you need to understand this. There is 3 numbers. 1, 2, 3. Currently, all is 0 for us, because we are not running any, um…
+
+[rochak agrawal] 09:24:19
+Uh, anything, uh, this, um…
+
+[rochak agrawal] 09:24:24
+anything on the server, right? So, typically, load average represents the average number of the processes.
+
+[rochak agrawal] 09:24:32
+that are actively running, waiting for the CPU time, logged in an uninterruptible state. Basically, it is the CPU utilization. So…
+
+[rochak agrawal] 09:24:42
+Here you are going to see three number. The first number is a moving average for the last one minute.
+
+[rochak agrawal] 09:24:50
+shows immediately and activity recent spikes. So, first number which you will see in an active system, this number will give you the CPU utilization of the last 1 minute.
+
+[rochak agrawal] 09:25:03
+Second number?
+
+[rochak agrawal] 09:25:04
+Last five minutes and the third number will give you the CPU utilization for the last 15 minutes. By comparing these number, we can determine our system direction. If the one minute load is higher than the 15 minute load.
+
+[rochak agrawal] 09:25:20
+Then, the overall system.
+
+[rochak agrawal] 09:25:23
+strain is increasing, correct? Now, what actually counts as a load? So.
+
+[rochak agrawal] 09:25:33
+Okay, now…
+
+[rochak agrawal] 09:25:36
+Basically, it's a CPU utilization, but all the processes which is running in your system, they will be considered as this load average. Now, so we understood these three numbers, 1 minute, 5 minute, and 15 minute.
+
+[rochak agrawal] 09:25:52
+Now, someone may ask you in an interview.
+
+[rochak agrawal] 09:25:58
+My CPU, uh, my load average is 2.
+
+[rochak agrawal] 09:26:01
+All my load average is fine.
+
+[rochak agrawal] 09:26:03
+Now, what does this signifies? Okay.
+
+[rochak agrawal] 09:26:07
+Now…
+
+[rochak agrawal] 09:26:09
+We need to understand this, this number also, you you will get a number point 0.5.
+
+[rochak agrawal] 09:26:18
+or 7.7 something, right? So what we need to understand.
+
+[rochak agrawal] 09:26:24
+The load average will depend on.
+
+[rochak agrawal] 09:26:27
+How many cores your system is having.
+
+[rochak agrawal] 09:26:32
+Okay.
+
+[rochak agrawal] 09:26:33
+If it is a single core machine.
+
+[rochak agrawal] 09:26:42
+And your load average is 1.0. Simply 1. It means your…
+
+[rochak agrawal] 09:26:50
+System is running at 100% CPU utilization.
+
+[rochak agrawal] 09:26:54
+But if it is a two-core machine.
+
+[rochak agrawal] 09:27:01
+and your CPU utilization is, load average is 1.0, then it means that your system is running at a 50% capacity, 50% utilization.
+
+[rochak agrawal] 09:27:14
+So…
+
+[rochak agrawal] 09:27:15
+Before answering, if someone is asking.
+
+[rochak agrawal] 09:27:20
+My simple realization is 2.
+
+[rochak agrawal] 09:27:23
+Okay.
+
+[rochak agrawal] 09:27:24
+Can you say my system is overutilized? So you should answer that by looking at the number. I cannot say that my CPU utilization is high or not, because if it is a single core machine, yes, it is overutilized, but if it is a eight core machine.
+
+[rochak agrawal] 09:27:39
+Then it means it is running only on a 50% capacity.
+
+[rochak agrawal] 09:27:43
+Right? So, understanding that number is very critical. So, for example, if it is a 4-core machine.
+
+[rochak agrawal] 09:27:51
+Your CPU utilization is 1.0, it means it is running at 30%, 25% capacity. If it is 2.0.
+
+[rochak agrawal] 09:28:01
+It is running at a 50% capacity.
+
+[rochak agrawal] 09:28:06
+If it is 4
+
+[rochak agrawal] 09:28:09
+Then it is running at 100% capacity. While if it is a 1.0, it is 50%.
+
+[rochak agrawal] 09:28:19
+100%?
+
+[rochak agrawal] 09:28:22
+4.0?
+
+[rochak agrawal] 09:28:24
+200%.
+
+[rochak agrawal] 09:28:28
+I'll, if it is a single machine.
+
+[rochak agrawal] 09:28:31
+Full capacity?
+
+[rochak agrawal] 09:28:35
+2.0?
+
+[rochak agrawal] 09:28:38
+200%?
+
+[rochak agrawal] 09:28:41
+4.0?
+
+[rochak agrawal] 09:28:43
+400%.
+
+[rochak agrawal] 09:28:46
+Right? So, you understand this very carefully, that the number… they will throw you at a number, so you'll say 1.0, if it is a 1.0, or whatever the number is, the load, I will be able to only, uh…
+
+[rochak agrawal] 09:29:03
+interpret when I will know what… how many cores are running. So, first, I need to identify the cores, and then, based on that, I can easily tell that if the machine is overutilized, underutilized.
+
+[rochak agrawal] 09:29:15
+or at per the utilization. So that is very important from an interview perspective.
+
+[rochak agrawal] 09:29:22
+So, okay, now we have reached also to the end of the class.
+
+[rochak agrawal] 09:29:28
+So, now, we still have certain commands, um, which is there, uh, and we are going to keep… so, right now, we have not covered how to install the software and other things. So, this…
+
+[rochak agrawal] 09:29:39
+We will cover, as we will cover the tools, so some of the process and the, uh…
+
+[rochak agrawal] 09:29:46
+package manager package management related commands are still there, which we will cover on the fly, whenever is needed. So now we
+
