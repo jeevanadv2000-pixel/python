@@ -1,0 +1,2580 @@
+[rochak agrawal] 07:39:12
+Hey, good morning, everyone.
+
+[rochak agrawal] 07:39:16
+So, let's just start.
+
+[rochak agrawal] 07:39:25
+So today we are going to talk about the operating system as we discussed yesterday. So first we will understand what is an operating system, what is the goals of an operating system, what does an operating system do, and then we will create a server.
+
+[rochak agrawal] 07:39:40
+Uh, and then we will start using our daily, day-to-day commands, whatever, uh, as a DevOps engineer, we are going to do. But before that, first, we need to understand what is an operating system. So if you're coming from a VTech background.
+
+[rochak agrawal] 07:39:54
+uh, CSIT branch, then you must have heard operating system is a subject in, uh, Semester 6, I guess. But, uh, if you're not, uh, coming from CSIT background in BTAC.
+
+[rochak agrawal] 07:40:07
+Even daily day-to-day use, we all are using the operating systems, right? So we'll understand first what is an operating system.
+
+[rochak agrawal] 07:40:14
+So, anyone would like to define operating system?
+
+[rochak agrawal] 07:40:19
+What is an operating system, if someone is asking you?
+
+[rochak agrawal] 07:40:33
+There's an audible.
+
+[rochak agrawal] 07:40:59
+So, who would like to go and tell me what is an operating system?
+
+[rochak agrawal] 07:41:27
+Norman?
+
+[rochak agrawal] 07:41:29
+Why is MI even audible?
+
+[rochak agrawal] 07:41:39
+Yes and no wrong.
+
+[rochak agrawal] 07:41:48
+Anurag, if you are speaking, I cannot hear you.
+
+[anurag jaga] 07:41:58
+Hello?
+
+[rochak agrawal] 07:42:00
+Yes, yes, now I can hear you, Unreal.
+
+[anurag jaga] 07:42:02
+So, bridge between user and computer hardware. It is called operating system.
+
+[rochak agrawal] 07:42:09
+Okay, yeah, uh, but that is very, very high level. What does an operating system do?
+
+[rochak agrawal] 07:42:19
+What you're telling is correct?
+
+[rochak agrawal] 07:42:23
+Okay, no problem. Let me explain.
+
+[rochak agrawal] 07:42:28
+So you can see here, um…
+
+[rochak agrawal] 07:42:38
+There are users.
+
+[rochak agrawal] 07:42:39
+Okay, so for example, your laptop can have multiple users.
+
+[rochak agrawal] 07:42:45
+Then there are application program. Like, in your laptop, I can use Notepad, I can use Windows Media Player, I can use multiple things, compiler, let's say I install Java.
+
+[rochak agrawal] 07:42:58
+And I can start using the Java. Now, everything is running on hardware, correct? Like, my laptop will have some memory, some CPU utilization, and everything.
+
+[rochak agrawal] 07:43:10
+Without the operating system.
+
+[rochak agrawal] 07:43:15
+Your text editor cannot…
+
+[rochak agrawal] 07:43:19
+interact with the hardware. So, as Anurag also mentioned.
+
+[rochak agrawal] 07:43:25
+An operating system acts as an intermediary between the computer hardware and the user. Basically the user. User is running the application. Application is talking to the operating system and operating system is talking to the hardware.
+
+[rochak agrawal] 07:43:43
+It provides a control interface between user application and computer hardware.
+
+[rochak agrawal] 07:43:49
+And it manages the system resources. Very important.
+
+[rochak agrawal] 07:43:53
+So, operating system manages the system, um…
+
+[rochak agrawal] 07:43:58
+Resources. It provides an environment in which users can execute programs conveniently and efficiently. The operating system remains active when the computer is running and manages.
+
+[rochak agrawal] 07:44:11
+system resources and provide essential services to the programs. When we are saying essential service, we will see what is essential services like, uh, memory management, process management, and other types of stuff. So, yeah. It assigns resources, such as memory.
+
+[rochak agrawal] 07:44:27
+processors, input, output devices to the application that needs them. Basically, it is a manager on your computer.
+
+[rochak agrawal] 07:44:37
+Every general-purpose computer consists of a hardware.
+
+[rochak agrawal] 07:44:41
+and operating system, and application programs. So the hardware includes the CPU, memory, storage devices.
+
+[rochak agrawal] 07:44:51
+While the system program will include compilers, assemblers, loaders, editors, utilities, and command interpreters.
+
+[rochak agrawal] 07:45:00
+Application program are the user-level software that performs the specific task.
+
+[rochak agrawal] 07:45:05
+The OS kernel remains active while the computer is running.
+
+[rochak agrawal] 07:45:11
+And managing the hardware resources and provide.
+
+[rochak agrawal] 07:45:15
+services to the system and application program.
+
+[rochak agrawal] 07:45:19
+Now, the OS itself is not only a user interface, it provides an interface for user interaction.
+
+[rochak agrawal] 07:45:25
+For example, Windows is a graphical user interface. So Windows desktop, Mac OS, they are the graphical user interface. So for example, right now I'm using Windows operating system. It is graphical based, like I click on everything.
+
+[rochak agrawal] 07:45:42
+While there are operating systems which is totally command-line interface, for example.
+
+[rochak agrawal] 07:45:49
+Unix-based flavor are the command line. So at the core of the OS lies the kernel, which provides the core interface.
+
+[rochak agrawal] 07:45:58
+BitBean.
+
+[rochak agrawal] 07:46:01
+hardware and software, and handles low-level operation, such as process management, memory management, file system management, and device management.
+
+[rochak agrawal] 07:46:13
+So the primary goal of an operating system is user convenience.
+
+[rochak agrawal] 07:46:18
+Program execution. Resource management. Resource management is the primary responsibility. And then the security. So your operating system also protects the system and user data from unauthorized access, ensuring confidentiality, integrity, and availability of information.
+
+[rochak agrawal] 07:46:36
+While the secondary goal of an operating system focuses on improving the overall system performance.
+
+[rochak agrawal] 07:46:43
+and the stability. They ensure efficient use of resources and make the system reliable and robust. So the efficient resource utilization, it should aim to maximize the performance and utilization of the computer resources.
+
+[rochak agrawal] 07:46:58
+like CPU, memory, and devices, ensuring that the system runs smoothly.
+
+[rochak agrawal] 07:47:04
+and efficiently.
+
+[rochak agrawal] 07:47:06
+Okay? So the component of… if I say, what is the component of an operating system? So, majorly, there is two components of an operating system. One is shell.
+
+[rochak agrawal] 07:47:17
+And another is Carnegie.
+
+[rochak agrawal] 07:47:23
+Okay, shell is a command interpreter that provides an interface for user to interact with the operating system. So this is… user will be interacting with the shell.
+
+[rochak agrawal] 07:47:33
+And kernel will be interacting with the hardware, basically. So kernel is a core component of the operating system. It provides the interface.
+
+[rochak agrawal] 07:47:43
+between the software and hardware, and manage the resources, such as CPU, memory, and IO devices. Now, if we say list of common operating systems, so we all know Windows operating system, developed by Microsoft.
+
+[rochak agrawal] 07:47:56
+Mac operating system developed by Apple. Then we have Unix, originally developed by AT&T Bell Labs, but now there are multiple flavor of Unix are there.
+
+[rochak agrawal] 07:48:08
+Like Linux.
+
+[rochak agrawal] 07:48:11
+Fedora, Ubuntu…
+
+[rochak agrawal] 07:48:14
+Mac Linux, Amazon Kali Linux, there's multiple flavor, right? So this is…
+
+[rochak agrawal] 07:48:22
+the basic definition of an operating system. Nowadays, if you had, uh, in your laptop also, they are…
+
+[rochak agrawal] 07:48:29
+There is a 32-bit operating system.
+
+[rochak agrawal] 07:48:35
+And there's a 64-bit operating system.
+
+[rochak agrawal] 07:48:40
+Now, what does it mean? It means…
+
+[rochak agrawal] 07:48:43
+that…
+
+[rochak agrawal] 07:48:45
+in compiling, there are two types of processors, 32-bit processor and 64-bit processor. Now, these types of processors tell us how much memory a processor.
+
+[rochak agrawal] 07:48:59
+can access from a particular CPU. For example, most computers made in 1990s and early 2000s were 32-bit machines.
+
+[rochak agrawal] 07:49:13
+32-bit machines. A 32-bit operating system is a type of computer system where the processor and software.
+
+[rochak agrawal] 07:49:22
+can use only 32 bits to handle the data. A 32-bit.
+
+[rochak agrawal] 07:49:28
+System can address a maximum of.
+
+[rochak agrawal] 07:49:38
+To put the power.
+
+[rochak agrawal] 07:49:41
+32 bits.
+
+[rochak agrawal] 07:49:43
+Okay? Which is equal to roughly…
+
+[rochak agrawal] 07:49:48
+4… 2… 9… 4…
+
+[rochak agrawal] 07:49:52
+967…
+
+[rochak agrawal] 07:49:57
+296 bytes.
+
+[rochak agrawal] 07:50:00
+Okay? Equal to approximately 4GB.
+
+[rochak agrawal] 07:50:05
+So your operating system, if it does, has 32-bit machine?
+
+[rochak agrawal] 07:50:10
+It is going to have a maximum of 4 GB of RAM. The actual limit will be often less than that because operating system will take some of the RAM for its internal uses. So the typical range in a 32-bit system you are going to get is.
+
+[rochak agrawal] 07:50:25
+Around the 3.5 GB.
+
+[rochak agrawal] 07:50:28
+Okay, most computers released over the past two decades were built on 32-bit architecture, hence most operating systems were designed to run on a 32-bit processor.
+
+[rochak agrawal] 07:50:40
+While…
+
+[rochak agrawal] 07:50:42
+A 64-bit processor, or a 64-bit operating system, you can have 2 to the power 64.
+
+[rochak agrawal] 07:50:52
+Which will roughly…
+
+[rochak agrawal] 07:50:57
+18446…
+
+[rochak agrawal] 07:51:01
+7… 4… 4…
+
+[rochak agrawal] 07:51:05
+07B…
+
+[rochak agrawal] 07:51:09
+7… 0… 9…
+
+[rochak agrawal] 07:51:12
+Five, five months.
+
+[rochak agrawal] 07:51:15
+616. Okay, which is roughly…
+
+[rochak agrawal] 07:51:20
+16?
+
+[rochak agrawal] 07:51:22
+EXAVITE.
+
+[rochak agrawal] 07:51:26
+Exabyte means be above megabyte, gigabyte, petabyte, terabyte, and exabyte. So 16 exabyte.
+
+[rochak agrawal] 07:51:35
+Okay, but this is several million times more than an average workstation would need to access.
+
+[rochak agrawal] 07:51:43
+So it can access more than 4GB of RAM. So a computer with a 8GB RAM should have a 64-bit processor.
+
+[rochak agrawal] 07:51:51
+Otherwise, at least 4 GB of memory will be inaccessible by the CPU.
+
+[rochak agrawal] 07:51:56
+Okay, so a major difference between 32-bit processor.
+
+[rochak agrawal] 07:52:01
+And a 64-bit processor is the number of calculations per second they can perform, which affects the speed at which they can complete the task.
+
+[rochak agrawal] 07:52:12
+A 64-bit processor can come in dual-core, quad-core, 6-core, and 8-core versions for the home computing. Multiple cores allow for an increased number of calculation.
+
+[rochak agrawal] 07:52:26
+per second that can be performed, which can increase the processing power and help make a computer run faster.
+
+[rochak agrawal] 07:52:34
+Okay? So this is, uh…
+
+[rochak agrawal] 07:52:38
+About…
+
+[rochak agrawal] 07:52:39
+The 64-bit and 32-bit operating system. Any question till now?
+
+[rochak agrawal] 07:52:55
+I'll be good.
+
+[rochak agrawal] 07:53:01
+Okay.
+
+[rochak agrawal] 07:53:03
+Now, there is different type of the operating systems out there.
+
+[rochak agrawal] 07:53:07
+Okay, so you see operating system is a type of the system software that serves a bridge between the computer hardware and the user. We discussed that. Now you can see there is a different type of the operating systems are there. Batch operating system, time sharing operating system, distributed operating system.
+
+[rochak agrawal] 07:53:26
+Network operating system, real time operating system, mobile operating system and the desktop operating system. OK. And apart from this also there is different type are there. So an operating system can be of multiple types. So for example, an operating system can be a desktop operating system.
+
+[rochak agrawal] 07:53:42
+And the badge operating system, both.
+
+[rochak agrawal] 07:53:44
+Okay, so, an operating system…
+
+[rochak agrawal] 07:53:49
+A batch operating system is designed to handle large groups of similar jobs efficiently. It does not interact with the computer directly, but instead process the jobs that are grouped by an operator.
+
+[rochak agrawal] 07:54:04
+These jobs will be queued and executed one after the other without user interaction during the process.
+
+[rochak agrawal] 07:54:13
+Okay, so for example, um, stock market reports, right? They don't generally run on Windows or Linux. They have… they will have their own operating system.
+
+[rochak agrawal] 07:54:24
+insurance claim processors, library book records, so we have multiple. And then.
+
+[rochak agrawal] 07:54:31
+We have time-sharing operating system, which is a multi-tasking operating system also. A multi-tasking operating system, and nowadays, if you see, every operating system is a multi-tasking only. Multi-tasking operating system is type of a multi-programming system.
+
+[rochak agrawal] 07:54:47
+where each process runs in a round-robin manner. Every task gets a fixed time slice, calls a quantum. After the quantum ends, the operating system switches to the next task.
+
+[rochak agrawal] 07:55:01
+Allowing multiple tasks, whether from one user or many, to run smoothly on a single system.
+
+[rochak agrawal] 07:55:08
+So, like, if you see my…
+
+[rochak agrawal] 07:55:14
+Windows is also, uh, multi…
+
+[rochak agrawal] 07:55:19
+multitasking, or the time-sharing operating system.
+
+[rochak agrawal] 07:55:24
+Third is a distributed operating system.
+
+[rochak agrawal] 07:55:27
+Now, distributed operating system connects multiple independent computer.
+
+[rochak agrawal] 07:55:33
+Through a shared communication network.
+
+[rochak agrawal] 07:55:36
+Each system will have its own CPU and memory, but they are going to work together as a single unit. The main benefit is a remote access, allowing users.
+
+[rochak agrawal] 07:55:47
+to use files and software stored on the other connected devices. Then we have a network operating system. Network operating system runs on a server and manages data, users, security, application, and other network function. It allows.
+
+[rochak agrawal] 07:56:03
+So, network operating system and distributed operating system are kind of the same thing. So, again, your Unix, Linux, macOS.
+
+[rochak agrawal] 07:56:14
+Microsoft Windows Server, they all are examples of a distributed, as well as the network operating system. Now, the real-time operating system is.
+
+[rochak agrawal] 07:56:23
+These type of operating servers serves real-time system. The time interval required to process and respond to input is very small. This time interval.
+
+[rochak agrawal] 07:56:36
+is called the response time. Real-time systems are.
+
+[rochak agrawal] 07:56:40
+used when the…
+
+[rochak agrawal] 07:56:42
+time requirements that are very strict, like missile systems, air traffic control, and robots. So whatever the operating system used there.
+
+[rochak agrawal] 07:56:53
+They are used in scientific experiments, medical imaging systems, robots, airline traffic controls. They run basically on mainframes.
+
+[rochak agrawal] 07:57:04
+Then we have a mobile operating system. So mobile operating systems are designed specifically for mobile devices, such as smartphones and tablets.
+
+[rochak agrawal] 07:57:13
+Example of such operating systems are Android and iOS.
+
+[rochak agrawal] 07:57:19
+Right, and in the end, we have the…
+
+[rochak agrawal] 07:57:24
+Desktop operating system, where…
+
+[rochak agrawal] 07:57:28
+You know, our desktop operating system is, uh…
+
+[rochak agrawal] 07:57:35
+what we are using for our personal computing, so, like, Windows, uh, Mac OS, they all are the example of our…
+
+[rochak agrawal] 07:57:43
+desktop operating system. So you can see the classification is not very hard and fast. It is… an operating system can be a desktop operating system, can be distributed, can be a timesharing also. So this is on a type of a function. I would say, uh…
+
+[rochak agrawal] 07:58:00
+instead of saying it the type of operating system, I would more often say, what is the task that operating system can do? Okay? So…
+
+[rochak agrawal] 07:58:12
+Any question here?
+
+[rochak agrawal] 07:58:21
+Okay?
+
+[rochak agrawal] 07:58:24
+Now, if you see…
+
+[rochak agrawal] 07:58:27
+This is the main functions of an operating system.
+
+[rochak agrawal] 07:58:30
+Okay.
+
+[rochak agrawal] 07:58:32
+Now, what is… what are the main functions? So, these are the main functions are there. So, memory management.
+
+[rochak agrawal] 07:58:42
+Um, your resource management, your security management, your command interpreter.
+
+[rochak agrawal] 07:58:48
+And, uh, file management, input-output management. Okay?
+
+[rochak agrawal] 07:58:54
+So these are the different, different functions, which…
+
+[rochak agrawal] 07:58:58
+An operating system need to do.
+
+[rochak agrawal] 07:59:00
+Right? So…
+
+[rochak agrawal] 07:59:04
+If you say an operating system is a software that acts as a bridge, we talk about it, it provides an environment where user can execute.
+
+[rochak agrawal] 07:59:12
+programmed efficiently and conveniently, so it manages and controls all computer resources.
+
+[rochak agrawal] 07:59:19
+Provide services and resources to user programs. Coordinate and monitor program execution to prevent errors.
+
+[rochak agrawal] 07:59:27
+Offers an user interface and support multiple execution models. So function of an operating system.
+
+[rochak agrawal] 07:59:35
+like a memory management or a process management, okay? Then we have a resource management, file system management.
+
+[rochak agrawal] 07:59:44
+input-output management, and protection and security. So if you say resource management is like the process management, so resource management slash process management in operating system.
+
+[rochak agrawal] 07:59:57
+is about managing the processes and resources. A process is like a running program. The life cycle of a process is from the moment programs start until it finishes. So scheduling of the programs, synchronization of the program, inter-process communication.
+
+[rochak agrawal] 08:00:13
+Decide which process uses the CPU next. Ensure orderly execution using logs.
+
+[rochak agrawal] 08:00:21
+SEMA force or monitors to prevent race condition while we have a deadlock handling.
+
+[rochak agrawal] 08:00:26
+And it detects and prevents situations where processes wait forever for the resources. Then we have the memory management, which is, again, a very important part. Memory management in an operating system control.
+
+[rochak agrawal] 08:00:40
+How data is stored and organized in the primary memory and the secondary memory. Primary memory is your RAM and then secondary memory is any storage device you are attaching to your system. Ensuring program get the memory they need and feeling.
+
+[rochak agrawal] 08:00:58
+Freeing it when no longer used. So the key activity in the memory management is allocation and deallocation of memory. So it assigns and frees memory as needed. It protects processes from interfering with.
+
+[rochak agrawal] 08:01:14
+each other's memory.
+
+[rochak agrawal] 08:01:15
+Uses disk space as extra memory to run large programs.
+
+[rochak agrawal] 08:01:21
+And it does the disk management, handles file storage, free space, disk scheduling, and backups.
+
+[rochak agrawal] 08:01:30
+Then we have a device management, which is also called the IU systems, input-output management. So device management in an operating system control how the computer communicate with the hardware devices.
+
+[rochak agrawal] 08:01:42
+Like printer, disks, using drivers and techniques to ensure smooth operation. So device drivers, which is going to act as an interface between the hardware and the operating system. Buffering and caching, and there is something called the S-pooling.
+
+[rochak agrawal] 08:01:59
+S-pooling or spooling manages the data waiting to be processed, particularly in devices like printers. The OS places print jobs in a temporary storage area called the S-pool, allowing the CPU.
+
+[rochak agrawal] 08:02:14
+to continue other tasks while the printer works through the queue. So, as pooling is nothing but, uh…
+
+[rochak agrawal] 08:02:22
+It's like keeping the process in a waiting area so that till the time queue is getting completed, your CPU can work on other processes. Then we have the file management. File management is in an operating system organized and controlled how data is stored.
+
+[rochak agrawal] 08:02:39
+Named and accessed on the storage device, making it easy for users to find and use their file. So file system management, including management of file attributes like the name, type, size, and the permissions of the file. File types.
+
+[rochak agrawal] 08:02:54
+Text, binary, and executable operations, create, read, write, and delete files, and access method.
+
+[rochak agrawal] 08:03:01
+And then we have the command interpreter. So this is, again, like, is a bridge. So hardware does not understand if you are saying copy one file from A to B. It needs to be converted into the binary format.
+
+[rochak agrawal] 08:03:16
+Command interpreter, operating system command interpreter, takes your command, which is written in a high-level programming language, and it converts them into an assembly or the machine-level programming language.
+
+[rochak agrawal] 08:03:33
+Then we have a security management. So protection and security management in an operating system are designed to safeguard system resources from an unauthorized access or misuse. So it does access control.
+
+[rochak agrawal] 08:03:48
+Uh, limit user and processes permission, authentication, resource protection, prevent misuse of the file, memory, and devices, and then guard against malware, denial of service attacks.
+
+[rochak agrawal] 08:04:02
+And then, data tab.
+
+[rochak agrawal] 08:04:04
+Now, beyond these core tasks, like process and memory management.
+
+[rochak agrawal] 08:04:09
+What's…
+
+[rochak agrawal] 08:04:11
+also focuses on the performance monitoring. It tracks system efficiency and identifies the bottlenecks. It also works on the error detection, generate error logs, traces, and dumps.
+
+[rochak agrawal] 08:04:23
+to detect and fix the issues. On the job accounting.
+
+[rochak agrawal] 08:04:29
+Record resources used for auditing and optimization purposes.
+
+[rochak agrawal] 08:04:33
+So, these are the functions of the operating system.
+
+[rochak agrawal] 08:04:38
+any question till now, then we will move to our operating system, which is a Linux.
+
+[rochak agrawal] 08:04:54
+Are they good?
+
+[rochak agrawal] 08:05:03
+Okay. Now, this, whatever we discussed till now.
+
+[rochak agrawal] 08:05:09
+It is, like, uh, not all operating system, right? Um…
+
+[rochak agrawal] 08:05:16
+This is… you can understand kind of a basic definition of an operating system.
+
+[rochak agrawal] 08:05:19
+Now, there are multiple operating systems out there. We are going to focus on the Unix, okay?
+
+[rochak agrawal] 08:05:34
+we are going to focus on the units. Now, why units? Because most of the projects, almost 90-90%, 90-95% of the projects.
+
+[rochak agrawal] 08:05:44
+would be running in a UNIX or UNIX-similar environment. So UNIX has many flavors, Linux, Fedora, Ubuntu, these all are the flavors of UNIX. So in our terminology.
+
+[rochak agrawal] 08:05:59
+We will be using Unix or Linux.
+
+[rochak agrawal] 08:06:03
+these terms interchangeably. So if we are saying Unix or Linux, you understand we are talking about the same thing.
+
+[rochak agrawal] 08:06:10
+Now, what is UNIX? UNIX is a multitasking and multi-user operating system designed to provide a stable, secure, and efficient computing environment.
+
+[rochak agrawal] 08:06:23
+It was originally developed by AT&T Bell Labs and later become the foundation for many modern operating systems. It supports the execution of multiple tasks or processes simultaneously.
+
+[rochak agrawal] 08:06:39
+It is widely known for its reliability, structured design, and long-term stability, and its design principles have influenced many modern systems, such as.
+
+[rochak agrawal] 08:06:49
+Linux, BSD, or the Mac operating system. So Mac operating system is also based on the…
+
+[rochak agrawal] 08:06:57
+Unix only. Now, if I talk about what are the features of the Unix, so…
+
+[rochak agrawal] 08:07:03
+It is multi-user system.
+
+[rochak agrawal] 08:07:06
+Multiple users can access the system at the same time without affecting each other's process. Each other works. Each user will get separate permission and environment to ensure privacy and secure permission.
+
+[rochak agrawal] 08:07:22
+Then we… Unix is multitasking.
+
+[rochak agrawal] 08:07:27
+Unix can execute several processes simultaneously through efficient CPU scheduling. Background and foreground tasks run together.
+
+[rochak agrawal] 08:07:37
+Improving the productivity and the resource usage.
+
+[rochak agrawal] 08:07:42
+Then, we have… so, multi-user and multi-tasking.
+
+[rochak agrawal] 08:07:47
+Windows is also into this. Then we have portability.
+
+[rochak agrawal] 08:07:53
+Written, it is mostly written in C language.
+
+[rochak agrawal] 08:07:56
+Allowing easy movement of units to different hardware platforms.
+
+[rochak agrawal] 08:08:03
+Only minimum changes are required to adapt.
+
+[rochak agrawal] 08:08:06
+Unix to the new system, making it widely.
+
+[rochak agrawal] 08:08:13
+adoptable, and supported. Then, we have… it is having the hierarchical file system.
+
+[rochak agrawal] 08:08:25
+This is an important one for us.
+
+[rochak agrawal] 08:08:28
+We will discuss this in detail.
+
+[rochak agrawal] 08:08:30
+But just for an introduction, file and directories are arranged in a pre-write structure. Okay.
+
+[rochak agrawal] 08:08:38
+Starting from root, this structure makes navigation, file, organization, and data across simple and systematic, right? So if you see, in Windows, if you compare, you will have a C drive, you will have a D drive.
+
+[rochak agrawal] 08:08:54
+you will have a E drive. Something like that, F, G. Now, if data is in there, so you'll say C, program files, Java, BIN, or something. While if the data is in a D drive, you'll say D.
+
+[rochak agrawal] 08:09:10
+Uh, my files, my application, et cetera, et cetera. So you see, there is no relation between the C and D, correct? But in Unix, no. So there is no hierarchy. C and D drives are completely independent, right?
+
+[rochak agrawal] 08:09:24
+But, in…
+
+[rochak agrawal] 08:09:28
+Unix-like operating system. Everything is under this.
+
+[rochak agrawal] 08:09:32
+Which we call it as a root.
+
+[rochak agrawal] 08:09:37
+We will discuss about the hierarchical file system in detail because that's the most important thing in UNIX for us to start with.
+
+[rochak agrawal] 08:09:47
+Then…
+
+[rochak agrawal] 08:09:52
+Secured, uh, secure.
+
+[rochak agrawal] 08:09:55
+And permissions.
+
+[rochak agrawal] 08:09:59
+So, Unix assigns permissions to users, groups, and for file also. Authentication through username and the password. Then, it has the shell.
+
+[rochak agrawal] 08:10:09
+And scripting support.
+
+[rochak agrawal] 08:10:14
+Okay.
+
+[rochak agrawal] 08:10:16
+So tell Excel command or um.
+
+[rochak agrawal] 08:10:22
+Interpreter allowing user to communicate with the system. Now, what we need to understand is…
+
+[rochak agrawal] 08:10:30
+the layered structure of the Unix operating system. So the layered structure of the Unix operating system organize its component into hierarchical-level hardware.
+
+[rochak agrawal] 08:10:41
+kernel system utilities and application to ensure efficient, secure, and modular system functioning. So, how does Linux look?
+
+[rochak agrawal] 08:10:51
+So, for example…
+
+[rochak agrawal] 08:10:57
+Let's say this is your hardware.
+
+[rochak agrawal] 08:11:03
+Usheres, I'll just complete this, then I'll take your question.
+
+[rochak agrawal] 08:11:14
+Okay? Then…
+
+[rochak agrawal] 08:11:31
+After the hardware, there will be…
+
+[rochak agrawal] 08:11:37
+Pardon me.
+
+[rochak agrawal] 08:11:40
+Now, after the cuddle.
+
+[rochak agrawal] 08:11:42
+You will have…
+
+[rochak agrawal] 08:11:53
+Your shell.
+
+[rochak agrawal] 08:12:01
+After the shell?
+
+[rochak agrawal] 08:12:05
+You will have your system programs.
+
+[rochak agrawal] 08:12:12
+So there is multiple system program in there. VIE is there, CP is there.
+
+[rochak agrawal] 08:12:20
+Grab.
+
+[rochak agrawal] 08:12:22
+So these are nothing but, uh, the commands.
+
+[rochak agrawal] 08:12:25
+MD.
+
+[rochak agrawal] 08:12:33
+As such…
+
+[rochak agrawal] 08:12:37
+Okay, now after that, we have a layer.
+
+[rochak agrawal] 08:12:45
+Where we will be running the?
+
+[rochak agrawal] 08:12:50
+Application programs.
+
+[rochak agrawal] 08:12:59
+And finally, in an outer layer.
+
+[rochak agrawal] 08:13:05
+There will be your users.
+
+[rochak agrawal] 08:13:08
+So you can have, again, as we discussed, there can be multiple users.
+
+[rochak agrawal] 08:13:14
+Okay, so the first layer is the hardware.
+
+[rochak agrawal] 08:13:18
+represents the physical component of the computer, such as CPU, memory, storage devices, and…
+
+[rochak agrawal] 08:13:24
+Input, output hardware. All system…
+
+[rochak agrawal] 08:13:27
+Operations depends on this layer as it formed the base of any of the operating system.
+
+[rochak agrawal] 08:13:34
+Next layer is a kernel. The kernel is a core of the operating system and directly interacts with the hardware. It manages essential tasks such as memory allocation, process scheduling.
+
+[rochak agrawal] 08:13:47
+file handling, device control, and overall resource management. Then we have the shell. Shell acts the bridge between your programs and your application.
+
+[rochak agrawal] 08:13:58
+Okay.
+
+[rochak agrawal] 08:14:00
+Then you have a system program commands. So this layer includes compiler, editors, text, processors, and shell, which is already there in an operating system. It also contains common Unix tool and commands like WC, grab, date, who.
+
+[rochak agrawal] 08:14:15
+Uh, which rely on the kernel to perform different functions, such as text processing, file management, and system monitoring. And finally, you will have your application layer and the user layer.
+
+[rochak agrawal] 08:14:28
+represents user-developed or the external application program that run on top of system utilities and cell environment. These applications use the underlying layer to execute the task.
+
+[rochak agrawal] 08:14:44
+Successfully and provide services to the user.
+
+[rochak agrawal] 08:14:47
+So the kernel is the core and the most essential part of an operating system. It acts as a central controlling unit that manages all the system resources and enable communication between the hardware and the software.
+
+[rochak agrawal] 08:15:03
+Okay?
+
+[rochak agrawal] 08:15:18
+Yes, it is.
+
+[Shreyas Ks] 08:15:23
+So, would you recommend, uh, for us to work on, like, the operating system, it should be Windows, or even externally, sir?
+
+[rochak agrawal] 08:15:31
+See, when you say, uh…
+
+[rochak agrawal] 08:15:33
+what I recommend… see, it is not up to me… so, for example, let's say… as I'm saying, most of the projects nowadays, the web application, the software.
+
+[rochak agrawal] 08:15:46
+are running on the Unix like systems.
+
+[rochak agrawal] 08:15:49
+Okay? Uh, see, that is why we are starting with Linux or Unix. Windows is very least used in the production environments. So if you say, what is my recommendation? So definitely Linux.
+
+[Shreyas Ks] 08:16:05
+I would recommend a laptop with Linux operating system.
+
+[rochak agrawal] 08:16:07
+Yes.
+
+[rochak agrawal] 08:16:10
+Anywhere you go, so I'll give you an example, uh, like…
+
+[rochak agrawal] 08:16:14
+I am working, let's say, deploying applications, supporting applications for the last 15 years. Now, out of those 15 years, for a very brief period of the time, there was only one or two applications which were deployed on the Windows servers.
+
+[rochak agrawal] 08:16:30
+like IIS and others, but apart from it, everywhere I'm using the Linux-based systems.
+
+[rochak agrawal] 08:16:37
+It is not about me, it is the industry standards.
+
+[rochak agrawal] 08:16:42
+at least 90% of the application which is running today, you go to Amazon.in, you go to, uh…
+
+[rochak agrawal] 08:16:49
+Hotstar, you go Jepto, Gemetto, anything you think of.
+
+[rochak agrawal] 08:16:54
+1995 banking application, your stock market application, everything is running on Unix alike system. It could be Unix, it could be Linux, it could be Ubuntu, it could be Fedora. There are many flavors of Unix, but the working of them is very similar.
+
+[rochak agrawal] 08:17:14
+Okay?
+
+[Shreyas Ks] 08:17:15
+Because, is it any… is there any way that, uh…
+
+[Shreyas Ks] 08:17:19
+We could practice…
+
+[rochak agrawal] 08:17:20
+Yeah, we will come to practice. Yeah, we will provision a server. We'll see that.
+
+[Shreyas Ks] 08:17:24
+No, I mean to say that, uh, with the Windows only, is there any way we can install this virtual, uh, origination?
+
+[rochak agrawal] 08:17:29
+Yes, yes, yes, I will tell you.
+
+[rochak agrawal] 08:17:33
+Okay?
+
+[rochak agrawal] 08:17:36
+So, in a… so, I'll explain you that. Once we cover the conceptual part, then we'll go to the demo part.
+
+[rochak agrawal] 08:17:43
+Okay.
+
+[rochak agrawal] 08:17:48
+So, this is clear. Now, we need to discuss something.
+
+[rochak agrawal] 08:17:55
+Uh, which is hierarchical file structure.
+
+[rochak agrawal] 08:17:58
+Okay.
+
+[rochak agrawal] 08:18:01
+Just give me a moment.
+
+[rochak agrawal] 08:19:08
+Okay. Now, before I, uh, we'll discuss the hierarchical file structure, it is better, uh, that, uh, I'll show you from the console itself. So, to demo, uh.
+
+[rochak agrawal] 08:19:20
+There are multiple ways, okay? So, if you install…
+
+[rochak agrawal] 08:19:23
+For example, I am running a Windows-based system, and if I go get…
+
+[rochak agrawal] 08:19:29
+I don't know. Okay, I don't have. So there is multiple things. One is, uh…
+
+[rochak agrawal] 08:19:36
+that you… there is a software called the Oracle Virtual Box.
+
+[rochak agrawal] 08:19:42
+Okay, so Oracle VirtualBox, powerful open-source virtualization for personal and enterprise users. So if you download this VirtualBox and…
+
+[rochak agrawal] 08:19:50
+In the virtual box, it is going to create a Linux machine for you, okay?
+
+[rochak agrawal] 08:19:56
+That is one thing we can do. Second is if we just want to run something, so there is something called the Git Bash.
+
+[rochak agrawal] 08:20:06
+So I'm going to install the Git Bash, Windows…
+
+[rochak agrawal] 08:20:20
+So, it will install Git also, and alongside, there's a…
+
+[rochak agrawal] 08:20:24
+Tool in it, which is a git bash.
+
+[rochak agrawal] 08:21:30
+Okay so there is an option of launch git bash so I'll finish and you can see a git bash has a bash terminal has been launched where I can run all the Linux related commands. Okay so that is again if you say you.
+
+[rochak agrawal] 08:21:46
+All the commands I can run here as well, but I would not recommend it because these are just the interface, both Oracle VirtualBox as well as the Git Bash. So what we are going to do, we are going to use a cloud platform.
+
+[rochak agrawal] 08:22:01
+Where we are going to provision a Linux server.
+
+[rochak agrawal] 08:22:04
+and all the hands-on practice we are going to do on that server itself. Okay? So, for that, what you need to do, you need to create an AWS account.
+
+[rochak agrawal] 08:22:15
+I already have an AWS account, but you can create an AWS account, so…
+
+[rochak agrawal] 08:22:22
+AWS will allow you to create a free tier account, so I'll share this link with you.
+
+[rochak agrawal] 08:22:29
+Very simple, so there is an option of create a free account.
+
+[rochak agrawal] 08:22:34
+And you just need to give your, uh… they'll give you this link.
+
+[rochak agrawal] 08:22:39
+And see I'm only logged in this is by it is going to my console. So once you click on this free tier account it will ask you some basic detail like your email address. The only condition is the email address should not previously used with AWS.
+
+[rochak agrawal] 08:22:55
+Okay, and you follow the instruction, very simple instructions, you will be able to create a free tier AWS account, which is going to.
+
+[rochak agrawal] 08:23:05
+give you $200 of the credit, and we will be able to complete all our hands-on demo, uh, with the DevOps and the AWS alongside within the $200. Okay, now, how to launch a server? Um, so you'll…
+
+[rochak agrawal] 08:23:20
+There is a service in AWS called the EC2. Again, we are not going in detail about the AWS. It is just I'm telling you how to launch a server. AWS, we are anyways going to cover in detail in one of our next modules.
+
+[rochak agrawal] 08:23:35
+So I'll click on EC2.
+
+[rochak agrawal] 08:23:36
+What is important for us as of now, I'll just show you.
+
+[rochak agrawal] 08:23:41
+Okay, so you go click on Launch Instance.
+
+[rochak agrawal] 08:23:45
+So, launch without a walkthrough.
+
+[rochak agrawal] 08:23:54
+You will just name it, so I'll say my server.
+
+[rochak agrawal] 08:23:59
+And you will select the operating system. So you can see, you can select multiple operating systems. So I'm just keeping it Amazon Linux as of now.
+
+[rochak agrawal] 08:24:06
+And, uh…
+
+[rochak agrawal] 08:24:08
+That's it.
+
+[rochak agrawal] 08:24:10
+And click on Launch Instance.
+
+[rochak agrawal] 08:24:14
+That's it.
+
+[rochak agrawal] 08:24:15
+So I'll select the email.
+
+[rochak agrawal] 08:24:21
+Okay?
+
+[rochak agrawal] 08:24:24
+So, once your instance is launched.
+
+[rochak agrawal] 08:24:26
+You will click on the instances.
+
+[rochak agrawal] 08:24:30
+You will see your instance is running here.
+
+[rochak agrawal] 08:24:33
+Okay, it is initializing, so we'll wait for a minute.
+
+[rochak agrawal] 08:24:47
+So I'll click on the instance ID. There is an option of Connect. I'll click on Connect.
+
+[rochak agrawal] 08:24:53
+And then, there is an option of connect.
+
+[rochak agrawal] 08:25:09
+So now, here, I am going to run all my commands, because this machine is a full-fledged Linux machine. So all the commands, so if you say uname.
+
+[rochak agrawal] 08:25:19
+It is Linux. So, uname is a command which gives the name of our operating system. So, you see? Linux.
+
+[rochak agrawal] 08:25:26
+Hey, you see who…
+
+[rochak agrawal] 08:25:28
+M. A.
+
+[rochak agrawal] 08:25:29
+EC2 user.
+
+[rochak agrawal] 08:25:32
+So, we are going to conduct all our demo here.
+
+[rochak agrawal] 08:25:37
+Okay?
+
+[rochak agrawal] 08:25:43
+Yes, I don't.
+
+[rochak agrawal] 08:25:59
+Siddhant, if you're speaking, I'm not able to hear you.
+
+[rochak agrawal] 08:26:08
+Okay, let's move.
+
+[rochak agrawal] 08:26:10
+So this is, uh, see, this is the page, uh, or I would say, uh, this is a prompt which you are going to get once you are logged in into your operating system. So you can see it is showing you the user.
+
+[rochak agrawal] 08:26:25
+which user is logged in, and this is the name of my host, you can say that. Okay, and then…
+
+[rochak agrawal] 08:26:32
+you, in the Linux-based system.
+
+[rochak agrawal] 08:26:35
+if you are not using, uh, for example, Ubuntu or Fedora, you are not going to get something called the graphical user interface. So, for example, in Windows, you do everything from.
+
+[rochak agrawal] 08:26:47
+the graphical user interface, correct? I need to open the Chrome, I will just go here, search for the Chrome, and click on it, right? I need to create a file, I will go open the notepad and the Word.
+
+[rochak agrawal] 08:27:01
+So, I'm relying on the graphics, correct? But in Linux.
+
+[rochak agrawal] 08:27:08
+We will be working in a command line interface only, CLI.
+
+[rochak agrawal] 08:27:12
+Okay, CLI is a short form, uh… CLI is a short form of the command line interface. So whatever we are going to do, we are going to download the file, we are going to copy the file, we are going to search something. Everything we are going to do from the command line.
+
+[rochak agrawal] 08:27:28
+And everything, there is a commands for this, okay? So we will see the commands one by one. But first, right now, we are going to see the hierarchical file structure.
+
+[rochak agrawal] 08:27:41
+in Linux. Okay, so if you see, currently, uh, there is a command called PWD.
+
+[rochak agrawal] 08:27:47
+Okay, PWD is a command which is going to tell you where you are currently. Now, the equivalent is if you go to Linux, uh, sorry, Windows.
+
+[rochak agrawal] 08:27:56
+and you open the File Explorer.
+
+[rochak agrawal] 08:28:02
+Right? So, example, if I go to this PC, and I go to D drive, right? So, where am I? I am at D drive. This is my present working directory.
+
+[rochak agrawal] 08:28:11
+Correct? If I go to program file, now I am in a D program file. This is my, uh, working directory, present working directory. Similarly, in the Linux, if you want to know what is your present working directory, you will type PWD.
+
+[rochak agrawal] 08:28:26
+So you will see, uh…
+
+[rochak agrawal] 08:28:30
+Everything is started with the root.
+
+[rochak agrawal] 08:28:33
+You go anywhere, everything is going to start with the root.
+
+[rochak agrawal] 08:28:37
+So if you say, again, if you want to go to any other place, so there is a command called CD, which is change directory.
+
+[rochak agrawal] 08:28:46
+And you see root.
+
+[rochak agrawal] 08:28:49
+Okay, and now you see?
+
+[rochak agrawal] 08:28:53
+Simply, uh, signifies that you are at your home directory.
+
+[rochak agrawal] 08:28:57
+This other if you are at somewhere else then this location will show you here. Okay now here if you see.
+
+[rochak agrawal] 08:29:05
+So, we have this file structure, okay?
+
+[rochak agrawal] 08:29:09
+these are the directories. You go to any of the operating system, uh, sorry, any of the server, you are going to find.
+
+[rochak agrawal] 08:29:19
+Please, Darren, please.
+
+[rochak agrawal] 08:29:21
+There may be some, uh, plus-minus will be there, depending on the version of the operating system. Some Ubuntu folder will not be there, some, again, extra folder can be there.
+
+[rochak agrawal] 08:29:32
+Overall, I will explain what are the most important directories are there. But overall, these directories are there. That's a fixed, okay? And we will see first, we need to understand what is there in every.
+
+[rochak agrawal] 08:29:47
+file, okay? So that is where we will understand the Linux file system structure. So Linux file hierarchy structure, all the file system hierarchy standard, defines the directory structure.
+
+[rochak agrawal] 08:30:01
+and the directory contained in the Linux. It is maintained by the Linux Foundation. So in the file system, all the files and directory appear under the root directory. So everything is under root.
+
+[rochak agrawal] 08:30:16
+Inside root, you will have everything. Some of these directory can only exist in a particular system. So for example, that's what we discussed. Out of these directory, if you are using a particular version of an operating system, some file may differ.
+
+[rochak agrawal] 08:30:33
+Now, most of these directories exist in all Unix operating systems and are generally used in the same way.
+
+[rochak agrawal] 08:30:41
+However, the description here are those used specifically for the file, uh…
+
+[rochak agrawal] 08:30:47
+hierarchical system, and not considered authoritative for the platform other than the Linux, right? So, we have these files.
+
+[rochak agrawal] 08:30:56
+And this is very important for internally.
+
+[rochak agrawal] 08:31:00
+someone will… you say you are working on Linux, someone will ask what is, uh, what is inside the ETCD folder, right? So this is the fundamental thing which we need to understand.
+
+[rochak agrawal] 08:31:16
+Okay? So we have… we will have slash bin.
+
+[rochak agrawal] 08:31:20
+slash…
+
+[rochak agrawal] 08:31:22
+Deep.
+
+[rochak agrawal] 08:31:26
+slash, Deb?
+
+[rochak agrawal] 08:31:28
+slash, ETC.
+
+[rochak agrawal] 08:31:30
+Slash home.
+
+[rochak agrawal] 08:31:33
+slash lib.
+
+[rochak agrawal] 08:31:37
+Slash media.
+
+[rochak agrawal] 08:31:40
+Flash. OPT.
+
+[rochak agrawal] 08:31:43
+slash…
+
+[rochak agrawal] 08:31:44
+has been…
+
+[rochak agrawal] 08:31:48
+slash Salvi.
+
+[rochak agrawal] 08:31:50
+slash DMP.
+
+[rochak agrawal] 08:31:54
+slash, U, SAR.
+
+[rochak agrawal] 08:31:56
+slash…
+
+[rochak agrawal] 08:31:58
+Okay, so everything is inside this slash.
+
+[rochak agrawal] 08:32:03
+Okay, let's show you.
+
+[rochak agrawal] 08:32:06
+So you see, most of the things are there. SRB, SBIN, MNT is, again, it is there. Media is there. So I'll…
+
+[rochak agrawal] 08:32:16
+like these also.
+
+[rochak agrawal] 08:32:19
+slash…
+
+[rochak agrawal] 08:32:20
+MND.
+
+[rochak agrawal] 08:32:22
+slash media.
+
+[rochak agrawal] 08:32:30
+So you can see lib, bin, local, usr, opt, root, proc, sys, var, dab, home, etc, run, temp.
+
+[rochak agrawal] 08:32:40
+Babe!
+
+[rochak agrawal] 08:32:42
+Files are there, okay? Everything is inside the root. So, for example, if I go to CDM.
+
+[rochak agrawal] 08:32:49
+Now you can see PWD, if you see.
+
+[rochak agrawal] 08:32:53
+It is slash 10.
+
+[rochak agrawal] 08:32:56
+Right? So everything is inside…
+
+[rochak agrawal] 08:32:59
+the loop.
+
+[rochak agrawal] 08:33:00
+Now we need to understand what these directories are doing.
+
+[rochak agrawal] 08:33:08
+So first is the slash root, which is this one.
+
+[rochak agrawal] 08:33:14
+Which is this one.
+
+[rochak agrawal] 08:33:15
+So at the top of every Linux file system is a root directory represented by a forward slash.
+
+[rochak agrawal] 08:33:24
+anything you are doing, anything, it is… goes under root. So, it will be, let's say.
+
+[rochak agrawal] 08:33:34
+slash temp. Now, if you're doing something inside slash temp, it says slash temp folder 1.
+
+[rochak agrawal] 08:33:41
+Then, slash, tempo.
+
+[rochak agrawal] 08:33:44
+Boulder one.
+
+[rochak agrawal] 08:33:46
+myfile.txt.
+
+[rochak agrawal] 08:33:48
+Right? But…
+
+[rochak agrawal] 08:33:50
+Everything is inside the slash.
+
+[rochak agrawal] 08:33:53
+Connect?
+
+[rochak agrawal] 08:33:55
+So…
+
+[rochak agrawal] 08:33:57
+It is a base point, and no directory exists above it. It is… your Linux is starting from this slash. If you look at the file system graphically.
+
+[rochak agrawal] 08:34:07
+You will see other directory branching from this root directory. Only the root user.
+
+[rochak agrawal] 08:34:13
+Understand, only your Linux administrator will have the permission to modify the content inside this directory, okay? Now, if you see, if I go…
+
+[rochak agrawal] 08:34:24
+Let's say I try to…
+
+[rochak agrawal] 08:34:27
+There is a command for deleting the directory and let's say I'll try to delete this.
+
+[rochak agrawal] 08:34:33
+It says permission denied.
+
+[rochak agrawal] 08:34:36
+Only the administrator can.
+
+[rochak agrawal] 08:34:40
+use, uh, delete this, okay? Right now, I am logged in as an EC2 user.
+
+[rochak agrawal] 08:34:45
+I do not have the admin privileges, that's why it is permission denied. Regular user cannot make changes here. For example, if you attempt to create a file as a non-root user, you will get a permission denied.
+
+[rochak agrawal] 08:34:59
+Non-root user will not be able to do anything here.
+
+[rochak agrawal] 08:35:03
+Then comes the bin directory.
+
+[rochak agrawal] 08:35:07
+Clear about the route. Any question till now?
+
+[rochak agrawal] 08:35:10
+This is very important to understand.
+
+[rochak agrawal] 08:35:18
+Yes, you bet.
+
+[Jeeva Koli] 08:35:21
+So, in, uh, production, in our DevOps team, all user… all team members will not be having the root…
+
+[rochak agrawal] 08:35:26
+No, I will. No, no, no. So you will not work on every type of the file here. I will explain this once I will introduce all these folders, what they will be containing. Then I'll tell you as a DevOps engineer which folders are important for us.
+
+[Jeeva Koli] 08:35:42
+Okay, okay. And also, in a, in a, in a production, uh, which, uh, OS normally they prefer?
+
+[rochak agrawal] 08:35:42
+Okay.
+
+[Jeeva Koli] 08:35:51
+And…
+
+[Jeeva Koli] 08:35:53
+We are currently working on the this provided by this Amazon. This kind of demo, right? This cannot cannot be used in production, right?
+
+[rochak agrawal] 08:35:57
+Mm-hmm.
+
+[rochak agrawal] 08:36:02
+No, this is being used in production. If your applications are running on AWS, so then, yes, Amazon Linux is a preferred one.
+
+[Jeeva Koli] 08:36:13
+Okay.
+
+[rochak agrawal] 08:36:14
+Okay, I'll come to that question. I've noted it. Okay.
+
+[Jeeva Koli] 08:36:18
+Okay.
+
+[rochak agrawal] 08:36:20
+So, first directory is our bin directory.
+
+[rochak agrawal] 08:36:23
+Now, BIN directly, you understand, is, uh…
+
+[rochak agrawal] 08:36:30
+In Windows, you need to define the environment variables, where you define the path, right? So, bin directory…
+
+[rochak agrawal] 08:36:38
+contains all the essential command and binary needed by all the user. So, whatever the command you are running in Linux, for example, I run this RMDIR, I run this PWD.
+
+[rochak agrawal] 08:36:51
+Why? Because…
+
+[rochak agrawal] 08:36:54
+those…
+
+[rochak agrawal] 08:36:55
+Files, those executables are present in this bin directory.
+
+[rochak agrawal] 08:36:59
+either they will be in a VIN.
+
+[rochak agrawal] 08:37:02
+Or they will be in an S bin.
+
+[rochak agrawal] 08:37:04
+Okay, so if you go to BIN.
+
+[rochak agrawal] 08:37:07
+Bin is basically the short form of binaries. So, all the executable binary.
+
+[rochak agrawal] 08:37:12
+all the command you are going to run in Linux, okay? So currently, if you see.
+
+[rochak agrawal] 08:37:18
+I want to run Java.
+
+[rochak agrawal] 08:37:19
+Java is not running, because why? Because the Java executable is not present in my binary folder, bin folder.
+
+[rochak agrawal] 08:37:27
+If you will install Java, then…
+
+[rochak agrawal] 08:37:31
+Java executable will go inside VIN, and you will be able to run Java.
+
+[rochak agrawal] 08:37:35
+So if you go to bin LS hyphen LRT is to list the content of a directory.
+
+[rochak agrawal] 08:37:43
+So you'll see all these commands which you are running.
+
+[rochak agrawal] 08:37:47
+which you need to run. For example, SCP is a command, SFTP is a command, NJP is a command, right? So then you can see Python 3 is there.
+
+[rochak agrawal] 08:37:56
+Right? So if we try to run Python 3, it is going to run.
+
+[rochak agrawal] 08:38:03
+You see?
+
+[rochak agrawal] 08:38:05
+Why Python 3 I'm able to run? Because Python 3 is already there in my executables.
+
+[rochak agrawal] 08:38:12
+Earlier, bin directory. So, bin directory contains all the essential commands.
+
+[rochak agrawal] 08:38:18
+and binary needed by the all users, including CP, LS, LSF. You see wgate is a command. Now wgate is a command if I want to download a file from internet or some remote server. So you can see every command executable you are going to find here.
+
+[rochak agrawal] 08:38:35
+Okay? So, again, you… this is owned by the root. I cannot go and delete a file there.
+
+[rochak agrawal] 08:38:44
+So it contains the binary executable, common Linux command, command used by all the users of the system. Very simple. Okay.
+
+[rochak agrawal] 08:38:54
+Now…
+
+[rochak agrawal] 08:38:59
+Second is the…
+
+[rochak agrawal] 08:39:01
+No, so the third is a boot directory.
+
+[rochak agrawal] 08:39:05
+So, bin is clear. Second, uh, is a boot directory. Now…
+
+[rochak agrawal] 08:39:11
+If I go
+
+[rochak agrawal] 08:39:13
+And cd dot dot is a command to move out of a directory.
+
+[rochak agrawal] 08:39:20
+So, if you say boot directory, right? So, boot directory…
+
+[rochak agrawal] 08:39:26
+It stores all the file required for booting the system. It includes the GRUB bootloader. Okay, so GRUB, forget about GRUB. It includes the bootloader configuration and essential kernel file that are loaded during the startup.
+
+[rochak agrawal] 08:39:42
+kernel graph files are located under boot. So, for example, uh…
+
+[rochak agrawal] 08:39:47
+when you open your Windows laptop. See, I'm comparing it with the Windows, because most of us will be using Windows on a daily, day-to-day basis on the laptop, right? So.
+
+[rochak agrawal] 08:39:59
+when you open your laptop, now you will see there are certain programs which is going to automatically start, right? For example, if you open your Office laptop, your Outlook, your Teams, your VPN connection, they will automatically start. Now, how they are starting? Because you have made that configuration somewhere.
+
+[rochak agrawal] 08:40:19
+that once my system is booting up, they should start. So, similarly, all that configuration, uh, is there in a boot directory. So, this is a directory.
+
+[rochak agrawal] 08:40:32
+Where you can see a grub to operating system related details will be there.
+
+[rochak agrawal] 08:40:38
+Now, as a DevOps engineer, you are not going to work on the boot directory. Bin is important for us, because whatever the software I am going to install, for example, I install Jenkins, then I need to make sure that executable is going into the bin directory. So that is important for us.
+
+[rochak agrawal] 08:40:54
+But boot, we are not going to work. And tell us, you are not working as a DevOps plus Linux administrator.
+
+[rochak agrawal] 08:41:00
+Okay.
+
+[rochak agrawal] 08:41:02
+Then the third is depth.
+
+[rochak agrawal] 08:41:07
+So, if I go come out, go to dev.
+
+[rochak agrawal] 08:41:13
+So you can see there are multiple things are there. I would not even understand what it is. So inside the dev.
+
+[rochak agrawal] 08:41:23
+Are going to be the device files.
+
+[rochak agrawal] 08:41:26
+Device files in Linux are stored in the /dab directory. These are the special files that acts as an interface between the hardware and the software devices.
+
+[rochak agrawal] 08:41:39
+And that devices can be your printers, your fax machines, another storage server, anything. So, basically here.
+
+[rochak agrawal] 08:41:48
+in Windows, what we call it is a driver. Those drivers will go in this dev directory. All the devices related driver will go into this dev directory.
+
+[rochak agrawal] 08:42:00
+Then, fifth is the ETC. Again, as a DevOps engineer, we are also not going to work in the dev folder.
+
+[rochak agrawal] 08:42:07
+Then comes the ETCD directory, okay? Um…
+
+[rochak agrawal] 08:42:11
+I'm just forgetting the ETCD, uh, full form, what is, uh…
+
+[rochak agrawal] 08:42:20
+ETC in Linux.
+
+[rochak agrawal] 08:42:29
+What's the meaning for this?
+
+[rochak agrawal] 08:42:33
+Not sure. Okay, leave it.
+
+[rochak agrawal] 08:42:36
+So ETCD is again very yeah I got it.
+
+[rochak agrawal] 08:42:42
+ETC is, again,
+
+[rochak agrawal] 08:42:45
+a very important file for us as a DevOps engineer. ETC is a short form of editable text configuration. Okay, so if you go to ETC.
+
+[rochak agrawal] 08:42:59
+All sort of configuration, regarding your operating system, regarding your, uh…
+
+[rochak agrawal] 08:43:09
+Applications, okay, will be… if you are not defining otherwise, for example, if I'm not saying my nginx should be installed in home user nginx, by default, everything, all the configuration will go into the etc folder.
+
+[rochak agrawal] 08:43:27
+Okay, so it is short form for editable text configuration. It contains the configuration files. For system application, users, services, and tools, it contains the host-specific system-wide configuration file.
+
+[rochak agrawal] 08:43:40
+Okay, uh, for example, uh, if you go…
+
+[rochak agrawal] 08:43:45
+You see this file, password.
+
+[rochak agrawal] 08:43:49
+More is a command to see the content of a file. So you can see.
+
+[rochak agrawal] 08:43:53
+Right now I have these users on my system.
+
+[rochak agrawal] 08:43:57
+Okay, so all the system, all the application related configuration is going to be there inside the ETC folder. So if you are installing any product, any software, then you need to maintain the configuration for that. And that is where we are going to work on the ETCD.
+
+[rochak agrawal] 08:44:14
+ETC. ETCD is a different thing. ETC folder, and there are different, different files. We will see some of the files, so for example, password shadow, uh, then group file, hostname file, uh, and if you see.
+
+[rochak agrawal] 08:44:29
+Uh, system CTLD is an important file. We'll see all of that, uh, okay? Right now, we are just introducing, uh, with the folder. So, ETCD is important for us.
+
+[rochak agrawal] 08:44:43
+as a DevOps engineer, and we are going to use it for our configuration.
+
+[rochak agrawal] 08:44:48
+Now
+
+[rochak agrawal] 08:44:49
+Okay.
+
+[rochak agrawal] 08:44:51
+Izua.
+
+[Jeeva Koli] 08:44:53
+So the YAML file also will, uh, be placed in the ETC itself?
+
+[rochak agrawal] 08:44:58
+Uh, what YAML files you are seeing?
+
+[Jeeva Koli] 08:45:01
+Like, the configuration that we are going to provide.
+
+[rochak agrawal] 08:45:05
+No. See, it depends. See, configuration which you are not provide is a different thing. Understand. See, for example, let's say you install the Kubernetes and you created a YAML file. Now this is a configuration which you have created, correct?
+
+[Jeeva Koli] 08:45:21
+Correct, yes.
+
+[rochak agrawal] 08:45:22
+That is, that will not go there. Understand this. In ETCD, for example, right now I have not installed anything, right? So this is system related configuration. So for example, when we go to the password, there is a user related information is there.
+
+[Jeeva Koli] 08:45:33
+Okay, okay.
+
+[rochak agrawal] 08:45:37
+So that's a system-related configuration. Now, if I go install the NGINX, for example, on this system, okay?
+
+[rochak agrawal] 08:45:45
+Then NGINX related configuration will go here.
+
+[rochak agrawal] 08:45:48
+So your Kubernetes-related configuration will go here, but whatever the application you want to deploy on Kubernetes, that will not go here.
+
+[Jeeva Koli] 08:45:58
+Okay, these are all default files we'll be located with, right?
+
+[rochak agrawal] 08:46:00
+These are… right now, these are default only, because we… we have just created this server.
+
+[rochak agrawal] 08:46:04
+Hey!
+
+[Jeeva Koli] 08:46:06
+Okay.
+
+[rochak agrawal] 08:46:07
+Okay, um…
+
+[rochak agrawal] 08:46:09
+Then comes the home directory.
+
+[rochak agrawal] 08:46:15
+Home is very important, okay?
+
+[rochak agrawal] 08:46:20
+So you remember…
+
+[rochak agrawal] 08:46:23
+that when we logged in, we were in a home EC2 user, correct?
+
+[rochak agrawal] 08:46:28
+Yet.
+
+[rochak agrawal] 08:46:32
+Right? Any user you are going to create in your.
+
+[rochak agrawal] 08:46:37
+Unix server.
+
+[rochak agrawal] 08:46:39
+There will be a home directly created for them.
+
+[rochak agrawal] 08:46:41
+And when you log into your system, you will be landed into your home directory.
+
+[rochak agrawal] 08:46:47
+Okay, so every non-root user, understand, every non-root user has a personal directory inside /home. For example, if your username is Anshu, your username is Aditya or Abhay, so you will have /home/Abhay.
+
+[rochak agrawal] 08:47:04
+slash home slash ajinkya, slash home slash rowcheck, right? Each user can create, delete, or modify file only in their home directory.
+
+[rochak agrawal] 08:47:14
+And access of another user's home depend on the security configuration. Home directory for all users to store their personal files.
+
+[rochak agrawal] 08:47:23
+containing saved file and personal settings. So this is your workspace, basically. And very important point, you are anywhere in your Linux system, you just type CD.
+
+[rochak agrawal] 08:47:36
+Okay, I'll show you. Very interesting. PWD, currently I'm in ETC.
+
+[rochak agrawal] 08:47:41
+Correct?
+
+[rochak agrawal] 08:47:43
+You are anywhere in your Linux system, you just type CD, you will go to your home directory.
+
+[rochak agrawal] 08:47:50
+You see?
+
+[rochak agrawal] 08:47:52
+Anywhere you are, you just type your lost type CD, you will be back in your home directory.
+
+[rochak agrawal] 08:47:57
+Okay, now if I come a level up, inside the home directory, currently I have a home directory for EC2 user. Why? Because I have only one non-root user at this moment.
+
+[rochak agrawal] 08:48:11
+Okay, we will see how we are going to create the users. At that time, when you will create a user, another home directory will also be created. So, this is your workspace, basically. Now, anything you want to do, you want to create a file, you will do inside this. So, I can go.
+
+[rochak agrawal] 08:48:27
+Uh, create a file. Again, don't go on to the command, we will discuss the commands.
+
+[rochak agrawal] 08:48:33
+File1.txt.
+
+[rochak agrawal] 08:48:35
+This is my PUST file.
+
+[rochak agrawal] 08:48:42
+Now, if you do the hyphen LRT, you see?
+
+[rochak agrawal] 08:48:45
+This file, here you are allowed to create.
+
+[rochak agrawal] 08:48:49
+Super clear about the home directory.
+
+[rochak agrawal] 08:48:53
+Again, yeah, this is an important one for us because whatever the user you are going to create, they anyways will have their own directory and they will they will work from their own directory. OK then the live and media again not very important for a DevOps engineer.
+
+[rochak agrawal] 08:49:10
+application requires shared libraries to run, which are stored in a lib folder, right? For example, if you are having a Java application which requires a JDBC, uh, library, uh, to connect to database, so those type of files, they go into the lib folder.
+
+[rochak agrawal] 08:49:26
+These includes dynamic libraries needed during runtime.
+
+[rochak agrawal] 08:49:30
+Then we have the media file, so devices like USB, CDs, and pen drives.
+
+[rochak agrawal] 08:49:37
+are mounted under media. So, for example, when a CD-ROM is inserted in a Unix-based system.
+
+[rochak agrawal] 08:49:42
+This details is going to be inserted.
+
+[rochak agrawal] 08:49:46
+Okay, media and mount, we have already written, uh, written two times. So these, uh, devices will come appear inside the media, uh, uh, directly in…
+
+[rochak agrawal] 08:49:58
+Euro.
+
+[rochak agrawal] 08:50:03
+Unix file system. Okay, now…
+
+[rochak agrawal] 08:50:06
+Mount when external devices are connected.
+
+[rochak agrawal] 08:50:11
+They are temporarily mounted in the slash mnt mount point. Again, this is where their content become accessible to the system. Temporary mount directly where sysadmin can mount the file systems altogether.
+
+[rochak agrawal] 08:50:24
+Okay.
+
+[rochak agrawal] 08:50:26
+Um, again, we will see mounting process in detail.
+
+[rochak agrawal] 08:50:30
+Then we have the OPT directly.
+
+[rochak agrawal] 08:50:33
+Any third-party software and packages not part of the default system installation.
+
+[rochak agrawal] 08:50:43
+Best practice, it should go under the OPT folder. It includes their configuration and data file. Contains add-on application from individual vendors. Add-on application should be installed under.
+
+[rochak agrawal] 08:50:55
+either OPT or inside any subdirectory inside OPT. So, see, now this is a best practice. You say, I want to install WebLogic. By practice, Linux says any third-party software you are applying, that should go.
+
+[rochak agrawal] 08:51:11
+in the OPT, okay? So that anyone coming and they will go OPT, let's say administrator is coming and they are going inside OPT, they'll come to know, like, what softwares are installed on the system. But this is not a boundation. So, for example, I can install, uh, WebLogic or WebSphere.
+
+[rochak agrawal] 08:51:27
+in my home directory also. So this is just a best practice or a recommendation, not a boundary.
+
+[rochak agrawal] 08:51:36
+Then we have the S VIN.
+
+[rochak agrawal] 08:51:38
+As VIN, again, very similar to VIN only, this directory hold.
+
+[rochak agrawal] 08:51:43
+administrative binaries, like IP tables, firewall management tools, init, route. So just like VIN, SVIN also contains the binary executable. These binaries are primarily for system administrator and typically require root privileges to execute.
+
+[rochak agrawal] 08:52:02
+So see, understand the difference between the BIN and SBIN. BIN, whatever is there inside the BIN, every user can run those programs like CPE, what we are running, PWD, MIGDIR, RMDIR, all of that, right?
+
+[rochak agrawal] 08:52:19
+But whatever is there in admin will require the root privileges to run. So if you have the root privileges, then only you will be able to run it, right? So IP tables, reboot commands, app disk command, ifconfig command, and all of that.
+
+[rochak agrawal] 08:52:35
+Now, SRB.
+
+[rochak agrawal] 08:52:38
+SRB is a type of the directory, which, again, is an optional. You might not find in every Linux system. So site-specific data served by the system, such as data in the script for the web server, data offered by the FTP servers.
+
+[rochak agrawal] 08:52:54
+SRB stands for the services. It contains the server-specific services-related data. Again, not very important for us.
+
+[rochak agrawal] 08:53:05
+Then we have temp.
+
+[rochak agrawal] 08:53:08
+Temp is the short form of a temporary data. So program create temporary files. It is like in Windows you have the cache, right? So after a point of time you can delete the cache. Something of that sort, isn't it?
+
+[rochak agrawal] 08:53:23
+Uh, temp file. Program create temporary file during execution, and those files are going to be stored in a temp directory. These files are deleted automatically after the program finishes, or your… when your program is restarted.
+
+[rochak agrawal] 08:53:38
+Directory that contains temporary file created by the system and the user. File under these directories are deleted when your systems is deleted.
+
+[rochak agrawal] 08:53:48
+rebooted.
+
+[rochak agrawal] 08:53:50
+Okay?
+
+[rochak agrawal] 08:53:55
+Again, we have slash USR. So let me see if we have the USR.
+
+[rochak agrawal] 08:54:02
+I'll again go to root.
+
+[rochak agrawal] 08:54:07
+So we have this USR also. This is slash USR.
+
+[rochak agrawal] 08:54:16
+So you can see inside the USR also, we have a separate file hierarchy. So it's a secondary hierarchy for read-only user data.
+
+[rochak agrawal] 08:54:26
+Okay, so all VIN, SVIN, SRC, local, temp is there. So it contains binaries, libraries, documentation, and source code for the second-level programs. For example, uh…
+
+[rochak agrawal] 08:54:40
+Second level program, which is not directly interacting, uh, with your users. Again, this directly as a, um…
+
+[rochak agrawal] 08:54:48
+As a DevOps user.
+
+[rochak agrawal] 08:54:50
+first, it is also an optional. In some of the systems, you might not find this directory altogether. And then, as a Linux user, uh, as a DevOps person, we don't interact with this directory much.
+
+[rochak agrawal] 08:55:02
+Then, we have the PROC, okay? PROC…
+
+[rochak agrawal] 08:55:07
+Here, it is mentioned as a PROC. In some PROC, in some of the distribution, you are going to find it as a PRC as well.
+
+[rochak agrawal] 08:55:17
+Okay, so the proc directory provides detailed information about the processes which is running.
+
+[rochak agrawal] 08:55:26
+In your system.
+
+[rochak agrawal] 08:55:31
+Okay, so you can see, whatever the process is running, it is basically your task manager.
+
+[rochak agrawal] 08:55:38
+Like, what task manager we have on, um…
+
+[rochak agrawal] 08:55:42
+Windows.
+
+[rochak agrawal] 08:55:43
+It is the same thing. So you can see whatever the process is running, you… it is giving you the information with the process ID. So 3275, 3155, all these processes are running.
+
+[rochak agrawal] 08:55:53
+Okay, so…
+
+[rochak agrawal] 08:55:56
+The prog directory provides detailed information about the system processes. Each process is assigned a unique ID and represented as a directory.
+
+[rochak agrawal] 08:56:10
+as a directory inside this directory, for example, proc meminfo will be there. So if you see, there will be something called the…
+
+[rochak agrawal] 08:56:25
+K4…
+
+[rochak agrawal] 08:56:29
+Mounts, file systems, apps, devices, uh, this, this mem info. So if you go…
+
+[rochak agrawal] 08:56:37
+Mem info, let's say if I try to find what is there.
+
+[rochak agrawal] 08:56:48
+So it is going to give you the information about the total memory.
+
+[rochak agrawal] 08:56:52
+we have on our system. So there is an utilization of all these files, so it will show you the disk status, right? It will show you the… what are the file system, what are the swap spaces are there.
+
+[rochak agrawal] 08:57:04
+Right? Devices information, all those process-related information, I am going to find. Right? So, proc meminfo gives us, uh, there will be some CPU info also file. So, it contains information about the system processes. Uh, this is a pseudo-file system that contains information about the running processes.
+
+[rochak agrawal] 08:57:24
+So, PROC PID directory contains information about the process with that particular PID. So, for example, if I go…
+
+[rochak agrawal] 08:57:34
+CD1577.
+
+[rochak agrawal] 08:57:39
+Now, if you go inside it, so this is the complete information about this process. There are certain permission denied error is coming, so all the stat, stack.
+
+[rochak agrawal] 08:57:51
+All the information out of memory, score, mounts, mem info.
+
+[rochak agrawal] 08:57:56
+all those things. Now, this is for a particular, because we are in a directory of 1577, so this information is for the.
+
+[rochak agrawal] 08:58:08
+process, which is running with the process ID 1577.
+
+[rochak agrawal] 08:58:11
+Okay, so this is the role of every directory which we are having.
+
+[rochak agrawal] 08:58:22
+Which we are having. Now, as a DevOps engineer, you will mostly be interacting with EPC.
+
+[rochak agrawal] 08:58:30
+Home. Bin.
+
+[rochak agrawal] 08:58:33
+Sometime as when also?
+
+[rochak agrawal] 08:58:36
+OPT, because…
+
+[rochak agrawal] 08:58:37
+You will be installing, uh, multiple…
+
+[rochak agrawal] 08:58:43
+You will be installing the…
+
+[rochak agrawal] 08:58:46
+Just give me a second.
+
+[rochak agrawal] 08:59:01
+Okay, so OPT has been… temp also we use this sometimes, but this is, like, just from the application side that we are sending our temporary file to the temp directory, not more than that.
+
+[rochak agrawal] 08:59:15
+And then we use this mount also because sometimes we need to add external devices also to our system. And that is where we are going to mount it to this mount point. Now, what is mount point? We will discuss it.
+
+[rochak agrawal] 08:59:33
+So, these are the directory which is important for us. Now, this boot, dev, lib, media, srb, user, proc, these are mostly used for, uh, with the… for the Linux admin role.
+
+[rochak agrawal] 08:59:46
+So until unless you are not working with the Linux as an admin, then you will not interact with these directories.
+
+[rochak agrawal] 08:59:56
+Okay?
+
+[rochak agrawal] 08:59:58
+So.
+
+[rochak agrawal] 09:00:01
+Uh, clear about these directory, uh, so currently we have only seen, only discussed what these directories are contains, okay? How to create the user, uh, how the user directory will be created, everything, how to change the password of a user.
+
+[rochak agrawal] 09:00:17
+Uh, we also have seen that if I… if I'm… if I was trying to create a file in the root directory, I am getting a permission denied error. So we'll understand more about the permissions also, how the permissions are being assigned in Linux. So we'll discuss all of that. Right now, we only understood the file structure.
+
+[rochak agrawal] 09:00:34
+And what is the content in each directory? That's it.
+
+[rochak agrawal] 09:00:38
+So any question with that?
+
+[rochak agrawal] 09:00:45
+Are we good?
+
+[rochak agrawal] 09:00:53
+Yes, I'm here.
+
+[Amiya Nanda] 09:00:55
+Ah, hi Raja, good morning, so I have, ah, can you please.
+
+[rochak agrawal] 09:00:58
+Amiya, can you speak a little louder? Your voice is very low. Yes, now it is fine.
+
+[Amiya Nanda] 09:01:00
+Hello.
+
+[Amiya Nanda] 09:01:02
+Now, now, fine.
+
+[rochak agrawal] 09:01:03
+Yes, yes, perfect, yes.
+
+[Amiya Nanda] 09:01:05
+I just wanted to know the main difference between /bin and /sbin and a little bit doubt on /opt.
+
+[rochak agrawal] 09:01:12
+Okay?
+
+[rochak agrawal] 09:01:18
+Okay, I'll explain. So, see, um…
+
+[rochak agrawal] 09:01:22
+Slash bin.
+
+[rochak agrawal] 09:01:24
+and slash Ashwin.
+
+[rochak agrawal] 09:01:31
+Basically, they both are doing the same. They both contain the executables. So, for example, I'll show you…
+
+[rochak agrawal] 09:01:42
+So if you go to VIN.
+
+[rochak agrawal] 09:01:45
+And you do ls-lrt. So you'll see these are the executable it is containing. So for example, SSH, SFTP, SCP.
+
+[Amiya Nanda] 09:01:53
+Okay, means all, all the commands which will be running, yes.
+
+[rochak agrawal] 09:01:56
+All the commands, right? Now, if you go to SBIN.
+
+[rochak agrawal] 09:02:04
+Here also, it is…
+
+[rochak agrawal] 09:02:07
+having these commands, right? These are the executable for the commands only. But if you say, if I…
+
+[rochak agrawal] 09:02:18
+these commands, uh, so for example, whatever difference you see in this, uh, in the VIN and SVIN is.
+
+[rochak agrawal] 09:02:27
+Like, you remember when you go, let's say, for example.
+
+[rochak agrawal] 09:02:31
+if you open PowerShell, and I do right-click, so there is an option of run as an administrator, correct?
+
+[Amiya Nanda] 09:02:36
+Okay.
+
+[Amiya Nanda] 09:02:38
+Yes.
+
+[rochak agrawal] 09:02:39
+Similarly, whatever content will be there, whatever executable will be there.
+
+[rochak agrawal] 09:02:46
+In as VIN, you need to run as admin.
+
+[Amiya Nanda] 09:02:50
+Okay.
+
+[rochak agrawal] 09:02:51
+Okay? So these are the admin utilities.
+
+[Amiya Nanda] 09:02:51
+Okay.
+
+[rochak agrawal] 09:02:55
+In BIN, there will be general purpose commands, like CP, MD, that's the difference.
+
+[Amiya Nanda] 09:02:57
+Okay, means, uh, in SBN, uh, uh, like, root user, we can run the commands in SBN.
+
+[rochak agrawal] 09:03:03
+No, not root user. Any admin user.
+
+[Amiya Nanda] 09:03:05
+Admin, okay.
+
+[rochak agrawal] 09:03:05
+I can give… so currently, I have logged in with the EC2 user. I can make this user as an admin user, but I cannot make this user as a root user.
+
+[Amiya Nanda] 09:03:16
+Okay.
+
+[rochak agrawal] 09:03:17
+Okay.
+
+[rochak agrawal] 09:03:18
+So, it is all about the permission, as I said, that we were not able to, uh… see, in your Windows also, you can have multiple administrators, right?
+
+[Amiya Nanda] 09:03:18
+Mm-hmm, got it.
+
+[Amiya Nanda] 09:03:27
+Yes yes yes.
+
+[rochak agrawal] 09:03:28
+Same thing. So, we will… when… let's say, if I assign the admin permission to EC2 user, he will also become the admin.
+
+[rochak agrawal] 09:03:36
+So, whatever…
+
+[rochak agrawal] 09:03:38
+files are there, whatever executable are there in the sbin folder, they need the admin, uh… see, these are the admin utilities, basically, and these are the general purpose utilities. Anyone can run.
+
+[Amiya Nanda] 09:03:51
+So, Rochak, how we can give the administrator permission for a user?
+
+[rochak agrawal] 09:03:52
+Okay.
+
+[rochak agrawal] 09:03:55
+We will discuss that, Amir.
+
+[Amiya Nanda] 09:03:56
+Okay, later, okay, fine.
+
+[rochak agrawal] 09:03:57
+Yeah, because permission is a very, very important part of Linux, and just to give you a glimpse, see, there is something you are seeing here.
+
+[Amiya Nanda] 09:04:02
+Yes, yes.
+
+[rochak agrawal] 09:04:08
+Can you see it here?
+
+[Amiya Nanda] 09:04:09
+Yes, uh, oh, okay, file permissions.
+
+[rochak agrawal] 09:04:10
+Basically, the…
+
+[rochak agrawal] 09:04:11
+Yeah, so these are the permissions. Yes. So I'll… we are going to see how we can give the permission and all. Uh, very important, and very, very, uh, frequently asked in interviews.
+
+[Amiya Nanda] 09:04:12
+RWX, okay, okay, got it.
+
+[Amiya Nanda] 09:04:18
+Ah, yeah.
+
+[Amiya Nanda] 09:04:23
+Okay.
+
+[rochak agrawal] 09:04:25
+Now you mentioned about the OPT. So OPT is.
+
+[rochak agrawal] 09:04:31
+is, again… again, I think OPT is a short form for optional.
+
+[rochak agrawal] 09:04:35
+So any third party software you want to install on your system.
+
+[rochak agrawal] 09:04:41
+Okay.
+
+[Amiya Nanda] 09:04:42
+Okay.
+
+[rochak agrawal] 09:04:42
+It is a general recommendation then that you install under this OPT directory.
+
+[Amiya Nanda] 09:04:48
+Okay, okay.
+
+[rochak agrawal] 09:04:49
+But, again, as I am saying, it is only a recommendation. Because why this is a recommendation? Because they are making it as a place that… so, for example, I go…
+
+[rochak agrawal] 09:05:00
+Now, on my system, if I go to my directory.
+
+[rochak agrawal] 09:05:04
+if I go to my program files, right, then I know that all these programs are installed on my system, correct?
+
+[Amiya Nanda] 09:05:12
+Yah.
+
+[rochak agrawal] 09:05:13
+If I, let's say, copy Putty, I have an option that I can install a program in D directory also. But Windows recommend that you install everything in a C program files, correct?
+
+[Amiya Nanda] 09:05:23
+Yes, yes, yes, yes.
+
+[rochak agrawal] 09:05:25
+So that anyone coming onto this computer, they will know, okay, Microsoft Office, OBS Studio, Putty, TechSmith, Jenkins, JetBrains is installed on my system, correct?
+
+[rochak agrawal] 09:05:37
+So, similarly, this is for OPT. It is like your program files. Now, it is not a boundation, but it is a recommendation that any third-party software you are installing on your product, on your operating system.
+
+[rochak agrawal] 09:05:50
+it is a recommended… it is a recommendation that you install everything inside the OPT directory, because, see, if I install…
+
+[rochak agrawal] 09:05:58
+in my home directory, for example, and Unix is a multi-user system. Let's say another person want to access it, some do… want to some change, because you will probably work in a multi-user team, correct?
+
+[rochak agrawal] 09:06:11
+If I install it in my home directory, then it is not visible to other users.
+
+[Amiya Nanda] 09:06:12
+Yes.
+
+[rochak agrawal] 09:06:15
+So that's where they have designated a place, and they are saying any third-party product, any third-party software you want to install on your system.
+
+[rochak agrawal] 09:06:25
+Please do it inside the OPT directory.
+
+[rochak agrawal] 09:06:28
+But again, it is a recommendation, not a boundary channel.
+
+[rochak agrawal] 09:06:34
+Okay, so, yeah.
+
+[Amiya Nanda] 09:06:35
+Yes.
+
+[Amiya Nanda] 09:06:38
+Thank you, Lucik.
+
+[rochak agrawal] 09:06:44
+So any other questions?
+
+[Amiya Nanda] 09:06:46
+Ah, no, fine. I'm fine.
+
+[rochak agrawal] 09:06:49
+Perfect.
+
+[rochak agrawal] 09:06:51
+Anyone else? Any questions?
+
+[rochak agrawal] 09:07:04
+Yes, you are.
+
+[Jeeva Koli] 09:07:06
+If I compare with the, uh, folders with this, uh, Unix one, and with Windows one, uh, the bin will be the program files.
+
+[rochak agrawal] 09:07:11
+Mm-hmm.
+
+[rochak agrawal] 09:07:17
+Uh, BIN will be the program files, so I would not say BIN, uh, you…
+
+[rochak agrawal] 09:07:22
+Bin will be… I will compare more of it as a path variable.
+
+[rochak agrawal] 09:07:28
+Okay, so if you see, if I give something…
+
+[rochak agrawal] 09:07:34
+But program file is, or anyways, will be included in a part, so we can say that, yes.
+
+[Jeeva Koli] 09:07:41
+Okay.
+
+[rochak agrawal] 09:07:41
+But here, uh, uh, program file and program file 86, right, there is 2 files is there.
+
+[Jeeva Koli] 09:07:49
+Right.
+
+[rochak agrawal] 09:07:49
+So this is one you can consider as a VIN, another as a SVIN.
+
+[Jeeva Koli] 09:07:56
+Okay.
+
+[rochak agrawal] 09:07:57
+Okay?
+
+[Jeeva Koli] 09:07:58
+And home as a user, right? Home as a user.
+
+[rochak agrawal] 09:07:59
+Home is, like, uh, see, um…
+
+[Jeeva Koli] 09:08:04
+User folder.
+
+[rochak agrawal] 09:08:04
+Home is… right. See, in… Windows is a GUI-based system, like, there is no command line, is there? There is, but it is primarily a Windows-based system, right? So you can say.
+
+[rochak agrawal] 09:08:15
+When I am here, I am at my home only.
+
+[Jeeva Koli] 09:08:20
+Right, right.
+
+[rochak agrawal] 09:08:21
+Got it? Yeah.
+
+[rochak agrawal] 09:08:25
+Or, if you want to say it, uh, let's say from a command line perspective, so then you go to your users.
+
+[rochak agrawal] 09:08:32
+This is my home.
+
+[Jeeva Koli] 09:08:35
+Yeah, that's… whatever I save in the desktop, it will be shown in the… this folder only.
+
+[rochak agrawal] 09:08:40
+Got it. Okay.
+
+[Jeeva Koli] 09:08:41
+User portal.
+
+[rochak agrawal] 09:08:42
+use of.
+
+[rochak agrawal] 09:08:43
+So, if I create another user, then C user Jiva will be there, something like that, right?
+
+[Jeeva Koli] 09:08:50
+Correct, correct.
+
+[Jeeva Koli] 09:08:55
+Yeah, got it. Thank you.
+
+[rochak agrawal] 09:08:57
+Yep.
+
+[rochak agrawal] 09:08:57
+Yes, it is.
+
+[Shreyas Ks] 09:08:59
+So, what about slash variable where and slash logs? Can we use that?
+
+[rochak agrawal] 09:09:06
+We can use that, see, slash bar, uh, again, as I said, uh, slash bar, uh, so there will be certain other directories, uh, which may not be available in every, uh, what you can say.
+
+[rochak agrawal] 09:09:19
+Every Linux distribution. These are the core files, core directories, which will be there in every distribution. Now, if you say there is a bar in our…
+
+[rochak agrawal] 09:09:34
+Bare is there in our system, right? So bare… but again, if you, let's say, go to Ubuntu or go to Fedora, you might not find the bare directory. So it is not a standard one. But if you see what it does, so bare directory in Linux stands for variable files.
+
+[rochak agrawal] 09:09:50
+And it's a standard top-level directory used to store data which frequently changes while the system is running. So unlike directories like slash user, which contains the static application data and can be mounted as a read-only.
+
+[rochak agrawal] 09:10:05
+The operating system and running services must have constant writing
+
+[rochak agrawal] 09:10:10
+Now I'll give you an example what you can store in a bear.
+
+[rochak agrawal] 09:10:16
+You are running a web server, for example, okay?
+
+[rochak agrawal] 09:10:20
+Now, web server will be generating the constant logs.
+
+[rochak agrawal] 09:10:24
+So these logs file you can store in this file, in this bare log files.
+
+[rochak agrawal] 09:10:29
+So… so then…
+
+[rochak agrawal] 09:10:32
+your NGINX will have a constant write access to this folder, and then it will keep adding the logs to your folder.
+
+[rochak agrawal] 09:10:43
+So generally, this folder is used for logging purposes.
+
+[Shreyas Ks] 09:10:49
+And, uh…
+
+[rochak agrawal] 09:10:49
+Bell logs.
+
+[Shreyas Ks] 09:10:50
+For this one.
+
+[Shreyas Ks] 09:10:51
+So which Linux we are going to use for this one, sir?
+
+[rochak agrawal] 09:10:56
+So, we are using Linux only. Uh, so, Linux…
+
+[Shreyas Ks] 09:10:57
+No, I mean, like, there are open to…
+
+[rochak agrawal] 09:11:00
+Yes, so that's what I'm saying. So the parent operating system is, uh, Unix.
+
+[rochak agrawal] 09:11:07
+These are Fedora, Ubuntu, Linux, and there are different others, BSD, right? These are not the versions. These are the flavors of Unix.
+
+[rochak agrawal] 09:11:20
+Okay, so we are going to use the Linux flavor for our demonstrations.
+
+[Shreyas Ks] 09:11:20
+Yep.
+
+[Shreyas Ks] 09:11:26
+Only Linux. There is no version, like, uh…
+
+[rochak agrawal] 09:11:27
+Only Linux. Yeah, Linux is one of the flavor of Unix.
+
+[Shreyas Ks] 09:11:31
+Okay.
+
+[rochak agrawal] 09:11:32
+Most of the common command we are going to use will be same across all the Unix flavors. For example, CD command we have run, make DIR command we have run, LSIF and LRT we are running.
+
+[rochak agrawal] 09:11:45
+So those all command are going to be similar.
+
+[rochak agrawal] 09:11:50
+you are going to use any of the Linux flavor, they are going to be similar, okay? But there will be certain commands. For example, if I want to install something, so…
+
+[rochak agrawal] 09:11:59
+let's say if I go… if I want to install something, let's say I want to install Java, so I will go and say sudo yum install.
+
+[rochak agrawal] 09:12:10
+Java. Again, don't go on the command, I'm just trying to tell you the difference.
+
+[rochak agrawal] 09:12:16
+So here yum is a package manager for Linux okay. So if I run this it will say okay it will search for the Java package and it is going to install the Java package on my system.
+
+[rochak agrawal] 09:12:28
+But if you go to Ubuntu, then in Ubuntu, Yum doesn't work. In Ubuntu, there is another package manager called the APT. So wherever there is a difference, I will highlight it. But again, I'll just give a no.
+
+[rochak agrawal] 09:12:43
+But most of 85-90 percent general purpose commands will be similar across all the Unix flavors, and we are going to use the Linux flavor for our use as of now.
+
+[Shreyas Ks] 09:12:57
+So, throughout the course, I mean, throughout this journey, we'll be using the Linux in the Amazon console only.
+
+[rochak agrawal] 09:13:02
+Yeah, see, of course. See, we are going to use… we want to use the same system so that, let's say, I'm doing some demo with Linux, then I'm choosing Unix. There might be some command difference. It will make you more confused, correct?
+
+[Shreyas Ks] 09:13:17
+Yeah.
+
+[rochak agrawal] 09:13:17
+So, uh, we are going to use Linux for throughout our demo.
+
+[rochak agrawal] 09:13:21
+And whenever I will use another system, then I will highlight it.
+
+[Shreyas Ks] 09:13:26
+So, I mean, so, only on the Amazon only, we would recommend us to practice.
+
+[rochak agrawal] 09:13:31
+Because it's a full-fledged machine. If you see, our laptops are not so powerful that we can create a virtual machine. If you can, if your laptop, for example, if you are running a 16GB type of a laptop, you can do it with the Oracle VirtualBox also. It's an easy solution for us, right?
+
+[Shreyas Ks] 09:13:48
+Okay.
+
+[rochak agrawal] 09:13:49
+Because I'm not installing anything on my system, so it's… it's… my system is not become overloaded, and that's why I'm choosing Amazon. If you have already have an account with Azure, you already have the account in Google Cloud, or anywhere else.
+
+[rochak agrawal] 09:14:02
+No problem. See, we are not doing anything with AWS, right? We are doing with the Linux.
+
+[rochak agrawal] 09:14:09
+Any system you have will work.
+
+[Shreyas Ks] 09:14:12
+So, like, deploying Docker and all, we'll do… we'll be doing in the Amazon console only?
+
+[rochak agrawal] 09:14:16
+No, we are see again I'm saying we are not doing it in Amazon console. We are doing on this server which is having this IP. This server can be an AWS server. This server can be a Azure server. It will your steps will not going to be changed.
+
+[Shreyas Ks] 09:14:33
+Okay, okay, okay.
+
+[rochak agrawal] 09:14:34
+I am doing… see, forget about the Amazon as of now, okay? You say, I have created a Linux server, and I am doing the thing on the Linux server.
+
+[rochak agrawal] 09:14:45
+Coincidentally, we have created that Linux server as Amazon server. That's it.
+
+[rochak agrawal] 09:14:50
+But whatever we are learning, it has nothing to do with Amazon is specific.
+
+[rochak agrawal] 09:14:55
+Okay?
+
+[rochak agrawal] 09:14:58
+Perfect.
+
+[rochak agrawal] 09:15:03
+Guys, I think we'll start the next topic. Now we will build our foundation by using the daily day-to-day commands in Linux.
+
+[rochak agrawal] 09:15:14
+Okay?
+
+[rochak agrawal] 09:15:16
+Yes, you will.
+
+[Jeeva Koli] 09:15:18
+So, uh, the… most of us, uh, already use the credit card and this to create the Amazon account.
+
+[rochak agrawal] 09:15:27
+Hmm?
+
+[Jeeva Koli] 09:15:27
+So, is it possible that someone can, uh…
+
+[Jeeva Koli] 09:15:33
+create this and create for all of us as users, and then provide the access to that VM.
+
+[rochak agrawal] 09:15:38
+No. You, you… see, if I'm run, uh, so for example, let's say there's 30 users in this class, right? If I, let's say, create 30 servers, my $200 credit bills, uh, will be over in 2 days.
+
+[Jeeva Koli] 09:15:53
+No, you will be having, as a root user, you will be having the access to.
+
+[rochak agrawal] 09:15:58
+No, no, no, Jeeva, I… no, no, Jeeva, I will not make it more complicated. You can create your own command, your own AWS account, you can create your own server, and you can play it around.
+
+[Jeeva Koli] 09:16:00
+Cause by your
+
+[rochak agrawal] 09:16:12
+If I can get 30 server for you, then my $200 credit will be over in 2 days, right? It is a free tier account, which is giving you $200 of credit.
+
+[Jeeva Koli] 09:16:22
+Uh, yeah, yeah. So, reason is that we already use that, actually, that's why.
+
+[rochak agrawal] 09:16:28
+What? AWS account.
+
+[Jeeva Koli] 09:16:29
+3 accounts, yes.
+
+[rochak agrawal] 09:16:30
+You create a new one, huh? What's the problem? You can create a new one. I… every month, I create a new account.
+
+[Jeeva Koli] 09:16:38
+Like, once you use the credit card, that will not be used as a credit card.
+
+[rochak agrawal] 09:16:40
+You can use it… only the… your email ID should be different.
+
+[Jeeva Koli] 09:16:45
+Same credit card will be used again, for the…
+
+[rochak agrawal] 09:16:47
+Yes, yes, yes, same credit card, same mobile number. I have created almost, like, I'm giving the trainings from last 4 years, okay? 4 to 5 years. Every month, I'm creating… so, of course, yeah, if you create 1500 accounts, then yes.
+
+[Jeeva Koli] 09:16:56
+Mmhm.
+
+[rochak agrawal] 09:17:02
+But 5-10 accounts you can create. It's just… your email ID should be unique.
+
+[Jeeva Koli] 09:17:07
+Okay, okay, because, because, uh…
+
+[rochak agrawal] 09:17:09
+And moreover, apart from the credit card, they now accept the UPI also. So you are not bound by the credit card.
+
+[Jeeva Koli] 09:17:18
+Okay, okay.
+
+[rochak agrawal] 09:17:19
+Okay?
+
+[Jeeva Koli] 09:17:22
+Okay, because in the…
+
+[rochak agrawal] 09:17:22
+So my… this account, uh, this free tier account is… my payment method is UPI, not the credit card.
+
+[Jeeva Koli] 09:17:30
+Okay, still use the one-year access rate, uh, $200 and $100.
+
+[rochak agrawal] 09:17:33
+Yeah, it gives… so you… it gives you the one-year access, but then there are limitations. So it is not completely free for one year, you need to…
+
+[rochak agrawal] 09:17:44
+Uh, spend everything in the $200 credit.
+
+[Jeeva Koli] 09:17:48
+Okay.
+
+[rochak agrawal] 09:17:50
+Okay?
+
+[Jeeva Koli] 09:17:51
+Got it, yeah.
+
+[rochak agrawal] 09:17:54
+So, yes, I… Mehak is having a question. Yes, Mehak.
+
+[Mahak Alvi] 09:18:01
+Uh, Rojak, could you please share some details, like, material related to the networking and this route?
+
+[rochak agrawal] 09:18:06
+Yes, yes, I will do that, I will do that, so… No, no, we will do that.
+
+[Mahak Alvi] 09:18:07
+Because we don't have any material uploaded yet on the drive. Because, yeah, we have a weekend, so we can definitely learn about them.
+
+[rochak agrawal] 09:18:11
+We will do that. We can do that.
+
+[rochak agrawal] 09:18:15
+Correct, correct. So I generally… what I do is, I… so for the whole week, on the Friday, I upload the material. So ours… today is Friday only, so yeah, I'll do that today.
+
+[Mahak Alvi] 09:18:24
+Oh.
+
+[Mahak Alvi] 09:18:28
+Great, great, great. Thank you so much.
+
+[rochak agrawal] 09:18:29
+Yeah? Sure.
+
+[rochak agrawal] 09:18:35
+So, yeah, cool, guys. I think I'm good for today. So we can wrap up our 10 minutes early.
+
+[rochak agrawal] 09:18:41
+Festival is also there today, so, yeah.
+
+[rochak agrawal] 09:18:47
+Thank you.
+
+[rochak agrawal] 09:18:50
+I've initiated the poll, please provide your ratings.
+
