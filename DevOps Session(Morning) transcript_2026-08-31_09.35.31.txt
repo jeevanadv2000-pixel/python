@@ -1,0 +1,2718 @@
+[rochak agrawal] 07:41:36
+Okay, so today we are going to cover, um, what is DevOps?
+
+[rochak agrawal] 07:41:41
+why DevOps exists, the problem we need to discuss.
+
+[rochak agrawal] 07:41:45
+definitions and principle around DevOps, the lifecycle stages of DevOps. Then we will discuss what is CI/CD, because that is, again, one of the most fundamental things about the DevOps infrastructure as a code. Containers, we are going to talk about the containers, because that is.
+
+[rochak agrawal] 07:42:02
+becoming the new design pattern, uh, security and measurement, and, uh, the next step, uh, which we are going to take about the DevOps.
+
+[rochak agrawal] 07:42:13
+So, by the end of the session, we will understand.
+
+[rochak agrawal] 07:42:17
+What is the problem that we are solving with the help of DevOps?
+
+[rochak agrawal] 07:42:23
+We will very clearly understand the workability around the DevOps, like what is continuous integration, what is continuous delivery, what is the difference between continuous integration and continuous delivery, what is DevOps, what is DevSecOps. We'll understand all of that.
+
+[rochak agrawal] 07:42:41
+Uh, we will understand what is the pipeline, what is, uh, pipeline steps are there, and, um…
+
+[rochak agrawal] 07:42:47
+there is something fundamental, uh, framework called DORA metrics, so we'll understand DORA metrics also. Now…
+
+[rochak agrawal] 07:42:55
+before we go further, we would like to understand what is DevOps, okay? So DevOps, if you see the definition, DevOps is a way of working in which the people who build a software and the people who run it on a.
+
+[rochak agrawal] 07:43:10
+who run it share one goal. One set of a tool, one set of definition of done, supported by the automation that makes small, frequent, reversible changes safe.
+
+[rochak agrawal] 07:43:22
+Now, let's break it down.
+
+[rochak agrawal] 07:43:24
+First, DevOps is a way of working. Okay, when we are saying DevOps is a way of working, uh, it means that, uh, uh.
+
+[rochak agrawal] 07:43:36
+What we are saying is DevOps means it is not a technology like so for example, if you are learning Java, I am learning Java, we are going to learn exactly the same thing. Okay. Uh, in DevOps things can be different.
+
+[rochak agrawal] 07:43:52
+Okay, um…
+
+[rochak agrawal] 07:43:54
+Not from learning wise, but your end goal will remain the same. But how you are going to implement it can be different. Okay. And then they make small, frequent, reversible changes.
+
+[rochak agrawal] 07:44:12
+Now, softwares are changing on a daily basis, okay?
+
+[rochak agrawal] 07:44:18
+When we are seeing software are changing on a daily basis, it means that, uh…
+
+[rochak agrawal] 07:44:26
+So, for example, if we take, uh…
+
+[rochak agrawal] 07:44:30
+Gemato, or Netflix.
+
+[rochak agrawal] 07:44:34
+When you open your Jometro app, let's say, uh…
+
+[rochak agrawal] 07:44:37
+two days back, there was Raksha Vandan. You will see the offers related to Raksha Vandan. When there is a weekend, you will see offer related to weekend. Means, whenever you are opening your application, you are seeing something different. It means something…
+
+[rochak agrawal] 07:44:51
+what's changing in your application, right? Now, those frequent, small, reversible changes are being pushed to your application with the help of something called the DevOps.
+
+[rochak agrawal] 07:45:05
+Okay, now…
+
+[rochak agrawal] 07:45:10
+there are a few fundamental things. If you see, uh, the build and run. When you build your software.
+
+[rochak agrawal] 07:45:19
+Now, what is the building of a software? So, for example.
+
+[rochak agrawal] 07:45:24
+When you… when you create your source code, so for example, when you need to install something on your laptop.
+
+[rochak agrawal] 07:45:31
+Okay.
+
+[rochak agrawal] 07:45:32
+You don't download the source code for that. What do you download there? For example, if I need to install the notepad on my laptop, you are not going to download the source code of the notepad and do the things, right?
+
+[rochak agrawal] 07:45:48
+You… what you're going to download is…
+
+[rochak agrawal] 07:45:56
+So what you are going to download is a .exe file, right? So .exe file is a runtime executable for your product.
+
+[rochak agrawal] 07:46:04
+You install any product, you install Git, you install, um…
+
+[rochak agrawal] 07:46:10
+Any other product, you need to download, um…
+
+[rochak agrawal] 07:46:16
+the .exe file, which is an executable format. Now, building of a software means.
+
+[rochak agrawal] 07:46:24
+when you say I'm building the software, building the software means.
+
+[rochak agrawal] 07:46:29
+I am taking my source code as an input, and the output of that process will be my executable file, so that I'll run that file, and my application will be up and running.
+
+[rochak agrawal] 07:46:42
+Now development, so that is the build. So you take the input from your.
+
+[rochak agrawal] 07:46:48
+development team, because the source code will be written by your development team, and then you build it out. But that is where the confusion arises, right? Development is measured on the changes, means, uh…
+
+[rochak agrawal] 07:47:02
+let's say how frequently your application is changing uh developer would want frequent releases because whatever they are writing they would want it to be presented to their end user and it owns the code like development team owns the code but.
+
+[rochak agrawal] 07:47:19
+How it is being deployed and other things, they don't care about. While the operations team is measured on that.
+
+[rochak agrawal] 07:47:27
+stability. So, for example, if I am the production support team, and I am deploying your application, now…
+
+[rochak agrawal] 07:47:36
+for how long it is available, if users are able to access it or not, right? So, they are just and based on that. So, rewarded for the uptime and predictability, treats every change as a source of risk. So, whenever they deploy.
+
+[rochak agrawal] 07:47:50
+any of the changes. Okay.
+
+[rochak agrawal] 07:47:55
+once you deploy that change, it can break anything in your environment. So, they will treat everything as the.
+
+[rochak agrawal] 07:48:07
+Risk. And then, when the incident occurs, they…
+
+[rochak agrawal] 07:48:11
+Start working on the incident, and then… but they don't own, so if there are any changes in the code base, your production support team is not going to do that.
+
+[rochak agrawal] 07:48:21
+Right. And previously.
+
+[rochak agrawal] 07:48:24
+Before the DevOps, when the DevOps was not there.
+
+[rochak agrawal] 07:48:28
+Generally, there was a batched release. Batched release means.
+
+[rochak agrawal] 07:48:34
+you will have a long release. For example, for a month or for a quarter, your developer.
+
+[rochak agrawal] 07:48:40
+Your development team will keep writing the code, and after a month, or after a quarter, or after a six month.
+
+[rochak agrawal] 07:48:47
+All those changes done during those one month, a quarter, will go together to your production environment.
+
+[rochak agrawal] 07:48:56
+Then, manual hands-off. So, uh, you, uh, like, there was no automations workplace. You were doing deployed, uh, you were doing the deployments manually.
+
+[rochak agrawal] 07:49:08
+And the handovers were also manual. And this, if you see this work on my machine, this was a problem which was…
+
+[rochak agrawal] 07:49:18
+Please do.
+
+[rochak agrawal] 07:49:20
+And this is… this is a kind of a problem, which is…
+
+[rochak agrawal] 07:49:24
+raised by… which will be solved by the containers, okay? So, for example, let's say your developers are writing the code on a Windows-based machine, but your production environment is a Linux-based machine.
+
+[rochak agrawal] 07:49:36
+It can happen, right? So, now it may happen that your Windows-based system may have some libraries or some prerequisite, which is allowing your application to run, but when it goes to the Unix server or the Linux server, those prerequisites are not there.
+
+[rochak agrawal] 07:49:54
+And, uh…
+
+[rochak agrawal] 07:49:56
+They will not be able to access it, right? So, this work on my machine was a problem, which was…
+
+[rochak agrawal] 07:50:04
+Sold.
+
+[rochak agrawal] 07:50:05
+Buy this, uh…
+
+[rochak agrawal] 07:50:08
+containerization. And then, once you deploy everything, outages are happening, so dev team will say it is the fault of the operation team, operation team will say, uh, it is the fault of the…
+
+[rochak agrawal] 07:50:21
+Code. So the blame game happens after every outages. Now this was happening because before the DevOps and this was happening because your development and the operations team working independently from each other.
+
+[rochak agrawal] 07:50:36
+Okay, so they… so for your example, your development team was giving the artifact, but there was not a kind of a shared responsibility between them.
+
+[rochak agrawal] 07:50:45
+And that is where…
+
+[rochak agrawal] 07:50:49
+That is where DevOps comes into the picture, okay? Now.
+
+[rochak agrawal] 07:50:54
+DevOps as we keep saying.
+
+[rochak agrawal] 07:50:57
+DevOps?
+
+[rochak agrawal] 07:50:58
+It's not a technology. Very important, okay?
+
+[rochak agrawal] 07:51:03
+DevOps is, you can say, you, you will go to multiple places, you will, you are going to find different, different, uh, keywords, different, different artifacts.
+
+[rochak agrawal] 07:51:13
+So, very simply, if I say, DevOps is a set of.
+
+[rochak agrawal] 07:51:20
+principles, or you can say a DevOps is a framework.
+
+[rochak agrawal] 07:51:25
+With the help of this framework, my aim is to push.
+
+[rochak agrawal] 07:51:32
+the small and frequent changes to my end user in a safe manner.
+
+[rochak agrawal] 07:51:36
+Now, for that, somewhere you will have DevOps as a practice, somewhere you will have DevOps as a framework, somewhere you will understand DevOps as a set of principles. All are the same things, okay?
+
+[rochak agrawal] 07:51:51
+So first, DevOps is a culture, okay?
+
+[rochak agrawal] 07:51:56
+if you… your organization is not able to adapt to the DevOps culture, you're… you're saying, no, no, I'm still, um, working in a waterfall model, right? So then, in that case, you…
+
+[rochak agrawal] 07:52:09
+will not be able to adopt the DevOps. So you need to first come bring before changing anything technologically, you need to change your team technically, right? Shared ownership of the outcome.
+
+[rochak agrawal] 07:52:25
+Uh, review of the failure, operational concern raised while the code is being designed.
+
+[rochak agrawal] 07:52:31
+Once the culture is set up, you will set up DevOps as a practice. So, for example, you will start deploying, uh, instead of big releases, you will deploy your code into small batches.
+
+[rochak agrawal] 07:52:43
+uh, trunk-based development. So, uh, there is something called a trunk-based development in which, uh, there will always be, uh.
+
+[rochak agrawal] 07:52:54
+a stable line of code, and you will create, uh, the substructure from that code. So we will discuss the congruous development in the source code management in the GitHub. Uh, your testing will be automated. Uh, you will create your infrastructure as not manually.
+
+[rochak agrawal] 07:53:11
+But with the help of tools like Terraform and other things. And you are going to get the continuous feedback.
+
+[rochak agrawal] 07:53:19
+from production. So…
+
+[rochak agrawal] 07:53:23
+In the house.
+
+[rochak agrawal] 07:53:25
+Deploying your application to the production is just a stepping stone. Okay, so what does it mean?
+
+[rochak agrawal] 07:53:33
+DevOps means once your code is deployed to the production, you are constantly going to monitor your application. You are constantly going to monitor the feedback from your users.
+
+[rochak agrawal] 07:53:48
+So that if there is any scope for, uh, uh, improvement, so for example, you deploy a website with very, um.
+
+[rochak agrawal] 07:53:58
+very bad user experience. Your functionality is good, your functionality is working as expected. This you might have seen in case of some of the bank's website, right? They are so complex in nature that even doing a small thing, you need to, like.
+
+[rochak agrawal] 07:54:16
+put up a lot of effort. So that is where their DevOps team should take the feedback from the users and do the changes accordingly.
+
+[rochak agrawal] 07:54:25
+Then in the third one, so culture and practices are set up.
+
+[rochak agrawal] 07:54:30
+You are going to mature your DevOps platform. So now for that, there are multiple tools are available and which we are going to see in the subsequent slides as well. Versioning control, build server, artifacts registry.
+
+[rochak agrawal] 07:54:47
+provisioning tools, monitoring, automating what team already agreed to do. So for, uh…
+
+[rochak agrawal] 07:54:54
+every task. So for example, for artifact registry, we have JFrog Nexus is there. We have every cloud is providing you artifact registries.
+
+[rochak agrawal] 07:55:05
+we have provisioning tools like Terraform, and configuration management tool, and Sybil. So, in the end, if we say, uh, DevOps is a rich ecosystem of tools.
+
+[rochak agrawal] 07:55:17
+which is going to foster culture and practice of deploying small releases in a very reliable manner.
+
+[rochak agrawal] 07:55:29
+Okay, now you see, uh, order matters here. So, for example, if I directly go, um…
+
+[rochak agrawal] 07:55:36
+installing these tools in my system. They will not yield.
+
+[rochak agrawal] 07:55:41
+the desired result. They'll give you some positive result, but they will not change everything for you, because.
+
+[rochak agrawal] 07:55:50
+Your team does not know how to optimally use them.
+
+[rochak agrawal] 07:55:53
+Okay?
+
+[rochak agrawal] 07:55:55
+Again, we need to discuss.
+
+[rochak agrawal] 07:55:59
+what DevOps is not.
+
+[rochak agrawal] 07:56:02
+So, DevOps is a job title, it's not a job title you have, okay?
+
+[rochak agrawal] 07:56:10
+It can very clearly happen that you meet two DevOps engineers, and they both will be working on something very different.
+
+[rochak agrawal] 07:56:19
+It is very possible. It is not going to happen in.
+
+[rochak agrawal] 07:56:24
+Let's say you got deployed as a Python developer.
+
+[rochak agrawal] 07:56:28
+Now, both the Python developer will do the same thing. When I'm saying the same thing, of course, they will be developing different products, different modules, but the task for them will be very similar.
+
+[rochak agrawal] 07:56:40
+This is not a case in a DevOps, okay? Uh, DevOps…
+
+[rochak agrawal] 07:56:45
+let's say I… in the same project also, if I'm hiring two DevOps engineers, for one engineer, I can make them work on the configuration management part, uh, I can make another one, uh, working on the CICD part, another one, I can work them on the automation.
+
+[rochak agrawal] 07:57:02
+Fourth one, I can hire them for the infrastructure as a code. So DevOps, you understand it's not only a job title, there are many subtasks associated with it.
+
+[rochak agrawal] 07:57:12
+Again, it's not a tool that you install.
+
+[rochak agrawal] 07:57:17
+Now, whatever the tool we are going to discuss.
+
+[rochak agrawal] 07:57:20
+DevOps is, uh…
+
+[rochak agrawal] 07:57:24
+Primarily based on tools, but it is…
+
+[rochak agrawal] 07:57:27
+not 100% tools. So, for example, and the reason for that is, let's say you say, I know Jenkins. Do I know DevOps? No. Because the bulk of Jenkins can be done by other tools also. For example, Azure Pipelines are there, uh, GitHub Actions are there, uh, GitLab CIS, there's multiple things are there.
+
+[rochak agrawal] 07:57:46
+Uh, and replacement for the operation. DevOps is not a replacement for the operation. Your operations team will still be there. It is just you are optimizing.
+
+[rochak agrawal] 07:57:56
+your operations, okay? So, operational expertise becomes more valuable, not less.
+
+[rochak agrawal] 07:58:03
+So you are going to optimize your operation. It is not that since your DevOps team is there, your operations team will not be there.
+
+[rochak agrawal] 07:58:12
+An excuse to skip testing. Okay. Again, people understand since we are getting the feedback very early from the customer, should we not do the testing? No. Your testing is a separate part. You can integrate your testing with the DevOps pipeline.
+
+[rochak agrawal] 07:58:28
+But, uh…
+
+[rochak agrawal] 07:58:30
+testing is at most necessary. Uh, testing, again, can be of multiple types, load testing, functional testing, um, or…
+
+[rochak agrawal] 07:58:39
+non-functional testing, uh, user acceptance testing, code coverage testing. So, uh, once…
+
+[rochak agrawal] 07:58:48
+Because, see, I do not want to deploy a faulty product. See, I want to deploy at speed, but I am not going to sacrifice the quality, uh…
+
+[rochak agrawal] 07:58:59
+In comparison to speed. Okay. So there should be a trade off. There should be a balance between them. Okay. So speed comes from the automated testing. It's automated confidence. And if you are not going to do the testing.
+
+[rochak agrawal] 07:59:14
+issues may occur at the later stage. And people generally understand, um, that, uh, DevOps is only for the better startups. So, no, it is, uh, not true. DevOps is…
+
+[rochak agrawal] 07:59:28
+for every organization. And if you see the recent pattern, many legacy organizations, for example, I know some of the Indian banks which were not, which is not using DevOps till now, but they have started the processes.
+
+[rochak agrawal] 07:59:44
+Uh, for adopting the DevOps. So DevOps is for everyone, wherever you want to… your application is dynamic, okay? Uh, DevOps is going to help you immensely.
+
+[rochak agrawal] 07:59:58
+Now, again, this is not very important slide for us, but there are certain dimensions, which is…
+
+[rochak agrawal] 08:00:08
+to assess the DevOps maturity. For example, uh…
+
+[rochak agrawal] 08:00:14
+When you implement DevOps in your organization.
+
+[rochak agrawal] 08:00:19
+It is not like that on a day one you will implement everything.
+
+[rochak agrawal] 08:00:23
+Okay, it may happen that, let's say, initial 15 days, uh, you are going to implement the version control system, but your deployment is still manual.
+
+[rochak agrawal] 08:00:34
+Then in the next two months, you automated all the deployment and then, but you are manually creating your infrastructure and doing the configuration manually. Then after three months, you say, okay, I am implementing infrastructure as a code as well.
+
+[rochak agrawal] 08:00:52
+Then after, so you see these are the examples of different maturity stages.
+
+[rochak agrawal] 08:00:59
+Correct. So, for example, currently I'm working with a customer where they are using the cloud environment and they are deploying their application on the cloud. They have everything, like, their cloud is very secure and other things.
+
+[rochak agrawal] 08:01:12
+But they're not using IAC, for example. So whenever we need to have a Kubernetes cluster, whenever I need to have a database.
+
+[rochak agrawal] 08:01:23
+I need to go manually, um, and create a database for them. Now.
+
+[rochak agrawal] 08:01:29
+see, absolutely no problem in that, because they are not creating the infrastructure very frequently, but once the load will increase, maybe in a day you need to create 4 or 5 databases, or 4 or 5 GKE cluster, then.
+
+[rochak agrawal] 08:01:44
+their speed will hinder, correct? So that is where, um, when you learn DevOps, when you are implementing DevOps.
+
+[rochak agrawal] 08:01:53
+You are not going to implement everything on day one.
+
+[rochak agrawal] 08:01:56
+Okay, uh, you are going to implement.
+
+[rochak agrawal] 08:02:02
+of course, let's say if I give you 100 DevOps engineer, you probably will implement everything on day one, but there can be different models for this. So.
+
+[rochak agrawal] 08:02:12
+your DevOps will be measured on culture. So, culture is very important in terms of DevOps. If the development team and the operations team are not coming on the same ground.
+
+[rochak agrawal] 08:02:25
+there is no divorce for you, right? So, for example, blameless postmortems can be very important. So, for example, even after doing everything, see, outages are going to happen, okay? Then.
+
+[rochak agrawal] 08:02:39
+See, it should not happen that your development team is saying it happens because your infrastructure is not good. Your infrastructure team is saying it has happened because of the code issue. See, they both need to come together and find the root cause exactly.
+
+[rochak agrawal] 08:02:57
+So that we can be made sure that in future we are not going to have these type of errors.
+
+[rochak agrawal] 08:03:05
+Then, automation is the very, very, very key part of the demos.
+
+[rochak agrawal] 08:03:10
+We work on one principle, automate everything.
+
+[rochak agrawal] 08:03:15
+Uh, and automate everything and anything. Any task which you are doing more than once.
+
+[rochak agrawal] 08:03:21
+Both automated. So repeatable build, test, provisioning, deployment, everything should be automated.
+
+[rochak agrawal] 08:03:28
+So your, um, DevOps maturity will be, uh, based out of, uh.
+
+[rochak agrawal] 08:03:34
+Or what type of automations you are doing, right? So again, see when you are saying automation, like for the example I have given, we are deploying application automatically in an automated manner, but we are deploying our infrastructure in a manual manner.
+
+[rochak agrawal] 08:03:50
+Right? So automation also you can apply in different, different stages. Then comes the lean, okay? Lean means…
+
+[rochak agrawal] 08:03:59
+Like, I will not wait for all the features to get completed, then I will deploy it. Whatever is developed, I'll deploy it.
+
+[rochak agrawal] 08:04:07
+Okay, small batches, limited work in progress, this will flow. Lean means, if I… I… my end goal is to deploy 5 features.
+
+[rochak agrawal] 08:04:16
+I will not wait till my five feature is developed, then I will deploy. My one feature is ready, I'll deploy it. Once the remaining four, as and when they will be ready, I'll keep deploying them.
+
+[rochak agrawal] 08:04:28
+So that is about the lean philosophy.
+
+[rochak agrawal] 08:04:31
+Then the measurement. So, your measurement is… you… see, DevOps is not an unguided missile, okay? You need to understand. When you're automating everything.
+
+[rochak agrawal] 08:04:42
+When you are automating everything.
+
+[rochak agrawal] 08:04:46
+they should have a visible, uh, outcomes. So, for example, I'm going to measure… so, for example, if I'm running 100 builds in a day, so then, what is the number of successful builds? What is the number of unsuccessful builds?
+
+[rochak agrawal] 08:05:01
+everything you need to measure in DevOps. If your application is deployed and 100 users are coming, what is the number of the successful invocation? What is the number of unsuccessful invocation? If you are using.
+
+[rochak agrawal] 08:05:15
+Any of the servers, what is the utilization of that servers, everything you need to measure.
+
+[rochak agrawal] 08:05:21
+Right? Because since when you have the measurement, when you have the data, then basis on that data, you are going to take.
+
+[rochak agrawal] 08:05:31
+the guided decisions. Okay? And then, uh, sharing…
+
+[rochak agrawal] 08:05:36
+Sharing means…
+
+[rochak agrawal] 08:05:39
+See, DevOps is… DevOps should not be dependent on a single person. So, for example, your pipelines, when you will be creating them, they can go very complex, okay? They can go very complex when I'm saying, um…
+
+[rochak agrawal] 08:05:55
+Your pipeline can be of 500 lines of the code, right?
+
+[rochak agrawal] 08:06:01
+So when, um…
+
+[rochak agrawal] 08:06:03
+you have written the pipeline. Let's say you're not available, you're going on a two-week leave, so that, like, during those two weeks, if there is any issue comes in those pipelines, in those automations you have written, and.
+
+[rochak agrawal] 08:06:17
+any other things, right? So then, what's going to happen? Um…
+
+[rochak agrawal] 08:06:22
+Other person comes and he's not able to understand your pipeline. So that is where you need to document everything so that there is no overreliance on a single person. Knowledge, tooling, on-call responsibility travels across the team, okay?
+
+[rochak agrawal] 08:06:39
+so that everything is there in something called the Knowledge Repository, okay?
+
+[rochak agrawal] 08:06:48
+And then, basis on that.
+
+[rochak agrawal] 08:06:50
+Because, see, you have everything very good, but the person resigned. Then…
+
+[rochak agrawal] 08:06:57
+No other person knows anything about your DevOps environment. So that can also be a single point of failure. So that is where we need to share everything within every one of the team. Your primary responsibility can be designing the CI/CD pipeline.
+
+[rochak agrawal] 08:07:13
+But you should have a knowledge of other tasks, what is happening in your team, what is happening in infrastructure as a code, what is happening in…
+
+[rochak agrawal] 08:07:23
+Uh, configuration management and everything. Again, it is… it is just a maturity framework, it is not a, uh…
+
+[rochak agrawal] 08:07:32
+hard and fast guidelines. For example, I talked about my customer.
+
+[rochak agrawal] 08:07:37
+They are okay as of now.
+
+[rochak agrawal] 08:07:40
+not implementing the infrastructure as a code. Okay, that does not mean their DevOps environment is not good. See, what if something is working for you? Keep doing it.
+
+[rochak agrawal] 08:07:54
+Now, this is very important, okay?
+
+[rochak agrawal] 08:07:57
+This is something called the DevOps lifecycle stages. So, you can see it here.
+
+[rochak agrawal] 08:08:04
+The first four stages is majorly are the all seen when I'm saying majorly driven by the dev team and the OPS team. So the first four response, the primary responsibility is with the development team.
+
+[rochak agrawal] 08:08:20
+And the secondary responsibility is with the operations team. Similarly, the remaining five, six, seven, eight stages, primary responsibility is with the operations team. And this ops team, we call it as a DevOps team.
+
+[rochak agrawal] 08:08:35
+Okay, and then the secondary responsibility will be of the development team.
+
+[rochak agrawal] 08:08:40
+when you need to build something, okay? When you need to build something, first thing is you are going to plan it.
+
+[rochak agrawal] 08:08:49
+That's the first stage, okay? So, let's say, uh, in the planning phase, you will decide, I need to develop, let's say, 10 features, and…
+
+[rochak agrawal] 08:09:00
+In how much time I'm going to design these 10 features maybe in a month or so. So all those stages you it will go into the planning phase. Okay. So you'll decide what task need to be done and how much time it will take.
+
+[rochak agrawal] 08:09:16
+Uh, to be done, and then user stories will be created, and they will be assigned to every developers.
+
+[rochak agrawal] 08:09:22
+So that is done in a planning phase. Then the second stage will be the code stage. Now that is where…
+
+[rochak agrawal] 08:09:30
+You will… you… when I'm saying you means…
+
+[rochak agrawal] 08:09:33
+Developers, Bill?
+
+[rochak agrawal] 08:09:36
+start writing the code, okay? Now, there is something DevOps practice is called version control and PL review. When we are saying version control and PL review.
+
+[rochak agrawal] 08:09:47
+Like developers, when they write the code, there may be frequent changes in the code, right? So somewhere you say X is equal to 10. Then after you do the testing in your local environment.
+
+[rochak agrawal] 08:10:02
+then you realize, okay, x.10 is equal to not good, x should be 20, for example.
+
+[rochak agrawal] 08:10:10
+Changes will keep happening.
+
+[rochak agrawal] 08:10:12
+So, version control will make sure whatever developer is writing.
+
+[rochak agrawal] 08:10:18
+Every version of your code should be there, so that, like.
+
+[rochak agrawal] 08:10:23
+If someone want to, uh, go to a previous version of the code, they will be.
+
+[rochak agrawal] 08:10:31
+able to go to the previous version of the code easily, and then the peer review. So, let's say once the developer writes the code, they will not deploy this code directly into the environment.
+
+[rochak agrawal] 08:10:44
+it should be… there should be a one round of peer review. Either your peer will do, or your supervisor will do. So these are the primary code-related DevOps practices are there, but apart from it, also there is multiple merge requests, there are pull requests that we'll see.
+
+[rochak agrawal] 08:10:59
+GitHub. Then, once the code is done, okay, then you need to build your artifact.
+
+[rochak agrawal] 08:11:05
+Because in the end, when you will go deploy your application, when you want to install your application, I do not need the source code. I need the executable. So that is where the building process will happen. So your code will come, once the code is ready, then the build will happen.
+
+[rochak agrawal] 08:11:22
+Once the build is ready, it will be deployed to your testing environment, where your testing team will do the…
+
+[rochak agrawal] 08:11:31
+Testing team will do that.
+
+[rochak agrawal] 08:11:34
+Testing of it. Now, we will need to understand one thing here. Uh, testing is…
+
+[rochak agrawal] 08:11:40
+See, there is multiple type of testing will be there. Uh, unit testing, integration testing, functional testing, black box testing. There are n number of the testing will be there, okay? Now, for some of the testing which will be integrated in your DevOps pipeline.
+
+[rochak agrawal] 08:11:57
+Like, for example, unit testing, uh, smoke testing of…
+
+[rochak agrawal] 08:12:03
+load testing also somewhere, right? Then there are certain type of the testing, which a developer, uh, sorry, a tester will do separately.
+
+[rochak agrawal] 08:12:14
+Once the testing is completed, tester says, okay, the code is ready to release, then you are going to release this product.
+
+[rochak agrawal] 08:12:22
+Release means you will get an approval from your business team to…
+
+[rochak agrawal] 08:12:32
+Um, two of the…
+
+[rochak agrawal] 08:12:33
+deploy to the production environment. Somewhere, these…
+
+[rochak agrawal] 08:12:39
+Approvals can be manual. Somewhere these approvals can be automated. Once the approvals are secured, you are going to deploy this. You will have multiple environment. You will have a pre-production environment. You will have production environment.
+
+[rochak agrawal] 08:12:53
+So you are going to deploy it to a particular environment. Then, once the deployment is done, you need to operate and monitor. Operate means, um, you will, let's say, um, a new patch of, um, um.
+
+[rochak agrawal] 08:13:08
+infrastructure. So, all the configuration management activities, we are going to do, um…
+
+[rochak agrawal] 08:13:15
+in an operator state, and then once… see, operations is also a continuous process, uh, right? And then, um…
+
+[rochak agrawal] 08:13:23
+we are going to monitor our environment. So we will observe, we'll take the feedback, we'll see… let's say you deployed your application, and after deploying a new version of your application, suddenly you realize that, uh…
+
+[rochak agrawal] 08:13:37
+your CPU utilization is going more than 90%. So you will dig deep and find out the root cause why it is causing 90%. Either you… if it is a genuine consumption, so you'll add more servers, but if there is some, uh, hogging is happening in your code.
+
+[rochak agrawal] 08:13:53
+So then you will rectify the errors in your code and redeploy it.
+
+[rochak agrawal] 08:13:58
+Hey, now you see.
+
+[rochak agrawal] 08:14:00
+The last line monitoring feeds the plan. The loop is the point. Now let's say you monitor when you, when you are monitoring and then you realize that there is some error, right? Uh There's some bug then again, it will follow the complete life cycle. You will plan to resolve that bug. You will uh uh deploy the create the user story and everything. Your developer will do the coding.
+
+[rochak agrawal] 08:14:24
+Build will happen, then the testing, and the whole loop is going to happen.
+
+[rochak agrawal] 08:14:29
+So these are the 8 phases which is there in the DevOps.
+
+[rochak agrawal] 08:14:35
+No.
+
+[rochak agrawal] 08:14:37
+Again, when you will, and we will see in our next slides.
+
+[rochak agrawal] 08:14:42
+It is…
+
+[rochak agrawal] 08:14:45
+It is a shared practice, okay? So it is not going to happen that your developer is writing the code, they are going to build it, we are going to run it.
+
+[rochak agrawal] 08:14:53
+we are going to set up something called the CICD pipeline, okay? Uh…
+
+[rochak agrawal] 08:14:59
+And we are going to automate everything, only the code-related part.
+
+[rochak agrawal] 08:15:04
+Writing the code part will be owned by the development team, okay? After that, we are going to do everything with the help of that pipeline. We are going to do the deployment, we are going to do monitoring. Monitoring also, we can do that with the help of that.
+
+[rochak agrawal] 08:15:22
+We are going to build for sure with that, right? Then we talked about the blameless for postmortem. Any issue comes, there should not be a blame that it is because of the infrastructure or is it because of the code issues.
+
+[rochak agrawal] 08:15:38
+Uh, the teams will come together and find a solution, find the root cause, and work on a solution instead of blaming each other. Then the cross-functional team. Now, that is very important. See, uh, nowadays, when the.
+
+[rochak agrawal] 08:15:55
+When the concept of the DevOps started.
+
+[rochak agrawal] 08:15:58
+It was envisioned that when we say the DevOps team, there will be certain developer in team, then there will be testers are there, there will be operations people are there.
+
+[rochak agrawal] 08:16:10
+everyone sitting in the one team. But since there are so many works itself in this area itself, then DevOps people has become the specially skilled people. Now, as a DevOps people, you will have a little understanding of your code, then only.
+
+[rochak agrawal] 08:16:28
+you will be able to tell if it is because of the infrastructure issue or if it is a code issue, right? So, even though you're a DevOps engineer, but the overall DevOps team, uh, you will be very closely working with the testers, you will be very… working very closely.
+
+[rochak agrawal] 08:16:44
+uh, with the developers, and, like, SREs, platform engineers, they are just the another names of the, uh, DevOps people only.
+
+[rochak agrawal] 08:16:53
+And then changes as a routine. Deployment stops being an event. Now, this is very important. This is a whole part of DevOps. Now, if you…
+
+[rochak agrawal] 08:17:04
+are coming from an IT support kind of a role, or you're working as a deployment person, uh, deployment is generally happens on a monthly level, um, on a quarterly level, etc, etc, okay?
+
+[rochak agrawal] 08:17:19
+Changes as routine, but once your divorce will…
+
+[rochak agrawal] 08:17:24
+Uh, become…
+
+[rochak agrawal] 08:17:26
+achieve the full maturity.
+
+[rochak agrawal] 08:17:29
+No one is going to talk about the deployment. It will become a regular practice and that is where we will see there is a different maturity levels are there continuous integration, continuous delivery and continuous deployment. So when we when you reach we will discuss all these three terms.
+
+[rochak agrawal] 08:17:45
+In the upcoming slides, when you will reach the maturity of continuous deployment.
+
+[rochak agrawal] 08:17:52
+Everything will become automated, and you do not need to do anything at all.
+
+[rochak agrawal] 08:17:57
+Of course, like, till the time you're reaching it, you need to work to set up that maturity, but once that is achieved.
+
+[rochak agrawal] 08:18:07
+You're good to go.
+
+[rochak agrawal] 08:18:19
+Uh, Mehak, you have a question?
+
+[Mahak Alvi] 08:18:23
+Uh, yes, Rojak, uh, actually, I was a little bit confused about it, like, we were, like, on Friday, we were learning about Linux, and now we are starting Linux, so…
+
+[rochak agrawal] 08:18:31
+Yeah, yeah, so… yes, Mehak. Uh, so we are starting from DevOps Day 1, okay?
+
+[Mahak Alvi] 08:18:36
+Okay.
+
+[rochak agrawal] 08:18:36
+So it is the introduction about Complete DevOps, and then we will work on every module. We will start with Linux, then we will start with GitHub, and all the tools.
+
+[Mahak Alvi] 08:18:40
+Understood.
+
+[Mahak Alvi] 08:18:47
+So it should be, like, starting from this, like, from the day one again.
+
+[rochak agrawal] 08:18:50
+Yes.
+
+[rochak agrawal] 08:18:51
+Even, yes.
+
+[Mahak Alvi] 08:18:52
+Okay, actually, I was feeling like maybe the link was changed, so I'm on the different class. Okay.
+
+[rochak agrawal] 08:18:56
+No, no, no, no. No, no, no, you are in the same class. It is just, like, if you see in our basic session, we have not done the deep dive about DevOps also, right?
+
+[Mahak Alvi] 08:18:59
+Okay.
+
+[Mahak Alvi] 08:19:06
+Yeah, yeah.
+
+[Mahak Alvi] 08:19:08
+Mm-hmm, understood.
+
+[rochak agrawal] 08:19:17
+Yes, Anthony?
+
+[Anthony Joseph] 08:19:18
+Yeah, Rochak, same, I wanted to ask, like, we were in the midst of AWS, and suddenly, like.
+
+[rochak agrawal] 08:19:23
+No, so, Anthony, I think, uh, see, people, uh, whoever has this, uh…
+
+[rochak agrawal] 08:19:29
+confusion, they can talk to the operation teams and ask about their schedules. So, AWS, yes, Anthony, we were covering that, but that was on a different schedule. So, regarding the next class of AWS, you can talk.
+
+[rochak agrawal] 08:19:44
+to the operations team. And guys, whoever has this question, like, they can talk to the ops team. So from today, we are starting the DevOps module. This is what instructed to me.
+
+[rochak agrawal] 08:20:01
+Okay.
+
+[rochak agrawal] 08:20:11
+Now, the very first thing in the DevOps is a version control, okay? Now, what is a version control?
+
+[rochak agrawal] 08:20:24
+Version control is… uh, and we will… we have a complete module about the version control. See, version control is…
+
+[rochak agrawal] 08:20:34
+Whenever, as we discussed, whenever a developer is writing a code, okay, uh…
+
+[rochak agrawal] 08:20:41
+They need to version control everything.
+
+[rochak agrawal] 08:20:45
+When I'm seeing the version control, everything, it means that.
+
+[rochak agrawal] 08:20:49
+Whenever you are doing a small change, even if you are doing, let's say, a change in a value of x is equal to 10 to x is equal to 20, or you are changing a semicolon comma here and there, everything will go into version control.
+
+[rochak agrawal] 08:21:05
+Okay.
+
+[rochak agrawal] 08:21:07
+Why? Because it says…
+
+[rochak agrawal] 08:21:09
+Build environments, audits, rollbacks.
+
+[rochak agrawal] 08:21:13
+So, everything will come from this version control system. So, you… when a developer writes their code, they will be writing the code maybe on their local system. So, for example, I am a developer.
+
+[rochak agrawal] 08:21:25
+uh, I will… I will install, let's say, the Visual Studio Code, uh, and then, um, I will start writing it, I will start saving the file a.java, b.java, c.java, and so on.
+
+[rochak agrawal] 08:21:35
+that is of no use for a DevOps thing. Till the time you are not submitting that changes to the version control system.
+
+[rochak agrawal] 08:21:44
+They will not be visible to other team members and to your DevOps pipelines also. So submitting your code is the versioning. Submitting your code to the version control system is of utmost importance because.
+
+[rochak agrawal] 08:22:01
+Uh, that your version control system, or in some of the terms, we can call it as a, uh, code management system. You can very simply say so, code management system. Uh, so in the code management system, um.
+
+[rochak agrawal] 08:22:16
+So your DevOps pipeline will take the code from that version control system. So whatever you are developing on a local system does not matter. Till the time you are not submitting your code to the version control system, it is not being available.
+
+[rochak agrawal] 08:22:32
+to your, uh…
+
+[rochak agrawal] 08:22:35
+uh, DevOps pipeline, okay? So now, the practice that we need to follow is the commit small, okay? Uh, commit… see whenever, uh, developer have done with the changes.
+
+[rochak agrawal] 08:22:49
+as a best practice.
+
+[rochak agrawal] 08:22:50
+you… as a developer, you might be working on multiple things. There are maybe, uh…
+
+[rochak agrawal] 08:22:56
+multiple files in your environment, right? So, when you do the large scale of stuff, there may be multiple source code files, right? So, the best practice is that whenever you are done with a small change.
+
+[rochak agrawal] 08:23:12
+submit it to the version control system. And submitting to the version control system is called the committing, okay? So you say commit to the version control system.
+
+[rochak agrawal] 08:23:22
+So…
+
+[rochak agrawal] 08:23:23
+like…
+
+[rochak agrawal] 08:23:25
+Different organization follows different strategies, like somewhere developers will follow that once they are done with a change, once they've done with a complete change, then they are going to release it, committed to the version control system.
+
+[rochak agrawal] 08:23:42
+Somewhere, developers follow the practice that once, like, every day, after the end of the day, everything, whatever they have done, they are submitting to the version control system. Different, uh, teams, different strategies.
+
+[rochak agrawal] 08:23:54
+But the best practice recommendation is a small, small commit you need to do to your Virgin Mental System. And then…
+
+[rochak agrawal] 08:24:01
+It is not like your developer is submitting anything to your version ecosystem.
+
+[rochak agrawal] 08:24:07
+Whatever your developer will submit to the version control system will be go the after the review.
+
+[rochak agrawal] 08:24:15
+Okay, so, um, when developer, instead of directly pushing it to the version control system, they need to raise something called the merge request, or some… somewhere it is called the pull request.
+
+[rochak agrawal] 08:24:31
+In the merge request, they need to give the name of the reviewer, who is going to review the changes.
+
+[rochak agrawal] 08:24:36
+once they review the changes, approve the changes, then their code will be… will go into the Virgin Control System. Now.
+
+[rochak agrawal] 08:24:44
+Third thing is very important. Your version control system not only stores the code, but all the infrastructure templates, configuration templates, pipeline definition, everything related to your environment.
+
+[rochak agrawal] 08:25:02
+environment variables, environment configuration. So, your version control system not only, uh…
+
+[rochak agrawal] 08:25:12
+not only store the code file, but every file related to your environment, related to your application.
+
+[rochak agrawal] 08:25:19
+And then, uh, one of the best practices, tag what you released. So, for example.
+
+[rochak agrawal] 08:25:25
+You are… now you have reached to a maturity, uh, where the deployments were happening.
+
+[rochak agrawal] 08:25:31
+automatically. But, you see, whenever you are doing an important deployment, so for example, let's say, uh, Apple, for example, a very basic example I'll take, uh.
+
+[rochak agrawal] 08:25:43
+So.
+
+[rochak agrawal] 08:25:44
+Let's say an e-commerce website.
+
+[rochak agrawal] 08:25:46
+let's say Airtel sells the iPhones, for example. Now, they will, on a monthly basis, they'll keep doing the changes in their website every now and then, sometimes color change, sometimes logo change, etc, etc.
+
+[rochak agrawal] 08:26:02
+But in September, everyone knows that iPhone is going to launch. So they need to build new iPhone products, uh, images and everything, and then show it to on their website. Now, that's a major release, correct? So that we can…
+
+[rochak agrawal] 08:26:19
+tagged that major release as Apple…
+
+[rochak agrawal] 08:26:22
+released. It's something that, something like that. So we are going to tag whatever we are releasing.
+
+[rochak agrawal] 08:26:29
+So, these are some of the best practices which we can have in comparison to that about the version control. Then, these two concepts, trunk-based development and git flow and the release branches, I will park it as of now.
+
+[rochak agrawal] 08:26:43
+We have a complete module about the GitHub where we will understand this.
+
+[rochak agrawal] 08:26:52
+Then comes the continuous integration. Okay. Now, this is very important to understand. Let me draw it, uh, diagrammatically. So…
+
+[rochak agrawal] 08:27:13
+For example.
+
+[rochak agrawal] 08:27:24
+You will have multiple developers in your team.
+
+[rochak agrawal] 08:27:33
+Right? Now these multiple developers…
+
+[rochak agrawal] 08:27:37
+they will…
+
+[rochak agrawal] 08:27:44
+start checking the code into Git, which is your version control system. Now, let's say you have written.
+
+[rochak agrawal] 08:27:54
+Why I cannot see my…
+
+[rochak agrawal] 08:28:10
+Let me go to whiteboard.
+
+[rochak agrawal] 08:28:22
+Okay. So let's say…
+
+[rochak agrawal] 08:28:32
+I have multiple developers who will be working on your codebase, right?
+
+[rochak agrawal] 08:28:39
+Now, you have a gate
+
+[rochak agrawal] 08:28:47
+They all submit their code to the version control system.
+
+[rochak agrawal] 08:28:56
+The system will have multiple code bases, multiple version as the as the name itself is there. But the problem is with the version control system, I would not say the problem, but the the design of a version control system. So let's say there are.
+
+[rochak agrawal] 08:29:10
+two files.
+
+[rochak agrawal] 08:29:14
+A.TXT?
+
+[rochak agrawal] 08:29:17
+b.txt.
+
+[rochak agrawal] 08:29:23
+A.TXT, because they are working on the same application, so their codebase will be same.
+
+[rochak agrawal] 08:29:30
+Date.txt?
+
+[rochak agrawal] 08:29:37
+Right?
+
+[rochak agrawal] 08:29:38
+Now, see, everyone is working on these files. Now, developer…
+
+[rochak agrawal] 08:29:45
+Bye, Jay.
+
+[rochak agrawal] 08:29:47
+X will work on C either.
+
+[rochak agrawal] 08:29:51
+Either it will work on A.TXT or B.TXT, or on…
+
+[rochak agrawal] 08:29:57
+both, right? Similar with BioJet. Now, you are writing something.
+
+[rochak agrawal] 08:30:02
+you're changing something in A.TXT, because A.TXT is also not… will not be a small file, it will be a complete code base, will be there.
+
+[rochak agrawal] 08:30:11
+Your bike is also working on a.txt, Jed is also working on a.txt. Now you might write something which is going to break what A is writing.
+
+[rochak agrawal] 08:30:23
+It may happen. So you say X is equal to 10.
+
+[rochak agrawal] 08:30:28
+Buy will go and say X is equal to 40.
+
+[rochak agrawal] 08:30:33
+And Jade will go and say X is equal to 50.
+
+[rochak agrawal] 08:30:37
+Now, same code, same value. See, so first thing is, now, before merging their code, a review will happen, right, as we discussed. And…
+
+[rochak agrawal] 08:30:48
+The right value will be merged here.
+
+[rochak agrawal] 08:30:51
+Now, this is about the same value. Now, it may happen that, uh, you… there is a buy also. Now, you're… no one is changing the buy value.
+
+[rochak agrawal] 08:31:08
+Previously, x was equal to 5, for example.
+
+[rochak agrawal] 08:31:13
+And buy is equal to 20 was working fine with the x is equal to 10. Now, after the review, we have decided that x is equal to 10.
+
+[rochak agrawal] 08:31:23
+Now the value of X is changing. Now it may happen because of the changed value of X, whatever the functionality of Y is may break.
+
+[rochak agrawal] 08:31:36
+It may happen, may break, right? So that is where you need to.
+
+[rochak agrawal] 08:31:43
+Continuously integrate the code from the different developers, okay?
+
+[rochak agrawal] 08:31:50
+so that you need to continuously double… integrate. So, whatever the code is coming from X, Y, Z, you will integrate it here, and you will do a build.
+
+[rochak agrawal] 08:32:05
+In your dev environment only.
+
+[rochak agrawal] 08:32:08
+So that if they have any conflicting change.
+
+[rochak agrawal] 08:32:13
+they are going… we are going to know in a dev environment itself, uh, and we will tell our developer to rework on it, right? And that is the whole purpose of the continuous integration.
+
+[rochak agrawal] 08:32:26
+Continuous integration. Now, these three terms are very, very important.
+
+[rochak agrawal] 08:32:32
+For the interview also.
+
+[rochak agrawal] 08:32:35
+People are going to ask you what is continuous integration, what is continuous deployment, what is continuous delivery, and what is the difference between them.
+
+[rochak agrawal] 08:32:45
+Every developer merges to the shared mail line frequently, and every merge triggers an automated build and test run that must pass.
+
+[rochak agrawal] 08:32:55
+Okay? So, you have already a stable code. Developers does some changes that will be integrated with your stable code. Automated build and trigger… build and test will happen. If that.
+
+[rochak agrawal] 08:33:08
+is passed, your code will remain merged, otherwise you need to do the rollback.
+
+[rochak agrawal] 08:33:13
+Right? So, that is the process.
+
+[rochak agrawal] 08:33:17
+Of the continuous integration.
+
+[rochak agrawal] 08:33:20
+So we are going to check out the exec commit that triggered it, restore dependencies, compiler package the application, which is a part of the automated build and test run, run unit test and static analysis, so part of the test, publish result and fail fast on the broken gate.
+
+[rochak agrawal] 08:33:40
+Right. Keep the build fast. Treat a red build as the team's top priority. So if something is failing in the continuous integration.
+
+[rochak agrawal] 08:33:48
+you cannot promote it and deploy it. As simple as that.
+
+[rochak agrawal] 08:33:52
+Never comment out a filing phase to unblock a merge, and build the artifact once, and promote the same binary onwards. So now, this is important, build the artifact once. Once the integration of your code is done, okay.
+
+[rochak agrawal] 08:34:07
+Then…
+
+[rochak agrawal] 08:34:10
+Whatever artifact you created, it will go remote and do dev environment, test environment, etc, etc.
+
+[rochak agrawal] 08:34:18
+Then, once your code, uh…
+
+[rochak agrawal] 08:34:20
+is integrated. You need to do a continuous delivery and the continuous deployment.
+
+[rochak agrawal] 08:34:26
+Okay. Now, again, this is very important.
+
+[rochak agrawal] 08:34:35
+So, you will have multiple environments, okay? Uh, so, for example, let's say we have 4 environments.
+
+[rochak agrawal] 08:34:46
+Deb?
+
+[rochak agrawal] 08:34:53
+Test?
+
+[rochak agrawal] 08:35:04
+Deep Broad.
+
+[rochak agrawal] 08:35:10
+And finally, you will have the production environment where your end users are coming.
+
+[rochak agrawal] 08:35:19
+No, understand these things very, very carefully.
+
+[rochak agrawal] 08:35:24
+So, for example, when the developers write their code.
+
+[rochak agrawal] 08:35:29
+Right.
+
+[rochak agrawal] 08:35:31
+their code into go into your version control system.
+
+[rochak agrawal] 08:35:37
+VCS.
+
+[rochak agrawal] 08:35:39
+Version control system, right?
+
+[rochak agrawal] 08:35:44
+Now, your version control system is integrated with something called the CI engine.
+
+[rochak agrawal] 08:35:53
+CI engine, which is called the Jenkins is there, Azure pipelines are there, and so on. So as we discuss in a continuous integration, as your developers checking the code in the version control system.
+
+[rochak agrawal] 08:36:06
+That is going to trigger an automated build, and the initial checks are going to be done on that build.
+
+[rochak agrawal] 08:36:14
+Okay, so that if there is anything is failing, then you will go make those changes and redeploy it again.
+
+[rochak agrawal] 08:36:22
+Now, where is this happening? On the dev environment.
+
+[rochak agrawal] 08:36:28
+Okay? On the dev environment. So continuous integration happens on the dev environment.
+
+[rochak agrawal] 08:36:34
+So… and that's why it is called the development environment, because you are developing the code. So any mistakes you are doing, any error is coming, you are going to resolve it. So if the build passed, then it'll move here. If the build failed, it will again go to.
+
+[rochak agrawal] 08:36:50
+Here, you will ask your developer to look at the error, and resubmit the code, and redeploy it.
+
+[rochak agrawal] 08:36:58
+Correct. Now, buns…
+
+[rochak agrawal] 08:37:01
+the build is passed, we are going to promote this build to the testing environment.
+
+[rochak agrawal] 08:37:07
+Then there can be different type of testing will be there.
+
+[rochak agrawal] 08:37:15
+Automation testing and other things, uh, different things. Once the testing is also successful, if again you have a feedback, you will go back.
+
+[rochak agrawal] 08:37:25
+Like this. But if the build is successful, it will go to the pre-production environment.
+
+[rochak agrawal] 08:37:30
+Uh, in the pre-production environment, your user accepts. So, pre-production environment is basically an environment which is equivalent to your production environment. It is just the live traffic is not there, but it has all the configuration of the production environment. There, we generally do the user acceptance testing.
+
+[rochak agrawal] 08:37:48
+Okay, so once that testing is also successful, then we will deploy it to our production environment.
+
+[rochak agrawal] 08:37:57
+So that is a flow that is generally being followed. Now, we have shown this with the four environments. You can have two environments, you can have six environments, you can have six environments, eight environments, depending on your requirement. But generally, we have these three, four environments.
+
+[rochak agrawal] 08:38:15
+Like, now if you see…
+
+[rochak agrawal] 08:38:18
+So, when you will… when you divorce.
+
+[rochak agrawal] 08:38:22
+is mature, uh, DevOps adaptability's adoption is mature, then all this process.
+
+[rochak agrawal] 08:38:29
+from Version Control to get, uh…
+
+[rochak agrawal] 08:38:32
+Once the code is checked in, so the automated trigger of a build.
+
+[rochak agrawal] 08:38:38
+And pushing the build.
+
+[rochak agrawal] 08:38:41
+To the production environment.
+
+[rochak agrawal] 08:38:44
+will be completely automated.
+
+[rochak agrawal] 08:38:49
+You do not need to do anything manually. Of course, you will take your efforts to set it up initially, but once it is set up, the whole process will be automated. You will, of course, keep monitoring it so that if a build is failing at a testing stage.
+
+[rochak agrawal] 08:39:05
+Uh, you'll see why it is failing, you resolve it, and promote it again.
+
+[rochak agrawal] 08:39:09
+So the whole process is automated, okay? And that process is called the CD.
+
+[rochak agrawal] 08:39:18
+Understand this. Very, very, very…
+
+[rochak agrawal] 08:39:18
+frequent interview question. So this process is called the CD.
+
+[rochak agrawal] 08:39:29
+Now the question is, there is no CD.
+
+[rochak agrawal] 08:39:33
+Continuous.
+
+[rochak agrawal] 08:39:37
+A liberty?
+
+[rochak agrawal] 08:39:40
+And continuous.
+
+[rochak agrawal] 08:39:44
+So then, what is the difference between them?
+
+[rochak agrawal] 08:39:49
+There is only one difference. So, setting it up buys, there is no difference.
+
+[rochak agrawal] 08:39:55
+The difference is…
+
+[rochak agrawal] 08:39:57
+Incontinuous.
+
+[rochak agrawal] 08:40:00
+delivery. First, we are talking about continuous delivery.
+
+[rochak agrawal] 08:40:05
+In continuous delivery, the process is automated.
+
+[rochak agrawal] 08:40:15
+till pre-production environment.
+
+[rochak agrawal] 08:40:17
+Okay.
+
+[rochak agrawal] 08:40:19
+Yet…
+
+[rochak agrawal] 08:40:24
+to deploy…
+
+[rochak agrawal] 08:40:28
+The code…
+
+[rochak agrawal] 08:40:30
+In production.
+
+[rochak agrawal] 08:40:33
+You need…
+
+[rochak agrawal] 08:40:35
+Business of the words.
+
+[rochak agrawal] 08:40:41
+they will give you a time, okay? Uh, deploy the application maybe, uh, tonight at 10 PM, so that many users not using this application. So this process is called the continuous delivery.
+
+[rochak agrawal] 08:40:57
+While continuous deployment is…
+
+[rochak agrawal] 08:41:06
+this…
+
+[rochak agrawal] 08:41:07
+whole process.
+
+[rochak agrawal] 08:41:17
+is automated.
+
+[rochak agrawal] 08:41:19
+Once your developers checks in something.
+
+[rochak agrawal] 08:41:23
+If everything goes good, all the testing, all the quality gates are being passed.
+
+[rochak agrawal] 08:41:30
+Then your build is not going to stop until it is being deployed in the production environment.
+
+[rochak agrawal] 08:41:37
+Now, in continuous deployment, you do not need any approvals.
+
+[rochak agrawal] 08:41:43
+to deploy your code into the production environment. That is a difference between continuous delivery and continuous deployment. So, you see.
+
+[rochak agrawal] 08:41:54
+In continuous delivery, every changes that passes the pipeline is probably releasable. Okay. Now deployment to production is a business decision triggered by a person. So you generally will have a release manager who will.
+
+[rochak agrawal] 08:42:09
+We'll tell you when to release it to the production. Now suits regulated environments and coordinated launches. So many of the big organization, they follow the continuous delivery like all the banks, pharma companies, e-commerce companies, they follow the continuous delivery.
+
+[rochak agrawal] 08:42:25
+Release remains a one-click VHost operation, but you need.
+
+[rochak agrawal] 08:42:30
+A go-ahead from the business team to deploy it.
+
+[rochak agrawal] 08:42:33
+While…
+
+[rochak agrawal] 08:42:34
+In the continuous deployment, every changes that passes the pipeline.
+
+[rochak agrawal] 08:42:40
+goes through production automatically.
+
+[rochak agrawal] 08:42:43
+No matter what it is, once it is passing the quality gate.
+
+[rochak agrawal] 08:42:48
+no human gate after the automated gate. So, whatever your pipeline has decided, that it… code coverage should be more than 70%, etc, etc, etc.
+
+[rochak agrawal] 08:42:58
+Then.
+
+[rochak agrawal] 08:43:00
+If it keeps passing those stages, then it will, uh…
+
+[rochak agrawal] 08:43:06
+It will automatically go to your production environment.
+
+[rochak agrawal] 08:43:10
+Since it is automatically going, of course, you need to have more strong, stringent code coverage, monitoring, and the fast rollback, because if something goes wrong in the production, you can roll it back fast.
+
+[rochak agrawal] 08:43:22
+It suits mature teams shipping many times a day. So, if you're deploying maybe, uh, quarterly or monthly, then continuous delivery is a type of the solution. But let's say, for example, if we talk about applications like Swiggy, Jumetto.
+
+[rochak agrawal] 08:43:39
+Jepto, which are changing every day in daily, every day, sorry, every day multiple times, right? So then for those, like, we should not wait for the manual approvals for deploying it to the production environment.
+
+[rochak agrawal] 08:43:54
+And that is where continuous deployment is a more suited approach for them.
+
+[rochak agrawal] 08:44:00
+Okay.
+
+[rochak agrawal] 08:44:02
+Now…
+
+[rochak agrawal] 08:44:04
+Whether it's a continuous deployment or continuous delivery, we have different, different patterns.
+
+[rochak agrawal] 08:44:11
+for releasing our application. We have blue/green.
+
+[rochak agrawal] 08:44:15
+We have cannery, we have rolling. Okay, now how does it happen in blue-green cannery and rolling? So, for example.
+
+[rochak agrawal] 08:44:30
+Let's say this is my production environment.
+
+[rochak agrawal] 08:44:35
+And which is running Viva.
+
+[rochak agrawal] 08:44:38
+Okay, and my users are coming, accessing this application here.
+
+[rochak agrawal] 08:44:44
+Okay. Now what I'm going to do first, we are going to understand.
+
+[rochak agrawal] 08:44:53
+Okay.
+
+[rochak agrawal] 08:44:56
+Version V1 is running, and my users are accessing Version V1.
+
+[rochak agrawal] 08:45:03
+Just a second.
+
+[rochak agrawal] 08:45:08
+Okay, your users are accessing version V1. Now what I'm going to do, I'm going to deploy a version V2, which is my new version.
+
+[rochak agrawal] 08:45:21
+I will manually test it out. See, all the testing and everything is done, but in the production, maybe I will manually go, uh, click on the website.
+
+[rochak agrawal] 08:45:31
+And everything. So, the active version is called the blue.
+
+[rochak agrawal] 08:45:40
+And this is called the green.
+
+[rochak agrawal] 08:45:50
+Okay.
+
+[rochak agrawal] 08:45:54
+So, now what will happen? Once your testing on the production environment is completed, you will start sending those user requests.
+
+[rochak agrawal] 08:46:04
+2 version V2?
+
+[rochak agrawal] 08:46:08
+And eventually, you will…
+
+[rochak agrawal] 08:46:11
+retire this version once your user has shifted to v2. So this is called the blue-green deployment.
+
+[rochak agrawal] 08:46:18
+And in which?
+
+[rochak agrawal] 08:46:21
+Your one version will remain active, one version will remain deactive. So now, once this will become active, and this is going to become your blue version.
+
+[rochak agrawal] 08:46:32
+Similarly, you will deploy V3, which will become… which will be deployed as a green version.
+
+[rochak agrawal] 08:46:38
+And you will again do your testing, and you will then switch your request of your users to B3 version.
+
+[rochak agrawal] 08:46:45
+So that is called a blue-green deployment. Now, similar to blue-green, we have a canary deployment.
+
+[rochak agrawal] 08:46:52
+In canary deployment, what happens is, there is no sudden switch of traffic.
+
+[rochak agrawal] 08:46:59
+This is the version V1.
+
+[rochak agrawal] 08:47:01
+Let's say 10 requests is coming down to…
+
+[rochak agrawal] 08:47:04
+Let's say 5 is coming, 3, 4, 5 requests are coming.
+
+[rochak agrawal] 08:47:09
+You deploy version B2.
+
+[rochak agrawal] 08:47:17
+Which is your newer version.
+
+[rochak agrawal] 08:47:19
+In the cannery, what we are going to do, so this is cannery.
+
+[rochak agrawal] 08:47:29
+In the cannery, what we are going to do, we are not going to do the switch of the traffic like we do in a bluegrid at once.
+
+[rochak agrawal] 08:47:39
+in the canary, we will say, we will gradually increase the traffic. So when I'm deploying the V2, I will say, take 20% of the live traffic.
+
+[rochak agrawal] 08:47:50
+Okay, so then, out of those 5 requests.
+
+[rochak agrawal] 08:47:57
+One request will come here.
+
+[rochak agrawal] 08:48:00
+You will run it for some time, then you will change it to 40%.
+
+[rochak agrawal] 08:48:09
+So now two requests will come in here. Now since you see two requests are running very fine, I don't see any problem. Now increase it to 80%.
+
+[rochak agrawal] 08:48:23
+Okay, so now two requests started, uh…
+
+[rochak agrawal] 08:48:33
+And finally, 100%, when you say…
+
+[rochak agrawal] 08:48:36
+So then this request also.
+
+[rochak agrawal] 08:48:42
+So, if you see the comparison between Bluegreen and Kennedy, in the Bluegreen deployment.
+
+[rochak agrawal] 08:48:49
+traffic switch happens at once. 100 requests going to V1, once your testing of the green deployment is done, 100 requests will start coming to the green deployment at once. So, big bang.
+
+[rochak agrawal] 08:49:01
+Nothing. In Kennedy, you…
+
+[rochak agrawal] 08:49:04
+Gradually increase the traffic.
+
+[rochak agrawal] 08:49:06
+Again, you gradually increase the traffic.
+
+[rochak agrawal] 08:49:11
+5%, 10%, 20%, 40%, 80%, and finally 100%. So that is the difference between the Blue Green and the Kennedy deployment. Again, very important interview question. We will talk about it more, but this is.
+
+[rochak agrawal] 08:49:29
+a deployment pattern. Another one is a rolling deployment.
+
+[rochak agrawal] 08:49:34
+The rolling deployment replaces instance in a batch so that capacity never drops below a threshold.
+
+[rochak agrawal] 08:49:44
+Okay, so in the rolling, what is going to happen?
+
+[rochak agrawal] 08:50:11
+In the rolling, what is going to happen? See, in the end.
+
+[rochak agrawal] 08:50:19
+There will be certain servers where your application is deployed.
+
+[rochak agrawal] 08:50:23
+V1…
+
+[rochak agrawal] 08:50:27
+V1.
+
+[rochak agrawal] 08:50:33
+We will… we will deploy additional server.
+
+[rochak agrawal] 08:50:38
+B2, for example, right? So now the request is coming here.
+
+[rochak agrawal] 08:50:43
+Now, out of these requests, some requests will go here, some will start going here. And if you don't see any error, then eventually you will…
+
+[rochak agrawal] 08:50:53
+Delete this server. Then you will provision another one server here.
+
+[rochak agrawal] 08:51:00
+You delete this one.
+
+[rochak agrawal] 08:51:04
+And you provision another server with the new version.
+
+[rochak agrawal] 08:51:14
+So in the current deployment only, you are going to replace the hardware which is containing the application version. So that is called the rolling deployment.
+
+[rochak agrawal] 08:51:29
+Okay, so we have other type of a deployment also, but these three are most commonly used is there. Then there is alpha beta testing also.
+
+[rochak agrawal] 08:51:40
+And much more type of a deployment is there.
+
+[rochak agrawal] 08:51:45
+So, you can see our typical pipeline, if you look like. This is going to look like this.
+
+[rochak agrawal] 08:51:53
+where you are going to commit your changes in your, um, uh, source code management is, as I said, uh, if in a terminology of DevOps, what we say, um.
+
+[rochak agrawal] 08:52:09
+Submitting a code means we are committing. Then once the code is committed, a build will be triggered where you are going to compile and package your application in an executable format and you deploy it to your dev and testing environment where your.
+
+[rochak agrawal] 08:52:25
+Uh, unit and integration testing will happen, your scanning, so there is a multiple type of security scanning is there nowadays, uh, so that your, uh, we are going to make sure that, uh.
+
+[rochak agrawal] 08:52:38
+you are not going to have any vulnerabilities out there. Then you are going to, once your testing is completed.
+
+[rochak agrawal] 08:52:47
+scanning is completed, we are going to publish the artifact. So for example, let's say I have released myapplication.jar version 1 after the end of the scanning, right? So then I am going to publish it to some artifact registry like Nexus, JFrog.
+
+[rochak agrawal] 08:53:04
+artifactory, um, somewhere. And then, from that artifactory, I am going to deploy it to my staging environment, and then.
+
+[rochak agrawal] 08:53:15
+to my production environment.
+
+[rochak agrawal] 08:53:17
+And then, of course, for any environment, you are going to verify it. With the help of your smoke testing, you are going to go.
+
+[rochak agrawal] 08:53:26
+Uh, run it, and then, of course, you are going to, uh…
+
+[rochak agrawal] 08:53:30
+Look for the matrices, how many successful requests are coming, how many unsuccessful requests are coming and all of that, right? And that there will be gates all of there, right? So your testing will have a gate, your scanning will have a gate, your publishing will have a gate.
+
+[rochak agrawal] 08:53:47
+Any failing test or coverage below the agreed threshold. Okay. That is very important. So for example, when you are doing the scanning of your code and your code coverage analysis is only 50%, but you have said anything below 70%, I am going to mark it as a failure.
+
+[rochak agrawal] 08:54:06
+So…
+
+[rochak agrawal] 08:54:06
+Any failing test coverage, any critical vulnerability in a dependency, a secret detected in a code, a failed smoke test after the deployment, triggering a rollback.
+
+[rochak agrawal] 08:54:19
+Right? So these are the sum of the condition basis on that you are going to roll back your changes. But see if here my main point is to discuss the anatomy of a pipeline. These are the sum of the steps.
+
+[rochak agrawal] 08:54:35
+These are the general steps that you are going to find in your pipeline. There may be more than that, there may be less than that, depending on your actual use cases, but that is the kind of the general steps you are going to have in your pipeline.
+
+[rochak agrawal] 08:54:50
+pipeline.
+
+[rochak agrawal] 08:55:03
+Ankita, you have a question?
+
+[Ankita Saxena] 08:55:13
+No, Rajiv, uh, it's my mistake, I have, uh, raised my hand.
+
+[rochak agrawal] 08:55:15
+Okay.
+
+[rochak agrawal] 08:55:30
+Yes, Pablo?
+
+[Vaibhav Gupta] 08:55:34
+Yeah, hi, good morning. So, I want to ask, like, what is the use of scan is here, like, commit, test, publish. What is the use of scan? I mean, what's the role of scan here?
+
+[rochak agrawal] 08:55:39
+Okay.
+
+[rochak agrawal] 08:55:40
+Yes.
+
+[rochak agrawal] 08:55:43
+Okay.
+
+[Vaibhav Gupta] 08:55:46
+And what's the use of Verify?
+
+[rochak agrawal] 08:55:46
+Sure. So…
+
+[rochak agrawal] 08:55:49
+verify. Okay, I'll explain. So see, first let's take the scan.
+
+[rochak agrawal] 08:55:55
+When you do the testing, okay, testing you do about your functionality. For example, my website is…
+
+[rochak agrawal] 08:56:02
+running or not, right? Uh, if I'm clicking on home button, I'm going to home button, my images are displayed or not. Different type of testing is there, correct?
+
+[rochak agrawal] 08:56:12
+When you do the scanning.
+
+[rochak agrawal] 08:56:15
+Scanning is happening on a code level. Testing happens on the functionality level. Scanning is happening on the code level.
+
+[rochak agrawal] 08:56:25
+It actually does, that your application code, does it have any security vulnerabilities or not?
+
+[rochak agrawal] 08:56:33
+Okay, now very basic example I'll give you. So for example, from your application, you are connecting with the database and fetching out some details.
+
+[rochak agrawal] 08:56:46
+Okay.
+
+[rochak agrawal] 08:56:48
+Now, in your code, you have given your database username and the password.
+
+[rochak agrawal] 08:56:54
+Now, that is a security vulnerability. Someone with the cross-site scripting skills, they can…
+
+[rochak agrawal] 08:57:01
+leverage that database username and the password, and then they can corrupt your database username and the, uh, corrupt your database, right? So those type of the things.
+
+[rochak agrawal] 08:57:13
+I am going to done in the scanning, so that I am going to see if my application… does my application have any security vulnerabilities?
+
+[rochak agrawal] 08:57:22
+or not. So that is the role of scanning.
+
+[Vaibhav Gupta] 08:57:26
+Uh, Ruchik, I'm not able to get it, uh, yet, please.
+
+[rochak agrawal] 08:57:30
+Okay, so you see, for example, let me ask you a question.
+
+[rochak agrawal] 08:57:37
+You have an application? In your application, you will be writing a code, correct?
+
+[Vaibhav Gupta] 08:57:43
+Okay.
+
+[rochak agrawal] 08:57:44
+Now, from your application, you want to connect to database. How can you connect to database?
+
+[rochak agrawal] 08:58:01
+Hello, am I audible?
+
+[Vaibhav Gupta] 08:58:02
+Yes, yes, yes.
+
+[rochak agrawal] 08:58:03
+How can you connect to database?
+
+[Vaibhav Gupta] 08:58:06
+So, um…
+
+[rochak agrawal] 08:58:08
+So, for example.
+
+[Vaibhav Gupta] 08:58:11
+Linux Connection Host and Board Server.
+
+[rochak agrawal] 08:58:14
+Okay, so…
+
+[Vaibhav Gupta] 08:58:14
+And, uh, look, I'm using the MyOcean servers.
+
+[rochak agrawal] 08:58:16
+So let's say, let's say, let's, let's find the command. I want to connect.
+
+[rochak agrawal] 08:58:22
+to database.
+
+[rochak agrawal] 08:58:23
+From my…
+
+[rochak agrawal] 08:58:24
+Java application.
+
+[rochak agrawal] 08:58:34
+Right? And then you will define something like this. You will write your code, you will give your JDBC database URL, you will give your…
+
+[rochak agrawal] 08:58:45
+Username and password, correct?
+
+[Vaibhav Gupta] 08:58:54
+Yes, yes.
+
+[rochak agrawal] 08:58:56
+Now, if you give your passwords like this, for example, I'll say my user is root, my password is app at the rate 123, and I deploy my application. Now, this is a security vulnerability.
+
+[rochak agrawal] 08:59:08
+The reason for that is anyone who can access my code, they know my database user and the password, correct?
+
+[rochak agrawal] 08:59:18
+So, you should not give… and this is just one example, there can be many things. Uh, you should not give your database username and the password.
+
+[rochak agrawal] 08:59:28
+In your code, you always need to define something called the environment variables, and you…
+
+[rochak agrawal] 08:59:35
+reference those environment variable in the username and the password. That's the best practice, okay? Now, if you're using this username and the password in your code.
+
+[rochak agrawal] 08:59:45
+This is a security vulnerability, correct?
+
+[Vaibhav Gupta] 08:59:49
+Correct.
+
+[rochak agrawal] 08:59:50
+So, this type of security vulnerabilities is going to be found in the scanning.
+
+[rochak agrawal] 08:59:59
+This is the role of a scanning. So once your build is ready, you are going to scan this build to find any security vulnerability. Now, this is one example. Any example can be you are using a wrong…
+
+[rochak agrawal] 09:00:17
+an outdated version of any library, for example. That is also a security vulnerability.
+
+[rochak agrawal] 09:00:23
+Okay, so all those type of checks are going to happen in the scanning phase.
+
+[rochak agrawal] 09:00:29
+Clear about scanning now?
+
+[Vaibhav Gupta] 09:00:31
+Hmm.
+
+[rochak agrawal] 09:00:32
+Then, when you say verify, okay, so verify is…
+
+[rochak agrawal] 09:00:38
+Once your code is deployed, what does verify means? Verify means I am going to check what I wanted to do, if it is working correct or not, right?
+
+[Vaibhav Gupta] 09:00:50
+But, uh, before, uh, checking this, we will, uh, check all the things in the, uh, test and scan, like, the…
+
+[rochak agrawal] 09:00:59
+Correct. Yeah. See, of course, uh, we will do it, but before deployment also, I need to check if it is working fine or not, because failures can happen at any stage.
+
+[rochak agrawal] 09:01:06
+Right? We have done all the testing. But you understand, see, sometimes you are going to see, uh, some of the bank's website is not working, correct?
+
+[rochak agrawal] 09:01:17
+Does not… does that mean they have not done the testing? They have done all the testing. Still, failure can happen in the production environment, right?
+
+[rochak agrawal] 09:01:27
+Agree.
+
+[Vaibhav Gupta] 09:01:31
+Yeah, but when we deploy the application, and our user will use it.
+
+[rochak agrawal] 09:01:35
+Mm-hmm.
+
+[rochak agrawal] 09:01:38
+Hmm?
+
+[Vaibhav Gupta] 09:01:38
+So, we do not have to, like, to verify it for the… for the…
+
+[rochak agrawal] 09:01:41
+We need to verify. Why we don't verify?
+
+[rochak agrawal] 09:01:45
+See, this is a different stage. You see, I'll give you a very basic example.
+
+[rochak agrawal] 09:01:53
+In cricket, uh, there is a different type of stadium, correct?
+
+[rochak agrawal] 09:02:00
+In India, there is a pitches which is spin-friendly.
+
+[rochak agrawal] 09:02:04
+But if you go to Australia, uh…
+
+[rochak agrawal] 09:02:08
+Pitches are very, uh, pace friendly, correct?
+
+[rochak agrawal] 09:02:14
+Some batsman which is scoring a century in India does not guarantee that it is going to score a century in Australia, correct?
+
+[rochak agrawal] 09:02:22
+He may.
+
+[rochak agrawal] 09:02:23
+But this is not a guarantee, correct?
+
+[rochak agrawal] 09:02:30
+Testing environment.
+
+[rochak agrawal] 09:02:32
+We'll work on only two servers. Your production environment may have a 20 server, first thing.
+
+[rochak agrawal] 09:02:39
+In your test environment, you will not have the real user data, correct?
+
+[Vaibhav Gupta] 09:02:45
+Correct.
+
+[rochak agrawal] 09:02:47
+your production environment will have a real user data. For example, let's say I talked about.
+
+[rochak agrawal] 09:02:55
+Let's say GeoHotstar. Now, GeoHotstar is an application on a daily, day-to-day basis. I'm assuming at least one CR to two CR people are using GeoHotstar on a daily, day-to-day basis, correct?
+
+[Vaibhav Gupta] 09:03:09
+Correct.
+
+[rochak agrawal] 09:03:11
+Now…
+
+[rochak agrawal] 09:03:12
+Can you test your application but with one CR user? No. You will test your user with 10,000 users, 20,000 users. Correct?
+
+[rochak agrawal] 09:03:21
+To see the functionality.
+
+[rochak agrawal] 09:03:24
+Now something which is working with the 10,000 user.
+
+[rochak agrawal] 09:03:28
+It may happen that it may not work with the 1CR user, because the scale has increased.
+
+[rochak agrawal] 09:03:36
+Right. So we of course we have done the testing at this stage. There's no doubt about it. But the testing is done on a functional level. My app website is working or not. Unit tests are working or not.
+
+[rochak agrawal] 09:03:52
+We, here, once we deploy it to the production, right?
+
+[rochak agrawal] 09:03:56
+Then we need to test… see, we are not testing it here. We are just verifying.
+
+[rochak agrawal] 09:04:01
+Here, this testing is proactive.
+
+[rochak agrawal] 09:04:04
+You understand this. We have done all our testing.
+
+[rochak agrawal] 09:04:07
+See, that's why we are not saying it is as a testing.
+
+[rochak agrawal] 09:04:10
+Understand the difference. This testing if you see.
+
+[rochak agrawal] 09:04:18
+This is proactive.
+
+[rochak agrawal] 09:04:26
+Right? I have written all the test cases, I have checked all the functionality.
+
+[rochak agrawal] 09:04:31
+I know my application is working fine, absolutely. Then only I go ahead and deploy it, correct, to my production.
+
+[Vaibhav Gupta] 09:04:41
+Hmm.
+
+[rochak agrawal] 09:04:42
+When I'm saying verify, it's a reactive one. I'm not doing the testing.
+
+[rochak agrawal] 09:04:53
+you see smoke and metrics. So, for example, my application I deployed.
+
+[rochak agrawal] 09:04:59
+Then after that, I am constantly monitoring my application so that if any issue comes.
+
+[rochak agrawal] 09:05:09
+I will resolve it.
+
+[rochak agrawal] 09:05:12
+Understand. For example, now every day IRCTC website is getting crashed.
+
+[rochak agrawal] 09:05:17
+Does that mean they're not doing the testing? They have done the testing, but when the load is increasing, the website is not performing.
+
+[rochak agrawal] 09:05:25
+Correct?
+
+[Vaibhav Gupta] 09:05:28
+Correct. Undefined traffic, even, uh… to handle the undefined traffic, we can say.
+
+[rochak agrawal] 09:05:34
+Uh, who handles undefined traffic? What do you mean by undefined traffic?
+
+[Vaibhav Gupta] 09:05:39
+And if it means, uh, like, uh, unexpected traffics, like, uh, we have a limit of 10,000 users, and suddenly 20,000 users will, uh, came on website, so the thing is, the…
+
+[rochak agrawal] 09:05:48
+Hmm. Okay.
+
+[Vaibhav Gupta] 09:05:50
+uh, server will crash, or maybe they have some issues. So, that's why we will here to monitor that traffic and, uh, improving that, we can say.
+
+[rochak agrawal] 09:05:53
+Good.
+
+[rochak agrawal] 09:06:00
+Correct. Hmm.
+
+[rochak agrawal] 09:06:01
+So see, it depends on where your application is deployed.
+
+[rochak agrawal] 09:06:06
+you can always have the auto-scaling enabled. So, for example, if my application is deployed on the Kubernetes cluster, so I can increase the number of the containers which is running my application, or I can increase the number of the servers which is running my application. So, if you see.
+
+[rochak agrawal] 09:06:24
+DevOps or… see, that's where we said, um…
+
+[rochak agrawal] 09:06:30
+The horizon of DevOps is very wide, okay?
+
+[rochak agrawal] 09:06:33
+If you see about the pipeline, pipeline is only verifying it. Pipeline will tell you, boss, something, some tsunami is about to come, but I don't know what to do. I'm telling you, right?
+
+[Vaibhav Gupta] 09:06:44
+Hmm.
+
+[rochak agrawal] 09:06:44
+And that is where a platform engineer comes. Platform engineers, and you must be hearing these terms nowadays, SRE.
+
+[rochak agrawal] 09:06:57
+Or the platform engineer. Site reliability engineer.
+
+[Vaibhav Gupta] 09:07:00
+Laboratory engineer, sir.
+
+[rochak agrawal] 09:07:01
+Right? So, see, this is also a kind of a DevOps engineer only. Now, this… his responsibility will be… his… see, as a DevOps engineer, your primary responsibility is to increase the deployment frequency and the reliable delivery of your product.
+
+[rochak agrawal] 09:07:15
+Correct. But as a site reliability engineer, you again use the same tool. You will use the infrastructure as a code, you'll use configuration management, you will use automation. But as a site reliability engineer, your primary responsibility will be to make sure your.
+
+[rochak agrawal] 09:07:33
+website or the application is up and running. So when you say my usual traffic is 10,000 users, but now I am getting 15,000 users or 20,000 users, who is going to handle this?
+
+[rochak agrawal] 09:07:47
+So if you have a SRE.
+
+[rochak agrawal] 09:07:50
+then SRE will handle it, but if you do not have a SRE team separately, so then your DevOps team will only handle it. It will make sure that I am increasing the number of the resources which is running the application, if the auto-scaling is there, auto-scaling is performing as expectedly or not, so there can be many caveats there.
+
+[rochak agrawal] 09:08:09
+But…
+
+[rochak agrawal] 09:08:09
+Overall, as a DevOps or the SRE will handle that.
+
+[rochak agrawal] 09:08:18
+Okay?
+
+[Vaibhav Gupta] 09:08:20
+Okay, cool. So, I want to just ask one thing, like, if, uh, DevOps engineer using the same tool and SRE and platform engineer using the same tool, so, uh, basically, why the, you know, things are more reliable for the SRE or platform engineer?
+
+[rochak agrawal] 09:08:34
+See, as I said, you see that we generally see this.
+
+[rochak agrawal] 09:08:41
+Uh, bend diagram.
+
+[rochak agrawal] 09:08:56
+You can say this is a study.
+
+[rochak agrawal] 09:08:59
+This is DevOps.
+
+[rochak agrawal] 09:09:04
+This is IESE. See?
+
+[rochak agrawal] 09:09:11
+It may happen.
+
+[rochak agrawal] 09:09:11
+As I said, DevOps is not a technology. In the starting, we started with that.
+
+[rochak agrawal] 09:09:18
+These all you see nowadays, there is another term which is getting a lot of popularity is DevSecOps engineer.
+
+[Vaibhav Gupta] 09:09:27
+DevSec.
+
+[rochak agrawal] 09:09:28
+DevSec, DevSec, DevSecOps, then there is MLOps coming into the picture. See, these all are.
+
+[rochak agrawal] 09:09:37
+primarily DevOps engineer only.
+
+[rochak agrawal] 09:09:40
+Okay, as I said, as a DevOps engineer now, your primary responsibility will become.
+
+[rochak agrawal] 09:09:48
+to develop the CICD pipeline.
+
+[rochak agrawal] 09:09:58
+As a SRE, your primary responsibility is to maintain the uptime of your website.
+
+[rochak agrawal] 09:10:05
+Because application is becoming so complex nowadays.
+
+[rochak agrawal] 09:10:16
+that we need, uh, uh, different peoples, uh, to handle specialized roles. But if you see, there are, uh, uh…
+
+[rochak agrawal] 09:10:26
+many projects, and it may happen. See, SRE is a role where DevOps practices are very mature. But if you… there can be chances where you go to a project where you're handling both of the responsibility.
+
+[rochak agrawal] 09:10:40
+And you're writing IAC also.
+
+[rochak agrawal] 09:10:43
+Okay, so every DevOps project can be different from another project.
+
+[rochak agrawal] 09:10:48
+In one project, you will writing only the CICD pipeline. In another project, you will write the CICD pipeline plus Terraform code also. In third project, you will write the CICD pipeline plus Terraform code, plus any incident coming your way.
+
+[rochak agrawal] 09:11:02
+Okay, so this is, like, there is not a general guideline for it that SRE will do only. In some of the companies, there will not be no SRE only, there is only DevOps engineer.
+
+[Vaibhav Gupta] 09:11:18
+So, uh, as in future, like, in further growth, like, as you said, DevSec is more, um, like, in profile, or more, uh, trending, so we have need to more, uh, more about the development also.
+
+[rochak agrawal] 09:11:31
+No. No. Uh, see, uh…
+
+[Vaibhav Gupta] 09:11:31
+Along with that.
+
+[rochak agrawal] 09:11:35
+First, you need to become a good DevOps engineer.
+
+[Vaibhav Gupta] 09:11:39
+Okay.
+
+[rochak agrawal] 09:11:39
+Okay.
+
+[rochak agrawal] 09:11:41
+Because if you see DevSecOps we are talking about, uh, a primary responsibility of a DevSecOps engineer is this one only.
+
+[rochak agrawal] 09:11:57
+So he knows everything, but he will handle the scanning part.
+
+[rochak agrawal] 09:12:01
+So there are multiple things are there in the scanning. Software composition analysis, test and test, static analysis security testing, dynamic analysis security testing.
+
+[rochak agrawal] 09:12:18
+So, a DevSecOps engineer will primarily focus on the scanning part, uh, right? But then, he should be aware about all of that. Now, in some of the projects, you, as a DevOps engineer, only handle the security part.
+
+[rochak agrawal] 09:12:32
+But if the security requirements are very huge, like, for example, these big financial institutions, like if you go to JP Morgan, Morgan Stanley type of companies, where they have many compliance requirements are there. So they need separate security people.
+
+[rochak agrawal] 09:12:49
+Right? So the point here I'm trying to make, Weibo, is…
+
+[rochak agrawal] 09:12:53
+All these job roles which we are talking about.
+
+[rochak agrawal] 09:12:59
+are originating from one job title called the DevOps Engineer.
+
+[rochak agrawal] 09:13:06
+Okay. And see, it is not a… what we can say is…
+
+[rochak agrawal] 09:13:15
+Just a second.
+
+[rochak agrawal] 09:13:21
+It is not a college degree or something that, okay, I'll take a, um…
+
+[rochak agrawal] 09:13:29
+Specialization in the SecOps or SRE and so.
+
+[rochak agrawal] 09:13:34
+See, it will depend on project-to-project requirement. Sometime you are a good… you have a very good hands-on SRA requirement, but in the project that you are going to deploy, you need to write the Terraform code only.
+
+[rochak agrawal] 09:13:46
+Right? So, our focus should be that we should be good with all the steps which we discussed here.
+
+[rochak agrawal] 09:13:56
+From a ops perspective, release, deploy, operate, and monitor. Plan, code. See, plan, code, build, and test. Test, a tester will do. Build and code, a developer will do. Planning, of course, again.
+
+[Vaibhav Gupta] 09:13:59
+Right.
+
+[rochak agrawal] 09:14:12
+a developer will do, but we will be closely involved in these four, uh, areas. Okay.
+
+[rochak agrawal] 09:14:20
+But, and we will own these four areas. And now, in these four areas, in release, in deploy… in release, there can be many tasks. In deployment, in operate, here you can see there is a patching. Now, patching can…
+
+[rochak agrawal] 09:14:37
+Patching is a security activity. So there is… everything is overlapping, and the actual nature of the work which you are going to do will depend on the project that you're landing onto. But in the interview, people are going to ask you the general concept, until and unless they do not have a 90.
+
+[rochak agrawal] 09:14:56
+or 100% fixed requirement.
+
+[rochak agrawal] 09:14:58
+So DevOps, as a DevOps engineer, you need to be very flexible also.
+
+[rochak agrawal] 09:15:03
+One day, you will be DevSecOps Engineer, and in another project, you work as an SRE. In third project, you will be an Observability Engineer also.
+
+[rochak agrawal] 09:15:12
+Which is like working on the 8th stage.
+
+[rochak agrawal] 09:15:23
+Clear, by the way? Any other question?
+
+[Vaibhav Gupta] 09:15:24
+Yes, no, no, no, no.
+
+[rochak agrawal] 09:15:28
+Okay.
+
+[rochak agrawal] 09:15:40
+Yes, Adif?
+
+[arif] 09:15:48
+Yeah, I don't check.
+
+[rochak agrawal] 09:15:49
+Hi.
+
+[arif] 09:15:50
+Uh, thanks for giving me the time to speak or ask questions after a long time.
+
+[arif] 09:15:57
+Actually, I'm not into, I'm new into DevOps and everything. I don't know the basic things also. So I think very fast and I was not able to understand.
+
+[rochak agrawal] 09:16:02
+Mm-hmm.
+
+[arif] 09:16:06
+Since I had… I was not able to ask my questions, I… like, the session is, like, ruthless for me.
+
+[rochak agrawal] 09:16:14
+Okay.
+
+[arif] 09:16:15
+Yeah.
+
+[rochak agrawal] 09:16:16
+You can ask your question now.
+
+[arif] 09:16:17
+Yeah, there are multiple questions, eh, from the beginning itself.
+
+[rochak agrawal] 09:16:20
+Okay, yeah, yeah, see, uh, like, we are taking the questions, uh, but, uh, yeah, you, you can ask your questions now.
+
+[arif] 09:16:29
+Yeah, so since the basic thing is also for the DevOps engineer, right? The DevOps… so AWS knowledge is mandatory for the DevOps engineer?
+
+[rochak agrawal] 09:16:37
+No.
+
+[rochak agrawal] 09:16:38
+No. See, I'll tell you the reason for that is, uh, see, in the end, uh, uh, you are going to deploy your application, correct? Now, you can deploy your application anywhere. You can deploy your application on AWS. You can deploy your application on Azure. You can deploy your application in GCP.
+
+[arif] 09:16:38
+It's not mandatory.
+
+[rochak agrawal] 09:16:57
+Uh, you can deploy your application in an on-premises environment also. So the first thing is, uh.
+
+[rochak agrawal] 09:17:03
+apart from the AWS, cloud knowledge is not a mandatory requirement. Okay, that's the first thing. But having said that, since, uh, applications are becoming very dynamic in nature, for example, uh, auto-scaling features, uh, uh, infrastructure, automatic infrastructure.
+
+[rochak agrawal] 09:17:23
+provisioning. Now, those type of facilities is not there in an on-premises environment. So, in the on-premises environment, if you need to procure a server, then you need to, like, purchase a server, configure it, correct? So, that is where DevOps is more comfortable.
+
+[rochak agrawal] 09:17:41
+with the cloud, because infrastructure is also agile, right? I can provision the infrastructure very quickly. So that is where DevOps work optimally with the cloud infrastructure, but it is not a mandatory requirement. I can deploy… I can set up this pipeline in my on-premises environment also.
+
+[arif] 09:18:00
+Okay.
+
+[arif] 09:18:03
+So, so, so, mainly the AWS, uh, suppose for a cloud, so, so, sorry, if organization is working on cloud.
+
+[arif] 09:18:10
+So, you said that DevOps is only for this IaaS infrastructure?
+
+[rochak agrawal] 09:18:15
+As a code.
+
+[arif] 09:18:17
+Only for IES type of infrastructure, right?
+
+[rochak agrawal] 09:18:20
+No, no, I did not understand this. Can you come again?
+
+[arif] 09:18:23
+So…
+
+[arif] 09:18:24
+organization or company can have multi… like, any model, right? That model that we have discussed in AWS, IAS, PAS, NSAS, so the DevOps is applicable for only for IAS, or it can be…
+
+[rochak agrawal] 09:18:30
+Correct, yeah.
+
+[rochak agrawal] 09:18:32
+Got it?
+
+[rochak agrawal] 09:18:34
+No, no, no, no, no, no, no RF. See, uh…
+
+[rochak agrawal] 09:18:38
+Let's say you want to deploy your application, okay? Now…
+
+[rochak agrawal] 09:18:45
+I can deploy my application on EC2 instance.
+
+[rochak agrawal] 09:18:49
+Correct?
+
+[rochak agrawal] 09:18:51
+I can deploy my application on Beanstalk.
+
+[rochak agrawal] 09:18:54
+How does it matter? It is up to us who need to decide. See, depending…
+
+[arif] 09:18:59
+No, in SaaS, we are not managing anything, right? Code, pipeline, everything will be automated in SaaS services.
+
+[rochak agrawal] 09:19:03
+No, uh, can you give me a SaaS example in AWS? Which service you are talking about?
+
+[arif] 09:19:10
+SaaS, like, uh, that you have said, uh, Office 365 or Gmail.
+
+[rochak agrawal] 09:19:14
+No. See, Office 365, of course, you're not managing your application. But see, EC2 is the IaaS, while Beanstalk is the PaaS service.
+
+[rochak agrawal] 09:19:25
+See, in any ways, SaaS, you do not have the control of the software. Can I build Gmail? No.
+
+[arif] 09:19:32
+No, that's what… that is… so, in that thing, we… DevOps is not required, right, in SaaS?
+
+[rochak agrawal] 09:19:32
+Can I? Yeah.
+
+[rochak agrawal] 09:19:34
+It is…
+
+[rochak agrawal] 09:19:37
+DevOps is not… because, see, DevOps is required where you are controlling the application.
+
+[rochak agrawal] 09:19:43
+Right? It is all about how I am building my application. If I'm not controlling how I am application… how I am building my… in the SaaS, you do not need the infrastructure also.
+
+[arif] 09:19:54
+Yeah, that's why I'm asking. So it is only applicable only in the Ias.
+
+[rochak agrawal] 09:19:56
+FedEx, yeah, yeah, yeah.
+
+[rochak agrawal] 09:19:58
+You do not need.
+
+[rochak agrawal] 09:20:00
+And pass also.
+
+[arif] 09:20:03
+Pass, uh, are we managing application also?
+
+[rochak agrawal] 09:20:06
+Correct, I deployed my… I can deploy my application on the Elastic Beanstalk, right?
+
+[rochak agrawal] 09:20:10
+We have seen that in AWS.
+
+[rochak agrawal] 09:20:13
+Correct?
+
+[arif] 09:20:14
+Okay, okay, okay, okay, got it.
+
+[arif] 09:20:17
+And aside DevOps, I have seen a lot of type of DevOps engineers in the market here, so I don't understand this. Do we need to learn the technology as well after the DevOps principle also, or any product knowledge, anything?
+
+[rochak agrawal] 09:20:21
+Hmm?
+
+[rochak agrawal] 09:20:37
+Uh, sorry, Arif, can you repeat your question?
+
+[arif] 09:20:38
+So, what type of DevOps engineers are there in the…
+
+[rochak agrawal] 09:20:42
+So, that is what, uh, we were discussing, RF, with WebO.
+
+[rochak agrawal] 09:20:46
+Okay, uh… see, uh…
+
+[rochak agrawal] 09:20:51
+there are multiple sub streams are there in DevOps nowadays. So, you will have, uh…
+
+[rochak agrawal] 09:20:59
+SRE, you will have, uh, infrastructure as a code engineer, you will have a pure DevOps engineer, then you are having a DevSecOps engineer, you can have a MLOps engineer, you will be… you can become an observability engineer, and so on and so forth.
+
+[rochak agrawal] 09:21:14
+But, to become all of that, first you have a fundamental knowledge of DevOps.
+
+[rochak agrawal] 09:21:19
+Okay.
+
+[rochak agrawal] 09:21:20
+That is one thing. And RF, I can tell you one thing, DevOps is an ever-evolving field.
+
+[rochak agrawal] 09:21:28
+When I'm saying the ever evolving field, see DevOps is not a fixed technology.
+
+[rochak agrawal] 09:21:35
+When I'm saying it's not a fixed technology, it is mostly relies on the tools. So we have tools like Git, GitHub, Ansible, your Kubernetes, Docker, Jenkins, etc. Multiple tools are there.
+
+[rochak agrawal] 09:21:51
+Now, the thing is, let's say, in this class, you learned Jenkins, for example. Why we are choosing… so Jenkins is a CI engine.
+
+[rochak agrawal] 09:22:07
+Jenkins is a CI tool, continuous integration tool, right? Now, we will learn Jenkins. Now, why we are choosing Jenkins?
+
+[rochak agrawal] 09:22:15
+Because it is the most widely used tool, most widely accepted tool.
+
+[rochak agrawal] 09:22:20
+Now, if you say, what are other CI tools are available? So, there are n number of tools available. We have.
+
+[rochak agrawal] 09:22:27
+Azure Pipelines is there.
+
+[rochak agrawal] 09:22:33
+We have AWS Code Pipeline is there.
+
+[rochak agrawal] 09:22:38
+Similar tools is available in GCP also, I'm not remembering the name. Then we have GitLab CIE is there, GitHub Actions is there.
+
+[rochak agrawal] 09:22:49
+Okay, uh, we have, uh, Travis CI is there.
+
+[rochak agrawal] 09:22:56
+Then, uh…
+
+[rochak agrawal] 09:22:58
+Team City is there.
+
+[rochak agrawal] 09:23:02
+Bamboo is there, and these are just few, okay? So, total, you can see Avant, 2, 3, 4, 5, 6, 7, 8 tools. I'm telling you right now about the CI.
+
+[rochak agrawal] 09:23:13
+Uh, and that is across the…
+
+[rochak agrawal] 09:23:17
+spectrum. When you talk about the configuration management tool, we will have, uh, uh, Ansible is there, we are going to have Puppet is there, Chef is there, Salt is there, uh, Vagrant is there.
+
+[rochak agrawal] 09:23:28
+multiple tools in there. So, RF, yes, it may happen that… see, we…
+
+[rochak agrawal] 09:23:34
+Of course, be in 50 hours, 40 hours.
+
+[rochak agrawal] 09:23:38
+you… it is practically not possible to cover the tools, all the tools. And when I'm saying it's practically not possible, uh, so for example, I'm working in DevOps from last 12 years.
+
+[rochak agrawal] 09:23:49
+Okay? I have never worked on TeamCity, I have never worked on Bamboo. So if you ask me today, uh, do you know Bamboo? I would say, no, I don't know Bamboo. You know TeamCity? I don't know TeamCity. I don't know TraverseCIE also. But I have worked in Jenkins, I have worked on Azure Pipelines, I have worked on AWS CodePipeline.
+
+[rochak agrawal] 09:24:09
+I have bugged on GitLab CI in GitHub Action. I can bu.
+
+[rochak agrawal] 09:24:13
+So it it is going to happen. It is bound to happen. Okay.
+
+[rochak agrawal] 09:24:17
+We are learning Jenkins in this program, okay? So you will be very comfortable around Jenkins, how Jenkins work, what are the terminology around Jenkins, what is plugins, how to create a job, how to run the job, everything we are going to cover.
+
+[rochak agrawal] 09:24:32
+Around the Jenkins.
+
+[rochak agrawal] 09:24:35
+But it may happen that you go to any project. So see, after completing this program, the expectation is you'll get a job and you will end up in a project, right? When you land up in a project, it may happen that they are not using Jenkins.
+
+[rochak agrawal] 09:24:50
+They might use Azure Pipeline, they might use AWS Code Pipeline, they might use GitLab CI, they might use GitHub Actions. They can use anything, correct?
+
+[rochak agrawal] 09:25:02
+But since you know Jenkins.
+
+[rochak agrawal] 09:25:04
+Okay.
+
+[rochak agrawal] 09:25:07
+you can easily adapt to these… any of these tools. Because in the end, these are just tools.
+
+[rochak agrawal] 09:25:14
+The core concept and everything is going to remain the same around them.
+
+[rochak agrawal] 09:25:21
+So, DevOps, you need to, um, uh, I would say after completing this program, I am still learning, okay? In monitoring space, every 6 months, there is a new tool coming.
+
+[rochak agrawal] 09:25:32
+So you have to keep update yourself with the coming technology.
+
+[rochak agrawal] 09:25:38
+Now, two, three years back, there is something called the GitOps.
+
+[rochak agrawal] 09:25:45
+Now it has become mature, but I implemented…
+
+[rochak agrawal] 09:25:55
+Sorry, GitOps, when there was no documentation.
+
+[rochak agrawal] 09:26:00
+Available on GitOps.
+
+[rochak agrawal] 09:26:06
+If you type of your organization wants you to, uh, uh, implement, right, but you will say, okay, there is no documentation and other things are there, so it's a ever-learning.
+
+[rochak agrawal] 09:26:18
+Continuous learning. DevOps will be a continuous learning journey. You cannot say, I have taken a 60-hour course or an 80-hour course, I learned DevOps. You will know the foundational or DevOps, fundamental concept of DevOps.
+
+[rochak agrawal] 09:26:31
+But what your project is doing may be very different.
+
+[rochak agrawal] 09:26:35
+So it is, RF, I would suggest, uh, it will always be a continuous learning journey for you. So yes, uh, you need to know the product, uh.
+
+[rochak agrawal] 09:26:46
+What your project is using.
+
+[rochak agrawal] 09:26:49
+You take any of the course.
+
+[arif] 09:26:52
+Yeah, I can understand the tools that are required for DevOps part, I understand that, but I've seen a lot of openings and the profiles that they're looking for, like, suppose, network DevOps engineer.
+
+[rochak agrawal] 09:26:52
+Okay.
+
+[arif] 09:27:06
+So for that, if he knows the DevOps part, every tools and thing, but it's still… they require, uh, networking, uh, knowledge on, like, uh, routing, firewalls, and all those things. So we have to learn for… are we eligible for those companies, or…
+
+[rochak agrawal] 09:27:07
+Hmm?
+
+[rochak agrawal] 09:27:17
+Correct?
+
+[rochak agrawal] 09:27:20
+No, so, see, see… no, no, I'll tell you for that. Sorry for that, um, nowadays, uh, they are, uh…
+
+[rochak agrawal] 09:27:29
+See, DevOps isn't, uh…
+
+[rochak agrawal] 09:27:33
+Application deployment pattern, basically, okay, on a very high level. DevOps is in the application deployment pattern, but these methodology which was used in the DevOps were so.
+
+[rochak agrawal] 09:27:49
+effective, then for everything now, they use DevOps. For example, for deploying the machine learning models also, DevOps is being used, which is called the MLOps.
+
+[rochak agrawal] 09:28:00
+Okay, so if you want to become an MLOps engineer, so yes, you need to have an understanding about, uh.
+
+[rochak agrawal] 09:28:08
+not deep, but understanding about how machine learning model works, uh, what are the tools used there, and all of that. So similarly, if you need to become a network DevOps engineer, you need to have a basic understanding about the network.
+
+[rochak agrawal] 09:28:21
+That is there, yes. But our focus in this course will be the core DevOps engineer. So we will be focusing on the jobs titles like DevOps engineer, platform engineer, site reliability engineer.
+
+[rochak agrawal] 09:28:37
+Uh, your DevSecOps engineer, your, uh…
+
+[rochak agrawal] 09:28:42
+What was infrastructure as a code engineer, which we will be focusing on. We will not be. So we have a different module for MLOps, which we will cover. But for example, network DevOps, you're talking about. I think this is more for the people who are coming from the networking background.
+
+[rochak agrawal] 09:28:58
+And they are learning also DevOps. So, this is… that job will be core networking plus DevOps. So, DevOps will be secondary in them.
+
+[arif] 09:29:06
+Okay.
+
+[arif] 09:29:07
+Okay.
+
+[rochak agrawal] 09:29:08
+Okay.
+
+[rochak agrawal] 09:29:10
+So, yeah, that is… so if… nowadays, if you want to deploy any network changes also, you will use the DevOps methodology there as well. So, probably you will use the same tools also. So, for example, I can use Jenkins to deploy network-related changes. But the pipeline and the steps I'm writing in the pipeline.
+
+[rochak agrawal] 09:29:28
+Uh, only that person who knows the networking can write those steps. I may not be able to write it.
+
+[arif] 09:29:36
+So, so somewhere, like, that is specific, uh, for the network.
+
+[rochak agrawal] 09:29:40
+To network.
+
+[arif] 09:29:41
+But general DevOps engineer roles are also available, right, where we can apply.
+
+[rochak agrawal] 09:29:45
+Mostly, those are only available. Network DevOps, you will find 1 or 2% in DevOps market.
+
+[arif] 09:29:49
+Okay, okay, got it. Yeah.
+
+[rochak agrawal] 09:29:50
+Okay, so our focus is on what is generally available. So if you combine DevOps engineers, CI/CD engineers, platform engineers, site reliability engineers, your IAC engineers, your DevOps manager, they will cover around 85 to 90% of the market in DevOps.
+
+[rochak agrawal] 09:30:09
+Then you will have database DevOps, you will have a network DevOps, you will have a… MLOps is nowadays getting a lot of popularity, and we have a different module also for MLOps.
+
+[rochak agrawal] 09:30:19
+Okay, so MLOps is getting a lot of popularity, and there is very, very huge scope nowadays in MLOps market. But again, you should have a basic understanding of the AI ML-related concept. What is the data versioning is there, what is the data modeling, and all of those concepts will be there, but that is separate.
+
+[rochak agrawal] 09:30:37
+So, if you are saying DevOps engineer, which, uh, the core DevOps engineer, we cover everything around it, and which constitute around 85% of the jobs which is there in the DevOps area.
+
+[arif] 09:30:48
+Okay, yeah, and some terminology… some terminologies I was not able to understand, like, uh, this, uh, artifacts, dependencies, commit…
+
+[rochak agrawal] 09:30:50
+Okay.
+
+[rochak agrawal] 09:30:53
+Yep.
+
+[arif] 09:30:57
+I don't know…
+
+[rochak agrawal] 09:30:57
+Okay, so come, I'll tell you. So see these, everything RF, this is just a basic introduction today.
+
+[rochak agrawal] 09:31:06
+See, there is a version control system. You understood version control system?
+
+[arif] 09:31:09
+Yeah, I got it.
+
+[rochak agrawal] 09:31:11
+So, but, see, uh, let's say I upload something to Google Drive. We call it as an upload.
+
+[rochak agrawal] 09:31:18
+Correct. Similarly, if I submit something to my version control system, that is called a commit.
+
+[arif] 09:31:25
+So, what is merge, uh, it's merging is different, or…
+
+[rochak agrawal] 09:31:29
+Merges, I am also uploading, you are also uploading, so we need to merge our code.
+
+[rochak agrawal] 09:31:33
+Like, it's not, uh… so… so, for example, if you take any of the… see, this RF, every… every, uh, of this thing, we will cover in detail, so we have a 6-hour, uh, dedicated for Git.
+
+[rochak agrawal] 09:31:46
+uh, where we will talk about merging, pull request, artifact. Artifact, I'll tell you. Uh, merge and other things you keep, uh, aside as of now, we'll discuss in detail. Artifact is something, uh, uh, see, for example, uh.
+
+[arif] 09:31:56
+Okay.
+
+[rochak agrawal] 09:32:02
+You write the source code, correct?
+
+[rochak agrawal] 09:32:06
+A developer writes the source code.
+
+[arif] 09:32:09
+Mmhm.
+
+[rochak agrawal] 09:32:15
+Once you create a build process.
+
+[rochak agrawal] 09:32:18
+The result of a build process is an artifact.
+
+[rochak agrawal] 09:32:21
+Okay.
+
+[rochak agrawal] 09:32:23
+Now, what is an artifact is, uh, so for example, if I need to install Notepad on my laptop.
+
+[rochak agrawal] 09:32:30
+Okay.
+
+[arif] 09:32:32
+Hmm.
+
+[rochak agrawal] 09:32:32
+I am… am I going to download the source code, or I am going to download the .exe?
+
+[arif] 09:32:39
+Leonardo Dixie.
+
+[rochak agrawal] 09:32:40
+So that .exe is an argument.
+
+[rochak agrawal] 09:32:46
+Okay.
+
+[arif] 09:32:46
+So, who built it? Who built it? Is, like, developer build it, or DevOps will build it?
+
+[rochak agrawal] 09:32:51
+So, developers build it. So, if you see, and that is where we're calling it out here
+
+[rochak agrawal] 09:32:58
+Where are those stages? Yes. So if you see here, uh, plan, code, build, and test, these are the primary responsibility of a development team. Of course, testing, uh, test is a testing team. And then release, deploy, operate, and monitor is a.
+
+[rochak agrawal] 09:33:13
+ops team, which is a DevOps team, okay? But this build process will be automatic build process, and we have, uh, 4 hours of Maven build tool is also there, where we will cover this in detail as well.
+
+[rochak agrawal] 09:33:26
+So building process also we will understand, although this is a primary responsibility of the development team, but we should be aware about it, how the build process is happening, because then only, uh, we will be able to troubleshoot, like, see, sometime what is going to happen that, uh.
+
+[rochak agrawal] 09:33:44
+uh, you are going to get an error, right? Uh, now how will you identify this as a platform-related error or a application-related error? So that's where you need to have an understanding about the build process, and we are going to cover that as well.
+
+[arif] 09:33:57
+Oh, yeah, I had some questions on this also. So, building, like, they're building, or they're… where they're keeping this build? Just, like, uh… there's no…
+
+[rochak agrawal] 09:34:06
+Arif, I think, uh, let's, uh, hold those questions for now, okay? We will execute everything, so then those questions will get clear automatically for you.
+
+[rochak agrawal] 09:34:18
+Okay? Don't worry, we will cover everything.
+
+[arif] 09:34:21
+So, development team generally consists of the developer and the testing team, right?
+
+[rochak agrawal] 09:34:27
+You can see that, yes.
+
+[arif] 09:34:30
+Okay.
+
+[rochak agrawal] 09:34:31
+And the ops team here, what we are seeing is the ops team is the, what we call it is DevOps team. So the people who is going to maintain this end to end.
+
+[rochak agrawal] 09:34:40
+Even for the coding also, for example, coding will be done by your development team, correct? Actual code will be written, but as a DevOps engineer, we will set up the coding environment for them, we will give them the permission.
+
+[rochak agrawal] 09:34:56
+We will apply security policies and other things. So it's, in the end.
+
+[rochak agrawal] 09:35:01
+You can say it's a collaborative effort between these two teams, but the primary responsibilities are clearly defined there.
+
+[arif] 09:35:11
+Okay.
+
+[rochak agrawal] 09:35:12
+Okay.
+
+[rochak agrawal] 09:35:15
+Okay, guys, I think I'll take the question now. In the next class, we are ahead of the time. I need to jump to another call, so…
+
+[rochak agrawal] 09:35:23
+Uh, we'll take the remaining question tomorrow now.
+
+[rochak agrawal] 09:35:30
+Thank you, guys.
+
