@@ -1,0 +1,3888 @@
+[rochak agrawal] 07:33:05
+Hey, good morning, everyone.
+
+[rochak agrawal] 07:33:09
+Dano, you have a question?
+
+[Dhanu] 07:33:11
+Hi, Rachel, good morning.
+
+[rochak agrawal] 07:33:14
+Yes, the note.
+
+[Dhanu] 07:33:17
+Uh, Rajuk, are we going to continue shell scripting, or…
+
+[rochak agrawal] 07:33:20
+No. So today, as I discussed in the last class, we are going to start with Git and GitHub. Shell scripting fundamental we have covered, and as we will cover with the tool, like Docker, Kubernetes, Jenkins, at that time, what is the command needed, we will understand on the fly.
+
+[Dhanu] 07:33:38
+Okay, but I just want to know, like, in the shell scripting, like, how we'll be using in the real world, like, in the industries?
+
+[rochak agrawal] 07:33:47
+So that is also… see, that is also to be discussed, Anu. See, for example, you can have a monitoring script. So I will share some of the real-time examples of the shell scripts in the document. So let's say you have a…
+
+[Dhanu] 07:33:59
+Okay.
+
+[rochak agrawal] 07:34:03
+Uh, 100, uh…
+
+[rochak agrawal] 07:34:03
+someone given you 100 IPs, and they ask… you need to check if those IPs are reachable or not. So, see, there is nothing called… automations are always based on the need basis.
+
+[rochak agrawal] 07:34:18
+Okay, now, if you talk…
+
+[rochak agrawal] 07:34:22
+about 5 to 10 years back, shell scripts were very important, because at that time, automation tools were not there, right? But now, shell scripts is used very minimally, because if you talk about monitoring.
+
+[rochak agrawal] 07:34:37
+Right? So we have very good tool available. Uh, every cloud has its native monitoring service available. Uh, then we have Prometheus, Grafana, Nagios. There is n number of the monitoring tools available. Now, also, for example, for monitoring.
+
+[rochak agrawal] 07:34:53
+Uh, I have written very, like, very complex scripts also, but nowadays you do not need to write in this, uh, script for, uh, monitoring, for example, right? So…
+
+[rochak agrawal] 07:35:05
+Automations, Danu, will always be on the need basis. Now you know the concept. When you will have the use case, you will create the script accordingly.
+
+[Dhanu] 07:35:08
+Okay.
+
+[Dhanu] 07:35:16
+Okay, whatever we have learned in yesterday's class, it's very basic, right?
+
+[rochak agrawal] 07:35:21
+Now, it is… see, because fundamentals are… will always be basics. It is the use case you need to solve.
+
+[Dhanu] 07:35:28
+Okay, just can you, like, update in, or can you just give us the documents, like…
+
+[rochak agrawal] 07:35:32
+Yeah, yeah, yeah. So, I, I, I have uploaded the notes. Uh, I will upload the, some, uh, real-time examples also for Shell students.
+
+[Dhanu] 07:35:41
+Okay, yeah, that works good.
+
+[rochak agrawal] 07:35:43
+Yeah?
+
+[Dhanu] 07:35:44
+Yeah, thank you.
+
+[rochak agrawal] 07:36:01
+So, uh, so guys, uh, today we are going to start, uh, the first DevOps tool.
+
+[rochak agrawal] 07:36:06
+So now we are again going to follow the same model around 30 minutes of the session. So Ankita has a question.
+
+[rochak agrawal] 07:36:16
+Yes, Ankita.
+
+[Ankita Saxena] 07:36:20
+Hi Raja, good morning. Actually, I am struggling to get the practice for this Linux commands. Can you please guide me how I can practice it?
+
+[rochak agrawal] 07:36:22
+Good morning.
+
+[rochak agrawal] 07:36:28
+Hmm?
+
+[rochak agrawal] 07:36:33
+So…
+
+[Ankita Saxena] 07:36:34
+any… means the number of questions, if I get, so I can, uh…
+
+[rochak agrawal] 07:36:34
+Yeah, I am.
+
+[Ankita Saxena] 07:36:39
+do the practice.
+
+[rochak agrawal] 07:36:40
+So, did you create your AWS free account?
+
+[Ankita Saxena] 07:36:44
+Actually, I haven't, uh, yet created.
+
+[rochak agrawal] 07:36:46
+Ah, so, okay. So, Ankita, I already uploaded a document to create the AWS account. So, you create the AWS account, there you can create a server, and on that server, you can practice. It's pretty straightforward.
+
+[Ankita Saxena] 07:36:57
+No, no…
+
+[Ankita Saxena] 07:36:58
+No, no, actually, I want the questions that command me that you do this and this, so that I get the hands-on on this.
+
+[rochak agrawal] 07:37:08
+Oh, you assignment you're talking about.
+
+[Ankita Saxena] 07:37:10
+Yes, yes.
+
+[rochak agrawal] 07:37:11
+Yeah, yeah, so assignment, uh, I will prepare on the weekend, Ankita, and I'll upload.
+
+[Ankita Saxena] 07:37:18
+Uh, the weekend means next… by the next week, I will be able to…
+
+[rochak agrawal] 07:37:20
+No, no.
+
+[rochak agrawal] 07:37:21
+No, no, no, by tomorrow.
+
+[Ankita Saxena] 07:37:24
+Okay.
+
+[rochak agrawal] 07:37:24
+By, uh, tonight only.
+
+[rochak agrawal] 07:37:27
+Most probably. Okay?
+
+[Ankita Saxena] 07:37:27
+Okay, thank you.
+
+[rochak agrawal] 07:37:32
+Okay, let's start the gate.
+
+[rochak agrawal] 07:37:35
+Okay, so we understood the DevOps lifecycle stages.
+
+[rochak agrawal] 07:37:42
+So the first stage is.
+
+[rochak agrawal] 07:37:45
+Before deploying anything, you need to code.
+
+[rochak agrawal] 07:37:49
+Very straightforward. Now, before the code, also, you need to do the planning and all, like, what you need to build and other things, but if you see in terms of the implementation.
+
+[rochak agrawal] 07:37:59
+It is a coding which is the first thing that you are going to do.
+
+[rochak agrawal] 07:38:05
+Now, before I go understand the gate.
+
+[rochak agrawal] 07:38:09
+You are going to hear these terms.
+
+[rochak agrawal] 07:38:12
+version control system, okay? So, Git is a version control system, basically.
+
+[rochak agrawal] 07:38:19
+So, version control… what does a version control system does?
+
+[rochak agrawal] 07:38:25
+like, for example, a version control system will be mostly be sitting in your laptop, where you will be doing the coding, okay? So let's say, on my laptop, if I am.
+
+[rochak agrawal] 07:38:41
+Let's say I'll go…
+
+[rochak agrawal] 07:38:44
+create a document.
+
+[rochak agrawal] 07:38:45
+Okay, now I'll say…
+
+[rochak agrawal] 07:38:54
+My app?
+
+[rochak agrawal] 07:38:57
+If I go inside this app, let's say you created a file.
+
+[rochak agrawal] 07:39:06
+Something. My app dot Java.
+
+[rochak agrawal] 07:39:14
+Okay.
+
+[rochak agrawal] 07:39:15
+Now when you open this file.
+
+[rochak agrawal] 07:39:17
+And you write your command, uh…
+
+[rochak agrawal] 07:39:20
+X is equal to 10.
+
+[rochak agrawal] 07:39:23
+Y is equal to…
+
+[rochak agrawal] 07:39:25
+For indeed.
+
+[rochak agrawal] 07:39:27
+if…
+
+[rochak agrawal] 07:39:29
+X is equal to Y.
+
+[rochak agrawal] 07:39:34
+X is for…
+
+[rochak agrawal] 07:39:37
+But, something. Just…
+
+[rochak agrawal] 07:39:39
+render. Now, the point is, let's say you save this file. So, in, uh…
+
+[rochak agrawal] 07:39:47
+In your system, you have a file called My Employee.
+
+[rochak agrawal] 07:39:52
+Which is having some content. X is equal to 10, Y is equal to 20, et cetera, et cetera.
+
+[rochak agrawal] 07:39:59
+Now, after some time, if you want to modify the file, you will again go.
+
+[rochak agrawal] 07:40:05
+And let's say you change the value of buy.
+
+[rochak agrawal] 07:40:08
+Again, you do x is equal to 10.
+
+[rochak agrawal] 07:40:11
+And you save this. Now, the point is, when you will do the modification of your file.
+
+[rochak agrawal] 07:40:19
+Previous changes, once you save the file.
+
+[rochak agrawal] 07:40:22
+Previous changes will be lost.
+
+[rochak agrawal] 07:40:24
+Correct. Now, since I saved the file.
+
+[rochak agrawal] 07:40:28
+If someone will come to this file, they will not come to know what was the value of buy before I do the modification.
+
+[rochak agrawal] 07:40:38
+Correct? It is because it is overwriting.
+
+[rochak agrawal] 07:40:43
+Veet.
+
+[rochak agrawal] 07:40:43
+And that is where version control comes into the picture, because, see, in the coding, you need to do.
+
+[rochak agrawal] 07:40:50
+A lot of to and fro. Someone you change, uh, that might not be working, you need to do the rollback.
+
+[rochak agrawal] 07:40:56
+If you do not have the previous version, then you will, how will you roll back, right? You again need to write the whole code. So that is where version control system comes into the picture.
+
+[rochak agrawal] 07:41:08
+Now, read this. A version control system record.
+
+[rochak agrawal] 07:41:14
+A version control system records every change to a set of files over time.
+
+[rochak agrawal] 07:41:21
+So that you can recall any earlier version, see who changed what and why, and work in parallel without overwriting each other.
+
+[rochak agrawal] 07:41:31
+Leave this last line for now, work in parallel. We will discuss that, because branching is a very important concept, but read till here.
+
+[rochak agrawal] 07:41:40
+So version control system record every changes to a set of file over the time. So you can recall any earlier version.
+
+[rochak agrawal] 07:41:49
+And you will get to know who changed it, when it has been changed, and why it has been changed.
+
+[rochak agrawal] 07:41:55
+Okay, so if you have…
+
+[rochak agrawal] 07:41:59
+So let's say you have a directory.
+
+[rochak agrawal] 07:42:02
+And remember, when you are implementing a version control system, you are implementing in a directory. So, for example.
+
+[rochak agrawal] 07:42:11
+If…
+
+[rochak agrawal] 07:42:13
+going further, uh, if I'm implementing the version control system in my app.
+
+[rochak agrawal] 07:42:18
+Then the version control system is going to track all the files inside this directory.
+
+[rochak agrawal] 07:42:25
+Nothing in another directory, for example, in PaperLive or Camtasia or Chrome download. If you want to do the version controlling there as well, you need to set it up differently, but you set up inside a directory, so whatever comes inside a directory.
+
+[rochak agrawal] 07:42:42
+or in a Linux, we call it a folder or a directory, uh, it will track inside the directory, okay? Now, inside the My App, if I create another subdirectory or a folder, it is going to track that as well, but outside of the My App, it is not.
+
+[rochak agrawal] 07:42:59
+Okay, so now, in a version control system, if you have both.
+
+[rochak agrawal] 07:43:05
+Multiple files.
+
+[rochak agrawal] 07:43:09
+Right? In your folder, you will be having multiple files.
+
+[rochak agrawal] 07:43:15
+And as they are changing.
+
+[rochak agrawal] 07:43:18
+Maybe only one file will change.
+
+[rochak agrawal] 07:43:21
+Or it can do file dot can change whatever the change is happening.
+
+[rochak agrawal] 07:43:27
+Even if you apply a dot.
+
+[rochak agrawal] 07:43:31
+Okay.
+
+[rochak agrawal] 07:43:33
+So for version control system.
+
+[rochak agrawal] 07:43:37
+This dot…
+
+[rochak agrawal] 07:43:40
+This is also a change.
+
+[rochak agrawal] 07:43:42
+Okay? So, version control system, very simply, it is going to keep track of all the records.
+
+[rochak agrawal] 07:43:51
+What file has been changed?
+
+[rochak agrawal] 07:43:53
+who has changed it, and why it has been changed. And it will keep all the previous versions also. So if you have a file which you are changing constantly, so you go V1.
+
+[rochak agrawal] 07:44:06
+Let's say you start, then you change it V2, V3…
+
+[rochak agrawal] 07:44:11
+B4…
+
+[rochak agrawal] 07:44:13
+V5, like, whatever the numbers will be there. And you can always go to your previous ones.
+
+[rochak agrawal] 07:44:21
+Very simple. Okay? So that is the version control system. Now, without the version control system, your…
+
+[rochak agrawal] 07:44:30
+You need to give manual names to your file with the version names itself, like report final v2, final.docs, right?
+
+[rochak agrawal] 07:44:39
+your work is getting overwritten, which we discussed. If you… if you have a code file which you are going to, uh… which you are storing, uh… then…
+
+[rochak agrawal] 07:44:48
+All your previous version is going to be lost.
+
+[rochak agrawal] 07:44:51
+Then, without a version control system, you have no history. You… something, uh… someone makes some changes in your file, which is breaking your application, right? And so you will not get to know that, uh… who has done it, why it has been done, so there is no history and no accountability.
+
+[rochak agrawal] 07:45:10
+Correct. And also remember one thing, version control… when we are saying version control system.
+
+[rochak agrawal] 07:45:16
+it not only applicable to the code file, it is applicable to all the files, your images, your Excel file, your PDFs, any file can be versioned.
+
+[rochak agrawal] 07:45:27
+Okay.
+
+[rochak agrawal] 07:45:30
+Then, with the version control, a single source of truth means one repository, one history, one current version. So when you initiate a repository, when you initiate a versioning within a directory.
+
+[rochak agrawal] 07:45:42
+then it's a single source of truth. You will… you will have a complete searchable history, uh, like who, what, why, when, everything.
+
+[rochak agrawal] 07:45:53
+Safe parallel work, again, um, this is something called the branching. Uh, let's say you have a stable code.
+
+[rochak agrawal] 07:46:01
+See, um…
+
+[rochak agrawal] 07:46:02
+you can change that code, and you will have the complete version history of that also. But you say, no, no, I do not want to touch it, so you can.
+
+[rochak agrawal] 07:46:10
+do a parallel development altogether, which we will discuss in detail. So this is called the branching, and it is… it will be parallel to your main development.
+
+[rochak agrawal] 07:46:21
+And reversible mistakes, again, as we discussed, we can go back to any previous version we want. And that is where we can, if we did any mistake, my code is not good, then I can go back to my previous version.
+
+[rochak agrawal] 07:46:36
+So that is very important. As said, any file can be version controlled, but within a code, it becomes very important that you are doing the versioning of your code.
+
+[rochak agrawal] 07:46:50
+Now
+
+[rochak agrawal] 07:46:52
+There is 3 type of, uh, version control systems are there.
+
+[rochak agrawal] 07:46:56
+Okay? One is local.
+
+[rochak agrawal] 07:46:59
+Local means if you go to Mac OS for Mac OS there is locally there is a tool called RCS is there.
+
+[rochak agrawal] 07:47:08
+Again, I'm not remembering the full form of RTS, but that is there. Similarly, there is some tools available on Windows also, which you need to install. Then, local means…
+
+[rochak agrawal] 07:47:21
+This is good only if you are working single-handedly.
+
+[rochak agrawal] 07:47:26
+on your system, okay, single-handedly on your code. There is no collaboration. History kept on one machine only, in a local database inside a file. Nothing is shared.
+
+[rochak agrawal] 07:47:37
+So, if you are working in a shared team, for example.
+
+[rochak agrawal] 07:47:45
+If you're working…
+
+[rochak agrawal] 07:47:49
+If you're working in a shared team, then local is of no use, because, like, I cannot share it. So, for example, if I install some local version control in my system, you install a local version control in your system.
+
+[rochak agrawal] 07:48:04
+I am doing my changes, you are doing my changes, our history will be very different from each other, right? So, if you have a multi-people environment, local is for the single user.
+
+[rochak agrawal] 07:48:16
+Okay, now we have, so if someone is asking like how many version control systems you have, what is the type of the version control system you have? So you can answer there is two type of version control system is there. One is a centralized version control system.
+
+[rochak agrawal] 07:48:32
+Another is a distributed version control system.
+
+[rochak agrawal] 07:48:35
+Now this is we need to understand.
+
+[rochak agrawal] 07:48:38
+So we have a difference also in this.
+
+[rochak agrawal] 07:48:41
+And this is an interview, can be an interview question.
+
+[rochak agrawal] 07:48:45
+Now, when the version control.
+
+[rochak agrawal] 07:48:48
+System started.
+
+[rochak agrawal] 07:48:50
+there was the centralized version control systems were there, okay? There were no distributed version control systems were there.
+
+[rochak agrawal] 07:48:59
+So it all started with the central version control system. In a central version control system, there is a central repository.
+
+[rochak agrawal] 07:49:07
+Okay, uh, if you need to work on something, you are going to connect to that central repository.
+
+[rochak agrawal] 07:49:13
+download the code, make your changes, and push your changes to that central repository. So, one central server holds the full history, developer checks out a working copy, and commits back to the server. So, you are not saving your.
+
+[rochak agrawal] 07:49:30
+code in your local machine. Versioning will be maintained by the central.
+
+[rochak agrawal] 07:49:36
+version control system. I'll show you an image of the central version control system.
+
+[rochak agrawal] 07:50:09
+So you can see it here. We have a… in a centralized version control system, your repository will be there in a central server.
+
+[rochak agrawal] 07:50:18
+Okay, now…
+
+[rochak agrawal] 07:50:22
+You have 3 developers, you have 300 developers. Whenever they need to work on the code, they are going to download the code, okay? And then, they are going to update the code.
+
+[rochak agrawal] 07:50:36
+In the code, uh, they're going to…
+
+[rochak agrawal] 07:50:39
+update, uh, commit the code. So, commit is basically submitting the code to the code base.
+
+[rochak agrawal] 07:50:44
+you do the changes locally. Of course, you will develop on your laptop, or whatever the workstation you are there, and then you will send those changes to the repository.
+
+[rochak agrawal] 07:50:55
+So there is no versioning at your local system. Versioning is happening here.
+
+[rochak agrawal] 07:51:03
+That is a centralized version control system. Similarly, we have second is distributed. So the biggest example of a centralized version control system is SBN. SBN, we call it as a subversion also.
+
+[rochak agrawal] 07:51:17
+So, subversion was the de facto standard tool when the version control… versioning control started, okay?
+
+[rochak agrawal] 07:51:25
+But now…
+
+[rochak agrawal] 07:51:27
+It is everywhere, it is distributed version control system. Only the legacy project, which is using the SVN, they keep using it.
+
+[rochak agrawal] 07:51:38
+but 95% project nowadays. Any new project which is starting.
+
+[rochak agrawal] 07:51:43
+100% it is using distributed version in the whole system.
+
+[rochak agrawal] 07:51:47
+Okay, so the difference…
+
+[rochak agrawal] 07:51:51
+between the centralized and the distributed as in, so I'll show you.
+
+[rochak agrawal] 07:52:14
+Do you see that difference?
+
+[rochak agrawal] 07:52:18
+If you see…
+
+[rochak agrawal] 07:52:25
+Centralized version control system we discussed.
+
+[rochak agrawal] 07:52:28
+Distributed version control system.
+
+[rochak agrawal] 07:52:31
+Yeah, that's right.
+
+[rochak agrawal] 07:52:33
+These are your laptops.
+
+[rochak agrawal] 07:52:35
+Or, I would say, your workstations.
+
+[rochak agrawal] 07:52:43
+Okay, now…
+
+[rochak agrawal] 07:52:45
+Here, if you see, you will have a working copy. So, for example, if you have hundreds of the file.
+
+[rochak agrawal] 07:52:51
+Then, whatever file you need to work, you are going to.
+
+[rochak agrawal] 07:52:55
+update the file on your laptop or the workstation. You will work on it, and you will commit those files, or commit means submitting those files.
+
+[rochak agrawal] 07:53:06
+To your…
+
+[rochak agrawal] 07:53:08
+So, system, uh, to your central server. You do not have a full copy of your repository, okay? So, you do not know how many versions are there, uh, if you go… want to go back to your previous version, you again need to download it from the repository.
+
+[rochak agrawal] 07:53:24
+So everything is there in the central repository.
+
+[rochak agrawal] 07:53:27
+Okay, but you are only going to download the things which you are working on.
+
+[rochak agrawal] 07:53:34
+And then…
+
+[rochak agrawal] 07:53:35
+Code changes are going to be done. Versioning will be maintained here at the repository.
+
+[rochak agrawal] 07:53:42
+While in a distributed version control system, here also you will have a central repository.
+
+[rochak agrawal] 07:53:48
+Okay? But, instead of downloading a single file, or a group of files.
+
+[rochak agrawal] 07:53:55
+You are going to download the complete repository on your workstation.
+
+[rochak agrawal] 07:54:09
+So you… since you are downloading the complete repository on your workstation.
+
+[rochak agrawal] 07:54:14
+What you will have, you will have the complete history, complete versions where on your workstation.
+
+[rochak agrawal] 07:54:23
+So you can do the changes, you can update the changes, you can roll back to a previous version.
+
+[rochak agrawal] 07:54:29
+On your local system, you do not need to connect.
+
+[rochak agrawal] 07:54:33
+to your central repository for doing these type of changes. Right?
+
+[rochak agrawal] 07:54:39
+When you want to connect, uh, with the central repository, when your complete work is over, you will push.
+
+[rochak agrawal] 07:54:47
+those changes.
+
+[rochak agrawal] 07:54:49
+to your central repository so that they are visible. See, till the time you are working, uh, you are navigating through the versions, you do not need to connect to the central repository. Once your work is over, you want to share it with other people.
+
+[rochak agrawal] 07:55:03
+at that time, you are going to share it, you are going to push it to the central repository. So that is called the Distributed Version Control System.
+
+[rochak agrawal] 07:55:13
+And git.
+
+[rochak agrawal] 07:55:16
+you, nowadays, Git is equal to the distributed version control system, and Git is equal to the version control system. 95% project.
+
+[rochak agrawal] 07:55:26
+is using Git, okay? So, in a central layer, um…
+
+[rochak agrawal] 07:55:30
+If you see the difference.
+
+[rochak agrawal] 07:55:34
+History lives in a centralized version control system only on the central server, but in a distributed, complete copy on your workstation. Discussed. Working offline, since every change, right?
+
+[rochak agrawal] 07:55:47
+You need to interact with the central server. You should have the network connectivity. You don't work offline in a centralized version control system, and that makes it a single point of failure. While in a distributed version control system, you only need the network connectivity.
+
+[rochak agrawal] 07:56:06
+when you want to download the complete repository, or push the complete repository. Since you already have the complete repository, you can do all the commit, branching, logging, all the workload.
+
+[rochak agrawal] 07:56:17
+locally, right? And that impact the speed of operation also?
+
+[rochak agrawal] 07:56:23
+Network round trip for the most operation? Distributed is local only.
+
+[rochak agrawal] 07:56:28
+If the server dies, history is lost without a backup.
+
+[rochak agrawal] 07:56:33
+It is the single biggest problem for your centralized version control system. You have one central server. If that central server got corrupt.
+
+[rochak agrawal] 07:56:43
+And you do not have the backup.
+
+[rochak agrawal] 07:56:46
+your…
+
+[rochak agrawal] 07:56:48
+Versioning will be lost.
+
+[rochak agrawal] 07:56:50
+Right? But in a distributed version control system, that is not a problem, because multiple people will have a complete, uh, history of your repository in their local system altogether, so you can restore it from anything.
+
+[rochak agrawal] 07:57:04
+Branching again.
+
+[rochak agrawal] 07:57:07
+Branching is not very, uh…
+
+[rochak agrawal] 07:57:11
+easy in centralized version control system, but branching is a main USP of the distributed version control system. Okay, we will discuss the branching in detail, but branching is a main USP of a distributed version control system.
+
+[rochak agrawal] 07:57:25
+And commit means you are pushing everything to publishing to everyone immediately because everything is going onto the central server.
+
+[rochak agrawal] 07:57:34
+Here, distributed means saving locally, and sharing is a separate post.
+
+[rochak agrawal] 07:57:40
+Typical failure, like, again, in a central file.
+
+[rochak agrawal] 07:57:45
+Um, there is two type of issues you can face. Now, since you…
+
+[rochak agrawal] 07:57:49
+versioning is there on the central server. Now, it may happen that I am also doing the same changes, you are also doing the same changes, then.
+
+[rochak agrawal] 07:57:59
+The file locking will happen, okay?
+
+[rochak agrawal] 07:58:02
+But in case of a distributed version control system, I have my own copy, you have my own copy, I can do any changes. Problem will happen when we are going to integrate the changes, okay? At that time, uh, it may happen that.
+
+[rochak agrawal] 07:58:19
+uh, Git will realize I have also modified the same parameter, you have also modified the same parameter, so the integration will not happen.
+
+[rochak agrawal] 07:58:28
+But you can do the changes, right? So that is the difference between the centralized.
+
+[rochak agrawal] 07:58:34
+and the distributed version of our system. Now, as we are seeing, Git is…
+
+[rochak agrawal] 07:58:40
+Now, everywhere is good.
+
+[rochak agrawal] 07:58:44
+So, by Git, what is the, uh…
+
+[rochak agrawal] 07:58:48
+USPs of Git, so distributed by design. So…
+
+[rochak agrawal] 07:58:52
+We understood the distributed version control system.
+
+[rochak agrawal] 07:58:56
+M3 clone is a full backup with a complete history. So if you will lose the connection with your central repository, then also you can do your total work. It is just you will not be able to share it with others.
+
+[rochak agrawal] 07:59:10
+But you can do everything, okay? Then, snapshot, not delta. Now, this is more about the internal working of your… how does Git work?
+
+[rochak agrawal] 07:59:23
+So…
+
+[rochak agrawal] 07:59:24
+Every commit stores a snapshot of the whole project. So, what is going to happen? So, for example.
+
+[rochak agrawal] 07:59:37
+Let's say you have a folder.
+
+[rochak agrawal] 07:59:43
+You created some new files, which will be…
+
+[rochak agrawal] 07:59:47
+Viva.
+
+[rochak agrawal] 07:59:51
+This file will go to V1, this file will go to V1. Okay?
+
+[rochak agrawal] 07:59:56
+Now, when it moves, and you submit those changes, because these are the new files, so there is something called the commit.
+
+[rochak agrawal] 08:00:04
+Which means you are saving your changes.
+
+[rochak agrawal] 08:00:08
+So, when you do the commit.
+
+[rochak agrawal] 08:00:10
+Okay, it takes the snapshot of the complete.
+
+[rochak agrawal] 08:00:16
+Hold on.
+
+[rochak agrawal] 08:00:18
+Then, when you do some changes, let's say you did only changes in V2.
+
+[rochak agrawal] 08:00:26
+And again, your file 2 will be B1 only. Now, when you make this second commit, it will again take a snapshot as of late, not the delta between the files. So, every commit.
+
+[rochak agrawal] 08:00:39
+We'll have the complete file structure.
+
+[rochak agrawal] 08:00:42
+For your, uh, reference. But that is more about how Git internally works, but that is how does it work.
+
+[rochak agrawal] 08:00:50
+Okay, then, cheap branching. Branching, like, if you… you would not have worked with SVN.
+
+[rochak agrawal] 08:01:00
+When you will create a branch in Git.
+
+[rochak agrawal] 08:01:04
+And if you know how the branch is getting created in a centralized version control system.
+
+[rochak agrawal] 08:01:09
+Then you will realize that, uh, how easy it is to create the branches in.
+
+[rochak agrawal] 08:01:19
+in a distributed version control system. Then the data integrity.
+
+[rochak agrawal] 08:01:23
+Now.
+
+[rochak agrawal] 08:01:25
+If you are doing some changes in Git.
+
+[rochak agrawal] 08:01:30
+there is a guarantee that no data is being lost. Like, it will not happen that you did 10 changes and you realize, oh, my…
+
+[rochak agrawal] 08:01:39
+Two changes are not there. Never going to happen.
+
+[rochak agrawal] 08:01:43
+Never. Okay? Every commit…
+
+[rochak agrawal] 08:01:47
+is identified by SHA1 checksum.
+
+[rochak agrawal] 08:01:52
+Again, it's an internal algorithm, okay? Content cannot change silently without Git noticing.
+
+[rochak agrawal] 08:02:00
+If you are changing something, Git is going to notice. So, nothing will happen.
+
+[rochak agrawal] 08:02:07
+Like both of the scenario, it will not happen that you have done some changes and you are not going to find it in git. Okay. And then it will also not happen that you have not done anything and git is showing it as a change.
+
+[rochak agrawal] 08:02:21
+So both of the scenario is not going to happen. Git is completely secure.
+
+[rochak agrawal] 08:02:27
+Then the staging area, again, I will keep it for now. So Git has three working areas, the working directly, the staging area, and the commit area, which we will discuss in the next slide. And nothing is lost easily, okay? So if you have not done the commit also, you lost…
+
+[rochak agrawal] 08:02:45
+And you… you unzipped your file. There is…
+
+[rochak agrawal] 08:02:49
+If the versioning is enabled, nothing is really lost in it.
+
+[rochak agrawal] 08:02:54
+Everything is recoverable.
+
+[rochak agrawal] 08:02:56
+Okay, now…
+
+[rochak agrawal] 08:03:01
+people generally understand.
+
+[rochak agrawal] 08:03:03
+Git is GitHub. Okay.
+
+[rochak agrawal] 08:03:06
+So, and that is where, let me clarify, Git is not equal to GitHub.
+
+[rochak agrawal] 08:03:14
+We need to understand this very carefully. People get this confusion, Git and GitHub. Git and GitHub…
+
+[rochak agrawal] 08:03:23
+Beva, let me complete the slide, and I'll take the questions.
+
+[rochak agrawal] 08:03:27
+Git and GitHub is not the same thing. Keep that in mind. It's a very, very basic thing, but people do this mistake in the interviews.
+
+[rochak agrawal] 08:03:38
+Git is the… Git is your version control tool.
+
+[rochak agrawal] 08:03:42
+Okay?
+
+[rochak agrawal] 08:03:43
+Git is the version control tool.
+
+[rochak agrawal] 08:03:46
+What… whatever we are talking about.
+
+[rochak agrawal] 08:03:49
+We are talking about Git.
+
+[rochak agrawal] 08:03:53
+GitHub is a hosting and collaboration platform, okay?
+
+[rochak agrawal] 08:03:58
+Now.
+
+[rochak agrawal] 08:03:59
+In the first few, uh, slides, uh, we will only talk about the kit. So, here you see…
+
+[rochak agrawal] 08:04:12
+This repository you are seeing here.
+
+[rochak agrawal] 08:04:17
+This need some hosting platform.
+
+[rochak agrawal] 08:04:19
+So that hosting platform is… can be GitHub.
+
+[rochak agrawal] 08:04:27
+There is GitLab
+
+[rochak agrawal] 08:04:29
+There is Bitbucket.
+
+[rochak agrawal] 08:04:31
+Are you in Naples?
+
+[rochak agrawal] 08:04:34
+Uh, AWS CodeCommit.
+
+[rochak agrawal] 08:04:37
+board committee, yes.
+
+[rochak agrawal] 08:04:39
+and GCP Code Bravos.
+
+[rochak agrawal] 08:04:43
+There are multiple others, but that… so GitHub is a hosting platform which is going to host your remote repository, your central repository. But all the versioning and everything is happening.
+
+[rochak agrawal] 08:04:57
+is happened via this tool called Git.
+
+[rochak agrawal] 08:04:59
+So you understand git is a software which you install on your machine run entirely offline.
+
+[rochak agrawal] 08:05:08
+Track changes, branches, merges history. It created in 2005, but it got popularity after 2015.
+
+[rochak agrawal] 08:05:17
+Okay? While on the other side, it can be GitHub, GitLab, Bitbucket, Azure Repos, a website that stores Git repositories.
+
+[rochak agrawal] 08:05:28
+add CICD, we can do multiple things, and you can see the alternatives also, GitLab, Bitbucket, Azure, of course. So we can use Git.
+
+[rochak agrawal] 08:05:37
+with no GitHub account at all, or you cannot… but you cannot use GitHub without GitHub, okay? So, GitHub, we will see in session 3, means, uh, after some sessions, uh.
+
+[rochak agrawal] 08:05:51
+Our primary focus right now will be on Git.
+
+[rochak agrawal] 08:05:55
+So Git is a version control system, not GitHub. GitHub is a hosting platform for your repositories.
+
+[rochak agrawal] 08:06:04
+Very clearly you need to understand this.
+
+[rochak agrawal] 08:06:06
+Okay, now…
+
+[rochak agrawal] 08:06:08
+Any questions? Bevo, you have a question?
+
+[rochak agrawal] 08:06:16
+Yes, ma'am.
+
+[Vaibhav Gupta] 08:06:20
+So, uh, sir, in version control, like, in central, we have a central repository, and if any… made by any developer, it's, uh, totally submit in the main repository, right?
+
+[rochak agrawal] 08:06:25
+Mm-hmm.
+
+[rochak agrawal] 08:06:32
+Correct.
+
+[Vaibhav Gupta] 08:06:33
+So, uh, the thing is, like, uh, in distributed, we have separate repositories, so if any changes happen in, uh…
+
+[Vaibhav Gupta] 08:06:44
+Uh, in the code or something.
+
+[rochak agrawal] 08:06:44
+No, no. So, Bebo, let me explain. I think I got your question. So, let me explain a thing, and then you see if I answered your question.
+
+[rochak agrawal] 08:06:53
+So, if you compare both, okay.
+
+[rochak agrawal] 08:06:58
+See, there is a central repository in both.
+
+[Vaibhav Gupta] 08:07:02
+Hmm.
+
+[rochak agrawal] 08:07:02
+Here, also, you have a central repository?
+
+[rochak agrawal] 08:07:04
+And here, also, you have a central repository, correct?
+
+[Vaibhav Gupta] 08:07:08
+Hmm.
+
+[rochak agrawal] 08:07:09
+The difference is…
+
+[rochak agrawal] 08:07:12
+In the centralized version control system, for every operation, you are dependent on the central level.
+
+[rochak agrawal] 08:07:19
+Okay.
+
+[Vaibhav Gupta] 08:07:21
+Mm-hmm.
+
+[rochak agrawal] 08:07:21
+While in the distributed version control system.
+
+[rochak agrawal] 08:07:25
+You download the complete repository on your local system itself. Then you work with this local repository.
+
+[rochak agrawal] 08:07:32
+So, you see, now I have 3 repositories on 3 different machines, same repository. So, you can do all your work with the remote repository. It is just when you want to sync with others' work, then you do the push and pull.
+
+[rochak agrawal] 08:07:46
+And then you need the central repository, right? Pollute.
+
+[rochak agrawal] 08:07:52
+all operations, you do not need the central repository. But the central repository is there in both the cases, correct?
+
+[Vaibhav Gupta] 08:08:01
+Correct. So these repositories, uh, that we are working, it's for local repositories, right?
+
+[rochak agrawal] 08:08:01
+Yeah.
+
+[rochak agrawal] 08:08:05
+Correct. We will be in distributed version. And another point, Bebo, we will be working on a distributed version control system. Nowadays centralized version control system are almost obsolete. Okay. No one is working on a centralized version control system.
+
+[rochak agrawal] 08:08:22
+Okay, so if you do not know a centralized version control system like SVN, it is completely fine. Any new project that is being started is going to work with the distributed version control system. So you will have a repository.
+
+[rochak agrawal] 08:08:36
+you will download that complete repository on your platform, okay, on your workstation. Then you do the work with your local repository.
+
+[rochak agrawal] 08:08:46
+Because this repository will have a complete version and complete history.
+
+[rochak agrawal] 08:08:50
+You want to go to a version V1, version V5, anything you can do, and then once you are done with your changes, then you will sync your repository with your remote.
+
+[Vaibhav Gupta] 08:08:59
+Hmm.
+
+[rochak agrawal] 08:09:05
+Okay.
+
+[Vaibhav Gupta] 08:09:10
+Okay.
+
+[rochak agrawal] 08:09:12
+See, it is like… I'll explain one more, uh, with an example. It is like a Google Drive, okay? Now, uh, you have a shared folder on Google Drive between multiple people, okay? Now, I… what I can do is, um, I need to do some changes.
+
+[rochak agrawal] 08:09:29
+Only thing will… the difference will be this example and GitHub is their versioning will not be there. So, what I can do is, I…
+
+[rochak agrawal] 08:09:37
+now the folder has some, uh, files. Now I download that folder, okay?
+
+[rochak agrawal] 08:09:45
+So, when you download the folder, you will get all the files, correct?
+
+[Vaibhav Gupta] 08:09:48
+Mm-hmm, correct.
+
+[rochak agrawal] 08:09:48
+I will make some changes, add some file on my local system, and then I'll upload the folder again. So my… the folder which was there in Google Drive will be updated, correct?
+
+[Vaibhav Gupta] 08:10:02
+Correct.
+
+[rochak agrawal] 08:10:04
+Same is the case, you have a repository here.
+
+[Vaibhav Gupta] 08:10:05
+But…
+
+[rochak agrawal] 08:10:06
+Yeah, yeah, go ahead.
+
+[Vaibhav Gupta] 08:10:08
+But in G-Drive, we have… we are sharing the same repository, not in your further repository. I'm…
+
+[rochak agrawal] 08:10:13
+We are also sharing the same repository, Webhook. This is the same repository, correct?
+
+[Vaibhav Gupta] 08:10:18
+But the data will be pulled, I mean, pushed from local to central.
+
+[rochak agrawal] 08:10:20
+No. No, no.
+
+[rochak agrawal] 08:10:22
+Because you're continuously doing the changes. That's what a developer do, right?
+
+[Vaibhav Gupta] 08:10:26
+Right.
+
+[rochak agrawal] 08:10:29
+See for example I'll give you more example.
+
+[rochak agrawal] 08:10:33
+So, if you see, if you go to GitHub.
+
+[rochak agrawal] 08:10:40
+Let's see…
+
+[rochak agrawal] 08:10:42
+This is a repository.
+
+[rochak agrawal] 08:10:43
+Okay, now this is your remote repository. I will give this repository, I have this repository, so there is an option. We will see how we can download it. So you can see there is an option, clone using the URL. Once you clone this, okay.
+
+[Vaibhav Gupta] 08:10:58
+Hmm. Okay.
+
+[rochak agrawal] 08:10:58
+Then whatever the history is there on this repository will be downloaded on your local system.
+
+[rochak agrawal] 08:11:06
+Got it.
+
+[rochak agrawal] 08:11:08
+Now, this repository will be having multiple versions. I'll give you a more, uh…
+
+[rochak agrawal] 08:11:22
+Let's take this one.
+
+[rochak agrawal] 08:11:24
+Okay, now you…
+
+[Vaibhav Gupta] 08:11:26
+That I understand, like, uh, if any repository will… we will, uh, clone it, so that will be open in our, you know, um, in our, like, coding platform, like, visual… visual codes, we can open the files.
+
+[rochak agrawal] 08:11:35
+Correct.
+
+[Vaibhav Gupta] 08:11:39
+Yep.
+
+[rochak agrawal] 08:11:39
+See, simply, you understand, this is a repository.
+
+[rochak agrawal] 08:11:42
+Okay, now I share it with myself.
+
+[Vaibhav Gupta] 08:11:43
+Hmm.
+
+[rochak agrawal] 08:11:46
+And you.
+
+[rochak agrawal] 08:11:47
+So you… I have a local copy of the data.
+
+[rochak agrawal] 08:11:51
+Of the complete history, and you will also have the complete history.
+
+[rochak agrawal] 08:11:55
+You will do your changes, local, one…
+
+[rochak agrawal] 08:12:01
+So now, for doing the changes, navigating through the versions, you do not… do you need the central repository? No. Correct?
+
+[Vaibhav Gupta] 08:12:09
+Hmm, no.
+
+[rochak agrawal] 08:12:09
+Because you have all the history here, and you have all the history here. Now, let's say you make the changes in a.txt.
+
+[rochak agrawal] 08:12:22
+This person make the changes in b.txt.
+
+[rochak agrawal] 08:12:26
+Once you are done with the changes, since these changes are not conflicting with each other, you will push those changes.
+
+[rochak agrawal] 08:12:33
+He will also post those changes, and your repository will move further from, let's say, version 50 to…
+
+[rochak agrawal] 08:12:41
+Version 51.
+
+[rochak agrawal] 08:12:43
+Correct?
+
+[rochak agrawal] 08:12:48
+Understood.
+
+[Vaibhav Gupta] 08:12:50
+Hmm.
+
+[rochak agrawal] 08:12:51
+Clear till now?
+
+[Vaibhav Gupta] 08:12:55
+Hmm.
+
+[rochak agrawal] 08:12:56
+See, that is what we are doing. Dental repository.
+
+[rochak agrawal] 08:13:01
+Your developers will constantly be working on the code and update your code.
+
+[Vaibhav Gupta] 08:13:07
+Correct.
+
+[rochak agrawal] 08:13:08
+So that is what they need to do.
+
+[rochak agrawal] 08:13:10
+And…
+
+[rochak agrawal] 08:13:12
+Let's say, if…
+
+[rochak agrawal] 08:13:15
+Both are working A.TXT.
+
+[rochak agrawal] 08:13:19
+Then, you remember we, uh, discussed the term called merge conflict.
+
+[rochak agrawal] 08:13:24
+Okay, then repository will get confused. I will take this a.txt or this a.txt. This is called the merged conflict.
+
+[rochak agrawal] 08:13:37
+Great, because…
+
+[rochak agrawal] 08:13:38
+We both are doing the changes on the same file. So there are ways to resolve the merge conflict. I will not go into that at this stage, but that is how it works.
+
+[rochak agrawal] 08:13:50
+Okay, if multiple developers working on a different file, there is no merge conflict. You will do your changes in your local repository and you push it to your remote repository, right? And then if you are doing the same file, then there might be the merge conflict which we need to look on.
+
+[rochak agrawal] 08:14:07
+We will do the hands-on there, then probably you will understand it more, but that is how generally it works.
+
+[rochak agrawal] 08:14:14
+Okay?
+
+[Vaibhav Gupta] 08:14:15
+Okay, okay.
+
+[rochak agrawal] 08:14:18
+So…
+
+[rochak agrawal] 08:14:19
+Okay, now let's…
+
+[rochak agrawal] 08:14:26
+Now, you will do the changes on your local system, okay? So, I'll install the git on my…
+
+[rochak agrawal] 08:14:33
+Windows laptop. You can install it on, again, on Linux, everywhere, no problem.
+
+[rochak agrawal] 08:14:41
+So, downloading, installing the Git is very easy.
+
+[rochak agrawal] 08:14:45
+So, there is a website called.
+
+[rochak agrawal] 08:14:49
+GitHCM.com.
+
+[rochak agrawal] 08:14:52
+So, see, I'll go to get installed, and you can see, you need to choose your operating system, you can go to Linux, simple command, yum install nginx
+
+[rochak agrawal] 08:15:03
+Operating system you are using.
+
+[rochak agrawal] 08:15:08
+Mac OS also brew install gate simple command just you need to run this command nothing else in Windows you will just go to.
+
+[rochak agrawal] 08:15:17
+this setup.
+
+[rochak agrawal] 08:15:20
+standalone installer. Now there's a different, different, uh, is there, uh, they come with the different supporting softwares also. You can…
+
+[rochak agrawal] 08:15:29
+Choose anyone.
+
+[rochak agrawal] 08:15:30
+So if you go, I'll click on the EXE file.
+
+[rochak agrawal] 08:15:36
+You just…
+
+[rochak agrawal] 08:15:38
+Need to do next, next, next, next, next, next, next.
+
+[rochak agrawal] 08:15:44
+Nothing much we need to do. I already have, I think, Git installed. Let's see.
+
+[rochak agrawal] 08:16:16
+Yes, I'm here.
+
+[Amiya Nanda] 08:16:19
+Ah, hi Rojak, good morning.
+
+[rochak agrawal] 08:16:20
+Good morning.
+
+[Amiya Nanda] 08:16:22
+Roger, I have a small doubt.
+
+[rochak agrawal] 08:16:24
+Your voice is low, uh, Mia, can you speak up a bit?
+
+[Amiya Nanda] 08:16:27
+Ah, now, is it, ah, old one?
+
+[rochak agrawal] 08:16:27
+Yes, better, better.
+
+[Amiya Nanda] 08:16:29
+Yeah, so, ah, Rochak, actually, I have a doubt on AWS, ah, account creation.
+
+[rochak agrawal] 08:16:34
+Mm-hmm.
+
+[Amiya Nanda] 08:16:36
+So, uh, I, uh, tried yesterday, uh, and, uh, it is asking for credit card or, uh, this payment details.
+
+[rochak agrawal] 08:16:42
+Yes. Correct. For me, yes, they will ask, uh, the information, the payment information. Either you can give the UPI is also enabled now.
+
+[Amiya Nanda] 08:16:51
+Uh-huh.
+
+[rochak agrawal] 08:16:53
+Sorry.
+
+[Amiya Nanda] 08:16:53
+with autoplay.
+
+[rochak agrawal] 08:16:54
+Sorry?
+
+[Amiya Nanda] 08:16:55
+With auto pay, there is a option with auto pay.
+
+[rochak agrawal] 08:16:57
+No, so there is an auto-pay, yes, yes, uh, there is an auto-pay, they ask, that is by design, uh, but, uh, they are not going to charge you anything, so I'll, I…
+
+[rochak agrawal] 08:17:08
+Can show you, uh, even for me.
+
+[rochak agrawal] 08:17:11
+But you have to give. Without that, it is not going to create an account. So you can see here.
+
+[Amiya Nanda] 08:17:16
+And 8, ah, with credit card also.
+
+[rochak agrawal] 08:17:18
+Even if it is auto-pay, so can you see my screen?
+
+[rochak agrawal] 08:17:21
+So my total bill is $13,000. I'm doing some other things also. That's why this bill is… if we are doing only the hands-on in this, uh…
+
+[Amiya Nanda] 08:17:27
+Okay.
+
+[Amiya Nanda] 08:17:31
+Only for trials, only for trials.
+
+[rochak agrawal] 08:17:31
+A class, then your bill will not be?
+
+[rochak agrawal] 08:17:34
+So much.
+
+[Amiya Nanda] 08:17:35
+Yeah.
+
+[rochak agrawal] 08:17:35
+So, here you can see…
+
+[rochak agrawal] 08:17:38
+They will… even though there was an auto-pay.
+
+[rochak agrawal] 08:17:41
+You can make a payment by going to the payment page.
+
+[Amiya Nanda] 08:17:44
+Okay, and if we'll go with credit card, then?
+
+[rochak agrawal] 08:17:44
+Okay.
+
+[rochak agrawal] 08:17:48
+Yeah, you can use any one. UPI is the newest edition. You can do with the UPI, you can do with the credit card, anything.
+
+[Amiya Nanda] 08:17:50
+Credit card.
+
+[Amiya Nanda] 08:17:56
+So for free versions also, they, it is not chargeable, chargeable.
+
+[rochak agrawal] 08:17:59
+Yes, because they want to verify your identity. It is across the cloud. You use GCP, Azure, AWS, you need to give your payment information. They will do a transaction of 2 rupees or 1 rupees, I think.
+
+[Amiya Nanda] 08:18:03
+Okay.
+
+[Amiya Nanda] 08:18:10
+Yes.
+
+[Amiya Nanda] 08:18:11
+Yes.
+
+[rochak agrawal] 08:18:12
+Uh, and that also will be refunded, by the way.
+
+[Amiya Nanda] 08:18:14
+Okay, and after this free trial version ended, like after 6 months.
+
+[rochak agrawal] 08:18:20
+Yes. So, $200 you are going to get in a free credit.
+
+[Amiya Nanda] 08:18:21
+Then, it will be…
+
+[Amiya Nanda] 08:18:25
+Means it will be, ah, ah, chargeable after that 6 months.
+
+[rochak agrawal] 08:18:28
+Yeah, after 6 months, they will ask you that you want to convert your account in a pay-as-you-go model. If you don't want, then, uh, like, you… of course, you will not be, since your credit will be finished, or the time would be finished, then you will not be able to use the services until you are upgrading your account.
+
+[Amiya Nanda] 08:18:34
+Okay, okay.
+
+[Amiya Nanda] 08:18:45
+Okay, means after my confirmation, only the auto credit or auto pay will be open.
+
+[rochak agrawal] 08:18:48
+You got it.
+
+[rochak agrawal] 08:18:49
+Yeah, yeah, yeah. So don't worry about the payment part, but uh… it is by design, actually. Like, we cannot do anything about it.
+
+[Amiya Nanda] 08:18:51
+Right?
+
+[Amiya Nanda] 08:18:52
+Okay.
+
+[Amiya Nanda] 08:18:55
+Okay.
+
+[Amiya Nanda] 08:18:56
+Okay, okay, okay. I'll try today. If any issue, I'll, I'll let you know in the next class. Yeah. Thank you very much.
+
+[rochak agrawal] 08:18:59
+Sure, sure.
+
+[rochak agrawal] 08:19:00
+Yeah.
+
+[rochak agrawal] 08:19:01
+Okay, now my Git is installed.
+
+[rochak agrawal] 08:19:05
+I'll click on finish.
+
+[rochak agrawal] 08:19:07
+Okay, so it's installed. Now, how can I verify that it is installed? You go to CMD.
+
+[rochak agrawal] 08:19:19
+you run git, so you can see, I can run the git command, and if you see git hyphen version.
+
+[rochak agrawal] 08:19:26
+Okay? So, Git version 2.25 is installed on my system.
+
+[rochak agrawal] 08:19:31
+So installing is very simple, and in Git also, if you see, there is not very, very…
+
+[rochak agrawal] 08:19:40
+Much commands are there and.
+
+[rochak agrawal] 08:19:44
+Understand one thing, okay?
+
+[rochak agrawal] 08:19:47
+This I tell is in my every batch. Git is a tool which is being used by the developer primarily because you are not going to develop the code. So you are not aware about the merge conflict. It is just.
+
+[rochak agrawal] 08:20:03
+some admin responsibilities. So, for example, if you're using the GitHub platform, okay, as your central version control management system.
+
+[rochak agrawal] 08:20:11
+Then you will have responsibilities for setting up the permissions, for setting up the policies, uh, giving permissions to user, creating branch policies and other things, but committing the code, uh.
+
+[rochak agrawal] 08:20:26
+merging the branches and other things, which is… will be a responsibility more of a developer side, because I don't know what the code is being developed. I… how can I merge, right? But we… of course, we need to have a understanding about how this everything works.
+
+[rochak agrawal] 08:20:41
+So…
+
+[rochak agrawal] 08:20:42
+If you are comfortable with Windows, you can do it with the command prompt itself, but with the Git, there is.
+
+[rochak agrawal] 08:20:51
+A tool will be installed called the Git Bash.
+
+[rochak agrawal] 08:20:57
+Okay.
+
+[rochak agrawal] 08:21:02
+you… here you can run the Linux command, ls-lrt, if you see. Here, I can run the Linux commands, okay? So that's where I can do it here as well, uh, in the git bash. So the command will be exactly the same, it is just ls-lrt, dia, cd, I can do it in this, uh, git bash.
+
+[rochak agrawal] 08:21:21
+Which I cannot do in a command prompt. Git command will be same, so if you run git, you can see all the same command, fetch, full, push.
+
+[rochak agrawal] 08:21:30
+Okay? So it's the same one.
+
+[rochak agrawal] 08:21:33
+I generally prefer Git Bash, but it is up to you.
+
+[rochak agrawal] 08:21:37
+git — version. So it is the same command.
+
+[rochak agrawal] 08:21:41
+Now, are you clear?
+
+[rochak agrawal] 08:21:43
+There that way.
+
+[rochak agrawal] 08:21:49
+I'd like to do LSF.
+
+[rochak agrawal] 08:21:52
+Okay.
+
+[rochak agrawal] 08:21:56
+where I created that folder.
+
+[rochak agrawal] 08:22:15
+Okay, let it be. I create a folder here. Okay, now there is two things.
+
+[Amiya Nanda] 08:22:23
+Rochak is this git pass, right?
+
+[rochak agrawal] 08:22:26
+This is Git Bash, yes, that's what I said.
+
+[Amiya Nanda] 08:22:27
+And it is in Linux.
+
+[rochak agrawal] 08:22:29
+No, no, it is not in Linux. It is a Linux flavor. It is on your laptop only, so that's what I'm saying. When you install Git, this Git Bash also gets installed on your laptop. This is your laptop only.
+
+[Amiya Nanda] 08:22:34
+Okay.
+
+[Amiya Nanda] 08:22:40
+Okay.
+
+[Amiya Nanda] 08:22:42
+Okay, okay, okay, okay. And if we'll, if we'll go for Windows also, the same thing, the same, ah, UI.
+
+[rochak agrawal] 08:22:43
+Okay.
+
+[rochak agrawal] 08:22:48
+But this is Windows only, right?
+
+[Amiya Nanda] 08:22:50
+Okay, Windows, yes, yes, yes, yes. Okay, okay, okay.
+
+[rochak agrawal] 08:22:55
+Now, there is two things.
+
+[rochak agrawal] 08:23:03
+When you want to use GET.
+
+[rochak agrawal] 08:23:11
+You would like to work on a new repository?
+
+[rochak agrawal] 08:23:17
+Correct? You started the development from the fresh, there is no code base available, there is no thing, uh, no repository is there.
+
+[rochak agrawal] 08:23:26
+or you…
+
+[rochak agrawal] 08:23:26
+are going to work on an existing repository.
+
+[rochak agrawal] 08:23:29
+Correct?
+
+[rochak agrawal] 08:23:36
+So, right now, we'll work on an existing repo, and then we will see how to initialize a new repository.
+
+[rochak agrawal] 08:23:42
+So what I'll do, I will go to one of my days, I'll see the commits.
+
+[rochak agrawal] 08:23:52
+I want a branch where I am going to have multiple commits.
+
+[rochak agrawal] 08:24:20
+I forgot where to see the commits.
+
+[rochak agrawal] 08:24:30
+Click on the commit link.
+
+[rochak agrawal] 08:24:38
+Anyone able to see upper right corner comet?
+
+[rochak agrawal] 08:24:45
+This is saying one commit ahead of this.
+
+[rochak agrawal] 08:24:50
+But it's not.
+
+[rochak agrawal] 08:24:55
+Okay, yeah.
+
+[rochak agrawal] 08:24:59
+Comment.
+
+[rochak agrawal] 08:25:08
+There it is. I'm fine.
+
+[rochak agrawal] 08:25:17
+No problem.
+
+[rochak agrawal] 08:25:19
+Let me take it.
+
+[rochak agrawal] 08:25:22
+So what it is going to do, so there is a command called git clone, okay? So currently, if you see, there is nothing related to this directory is there, right? So just some sample files are there. So I am going to run.
+
+[rochak agrawal] 08:25:41
+Let me clear the screen.
+
+[rochak agrawal] 08:25:44
+Git clone. Clone is a command which is going to copy the repository in your local system.
+
+[rochak agrawal] 08:25:51
+And I'm going to paste.
+
+[rochak agrawal] 08:26:00
+Bobby?
+
+[rochak agrawal] 08:26:02
+get… loan…
+
+[rochak agrawal] 08:26:07
+Okay.
+
+[rochak agrawal] 08:26:08
+You need to do… doesn't need to do anything, you will just give enter.
+
+[rochak agrawal] 08:26:13
+Okay.
+
+[rochak agrawal] 08:26:16
+This is a cloning into Jenkins Java project.
+
+[rochak agrawal] 08:26:20
+Now, if you do less hyphen LRT, Jenkins Java project is created on your, uh, this is a repository is created.
+
+[rochak agrawal] 08:26:28
+So, if you go to Jenkins Java project.
+
+[rochak agrawal] 08:26:31
+You can see, I have got two folders, uh, whatever is there, right?
+
+[rochak agrawal] 08:26:38
+And…
+
+[rochak agrawal] 08:26:39
+Very important. This is the key.
+
+[rochak agrawal] 08:26:43
+Select, yeah.
+
+[rochak agrawal] 08:26:44
+If you do LSF and LRT.
+
+[rochak agrawal] 08:26:47
+form.xml and src file has been downloaded. Right.
+
+[rochak agrawal] 08:26:52
+And if you do ls-lat, you are going to see the .get.
+
+[rochak agrawal] 08:26:57
+Can you see .git?
+
+[rochak agrawal] 08:26:59
+Now this is the key. This is if you delete this dot git directory from here, all your versioning will be lost.
+
+[rochak agrawal] 08:27:11
+So, every versioning-related detail.
+
+[rochak agrawal] 08:27:15
+will be there in this directory in .git.
+
+[rochak agrawal] 08:27:17
+Again, that is… that can be an interview question. So, in a folder, how would you verify, uh, uh, where your versioning is stored? It is stored in the .git directory.
+
+[rochak agrawal] 08:27:29
+Okay.
+
+[rochak agrawal] 08:27:30
+Now if you see there is a command called git log.
+
+[rochak agrawal] 08:27:37
+Again, you can see…
+
+[rochak agrawal] 08:27:40
+there is multiple commits are there. We will talk about commits and other things in detail, but you can see I have downloaded the complete history. So you can see multiple commits are there, right? And you see June 30.
+
+[rochak agrawal] 08:27:52
+Whodunit? Road check.
+
+[rochak agrawal] 08:27:55
+March 6th, Denise.
+
+[rochak agrawal] 08:27:58
+Fab 20, Deniz, Deniz, right? So you can see.
+
+[rochak agrawal] 08:28:02
+Pro check, June 30. March 6th, the next. So you, you, you are getting to know.
+
+[rochak agrawal] 08:28:09
+what file has been changed? And here, you can clearly say, pom.xml, index.jsp, update index.jsp, update index.jsp, right? So, what you are getting?
+
+[rochak agrawal] 08:28:21
+What file has been changed?
+
+[rochak agrawal] 08:28:23
+Who changed it?
+
+[rochak agrawal] 08:28:25
+When it… when it has been changed.
+
+[rochak agrawal] 08:28:27
+Gilead?
+
+[rochak agrawal] 08:28:29
+So now before I go talk about what is head, what is master, another thing.
+
+[rochak agrawal] 08:28:36
+We need to know.
+
+[rochak agrawal] 08:28:45
+This. Git file workflow. Again.
+
+[rochak agrawal] 08:28:49
+This is very important if you understood this slide.
+
+[rochak agrawal] 08:28:55
+There is nothing in it at all. Nothing.
+
+[rochak agrawal] 08:29:01
+Okay? So, uh, now before I go to this slide, uh, Megha has a question. So, yes, Megha?
+
+[Megha Uthaman] 08:29:12
+Yeah, uh, so, two questions. So, here also, when you are doing the cellulose minus cell RT.
+
+[Megha Uthaman] 08:29:18
+It was showing 4, but the count was showing 4, right? Maybe in the screen, but the file is showing 2.
+
+[rochak agrawal] 08:29:23
+But the same thing, same logic.
+
+[rochak agrawal] 08:29:25
+Because there's a hidden file, it will be counted as one.
+
+[Megha Uthaman] 08:29:29
+Okay, so that… so even if you give LS minus LA RT, then it was showing, uh, 28, right? But you cannot see… it's almost, like…
+
+[rochak agrawal] 08:29:30
+Yeah?
+
+[rochak agrawal] 08:29:36
+But when you do LS-LRT, it counts all the hidden files as one file.
+
+[Megha Uthaman] 08:29:43
+Okay. So, this count, I'm not able to get, like, uh… 28, it's not displaying.
+
+[rochak agrawal] 08:29:44
+Yeah. Okay.
+
+[rochak agrawal] 08:29:48
+See, we do not need to go into that details, Megha, this is not relevant to us.
+
+[Megha Uthaman] 08:29:52
+Okay, so that is not, uh, the count is not, doesn't matter.
+
+[rochak agrawal] 08:29:53
+Yeah?
+
+[rochak agrawal] 08:29:55
+Not relevant to us, yeah, yeah.
+
+[Megha Uthaman] 08:29:57
+Okay, and one more, like, you were showing this, uh, commit and all, or the check-in details, right? So we can check that in this GitHub or this Windows also, right, Radhakrishnan?
+
+[rochak agrawal] 08:29:58
+Okay? Hmm.
+
+[rochak agrawal] 08:30:06
+Yeah, yeah, we can check. I will show what is the option. We can check, uh, the same, uh, commit you are seeing here. So, that's what I said. We… once we understand the working file workflow, then we will see, uh, the same number of the commit which you are seeing here.
+
+[rochak agrawal] 08:30:22
+Right? You can see it in the GitHub also. I am not getting where I can see… oh, yeah. This… see? It is in front of my eyes, and…
+
+[rochak agrawal] 08:30:31
+There's a 259 commits are there.
+
+[rochak agrawal] 08:30:34
+Hey, so you can see, same thing, commits on June 30, Rochak
+
+[rochak agrawal] 08:30:39
+Same thing we discussed, right?
+
+[rochak agrawal] 08:30:42
+Same, everything. See, because we cloned this repository, right?
+
+[rochak agrawal] 08:30:50
+We cloned this repository only, correct?
+
+[Megha Uthaman] 08:30:53
+Yes, yes, yes.
+
+[rochak agrawal] 08:30:53
+So, this history only reflected here.
+
+[rochak agrawal] 08:30:56
+It is not something new.
+
+[rochak agrawal] 08:30:59
+Understood.
+
+[Megha Uthaman] 08:31:00
+Yeah, I got this one.
+
+[rochak agrawal] 08:31:01
+So this is only… this is the only history that we are getting it here, on my local system.
+
+[rochak agrawal] 08:31:09
+Yes, you are.
+
+[Jeeva Koli] 08:31:12
+If you don't mind, can you please show that, uh, how we create the project in the GitHub first, from beginning, and then how we landed to…
+
+[rochak agrawal] 08:31:19
+But, Jeeva, see, uh, we need to folk, uh, here…
+
+[rochak agrawal] 08:31:25
+Uh, we have very clearly, explicitly mentioned that in this first.
+
+[rochak agrawal] 08:31:31
+Session 1 and 2, we are going to talk about Git, and then we will talk about GitHub in our last session.
+
+[rochak agrawal] 08:31:38
+Right? So, we will see that also.
+
+[rochak agrawal] 08:31:41
+Currently, and that is what here also I, uh, very explicitly mentioned.
+
+[rochak agrawal] 08:31:47
+I am currently working on the existing repo, then we will work on the new repo as well.
+
+[rochak agrawal] 08:31:52
+So, we will cover that, Jiva.
+
+[Jeeva Koli] 08:31:55
+Okay, we are not relating to, like, uh, how… how do you directly come to this cloned repository and admin center?
+
+[rochak agrawal] 08:32:00
+No, see, that is… see, that is what we are saying, we are working on the existing repo.
+
+[rochak agrawal] 08:32:06
+Right?
+
+[Jeeva Koli] 08:32:09
+Yeah, sure.
+
+[rochak agrawal] 08:32:11
+Okay.
+
+[rochak agrawal] 08:32:12
+So now…
+
+[rochak agrawal] 08:32:13
+This is very important, okay? This is the single most important slide.
+
+[rochak agrawal] 08:32:20
+In the Holgate.
+
+[rochak agrawal] 08:32:22
+Okay.
+
+[rochak agrawal] 08:32:24
+Now, let me ask you a question.
+
+[rochak agrawal] 08:32:30
+Not the question, I'll show you only. Uh, where was the file?
+
+[rochak agrawal] 08:32:37
+So, this is my folder where I have enabled the versioning, correct?
+
+[rochak agrawal] 08:32:42
+And then I have here main, index, Java, web, multiple files in there. So index.jsp, web.inf, multiple.
+
+[rochak agrawal] 08:32:53
+Now, what is going to happen?
+
+[rochak agrawal] 08:32:56
+So, Git has… please understand this very carefully, and if you have any question, happy to answer, because if you don't understand this, you will not understand anything further.
+
+[rochak agrawal] 08:33:08
+Okay?
+
+[rochak agrawal] 08:33:10
+So, you can see it here.
+
+[rochak agrawal] 08:33:14
+You have three areas. This is…
+
+[rochak agrawal] 08:33:18
+So this part, you can say, is GitHub, or any other, uh, source code repo, like, we have written it also. GitHub, or GitLab, or something. But this is the part.
+
+[rochak agrawal] 08:33:31
+Where… which is happening on your local system.
+
+[rochak agrawal] 08:33:34
+Okay.
+
+[rochak agrawal] 08:33:40
+Now, there are three things. One is your local history, local repositories. So, we already have a local repository.
+
+[rochak agrawal] 08:33:54
+So if you go here, so we have, uh…
+
+[rochak agrawal] 08:34:05
+we have a local repository, and all the details of this repository is there in .git. So if you go inside .git.
+
+[rochak agrawal] 08:34:15
+So you can see, um, logs, HAD, reference, multiple things are there, which is not of our use, but the important thing is HAD is there, and then, uh… so this is how…
+
+[rochak agrawal] 08:34:30
+Git internally tracks the versioning.
+
+[rochak agrawal] 08:34:33
+Very importantly, if I remove this .git folder.
+
+[rochak agrawal] 08:34:38
+then my versioning is gone, my local repository is gone. So this is a very important directory to protect.
+
+[rochak agrawal] 08:34:49
+Okay? If something goes wrong with this, your whole versioning is gone. And I can show you this.
+
+[rochak agrawal] 08:34:57
+So, currently, you can see git log, I can see all the history and commit, all the things.
+
+[rochak agrawal] 08:35:04
+Now, if you see…
+
+[rochak agrawal] 08:35:06
+RM hyphen RF dot get.
+
+[rochak agrawal] 08:35:09
+Okay.
+
+[rochak agrawal] 08:35:12
+I've deleted the Git directory.
+
+[rochak agrawal] 08:35:17
+I was inside the git itself. rm-rf.git.
+
+[rochak agrawal] 08:35:23
+Okay.
+
+[rochak agrawal] 08:35:24
+Now, if you see, there is no .git directory.
+
+[rochak agrawal] 08:35:28
+You see.
+
+[rochak agrawal] 08:35:30
+You see? The edit.
+
+[rochak agrawal] 08:35:33
+Not a Git repository.
+
+[rochak agrawal] 08:35:36
+Not a Git repository. Whatever history you've downloaded, whatever the versions you have downloaded, everything is gone.
+
+[rochak agrawal] 08:35:46
+So, dot… any time you are initializing a repository.
+
+[rochak agrawal] 08:35:51
+You. Need.
+
+[rochak agrawal] 08:35:53
+to protect your .git directly.git is there till the time your versioning is there. If .git is gone, your versioning is gone.
+
+[rochak agrawal] 08:36:03
+Okay, so I'll… so now it is my normal folder. There is this… this is not a repository anymore.
+
+[rochak agrawal] 08:36:10
+I'll remove this, I'll clone it again.
+
+[rochak agrawal] 08:36:18
+Okay, again, I'll do a clone.
+
+[rochak agrawal] 08:36:33
+Okay, now if you again do git log.
+
+[rochak agrawal] 08:36:36
+You will see on the commit, because we have cloned it again.
+
+[rochak agrawal] 08:36:42
+So, that is your…
+
+[rochak agrawal] 08:36:45
+local repository. Committed history inside .git. Very important. Now, whatever commit I will do.
+
+[rochak agrawal] 08:36:53
+It will add one more commit in my local repository.
+
+[rochak agrawal] 08:36:56
+Correct.
+
+[rochak agrawal] 08:36:58
+Then we have a working directory. Working directory is your files as you see them on disk.
+
+[rochak agrawal] 08:37:07
+Very important point.
+
+[rochak agrawal] 08:37:09
+to remember. Let's say I have a file.
+
+[rochak agrawal] 08:37:16
+You can have multiple files, but let's say I have a file.
+
+[rochak agrawal] 08:37:22
+Okay.
+
+[rochak agrawal] 08:37:26
+You will have a version V1, uh, you might have a version V2.
+
+[rochak agrawal] 08:37:32
+You have a version B3, you have a version B4, you will have a version B5.
+
+[rochak agrawal] 08:37:41
+Got it? Now…
+
+[rochak agrawal] 08:37:44
+If I'm going here, for example.
+
+[rochak agrawal] 08:37:47
+I am seeing from…
+
+[rochak agrawal] 08:37:50
+One form.xml. But we have seen in commit that, uh…
+
+[rochak agrawal] 08:37:56
+In the commit history, if you see, your pom.file, your index.jsp has been changed many times.
+
+[rochak agrawal] 08:38:05
+Correct. It means I have multiple versions of my index.jsp.
+
+[rochak agrawal] 08:38:11
+I might have multiple versions of the pom.xml, but here I am seeing only one.
+
+[rochak agrawal] 08:38:20
+Correct? Here, I am seeing only one.
+
+[rochak agrawal] 08:38:25
+So…
+
+[rochak agrawal] 08:38:27
+Which version? I am going to see it here.
+
+[rochak agrawal] 08:38:34
+Which version I am going to see it here? I am going to see, by default, always the latest version.
+
+[rochak agrawal] 08:38:47
+Okay, so in my directory, I might have…
+
+[rochak agrawal] 08:38:53
+different version stored in the versioning, but in my working directly, I am going to see the latest version.
+
+[rochak agrawal] 08:39:00
+By… this is a default.
+
+[rochak agrawal] 08:39:01
+But if you say, no, no, I want to go to the version before, I can do that, but then how will I know that which.
+
+[rochak agrawal] 08:39:11
+version I am seeing in my working directory, and that is where you need to see this head.
+
+[rochak agrawal] 08:39:19
+Now my head is commit… pointing to this commit. See, versions is commits in Git, okay? Uh…
+
+[rochak agrawal] 08:39:28
+Wherever my head is there.
+
+[rochak agrawal] 08:39:30
+Now my head is pointing to this version, which is there on June 30th.
+
+[rochak agrawal] 08:39:37
+Correct? Now, after the June 30th, also, I have made some changes on October… no, but this is 2024. So, this is, I think, the latest one only. So, June 30th, I have done a change, okay?
+
+[rochak agrawal] 08:39:50
+This I can see.
+
+[rochak agrawal] 08:39:53
+This… and since my head is pointing to…
+
+[rochak agrawal] 08:39:56
+This one?
+
+[rochak agrawal] 08:39:58
+Whatever content was there in this version.
+
+[rochak agrawal] 08:40:02
+I am going to see in my working directory.
+
+[rochak agrawal] 08:40:06
+So that is called the working directory. Working directory is a place where we are going to work and whatever the versions we are seeing there will depend where my head is.
+
+[rochak agrawal] 08:40:18
+So, clear about the local repository and the working directory.
+
+[rochak agrawal] 08:40:31
+Yes, I'm here.
+
+[Amiya Nanda] 08:40:35
+So, working directory, we can see the updated version only, right? Latest version. And, uh, in…
+
+[rochak agrawal] 08:40:41
+No, see, that is by default, okay? But if you say, I want to go to a previous version, you point your how we will do it, we will see that. Uh, so I will make my point, so, for example.
+
+[Amiya Nanda] 08:40:43
+By default. Okay.
+
+[rochak agrawal] 08:40:55
+By default, your head will point to version V5, because it is the latest version.
+
+[Amiya Nanda] 08:40:59
+Okay, by default.
+
+[rochak agrawal] 08:41:01
+It is there. So as you, let's say if you do one more changes, version six will be there. Your head will point to version six. Okay. But if you say no, no, I want to see the version three, then you will point your head to version three and you will see the version three content in your working directory.
+
+[Amiya Nanda] 08:41:02
+Head will be pointed to.
+
+[Amiya Nanda] 08:41:07
+Hmm.
+
+[Amiya Nanda] 08:41:08
+Okay, okay.
+
+[Amiya Nanda] 08:41:18
+Means, ah, we need to point, we need to point the head to the V3 and we need to check.
+
+[rochak agrawal] 08:41:24
+Correct. So we will see the version 3 content in my working directory. Right now, here you see, only… see.
+
+[rochak agrawal] 08:41:31
+In your working directly, I will see only one file. I'm not seeing 5 versions. Correct?
+
+[Amiya Nanda] 08:41:35
+Yes, yes.
+
+[rochak agrawal] 08:41:36
+So, wherever your head will be pointing to, you will see that version in your working directory. By default, it is the latest version head will be pointing to, but we can move the needle here and there.
+
+[Amiya Nanda] 08:41:49
+Okay. And, ah, Rotak, what is this, ah, POM and SRC?
+
+[rochak agrawal] 08:41:50
+Okay.
+
+[rochak agrawal] 08:41:56
+This is the files. You can have any files.
+
+[Amiya Nanda] 08:41:59
+Okay.
+
+[rochak agrawal] 08:41:59
+Okay see this is a POM this is a Maven build file and this is a source code. So you see I have a source code Java source code. So this is my project structure. Your project structure could be anything.
+
+[Amiya Nanda] 08:42:00
+Mints. Cold.
+
+[Amiya Nanda] 08:42:12
+Okay.
+
+[rochak agrawal] 08:42:13
+Okay.
+
+[Amiya Nanda] 08:42:14
+Okay, okay.
+
+[Amiya Nanda] 08:42:15
+Yeah.
+
+[rochak agrawal] 08:42:16
+So, Banking Directory? Yes, Weber?
+
+[Vaibhav Gupta] 08:42:17
+Hello, Roger.
+
+[Vaibhav Gupta] 08:42:20
+So, uh, in, uh, working directory, like, uh, if we are on V5, and, uh, we have to, like, upgrade to, like, back to V3, so, uh, we can, uh, check the changes, like, uh, what changes we have first from V3 to V5.
+
+[rochak agrawal] 08:42:36
+Correct, yeah.
+
+[rochak agrawal] 08:42:38
+We can do that.
+
+[Vaibhav Gupta] 08:42:40
+We will do that accordingly.
+
+[rochak agrawal] 08:42:41
+Yeah, yeah, yeah, we'll do that all. Okay, so my working directory, where I will be working on.
+
+[rochak agrawal] 08:42:47
+Okay? Local repository.
+
+[rochak agrawal] 08:42:52
+I am going to, uh, commit those changes. Okay, now let's do one thing. I will do some modification in the form.xml, and we will see what is the staging area also.
+
+[rochak agrawal] 08:43:06
+So I'll go to my pom.xml.
+
+[rochak agrawal] 08:43:10
+I will open with…
+
+[rochak agrawal] 08:43:12
+Notepad.
+
+[rochak agrawal] 08:43:24
+Okay.
+
+[rochak agrawal] 08:43:25
+So this is my pom.xml.
+
+[rochak agrawal] 08:43:28
+Now, let's say I will make some changes here.
+
+[rochak agrawal] 08:43:33
+Instead of target 1.8, I will say 2.0.
+
+[rochak agrawal] 08:43:39
+Okay.
+
+[rochak agrawal] 08:43:40
+Any changes, basically, and I save this file.
+
+[rochak agrawal] 08:43:44
+Okay.
+
+[rochak agrawal] 08:43:46
+Uh, let me show you before that.
+
+[rochak agrawal] 08:43:50
+Maybe, uh, now I have done it glitchy.
+
+[rochak agrawal] 08:43:53
+Previously, it was 1.8. Now, if I go to my directory.
+
+[rochak agrawal] 08:43:59
+Yes?
+
+[rochak agrawal] 08:43:59
+So there is a command called git status.
+
+[rochak agrawal] 08:44:07
+Which is, okay, I have given wrong command.
+
+[rochak agrawal] 08:44:12
+So it says, on… forget the branch for now. It says, um, nothing to commit.
+
+[rochak agrawal] 08:44:19
+working tree is completely clean, because we have not done any changes, right? So my working tree is completely clean.
+
+[rochak agrawal] 08:44:30
+Okay, now I will go make a change.
+
+[rochak agrawal] 08:44:35
+Instead of 1.8, I will say 2.0.
+
+[rochak agrawal] 08:44:38
+For 1.0, something.
+
+[rochak agrawal] 08:44:40
+A change is a change, even if it is a dot also. I'll save this.
+
+[rochak agrawal] 08:44:48
+Now you see?
+
+[rochak agrawal] 08:44:51
+I will run a git status.
+
+[rochak agrawal] 08:44:57
+You see?
+
+[rochak agrawal] 08:45:03
+It is telling us pom.xml is modified.
+
+[rochak agrawal] 08:45:07
+Okay.
+
+[rochak agrawal] 08:45:08
+But…
+
+[rochak agrawal] 08:45:10
+Changes are not staged for commit.
+
+[rochak agrawal] 08:45:13
+So you see there is a three-step process.
+
+[rochak agrawal] 08:45:24
+Working directory?
+
+[rochak agrawal] 08:45:29
+Okay.
+
+[rochak agrawal] 08:45:31
+So you do all your changes where? In your working directory?
+
+[rochak agrawal] 08:45:35
+Clear?
+
+[rochak agrawal] 08:45:37
+Now, when your file is modified, you need to add them to something called the staging area.
+
+[rochak agrawal] 08:45:53
+See, understand it like a way…
+
+[rochak agrawal] 08:45:56
+The staging area is like an index. It lets you commit 2 or 5 change files, so each commit is one of the logical changes, rather than a dump of everything.
+
+[rochak agrawal] 08:46:06
+Now understand this.
+
+[rochak agrawal] 08:46:09
+I have…
+
+[rochak agrawal] 08:46:12
+Okay, let me do that only.
+
+[rochak agrawal] 08:46:18
+I will go and create.
+
+[rochak agrawal] 08:46:21
+one more file.
+
+[rochak agrawal] 08:46:24
+new.teamst.
+
+[rochak agrawal] 08:46:29
+I am adding this.
+
+[rochak agrawal] 08:46:32
+2… 2…
+
+[rochak agrawal] 08:46:34
+The concept of?
+
+[rochak agrawal] 08:46:38
+Okay? I'll control S.
+
+[rochak agrawal] 08:46:42
+And let's say I will add another file.
+
+[rochak agrawal] 08:46:52
+Not add.
+
+[rochak agrawal] 08:46:57
+I'll say I will not add this.
+
+[Jeeva Koli] 08:47:07
+Calls are a call.
+
+[rochak agrawal] 08:47:09
+Okay? So now…
+
+[Jeeva Koli] 08:47:11
+The roses, all I read, roses, I think.
+
+[rochak agrawal] 08:47:13
+Uh, guys, if you're not talking, please go on mute.
+
+[rochak agrawal] 08:47:21
+Now, if you see, I have done three changes. I have modified the pom.xml, I have modified, uh, I have created two files.
+
+[rochak agrawal] 08:47:31
+So, see, get…
+
+[rochak agrawal] 08:47:34
+Status, if you see…
+
+[rochak agrawal] 08:47:36
+So you can see?
+
+[rochak agrawal] 08:47:39
+Very well tracking it is doing. It's a modified pom.xml, new text. Okay, I have given different name.
+
+[rochak agrawal] 08:47:49
+Uh, new text and not add.
+
+[rochak agrawal] 08:47:51
+Now it may happen that.
+
+[rochak agrawal] 08:47:55
+Whatever work you are doing on the pom.xml and new.txt, you would see your work is over, but whatever work you are doing on not at the txt is not still over. So you do not want to commit it. Like I would like to commit only those files.
+
+[rochak agrawal] 08:48:11
+where my work is completed. See, that's the purpose of a meaningful version. If I, let's say, add A and make some changes, then I add B, then made a commit, I will have thousands of the commits, thousands of the versions.
+
+[rochak agrawal] 08:48:26
+So you need to make only as a best practice. You need to only do the meaningful commits so that your commit will have some meanings. Your versions will have some meanings right now. My work in the not edited txt is not over. So what I'm going to do.
+
+[rochak agrawal] 08:48:41
+I am going to only add form.xml.
+
+[rochak agrawal] 08:48:47
+And I am going to add.
+
+[rochak agrawal] 08:48:50
+new.txt.
+
+[rochak agrawal] 08:48:52
+Okay.
+
+[rochak agrawal] 08:48:54
+So, now, these two files, form.xml and new.txt.
+
+[rochak agrawal] 08:49:01
+Where they have been added?
+
+[rochak agrawal] 08:49:03
+They have been added into my staging area.
+
+[rochak agrawal] 08:49:10
+Okay.
+
+[rochak agrawal] 08:49:13
+They are not committed yet. They are there in my staging area.
+
+[rochak agrawal] 08:49:17
+Okay, now, let's say…
+
+[rochak agrawal] 08:49:20
+If you do a commit right now, and you have, again, a file called new, don't add, which is still sitting here.
+
+[rochak agrawal] 08:49:28
+Now, if you do a commit.
+
+[rochak agrawal] 08:49:32
+Those file…
+
+[rochak agrawal] 08:49:34
+will go into the Virgin History.
+
+[rochak agrawal] 08:49:37
+This file won't go.
+
+[rochak agrawal] 08:49:40
+So, the role of a staging area is you can understand the staging area as an intermediary area where we can park our file, which.
+
+[rochak agrawal] 08:49:51
+We have completed the work upon.
+
+[rochak agrawal] 08:49:54
+And then we want to commit these files will go.
+
+[rochak agrawal] 08:49:58
+as a single count. Now, once your work on this file is also over.
+
+[rochak agrawal] 08:50:04
+Then, you are going to add this file as well, so you say git.
+
+[rochak agrawal] 08:50:09
+Now, before that, I'll show you Git status.
+
+[rochak agrawal] 08:50:14
+You can see?
+
+[rochak agrawal] 08:50:17
+Changes to be committed.
+
+[rochak agrawal] 08:50:19
+Two files.
+
+[rochak agrawal] 08:50:21
+untracked file is… git is not doing anything with this right now. It has been changed, but it will not go into the version history. If I want to… so, you can see, with the help of git add a command, you are going to add the files from the working directory to the.
+
+[rochak agrawal] 08:50:39
+the staging area. If I want to add this one also, so I'll say git add.
+
+[rochak agrawal] 08:50:46
+Okay? Now, if you see the status…
+
+[rochak agrawal] 08:50:51
+All the three files are ready to be committed.
+
+[rochak agrawal] 08:50:58
+Okay, now how can I commit?
+
+[rochak agrawal] 08:51:03
+get…
+
+[rochak agrawal] 08:51:08
+Hyphen M. Hyphen M is very necessary. Hyphen M will give you.
+
+[rochak agrawal] 08:51:17
+The message which you want to… so, commit message is mandatory.
+
+[rochak agrawal] 08:51:22
+Let's say I am doing summit.
+
+[rochak agrawal] 08:51:28
+From local.
+
+[rochak agrawal] 08:51:34
+Okay.
+
+[rochak agrawal] 08:51:38
+I'll permit.
+
+[rochak agrawal] 08:51:40
+You see?
+
+[rochak agrawal] 08:51:42
+Now, if you see…
+
+[rochak agrawal] 08:51:47
+Amit has been done.
+
+[rochak agrawal] 08:51:50
+If you see git log.
+
+[rochak agrawal] 08:51:58
+Friday, September 4, 8:51 AM.
+
+[rochak agrawal] 08:52:01
+Who have done it? Roadcheck has done it.
+
+[rochak agrawal] 08:52:04
+This is the commit ID.
+
+[rochak agrawal] 08:52:06
+And this is the commit message.
+
+[rochak agrawal] 08:52:09
+Okay, now you see one thing, uh, now my head has moved, correct? Now head previously was here, now it has moved here.
+
+[rochak agrawal] 08:52:20
+Great. So…
+
+[rochak agrawal] 08:52:22
+In a working directory, your head will always point to the latest version.
+
+[rochak agrawal] 08:52:29
+Now, but when you downloaded this repository, or, uh, download is the wrong word, when you cloned this repository, you were here.
+
+[rochak agrawal] 08:52:36
+Okay, so this commit is not there in your remote repository, correct?
+
+[rochak agrawal] 08:52:43
+Right? So, what you can do? You can do…
+
+[rochak agrawal] 08:52:46
+push those changes to your remote repository. So what do you need to do? You will just simply go.
+
+[rochak agrawal] 08:53:01
+Good. Push.
+
+[rochak agrawal] 08:53:06
+Okay.
+
+[rochak agrawal] 08:53:10
+Via? Via.
+
+[rochak agrawal] 08:53:12
+Now I'll go to this repository.
+
+[rochak agrawal] 08:53:15
+Previously, 259 commits are there. Let me refresh this.
+
+[rochak agrawal] 08:53:20
+You see?
+
+[rochak agrawal] 08:53:21
+260 commits are there. Now if you open so you can see those file.
+
+[rochak agrawal] 08:53:26
+And if you open the pom.xml.
+
+[rochak agrawal] 08:53:30
+You see?
+
+[rochak agrawal] 08:53:33
+That changed the version you were seeing.
+
+[rochak agrawal] 08:53:35
+Okay, and here, if you go to the commits.
+
+[rochak agrawal] 08:53:44
+Committed 2 minutes ago.
+
+[rochak agrawal] 08:53:46
+I am doing this commit from the local repository.
+
+[rochak agrawal] 08:53:50
+It is not showing that the commit has been done, uh… 30 seconds ago.
+
+[rochak agrawal] 08:54:06
+So, that is the overall flow your kit will be having.
+
+[rochak agrawal] 08:54:11
+Okay, so you will have your working directory. Whenever you are done with your changes, you need to add them into the staging area. Only the files which are in the staging area.
+
+[rochak agrawal] 08:54:25
+will go into the local repository with the help of git commit command. Any file which is not there in the staging.
+
+[rochak agrawal] 08:54:33
+area. When you commit, it will not go into, uh…
+
+[rochak agrawal] 08:54:40
+the commit history. So first, you need to add them to the staging area, then you run the git commit.
+
+[rochak agrawal] 08:54:46
+Okay and then once you are done with your local changes then you can push your changes to your remote repository like in our case we are using the GitHub as my remote repository. It could be anyone.
+
+[rochak agrawal] 08:55:02
+But the commands are going to be the same.
+
+[rochak agrawal] 08:55:06
+So, what is the staging area we understood? Commits, first, are going to be local.
+
+[rochak agrawal] 08:55:11
+Okay, when you do a git commit, it is going to write your commits to the local repository, then you need to push those changes to the remote repository.
+
+[rochak agrawal] 08:55:23
+Very important to understand, your changes are not going to go to remote, uh…
+
+[rochak agrawal] 08:55:30
+local repository directly. First, it will go to local repository, and then, finally, they will go to the remote repository.
+
+[rochak agrawal] 08:55:39
+That is a flow.
+
+[rochak agrawal] 08:55:44
+Yes, Shubham.
+
+[Debasis Patra] 08:55:49
+Yeah, hi, Rajat. Uh, actually, I, uh… I'm not understand how, uh, you're going to, uh, geedup.com from, uh… from this, uh, command line.
+
+[Shivam Malusare] 08:55:50
+Hello?
+
+[rochak agrawal] 08:56:02
+Because we use this seat.
+
+[rochak agrawal] 08:56:04
+I'll do.
+
+[rochak agrawal] 08:56:06
+See, when you run the git clone command.
+
+[rochak agrawal] 08:56:11
+From where we started.
+
+[rochak agrawal] 08:56:19
+Correct? We started with this, correct?
+
+[Debasis Patra] 08:56:22
+Yeah, okay. Yeah, it's just…
+
+[rochak agrawal] 08:56:23
+So my Git knows this is my remote repository.
+
+[rochak agrawal] 08:56:27
+So, if you see…
+
+[rochak agrawal] 08:56:29
+There is a command called git remote hyphen v.
+
+[rochak agrawal] 08:56:34
+So it says, this is my remote repository. Whenever you do the git push, it is going to push the changes to this repository.
+
+[rochak agrawal] 08:56:45
+So it knows.
+
+[rochak agrawal] 08:56:47
+Because you cloned from here, right?
+
+[Debasis Patra] 08:56:50
+Ah, yes, yes.
+
+[rochak agrawal] 08:56:51
+That's why. Okay, now you say, I want to…
+
+[Debasis Patra] 08:56:53
+In browser… browser, uh, how… this, uh, this address we are, uh, putting and, uh, searching for?
+
+[Debasis Patra] 08:57:03
+In browser, like, uh, you show now github.com in browser.
+
+[rochak agrawal] 08:57:07
+Mm-hmm. Yeah, yeah.
+
+[Debasis Patra] 08:57:09
+Yeah, here, how, how, where, uh, you have come here? How?
+
+[rochak agrawal] 08:57:16
+See, uh, this is my, uh…
+
+[rochak agrawal] 08:57:20
+So you guys ask repetitive questions.
+
+[rochak agrawal] 08:57:22
+We already said, I am working on an existing report.
+
+[rochak agrawal] 08:57:25
+In this case, my existing repo is there. We are going to have a detailed discussion on GitHub in the subsequent slides.
+
+[Debasis Patra] 08:57:33
+Okay, this is an existing directory.
+
+[rochak agrawal] 08:57:36
+Existing repo, we clearly called it out.
+
+[rochak agrawal] 08:57:41
+Great!
+
+[rochak agrawal] 08:57:42
+We will create a new repo altogether, which also we will see.
+
+[Debasis Patra] 08:57:44
+Okay, okay, okay.
+
+[rochak agrawal] 08:57:47
+Okay?
+
+[Debasis Patra] 08:57:49
+Okay. Yeah, yeah. Okay, thank you.
+
+[rochak agrawal] 08:57:50
+Yes, Shivam.
+
+[Shivam Malusare] 08:57:53
+Yeah, hello?
+
+[rochak agrawal] 08:57:54
+Yes, your honor.
+
+[Shivam Malusare] 08:57:55
+Yeah, sir, there's just a small doubt. So, uh, the staging area will contain.
+
+[rochak agrawal] 08:57:58
+Hmm?
+
+[Shivam Malusare] 08:58:03
+Both, like, the changes, like, it will contain the changes, whichever we have made in our files, okay?
+
+[rochak agrawal] 08:58:07
+Hmm?
+
+[rochak agrawal] 08:58:09
+Okay?
+
+[Shivam Malusare] 08:58:10
+So whether we have, uh, saved it or not, it will contain all the changes.
+
+[Shivam Malusare] 08:58:16
+And only when we do git add, like, uh…
+
+[Shivam Malusare] 08:58:21
+like, add those changes, then only they will be shown in the Git status, right?
+
+[rochak agrawal] 08:58:26
+No, no. So if you see it here.
+
+[rochak agrawal] 08:58:30
+Uh, see, you modify a file, it will show in a git status, it will say it is modified, but it is not in a staging area. To add a file in a staging area, you need to run the git add command.
+
+[Shivam Malusare] 08:58:34
+Yeah.
+
+[Shivam Malusare] 08:58:37
+Staging area, okay.
+
+[Shivam Malusare] 08:58:42
+Yeah, and like we discussed, only meaningful, like, files which we want to add, that only will be added.
+
+[rochak agrawal] 08:58:47
+Correct. See, till the time my work is not completed, I would not want to commit it file, correct?
+
+[Shivam Malusare] 08:58:51
+Correct.
+
+[Shivam Malusare] 08:58:52
+Yep.
+
+[rochak agrawal] 08:58:54
+So you can see, so here, here, here, huh, so correct, that is where we have this fourth state of a file.
+
+[Shivam Malusare] 08:58:54
+So, in staging area, it will contain all the changes.
+
+[rochak agrawal] 08:59:02
+First, your file is not untracked, okay? Nothing is happening. Git can see the file, but it is not managing it.
+
+[rochak agrawal] 08:59:09
+Right? You create a new file, it is untracked. Now, you modify the file.
+
+[rochak agrawal] 08:59:15
+Then you, once your modification is done, you will…
+
+[rochak agrawal] 08:59:19
+stage that file by the help of git add command. The change… see, the only meaning of a staging area is.
+
+[rochak agrawal] 08:59:27
+You are telling it, boss, it is ready to go to the next version. Simple. The change is marked for the inclusion in the next commit.
+
+[rochak agrawal] 08:59:37
+You have one file in a staging area, or 10 files. Whatever they are in a staging area will go as part of next commit. As simple as that.
+
+[Shivam Malusare] 08:59:45
+Okay.
+
+[rochak agrawal] 08:59:46
+Okay? Again, when we are saying…
+
+[Shivam Malusare] 08:59:48
+So, like, it can be called, like, a buffer, correct?
+
+[rochak agrawal] 08:59:50
+Sorry, can you come? You can say that, yeah, yeah, yeah, you can say that, as a buffer, yes. Kind of buffer.
+
+[Shivam Malusare] 08:59:53
+Uh, like, yeah, like a buffer.
+
+[Shivam Malusare] 08:59:56
+Only whatever changes we need, that we can add further.
+
+[rochak agrawal] 09:00:00
+Correct. You can say that. See, it's a transitory area, it's an intermediary area.
+
+[Shivam Malusare] 09:00:00
+For the next coming.
+
+[Shivam Malusare] 09:00:05
+Yes, sir. Got it.
+
+[rochak agrawal] 09:00:07
+See, it is like, when we, uh, when we want to pick up a flight.
+
+[rochak agrawal] 09:00:11
+We need to go to airport.
+
+[rochak agrawal] 09:00:14
+Right? It doesn't mean the airport is flying you.
+
+[rochak agrawal] 09:00:18
+But it is a designated area from where you are picking up the flight.
+
+[rochak agrawal] 09:00:23
+Right?
+
+[Shivam Malusare] 09:00:24
+Yep.
+
+[rochak agrawal] 09:00:27
+Yes, Anthony.
+
+[Anthony Joseph] 09:00:30
+Hi, Rochelle, I'm a little confused.
+
+[rochak agrawal] 09:00:32
+Hmm?
+
+[Anthony Joseph] 09:00:33
+Now, in this… in this scenario, like, um, in the working directory, in the local working directory, it will… all the changes will be done by the developers, right?
+
+[rochak agrawal] 09:00:42
+Got it.
+
+[Anthony Joseph] 09:00:43
+So, now, if in an organization, if there are hundreds of developers, so everybody will have Git installed in their local PCs, right?
+
+[rochak agrawal] 09:00:50
+Correct, correct, right.
+
+[Anthony Joseph] 09:00:53
+So, uh, as a DevOps engineer, how is he going to monitor, like, is he… I mean, as a developer, is he supposed to know Git, or only the DevOps engineer will be, you know…
+
+[rochak agrawal] 09:01:06
+So, Anthony, uh, like, as I mentioned also, Git will be a primary responsibility of a development team.
+
+[rochak agrawal] 09:01:12
+Okay.
+
+[rochak agrawal] 09:01:14
+Even if you do not know Git, you can manage.
+
+[rochak agrawal] 09:01:18
+But if developer does not know Git, he will not be able to manage.
+
+[rochak agrawal] 09:01:22
+Okay.
+
+[Anthony Joseph] 09:01:24
+Okay.
+
+[rochak agrawal] 09:01:24
+Because, see, source code will be written by the development team, correct?
+
+[Anthony Joseph] 09:01:29
+Correct, correct.
+
+[rochak agrawal] 09:01:31
+So, it is… see, all those changes you are seeing, uh, everything, it is being done by the development team only.
+
+[rochak agrawal] 09:01:40
+Okay, what will be your responsibility? Your responsibility is, so let's say you are using, and this is also we are going to cover. So let's say you are using the GitHub platform. Now it could be GitLab also, it could be Azure repos also. So first is you need to give the permissions.
+
+[rochak agrawal] 09:01:55
+Okay, to the developer. Then you need to set up the policies, branch policies. So if you go to the settings, I'm not sure it's there in GitHub. So there is certain security policies are there if you go to branches. So then you can add some rules, add protection rules.
+
+[rochak agrawal] 09:02:13
+So those type of responsibilities will be ours but anything happening at the code changes.
+
+[rochak agrawal] 09:02:21
+That a developer can tell you. Like, I don't know what you're developing, correct?
+
+[Anthony Joseph] 09:02:26
+Correct.
+
+[rochak agrawal] 09:02:27
+So, yes.
+
+[rochak agrawal] 09:02:28
+And if you remember, when we have this DevOps slide.
+
+[rochak agrawal] 09:02:34
+So out of the eight stages, plan, code, build, and test.
+
+[rochak agrawal] 09:02:38
+DevOps has a secondary responsibility. Like, you are a supporting role there. You don't do testing also.
+
+[rochak agrawal] 09:02:46
+Right? You will not do the build also. You will not do the build also.
+
+[Anthony Joseph] 09:02:47
+Yeah, right, right.
+
+[Anthony Joseph] 09:02:49
+Yeah.
+
+[rochak agrawal] 09:02:50
+But you should have a fair understanding about these commands, these tools. That's it.
+
+[Anthony Joseph] 09:02:57
+Okay, so the developer should be knowing Git, right? The basic thing is that…
+
+[rochak agrawal] 09:03:00
+They should be expert in Git.
+
+[Anthony Joseph] 09:03:03
+Okay. So then, then now, now get…
+
+[rochak agrawal] 09:03:05
+You have a high-level knowledge will work.
+
+[Anthony Joseph] 09:03:07
+Okay, so Git will be installed in both the repository in the local PC as well as in the repository where all the codes are there?
+
+[rochak agrawal] 09:03:13
+No.
+
+[rochak agrawal] 09:03:14
+No. So, you see this?
+
+[rochak agrawal] 09:03:16
+See, in the back end, what Repository is doing, again, it's a self-service, we don't.
+
+[rochak agrawal] 09:03:23
+So when you say repository, you need to install, see repository, it's a collaboration platform, right? Git will be installed on your local system where you are doing the coding and then you are installing this platform like GitHub or GitLab or Azure repos.
+
+[Anthony Joseph] 09:03:30
+Okay, yeah.
+
+[Anthony Joseph] 09:03:35
+Okay.
+
+[Anthony Joseph] 09:03:40
+Okay, okay, uh…
+
+[rochak agrawal] 09:03:41
+Right? So that is another software bundle.
+
+[rochak agrawal] 09:03:44
+Of course, in the backend, see, it is also managing, uh, the commits and history and everything, so yes, in the backend, they must also be using the Git only, correct? But…
+
+[Anthony Joseph] 09:03:44
+Okay.
+
+[Anthony Joseph] 09:03:55
+Yeah.
+
+[rochak agrawal] 09:03:58
+Uh, it… we have this complete GUI here, so in the backend, how GitHub is managing it, I don't know.
+
+[Anthony Joseph] 09:04:05
+Okay.
+
+[rochak agrawal] 09:04:06
+Okay?
+
+[Anthony Joseph] 09:04:08
+Okay, okay, I understand.
+
+[rochak agrawal] 09:04:10
+Sure.
+
+[rochak agrawal] 09:04:11
+Now, I'll go to…
+
+[rochak agrawal] 09:04:15
+Yes, Jeeva?
+
+[Jeeva Koli] 09:04:18
+Uh, sorry to say this, but uh…
+
+[Jeeva Koli] 09:04:20
+before you start any topic, actually, uh, any topic in the sense, if you're starting with Git, this one, right? So, if you could take the poll, that how many people are… know about this poll, uh, I mean, interacted or knows about this?
+
+[Jeeva Koli] 09:04:36
+Then, uh, you would… you will be having the clear picture on that, from where you need to start from the… for that, uh, tool, actually. I believe…
+
+[rochak agrawal] 09:04:42
+But, Jeeva, I am starting… I have started… see, Jeeva, I have started from the very basics. I am assuming, uh, that no one knows anything about Git.
+
+[Jeeva Koli] 09:04:51
+Right, if you could start from the basic, like, some of the commands from the Git, like, what it happens, what it happens, then you can jump directly.
+
+[rochak agrawal] 09:04:55
+But we are starting from the basic.
+
+[rochak agrawal] 09:04:59
+No, what, what…
+
+[Jeeva Koli] 09:04:59
+If you… then you come to Dirk's Leach. Yeah, yeah.
+
+[rochak agrawal] 09:05:01
+You can be disagreeing with the teaching style. I totally get it. But we are starting from the very basics only. I have not git status, git commit, git add is the first command that you need to learn.
+
+[rochak agrawal] 09:05:17
+We have started from the installing of the git, and we are doing only the basic stuff, absolute basic stuff only.
+
+[rochak agrawal] 09:05:24
+If you are thinking this is advanced, then you need to see the advanced topics.
+
+[Jeeva Koli] 09:05:31
+No, that's why most of the people are not able to relate, if you come to know that most of the people are asking questions, like, from the basic.
+
+[rochak agrawal] 09:05:37
+Then you can raise it to the ops team, uh, Jeeva. I, uh… I am… I have started it from the very basics only.
+
+[rochak agrawal] 09:05:45
+Probably you can look out for another trainer.
+
+[Jeeva Koli] 09:05:49
+No, no, no, no, that is not the question, actually. So, what I'm starting with telling is…
+
+[rochak agrawal] 09:05:52
+No, no, but that's what I'm trying to understand. This is only very basics only.
+
+[rochak agrawal] 09:05:56
+There is no basics beyond that. I have started…
+
+[rochak agrawal] 09:06:01
+See, people are asking repetitive questions, where we are very clearly calling it out.
+
+[rochak agrawal] 09:06:09
+See, if you, if you guys keep asking the basic question, repeated question again and again, this will go nowhere. We have clearly here also, we have said.
+
+[rochak agrawal] 09:06:19
+Git and GitHub are two different things. We are going to cover Git, we are going to cover GitHub also. Then if you guys keep asking that where is this coming, where is this coming? See, in the DevOps world, there is nothing is there in silos.
+
+[rochak agrawal] 09:06:36
+First, you need to understand this, okay? Everything is interconnected with one another. When we are saying we are going to show everything from a GitHub perspective as well, then also, if 10 people will have the same question, where the GitHub is coming, where the GitHub is coming.
+
+[rochak agrawal] 09:06:53
+We will keep…
+
+[rochak agrawal] 09:06:54
+stuck in that in the same loop.
+
+[Jeeva Koli] 09:06:58
+So that's why, that's why I'm telling you, like, I'm just suggesting you that if you take the poll.
+
+[rochak agrawal] 09:07:02
+No, but that… we clearly tell… if I tell you GitHub… see, Jeeva, that's a problem. If I tell you the GitHub, then people understand where this… what is this commit, what is this staging area. We need to understand this also.
+
+[rochak agrawal] 09:07:15
+Everything is interconnected.
+
+[rochak agrawal] 09:07:16
+You need to go one by one.
+
+[Jeeva Koli] 09:07:23
+Yeah, that's correct.
+
+[Jeeva Koli] 09:07:25
+That's correct, but people are… why they are, again and again, landing on the, like, uh… they are not able to relate this, because they are… I believe that half of the audience are totally…
+
+[rochak agrawal] 09:07:33
+Because… because… see, people… see, I'll tell you, there was a… there was a student in my previous batch, I don't want to name him, like, what he tried to do is…
+
+[Jeeva Koli] 09:07:36
+Your first time interacting, actually.
+
+[rochak agrawal] 09:07:44
+You try to go ahead.
+
+[rochak agrawal] 09:07:47
+Be on the topic which we are on.
+
+[rochak agrawal] 09:07:51
+Okay.
+
+[Jeeva Koli] 09:07:53
+Mm-hmm.
+
+[rochak agrawal] 09:07:54
+We are saying… we are clearly saying we are going to cover GitHub, where we will show.
+
+[rochak agrawal] 09:07:59
+how this repository is coming, because I am not doing… see, I can go and…
+
+[rochak agrawal] 09:08:04
+do the commit from here as well. I can go either do the changes, and I do the commit from here as well.
+
+[rochak agrawal] 09:08:11
+Jeevan, this is absolutely basic, believe me, okay? We started…
+
+[rochak agrawal] 09:08:16
+First, we have covered only the conceptual part.
+
+[rochak agrawal] 09:08:19
+No.
+
+[rochak agrawal] 09:08:20
+What is more basic than this? What is the… what is version control?
+
+[Jeeva Koli] 09:08:22
+See, see, we are… we are cleared about the conceptual part, okay? So, the interaction part with the tool, this is totally new for the… most of the people. Like, how you create this… this tool.
+
+[rochak agrawal] 09:08:30
+So that is where we are starting.
+
+[rochak agrawal] 09:08:34
+Have we not installed, uh, uh, the Git from the starting?
+
+[Jeeva Koli] 09:08:37
+Yeah, yeah, no, leave it, leave it the installation, leave it the, the conceptual. You go ahead with the…
+
+[rochak agrawal] 09:08:39
+But then… then… then… what does it mean? Work on the existing network.
+
+[Jeeva Koli] 09:08:44
+Interaction… interaction with the tool. Like, if you go into depository, where it is, what is option, where you find the version control, which…
+
+[rochak agrawal] 09:08:53
+But Jeeva, what is the difference between these two? Do new repository and work on the existing repository?
+
+[Jeeva Koli] 09:09:00
+Yeah, you started from there, actually, but assuming that people are at the certain level, that is the question.
+
+[rochak agrawal] 09:09:01
+Bill, I…
+
+[rochak agrawal] 09:09:05
+Let's see.
+
+[rochak agrawal] 09:09:07
+No, but…
+
+[Amiya Nanda] 09:09:08
+Ah, Jeeva, people means who, can you please tell us?
+
+[rochak agrawal] 09:09:10
+Huh.
+
+[Amiya Nanda] 09:09:11
+I am pretty clear.
+
+[Jeeva Koli] 09:09:14
+Yeah, agree. Now you take a poll, now you take a poll, how many people are, uh, first time interacting with this tool?
+
+[Amiya Nanda] 09:09:15
+Yes.
+
+[Amiya Nanda] 09:09:18
+Yeah, I, I can tell the, ah, Rochak is, ah, telling from very basics only.
+
+[Jeeva Koli] 09:09:22
+You take a pull.
+
+[Jeeva Koli] 09:09:26
+Yeah, basics only. Basics only.
+
+[Amiya Nanda] 09:09:26
+And very clear, yeah.
+
+[Jeeva Koli] 09:09:29
+See, for… but some of the things are get… got cleared, then…
+
+[Jeeva Koli] 09:09:33
+People will match with your, like…
+
+[Amiya Nanda] 09:09:36
+No, people, ah, Jiva, it is, might be for you only.
+
+[Jeeva Koli] 09:09:37
+Do you? Yes.
+
+[Amiya Nanda] 09:09:41
+Okay.
+
+[Jeeva Koli] 09:09:42
+No worries, you take a pole, no, no, that's what I'm telling you, like, that is, that is where the, uh, the, like, turning happens, actually.
+
+[rochak agrawal] 09:09:50
+Correct. See, Jeeva, uh, I'm not saying you, uh, there are 40 people are there. Uh, I understand that I cannot match the expectation of everyone. That is why my rating is coming 4.2, because, uh, 4.3, sometimes 4.5, sometimes less than 4 also.
+
+[rochak agrawal] 09:10:06
+Because not everyone is matching to my style. Correct. But that is what I am trying to explain. I'm not saying I'm not taking your feedback. What I'm trying to explain to you, Jeeva, is we are starting from the very basics also.
+
+[rochak agrawal] 09:10:22
+Only. Okay.
+
+[rochak agrawal] 09:10:23
+What we did?
+
+[rochak agrawal] 09:10:25
+Let's say if I talk about today.
+
+[rochak agrawal] 09:10:28
+He understood, um, the conceptual part, correct?
+
+[Jeeva Koli] 09:10:32
+Yes.
+
+[rochak agrawal] 09:10:34
+Then we install the tool. How to install it? We have seen that. That is, again, very basic part. Then we said that.
+
+[rochak agrawal] 09:10:43
+There is two types of the repositories we are going to work on.
+
+[rochak agrawal] 09:10:48
+There will be a new repository, and then there will be work on the existing repository.
+
+[rochak agrawal] 09:10:53
+When we are saying I am going to work on the existing repository, it means the repository is already existing.
+
+[rochak agrawal] 09:11:01
+We will talk about how to create it here.
+
+[rochak agrawal] 09:11:04
+Now…
+
+[rochak agrawal] 09:11:05
+You can say that first you need to cover the new repository. I take this.
+
+[rochak agrawal] 09:11:10
+Your feedback is also valid. But the problem, Jeeva, with this is, if I… if I cover this.
+
+[rochak agrawal] 09:11:17
+new repository first. Then also you will have a question about what we covered today. The commit, the working area, the working directory, the staging. Because things are very interrelated. So my suggestion to you is, uh, is that.
+
+[rochak agrawal] 09:11:32
+that whatever is happening, you focus on those concepts as of now, and which is also, we very clearly called it out. Here, if you see.
+
+[rochak agrawal] 09:11:42
+We, as clearly says, Git and GitHub is not the same. We are right now focusing on Git.
+
+[rochak agrawal] 09:11:48
+Okay, now, if you say, uh…
+
+[rochak agrawal] 09:11:53
+For example, someone asked me also, if you say here.
+
+[rochak agrawal] 09:11:58
+If you go to File Explorer.
+
+[rochak agrawal] 09:12:02
+And uh… if you go to this, and you say what is POM, what is SRC.
+
+[rochak agrawal] 09:12:07
+See, my focus is not on POM or SRC right now, and that is what I explained to that person, right? These are just the files for me as of now.
+
+[rochak agrawal] 09:12:16
+Got it.
+
+[rochak agrawal] 09:12:17
+Just a file. It could be another text file also. It could be a POM file. It could be a Terraform file. It could be. I'm just considering it as a file, right? So first, we are covering from the command line. We are understanding what is gate, what is the main idea. So if you ask me.
+
+[rochak agrawal] 09:12:35
+This slide.
+
+[rochak agrawal] 09:12:36
+If you understand conceptually, and this is the demo we have done, okay, we have not done nothing else right now. And this is the absolute, absolute basic. So when you say you are not getting from this, the thing is coming. So we are already calling it out. We are not.
+
+[rochak agrawal] 09:12:54
+showing you something which is completely unrelated, first thing. Second is, yes, there will be certain areas which we will cover eventually as well.
+
+[Jeeva Koli] 09:13:05
+Okay.
+
+[rochak agrawal] 09:13:07
+Okay.
+
+[rochak agrawal] 09:13:08
+And still, if you have some question, uh, you can talk to the support team, uh, uh, you can raise it and then, um, uh, probably I'll have a discussion with them also how to optimize it. See, the issue is, uh, Jeeva is not to downplay you or not to take your feedback.
+
+[rochak agrawal] 09:13:25
+I'm absolutely ready to take your feedback, but all I'm trying to explain to you is we are only.
+
+[rochak agrawal] 09:13:32
+Starting from the very basics, I think in 40, 42 people, there are certain people who might have some understanding about Git.
+
+[rochak agrawal] 09:13:42
+GitHub is, like, some people have already worked about GitHub. I'm assuming no one knows anything.
+
+[rochak agrawal] 09:13:47
+Okay, so that's why I'm starting from the very basic, and that's just… when you go to Jenkins also, when you go to Docker also, we will start from the very basics only. First, we will build the concept.
+
+[rochak agrawal] 09:14:00
+Uh, then, uh…
+
+[rochak agrawal] 09:14:02
+Tool installation, and then we will move further with the concept one by one.
+
+[rochak agrawal] 09:14:07
+Okay?
+
+[rochak agrawal] 09:14:11
+Yep.
+
+[rochak agrawal] 09:14:11
+So, you see, creating and cloning, we are coming to that. See, what happens is…
+
+[Jeeva Koli] 09:14:12
+Okay.
+
+[rochak agrawal] 09:14:18
+Both…
+
+[rochak agrawal] 09:14:19
+Like, it is not a single command, okay?
+
+[rochak agrawal] 09:14:22
+When you want to learn a concept in DevOps now for example this creating and cloning now I come to this slide but to explain this we have done a complete demo also.
+
+[rochak agrawal] 09:14:34
+So this is what we will cover everything. It is just maybe some concept. We cannot follow a linear path in DevOps. That is what I'm going to explain.
+
+[rochak agrawal] 09:14:46
+Okay.
+
+[rochak agrawal] 09:14:50
+So we have copy an existing one. So we clone.
+
+[rochak agrawal] 09:14:56
+We used the repository, which was already there in my GitHub.
+
+[rochak agrawal] 09:14:59
+So Gannon has a question. Yeah, let me.
+
+[rochak agrawal] 09:15:03
+Yes, Janine?
+
+[Gyanendra Narayan] 09:15:09
+Yes, sir. Sir, I was asking, okay, suppose that we have two local repository, and one of the guys sitting in the one of the local repository have done some amendment, and he has to the remote directory.
+
+[rochak agrawal] 09:15:20
+Mm-hmm.
+
+[rochak agrawal] 09:15:24
+Okay?
+
+[Gyanendra Narayan] 09:15:25
+So, how the first person working on their own directory will get it updated? Because you told that he will get the update… updated?
+
+[rochak agrawal] 09:15:30
+Okay.
+
+[Gyanendra Narayan] 09:15:34
+Application all the time. So how this will happen?
+
+[rochak agrawal] 09:15:34
+Okay.
+
+[rochak agrawal] 09:15:36
+Good.
+
+[rochak agrawal] 09:15:37
+Okay, so if you see, uh…
+
+[rochak agrawal] 09:15:43
+Yes. So there is something called the fetch.
+
+[rochak agrawal] 09:15:47
+Can you see?
+
+[Gyanendra Narayan] 09:15:48
+Yes.
+
+[rochak agrawal] 09:15:49
+So there is two things. This is a little advanced, but since you asked, I'll tell you.
+
+[rochak agrawal] 09:15:56
+So, let's say you… I have my local repository.
+
+[rochak agrawal] 09:15:59
+You have your own local repository, correct?
+
+[Gyanendra Narayan] 09:16:03
+Correct.
+
+[rochak agrawal] 09:16:04
+Now…
+
+[rochak agrawal] 09:16:05
+I am working on my local, so we have seen that staging area, commit, and then you're pushing it to you.
+
+[rochak agrawal] 09:16:11
+Your remote repository.
+
+[Gyanendra Narayan] 09:16:12
+Remote… remote repository.
+
+[rochak agrawal] 09:16:14
+Hey
+
+[rochak agrawal] 09:16:15
+Now, your question is, since person A, whatever changes he has posted, how the person B is going to get that, correct?
+
+[Gyanendra Narayan] 09:16:21
+Hmm.
+
+[Gyanendra Narayan] 09:16:22
+Correct. Yes, because we are always working in the updated version of the repository.
+
+[rochak agrawal] 09:16:25
+In a collaborative manner. Correct, correct, correct. So, see, um…
+
+[rochak agrawal] 09:16:29
+there is something called the git fetch or git pull. You simply… see, you run the git clone.
+
+[rochak agrawal] 09:16:39
+For the first time, when you are initializing or copying the repository, correct?
+
+[rochak agrawal] 09:16:45
+Now, after that, on a periodic interval, if you want to fetch some changes, uh… so, for example, if I go here.
+
+[rochak agrawal] 09:16:55
+And I just run git fetch.
+
+[rochak agrawal] 09:16:58
+Okay.
+
+[rochak agrawal] 09:17:01
+it is going to fetch all the remote changes for me. So you can use this command, git fetch.
+
+[Gyanendra Narayan] 09:17:07
+So, it is up to us that we have to run and get the updated, or there is some timing, manner, it will be synced.
+
+[rochak agrawal] 09:17:11
+Correct. We have to… it is up to us. It is up to us.
+
+[Gyanendra Narayan] 09:17:15
+Okay, so there is no automatically syncing between the remote directory and the local repository.
+
+[rochak agrawal] 09:17:18
+See?
+
+[rochak agrawal] 09:17:20
+Again, this is not an inbuilt feature.
+
+[Gyanendra Narayan] 09:17:26
+Okay.
+
+[rochak agrawal] 09:17:26
+Uh, get in. But you can write, uh, some commands, some, uh, automation to do that.
+
+[Gyanendra Narayan] 09:17:32
+Okay. So it… so whenever we start using our local repository, so as a… you can say we have to go ahead and have a fetch, so that we work on the updated repository. This is the best practice. Yeah. Okay.
+
+[rochak agrawal] 09:17:34
+Okay.
+
+[rochak agrawal] 09:17:43
+As a best practice, yes. As a best practice, yes. Because, see, uh…
+
+[rochak agrawal] 09:17:49
+When you are in a multi dev environment, it is always a good practice that you are working with the latest code, correct? Because it should not happen. You are, you, you keep working on something and you are working with the previous version and then someone else has updated the version altogether. Then your code is going to break.
+
+[Gyanendra Narayan] 09:17:55
+Hmm. Okay.
+
+[rochak agrawal] 09:18:06
+Right? So it is a best practice, uh, that regularly you need to sync your repository.
+
+[Gyanendra Narayan] 09:18:14
+Okay, sir. And one more… one more question related to this, that once we have…
+
+[rochak agrawal] 09:18:15
+Okay.
+
+[rochak agrawal] 09:18:16
+Yes?
+
+[Gyanendra Narayan] 09:18:24
+Staging area, and we have added this to our local repository.
+
+[rochak agrawal] 09:18:24
+Uh, Gannon, I lost your voice in between.
+
+[rochak agrawal] 09:18:28
+Gannon, I lost your voice in between, can you…
+
+[Gyanendra Narayan] 09:18:29
+So, I told that if we have done any changes.
+
+[Gyanendra Narayan] 09:18:32
+Oh, okay. Hold on. Yeah.
+
+[rochak agrawal] 09:18:33
+I lost a voice in between, can you repeat your question?
+
+[Gyanendra Narayan] 09:18:36
+Yes, uh, can you hear me now, sir?
+
+[rochak agrawal] 09:18:38
+Yes, yes, I can hear you.
+
+[Gyanendra Narayan] 09:18:38
+Yeah, I was saying that we have done some changes in the staging area, added all the changes, and all the changes have been committed to our local repository.
+
+[Gyanendra Narayan] 09:18:49
+Now, it will be saved, or we have to push it to the…
+
+[Gyanendra Narayan] 09:18:54
+remote repository every time before switching off, or the server, or something like that. We are working in the DEX.
+
+[rochak agrawal] 09:19:03
+Uh, what do you mean by switching the server? I, I did not get it.
+
+[Gyanendra Narayan] 09:19:06
+Suppose that… suppose that we have a laptop, we are work… we have a workstation, we are working on our laptop, and we have done all the developing work, and we have… we are in the staging area, we have committed to a local repository. So once it is saved in the local repository, does the.
+
+[rochak agrawal] 09:19:11
+Okay.
+
+[rochak agrawal] 09:19:16
+Committed, okay?
+
+[rochak agrawal] 09:19:17
+Okay?
+
+[Gyanendra Narayan] 09:19:22
+mean that tomorrow when I come and switch on the laptop, I will be getting the same thing, or I have to push it to the remote remote?
+
+[rochak agrawal] 09:19:28
+No, no, no, no. See, if you… see, no, no, no. If you have changed it in a local repository, you come after one hour or one year, those changes will be there.
+
+[Gyanendra Narayan] 09:19:35
+Okay.
+
+[Gyanendra Narayan] 09:19:37
+Okay, got it. This was only a small confusion, yeah.
+
+[rochak agrawal] 09:19:39
+Because… yeah, yeah, yeah, see, that is what… your changes are going to save here in this .git directory.
+
+[rochak agrawal] 09:19:45
+Okay.
+
+[Gyanendra Narayan] 09:19:46
+Hmm, yes.
+
+[rochak agrawal] 09:19:47
+if you are removing this, if someone goes and delete this, then your versioning will go till the time this .git directly is there. You come after 10 years.
+
+[rochak agrawal] 09:19:58
+No problem.
+
+[Gyanendra Narayan] 09:19:59
+Okay. Okay. Thank you. Okay.
+
+[rochak agrawal] 09:20:01
+So, switching and switching off of the laptop does not matter here.
+
+[Gyanendra Narayan] 09:20:04
+Okay, got it, sir. So it should be committed. And same thing happened for… and same thing happened for the staging also, sir. Supposed we are in the staging, we have added, but we have not committed. Then what will happen in this case?
+
+[rochak agrawal] 09:20:05
+Yeah?
+
+[rochak agrawal] 09:20:07
+It should be committed. Yeah, it should be committed.
+
+[rochak agrawal] 09:20:16
+Mm-hmm.
+
+[rochak agrawal] 09:20:18
+Then, yeah, they will also be there in a staging area.
+
+[Gyanendra Narayan] 09:20:20
+Okay, okay.
+
+[rochak agrawal] 09:20:21
+Okay, but I think, uh… I need to check and give you the exact time. Uh, they will be in a staging for a certain period of the time. After that, it will be auto-discarded. Okay?
+
+[Gyanendra Narayan] 09:20:33
+Okay, maybe 30 days, 60 days, but okay.
+
+[rochak agrawal] 09:20:35
+Maybe I need to check on that, but that is… they will be there for a certain period of the time. It is not that you switch off your laptop and it will be gone.
+
+[rochak agrawal] 09:20:44
+I think it's 7 or 20 or 14 days is there, but I… I'll get it confirmed and come back to you.
+
+[Gyanendra Narayan] 09:20:49
+Means there will be buffer time. It's not like it goes and it's gone. It's not like a RAM memory. It will go. Yeah. Okay. Thank you, Salvoted.
+
+[rochak agrawal] 09:20:52
+There will be buffer time, yes.
+
+[rochak agrawal] 09:20:54
+Correct, correct, correct. So, in the staging area, there will be buffer time, but if you commit it, it is permanent.
+
+[Gyanendra Narayan] 09:21:01
+Got it, sir. Thank you.
+
+[rochak agrawal] 09:21:02
+Okay.
+
+[Vaibhav Gupta] 09:21:08
+So yesterday's my next part will be enough, so it will be covered in maybe
+
+[rochak agrawal] 09:21:14
+Yeah, yeah, see, as I'm saying, now when we will, whenever we will be installing any tools and other things, so we'll keep using the Linux commands. For example, when we install Docker, so wget we will use, so we will cover all those commands.
+
+[rochak agrawal] 09:21:28
+As in, when you do APT, YAML install.
+
+[rochak agrawal] 09:21:32
+Okay.
+
+[rochak agrawal] 09:21:41
+Okay.
+
+[rochak agrawal] 09:21:43
+Now, if you see here, uh, B copy an existing one, okay, now you see with the git help, git clone.
+
+[rochak agrawal] 09:21:54
+We can very clearly copy the.
+
+[rochak agrawal] 09:21:56
+repository. Now, if you see what lives inside .git.
+
+[rochak agrawal] 09:22:01
+git object, every commit, file version, and pre-stored by checksum. Okay, now if you go inside this, it might not be…
+
+[rochak agrawal] 09:22:11
+In a human readable format.
+
+[rochak agrawal] 09:22:19
+So you can see some things are there, right? So within this objects, whatever is there, with the help of that, it is going to track, uh.
+
+[rochak agrawal] 09:22:30
+The objects, and if you see this head.
+
+[rochak agrawal] 09:22:39
+That is the head.
+
+[rochak agrawal] 09:22:51
+You can see? So, you… it is saying it is, uh…
+
+[rochak agrawal] 09:22:55
+Pointing to the master branch for now. So branch actually we have not covered for now. So your head is pointing to the master.
+
+[rochak agrawal] 09:23:05
+These are some git refs, branches, and tech pointers. A branch really is just a file with a commit ID in it. We'll cover the branches.
+
+[rochak agrawal] 09:23:14
+And then we have a config folder, so repository level setting, uh, include the remote URLs, all those important files will be there.
+
+[rochak agrawal] 09:23:22
+Now, how can you start a new repository? Again, new repository, you need to start at two places. One is in your local.
+
+[rochak agrawal] 09:23:31
+Another is whatever the remote system you are using. So if you go inside a folder, and you say I want to… let's say I come outside here.
+
+[rochak agrawal] 09:23:44
+I'll make a new repository.
+
+[rochak agrawal] 09:23:49
+Now, this is where you are starting a fresh development. Okay, so you go inside a folder.
+
+[rochak agrawal] 09:23:56
+and you say, I want to version control everything. Now, in this case, as of now, there will be no remote repository, okay? We are just doing it for the local purpose, okay? Now, what you need to do, currently, if you say ls-larity.
+
+[rochak agrawal] 09:24:11
+There is…
+
+[rochak agrawal] 09:24:12
+Nothing. Okay.
+
+[rochak agrawal] 09:24:14
+You run git init. Simple, nothing much. Once you run the git init.
+
+[rochak agrawal] 09:24:21
+You say initialize empty git repository in the folder.
+
+[rochak agrawal] 09:24:27
+And understand one more thing. So now if you see here.
+
+[rochak agrawal] 09:24:34
+we have two repositories here. Two local repositories are there. One is Jenkins Java project, another is a new repository.
+
+[rochak agrawal] 09:24:43
+Now, you can create multiple remote, uh, sorry, local repositories in your folder, in different, different folder. Now, they are not related to each other, they are completely different, okay?
+
+[rochak agrawal] 09:24:56
+So.
+
+[rochak agrawal] 09:24:59
+Local does not mean that your laptop… local means inside a folder. So, Jenkins Java project is a different local repository.
+
+[rochak agrawal] 09:25:08
+Inside new repo, there is a new repo, uh, there is a new repo directly. So if you go new repo.
+
+[rochak agrawal] 09:25:13
+And if you seek status.
+
+[rochak agrawal] 09:25:17
+it says no commits yet, because we just created it, right? Uh, so if you say touch…
+
+[rochak agrawal] 09:25:27
+And if you run Git status.
+
+[rochak agrawal] 09:25:33
+Okay? Now, we have discussed that you need to add the file first, then you need to.
+
+[rochak agrawal] 09:25:41
+committed. So we need to run first git add, then the commit, right? Now we can run both the things in a single command with the help of git commit.
+
+[rochak agrawal] 09:25:51
+Hyphen A. Hyphen M. Hyphen M we were all previously also giving. This is my…
+
+[rochak agrawal] 09:26:01
+On the new flag.
+
+[rochak agrawal] 09:26:03
+Okay, so now…
+
+[rochak agrawal] 09:26:06
+hyphen A, so what it is going to do, it is going to do whatever changes you have done. Again, it is going to add them into your remote repository, uh, sorry, staging area, and then to your local repository.
+
+[rochak agrawal] 09:26:27
+Let me check the syntax for this command.
+
+[Vaibhav Gupta] 09:26:31
+But I'm not here for two…
+
+[Vaibhav Gupta] 09:26:35
+Windows 10 or existing one that we have discussed.
+
+[rochak agrawal] 09:26:38
+However, your voice is very low.
+
+[Vaibhav Gupta] 09:26:41
+I'm saying I'm not able to understand the existing one, like, uh…
+
+[Vaibhav Gupta] 09:26:45
+GitHead of GitHub Gypsy.
+
+[rochak agrawal] 09:26:49
+Sorry, uh, can you come again?
+
+[Vaibhav Gupta] 09:26:54
+I am saying, uh, I'm not able to understand that, uh, the previous one that we have, uh, started, like, uh, get, uh, object and, uh, get, uh, head.
+
+[rochak agrawal] 09:27:06
+So, see, if you see here, what we are seeing, these are the files.
+
+[rochak agrawal] 09:27:11
+Which is C.
+
+[rochak agrawal] 09:27:12
+inside the .git, we see many folders are there, correct? Many files are there, right? So, what essentially these files, uh, stores.
+
+[rochak agrawal] 09:27:22
+So, slash git slash object, every commit, file, version, and tree is stored within this object directory.
+
+[rochak agrawal] 09:27:29
+Then reference, it contains all the reference for all the branch and tags.
+
+[rochak agrawal] 09:27:35
+Okay? And then git head and config. So these are the different, different files and directory inside the .git repository.
+
+[rochak agrawal] 09:27:46
+Okay, any config changes you are doing. So for example, right now my user is rochakagrawal@gmail.com. If you want to change it, you can create a new user in the config settings altogether. So these are the git level.
+
+[rochak agrawal] 09:28:02
+files which is there. So, like, we already established that whatever is there inside the gate, uh, it is going to.
+
+[rochak agrawal] 09:28:12
+Maintain or track your local repository, okay?
+
+[Vaibhav Gupta] 09:28:18
+Is it related to cloning, right?
+
+[rochak agrawal] 09:28:23
+Sorry, can you come again?
+
+[Vaibhav Gupta] 09:28:25
+Is it related to cloning?
+
+[rochak agrawal] 09:28:26
+No, no, see, yes, it is not related to cloning. If you are cloning, then it will take everything from the remote repository, but if you are opening up a new file, new repository, then it will be an empty one, right? In our case, if you see.
+
+[rochak agrawal] 09:28:47
+We initialize a new repository, correct, with the help of Git in it?
+
+[rochak agrawal] 09:28:52
+If you are seeing, there is no commit yet.
+
+[rochak agrawal] 09:28:55
+Correct.
+
+[rochak agrawal] 09:28:56
+or if I say git log.
+
+[rochak agrawal] 09:28:59
+It just does not have any comments.
+
+[rochak agrawal] 09:29:05
+Gillian?
+
+[rochak agrawal] 09:29:08
+So, if you are cloning, so for example, we cloned this one.
+
+[rochak agrawal] 09:29:15
+So, get…
+
+[rochak agrawal] 09:29:23
+State, uh, sorry, law.
+
+[rochak agrawal] 09:29:24
+You see, there are so many commits are there. Now, why these commits are there? Because we have this…
+
+[rochak agrawal] 09:29:32
+Direct…
+
+[rochak agrawal] 09:29:38
+If this directory is not there, and we have seen this, like, if you remove this directory, you are not going to see any of that content.
+
+[rochak agrawal] 09:29:47
+Right?
+
+[rochak agrawal] 09:29:50
+So now next we, so this is the basic about the git we have covered. Next what we are going to do, so these are the command, so diff and log we have not done yet.
+
+[rochak agrawal] 09:30:03
+Add, commit, status, uh, we have done. Now, once then we have, uh.
+
+[rochak agrawal] 09:30:09
+something called Reading History Git Log, and uh…
+
+[rochak agrawal] 09:30:16
+Git move, uh, so we have multiple commands in Git, uh, like, uh, how to revert my changes, how to, uh, create a branch.
+
+[rochak agrawal] 09:30:26
+So all those commands we are going to see tomorrow.
+
+[rochak agrawal] 09:30:30
+But we will go, eventually, step by step only.
+
+[rochak agrawal] 09:30:40
+Okay, yeah, I think we're good for today.
+
+[Gyanendra Narayan] 09:30:45
+Thank you.
+
+[rochak agrawal] 09:30:46
+Thank you.
+
