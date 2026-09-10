@@ -1,0 +1,3432 @@
+[rochak agrawal] 07:36:15
+Represented by RWX, so we have 3 type of permission. R will be represented by 4.
+
+[rochak agrawal] 07:36:17
+right will be represented by 2 and 1. So, it is not some random number, it is like 2 to the power 0 in a binary system, 2 to the power 1, and 2 to the power 2. So, total, it becomes 7. Now.
+
+[rochak agrawal] 07:36:31
+You can,
+
+[rochak agrawal] 07:36:33
+Use it for your, uh…
+
+[rochak agrawal] 07:36:37
+Giving the permission numerically or we have permission under three level user group and others and RWX. So either you can give the permissions like CH mode 744655 numerically or you can write U plus X.
+
+[rochak agrawal] 07:36:52
+So, if you want to give user and executable permission and so, so we can give the permissions. Now, when we were closing, uh…
+
+[rochak agrawal] 07:37:01
+the session, we discussed very small, briefly about the pipe. Now, there are two very important things.
+
+[rochak agrawal] 07:37:11
+Shell commands. One is called the pipe.
+
+[rochak agrawal] 07:37:15
+And another one is called the redirection.
+
+[rochak agrawal] 07:37:18
+Okay, so type of Linux.
+
+[rochak agrawal] 07:37:22
+sends the standard output of one command directly into the standard or input of another command. So basically it helps you chaining. So yesterday we did one example where we say if I'm if I need to find.
+
+[rochak agrawal] 07:37:38
+how many files are there in a particular folder, I'll just do ls-lrd, and then I will pipe it wc-l. Now, the first command, if you see.
+
+[rochak agrawal] 07:37:52
+So the first command, it will tell you the number. It is basically the listing.
+
+[rochak agrawal] 07:37:57
+the files in your current directory. The second command counts the numbers. So the output of this command works as an input to this command. So this process is called piping. Now there can be many examples of the pipe.
+
+[rochak agrawal] 07:38:13
+I can be there. So, for example, if I go CD slash ETC.
+
+[rochak agrawal] 07:38:18
+And, uh, so there is a file which we will talk about also. So there is a file called…
+
+[rochak agrawal] 07:38:25
+But…
+
+[rochak agrawal] 07:38:25
+Now in this, so currently we have some of the user only, but when you have hundreds and thousands of the user and you want to, let's say find out a information about a particular user, right? So what you can do, you can do.
+
+[rochak agrawal] 07:38:42
+more…
+
+[rochak agrawal] 07:38:43
+file name.
+
+[rochak agrawal] 07:38:45
+and then you grab it with your, let's say, EC2.
+
+[rochak agrawal] 07:38:52
+Right. So, it is giving you…
+
+[rochak agrawal] 07:38:57
+Only a particular line. So…
+
+[rochak agrawal] 07:39:00
+Now, here, what is happening? More is listing the content of the file. Grab is…
+
+[rochak agrawal] 07:39:06
+Out of that content, it is filtering out. Now, I can hear…
+
+[rochak agrawal] 07:39:14
+You say you want to find out the number of the users in your directory, for example, in this file. So instead of graph, you will write, uh…
+
+[rochak agrawal] 07:39:22
+WC-L.
+
+[rochak agrawal] 07:39:24
+So here you can see.
+
+[rochak agrawal] 07:39:26
+28 users are there currently.
+
+[rochak agrawal] 07:39:29
+So this is called the piping, where you are…
+
+[rochak agrawal] 07:39:34
+So basically, you are going to use the pipes for, um…
+
+[rochak agrawal] 07:39:41
+adding one commands to another commands. That's it. So this is, like, the chaining of the commands.
+
+[rochak agrawal] 07:39:47
+Then after the piping we have something called the redirection.
+
+[rochak agrawal] 07:39:52
+Okay. Now, when you go to the redirection, for example.
+
+[rochak agrawal] 07:39:55
+We need to understand.
+
+[rochak agrawal] 07:39:59
+Something called the standard.
+
+[rochak agrawal] 07:40:01
+input.
+
+[rochak agrawal] 07:40:05
+And standard out.
+
+[rochak agrawal] 07:40:12
+Now, what is your standard output?
+
+[rochak agrawal] 07:40:15
+Your screen.
+
+[rochak agrawal] 07:40:18
+Uh, you are getting all the display of the result.
+
+[rochak agrawal] 07:40:23
+In your city.
+
+[rochak agrawal] 07:40:25
+While… what is the standard input?
+
+[rochak agrawal] 07:40:30
+Your keyboard.
+
+[rochak agrawal] 07:40:34
+Okay.
+
+[rochak agrawal] 07:40:36
+So basically, if I'm writing something, I'm writing it from the keyboard, and whatever I'm writing, uh, let's say if I do get a file name, so then this input I am going into, I'm getting into.
+
+[rochak agrawal] 07:40:52
+my stream. So that is the standard output stream. Now we can redirect it. So for example, I do not want my.
+
+[rochak agrawal] 07:41:01
+input into screen, I want something somewhere else. So, well, what I am going to do, I am going to redirect my output.
+
+[rochak agrawal] 07:41:10
+to some other source. That is called the redirection. Now, for that, in…
+
+[rochak agrawal] 07:41:15
+Linux, there are 3 redirection operators on there.
+
+[rochak agrawal] 07:41:26
+Okay, so…
+
+[rochak agrawal] 07:41:32
+First is, uh, equal to…
+
+[rochak agrawal] 07:41:37
+Oh, sorry. Less than equal to, greater than equal to, and two double sign.
+
+[rochak agrawal] 07:41:42
+So…
+
+[rochak agrawal] 07:41:44
+This is…
+
+[rochak agrawal] 07:41:50
+Output redirection.
+
+[rochak agrawal] 07:41:56
+This is input redirection.
+
+[rochak agrawal] 07:42:06
+And, uh…
+
+[rochak agrawal] 07:42:12
+There's one more, which is…
+
+[rochak agrawal] 07:42:17
+2 at the, uh…
+
+[rochak agrawal] 07:42:19
+This one.
+
+[rochak agrawal] 07:42:23
+Which is error redirection.
+
+[rochak agrawal] 07:42:30
+And then we have append.
+
+[rochak agrawal] 07:42:33
+Okay, so we'll see, uh, with the example. So I'll go to my file.
+
+[rochak agrawal] 07:42:42
+If you see, I have a file called script.sh. Okay, now…
+
+[rochak agrawal] 07:42:47
+If you do cat on the script.sh.
+
+[rochak agrawal] 07:42:52
+you can see I have already, uh, like, there is some content in the script.sh, which I can see. Now, if I want to append some content into this file.
+
+[rochak agrawal] 07:43:05
+So, for that, you need to use this operator.
+
+[rochak agrawal] 07:43:09
+and script.sh.
+
+[rochak agrawal] 07:43:13
+Yeah, I… I have changed the… I do not have the right permission, so I'll just change it first.
+
+[rochak agrawal] 07:43:24
+Okay, now I will write, I am…
+
+[rochak agrawal] 07:43:27
+adding…
+
+[rochak agrawal] 07:43:29
+something
+
+[rochak agrawal] 07:43:33
+At the end.
+
+[rochak agrawal] 07:43:36
+Oh, no? Wait.
+
+[rochak agrawal] 07:43:39
+Come, don't see. Now, if you go…
+
+[rochak agrawal] 07:43:43
+script.sh, you can see I have now two lines. One is PWD, one is I am adding something at the end of the line. So very clearly, this is an append operator. Append redirection means.
+
+[rochak agrawal] 07:43:56
+I'm appending the text on top of something, okay?
+
+[rochak agrawal] 07:44:02
+Then, if you see, uh…
+
+[rochak agrawal] 07:44:05
+Redirection operator, uh…
+
+[rochak agrawal] 07:44:09
+Output redirection operator. So, if I run a command like this…
+
+[rochak agrawal] 07:44:16
+Without any redirection.
+
+[rochak agrawal] 07:44:20
+Then…
+
+[rochak agrawal] 07:44:22
+Your output, uh, where are you going to see your output? On your standard output, which is your screen, right?
+
+[rochak agrawal] 07:44:32
+I am going… I'm seeing the output. You say, I do not want to see the output, but I want to save it in some file. Correct? So what I'm going to do…
+
+[rochak agrawal] 07:44:41
+I am going to use the output redirection, and uh…
+
+[rochak agrawal] 07:44:48
+I'll say output.txt, something like that.
+
+[rochak agrawal] 07:44:55
+You see, you have not seen the output of this get script.sh.
+
+[rochak agrawal] 07:45:01
+Hey!
+
+[rochak agrawal] 07:45:02
+the output has gone to output.txt, and if you do an LS-LRT, there is the output.txt, and if you…
+
+[rochak agrawal] 07:45:11
+See the content of the output.txt.
+
+[rochak agrawal] 07:45:15
+Same.
+
+[rochak agrawal] 07:45:16
+And so, instead of sending the output to the standard output.
+
+[rochak agrawal] 07:45:20
+It has sent the output.
+
+[rochak agrawal] 07:45:22
+it has redirected the output to the output.txt. So this is called, uh…
+
+[rochak agrawal] 07:45:30
+Uh, this is called the…
+
+[rochak agrawal] 07:45:33
+What you can say.
+
+[rochak agrawal] 07:45:37
+in output redirection.
+
+[rochak agrawal] 07:45:39
+So…
+
+[rochak agrawal] 07:45:41
+And there's one more thing. If you…
+
+[rochak agrawal] 07:45:46
+So, we have seen that we can append by this.
+
+[rochak agrawal] 07:45:52
+And, uh, I will say I am appending.
+
+[rochak agrawal] 07:46:06
+Okay, Ctrl C. Now, if you go back…
+
+[rochak agrawal] 07:46:10
+script.sh. So you see, now I have 3 lines. So if you want to write something to your existing file.
+
+[rochak agrawal] 07:46:18
+you will always use this append… this double redirection. But if you see… you run this…
+
+[rochak agrawal] 07:46:32
+I am using…
+
+[rochak agrawal] 07:46:37
+Output.
+
+[rochak agrawal] 07:46:43
+Your file will be overwritten. Now, if you go…
+
+[rochak agrawal] 07:46:50
+You see?
+
+[rochak agrawal] 07:46:52
+So, your file will be overwritten.
+
+[rochak agrawal] 07:46:57
+Correct? So that is input redirection, and if any error is coming, so for example, LS…
+
+[rochak agrawal] 07:47:05
+Let's say, let me give…
+
+[rochak agrawal] 07:47:08
+Something like this.
+
+[rochak agrawal] 07:47:09
+Now, this is an error.
+
+[rochak agrawal] 07:47:11
+Okay, now, how do I redirect it?
+
+[rochak agrawal] 07:47:24
+Okay, now if you see, there is an error.log created, and uh…
+
+[rochak agrawal] 07:47:32
+Your error is marked… your errors has been redirected to your error.logs.
+
+[rochak agrawal] 07:47:38
+Okay, now we will take another example for the imported redirection.
+
+[rochak agrawal] 07:48:06
+Let me take a syntax.
+
+[rochak agrawal] 07:48:15
+We can use something like, uh…
+
+[rochak agrawal] 07:48:24
+Right, so I will say WCI and L.
+
+[rochak agrawal] 07:48:29
+Sorry, input redirection.
+
+[rochak agrawal] 07:48:33
+script.h.
+
+[rochak agrawal] 07:48:39
+So you can see, uh…
+
+[rochak agrawal] 07:48:41
+If you write WCI panel currently.
+
+[rochak agrawal] 07:48:44
+So it will not give you any output. It needs something on which it is going to work, right?
+
+[rochak agrawal] 07:48:50
+So…
+
+[rochak agrawal] 07:48:50
+instead of taking the input directly, I am going to input redirector. I am saying to wc-l command that you take the input from the script.sh. If you run only this, so it will.
+
+[rochak agrawal] 07:49:05
+Count the words also, and correct, uh, bits.
+
+[rochak agrawal] 07:49:10
+So this is about the piping and the redirection.
+
+[rochak agrawal] 07:49:15
+Uh, yes and no.
+
+[Dhanu] 07:49:23
+Uh, I don't check.
+
+[rochak agrawal] 07:49:25
+Yep.
+
+[Dhanu] 07:49:27
+Actually, your voice is like…
+
+[rochak agrawal] 07:49:30
+Your, uh, Dhanu, your voice is echoing.
+
+[Dhanu] 07:49:36
+I don't know why you're also skipping my phone.
+
+[rochak agrawal] 07:49:39
+Can you please try to rejoin?
+
+[rochak agrawal] 07:49:48
+Yes, an image.
+
+[rochak agrawal] 07:49:59
+Megha, yes, any question?
+
+[Megha Uthaman] 07:50:02
+Uh, yes, I had a doubt. Can you just briefly explain the error and the last one, the input, uh…
+
+[rochak agrawal] 07:50:08
+Input redirection, right.
+
+[rochak agrawal] 07:50:11
+Yes, yes, yes. So, uh, error is… so, for example.
+
+[rochak agrawal] 07:50:16
+Let's say this is my command.
+
+[rochak agrawal] 07:50:18
+Okay, which is going to work fine, right? There is no error.
+
+[rochak agrawal] 07:50:23
+But if you see, we have given this, uh…
+
+[rochak agrawal] 07:50:34
+Now, basically, this is a wrong command, this is going to give you some error, correct? Because there is no such file or directory. So, anything which you can, um…
+
+[rochak agrawal] 07:50:44
+any error which you are coming, right? So for example, you are running a web server. Now in a web server, there might be normal log entries will be there, and then there will be error log entries will be there, correct? So then what we can do, normal output.
+
+[rochak agrawal] 07:51:01
+we can redirect it to your output.log file, and the errors, I can redirect it to error.log file. So that…
+
+[rochak agrawal] 07:51:08
+we have a different entities for the logs. So we can… now this is giving us an error, so that is where I am redirecting it to the error drop-down.
+
+[rochak agrawal] 07:51:20
+OK, so that is called the error dot log. That is called the error redirection. Similarly, when you say input redirection, see input redirection, I am going to basically get it from. So if you see this command WC hyphen L.
+
+[rochak agrawal] 07:51:37
+And I am…
+
+[rochak agrawal] 07:51:39
+using the input redirection, and I'm saying step.sh. So now, what this command is doing, this command, wc-l.
+
+[rochak agrawal] 07:51:48
+take the input for the script.sh, and it is… so what does wc-l does? It is going to count the lines in your file. Now, instead of a script.sh, let's say if I give…
+
+[rochak agrawal] 07:52:02
+output.txt.
+
+[rochak agrawal] 07:52:04
+it is going to give me 2, because this is my input for this command. So that is called the input redirection.
+
+[rochak agrawal] 07:52:11
+Okay.
+
+[rochak agrawal] 07:52:14
+Yes, Devo.
+
+[rochak agrawal] 07:52:31
+Bevo, you have a question?
+
+[rochak agrawal] 07:52:40
+Okay, now next, we will move to permission via clear.
+
+[rochak agrawal] 07:52:45
+Now.
+
+[rochak agrawal] 07:52:49
+We will understand the user creation, okay?
+
+[rochak agrawal] 07:52:53
+So, you can see it here.
+
+[rochak agrawal] 07:52:58
+We have a root account, so there is a different type of users out there, okay? One is a root user, so if you go…
+
+[rochak agrawal] 07:53:08
+I'll keep showing it, uh, at the moment only.
+
+[rochak agrawal] 07:53:18
+So, this is a file.
+
+[rochak agrawal] 07:53:38
+So this is a file. Don't get confused with the name. So there are two files which you are going to find.
+
+[rochak agrawal] 07:53:46
+in any of the Linux distribution. One is a password. It is not exactly password. They call it as a passwd. And then there is a shadow file.
+
+[rochak agrawal] 07:53:56
+Okay, uh, so…
+
+[rochak agrawal] 07:53:59
+And again, that can be an interview question. People generally get confused, uh, because of the name. They…
+
+[rochak agrawal] 07:54:05
+Like, if you're not interacting with this file, so you will understand that this file is going to store the passwords. So, someone in Integrity asking you, what is this, what is, what is…
+
+[rochak agrawal] 07:54:17
+the content of this, uh, password, uh, is there, right? So…
+
+[rochak agrawal] 07:54:23
+We have two files.
+
+[rochak agrawal] 07:54:26
+One is ETC password.
+
+[rochak agrawal] 07:54:29
+So, this is going to contain all the users your system is having.
+
+[rochak agrawal] 07:54:36
+then you have an ETC shadow, which is going to contain the password in an encrypted format. Okay? Uh…
+
+[rochak agrawal] 07:54:45
+So, you can see it here, you have an entry for your…
+
+[rochak agrawal] 07:54:49
+EC2 user but apart from it also you have multiple other users. So these are the system users. I did not created it. These are already there. So there is three type of user as we are saying. One is a root user. Root user you do not create it.
+
+[rochak agrawal] 07:55:05
+It is there, okay? So, if you see…
+
+[rochak agrawal] 07:55:10
+the owner, uh…
+
+[rochak agrawal] 07:55:12
+And the group of these files are the root user.
+
+[rochak agrawal] 07:55:16
+Right? So, root is a user which is going to be present in all the Linux servers. You do not need to create it.
+
+[rochak agrawal] 07:55:24
+Whenever you provision a Linux server, a root user will be there.
+
+[rochak agrawal] 07:55:29
+Which will have the administrator. Root means it's a super user. It is going to have the, um…
+
+[rochak agrawal] 07:55:38
+all the privileges. Like, you can run everything with the root.
+
+[rochak agrawal] 07:55:42
+Then, we have the regular user. So, regular user is, like, the EC2 user is a regular user, which also, uh, like, I will…
+
+[rochak agrawal] 07:55:51
+I'll show you how to create another user. So those will be the regular user, though they will have the limited permission. I can add and remove more permission, we'll see that also. And then we have the third type of user as a system account.
+
+[rochak agrawal] 07:56:05
+So, all the remaining user you are seeing here, like operator, nobody, systemd network, these all are, uh…
+
+[rochak agrawal] 07:56:14
+network system accounts. For example, if you are installing a software, for example, when you install NGINX, probably NGINX user will be created.
+
+[rochak agrawal] 07:56:23
+And with this user, your NGINX is running. When you install Jenkins, a Jenkins user will be created. So those are called the system ones.
+
+[rochak agrawal] 07:56:31
+Now, let's go…
+
+[rochak agrawal] 07:56:35
+Create a user. Okay? So…
+
+[rochak agrawal] 07:56:45
+Now, before creating a user, so there is a command called user add.
+
+[rochak agrawal] 07:56:52
+With the help of that, I am going to run this, uh…
+
+[rochak agrawal] 07:56:58
+I'm going to add the…
+
+[rochak agrawal] 07:57:01
+This user. So there is, uh, hyphen M, hyphen S, I'll explain what they are doing.
+
+[rochak agrawal] 07:57:06
+And then I need to give a default.
+
+[rochak agrawal] 07:57:11
+Shell for this, and I'll say Roger.
+
+[rochak agrawal] 07:57:13
+For example.
+
+[rochak agrawal] 07:57:15
+And you will see…
+
+[rochak agrawal] 07:57:18
+You are going to get permission denied.
+
+[rochak agrawal] 07:57:23
+Now, before adding a user, we need to understand something else.
+
+[rochak agrawal] 07:57:30
+The normal user cannot perform the administrative activities.
+
+[rochak agrawal] 07:57:35
+Okay? So now, understand it in comparison to Windows. If you go to…
+
+[rochak agrawal] 07:57:42
+Uh, let's say PowerShell, for example.
+
+[rochak agrawal] 07:57:46
+When you right-click, there is an option of run as an administrator.
+
+[rochak agrawal] 07:57:51
+Connect?
+
+[rochak agrawal] 07:57:52
+Similarly, we have an option that you can run certain command.
+
+[rochak agrawal] 07:58:00
+While being the root.
+
+[rochak agrawal] 07:58:02
+Okay? Now, how can I do that?
+
+[rochak agrawal] 07:58:05
+So, there will be certain commands when you want to install something, uh, when you want to uninstall something. You will not be able to do all those activities with the help of your normal user, your regular user. You need to.
+
+[rochak agrawal] 07:58:20
+Elevate your permission to the root user.
+
+[rochak agrawal] 07:58:24
+How can I do that? Simply add.
+
+[rochak agrawal] 07:58:31
+Sudo. So, see, there are two options.
+
+[rochak agrawal] 07:58:37
+Okay, so either you will do sudo suroot.
+
+[rochak agrawal] 07:58:41
+So, what this command is going to do, it is going to… so, SU is the switch user.
+
+[rochak agrawal] 07:58:48
+So, either it is going to switch the user on the system, and it is going to become the root. So, for example, currently, if you see the prompt, it is a dollar sign. When I run this.
+
+[rochak agrawal] 07:58:59
+You can see.
+
+[rochak agrawal] 07:59:01
+It has become hash, and if you run who…
+
+[rochak agrawal] 07:59:05
+And I.
+
+[rochak agrawal] 07:59:07
+It says room.
+
+[rochak agrawal] 07:59:09
+Okay, so either you switch to the root user with the help of sudo sudo, and of course, when you become the root.
+
+[rochak agrawal] 07:59:17
+You can run anything. Uh, this is one option. Then the second option is, I'll do an exit.
+
+[rochak agrawal] 07:59:23
+Again, I become easy to user.
+
+[rochak agrawal] 07:59:28
+Right? Who am I? Is it me?
+
+[rochak agrawal] 07:59:30
+So you say, I do not want to become the root, but I just want to run only this command as the root.
+
+[rochak agrawal] 07:59:36
+So what do you need to do?
+
+[rochak agrawal] 07:59:45
+You add the sudo at the start of the command. Any command, not only this command, so any command you would want to run at a root user.
+
+[rochak agrawal] 07:59:55
+you use the sudo at the start of the command. Now.
+
+[rochak agrawal] 08:00:01
+There is one more caveat in this. So not every user can run the commands as sudo.
+
+[rochak agrawal] 08:00:07
+I will tell you how.
+
+[rochak agrawal] 08:00:10
+which user can use the sudo privileges. Okay but right now you understand if you want to run a command as a sudo privileges you need to add if you want to run a command with the root privileges you just add sudo at the start of the command.
+
+[rochak agrawal] 08:00:26
+And then that's it. Okay.
+
+[rochak agrawal] 08:00:28
+We are going to use this very heavily, so whenever, like, I will install Jenkins, so I'll say sudo yum install jenkins, sudo systemctl start jenkins, install docker, something like that. So we are going to use sudo very heavily.
+
+[rochak agrawal] 08:00:43
+So if you run this.
+
+[rochak agrawal] 08:00:45
+You see, there is no error come right now, right? And now, if you go…
+
+[rochak agrawal] 08:00:51
+So, I'm in ATC. If you go, there would be an entry for your new user, which you created, which is.
+
+[rochak agrawal] 08:01:11
+Now, you can see…
+
+[rochak agrawal] 08:01:14
+EC2 user and then there is a row check.
+
+[rochak agrawal] 08:01:19
+There's an entry, right?
+
+[rochak agrawal] 08:01:21
+And then this is called the UID and GID.
+
+[rochak agrawal] 08:01:27
+user ID and the group ID. So, the user ID for EC2 user is 1000, and the group ID for user Rochak is 1001. Now, if I go to my home directly.
+
+[rochak agrawal] 08:01:38
+So there will be a home directory, also.
+
+[rochak agrawal] 08:01:45
+Now, there is one more thing in it. So, once you created the user, I need to set up the password for it, so I'll go sudo.
+
+[rochak agrawal] 08:01:54
+Password?
+
+[rochak agrawal] 08:01:59
+Rocha.
+
+[rochak agrawal] 08:02:01
+Again, why you are giving the sudo? Because you need admin privileges. If you switch to root, you do not need to do sudo.
+
+[rochak agrawal] 08:02:10
+And you'll say, new password.
+
+[rochak agrawal] 08:02:27
+And if something…
+
+[rochak agrawal] 08:02:34
+What should I do?
+
+[rochak agrawal] 08:02:38
+There it was.
+
+[rochak agrawal] 08:02:40
+Okay.
+
+[rochak agrawal] 08:02:42
+Let me get…
+
+[rochak agrawal] 08:02:43
+Noida at the rate 123.
+
+[rochak agrawal] 08:02:48
+Noida, at the rate 123.
+
+[rochak agrawal] 08:02:50
+Okay?
+
+[rochak agrawal] 08:02:52
+Password has been updated, right? Now, if you go…
+
+[rochak agrawal] 08:02:59
+So, now again, I can switch to Roadchuck as well. Currently, if you see, who am I?
+
+[rochak agrawal] 08:03:05
+Easy to use that. You go sudo su, pro check.
+
+[rochak agrawal] 08:03:12
+You can see now it has switched to rotect.
+
+[rochak agrawal] 08:03:16
+Right?
+
+[rochak agrawal] 08:03:17
+Now…
+
+[rochak agrawal] 08:03:20
+Another way of logging into the server is… so, what you can do is…
+
+[rochak agrawal] 08:03:25
+That is, instead of connecting it directly, you can use any other tool. So, for example, we have Putty.
+
+[rochak agrawal] 08:03:31
+So if I go to, uh, again, I'll take the public IP.
+
+[rochak agrawal] 08:03:36
+I give the public IP.
+
+[rochak agrawal] 08:03:39
+Okay? Open.
+
+[rochak agrawal] 08:03:44
+It will ask me the username, Roger.
+
+[rochak agrawal] 08:04:08
+Yeah, we need to do some configuration on the AWS level. We have not set up the key and other things for this server. That is the reason. But like in a normal server, you will just give your username here and the password which we set right now.
+
+[rochak agrawal] 08:04:23
+And you will be able to log into the server with this project user altogether.
+
+[rochak agrawal] 08:04:28
+So that is how we are going to create the user. Similarly, as you create the user, you can.
+
+[rochak agrawal] 08:04:39
+So, hyphen M and hyphen S, what they are going to do, they are going to set the home directory and the bash shell for this particular user.
+
+[rochak agrawal] 08:04:48
+Similarly, we can set or reset the password, user password.
+
+[rochak agrawal] 08:04:52
+and now we can create, for example, a group also. So I go…
+
+[rochak agrawal] 08:05:00
+Sudo?
+
+[rochak agrawal] 08:05:04
+Guru, add.
+
+[rochak agrawal] 08:05:05
+And I'll say developers.
+
+[rochak agrawal] 08:05:09
+I'll… or I simply save them.
+
+[rochak agrawal] 08:05:10
+Okay, now my group is created. Now group entry will be…
+
+[rochak agrawal] 08:05:15
+CDC.
+
+[rochak agrawal] 08:05:22
+Which is a file.
+
+[rochak agrawal] 08:05:26
+It is a group.
+
+[rochak agrawal] 08:05:29
+Yeah, this one.
+
+[rochak agrawal] 08:05:30
+The group, if you see him.
+
+[rochak agrawal] 08:05:37
+So you can see there is already many groups are there. These are system groups.
+
+[rochak agrawal] 08:05:43
+But your group will also be created. You can see?
+
+[rochak agrawal] 08:05:48
+the dev group is created. Now, I can add a user to this group by running this command.
+
+[rochak agrawal] 08:05:56
+So, group ad, create a group.
+
+[rochak agrawal] 08:06:02
+By running this command, for example, if I go run this.
+
+[rochak agrawal] 08:06:13
+This is my group name, Deb.
+
+[rochak agrawal] 08:06:20
+Now, if you go…
+
+[rochak agrawal] 08:06:40
+Take the group of my user.
+
+[rochak agrawal] 08:06:54
+Groups, go check.
+
+[rochak agrawal] 08:06:55
+And you can see.
+
+[rochak agrawal] 08:06:57
+It is part of two groups, it is part of Roadcheck also, it is part of Dev also.
+
+[rochak agrawal] 08:07:02
+Correct? So, a user can be part of multiple groups, and if we want to see the group.
+
+[rochak agrawal] 08:07:09
+For your current user?
+
+[rochak agrawal] 08:07:12
+So you can see my current user is part of EC2 user group, ADM user group, wheel user group, and system user group. Multiple groups again. So your user can be part of multiple groups altogether.
+
+[rochak agrawal] 08:07:27
+Now, there is one very important thing. Like, as I said, you can run the commands with the…
+
+[rochak agrawal] 08:07:35
+sudo privileges, correct? Now, why you are able to run it with the sudo privilege? So, let's say there are two users, user A and user B. So, it is…
+
+[rochak agrawal] 08:07:46
+Not necessary that both of the users will be, um…
+
+[rochak agrawal] 08:07:53
+We'll be able to run the commands with the sudo privileges, so there is a file.
+
+[rochak agrawal] 08:08:11
+I always forget the name of this file.
+
+[rochak agrawal] 08:08:16
+Yep.
+
+[rochak agrawal] 08:08:19
+Okay, so if you, uh, let me try to…
+
+[rochak agrawal] 08:08:42
+So here, if you see…
+
+[rochak agrawal] 08:08:47
+Allows people in the group to wheel to run all the commands.
+
+[rochak agrawal] 08:08:52
+So the people who are part of this group will.
+
+[rochak agrawal] 08:08:56
+They are going to run the sudo commands.
+
+[rochak agrawal] 08:09:00
+Any…
+
+[rochak agrawal] 08:09:00
+anyone who is not part of the group. So, for example, if you see my current user.
+
+[rochak agrawal] 08:09:10
+is part of this group. Veal.
+
+[rochak agrawal] 08:09:13
+Correct?
+
+[rochak agrawal] 08:09:15
+allow people in this group Bill to run all the commands.
+
+[rochak agrawal] 08:09:18
+And if you see.
+
+[rochak agrawal] 08:09:21
+Groups?
+
+[rochak agrawal] 08:09:22
+Road check.
+
+[rochak agrawal] 08:09:24
+This user is not part of the wheel group.
+
+[rochak agrawal] 08:09:27
+He may not be, uh… sorry, may is the wrong word. He is not, uh, able to run the command with the sudo privileges.
+
+[rochak agrawal] 08:09:35
+Okay, now let's try that. So, I'll do sudo sudo check.
+
+[rochak agrawal] 08:09:44
+Okay? Pseudo…
+
+[rochak agrawal] 08:09:47
+EM install nginx.
+
+[rochak agrawal] 08:09:52
+So, it is asking sudo password for no joke.
+
+[rochak agrawal] 08:09:56
+I… I give the password also, which I set up.
+
+[rochak agrawal] 08:10:02
+It is?
+
+[rochak agrawal] 08:10:05
+You cannot run it.
+
+[rochak agrawal] 08:10:07
+But if I run it with my current user.
+
+[rochak agrawal] 08:10:12
+Sudo… DM…
+
+[rochak agrawal] 08:10:14
+Install…
+
+[rochak agrawal] 08:10:16
+and Unix.
+
+[rochak agrawal] 08:10:17
+It's going to work.
+
+[rochak agrawal] 08:10:19
+Okay? So, understand that every user cannot, uh…
+
+[rochak agrawal] 08:10:24
+run, uh, the command with the sudo privileges, you need to be in this group, then only you will be able to run the command with the privileges. Now, in the last, we can, uh, delete the group, so group del.
+
+[rochak agrawal] 08:10:40
+It's a command, and…
+
+[rochak agrawal] 08:10:43
+Again, yes, I need to run it with sudo.
+
+[rochak agrawal] 08:10:47
+So your group is deleted. Now, if you say, again, if you check the group for road check.
+
+[rochak agrawal] 08:10:55
+There is only one group is coming, right?
+
+[rochak agrawal] 08:10:58
+And similarly, I am going to run user delete command also.
+
+[rochak agrawal] 08:11:06
+Which is going to…
+
+[rochak agrawal] 08:11:09
+Delete my user.
+
+[rochak agrawal] 08:11:14
+Now, if you go…
+
+[rochak agrawal] 08:11:16
+more…
+
+[rochak agrawal] 08:11:18
+Password?
+
+[rochak agrawal] 08:11:20
+There is no road check user right now. It has been gone from this file.
+
+[rochak agrawal] 08:11:25
+So that's a typical user lifecycle journey. You can delete it, you can create it, you can give the permission if they need the permission on the running the admin commands. So you are going to give, you're going to add them to the wheel group and then you can delete it when you don't need it.
+
+[rochak agrawal] 08:11:43
+Hey! So…
+
+[rochak agrawal] 08:11:47
+This is the one, and then, uh…
+
+[rochak agrawal] 08:11:53
+Let me show you one more thing, and then I'm going to take the questions.
+
+[rochak agrawal] 08:11:58
+So, for example, let me create another user this time.
+
+[rochak agrawal] 08:12:09
+Okay, uh, it's a password…
+
+[rochak agrawal] 08:12:15
+Via… again, so do I need to pay?
+
+[rochak agrawal] 08:12:20
+Noida at the rate 123.
+
+[rochak agrawal] 08:12:26
+Okay, now if I go to my home directory, and here, if you see, I have some files, okay?
+
+[rochak agrawal] 08:12:33
+And let's say I have a script.sh. Now, if you see, this denotes the user.
+
+[rochak agrawal] 08:12:38
+And this denotes the group. Now I can.
+
+[rochak agrawal] 08:12:43
+change the group and the user of a file. Okay, so how I'm going to do that? With the help of C… C. Uh, so you have…
+
+[rochak agrawal] 08:12:53
+done the command called the chmod, which is going to change the permission of a file. Then we have a command called chown.
+
+[rochak agrawal] 08:13:04
+Okay, and I'll say Priya.
+
+[rochak agrawal] 08:13:07
+and script product search.
+
+[rochak agrawal] 08:13:17
+Now, if you see…
+
+[rochak agrawal] 08:13:20
+The user?
+
+[rochak agrawal] 08:13:21
+has changed to Priya.
+
+[rochak agrawal] 08:13:24
+And then.
+
+[rochak agrawal] 08:13:26
+If you need to change the group, then we have a command call.
+
+[rochak agrawal] 08:13:36
+CH Group.
+
+[rochak agrawal] 08:13:40
+No, see it?
+
+[rochak agrawal] 08:13:42
+Now for this particular script.sh.
+
+[rochak agrawal] 08:13:45
+Priya Priya. Now Priya is the owner of the file and.
+
+[rochak agrawal] 08:13:50
+Group also like Priya is the group. So now what the permission is OWX like RWX which we were talking owner, group and X. Now your EC2 user has become the others for this file with respect to this file because the current owner is Priya.
+
+[rochak agrawal] 08:14:07
+current group is Priya, and everything else is other. So, now… now, why it is needed? Because at many point, uh, let's say you install.
+
+[rochak agrawal] 08:14:17
+NGINX, okay? Now, there will be certain configuration file which will be created with, let's say, NGINX user, okay? Now, you might not be able to do certain actions with them, so you go change the owner of the file.
+
+[rochak agrawal] 08:14:31
+Right? So we can… we will be performing these operations pretty much.
+
+[rochak agrawal] 08:14:39
+Uh, yes, ma'am.
+
+[Vaibhav Gupta] 08:14:42
+Hello.
+
+[Vaibhav Gupta] 08:14:44
+Good morning, Doja. Yeah, I'm right at now, I'm running your trial, and you can meet with me.
+
+[rochak agrawal] 08:14:44
+Yeah.
+
+[Vaibhav Gupta] 08:14:50
+I think there's some issues. Uh, so, uh, my question is first related to, uh, that, uh, input that we covered and people started.
+
+[rochak agrawal] 08:14:59
+Okay.
+
+[Vaibhav Gupta] 08:14:59
+like, uh…
+
+[Vaibhav Gupta] 08:15:02
+uh, which… WCL. So, in which Y, uh, there's a… reflecting 1. So, why it is 1? I'm confusing in that.
+
+[rochak agrawal] 08:15:04
+Mm-hmm.
+
+[Vaibhav Gupta] 08:15:11
+I'm trying to ask…
+
+[rochak agrawal] 08:15:11
+No, it is the count of the lines in a file, WC-L.
+
+[Vaibhav Gupta] 08:15:18
+count of the file.
+
+[rochak agrawal] 08:15:19
+Count of the line in a file.
+
+[Vaibhav Gupta] 08:15:22
+Onto the left. Okay, okay.
+
+[rochak agrawal] 08:15:23
+Okay.
+
+[Vaibhav Gupta] 08:15:25
+Okay, okay. And, uh, I was confused in the, uh, the group one, that we have a group. Like, uh, I'm not able to get Anderson to…
+
+[rochak agrawal] 08:15:30
+Okay.
+
+[rochak agrawal] 08:15:36
+So, like, what is your confusion? What is that you are not able to get?
+
+[Vaibhav Gupta] 08:15:41
+Like, that, uh, wheel group that we have, uh… on that time, I'm trying to ask, but, uh…
+
+[rochak agrawal] 08:15:48
+Okay, so let me explain.
+
+[Vaibhav Gupta] 08:15:48
+Not able to… I'm not… yeah.
+
+[rochak agrawal] 08:15:50
+Okay.
+
+[rochak agrawal] 08:15:55
+Now
+
+[rochak agrawal] 08:15:57
+In your, uh, system, there can be multiple users. So let's say A, B, C.
+
+[rochak agrawal] 08:16:05
+D, E, multiple users can be there, correct?
+
+[rochak agrawal] 08:16:08
+Now, every user can be part of multiple groups, correct?
+
+[Vaibhav Gupta] 08:16:14
+Mm-hmm.
+
+[rochak agrawal] 08:16:15
+This is clear?
+
+[rochak agrawal] 08:16:19
+Uh, yes, no, never.
+
+[Vaibhav Gupta] 08:16:21
+Yes, yes, yes.
+
+[rochak agrawal] 08:16:22
+Yeah, so let's say A is part of them.
+
+[rochak agrawal] 08:16:25
+B is part of DEB.
+
+[rochak agrawal] 08:16:28
+C is part of dev, and it is also part of test, for example.
+
+[rochak agrawal] 08:16:33
+Uh, this is test and, uh, deploy.
+
+[rochak agrawal] 08:16:36
+Something like that. And E is… E is part of deploy.
+
+[Vaibhav Gupta] 08:16:37
+Okay.
+
+[rochak agrawal] 08:16:42
+Right. Now, the thing is…
+
+[rochak agrawal] 08:16:47
+Wheel group is a special group. Now, probably dev, test, deploy, these are the group you have created, those groups, right? But wheel, you can say, is a system group.
+
+[rochak agrawal] 08:16:59
+Like, you have not created it.
+
+[rochak agrawal] 08:17:02
+So, any person
+
+[Vaibhav Gupta] 08:17:02
+There's a… it's a predefined…
+
+[rochak agrawal] 08:17:04
+It is pretty defined, yes.
+
+[Vaibhav Gupta] 08:17:07
+Okay.
+
+[rochak agrawal] 08:17:08
+Okay, so any person…
+
+[rochak agrawal] 08:17:14
+Now, we know that to run some command, you need to run this with the sudo privileges, correct?
+
+[rochak agrawal] 08:17:23
+Remember, this part is clear, pseudo one.
+
+[rochak agrawal] 08:17:25
+It is like running as an administrator.
+
+[Vaibhav Gupta] 08:17:26
+Yes, yes, yes.
+
+[Vaibhav Gupta] 08:17:28
+Yes.
+
+[rochak agrawal] 08:17:29
+Correct? Now, only users. So, for example.
+
+[Vaibhav Gupta] 08:17:29
+Mm-hmm.
+
+[rochak agrawal] 08:17:33
+A is part of B group.
+
+[rochak agrawal] 08:17:37
+See also part, uh…
+
+[rochak agrawal] 08:17:39
+Of the wheel group.
+
+[rochak agrawal] 08:17:44
+Okay, so now only a…
+
+[rochak agrawal] 08:17:48
+And C run the command with the sudo privileges.
+
+[rochak agrawal] 08:17:53
+B and E will not. So we have seen that. I've tried to run sudo yum install nginx.
+
+[rochak agrawal] 08:18:00
+with the help of EC2 user, because it is a part of the wheel group, I was able to run it, but with the other user, Rochek, because it was not part of the wheel group.
+
+[rochak agrawal] 08:18:12
+I was not able to run it. Correct?
+
+[Vaibhav Gupta] 08:18:15
+Correct, correct.
+
+[rochak agrawal] 08:18:16
+So that is what we have done.
+
+[rochak agrawal] 08:18:20
+If we added Rochuck to the V group, then I will run it with the… I will run the sudo command with the Rochuck user also.
+
+[rochak agrawal] 08:18:28
+So that is about the VIN group. We have not created this group, this group is created already. It's a system group, predefined.
+
+[Vaibhav Gupta] 08:18:29
+So, if…
+
+[Vaibhav Gupta] 08:18:31
+If you want…
+
+[Vaibhav Gupta] 08:18:36
+Okay, got it. So, the user, which is a part of the wheel group, who can, uh… Another thing is, if you want to add any new user, like B or C, so…
+
+[rochak agrawal] 08:18:46
+We can see simple, like, we add Rochak to a particular group, right? Similarly, I'll add it to the wheel group also. This is absolutely the same process.
+
+[Vaibhav Gupta] 08:18:57
+Okay, okay.
+
+[rochak agrawal] 08:18:59
+Okay.
+
+[Vaibhav Gupta] 08:19:03
+And if you want to delete any user, we can.
+
+[rochak agrawal] 08:19:08
+We can, yes, we can remove the group.
+
+[rochak agrawal] 08:19:10
+We deleted the user, we deleted the group, we can remove it from the group. Absolutely, we can do that.
+
+[rochak agrawal] 08:19:15
+Yep.
+
+[Vaibhav Gupta] 08:19:17
+Can you show me example of it?
+
+[rochak agrawal] 08:19:17
+So it is not like once I add something to a group, it is a permanent association. I can anytime remove it from the group. You can find the command and run it.
+
+[Vaibhav Gupta] 08:19:24
+Okay.
+
+[rochak agrawal] 08:19:29
+Okay?
+
+[Vaibhav Gupta] 08:19:30
+Can you show me the example of it?
+
+[rochak agrawal] 08:19:33
+Uh, so we cannot cover every use case in the class. It is… it will go on forever, right? So, there are commands you can…
+
+[Vaibhav Gupta] 08:19:41
+So, any particular, uh, command line for… that we use for the test I'm asking for?
+
+[rochak agrawal] 08:19:46
+So we've done all the demos of all the commands, right? Anything what we have not done is not only theory, we have done everything from the commands.
+
+[rochak agrawal] 08:19:58
+Got it?
+
+[rochak agrawal] 08:19:59
+But, of course, we cannot cover each, uh, in every use case, every scenario, every, uh, uh, example, um, within the limited time. You can do the practice also for that.
+
+[Vaibhav Gupta] 08:20:14
+Okay, so anything issues I, uh, I'll ask.
+
+[rochak agrawal] 08:20:15
+Yeah? Yep.
+
+[rochak agrawal] 08:20:24
+Yes, Anthony?
+
+[Anthony Joseph] 08:20:28
+Oh, good morning. When you create a particular user, is he a standard user, or does he become a root user?
+
+[rochak agrawal] 08:20:36
+No, this… see, that is what I'm explaining in the Need to Baba also.
+
+[rochak agrawal] 08:20:40
+Your user will always be a regular user. There is only one root user. You don't create the root users okay. It is just very similar to let's say I want to run a program. So you have an option of run as an administrator correct in Windows.
+
+[Anthony Joseph] 08:20:44
+Okay.
+
+[Anthony Joseph] 08:20:55
+Okay, correct.
+
+[rochak agrawal] 08:20:56
+Okay.
+
+[rochak agrawal] 08:20:58
+So similarly you run the program with the pseudo privileges.
+
+[rochak agrawal] 08:21:02
+Like, installing it, and… now, who can run this? Uh…
+
+[Anthony Joseph] 08:21:02
+Okay.
+
+[rochak agrawal] 08:21:08
+With the admin privileges, who is part of this VIN group?
+
+[rochak agrawal] 08:21:13
+Okay?
+
+[Anthony Joseph] 08:21:14
+Okay.
+
+[Anthony Joseph] 08:21:16
+And, uh, will you be sharing this list of commands to us?
+
+[rochak agrawal] 08:21:19
+Yeah, yeah, see this, uh, I have uploaded this PPT, so the commands are already there. You can see this, right? These commands are already there.
+
+[rochak agrawal] 08:21:27
+in the…
+
+[Anthony Joseph] 08:21:27
+Okay, you uploaded this? Okay.
+
+[rochak agrawal] 08:21:28
+Yeah, I have approved this. Okay.
+
+[Anthony Joseph] 08:21:30
+Thank you.
+
+[rochak agrawal] 08:21:36
+Uh, yes, Sarif.
+
+[rochak agrawal] 08:21:49
+Okay, now…
+
+[rochak agrawal] 08:21:54
+I am going to cover something very, very important and very interesting, I would say.
+
+[rochak agrawal] 08:22:06
+Okay?
+
+[rochak agrawal] 08:22:07
+Initially, it is going to look.
+
+[rochak agrawal] 08:22:10
+Very complicated to you.
+
+[rochak agrawal] 08:22:12
+Okay?
+
+[rochak agrawal] 08:22:15
+It's very straightforward.
+
+[rochak agrawal] 08:22:17
+I can understand, um, if you're not getting it right now, uh, because it… it is a matter of practice.
+
+[rochak agrawal] 08:22:26
+So…
+
+[rochak agrawal] 08:22:28
+Let's see…
+
+[rochak agrawal] 08:22:30
+I…
+
+[rochak agrawal] 08:22:31
+It is a editor. Now, in…
+
+[rochak agrawal] 08:22:34
+The next, there is multiple editors out there.
+
+[rochak agrawal] 08:22:37
+Okay.
+
+[rochak agrawal] 08:22:40
+we have BI, or we call it as a BIM editor, or we will have, uh, Nano editor. Uh, there is different type of editor, some people prefer Nano, but BI is the most preferred editor is out there.
+
+[rochak agrawal] 08:22:55
+And I also prefer VI Editor.
+
+[rochak agrawal] 08:23:00
+Dennis…
+
+[rochak agrawal] 08:23:01
+this is not a straightforward, okay? Like, it is not like a notepad, you go type your content and everything. And here also, if you do it with a cat, so for example, I have a pile.
+
+[rochak agrawal] 08:23:14
+Let's say…
+
+[rochak agrawal] 08:23:19
+Simple script.
+
+[rochak agrawal] 08:23:34
+Could be nice.
+
+[rochak agrawal] 08:23:41
+So let me copy this.
+
+[rochak agrawal] 08:23:52
+file.sh.
+
+[rochak agrawal] 08:24:00
+Okay, now I created a file.
+
+[rochak agrawal] 08:24:03
+I can see the content with the help of more.
+
+[rochak agrawal] 08:24:07
+Okay. Now, get…
+
+[rochak agrawal] 08:24:11
+CAIC also will help you, uh, in creating the content and everything.
+
+[rochak agrawal] 08:24:16
+Uh, at the end of the file, so if I go cat…
+
+[rochak agrawal] 08:24:20
+File.sh.
+
+[rochak agrawal] 08:24:21
+okay, it is allow… it will allow me to add the content at the end of the file, okay? But what if… if I want to add something here?
+
+[rochak agrawal] 08:24:33
+Or I want to, let's say, change it to…
+
+[rochak agrawal] 08:24:36
+something else. Check, yeah, instead of saying check active user account, I want to just say check.
+
+[rochak agrawal] 08:24:42
+user account. I want to delete this activity, right? So CAIT was not able to help you with these type of.
+
+[rochak agrawal] 08:24:50
+file, uh, editing issues, okay? SCAD cannot do it. You cannot do it with the CAD. And that is where we have these editors in your, uh…
+
+[rochak agrawal] 08:25:00
+Any open distribution.
+
+[rochak agrawal] 08:25:03
+There are two primary editors are there VI which we are going to see and Nano. Nano you are not going to find with every Linux distribution but VI editor will be there with every Linux distribution and that's why.
+
+[rochak agrawal] 08:25:19
+BI is most, um…
+
+[rochak agrawal] 08:25:21
+Preferred one, okay? Now, to run the BI editor, you simply…
+
+[rochak agrawal] 08:25:28
+Run the command, B-I-E.
+
+[rochak agrawal] 08:25:30
+and the file name.
+
+[rochak agrawal] 08:25:32
+Now…
+
+[rochak agrawal] 08:25:33
+Let's say if I'm giving file.txt.
+
+[rochak agrawal] 08:25:38
+Understand this.
+
+[rochak agrawal] 08:25:40
+File.txt.
+
+[rochak agrawal] 08:25:43
+If the file.txt is present, so for example, in our case, file.ssc is present, if I give bi.
+
+[rochak agrawal] 08:25:51
+File dot SH.
+
+[rochak agrawal] 08:25:54
+It is…
+
+[rochak agrawal] 08:25:55
+Going to open the file for you.
+
+[rochak agrawal] 08:25:58
+But in case the file is not present on your system, it is going to create a file. It is like opening up a new file, and when you go to Notepad and you say new text file. So if the file is not present, it is going to open.
+
+[rochak agrawal] 08:26:13
+create a file for you, and then open up. So, for example, if I open file.txt.
+
+[rochak agrawal] 08:26:20
+It is opening up a new file for me. It says new.
+
+[rochak agrawal] 08:26:25
+Hey.
+
+[rochak agrawal] 08:26:26
+I'll just make an exit. Since I have not saved it, you are not going to find it, okay?
+
+[rochak agrawal] 08:26:32
+If I am going to open file.sh.
+
+[rochak agrawal] 08:26:39
+It is going to open my current one.
+
+[rochak agrawal] 08:26:41
+That is one thing. Okay, so you can see, this is my current file. I can go… go to anywhere.
+
+[rochak agrawal] 08:26:49
+Right?
+
+[rochak agrawal] 08:26:50
+Now, I just, um, may give you an idea. It is… BI is all about practice. Now, whatever I'm going to explain, it will give you a background, but…
+
+[rochak agrawal] 08:27:02
+Unless you're not doing the practice. Like, it took…
+
+[rochak agrawal] 08:27:05
+me years to get it comfortable with the BIE.
+
+[rochak agrawal] 08:27:08
+I'm just… and I'm not joking, okay? It took me years to get it, uh, very comfortable with BI. Still, I'm not all, I would say. There are many things out there in BI.
+
+[rochak agrawal] 08:27:19
+I'm just… now, uh, I can do all my stuff, uh, which is needed for me, but there are many commands.
+
+[rochak agrawal] 08:27:26
+So that is one thing. So BI is essentially on every Unix system, right? Now you can see there are three command, three modes is there in BI.
+
+[rochak agrawal] 08:27:37
+So when you run.
+
+[rochak agrawal] 08:27:44
+VI file name.
+
+[rochak agrawal] 08:27:47
+So we discussed, if the file is not present, it is going to create a new file, and you can add the content in it.
+
+[rochak agrawal] 08:27:55
+If the file is present, it is going to open up a new file.
+
+[rochak agrawal] 08:28:00
+When you run this command, then your BI…
+
+[rochak agrawal] 08:28:07
+Opens in the command mode.
+
+[rochak agrawal] 08:28:12
+Understand this thing, this is very, very, very critical.
+
+[rochak agrawal] 08:28:18
+So, right now.
+
+[rochak agrawal] 08:28:22
+I cannot read any, uh, sorry, uh…
+
+[rochak agrawal] 08:28:27
+I cannot type anything to this.
+
+[rochak agrawal] 08:28:31
+File. Okay. Now…
+
+[rochak agrawal] 08:28:33
+Then what is the command mode? Command mode is…
+
+[rochak agrawal] 08:28:38
+So you can see?
+
+[rochak agrawal] 08:28:40
+Command mode is where every key you are typing. When I'm saying every key, every key will have a different meaning. So, for example, if I'm typing DD.
+
+[rochak agrawal] 08:28:49
+it is going to delete the current line. If I'm typing U, it is going to undo the last change, okay? If I'm typing bye-bye or P, it is copy-paste, uh, it is going to copy-paste.
+
+[rochak agrawal] 08:29:02
+Okay. So I'll show you. So now.
+
+[rochak agrawal] 08:29:05
+But…
+
+[rochak agrawal] 08:29:07
+You see…
+
+[rochak agrawal] 08:29:09
+So…
+
+[rochak agrawal] 08:29:10
+DD.
+
+[rochak agrawal] 08:29:12
+My file is… my line is deleted. I'm typing you.
+
+[rochak agrawal] 08:29:17
+And do change. Okay? So, every key…
+
+[rochak agrawal] 08:29:21
+Now, I'll show you what are the commands.
+
+[rochak agrawal] 08:29:25
+BA?
+
+[rochak agrawal] 08:29:26
+Command board commands.
+
+[rochak agrawal] 08:29:34
+So you can see?
+
+[rochak agrawal] 08:29:35
+Personal navigation, we have H, J, K, L, W, B, jump forward to the next word or the backward to the previous word.
+
+[rochak agrawal] 08:29:44
+And then insert mode I'll come a little later. So editing or deleting the text X and X delete the character under or before the cursor DDD dollar and delete the word the entire line from the cursor. Copy paste bye bye.
+
+[rochak agrawal] 08:29:59
+P, paste, copied, right? So we have these commands. Now, this is very important.
+
+[rochak agrawal] 08:30:07
+Colin W.
+
+[rochak agrawal] 08:30:09
+It is not W, it is colon W.
+
+[rochak agrawal] 08:30:12
+So, last time, if you see, I created a file, and I give colon Q…
+
+[rochak agrawal] 08:30:19
+exclamations. For example.
+
+[rochak agrawal] 08:30:21
+I'll just come.
+
+[rochak agrawal] 08:30:23
+I give.
+
+[rochak agrawal] 08:30:26
+Colon?
+
+[rochak agrawal] 08:30:27
+Q?
+
+[rochak agrawal] 08:30:29
+Exclamation. You can see it here.
+
+[rochak agrawal] 08:30:33
+So, whatever you have done, it will not be saved.
+
+[rochak agrawal] 08:30:37
+You come out.
+
+[rochak agrawal] 08:30:39
+Okay.
+
+[rochak agrawal] 08:30:40
+Put a new file.
+
+[rochak agrawal] 08:30:41
+For example, VAE.
+
+[rochak agrawal] 08:30:45
+file.txt.
+
+[rochak agrawal] 08:30:50
+I'm typing anything, I'll come to the insert mode, but right now I'm trying to show you how to save the file. Now…
+
+[rochak agrawal] 08:30:57
+You give colon?
+
+[rochak agrawal] 08:30:59
+If you give colon q exclamation.
+
+[rochak agrawal] 08:31:03
+Okay, then it is not going to save anything.
+
+[rochak agrawal] 08:31:09
+You exit and you will not have the file also. There is no file.txt, correct?
+
+[rochak agrawal] 08:31:14
+But if you want to save the file.
+
+[rochak agrawal] 08:31:17
+So you open vi.file.txt.
+
+[rochak agrawal] 08:31:21
+You write something?
+
+[rochak agrawal] 08:31:25
+You do, do you?
+
+[rochak agrawal] 08:31:28
+If you do colon W, your content is going to save, and you will not exit.
+
+[rochak agrawal] 08:31:34
+Okay, you are not exit. After that, you…
+
+[rochak agrawal] 08:31:39
+Do other changes.
+
+[rochak agrawal] 08:31:41
+now you, you, you are done with your changes, so you want to save it as well as you want to exit it. So you give blue, you exclamation.
+
+[rochak agrawal] 08:31:52
+Okay?
+
+[rochak agrawal] 08:31:54
+Now, if you go…
+
+[rochak agrawal] 08:31:57
+So you have a file.txt, and if you see the content of the file.txt.
+
+[rochak agrawal] 08:32:05
+So you have the content.
+
+[rochak agrawal] 08:32:07
+So I'll remove this file. I don't need it.
+
+[rochak agrawal] 08:32:13
+So…
+
+[rochak agrawal] 08:32:19
+When you run the VI, your VI is going to run, your VI is going to start in a command mode, where every key.
+
+[rochak agrawal] 08:32:29
+has a meaning.
+
+[rochak agrawal] 08:32:31
+OK, now comes the question, how can I write the content then right? I can copy paste the files, I can delete the line, I can delete a word also because there are many commands which we discussed.
+
+[rochak agrawal] 08:32:46
+Right? So if you want to delete a particular word, so DWU will write, DD will delete the complete line. Multiple commands are there.
+
+[rochak agrawal] 08:32:56
+Then, how you are going to write the content in a file? And that is where you need to go into the…
+
+[rochak agrawal] 08:33:05
+Insert mode.
+
+[rochak agrawal] 08:33:10
+How will you go into the insert mode?
+
+[rochak agrawal] 08:33:12
+Again, when you start with the command mode, and you have I.
+
+[rochak agrawal] 08:33:18
+I…
+
+[rochak agrawal] 08:33:21
+A… A…
+
+[rochak agrawal] 08:33:23
+O, capital O.
+
+[rochak agrawal] 08:33:25
+These four, six keys if you enter.
+
+[rochak agrawal] 08:33:29
+You are going to enter into insert mode.
+
+[rochak agrawal] 08:33:34
+You can read it from here.
+
+[rochak agrawal] 08:33:37
+II insert text before the cursor at the beginning of the current line.
+
+[rochak agrawal] 08:33:45
+End text after the cursor at the end of the current line.
+
+[rochak agrawal] 08:33:51
+O, O, open a new line before or below or above the cursor and enter insert.
+
+[rochak agrawal] 08:33:57
+Okay? Now, this is very important to invest in. So, for example, I go…
+
+[rochak agrawal] 08:34:04
+BI file dot SH.
+
+[rochak agrawal] 08:34:07
+Right? So, currently, I am in a command mode.
+
+[rochak agrawal] 08:34:10
+If I run DD here, it is going to delete my current line. If I press U, it is going to undo my change, meaning here.
+
+[rochak agrawal] 08:34:21
+Every character which you are pressing may have a special meaning. But you say I want to type DD how I'm going to do that. Then you need to go into the insert mode. Okay, how can you go into the insert mode?
+
+[rochak agrawal] 08:34:36
+I am pressing I.
+
+[rochak agrawal] 08:34:39
+When you press I A O.
+
+[rochak agrawal] 08:34:42
+You will see, here, you are going to find an option of insert.
+
+[rochak agrawal] 08:34:47
+Correct? Once you are in an insert mode, your…
+
+[rochak agrawal] 08:34:52
+command will lose their value. Now, if I type enter.
+
+[rochak agrawal] 08:34:56
+And type DD.
+
+[rochak agrawal] 08:34:58
+Nothing is going to happen, because now you're in insert mode. You type U, nothing is going to happen. You type W. Now these are…
+
+[rochak agrawal] 08:35:08
+simple words. So, here, I'll just say, I can write anything now, okay?
+
+[rochak agrawal] 08:35:15
+This is now your text file. I am…
+
+[rochak agrawal] 08:35:19
+In the insert mode.
+
+[rochak agrawal] 08:35:23
+Once I made my changes.
+
+[rochak agrawal] 08:35:29
+I will exit.
+
+[rochak agrawal] 08:35:32
+Same dose.
+
+[rochak agrawal] 08:35:34
+Changes.
+
+[rochak agrawal] 08:35:35
+Okay.
+
+[rochak agrawal] 08:35:36
+So, currently, whatever change you need to do, you want to go to here, for example.
+
+[rochak agrawal] 08:35:46
+Check this queue's…
+
+[rochak agrawal] 08:35:48
+Hey, now this is your normal text file. I can go anywhere, uh, do any changes anywhere.
+
+[rochak agrawal] 08:35:56
+Once you are done with your changes.
+
+[rochak agrawal] 08:36:00
+You cannot directly save your file. This is very important. You cannot directly save your file. Again, you need to come back.
+
+[rochak agrawal] 08:36:09
+To the command mode.
+
+[rochak agrawal] 08:36:11
+Right?
+
+[rochak agrawal] 08:36:12
+How you are going to come back to the command mode? Once you are done with your changes, you just simply press escape. Once you press escape, you see what is going to happen. I'll press escape.
+
+[rochak agrawal] 08:36:24
+Okay, now once you press escape, you can see insert is gone now. And here, if you go again.
+
+[rochak agrawal] 08:36:31
+And if you type…
+
+[rochak agrawal] 08:36:35
+Didi?
+
+[rochak agrawal] 08:36:37
+You see?
+
+[rochak agrawal] 08:36:39
+You?
+
+[rochak agrawal] 08:36:41
+The command regained their meaning.
+
+[rochak agrawal] 08:36:44
+And then once you are in a command mode, you will type wq.
+
+[rochak agrawal] 08:36:49
+And?
+
+[rochak agrawal] 08:36:51
+Exit. Now, if you see if my changes are saved.
+
+[rochak agrawal] 08:36:57
+So you can see, yeah, my changes are saved.
+
+[rochak agrawal] 08:37:02
+Right? I've done one change here also.
+
+[rochak agrawal] 08:37:05
+So that is the BI editor. It looks very complicated. It might be looking very complicated to you at this moment.
+
+[rochak agrawal] 08:37:12
+But it is pretty straightforward, okay? So, command mode, we discussed where BI starts.
+
+[rochak agrawal] 08:37:20
+Any command which you are giving.
+
+[rochak agrawal] 08:37:22
+may have a very special meaning, like DD, A, bye-bye, P, U, O, right? Then you have an insert mode. So, insert mode is a insert… is the mode where…
+
+[rochak agrawal] 08:37:39
+Intact Board is a board where you are, um…
+
+[rochak agrawal] 08:37:43
+going to…
+
+[rochak agrawal] 08:37:48
+Copy, uh, click, and when I'm saying copy, you are going to work with your text.
+
+[rochak agrawal] 08:37:52
+Whatever the content is there. And then last line would also be discussed.
+
+[rochak agrawal] 08:38:01
+I do the enter commands, so for example, slash W, it will save, slash, uh, sorry, colon W, it is going to save the file, colon Q, it is going to…
+
+[rochak agrawal] 08:38:14
+What you can see.
+
+[rochak agrawal] 08:38:16
+Exit the file, and if you want to save and exit the file, you will do colon WQ.
+
+[rochak agrawal] 08:38:21
+Okay, and then, uh…
+
+[rochak agrawal] 08:38:25
+Set number. Also, we can do the set number.
+
+[rochak agrawal] 08:38:32
+So, for example…
+
+[rochak agrawal] 08:38:36
+When you have a line, multiple lines.
+
+[rochak agrawal] 08:38:51
+So you can see, it is going to show you the line number, so you can exactly… someone is saying, I need to do some changes on a particular line, so you can go, uh, with the… that number. Sorry.
+
+[rochak agrawal] 08:39:04
+I can go here, I can make a change in anywhere, okay, and when you will start working on BI.
+
+[rochak agrawal] 08:39:14
+I'm sure this is bound to happen in any of us attempts that you want to do some changes and you make some other changes, right?
+
+[rochak agrawal] 08:39:25
+You are stuck. You do not know what to do. Very simple. Escape.
+
+[rochak agrawal] 08:39:30
+Do a colon queue.
+
+[rochak agrawal] 08:39:34
+Uh, colon, uh, Q exclamation.
+
+[rochak agrawal] 08:39:37
+and exit your file. So whatever you did, they will… that will be discarded. Your file will be in a previous state as it was. So whatever you did.
+
+[rochak agrawal] 08:39:46
+It will not be saved if you messed it up. Hey, so this is…
+
+[rochak agrawal] 08:39:52
+Also…
+
+[rochak agrawal] 08:39:55
+One of the ways. So this is the things about the BI Editor. I know it…
+
+[rochak agrawal] 08:40:01
+Will look a little complicated right now, but…
+
+[rochak agrawal] 08:40:06
+Unless you have a question, I unmuted you last time also.
+
+[rochak agrawal] 08:40:17
+Alice Bevel, and Image.
+
+[rochak agrawal] 08:40:23
+It is very simple, but the way it works for the person, once you are adopt to it, there is nothing in BI. It is just you need to be habitual. So it is very similar to like someone who is working on the Windows, suddenly you give him a Mac laptop.
+
+[rochak agrawal] 08:40:39
+Like, initially, you are going to struggle.
+
+[rochak agrawal] 08:40:42
+Same thing with the VI editor, it is pretty straightforward, but it is just, you need to be habitual with this.
+
+[rochak agrawal] 08:40:49
+Yes, Vivo.
+
+[Vaibhav Gupta] 08:40:51
+So Rupika, I'm slightly confused on that. So that changes with that.
+
+[rochak agrawal] 08:40:56
+Uh, Bever, your voice is not, uh, very clear to me.
+
+[Vaibhav Gupta] 08:41:00
+Is it available right now, clearly?
+
+[rochak agrawal] 08:41:02
+Yes, it is a little better, but yeah, tell me.
+
+[Vaibhav Gupta] 08:41:07
+Yeah. So, the changes that we have made, uh, recently, uh, so, by using up, uh, the client number, like, uh, so that will be saved, we can save it, like, uh, you have, you said it is discarded.
+
+[rochak agrawal] 08:41:17
+Correct?
+
+[rochak agrawal] 08:41:19
+No, see, I am saying if you are stuck, then discard it with the Q colon.
+
+[rochak agrawal] 08:41:26
+See, we had…
+
+[rochak agrawal] 08:41:28
+We discussed, there you have colon W, colon WQ, or colon QU.
+
+[rochak agrawal] 08:41:35
+Nate?
+
+[Vaibhav Gupta] 08:41:35
+Okay.
+
+[rochak agrawal] 08:41:36
+So, see, whatever the command you will give, I am saying, if I got stuck somewhere, I don't know what to do, so you give colon, queue, exclamation, and your changes will be discarded.
+
+[rochak agrawal] 08:41:49
+But if you want to save it, you know what you have done. Then do WQ, it will save and quit your file. So it is up to you what command I am giving.
+
+[rochak agrawal] 08:41:59
+8?
+
+[rochak agrawal] 08:42:09
+Yes, have a dish.
+
+[avadhesh pathak] 08:42:14
+Yeah, hi, Robert. So, my question is, like, if you want to practice this, then, uh, we'll have to use the AWS Linux, like, Linux in AWS, or…
+
+[rochak agrawal] 08:42:22
+We have discussed this yesterday also. AWS is just a platform for launching a virtual machine. It is not mandatory that you are going to use Amazon Linux. You can use any of the platform, any of the Linux operating system.
+
+[rochak agrawal] 08:42:38
+Linux, Fedora, Ubuntu, whatever the command we are discussing will be common across all these platforms.
+
+[avadhesh pathak] 08:42:47
+Okay, so we'll have to install…
+
+[rochak agrawal] 08:42:47
+If you want, you can provision a machine in Azure with CentOS.
+
+[rochak agrawal] 08:42:55
+Whatever the command we are discussing, they are going to work exactly the same.
+
+[rochak agrawal] 08:43:01
+It is just I have the AWS account, so I provisioned a machine there. That's it. There is no relation with AWS and keep repeating this again and again in the last class also. It is just a medium to get a server for me right now.
+
+[rochak agrawal] 08:43:17
+Nothing to do with AWS.
+
+[avadhesh pathak] 08:43:18
+Okay.
+
+[rochak agrawal] 08:43:19
+Okay?
+
+[avadhesh pathak] 08:43:20
+Okay, so I got your point. The thing is, like, okay, I want to practice the commands, so whatever we learn here.
+
+[rochak agrawal] 08:43:27
+So, anywhere you can practice, if you have an AWS account, you can practice an AWS account. If you, let's say, you say, no, no, I have an Azure account. So, provision a machine in Azure, and uh…
+
+[rochak agrawal] 08:43:38
+Whatever the command we discussed, they are going to work here or there as well.
+
+[avadhesh pathak] 08:43:43
+Okay, okay.
+
+[rochak agrawal] 08:43:43
+Okay? So that is not a problem.
+
+[rochak agrawal] 08:43:47
+Okay?
+
+[avadhesh pathak] 08:43:47
+Thank you.
+
+[rochak agrawal] 08:43:49
+Yep.
+
+[rochak agrawal] 08:43:52
+Uh, yes, Adiv.
+
+[rochak agrawal] 08:44:05
+Uh, RF, are you talking?
+
+[rochak agrawal] 08:44:08
+I can see you're still on mute, but you have raised your hand, uh, quite a time.
+
+[rochak agrawal] 08:44:23
+Yes and no.
+
+[ajinkya phuke] 08:44:25
+Hello?
+
+[rochak agrawal] 08:44:27
+Yes, Ajinka?
+
+[ajinkya phuke] 08:44:28
+Sir, what is the difference between VA or VIM?
+
+[rochak agrawal] 08:44:32
+They both are the same, it is just in some of the Linux distribution, it will be called as a…
+
+[rochak agrawal] 08:44:38
+It is… it is a BIM… previously, it was called as a BIM editor, but in some of the Linux distribution, it is called BI only. So, it is just…
+
+[ajinkya phuke] 08:44:47
+So functions are slim.
+
+[rochak agrawal] 08:44:48
+Functions are exactly same. Nano will be a little different. Okay. Uh, there is another editor called Nano, but I don't, uh, like, recommend you to be get confused between BIM and Nano at this moment. You can see no one is going to ask you and say, no, you.
+
+[ajinkya phuke] 08:44:53
+Okay.
+
+[rochak agrawal] 08:45:05
+use only nano editor. Whatever editor you are comfortable with, you can use. So, for example, in your.
+
+[rochak agrawal] 08:45:14
+laptop also. You can have Notepad, you can have a Notepad++, you can have a Word document, right? No one will say, okay, edit a document with the Notepad or Notepad++, whatever you are comfortable with, right?
+
+[ajinkya phuke] 08:45:26
+Okay.
+
+[ajinkya phuke] 08:45:27
+Okay.
+
+[rochak agrawal] 08:45:27
+And why we are picking up BI? Because it is most accepted and widely used. Nano is also being used, but you can say if I do a comparison. So BIM or BI is the same thing, which is used 80-85%.
+
+[rochak agrawal] 08:45:43
+Then 15, 20% people use Nano also.
+
+[ajinkya phuke] 08:45:46
+One more, sir.
+
+[rochak agrawal] 08:45:48
+Yep.
+
+[ajinkya phuke] 08:45:48
+Sir, in a company, we work as a root user or a regular user?
+
+[rochak agrawal] 08:45:53
+No, you… no one is going to work as a root user. Keep that in mind.
+
+[ajinkya phuke] 08:45:57
+Okay.
+
+[rochak agrawal] 08:45:59
+Even if you are a root user.
+
+[rochak agrawal] 08:46:03
+See, there is no such thing, uh, as a root user. Root user, you see, when I created my account, a root user is already created, correct? It is just…
+
+[ajinkya phuke] 08:46:11
+Yeah, here.
+
+[rochak agrawal] 08:46:14
+to run some command, you might need some root privileges, correct? So, for example, if I want to install something, so if I go…
+
+[ajinkya phuke] 08:46:19
+Yes.
+
+[rochak agrawal] 08:46:23
+And here, I will say yum install.
+
+[rochak agrawal] 08:46:27
+Nginx. Okay, I want to install Nginx on my system.
+
+[ajinkya phuke] 08:46:30
+Hmm. Okay.
+
+[rochak agrawal] 08:46:31
+Okay, so it says this command has to be run with the super user privileges, correct?
+
+[ajinkya phuke] 08:46:36
+Yeah, permission's not allowed for, uh, normal users.
+
+[rochak agrawal] 08:46:38
+You need to be the root, so that is where you need to run sudo.
+
+[rochak agrawal] 08:46:44
+Okay.
+
+[ajinkya phuke] 08:46:45
+Yeah.
+
+[rochak agrawal] 08:46:46
+So, only the command which you… so, in your organization also, you will be doing certain tasks which may require you to become the root user, correct?
+
+[rochak agrawal] 08:46:55
+So that is where you use the sudo command to become the root, only for the command which requires the elevated permissions.
+
+[ajinkya phuke] 08:46:55
+Okay.
+
+[ajinkya phuke] 08:47:02
+Okay, sir.
+
+[rochak agrawal] 08:47:03
+Okay.
+
+[ajinkya phuke] 08:47:04
+Okay.
+
+[rochak agrawal] 08:47:11
+Daniel?
+
+[rochak agrawal] 08:47:43
+Devashes?
+
+[Debasis Patra] 08:47:46
+Yeah, I…
+
+[rochak agrawal] 08:47:46
+Uh, baba yung yahaya de wasis.
+
+[Debasis Patra] 08:47:49
+As a good morning.
+
+[rochak agrawal] 08:47:51
+Good morning.
+
+[Debasis Patra] 08:47:51
+Uh, actually, I'm waiting long. Uh, so, um, are you, are you, uh, sorry, uh, actually, uh, are you sharing the PPT and, uh, documents?
+
+[rochak agrawal] 08:47:55
+No, I… I…
+
+[rochak agrawal] 08:48:02
+Yes, yes, I have shared the PPT, uh…
+
+[Debasis Patra] 08:48:05
+Actually, I did not receive… where you are sharing?
+
+[rochak agrawal] 08:48:08
+I… I already shared it, uh, you will… so we have… I have given a Google Drive link, okay? Uh…
+
+[rochak agrawal] 08:48:16
+So, if I go…
+
+[rochak agrawal] 08:48:21
+So, I already shared yesterday only.
+
+[Debasis Patra] 08:48:23
+But, uh, I have not received.
+
+[rochak agrawal] 08:48:23
+So if you… I will check, uh, so there is a folder shared with me, materials, so if you go onto the materials, I have uploaded everything, so how to create an AWS account.
+
+[Debasis Patra] 08:48:28
+Okay.
+
+[rochak agrawal] 08:48:35
+uh, intro to the DevOps session, networking, uh, then there are some interview questions in the readme.md file, and if you go to Linux.
+
+[Debasis Patra] 08:48:44
+Okay, but I have not received this mail.
+
+[rochak agrawal] 08:48:47
+I will check. You must have… you will receive it. So, the PPT and some notes also, I have uploaded everything, so you will get it.
+
+[Debasis Patra] 08:48:56
+Okay. Okay. So, uh, actually, uh, some problem is, uh, happening. Like, uh, uh, you are, uh, discussing some topic, and I have, uh, I have a doubt.
+
+[rochak agrawal] 08:48:57
+Okay.
+
+[Debasis Patra] 08:49:08
+But I'm waiting…
+
+[Debasis Patra] 08:49:13
+Uh, like, 30 or 40 minutes, and till that, you have moved to another topic, and…
+
+[rochak agrawal] 08:49:17
+No, I understand, uh, Devasis, but Devasis, I tried to unmute you.
+
+[Debasis Patra] 08:49:19
+Okay, so it should not like this, like, I have a doubt, and I can ask you a question.
+
+[rochak agrawal] 08:49:24
+No, no, I totally agree with you. So, for example, RF has raised his hand.
+
+[Debasis Patra] 08:49:28
+I don't know, uh, I'm not sure whether, uh, everyone is, uh, facing this issue or not, uh, because, uh, you are moving, you know, I'm waiting 30 minutes after that you are, uh, actually moving to another topics. At that time, the topic is covered.
+
+[rochak agrawal] 08:49:40
+Mm-hmm.
+
+[rochak agrawal] 08:49:42
+No, no, I totally agree. There was just… I'm trying to answer the queries at the moment only, but maybe some of the issues that… because of that… so, for example, RF… I can see RF has raised his hand. I'm trying to unmute him. Maybe we are facing.
+
+[Debasis Patra] 08:49:43
+So, that is…
+
+[rochak agrawal] 08:50:01
+Yes, Adif.
+
+[arif] 08:50:02
+Yeah, now I'm…
+
+[Debasis Patra] 08:50:02
+Actually, till that time…
+
+[arif] 08:50:04
+Yeah, now I'm able to unmute, so…
+
+[rochak agrawal] 08:50:06
+Ah, yeah, yeah, I'm trying to unmute you from long, because I've seen… so, never since we try… we are trying our best, but I'll be more mindful about it, okay?
+
+[arif] 08:50:16
+Oh, it's, I think, some issue with this link in the webinar.
+
+[Debasis Patra] 08:50:16
+Okay.
+
+[rochak agrawal] 08:50:17
+Uh, some issue.
+
+[Debasis Patra] 08:50:18
+And one question. I have some another question. Like, uh…
+
+[rochak agrawal] 08:50:19
+Yeah.
+
+[rochak agrawal] 08:50:21
+Yep.
+
+[Debasis Patra] 08:50:23
+Like one folder, uh, um, uh, we have, uh, thousand of lines, uh, thousand of file, okay?
+
+[rochak agrawal] 08:50:29
+Hmm?
+
+[rochak agrawal] 08:50:30
+That is correct, yeah.
+
+[Debasis Patra] 08:50:31
+Okay, in that thousand of file, we need to replace some keyword, like, uh…
+
+[rochak agrawal] 08:50:38
+Some keyboard.
+
+[Debasis Patra] 08:50:39
+Yeah, some, some keyword, like, uh, like, uh, 00101, we need to replace. Okay, so what is the command for that? Like, uh, we cannot, uh…
+
+[rochak agrawal] 08:50:49
+Okay, so that is, yes, yes. So that is one part which we are going to cover as part of scripting. So there is something called SED, which is called the stream editor.
+
+[rochak agrawal] 08:51:04
+With the help of ACD, we can do that. I'll show you.
+
+[Debasis Patra] 08:51:09
+Okay.
+
+[rochak agrawal] 08:51:09
+So, there are two advanced commanders there, SCD and AWK.
+
+[rochak agrawal] 08:51:13
+So, with the help of that, we can do that. I'll show you, okay?
+
+[Debasis Patra] 08:51:17
+Okay, okay. Yeah.
+
+[rochak agrawal] 08:51:19
+Yeah, cool. Uh, yes, Arif. Arif, I think you might have multiple questions. I was trying to unmute you, but yes, there might be some issue. But yes, tell me.
+
+[arif] 08:51:29
+So, we are still using that Zoom, right? Earlier, we were using Zoom, we were having that option for chat, but in this, we are not having this option, we are having only question and answer.
+
+[rochak agrawal] 08:51:34
+Hmm?
+
+[rochak agrawal] 08:51:38
+Uh, yeah, someone told me, like, from the operations team, they told me they have moved to something called as a Zoom webinar.
+
+[rochak agrawal] 08:51:45
+Okay, so maybe because of that, but for me, the interface is…
+
+[rochak agrawal] 08:51:52
+Pretty same, okay? But yeah, chat option, like, I think is not there.
+
+[arif] 08:51:57
+I think that is very much required before we go on the other chat training sessions. I think we should move to the other… the earlier link, or maybe it was something in the same session, or same Zoom.
+
+[arif] 08:52:07
+Because it's kind of like, uh, we are… I forgot my questions also, right?
+
+[rochak agrawal] 08:52:11
+No, I totally understand with you.
+
+[arif] 08:52:12
+I had some questions and now I forward to ask.
+
+[rochak agrawal] 08:52:18
+No, I'll check this with the team, yeah.
+
+[arif] 08:52:18
+That's it.
+
+[arif] 08:52:20
+Yeah, we should move to the, uh, earlier link that we were using. That was very good, actually.
+
+[rochak agrawal] 08:52:26
+Sure, sure, sure, Arif, I can check this with the team.
+
+[rochak agrawal] 08:52:30
+Uh, for me, there are not that much of the changes, but yeah, they have informed that, uh, there is a new version, something called the Zoom Webinar, they will use it for now.
+
+[rochak agrawal] 08:52:41
+But I'll raise this with the team, Arif.
+
+[arif] 08:52:42
+Yeah, I will ask them also.
+
+[arif] 08:52:47
+Yeah, I don't know, so…
+
+[arif] 08:52:50
+This, uh…
+
+[arif] 08:52:52
+So, is there anything, uh, like, like, some commands are, uh, globally, or something like that, some work at the directory level, or is there anything like that in Linux?
+
+[rochak agrawal] 08:53:03
+So, yes, see, there will be certain… see, when you say, uh, uh, the command work and a directory level. So, for example, if you see…
+
+[rochak agrawal] 08:53:14
+Let's say I am inside of… what I'm doing…
+
+[rochak agrawal] 08:53:20
+LS hyphen LRT CD dot dot right. So there will be so for example if I go CD EC2 user.
+
+[rochak agrawal] 08:53:30
+Right? And if I try to do cdscript.sh.
+
+[rochak agrawal] 08:53:41
+It is not going to work because it is not a directory and similarly if you do try to do a cat on a directory you will not be able to do so correct. So when you say so yes there are certain command which is going to work on a directory and then there are certain commands which is going to work on a file.
+
+[rochak agrawal] 08:53:58
+See, when you say you want to see the content of our directory, what does it mean? That you want to see what are the files are there inside the directory, correct?
+
+[rochak agrawal] 08:54:07
+So you can run ls-lrt for that. But if you say, I want to see the content of a file, then it would mean that you want to see what is inside that file. So you'll run the CAT command for that.
+
+[arif] 08:54:19
+So this ls minus lrt works, uh, on the directory where I am currently, right?
+
+[rochak agrawal] 08:54:23
+On the directory level. Inside the directory.
+
+[arif] 08:54:26
+Look, where I am currently, right?
+
+[rochak agrawal] 08:54:28
+Where you are… no, no, so that is where…
+
+[arif] 08:54:29
+So…
+
+[rochak agrawal] 08:54:32
+If you give it without any option, then it is going to work within your present working directory. But if you say, from here, I want to see what is inside ETC.
+
+[rochak agrawal] 08:54:44
+So then you need to give the path.
+
+[arif] 08:54:46
+So we need to know the path, okay?
+
+[rochak agrawal] 08:54:48
+You need to know that. Yes.
+
+[arif] 08:54:50
+And inside, once we reach to the directory, we can enable that… we can run those commands, which are applicable for that directory, right?
+
+[rochak agrawal] 08:54:56
+Correct. So, it is… see, in Linux, that's a very good thing. Uh…
+
+[rochak agrawal] 08:55:02
+I can… I can be sitting anywhere.
+
+[rochak agrawal] 08:55:05
+For example, and that's a big difference in comparison to Windows. See, Windows, if I am here, for example, if I go to, uh, let's say File Explorer.
+
+[rochak agrawal] 08:55:19
+If I'm somewhere here, right, then whatever I can do, I can do in D paper life, correct? I will not be able to change D my document or something.
+
+[rochak agrawal] 08:55:29
+Great.
+
+[rochak agrawal] 08:55:31
+But in Linux, that's not a problem. So, for example.
+
+[rochak agrawal] 08:55:38
+Let's say I have a file.
+
+[rochak agrawal] 08:55:41
+If I run cpfile.sh.
+
+[rochak agrawal] 08:55:47
+to file…
+
+[rochak agrawal] 08:55:48
+3 dot SH.
+
+[rochak agrawal] 08:55:49
+Now, what this command is going to do, it is going to copy file.sh into another file called file3.sh in my present working directory, correct?
+
+[rochak agrawal] 08:56:03
+Hey, I have a file3.sh. But you say, no, I don't want to copy it here, I want to copy somewhere else.
+
+[rochak agrawal] 08:56:10
+Absolutely no problem. I'll say cpfile.sh and I will give path.
+
+[rochak agrawal] 08:56:20
+Where I want to copy it.
+
+[rochak agrawal] 08:56:24
+Timbin.
+
+[arif] 08:56:26
+Okay, and so…
+
+[arif] 08:56:30
+We can do multiple copies of file in one folder.
+
+[rochak agrawal] 08:56:33
+Yeah, yeah, yeah. See?
+
+[rochak agrawal] 08:56:36
+Again, um…
+
+[rochak agrawal] 08:56:39
+these are… see, first, we are getting introduction to the commands, right? Now, in Linux, and that is what you need to learn in the scripting, right? See, that is all about scripting.
+
+[rochak agrawal] 08:56:52
+See, scripting is nothing new.
+
+[arif] 08:56:52
+Okay.
+
+[rochak agrawal] 08:56:54
+If you see the script, uh, see, for example.
+
+[rochak agrawal] 08:56:58
+If you open this file.sh.
+
+[rochak agrawal] 08:57:03
+What is this? It is… uptime is a command…
+
+[rochak agrawal] 08:57:06
+bf-h is a command, right? free-h is a command. You can see?
+
+[rochak agrawal] 08:57:12
+we have run all these commands, WCIFNL, uh, PID-related command we have not seen yet, but you see, script is nothing, but it is just…
+
+[rochak agrawal] 08:57:25
+You are…
+
+[rochak agrawal] 08:57:26
+Running all the commands. See, it is not like scripting is some programming language. No.
+
+[rochak agrawal] 08:57:32
+When you say you are running a shell script, you are essentially running.
+
+[rochak agrawal] 08:57:38
+First command only, maybe multiple commands together.
+
+[rochak agrawal] 08:57:42
+to gain and…
+
+[rochak agrawal] 08:57:44
+gain an output which is necessary for you, which is required for you.
+
+[rochak agrawal] 08:57:49
+Right? Here, I am running multiple commands, and free-edge. Now, free-edge, also, I can run like this.
+
+[rochak agrawal] 08:57:59
+Hey, it is giving me the memory total 1.9 GB used as 152. But here I am running as a script, which is giving me multiple things. It is showing me the uptime, it is showing me my disk uses. So that is what we need to do.
+
+[rochak agrawal] 08:58:16
+within a scripting, uh, we have seen the concept of piping. We can chain multiple commands together. Uh, we have seen, uh, the concept of, uh, redirection, right? So.
+
+[rochak agrawal] 08:58:29
+we can copy multiple, uh, files together, we can copy multiple directories together. It is just you will need… see, first step is you need to know the command.
+
+[rochak agrawal] 08:58:39
+Right? Which command I am going to use. Then, as I said, uh, when we were defining the anatomy of the command.
+
+[rochak agrawal] 08:58:47
+Every command will have three things. First, the command itself. So, let's say if you want to copy files from one place to another place. Now.
+
+[rochak agrawal] 08:58:59
+The follow up question can be in the same file, in the same directory, in different directory. You can copy the file on the different server altogether by the way, right? So first is I will identify the command. So I identified that my command is CP.
+
+[rochak agrawal] 08:59:14
+Which is going to help you, uh, copying the file from one place to another place. Correct?
+
+[rochak agrawal] 08:59:21
+Now.
+
+[rochak agrawal] 08:59:22
+Secondly.
+
+[rochak agrawal] 08:59:23
+Every command will have.
+
+[rochak agrawal] 08:59:28
+Some…
+
+[rochak agrawal] 08:59:29
+options. Again, you do not need to remember all the options, because nowadays we have a support with the help of Claude, and see, it is also not manually built.
+
+[rochak agrawal] 08:59:42
+to remember all the options, because we have hundreds and thousands of the command, and then with these commands, you have hundreds of the options available with each command, right? So you do not… you don't need to remember it. So, for example, if you need to know what are the options available with the CP.
+
+[rochak agrawal] 08:59:59
+So you'll just run man CP man is the command is a short form for the manual. So basically with men CP.
+
+[rochak agrawal] 09:00:07
+You are opening the manual for the CP card.
+
+[rochak agrawal] 09:00:10
+Here you are going to find all the commands, all the options which is there.
+
+[rochak agrawal] 09:00:16
+Interactive.
+
+[rochak agrawal] 09:00:17
+So, you say, before copying, I want to do…
+
+[rochak agrawal] 09:00:21
+get a confirmation, if you really want to copy or not. So you run it with the hyphen I, and then if you see, there are multiple options out there.
+
+[rochak agrawal] 09:00:32
+So.
+
+[rochak agrawal] 09:00:33
+First option is identify the command. Then second option is.
+
+[rochak agrawal] 09:00:38
+Within the command itself, we will have multiple options, correct? And then…
+
+[rochak agrawal] 09:00:44
+Within the command itself, we will have multiple options, and then we have some certain concept, like, uh, piping we can do, redirection we can do. Also, when we will move to the shell scripting.
+
+[rochak agrawal] 09:00:58
+I will… there is a concept of environment variable also in Linux. So instead of… right now, let's say, for example.
+
+[rochak agrawal] 09:01:07
+I am doing it as a manual. So, for example.
+
+[rochak agrawal] 09:01:13
+Here, you are giving the name of the file, and you are giving the destination also, manually, right? Now, when you say I want to give it multiple commands, I can write a script which will take.
+
+[rochak agrawal] 09:01:23
+The source and destination is the input, and when you run the script, it is automatically going to copy everything.
+
+[rochak agrawal] 09:01:30
+So…
+
+[rochak agrawal] 09:01:31
+Everything is possible, uh, it is just…
+
+[rochak agrawal] 09:01:34
+We will construct those.
+
+[arif] 09:01:38
+Okay.
+
+[rochak agrawal] 09:01:38
+Okay. Yeah.
+
+[arif] 09:01:41
+Can you go back to the screen from where we have started? So, redirection and piping, both are the same?
+
+[rochak agrawal] 09:01:47
+No, no, it is not the same. So, if you see…
+
+[arif] 09:01:51
+I missed it.
+
+[rochak agrawal] 09:01:51
+Very different.
+
+[rochak agrawal] 09:01:57
+See, here, if you see…
+
+[rochak agrawal] 09:01:59
+IPing is… see, what…
+
+[rochak agrawal] 09:02:02
+a normal pipe does. It flows, it makes flow of something from point A to point B.
+
+[rochak agrawal] 09:02:10
+Correct, normal pipe.
+
+[rochak agrawal] 09:02:11
+Similarly, I see these are two different commands.
+
+[rochak agrawal] 09:02:16
+One is LS-LRT, another is WC-L, correct?
+
+[rochak agrawal] 09:02:20
+Now.
+
+[rochak agrawal] 09:02:22
+In the piping, what is going to happen? That, uh…
+
+[rochak agrawal] 09:02:25
+Output of the first command will act as an input to another command.
+
+[rochak agrawal] 09:02:32
+And it is not a lick.
+
+[rochak agrawal] 09:02:36
+Two levels. We can have multiple pipes together, so let me see an example.
+
+[rochak agrawal] 09:02:44
+Give me an example.
+
+[rochak agrawal] 09:02:48
+to show three level typing.
+
+[rochak agrawal] 09:03:00
+Okay, so now you see this command.
+
+[rochak agrawal] 09:03:16
+If you see this, we have three different commands.
+
+[rochak agrawal] 09:03:20
+Correct?
+
+[rochak agrawal] 09:03:22
+Org we have not covered yet. I'll just explain what it does.
+
+[rochak agrawal] 09:03:27
+First command.
+
+[rochak agrawal] 09:03:29
+at access.log, which is going to show you the content of the access.log, correct?
+
+[rochak agrawal] 09:03:36
+Now, that content is going to work as an input to the grep command.
+
+[rochak agrawal] 09:03:42
+So now, maybe in your access.log file, there are 500 entries are there.
+
+[rochak agrawal] 09:03:50
+Correct? Now, out of those 500 entries, let's say there are 100 entries for 404. So GRAP is going to work on those 500 entries and will find out those 100 entries for you.
+
+[rochak agrawal] 09:04:03
+Clear till now, Arif?
+
+[rochak agrawal] 09:04:05
+Now, see, ORC is, uh, again, uh, when you have multiple, uh.
+
+[rochak agrawal] 09:04:14
+Let's, for now, understand, let's say, in your line, uh, if you have written, uh.
+
+[rochak agrawal] 09:04:21
+Hi, this request…
+
+[rochak agrawal] 09:04:26
+is named Rome.
+
+[rochak agrawal] 09:04:29
+1.2.3.4, something like that. So, 1, 2, 3, 4, 5, 6, 7. So, the 7th is, let's say, IP.
+
+[rochak agrawal] 09:04:39
+Right? So now, out of those 100 lines.
+
+[rochak agrawal] 09:04:42
+So those 100 line is the output of the grab command, which is, again, going to act as an input to AWG account.
+
+[rochak agrawal] 09:04:49
+Which is going to fetch the IPs for you from this.
+
+[rochak agrawal] 09:04:54
+So, you can see, it is not only the two levels of the piping. You can have multiple types together.
+
+[rochak agrawal] 09:05:01
+Like this.
+
+[rochak agrawal] 09:05:02
+It is just what you want to achieve. Now, this is not a, like, ready-made command, if you see, right?
+
+[rochak agrawal] 09:05:08
+This is something you will construct with the help of pipe. You have three different command. One way is you run first the cat access dot log, you grab on it and then in the third command you do a AWK.
+
+[rochak agrawal] 09:05:24
+Now, instead of doing it multiple times. Now, this is a type of a statement you are going to write in your script.
+
+[rochak agrawal] 09:05:32
+So they are performing what you need. See, in the end, I need the source IP from where the request is coming, for example, in this.
+
+[rochak agrawal] 09:05:41
+Anyways, all the access content I already have, I need that particular piece of information.
+
+[rochak agrawal] 09:05:47
+For that, I'm using this command.
+
+[rochak agrawal] 09:05:49
+So that is where… see, you understand what is piping now, you understand what are the commands we'll do. As you will solve the use cases, you will get familiar with this.
+
+[arif] 09:06:01
+Yeah, yeah.
+
+[rochak agrawal] 09:06:02
+See, it is not… see, this is not a standard command.
+
+[rochak agrawal] 09:06:06
+Now, you say, uh, it will totally depend.
+
+[rochak agrawal] 09:06:10
+Maybe you want something else, you do not want the source IP, you want the username, for example, right, from your access log.
+
+[rochak agrawal] 09:06:18
+which user is getting 404 error. Someone is asking you, which user is getting 404 error, right? So then, instead of print 7, you are going to print something else with the AWK command. So it will totally depend what use case you need to solve. You will have the functionality at your disposal.
+
+[rochak agrawal] 09:06:35
+And then you need to, um…
+
+[rochak agrawal] 09:06:40
+make it up as a custom solution. Now, this is a custom command. This is not a ready-made command.
+
+[rochak agrawal] 09:06:46
+And this is what we are going to use in our daily day-to-day life. So, for example, let's say you have a…
+
+[rochak agrawal] 09:06:56
+you have a requirement. So you go, you say, I need to know about the processes.
+
+[rochak agrawal] 09:07:07
+Which is taking the most?
+
+[rochak agrawal] 09:07:11
+amount of CPU.
+
+[rochak agrawal] 09:07:15
+Ascending order.
+
+[rochak agrawal] 09:07:22
+You can see…
+
+[rochak agrawal] 09:07:26
+Now, if you see this command…
+
+[rochak agrawal] 09:07:28
+Again, it is running first the PS command, which is process-related command. Okay, so it will give you some information. Then you are saying, okay, I am going to find out.
+
+[rochak agrawal] 09:07:40
+The CPU related information. And then the output of the graph, I am sorting it with the top three entries. Simple.
+
+[rochak agrawal] 09:07:48
+Again, this is a custom solution. Nowadays, you see, RF, we have these type of solution available where you do not need to worry about the syntax. You just need to know, see, once you are reading this command, you should know PS, what PS does, what grab does, what sort does.
+
+[rochak agrawal] 09:08:06
+Syntax and other things, anyways, it is absolute. For the programmers, it is obsolete nowadays.
+
+[rochak agrawal] 09:08:12
+For writing a simple command, it is nothing. Now…
+
+[rochak agrawal] 09:08:17
+You don't believe that we created these commands, so I'm working in Unix from, like, I have never worked on the Windows-based system.
+
+[rochak agrawal] 09:08:26
+I always worked on the Unix-based system. In 2012, 13, when we tried those commands, like, it was a hidden trial for us. Like, we are writing one command, we are running it, if it is giving us the right output, then we are trying other option.
+
+[rochak agrawal] 09:08:43
+hitting it, if it is giving us the right format or not. But nowadays, it has become very easy. You just need to have a fundamental understanding.
+
+[rochak agrawal] 09:08:52
+Syntax and other things has become… it is a help, but of course, you cannot go directly run a command. You need to have an understanding what the PH does, how this command is working, why… what is this piping. We know all of that, right?
+
+[rochak agrawal] 09:09:06
+So, that is the piping, and if you talk about the redirection.
+
+[rochak agrawal] 09:09:11
+So, redirection is output redirection, and the input redirection we use most of the time. So, for example, let's say input redirection, what it does.
+
+[rochak agrawal] 09:09:20
+if you'd say LS-LRT, it is going to show you the content of the.
+
+[rochak agrawal] 09:09:28
+Uh, uh, let's see.
+
+[rochak agrawal] 09:09:31
+present working directly, right? But if you want to…
+
+[rochak agrawal] 09:09:35
+show the directory of something there. So, for example, let's say I have a file.
+
+[rochak agrawal] 09:09:44
+Let me give you a use case.
+
+[rochak agrawal] 09:09:47
+So, for example, how, uh, when input redirection works very beautifully. So, let's say…
+
+[rochak agrawal] 09:09:55
+You have a file where you have an entry for your users, let's say students, and their marks.
+
+[rochak agrawal] 09:10:03
+So, A is having N, B is having.
+
+[rochak agrawal] 09:10:08
+20…
+
+[rochak agrawal] 09:10:09
+C is having 32, something like that. Now, someone is asking, I want to…
+
+[rochak agrawal] 09:10:20
+Find out the average of, uh, my…
+
+[rochak agrawal] 09:10:25
+I want to find out the average of the marks secured by my students, for example. Okay, so I'll just…
+
+[rochak agrawal] 09:10:32
+Create this input direction.
+
+[rochak agrawal] 09:10:36
+I have a list of marks.
+
+[rochak agrawal] 09:10:41
+For, uh…
+
+[rochak agrawal] 09:10:42
+20 student.
+
+[rochak agrawal] 09:10:45
+In a file.
+
+[rochak agrawal] 09:10:48
+Read the file.
+
+[rochak agrawal] 09:10:53
+Calculate.
+
+[rochak agrawal] 09:11:07
+Using the input redirection.
+
+[rochak agrawal] 09:11:20
+Yeah, so you can see it here.
+
+[rochak agrawal] 09:11:29
+Yeah, so here you can see, yeah.
+
+[rochak agrawal] 09:11:32
+So although we have not done the while and other, this is part, most is a part of the shell script. So what, keep everything aside, if you see this part.
+
+[rochak agrawal] 09:11:41
+It is doing some calculation, okay? And…
+
+[rochak agrawal] 09:11:49
+Here you see the input redirection. So this is the input redirection. So probably you will have a marks in your file.
+
+[rochak agrawal] 09:11:56
+And you're giving this file to the while loop, and you're saying.
+
+[rochak agrawal] 09:12:00
+Till that time.
+
+[rochak agrawal] 09:12:03
+Read marks, do the sum and the count, right? And then you are.
+
+[rochak agrawal] 09:12:10
+So if you…
+
+[rochak agrawal] 09:12:11
+5 students, it… this loop is going to read, uh, the 5 lines. If the, uh, your file has the 50 students, it is going to read it line by line.
+
+[rochak agrawal] 09:12:21
+Okay, so this is the input redirection, where I am giving the input.
+
+[rochak agrawal] 09:12:27
+Already.
+
+[rochak agrawal] 09:12:28
+Right? While the output redirection is where, instead of.
+
+[rochak agrawal] 09:12:35
+passing the output to the standard output, like a screen. So, for example, if you say ls-lrt.
+
+[rochak agrawal] 09:12:47
+The output is shown to me on the screen, right? But you say, no, I do not want to…
+
+[rochak agrawal] 09:12:53
+have it on a screen. I want to have it on…
+
+[rochak agrawal] 09:12:57
+Yoro.
+
+[rochak agrawal] 09:12:59
+Some… somewhere else, okay? So that is where I will say out.txt, for example.
+
+[rochak agrawal] 09:13:07
+Simple. And if you go out for PST.
+
+[rochak agrawal] 09:13:10
+You will see those content. Now, where output — so we have seen the use case for the input redirection, where I already have some files are available, and we want to use those files. We want to do some processing on these files. So those files I am going to provide as an input redirection.
+
+[rochak agrawal] 09:13:28
+where output redirection comes into the picture. So, for example, when you will be.
+
+[rochak agrawal] 09:13:35
+Creating an application, okay? Uh…
+
+[rochak agrawal] 09:13:39
+That application will generate some logs.
+
+[rochak agrawal] 09:13:41
+Correct.
+
+[rochak agrawal] 09:13:43
+And logs will be continuous.
+
+[rochak agrawal] 09:13:46
+Right? RF. Understand this point?
+
+[arif] 09:13:49
+Yep.
+
+[rochak agrawal] 09:13:50
+So, if I will send them to the standard output, that will keep the space of all my, uh…
+
+[rochak agrawal] 09:14:00
+screen, I would not be able to do anything else.
+
+[rochak agrawal] 09:14:04
+That is why I will send it to some log file.
+
+[rochak agrawal] 09:14:10
+I will redirect it to some log file.
+
+[rochak agrawal] 09:14:17
+You got the point now.
+
+[arif] 09:14:21
+Yeah, I got the point.
+
+[rochak agrawal] 09:14:23
+So, now, this is just one example. And, uh, error, I will send it to the error file. We have an error redirection also. Correct. So, that is…
+
+[arif] 09:14:32
+So that error one is… the error one is only specific to that error, so…
+
+[rochak agrawal] 09:14:37
+Yes, yes, yes. So, when you will… and I'll show you when we will be working on NGINX. So.
+
+[arif] 09:14:38
+Okay.
+
+[rochak agrawal] 09:14:44
+NGINX will have, like, when you will start the NGINX.
+
+[rochak agrawal] 09:14:50
+You will have two type of redirection. So normal logs, you will do the output redirection and send it to some log file, access.log or something. And then you do the error redirection, where you will only send the error to the error.log.
+
+[rochak agrawal] 09:15:10
+Okay, so that is called the redirection, where we are sending.
+
+[rochak agrawal] 09:15:13
+Instead of taking the standard input or sending the output to the standard output, we will take the input from some other file.
+
+[rochak agrawal] 09:15:21
+Uh, or we will send the output to some other, uh, file. So that is called the redirection. We are going to use it, uh, we can use it in, uh, together, but typing and redirections are very different thing.
+
+[rochak agrawal] 09:15:38
+Okay?
+
+[arif] 09:15:43
+So, in Linux, so… either there will be a file or directories, nothing else, right?
+
+[rochak agrawal] 09:15:49
+Everything in a Linux is considered a file only.
+
+[rochak agrawal] 09:15:53
+Okay? So, when you say a file, a file can be a text file, an image file, a binary file. So, in the end, it will be considered as a file.
+
+[arif] 09:15:59
+Noon.
+
+[rochak agrawal] 09:16:06
+Uh, you can… or you can say, also, a directory is also a special kind of a file.
+
+[arif] 09:16:14
+Okay.
+
+[rochak agrawal] 09:16:14
+Okay? So, yes. So, everything… so, see, it will depend. If it is a text file, I will do a CAT, and I'll see the content. But if you are working on an encrypted file.
+
+[rochak agrawal] 09:16:23
+Then you will not see the content of it.
+
+[rochak agrawal] 09:16:27
+But still, you can copy that file from other folder, other location, or whatever it is intended to do.
+
+[rochak agrawal] 09:16:36
+Right? So that's all we can do. But…
+
+[rochak agrawal] 09:16:39
+Text processing, I will not be able to do on an encrypted file.
+
+[rochak agrawal] 09:16:45
+But in the end, so for example, if I go here.
+
+[rochak agrawal] 09:16:48
+There is a command called SSCH agent.
+
+[rochak agrawal] 09:16:52
+To generate public and private key.
+
+[rochak agrawal] 09:16:55
+Okay, so it is generating the public-private EPL.
+
+[rochak agrawal] 09:17:01
+I'm just not giving it a password. And here, if you see.
+
+[rochak agrawal] 09:17:05
+ls-lrt, you will not see those files.
+
+[rochak agrawal] 09:17:08
+But if you do LS-LART, A is for hidden, um…
+
+[rochak agrawal] 09:17:15
+So you are going to see something called the SSH. And if you go CD SSH.
+
+[rochak agrawal] 09:17:23
+There, you are going to find a public key and a private key.pub is a public key, IDRSA is a private key. Now.
+
+[rochak agrawal] 09:17:30
+You see, this is not a text file, but again, it will be considered as a file only. You have the permission, you are the owner, you have the owner, you have the group, you have the creation time, everything is there.
+
+[rochak agrawal] 09:17:42
+It is just a special type of profile.
+
+[arif] 09:17:42
+Yeah, I got your point, yeah.
+
+[arif] 09:17:46
+Okay, and regarding the user creation, you have created the user in that bash, or some path you have given.
+
+[arif] 09:17:53
+So, that is mandatory, like, for… in this path only, we have to create a user?
+
+[rochak agrawal] 09:17:55
+Yes.
+
+[rochak agrawal] 09:17:57
+Yes. No, we have not given the path. If you remember the command, I'll show you.
+
+[rochak agrawal] 09:18:14
+So this is not a part, um…
+
+[rochak agrawal] 09:18:18
+If you see bin bash, it means that the default shell for this user is going to be the bash shell.
+
+[rochak agrawal] 09:18:29
+Okay, so it is not… we have not given a path, we have given the shell name here.
+
+[rochak agrawal] 09:18:39
+Got the point?
+
+[arif] 09:18:42
+Okay. And, uh, regarding that wheel directory, you said, uh, if some… the wheel… some user in the wheel group, then only will be able to run the… pseudo thing and, uh…
+
+[rochak agrawal] 09:18:46
+Mm-hmm.
+
+[rochak agrawal] 09:18:51
+No, that's the goal.
+
+[arif] 09:18:54
+So, like, uh, how to, like, attach user to a wheel group? Can anyone attach the wheel?
+
+[rochak agrawal] 09:19:00
+You can edit… yeah, yeah, see, first thing is…
+
+[arif] 09:19:04
+So anyone can become the root, right?
+
+[rochak agrawal] 09:19:05
+No, no, any, again, again, uh…
+
+[rochak agrawal] 09:19:09
+Understand this as this.
+
+[rochak agrawal] 09:19:13
+We know to run.
+
+[rochak agrawal] 09:19:15
+Some activities.
+
+[rochak agrawal] 09:19:16
+You need to be root, correct?
+
+[rochak agrawal] 09:19:20
+Now, adding someone to the wheel grow.
+
+[rochak agrawal] 09:19:24
+is a root activity. It's a privileged activity. So, someone who already have the access, I can become a pseudo, I can add you to VURO. But if I myself is not… can do pseudo, I will not be able to add you.
+
+[rochak agrawal] 09:19:39
+Hey!
+
+[arif] 09:19:41
+No.
+
+[rochak agrawal] 09:19:42
+So, someone who has the permission, they can add you to the wheel group.
+
+[arif] 09:19:48
+Okay, so root user only can add the other users.
+
+[rochak agrawal] 09:19:50
+No, not root user. Again, Arif, don't get confused.
+
+[rochak agrawal] 09:19:54
+Not root user. So, you see, we have…
+
+[rochak agrawal] 09:19:58
+Two user.
+
+[rochak agrawal] 09:20:03
+One is root user.
+
+[rochak agrawal] 09:20:10
+One is normal user, correct?
+
+[rochak agrawal] 09:20:17
+How can a normal user run the root commands? With the help of sudo… correct?
+
+[rochak agrawal] 09:20:23
+So, when you say only root user can add you to the group, wheel group.
+
+[rochak agrawal] 09:20:29
+I would say it's an incorrect statement.
+
+[rochak agrawal] 09:20:32
+Anyone having the root permissions, privileged permission, can add you to the wheel group. So I will add a sudo, with the help of sudo.
+
+[rochak agrawal] 09:20:39
+If I can… I can become a root.
+
+[rochak agrawal] 09:20:42
+I can add you, right?
+
+[rochak agrawal] 09:20:47
+No? Confused?
+
+[arif] 09:20:50
+But that's, uh… that's something not secure, right?
+
+[arif] 09:20:54
+If I've given permission to a normal user, and any time…
+
+[rochak agrawal] 09:20:55
+No, but…
+
+[rochak agrawal] 09:20:59
+Why it is not secure? Why it is not secure? I am not giving permission to everyone. Someone need to, uh, work as an admin.
+
+[rochak agrawal] 09:21:05
+Correct?
+
+[rochak agrawal] 09:21:08
+If you say your admin is going to blast your system, so that risk is always there with everything. We are walking on a road, we can meet with an accident, right? See, it is…
+
+[rochak agrawal] 09:21:19
+Everywhere, if I am giving my permission irresponsibly.
+
+[rochak agrawal] 09:21:25
+then it is a problem, it is a risk, correct? But someone need… without the root permission, I will not be able to install anything on my system. My system is not going to work.
+
+[rochak agrawal] 09:21:36
+So there should be someone who is… who will be having the elevated permission. In your Windows environment, you will also have one administrator, maybe two administrators, or there is an administrator team, correct?
+
+[arif] 09:21:52
+Okay, so this… you mean to say that only for that particular command or activity, uh, the user which have, uh, root access, we can do it?
+
+[rochak agrawal] 09:21:58
+Got it. Thank you.
+
+[rochak agrawal] 09:22:01
+root axis, so if I'm going…
+
+[rochak agrawal] 09:22:06
+If I run yum install nginx.
+
+[rochak agrawal] 09:22:12
+Will I be able to do it? No. But if I… if I'm not able to do anything at all, then how I'm going to run my application? I need some privileges, right?
+
+[rochak agrawal] 09:22:23
+And then also, see, currently it's a passwordless for me. When you will do sudo aim install nginx, there can be a security mechanism, but every time you need to give your password also. So someone, uh, maybe, like, you, you…
+
+[rochak agrawal] 09:22:38
+You let your system log in, left logged in, and someone is coming and running the commands.
+
+[rochak agrawal] 09:22:45
+Currently, it is passwordless for me, but we can set up the password also for this, okay? For the sudo activities. Every time you're running a sudo, you need to give your password.
+
+[rochak agrawal] 09:22:55
+So there can be multiple, uh, security layers can be there, RF, but again, um, uh, as, uh, as we deep dive those activities.
+
+[rochak agrawal] 09:23:05
+they will go more toward the Linux administrator job. That is not my responsibility, right? What I will be doing, I will be playing around with my application and my folders.
+
+[rochak agrawal] 09:23:17
+Okay?
+
+[arif] 09:23:22
+Okay.
+
+[arif] 09:23:25
+I think that's all.
+
+[rochak agrawal] 09:23:27
+Yeah, sure. And Arif, yeah, let me talk to the team regarding this, if we… Yeah, yeah, yeah.
+
+[arif] 09:23:31
+Yeah, that's critical, actually, yeah.
+
+[rochak agrawal] 09:23:33
+And you… you can also raise it if you have a way to… yeah?
+
+[arif] 09:23:36
+Yeah, I will definitely… I already raised it, I'm just waiting for the call.
+
+[rochak agrawal] 09:23:37
+Okay, I'll also talk… I'll also talk to them today. Sure?
+
+[arif] 09:23:42
+Yep.
+
+[rochak agrawal] 09:23:43
+Okay, get in!
+
+[Gyanendra Narayan] 09:23:46
+Yeah, hello sir, good morning.
+
+[rochak agrawal] 09:23:46
+Good morning.
+
