@@ -1,0 +1,3162 @@
+[rochak agrawal] 07:46:57
+Hey, good morning, everyone, and due to some technical issues, I was not able to join. Let me enable the transcript.
+
+[rochak agrawal] 07:46:58
+And then let me able…
+
+[rochak agrawal] 07:46:59
+See my screen.
+
+[rochak agrawal] 07:47:01
+Let me know once you are able to see my screen.
+
+[rochak agrawal] 07:47:14
+Okay.
+
+[rochak agrawal] 07:47:17
+So…
+
+[rochak agrawal] 07:47:18
+We already have, uh…
+
+[rochak agrawal] 07:47:22
+We wasted 10, 15 minutes. So yesterday we have talked about some of the git commands. Today also we are going to continue on that. So the major command we are going to see today is the git reset and git rebase.
+
+[rochak agrawal] 07:47:38
+Okay, so let's start with the git reset. So yesterday we see…
+
+[rochak agrawal] 07:47:43
+a command called the git revert. Now we are going to see the git reset, okay? So, git reset is…
+
+[rochak agrawal] 07:47:51
+Very similar.
+
+[rochak agrawal] 07:47:53
+To get rebates, uh, sorry, rebate.
+
+[rochak agrawal] 07:47:57
+We need to understand the difference because sometime in the interview, this is being asked what is the difference between git reset and git record.
+
+[rochak agrawal] 07:48:05
+So if you see in the git revert what is what has happened.
+
+[rochak agrawal] 07:48:11
+Let's say you have 3 commits, 1, 2.
+
+[rochak agrawal] 07:48:16
+Seven.
+
+[rochak agrawal] 07:48:18
+C2.
+
+[rochak agrawal] 07:48:20
+Sydney.
+
+[rochak agrawal] 07:48:21
+Okay, now when you do a Git revert, there will be a C4.
+
+[rochak agrawal] 07:48:32
+Which is going to…
+
+[rochak agrawal] 07:48:36
+negate the changes you have done in C3 or C2, whichever commit you want to refer to.
+
+[rochak agrawal] 07:48:41
+Correct. So in the history, your C3 will be there, C2 will be there, C1 will be there. On top of it, there will be a new commit, which whatever changes you have done here, those is going to revert those changes in a new commit. But you can find.
+
+[rochak agrawal] 07:48:57
+Your old commit in the commit history.
+
+[rochak agrawal] 07:49:00
+Okay? And that is where the difference is in the reset. When you do a reset.
+
+[rochak agrawal] 07:49:05
+Okay, so your head is, let's say, pointing to here, C3.
+
+[rochak agrawal] 07:49:13
+When you do a reset, this commit.
+
+[rochak agrawal] 07:49:17
+goes out of the.
+
+[rochak agrawal] 07:49:19
+his commit history itself. So that is the difference between the git reset and git revert. Now, apart from it, if you see.
+
+[rochak agrawal] 07:49:27
+Git has three types of reset. Very important to understand.
+
+[rochak agrawal] 07:49:34
+Soft reset, mixed reset, hard reset.
+
+[rochak agrawal] 07:49:38
+Okay.
+
+[rochak agrawal] 07:49:40
+More… again, uh, let me explain.
+
+[rochak agrawal] 07:49:46
+3 reset. So we know that you have 3 stages.
+
+[rochak agrawal] 07:49:52
+working directly.
+
+[rochak agrawal] 07:49:59
+staging area.
+
+[rochak agrawal] 07:50:04
+And commit.
+
+[rochak agrawal] 07:50:11
+Okay.
+
+[rochak agrawal] 07:50:13
+Now, when you do a soft reset, move the…
+
+[rochak agrawal] 07:50:17
+pointer back your changes, stay staged, ready to recommit. Now, what's going to happen? So you, uh…
+
+[rochak agrawal] 07:50:25
+changed any file and you committed it.
+
+[rochak agrawal] 07:50:29
+Okay, now when you do a soft reset, your commit will gone, but your file will still be in a staging area.
+
+[rochak agrawal] 07:50:37
+Then, when you say, what is the mix reset? Pointer moves back and changes are in stage, but files are untouched.
+
+[rochak agrawal] 07:50:46
+When you do a mixed reset, your commit will be destroyed.
+
+[rochak agrawal] 07:50:52
+And the file will be moved from the staging area. But when you do a hard reset, your working directory also will change. So let me do… show it from the demo itself.
+
+[rochak agrawal] 07:51:02
+Okay, so.
+
+[rochak agrawal] 07:51:08
+Okay, let me create…
+
+[rochak agrawal] 07:51:11
+Another level.
+
+[rochak agrawal] 07:51:23
+Simply click on it.
+
+[rochak agrawal] 07:51:27
+Create month file.
+
+[rochak agrawal] 07:51:29
+Do a commit.
+
+[rochak agrawal] 07:51:38
+file number one.
+
+[rochak agrawal] 07:51:45
+Let's take a look.
+
+[rochak agrawal] 07:51:47
+Okay? Now what you need to do, get add.
+
+[rochak agrawal] 07:51:54
+And, goodbye.
+
+[rochak agrawal] 07:52:01
+Hyphen M.
+
+[rochak agrawal] 07:52:05
+Come with number 1.
+
+[rochak agrawal] 07:52:08
+And… busted.
+
+[rochak agrawal] 07:52:09
+life.
+
+[rochak agrawal] 07:52:12
+Perfect.
+
+[rochak agrawal] 07:52:13
+Now you…
+
+[rochak agrawal] 07:52:15
+And…
+
+[rochak agrawal] 07:52:16
+More things, for example, eco…
+
+[rochak agrawal] 07:52:24
+The same file.
+
+[rochak agrawal] 07:52:28
+Line 2.
+
+[rochak agrawal] 07:52:41
+Again, the same thing, get add.
+
+[rochak agrawal] 07:52:49
+Bit number 2.
+
+[rochak agrawal] 07:52:57
+Excellent.
+
+[rochak agrawal] 07:52:59
+No.
+
+[rochak agrawal] 07:53:03
+I'll add one more comment.
+
+[rochak agrawal] 07:53:17
+Like, what, three?
+
+[rochak agrawal] 07:53:24
+Yes?
+
+[rochak agrawal] 07:53:25
+Do you see the Git log?
+
+[rochak agrawal] 07:53:28
+BF3 commit. Commit number one.
+
+[rochak agrawal] 07:53:31
+Commit number two, commit number three. Okay. And, uh…
+
+[rochak agrawal] 07:53:38
+We have this commit ID. So now you see we have done commit.
+
+[rochak agrawal] 07:53:45
+7
+
+[rochak agrawal] 07:53:47
+C2?
+
+[rochak agrawal] 07:53:50
+Okay, now, if you do a revert, so, for example, if I go, say, get revert C3, then a new…
+
+[rochak agrawal] 07:53:57
+C4 will be created, which…
+
+[rochak agrawal] 07:54:01
+will reverse the changes of what you have done in a C3, whatever commit you are reverting to.
+
+[rochak agrawal] 07:54:08
+But you see 3 will still be in the commit history, which we did yesterday.
+
+[rochak agrawal] 07:54:14
+Now…
+
+[rochak agrawal] 07:54:19
+If you see…
+
+[rochak agrawal] 07:54:26
+Let's say if I go…
+
+[rochak agrawal] 07:54:27
+So you see BF3 coming. Now if I do get reset.
+
+[rochak agrawal] 07:54:35
+Hyphen hyphen soft.
+
+[rochak agrawal] 07:54:36
+And I'll give the commit ID of this, for example, commit 3.
+
+[rochak agrawal] 07:54:46
+Git reset, what it will do, it is going to reset your commit history. Now you see?
+
+[rochak agrawal] 07:54:53
+Now, if you see it…
+
+[rochak agrawal] 07:55:38
+So you can see I'm saying move the head to point commit number two. Okay. Now if you see.
+
+[rochak agrawal] 07:55:47
+get
+
+[rochak agrawal] 07:55:52
+So now you can only see the first commit.
+
+[rochak agrawal] 07:55:55
+your head has been moved by two commits. Your reset command has moved by head by the last two commits.
+
+[rochak agrawal] 07:56:05
+But, remember, git reset, so you can see, there is nothing in the commit history. Okay, so soft reset, what it does, it is going to…
+
+[rochak agrawal] 07:56:17
+remove the commit, but your changes will still be in your staging area. So if you see git status.
+
+[rochak agrawal] 07:56:27
+Demo.txt is modified.
+
+[rochak agrawal] 07:56:31
+Right? So your changes are still in a staging area, but your, um…
+
+[rochak agrawal] 07:56:38
+What you can say?
+
+[rochak agrawal] 07:56:47
+It will be uncommitted, okay? Now, if I commit this again…
+
+[rochak agrawal] 07:56:52
+This commit, the git commit.
+
+[rochak agrawal] 07:56:54
+Different M.
+
+[rochak agrawal] 07:56:56
+This is my commit.
+
+[rochak agrawal] 07:56:59
+After the…
+
+[rochak agrawal] 07:57:02
+Soft reset.
+
+[rochak agrawal] 07:57:05
+Okay.
+
+[rochak agrawal] 07:57:07
+Clear? Now, if I do get, uh…
+
+[rochak agrawal] 07:57:11
+Log. So you can see this is commit at the first line. This is my commit after the software reset.
+
+[rochak agrawal] 07:57:18
+Okay, now if you see GitHub.
+
+[rochak agrawal] 07:57:25
+If you do a cat.
+
+[rochak agrawal] 07:57:27
+Demo.txt. So you have file number 1, line 2, line 3.
+
+[rochak agrawal] 07:57:32
+So now both of the commit, it was reverted, uh, resetted, and you gave it in a…
+
+[rochak agrawal] 07:57:39
+After the soft reset. Now you have two comments, basically, right? So you understand that if you do a soft reset.
+
+[rochak agrawal] 07:57:47
+your commit has been deleted because I said, uh, move the head to the two, uh, commits. Now…
+
+[rochak agrawal] 07:57:55
+If you are doing the software reset, okay, your commit will be undone, but your file will go into the staging area, which we have seen. But if I do…
+
+[rochak agrawal] 07:58:13
+Git reset.
+
+[rochak agrawal] 07:58:18
+I'm saying move the head one pointer, right? So I have two commits as of now.
+
+[rochak agrawal] 07:58:28
+C1.
+
+[rochak agrawal] 07:58:29
+C2.
+
+[rochak agrawal] 07:58:31
+I'm saying move back to C1, one pointer, head. Again, now you need to remember one thing.
+
+[rochak agrawal] 07:58:39
+If you are not giving… see, I can give this command.
+
+[rochak agrawal] 07:58:43
+Or, I can give this command.
+
+[rochak agrawal] 07:58:46
+they both are same. So, if you are… if you are not giving.
+
+[rochak agrawal] 07:58:51
+any of the option with the git reset command, it is going to be mixed reset. Always. So, mixed is a default option. If you want to do a soft and hard reset, then you need to do it accordingly.
+
+[rochak agrawal] 07:59:05
+So if I'm running this command also, basically I am doing a bit mixed reset.
+
+[rochak agrawal] 07:59:12
+Okay now you see unstaged changes after the reset. So if you run the get status now.
+
+[rochak agrawal] 07:59:23
+You see?
+
+[rochak agrawal] 07:59:24
+There is a file which has been modified, but it is now out of your staging area.
+
+[rochak agrawal] 07:59:32
+So, I will add this again.
+
+[rochak agrawal] 07:59:38
+Before that, if I show you git log, you can see only one commit. So my commit has been reversed.
+
+[rochak agrawal] 07:59:45
+And…
+
+[rochak agrawal] 07:59:47
+The file has been moved out of a staging area.
+
+[rochak agrawal] 07:59:49
+Again, I will make commit, git commit.
+
+[rochak agrawal] 07:59:53
+Hyphen M.
+
+[rochak agrawal] 07:59:57
+committing…
+
+[rochak agrawal] 07:59:59
+This… after…
+
+[rochak agrawal] 08:00:03
+Don't mix to insect.
+
+[rochak agrawal] 08:00:07
+Okay. Yes.
+
+[rochak agrawal] 08:00:14
+So, I have two comments.
+
+[rochak agrawal] 08:00:19
+Now comes the hard reset.
+
+[rochak agrawal] 08:00:30
+Okay.
+
+[rochak agrawal] 08:00:31
+Hard reset is a destructive reset.
+
+[rochak agrawal] 08:00:34
+It moves the head pointer back.
+
+[rochak agrawal] 08:00:38
+Clears the staging area and erases all the changes in your working directory to match the old one.
+
+[rochak agrawal] 08:00:46
+Okay.
+
+[rochak agrawal] 08:00:48
+So.
+
+[rochak agrawal] 08:00:49
+If you do a hard reset, now previously if you see.
+
+[rochak agrawal] 08:00:54
+at demo.txt, you have a file number 1, line 2, line 3. But if I do a git hard reset.
+
+[rochak agrawal] 08:01:07
+Okay?
+
+[rochak agrawal] 08:01:09
+Now, if you see…
+
+[rochak agrawal] 08:01:13
+Only one file is there. So whatever commit you have done, 2, 3.
+
+[rochak agrawal] 08:01:18
+It has now removed from your working directory altogether.
+
+[rochak agrawal] 08:01:22
+It is going to erase all the changes in your working directory to match the old commit.
+
+[rochak agrawal] 08:01:29
+So, hard commit, use very, very judicially if you are using it, because it is going to destroy your changes. Next is a default option. It is going to undo the commit.
+
+[rochak agrawal] 08:01:42
+and move the changes back to your working directly, it will unstage the changes altogether. But if you are doing the soft reset, then it is not going to do, uh, nothing in the staging area. It will just uncommit, uh, your last commit, and move the file back.
+
+[rochak agrawal] 08:02:00
+To your staging area.
+
+[rochak agrawal] 08:02:02
+So, we have three types of reset.
+
+[rochak agrawal] 08:02:05
+People generally ask what is the difference between the reset, reset and revert. So revert also does the same thing.
+
+[rochak agrawal] 08:02:15
+Uh, but your commit is always going to, um…
+
+[rochak agrawal] 08:02:21
+Your commit is always going to be in your commit history. So if you want to make your commit history clean, use git reset. Otherwise, you can use git revert also. Now here, if you are seeing, there is one special mention is there.
+
+[rochak agrawal] 08:02:37
+We just never reset the push to commit. Okay, now…
+
+[rochak agrawal] 08:02:42
+Why we are seeing this is…
+
+[rochak agrawal] 08:02:45
+Say, for example.
+
+[rochak agrawal] 08:02:47
+We are seeing if you reset, your commit is going to be deleted from your history.
+
+[rochak agrawal] 08:02:54
+Right? From the commit history, it will be gone. So that is where we need to understand that if we reset the commits which we already pushed, then my commit history and my remote commit history will be very different.
+
+[rochak agrawal] 08:03:07
+Okay, so that is where you, uh, don't reset the commit which already pushed, or the commit which you are taking from the remote repository. Only reset the commit which you are working on.
+
+[rochak agrawal] 08:03:34
+Any question in this? Git reset, very important.
+
+[rochak agrawal] 08:03:45
+Yes, I did.
+
+[Arif] 08:03:49
+So in this, in this git reset, uh, this, uh, why we are giving this, uh, one, uh, comment, one…
+
+[rochak agrawal] 08:03:55
+We are saying move the head, uh, to one point, uh, one commit back.
+
+[Arif] 08:04:01
+If there are multiple, like, 10 commits.
+
+[rochak agrawal] 08:04:03
+If you, you see, if you, let's say previously, if you see…
+
+[rochak agrawal] 08:04:08
+In the first example, so…
+
+[rochak agrawal] 08:04:12
+You were you were having C1?
+
+[rochak agrawal] 08:04:16
+C2, C3, correct?
+
+[rochak agrawal] 08:04:18
+When I give head 2, it moved the 2 pointer back.
+
+[Arif] 08:04:18
+Yeah
+
+[rochak agrawal] 08:04:23
+So, how many commits you want to reset? You give the number.
+
+[Arif] 08:04:36
+So, we need to know the number, right? How many lines we have to…
+
+[rochak agrawal] 08:04:38
+Yeah, yeah, of course. See, that you, you, you always see with the commit history, right? You always will have your commit history in front of you.
+
+[Arif] 08:04:47
+Regarding this comment history, this comment only can tell us what has been changed, or how will we know what has been changed in the file?
+
+[rochak agrawal] 08:04:55
+So that, uh… for that, uh… you need to use this…
+
+[rochak agrawal] 08:05:03
+So if you go to any of the repository, see, you must be having this…
+
+[rochak agrawal] 08:05:09
+What you can see.
+
+[rochak agrawal] 08:05:12
+Any of the collaboration platform, right? So if you go to the commits, and…
+
+[rochak agrawal] 08:05:18
+You click on the commit, there you will get to know which file has been changed and everything.
+
+[Arif] 08:05:26
+My file is not there in this git.
+
+[rochak agrawal] 08:05:29
+Because we have added the file there, that's why. If I go to any other repository, for example…
+
+[rochak agrawal] 08:05:44
+Let's see, I'll pick this one.
+
+[rochak agrawal] 08:05:48
+If you go to 260 commits, and I will go this commit, for example.
+
+[rochak agrawal] 08:05:55
+Right? So it will exactly tell you what has been added. Can you see the green one?
+
+[Arif] 08:06:02
+Okay.
+
+[rochak agrawal] 08:06:02
+So this is 8 line has been added. So any platform you are using, you use Azure Repo, GitLab, GitHub, Bitbucket, you can see it from there.
+
+[Arif] 08:06:13
+But this is… this will be shown after we push this, right? Before pushing, we…
+
+[rochak agrawal] 08:06:16
+Yes, yes. See, commit history, though, anyways, will be shared, right?
+
+[Arif] 08:06:23
+Will be shared, right?
+
+[rochak agrawal] 08:06:24
+Yeah.
+
+[Arif] 08:06:26
+But, Rishad, you said that we have to do locally…
+
+[rochak agrawal] 08:06:29
+No, no, see, anyways, if you are locally doing something that you are already aware about.
+
+[Arif] 08:06:39
+But commit is not showing now, but commit is not showing what has been done.
+
+[Arif] 08:06:44
+it's… it's not, like, one or two lines of code, like, code is something like 100 lines or 1,000 lines, something. So, how can we remember with, like, how many commits we have to, uh, reset?
+
+[Arif] 08:06:56
+If I don't know what commits are there.
+
+[rochak agrawal] 08:06:59
+Because you have done the comments, right? See, that's what we are saying, this is the line.
+
+[Arif] 08:07:03
+So, only the comment… so, comment is very, like, uh…
+
+[Arif] 08:07:07
+It should be meaningful or like.
+
+[rochak agrawal] 08:07:09
+It should be meaningful, yeah? Comments should always be meaningful only.
+
+[rochak agrawal] 08:07:14
+if you see, uh, these com… see, that's the whole purpose of the comments, right? Uh, if you see these, uh…
+
+[Arif] 08:07:14
+Okay.
+
+[rochak agrawal] 08:07:22
+Comments?
+
+[rochak agrawal] 08:07:23
+So update pom.xml, update index.jsp, these are also still not very meaningful. Uh, and I'm… I think there should be a command, uh, I'm…
+
+[rochak agrawal] 08:07:34
+I've not used it, because you always have this platform available with you.
+
+[rochak agrawal] 08:07:42
+There must be a command how to see what changes.
+
+[rochak agrawal] 08:07:53
+So, git log, uh…
+
+[rochak agrawal] 08:07:55
+Good show.
+
+[rochak agrawal] 08:07:58
+Let me see…
+
+[rochak agrawal] 08:08:01
+get…
+
+[rochak agrawal] 08:08:04
+If I could, uh…
+
+[rochak agrawal] 08:08:11
+Okay. Get. Pro.
+
+[rochak agrawal] 08:08:17
+Yeah, just telling you.
+
+[rochak agrawal] 08:08:18
+What has been changed?
+
+[rochak agrawal] 08:08:24
+New file. But it is also… it's not exactly telling you what you have added, it is telling you what file has been changed.
+
+[rochak agrawal] 08:08:32
+Okay, uh, maybe there might be some option, uh, some parameter there in the git show command only.
+
+[rochak agrawal] 08:08:43
+Git show commit has view changes to a specific file.
+
+[rochak agrawal] 08:08:46
+Let's say, let me run this.
+
+[rochak agrawal] 08:08:58
+So, commit.
+
+[Arif] 08:09:01
+Yeah, that's what… this is the change, right? Is this was a comment, or…
+
+[rochak agrawal] 08:09:04
+Yeah, file number 1, yes.
+
+[rochak agrawal] 08:09:06
+Okay, so first, from the git show, you can find which file has been changed, then with the git show, uh, you can give the file name, which will tell you what has been changed.
+
+[rochak agrawal] 08:09:19
+Okay.
+
+[Arif] 08:09:21
+Okay, and can we do a reset in GitHub?
+
+[rochak agrawal] 08:09:25
+Can we do a git reset in GitHub? No. Okay, uh, why? Because, uh, see, reset is, again, as we are seeing.
+
+[rochak agrawal] 08:09:35
+Never reset push to commit, so we are not…
+
+[rochak agrawal] 08:09:40
+going to do reset in a shared repository, correct? Because it is going to mess someone else's commit altogether.
+
+[rochak agrawal] 08:09:48
+Correct?
+
+[Arif] 08:09:49
+Okay, yep.
+
+[rochak agrawal] 08:09:49
+All right, so we said, first, maybe, uh, GitHub does not give you the option. There might be some other platform which will give you that option as well, but it is… even if you have this option, never use it.
+
+[rochak agrawal] 08:10:04
+Because, see, I don't know what commit you have done, then if I reset it, your commit will be moved from the reset history, correct? Commit history.
+
+[rochak agrawal] 08:10:15
+So you always…
+
+[rochak agrawal] 08:10:17
+Remove or do something with your, uh…
+
+[rochak agrawal] 08:10:20
+changes. See, the whole purpose of the reset is, if you see the reset and revert.
+
+[rochak agrawal] 08:10:27
+When you would like to do the reset and revert, when something goes wrong, correct?
+
+[rochak agrawal] 08:10:33
+It is not your regular stuff. Something goes wrong, then I want to revert it, I want to reset it.
+
+[rochak agrawal] 08:10:40
+When will something go back? When you're working on it.
+
+[rochak agrawal] 08:10:43
+Correct?
+
+[rochak agrawal] 08:10:46
+We push our changes to the remote repository when I'm done with my work.
+
+[rochak agrawal] 08:10:54
+Understood. Right. So there is no need actually, because it will define the, uh, it will define the whole purpose of being distributed. I'm done with my changes, then I'm pushing it. And if I'm done my changes, so, and see, you can say that.
+
+[Arif] 08:10:54
+Okay. Yeah.
+
+[rochak agrawal] 08:11:11
+if I'm… if you're done with your changes, uh, maybe after that also you will get an error, correct? That is also a valid point. In that case, we don't reset. We will create a parallel branch, uh, we will do…
+
+[rochak agrawal] 08:11:24
+The modification on that particular parallel branch, and we will work accordingly.
+
+[rochak agrawal] 08:11:30
+Okay.
+
+[Arif] 08:11:32
+Hmm, okay.
+
+[rochak agrawal] 08:11:33
+Yeah, now let's say, uh, there was one topic left for us, so…
+
+[rochak agrawal] 08:11:40
+Previously, we have used a GitHub repo, which was already there, okay? Now, let's say I want to push… this is my repo only, correct? I created a repo, and uh…
+
+[rochak agrawal] 08:11:53
+So, if you say, get…
+
+[rochak agrawal] 08:11:56
+Remote.
+
+[rochak agrawal] 08:11:59
+You see there is no remote repository for this. This I and V option is also there.
+
+[rochak agrawal] 08:12:05
+So there is no remote repository for there, correct? Now, what I will do…
+
+[rochak agrawal] 08:12:11
+And let's say, create a new repo.
+
+[rochak agrawal] 08:12:17
+I'll say, let's say, you can give the same name, or it is a different name altogether, does not matter.
+
+[rochak agrawal] 08:12:22
+You can give any name, uh…
+
+[rochak agrawal] 08:12:26
+This name and this name should not match. I can give any other name also.
+
+[rochak agrawal] 08:12:31
+Okay, you can give a description. Look, okay, so this is my repo to show how we can set up.
+
+[rochak agrawal] 08:12:43
+Okay.
+
+[rochak agrawal] 08:12:45
+Now, this is important. Choose visibility. Now, if you make it public.
+
+[rochak agrawal] 08:12:51
+Very important to understand this. If you are going to make it public.
+
+[rochak agrawal] 08:12:55
+Then, for push and pull the changes, you do not need the credential.
+
+[rochak agrawal] 08:13:01
+But again, like in your case when you will be working or your organizational code base. So there is an option called the private. Okay. If you choose private, then you should have the credential of this GitHub repository.
+
+[rochak agrawal] 08:13:17
+Very simple, it is basically the credential of my account, so once I create the repository, I can give the permissions and other things, we'll see that.
+
+[rochak agrawal] 08:13:27
+In that case, if it is a public, there is no need for permission. Anyone can go do a git clone, git post, does not matter. Once you make it private, you need to run it.
+
+[rochak agrawal] 08:13:38
+with the permissions, okay? Then these are simple files, if you want to add .gitignore, which we see, add license file and other things, it is that.
+
+[rochak agrawal] 08:13:48
+Now create the repository.
+
+[rochak agrawal] 08:13:52
+Okay? Now, this is, again, uh…
+
+[rochak agrawal] 08:13:56
+What you can say is, uh…
+
+[rochak agrawal] 08:13:59
+It's an empty repository right now, reset demo. Here you can see, create a new repository. Now we have done all of that.
+
+[rochak agrawal] 08:14:08
+You need to do this. Git remote add.
+
+[rochak agrawal] 08:14:16
+Or you can see, uh, we are pushing an existing repository for the command line, so you can see it is saying from here only, right?
+
+[rochak agrawal] 08:14:24
+So everything is given to us. I'll just go run this command.
+
+[rochak agrawal] 08:14:32
+Again, get remote.
+
+[rochak agrawal] 08:14:37
+hyphen B.
+
+[rochak agrawal] 08:14:38
+So you can see now the remote has been added.
+
+[rochak agrawal] 08:14:43
+Okay?
+
+[rochak agrawal] 08:14:45
+Now you just need to run this command.
+
+[rochak agrawal] 08:14:48
+If you want to push, uh…
+
+[rochak agrawal] 08:14:52
+specific branch, so for example, you have 10 branches and you want to push only the master branch or a dev branch, you can give it like this. Branch hyphen master.
+
+[rochak agrawal] 08:15:03
+I will just run this command, this is not needed for us.
+
+[rochak agrawal] 08:15:20
+You can see, now if you go here and refresh this.
+
+[rochak agrawal] 08:15:25
+You can see demo.txt commit one. Only one commit is there because we have reverted everything.
+
+[rochak agrawal] 08:15:32
+So that is how we can set it up, my remote repository. Right, now whatever, if I… now I can do it from here, some changes, for example, I go create a new file. I can do a commit from here also.
+
+[rochak agrawal] 08:15:45
+I'll say remote.txt.
+
+[rochak agrawal] 08:15:49
+Okay.
+
+[rochak agrawal] 08:15:51
+Uh, this is the file.
+
+[rochak agrawal] 08:15:54
+I am creating.
+
+[rochak agrawal] 08:15:57
+From the remote rep. Again, this is not recommended. Uh, you generally don't need to do it.
+
+[rochak agrawal] 08:16:04
+But, again, the platform gives you that option.
+
+[rochak agrawal] 08:16:07
+So I'll do commit changes.
+
+[rochak agrawal] 08:16:10
+So you see, create remote.txt with the initial content.
+
+[rochak agrawal] 08:16:14
+And I commit my changes.
+
+[rochak agrawal] 08:16:17
+Okay, now here you can see you have two commits, but I, and on my remote, uh, local repository, I have one commit. So you'll run the command called git pull.
+
+[rochak agrawal] 08:16:30
+So, previously, before running the git pull, you'll see ls-lrt. I have only one file. Okay, you run git pull.
+
+[rochak agrawal] 08:16:41
+Okay, now if you see…
+
+[rochak agrawal] 08:16:43
+I have both eyes.
+
+[rochak agrawal] 08:16:45
+And you can see it from the remote repository altogether.
+
+[rochak agrawal] 08:16:49
+Okay?
+
+[rochak agrawal] 08:16:53
+You see? So…
+
+[rochak agrawal] 08:16:55
+Again, you can do it from your local repository, you can do it from your remote repository. You are… anytime, if you say, if you want… if you're getting that your remote has been moved ahead.
+
+[rochak agrawal] 08:17:08
+So you can run the git pull command, and it is going to fetch all the changes which was not there in your local repository.
+
+[rochak agrawal] 08:17:16
+So with the git pull, git push, we can do that. Now, there are some options I want to show you.
+
+[rochak agrawal] 08:17:24
+So, if you go to settings… now, again, these options, what we are discussing here is…
+
+[rochak agrawal] 08:17:30
+will depend on platform to platform, but the overall concept is going to be the same, okay? So, default branch is master.
+
+[rochak agrawal] 08:17:40
+Here, you can see, um…
+
+[rochak agrawal] 08:17:52
+This is all okay.
+
+[rochak agrawal] 08:17:53
+I can delete this repository from here.
+
+[rochak agrawal] 08:17:59
+And then there was an option. So webhook is also a very good option, which… but we will not see it as of now. So webhook is… is going to help you connect with your CI engine. So we'll configure the webhook once we have the Jenkins available.
+
+[rochak agrawal] 08:18:16
+Because if you go to webhook, you need to give a… uh, if you try to add a webhook.
+
+[rochak agrawal] 08:18:30
+So you need to give this URL, payload URL, right? So that is where we will give our Jenkins URL there. Now, why we use the paybook? So that any changes is happening in your source code repository.
+
+[rochak agrawal] 08:18:45
+Jenkins will automatically is going to trigger a build.
+
+[rochak agrawal] 08:18:49
+Okay, so this webhook option is going to be there in every system.
+
+[rochak agrawal] 08:18:56
+If you go to branches, so this is something very important.
+
+[rochak agrawal] 08:19:01
+branch protection rule. We are using the open source version of GitHub, free version, basically, so that's why we… we are seeing very less functionality here, but if you go to an enterprise version, there are multiple.
+
+[rochak agrawal] 08:19:17
+or security options will be there. So you can see.
+
+[rochak agrawal] 08:19:22
+If you add a classic branch protection rule, so here you can see.
+
+[rochak agrawal] 08:19:27
+If you click this.
+
+[rochak agrawal] 08:19:29
+Okay, and you can see there is multiple options, require approvals, require review from the code owners, require approval for the most recent reviewable post. So you can see, now this is all about.
+
+[rochak agrawal] 08:19:44
+how you want to merge your branches. So we… yesterday, we said you need to raise a pull request. Now you say it requires the approval. And you can set up required number of the approvals before merging.
+
+[rochak agrawal] 08:19:56
+I will say at least two people should have reviewed the code before doing the merge, okay? Then you have different, different option, uh, there is something called, uh, signed commit. So you, uh, you need to digitally sign your commits, then only you can, uh.
+
+[rochak agrawal] 08:20:15
+push your changes to your remote repo. We can do that as well. So this is going to be useful when you have your identity. So you are going to sign your commits, right? And then you can log the branch.
+
+[rochak agrawal] 08:20:28
+This is very important. Now, what we generally do, log branch is very important. So, when you log the branch, now let's see, we are going to log the branch.
+
+[rochak agrawal] 08:20:40
+And so what is going to happen?
+
+[rochak agrawal] 08:20:44
+And as we discussed yesterday also, you will have a, let's say, a stable branch.
+
+[rochak agrawal] 08:20:55
+Call the master branch. We'll have the stable release of the code. Now, whenever you need to deploy something, you will go create a feature branch, create a develop branch. You're going to create multiple branches.
+
+[rochak agrawal] 08:21:07
+Okay.
+
+[rochak agrawal] 08:21:10
+Right now, if you see, we have pushed to master.
+
+[rochak agrawal] 08:21:17
+Correct? Git Push Origin Master.
+
+[rochak agrawal] 08:21:20
+If I log this branch.
+
+[rochak agrawal] 08:21:23
+I'll say this branch is locked.
+
+[rochak agrawal] 08:21:27
+you… no one will be able to push the changes directly to the master branch. You will push your changes here.
+
+[rochak agrawal] 08:21:35
+Okay? And then you will raise a merge request.
+
+[rochak agrawal] 08:21:40
+or the pull request to merge those changes to master. So you can… and it is a very good practice that you are going to lock your master branch, or whatever is your stable branches, so that no one unnecessarily doing any changes in.
+
+[rochak agrawal] 08:21:57
+your stable branch. So for that we can lock the branches.
+
+[rochak agrawal] 08:22:03
+Branch is read-only, user cannot push to the branch. Okay, and so you can see there's multiple options there, and you need to give which, uh…
+
+[rochak agrawal] 08:22:16
+branch you are applying these rules to. So, for example, if I'll say master, now you have multiple feature branches, so I will just say feature.
+
+[rochak agrawal] 08:22:27
+star. So, all these rules you are creating, it will be applied to all the feature branches. So, let's say I go and master.
+
+[rochak agrawal] 08:22:40
+Okay, and I'll just… this is not needed for us, I'll just log the branch.
+
+[rochak agrawal] 08:22:46
+I'll create.
+
+[rochak agrawal] 08:22:48
+So, you can see branch protection rules are there.
+
+[rochak agrawal] 08:22:51
+And now, if you see…
+
+[rochak agrawal] 08:22:56
+I will go.
+
+[rochak agrawal] 08:22:58
+Yes?
+
+[rochak agrawal] 08:23:01
+Let me, uh, add something, eco.
+
+[rochak agrawal] 08:23:13
+branch.
+
+[rochak agrawal] 08:23:18
+Protection rule.
+
+[rochak agrawal] 08:23:26
+Protect.txt.
+
+[rochak agrawal] 08:23:29
+Git add protect dot txt.
+
+[rochak agrawal] 08:23:34
+Hit commit.
+
+[rochak agrawal] 08:23:38
+Hyphen M.
+
+[rochak agrawal] 08:23:41
+Protecting.
+
+[rochak agrawal] 08:23:44
+the master…
+
+[rochak agrawal] 08:23:46
+brunch.
+
+[rochak agrawal] 08:23:48
+Okay, now if you see, if we try to…
+
+[rochak agrawal] 08:23:53
+push it, it…
+
+[rochak agrawal] 08:23:55
+should not go.
+
+[rochak agrawal] 08:24:03
+You see?
+
+[rochak agrawal] 08:24:08
+Cannot change this logged branch.
+
+[rochak agrawal] 08:24:12
+But it says bypass rule violation, let me see.
+
+[rochak agrawal] 08:24:16
+If
+
+[rochak agrawal] 08:24:20
+Why it is created, uh…
+
+[rochak agrawal] 08:24:25
+Because it says, uh, bypassed rule, violation.
+
+[rochak agrawal] 08:24:32
+By it bypassed
+
+[rochak agrawal] 08:24:55
+Bush ignored the branch protection rule.
+
+[rochak agrawal] 08:25:05
+Okay, yeah, so it says, I assume that you have the admin rights to the repository, and the rule is configured to allow admins to ignore it.
+
+[rochak agrawal] 08:25:15
+That is why. If any other user will do it, it will not go. For me, I am the owner of this, and that is why it has bypassed the rule. But it is giving you the warning. But if you try to… if someone else is trying to push the changes.
+
+[rochak agrawal] 08:25:30
+Uh, they will not be able to.
+
+[rochak agrawal] 08:25:32
+Okay, so then, uh, we can set up the branch protection rules. Now, uh, if, again, I'll go to…
+
+[rochak agrawal] 08:25:41
+Settings…
+
+[rochak agrawal] 08:25:42
+Then there is the advanced security. There is, again, different security option depending on the platform if you are using. So very new integration to any source code repository is now the border scanning.
+
+[rochak agrawal] 08:25:58
+So…
+
+[rochak agrawal] 08:25:59
+It is, again, you can see…
+
+[rochak agrawal] 08:26:03
+CodeQL analysis is there to identify vulnerability and errors with the CodeQL for the eligible repository. So you can set up your CodeQL configuration.
+
+[rochak agrawal] 08:26:14
+Now, it is, again, um…
+
+[rochak agrawal] 08:26:16
+It is up to us if we want to use these features of the repository or not.
+
+[rochak agrawal] 08:26:22
+In most of the project, there is a tool called SonarQube, which we generally use in our CI/CD pipeline for the code scanning. Now, there is no right and wrong thing. If you are comfortable with SonarQube, you can use the SonarQube.
+
+[rochak agrawal] 08:26:36
+If you want to use the native features of any source code management system.
+
+[rochak agrawal] 08:26:41
+you can use it here, right? So, AI…
+
+[rochak agrawal] 08:26:47
+findings, of course, very new feature, protection rules, uh, secret protection is disabled, so GitHub will always send alert to the partner for the detected secret in the public repository. Now, what does it mean? It means if we enable it, so currently it is, uh.
+
+[rochak agrawal] 08:27:03
+enabled for us. If you are going to give some username and the password type of a setting, your private key type of the thing in your source code, it is going to send you an alert that someone pushed a sensitive information in your.
+
+[rochak agrawal] 08:27:18
+repository. Okay.
+
+[rochak agrawal] 08:27:21
+So these… some of the settings are there, and uh… this agent actions is not needed for us. Uh, so…
+
+[rochak agrawal] 08:27:31
+GitHub has come up with their own CICD tooling also, which is called the GitHub Actions.
+
+[rochak agrawal] 08:27:38
+Okay, so we are not going to see the GitHub actions.
+
+[rochak agrawal] 08:27:43
+we are going to see the Jenkins but here you can see all the templates of this build and deploy to GKE Terraform. Multiple templates are already there but you can create your own CI/CD pipeline in GitHub Action and run your pipelines.
+
+[rochak agrawal] 08:27:59
+So this is about the platform and one more important thing is about the issues.
+
+[rochak agrawal] 08:28:04
+So you can see, I can create a new issue. This is for the, uh…
+
+[rochak agrawal] 08:28:09
+And again, this is a feature which, if you are using any of the, uh…
+
+[rochak agrawal] 08:28:17
+PMO tool like Jira or Rally or what you can say, there is a new tool, ClickUp, then this issues feature is not required. You are going to use the other tool, but.
+
+[rochak agrawal] 08:28:32
+that feature is also enabled here is. For example, I can create a new issue.
+
+[rochak agrawal] 08:28:44
+Okay, and I will say, my code is not working. For example, I need…
+
+[rochak agrawal] 08:28:52
+Here, you need to give, uh…
+
+[rochak agrawal] 08:28:55
+Meaningful description, obviously, and you…
+
+[rochak agrawal] 08:29:00
+Assign it to yourself, and you are going to create an issue.
+
+[rochak agrawal] 08:29:04
+Okay, now you can see, you can create a sub-issue, you can add a comment there.
+
+[rochak agrawal] 08:29:11
+So it is just basically for tracking if there is any issues is happening in your system or not. So that is, uh, issues is for that. Uh, again, um, you can create milestones, for example, every month you are releasing.
+
+[rochak agrawal] 08:29:26
+a product, so you can go create a milestone for June release, for, uh, uh, creating for July release, and exit, uh, so forth and so on. But again, as I'm saying, you do not need these features if you are already using a tool like Jira or Rally.
+
+[rochak agrawal] 08:29:42
+Because they are more robust in the release management and the project management.
+
+[rochak agrawal] 08:29:47
+So, this is an overall view of, uh, the platform. Again, if you are using Azure Repos.
+
+[rochak agrawal] 08:29:55
+The working will remain the same, but uh…
+
+[rochak agrawal] 08:30:00
+The working will remain the same, and uh…
+
+[rochak agrawal] 08:30:04
+It is just some option will be plus or minus there.
+
+[rochak agrawal] 08:30:07
+Okay.
+
+[rochak agrawal] 08:30:15
+Yes, Danu.
+
+[Dhanu] 08:30:20
+Uh, hi, uh, like, I have one doubt. While pushing, uh, it will… we have to give our, uh, username and the mail ID and the token, if I'm not wrong.
+
+[rochak agrawal] 08:30:31
+See, that is what I explained when we created this repository. If you see, this repository is a public repository.
+
+[rochak agrawal] 08:30:39
+That is why it was not needed. I mentioned this, Danu. If it is a private repository, then yes, you need to give your username and the password.
+
+[Dhanu] 08:30:48
+Actually, I usually create the public one.
+
+[rochak agrawal] 08:30:51
+Hmm?
+
+[Dhanu] 08:30:51
+Uh, but it will last for me.
+
+[rochak agrawal] 08:30:54
+No, you… we have done it, it should not ask.
+
+[rochak agrawal] 08:30:57
+We very clearly did it, right?
+
+[Dhanu] 08:31:01
+Yeah, but…
+
+[Dhanu] 08:31:02
+Okay, I'll just try once.
+
+[rochak agrawal] 08:31:04
+You just try it again. If it is a public… see, that's the whole meaning of a public repository.
+
+[rochak agrawal] 08:31:10
+Okay? If it is a private repository, then yes, it is going to ask you the username and the password.
+
+[Dhanu] 08:31:17
+Even though if we try doing this in the AWS account.
+
+[Dhanu] 08:31:23
+It is not going out.
+
+[rochak agrawal] 08:31:23
+From anything, see, it doesn't matter from… it is like, uh…
+
+[rochak agrawal] 08:31:29
+see, for example, I go this website, any website, for example.
+
+[rochak agrawal] 08:31:34
+Let's say I'm going to bbc.com, correct? It is a public website. Now I open it from my laptop. I open it from a Windows machine in AWS. I open this website in Australia. That is going to open the same website, correct?
+
+[Dhanu] 08:31:50
+Okay.
+
+[rochak agrawal] 08:31:50
+Because it's a public website.
+
+[Dhanu] 08:31:52
+Long.
+
+[rochak agrawal] 08:31:53
+Same thing. But if I, let's say, give the facebook.com, it will ask me my username and the password, then it will log into my account.
+
+[rochak agrawal] 08:32:02
+But again, there is no difference, you can log in from anywhere.
+
+[Dhanu] 08:32:07
+Yeah, okay, yeah.
+
+[rochak agrawal] 08:32:08
+Okay.
+
+[Dhanu] 08:32:10
+Yeah. And one more thing, like, uh, could you just show me that pull request out to… I'm a bit confused on that.
+
+[rochak agrawal] 08:32:11
+Yep.
+
+[rochak agrawal] 08:32:15
+Yeah, yeah.
+
+[rochak agrawal] 08:32:17
+So, if you see, uh, when you have two branches, for example, first let me create pull request, uh, uh.
+
+[rochak agrawal] 08:32:26
+From there, it will be called as a margin request also, okay? And, uh…
+
+[rochak agrawal] 08:32:31
+See, so if you're hearing the term pull request or the merge request, they are…
+
+[rochak agrawal] 08:32:35
+inherently same, okay? So, first, I will go to the branch.
+
+[rochak agrawal] 08:32:41
+And, uh…
+
+[rochak agrawal] 08:32:42
+Let me create a new branch.
+
+[rochak agrawal] 08:32:46
+Let's say I'm seeing Deb March.
+
+[rochak agrawal] 08:32:48
+Create new branch.
+
+[rochak agrawal] 08:32:51
+Now, I will go to board.
+
+[rochak agrawal] 08:32:53
+I will switch to dev branch.
+
+[rochak agrawal] 08:32:57
+And I will did… I'll do some changes in the demo, so I'll go…
+
+[rochak agrawal] 08:33:04
+Create new file.
+
+[rochak agrawal] 08:33:06
+And I'll say, dem.phd.
+
+[rochak agrawal] 08:33:10
+Okay.
+
+[rochak agrawal] 08:33:10
+And, uh, you will say, hi.
+
+[Dhanu] 08:33:10
+Okay.
+
+[rochak agrawal] 08:33:15
+I am muting.
+
+[rochak agrawal] 08:33:18
+this file.
+
+[rochak agrawal] 08:33:20
+Boom.
+
+[rochak agrawal] 08:33:22
+debutante.
+
+[rochak agrawal] 08:33:24
+Very simple.
+
+[rochak agrawal] 08:33:26
+Submit the changes
+
+[rochak agrawal] 08:33:31
+Okay?
+
+[rochak agrawal] 08:33:34
+Now you comment the changes.
+
+[rochak agrawal] 08:33:36
+Okay, so now you see, uh, Dev has the recent post 2 second ago, so it says the branch is one commit ahead of the master, correct?
+
+[rochak agrawal] 08:33:47
+Correct. So if you go to Master
+
+[Dhanu] 08:33:48
+No.
+
+[rochak agrawal] 08:33:52
+And you go to commit.
+
+[rochak agrawal] 08:33:56
+So, there is 3 commits on the master branch, but if you go to a dev branch.
+
+[rochak agrawal] 08:34:01
+There are four comments, correct?
+
+[Dhanu] 08:34:03
+Yeah.
+
+[rochak agrawal] 08:34:04
+Right? Now you say, this commit, I, uh, this branch, now my work on this branch is done. I want to merge my changes. So what you do, you go to pull request.
+
+[rochak agrawal] 08:34:16
+You create a new
+
+[rochak agrawal] 08:34:20
+Okay.
+
+[rochak agrawal] 08:34:26
+Why this is disabled?
+
+[rochak agrawal] 08:34:30
+Okay, yeah.
+
+[rochak agrawal] 08:34:33
+Okay, so here you can say, and the system is saying able to merge, the branches can be automatically merged, and you can say there is a dev.txt will be merged. Okay, so if you go create the pull request.
+
+[rochak agrawal] 08:34:49
+Now, create the dev.txt with the initial content. I'll say, here, I am… Again, the meaningful description you need to give. I am merging.
+
+[rochak agrawal] 08:35:04
+Web 2 Master.
+
+[rochak agrawal] 08:35:07
+Because we do not have any user and other things, there is no reviews, but it is a general best practice that you will assign one or two reviewers. We set up the rule also, like, how many minimum reviewers should be there. I'll assign it to myself.
+
+[rochak agrawal] 08:35:23
+Then you are going to create the pull request.
+
+[rochak agrawal] 08:35:27
+Again, remember this, creating the pull request does not mean the merge has happened.
+
+[Dhanu] 08:35:27
+Okay.
+
+[rochak agrawal] 08:35:33
+Now, if you go…
+
+[rochak agrawal] 08:35:35
+You have created the pull request. This is open.
+
+[rochak agrawal] 08:35:38
+Okay, it's not been merged yet. We can verify it, we can go to code.
+
+[rochak agrawal] 08:35:45
+You can see there is no dev.txt here because we have not yet merged it.
+
+[rochak agrawal] 08:35:51
+Okay? We have raised the request to merge it.
+
+[Dhanu] 08:35:52
+Yeah.
+
+[rochak agrawal] 08:35:55
+Now, the request will go to your reviewer, if you have any reviewer, and they will first check what you are merging, okay?
+
+[rochak agrawal] 08:36:07
+So you say, merge without… I'll bypass this.
+
+[rochak agrawal] 08:36:11
+we have set up these rules because of that. It says, cannot change this logged branch. We have made our master read-only, right? That's why it says merging is blocked.
+
+[Dhanu] 08:36:19
+Ah, yes.
+
+[rochak agrawal] 08:36:23
+And here, if you see, here you can completely see what commit is going to be merged, what file change is happening, which you are merging, correct? All those things, we can see it here. And I will go…
+
+[Dhanu] 08:36:36
+Yes.
+
+[rochak agrawal] 08:36:37
+And, uh…
+
+[rochak agrawal] 08:36:41
+I'll write a comment.
+
+[rochak agrawal] 08:36:52
+I'll write the comment.
+
+[rochak agrawal] 08:36:55
+In comment, it's not necessary. Comment is if you want to comment it. So, let's say if you're reviewing, and you say, I am not very sure.
+
+[rochak agrawal] 08:37:03
+About…
+
+[rochak agrawal] 08:37:04
+the changes.
+
+[rochak agrawal] 08:37:06
+you are doing.
+
+[rochak agrawal] 08:37:09
+Please explain. For example, your reviewer will give you some comment.
+
+[rochak agrawal] 08:37:13
+Okay.
+
+[rochak agrawal] 08:37:15
+And then, once… okay, they are saying, okay, I want to merge it.
+
+[rochak agrawal] 08:37:18
+Let me, uh, change the rule first.
+
+[rochak agrawal] 08:37:42
+Okay, I'll go to pull request.
+
+[rochak agrawal] 08:37:46
+Okay? Now it says ready to merge, right? Because there is no issue. And from here also, we can say merge pull request. You can click anywhere. I'll say ready to merge.
+
+[rochak agrawal] 08:37:58
+Here, it says merge full request.
+
+[rochak agrawal] 08:38:02
+And when you say… and here, this is also one option.
+
+[rochak agrawal] 08:38:07
+Multiple request.
+
+[rochak agrawal] 08:38:09
+Confirm merge.
+
+[rochak agrawal] 08:38:13
+And here, the status has been changed, it says merged.
+
+[rochak agrawal] 08:38:17
+Okay, and if you go to your code now.
+
+[rochak agrawal] 08:38:22
+You have this dev.txt.
+
+[rochak agrawal] 08:38:26
+In your master. So now your master and dev are same, basically.
+
+[rochak agrawal] 08:38:33
+Okay.
+
+[Dhanu] 08:38:39
+Yes, perfect.
+
+[rochak agrawal] 08:38:40
+Okay. Now, before this branches only, we have something called…
+
+[rochak agrawal] 08:38:45
+the strategies. Okay.
+
+[rochak agrawal] 08:38:48
+Again, these strategies, if you see, uh…
+
+[rochak agrawal] 08:38:53
+These are, again.
+
+[rochak agrawal] 08:38:55
+the guidelines only. This is… this is not a science, okay?
+
+[rochak agrawal] 08:39:00
+Again, these strategies are just the general recommendations. Sometime, let's say you might use a combination of a strategy also. So we have some thing called the GitHub.
+
+[rochak agrawal] 08:39:12
+we have something called the Git flow, and GitLab flow, and trunk-based. So I'll see some…
+
+[rochak agrawal] 08:39:18
+image, and from the image I'll explain.
+
+[rochak agrawal] 08:39:53
+So this is called the GitHub flow.
+
+[rochak agrawal] 08:40:00
+If you see this.
+
+[rochak agrawal] 08:40:10
+In your GitHub flow, again, as I'm saying, these are just the guideline recommendations. You can use the combination of any two strategies. It is up to us what we want to use. So we cannot say why this is happening in this.
+
+[rochak agrawal] 08:40:25
+Whatever you want to do, you can do. This is just the way. So in the GitHub flow, as you can see, one long-lived branch, whether it's a main or the master, plus sort feature branch.
+
+[rochak agrawal] 08:40:38
+deploy from the main, okay? So here, in the GitHub flow, what is going to happen, that you will have a main master branch.
+
+[rochak agrawal] 08:40:49
+Somewhere it is called the main branch, somewhere it is called the master branch, it's the same.
+
+[rochak agrawal] 08:40:54
+all the development you are going to do on the feature branch. Okay, so you'll cut the feature branches, you can see it here.
+
+[rochak agrawal] 08:41:02
+you'll cut the feature branches whenever is needy. Whenever your feature is deployed, uh, developed, you again merge it back to the… your main branch or the master branch, so all your deployment will happen from the…
+
+[rochak agrawal] 08:41:17
+Discord.
+
+[rochak agrawal] 08:41:20
+Okay? So that is a GitHub flow.
+
+[rochak agrawal] 08:41:24
+Again, I don't see it very useful, but yes, that is one of the flow. The most important is this.
+
+[rochak agrawal] 08:41:34
+the Git flow.
+
+[rochak agrawal] 08:41:36
+Which we have seen yesterday also
+
+[rochak agrawal] 08:41:38
+Which is this one.
+
+[rochak agrawal] 08:41:51
+So in this, if you see, you will have a master branch.
+
+[rochak agrawal] 08:41:55
+Again, master will be your stable. You can say main or master. You will have your release branches. So from the master, you will cut the develop branch.
+
+[rochak agrawal] 08:42:03
+From the developer… develop branch, you will cut the feature branches, and you merge your feature branches into the develop branch.
+
+[rochak agrawal] 08:42:12
+And from the develop, you are going to release it, okay? Release branch, you will do the changes on the release, so your deployment happens from the release branch.
+
+[rochak agrawal] 08:42:24
+And when we are saying deployment, it means the production deployment.
+
+[rochak agrawal] 08:42:28
+Okay, deployment is going to happen from the release branch. Once the deployment will happen, it is again going back to the master branch, merged back to the master branch. Okay, so that your master will have always the ready deployable code.
+
+[rochak agrawal] 08:42:47
+Right. And then if there is any issue comes on the production itself, because since master have the latest production ready code, you are going to cut a branch from the master, which we will call it as a hotfix branch.
+
+[rochak agrawal] 08:43:02
+do your changes in a hotfix branch, and then, again, deploy it back to… merge it back to the master. That is called the Gita flow, uh, sorry, Git flow.
+
+[rochak agrawal] 08:43:13
+Again, this is one of the most robust branching strategies that people is used.
+
+[rochak agrawal] 08:43:20
+As I'm saying, these are the general principles.
+
+[rochak agrawal] 08:43:25
+you are not going to worry about that I need to… going to implement this exactly? Absolutely no. If you say, I want some modification, can I deploy it from the develop branch? I don't want to use the release branch. It is up to us, okay?
+
+[rochak agrawal] 08:43:40
+See, in the end, these are some frameworks. When you will start your development, you need to design your own branching strategy based on these frameworks. It is up to us what we want.
+
+[rochak agrawal] 08:43:54
+Okay, so this is… but this is one of the most, uh, robust one.
+
+[rochak agrawal] 08:43:59
+Again, the GitLab one and the trunk-based is…
+
+[rochak agrawal] 08:44:06
+not, uh, being used.
+
+[rochak agrawal] 08:44:10
+Very much nowadays.
+
+[rochak agrawal] 08:44:12
+Okay? So, in the GitLab flow, GitHub flow, plus environment branches, such as staging and production. Okay? So, you have a feature branch.
+
+[rochak agrawal] 08:44:24
+of the GitHub flow, plus you will create the branches for the different, different environments. Then, trunk-based deployment. Trunk-based deployment is not, uh, uh, being used as of now. Uh, it was, uh.
+
+[rochak agrawal] 08:44:39
+being used when we were using the centralized version control system. So, trunk-based development is everyone commits to the main branch daily.
+
+[rochak agrawal] 08:44:48
+Right? Incomplete works hide behind the feature flags. So you have a single branch, everyone is doing the changes into the main branch itself. But again.
+
+[rochak agrawal] 08:44:58
+Trunk waste, you are not going to find anywhere now.
+
+[rochak agrawal] 08:45:03
+Now, it says whichever you pick, the same two rules apply. Keep branches short-lived. Very important. And merge into the main branch often. Long-lived branches are where merge pain comes from, not from the strategy on the bytecode.
+
+[rochak agrawal] 08:45:18
+This is very important. So we are going to keep our branches, whatever branches strategy you are using. We need to be branches very short-lived. Once my work is over on the branch.
+
+[rochak agrawal] 08:45:30
+You need to merge it as immediately as possible, because, let's say, if you keep working on something, and you are merging after 2 years. Now, in 2 years, there may be so many changes, but what compatibility is there or not? There could have been many issues that can arise.
+
+[rochak agrawal] 08:45:50
+So, the general recommendation is key student branches short-lived. Now, again, it is a recommendation. There is no definition of short-lived.
+
+[rochak agrawal] 08:46:00
+For some teams, it could be one week. For some team, it could be six months also. It is team to team.
+
+[rochak agrawal] 08:46:07
+Once your work on the branch is over.
+
+[rochak agrawal] 08:46:13
+You merge it and after the merge you can delete your branch. It is again a practice. But I do keep the branch when I have merged already the merge and so that is again a best practice. So whatever you are doing, okay.
+
+[rochak agrawal] 08:46:28
+You just need to be very careful about that you are not working in a very long standing branches.
+
+[rochak agrawal] 08:46:37
+Any strategy you are using, that's okay. And again, as I'm saying, you can use a combination of our strategies all together. That's absolutely no problem. So, for example, I'm using a GitFlow.
+
+[rochak agrawal] 08:46:49
+And then I can have the different branches for my environment altogether. So, again.
+
+[rochak agrawal] 08:46:56
+You can create your strategy for yourself.
+
+[rochak agrawal] 08:47:06
+Okay, so some questions are there.
+
+[rochak agrawal] 08:47:11
+Yes, Navin?
+
+[Naveen Kr Nair] 08:47:14
+Uh, hi Rochak, I just wanted to… can you hear me?
+
+[rochak agrawal] 08:47:17
+Yes, yes, I can hear you.
+
+[Naveen Kr Nair] 08:47:18
+Yeah, I just wanted to see if my understanding of that merge request is, uh, correct. So, uh, like, you showed the master branch where we had the stable code, and then you created a dev branch.
+
+[rochak agrawal] 08:47:22
+Okay?
+
+[rochak agrawal] 08:47:30
+Got it.
+
+[Naveen Kr Nair] 08:47:30
+So, uh, the same thing we could have done from the, uh, local, uh, machine, and pushed that def branch.
+
+[rochak agrawal] 08:47:35
+Yeah, yeah, yeah. See, we have… yes, yes. So, we have seen the merge yesterday, Naveen, right? So, yeah.
+
+[Naveen Kr Nair] 08:47:38
+Yep.
+
+[Naveen Kr Nair] 08:47:40
+Yeah. Yeah, yeah, yeah. So, that's what I…
+
+[Naveen Kr Nair] 08:47:43
+I just want to check if my understanding is correct. So, uh, we push the dev branch to the GitHub, and then there we can have the collaborations, and then raise the reviews before we complete the merge request.
+
+[rochak agrawal] 08:47:51
+Correct.
+
+[rochak agrawal] 08:47:53
+Got it.
+
+[rochak agrawal] 08:47:56
+Perfect. That is right. So generally, we don't do any development on the master branch. You will pick your branch. So for example, let's say you are working on feature one, I'm working on feature two. So we are going to work on the respective branches.
+
+[Naveen Kr Nair] 08:47:59
+Okay, okay.
+
+[Naveen Kr Nair] 08:48:03
+Okay.
+
+[rochak agrawal] 08:48:12
+we push those branches, and then once my work is over, I, uh, for example, whatever the strategy you are using, uh, or the type you are using, uh, so you, let's say you.
+
+[rochak agrawal] 08:48:24
+deploy first, if you see this strategy, for example. And merging will also happen at a different level, right? So, for example, your feature branch first will merge to the develop branch, your develop branch will merge into the release branches, and release is going to merge into the master branches, right?
+
+[Naveen Kr Nair] 08:48:31
+Okay. Awesome.
+
+[Naveen Kr Nair] 08:48:35
+Okay.
+
+[rochak agrawal] 08:48:41
+So the merging process will remain the same, but in this strategy, you are not going directly merging feature to the master.
+
+[Naveen Kr Nair] 08:48:41
+Okay, okay.
+
+[Naveen Kr Nair] 08:48:49
+Okay, okay. Yeah, yeah, got it. Just… yeah.
+
+[rochak agrawal] 08:48:50
+Right? So that will totally depend on, uh, the type of the strategy that you are using.
+
+[Naveen Kr Nair] 08:48:55
+Yeah, yeah, I got it, yeah. Thank you.
+
+[rochak agrawal] 08:48:57
+And mostly, this strategy is, again, a collaborative effort between the development team and the DevOps team, because in the end, it's a dev team which is going to work on it. But since we will be setting up the deployment pipeline.
+
+[rochak agrawal] 08:49:14
+We should also, uh, be aware about what type of branching… branches is there, because, uh…
+
+[rochak agrawal] 08:49:22
+like, every branch is different from another branch, correct? Right? Uh, and it is not that… see, when we are saying the deployment, we are referring to the production deployment, right? Uh, but you will have multiple environments. So, for example, if you are.
+
+[Naveen Kr Nair] 08:49:26
+Yeah, it's.
+
+[Naveen Kr Nair] 08:49:33
+Yeah.
+
+[rochak agrawal] 08:49:38
+Working on the feature branch, how would you verify that my feature is working? Because you need to deploy it into the dev environment first, correct?
+
+[Naveen Kr Nair] 08:49:46
+Okay, so yeah, so all this will happen during the collaboration. And then for each stage we will collaborate. And then.
+
+[rochak agrawal] 08:49:53
+Correct.
+
+[Naveen Kr Nair] 08:49:54
+Review, and then do the merge request for each and every stages. Yeah.
+
+[rochak agrawal] 08:49:56
+do the merge request, and then, accordingly, uh, your CICD pipeline will be created as well.
+
+[Naveen Kr Nair] 08:50:00
+Okay, got it, yeah.
+
+[rochak agrawal] 08:50:02
+Okay?
+
+[Naveen Kr Nair] 08:50:03
+Thank you.
+
+[rochak agrawal] 08:50:08
+Yes, question.
+
+[rochak agrawal] 08:50:18
+Yes, Anthony?
+
+[Kaushal Patel] 08:50:23
+Hello?
+
+[rochak agrawal] 08:50:26
+Yes, question.
+
+[Kaushal Patel] 08:50:28
+Yeah, so, let's say Git workflow I have initiated, and, uh, I'm building one feature. For that, I created a feature branch. So, in this feature branch, uh, uh, I mean, uh, let's say I want to add a rule, like, my feature branch naming convention should, let's say.
+
+[rochak agrawal] 08:50:30
+Okay.
+
+[rochak agrawal] 08:50:35
+Okay?
+
+[Kaushal Patel] 08:50:43
+I'm creating a feature branch out of develop, then it should, let's say, start with my, uh, let's say, Jira ID, then, uh, before that, let's say, bugfix slash, uh, Jira ID, and then, uh, uh, sorry, develop and then Jira ID. So, if I don't follow this convention.
+
+[Kaushal Patel] 08:51:01
+then I should not allow to merge this. So, is there any rule that we can set it up?
+
+[rochak agrawal] 08:51:05
+Yeah, yeah, we can… you… you can find this rule. So, in GitHub, uh, open source version, which you are using, uh, this is not there, but if you use the enterprise softwares, like, uh, GitLab or Bitbucket, these type of rules you can set up.
+
+[rochak agrawal] 08:51:21
+Yep.
+
+[Kaushal Patel] 08:51:21
+And what's the use of webhook? I think you covered that.
+
+[rochak agrawal] 08:51:24
+Yeah, so Bebok, uh, we will cover Kaushal, uh…
+
+[rochak agrawal] 08:51:29
+In CICD, but… see, BevHook is not a…
+
+[rochak agrawal] 08:51:35
+Git concept, first thing. Webhook is a general concept. So when you want to integrate two systems, for example, let's say something is happening somewhere, and in the basis of that, you want to respond to it.
+
+[rochak agrawal] 08:51:50
+Right. So, for example.
+
+[rochak agrawal] 08:51:52
+Let's say I'm calling you.
+
+[rochak agrawal] 08:51:55
+Right? Till the time your phone doesn't ring, you will not be aware that I am calling you, correct? So that ringing is like a webhook. It is the integration. So, when I want to integrate some system.
+
+[Kaushal Patel] 08:52:00
+Mm-hmm.
+
+[rochak agrawal] 08:52:08
+There is a concept of web book is there.
+
+[rochak agrawal] 08:52:10
+In this case, why we need the webhook in case of a GitHub? Because your developer.
+
+[rochak agrawal] 08:52:17
+every developer, in the end, checking the code into the source code management system, which is your Git or GitHub at this moment, correct? It could be Azure Repos, it could be Bitbucket or anything.
+
+[rochak agrawal] 08:52:28
+Source code management system, or the version control system.
+
+[rochak agrawal] 08:52:30
+Now.
+
+[rochak agrawal] 08:52:32
+What we see, what is the role of a continuous integration is that.
+
+[rochak agrawal] 08:52:37
+Even if there is a smallest of the commit, a build should trigger, and we should check that whatever the developer had checked in, is it okay or not, right?
+
+[rochak agrawal] 08:52:47
+When we say continuous integration, it means, like, I cannot check manually. If there is 100 developers, they might be checking every minute, correct? So then we should have an automated system.
+
+[Kaushal Patel] 08:52:48
+Okay.
+
+[rochak agrawal] 08:53:01
+Which will keep checking your source code management system.
+
+[rochak agrawal] 08:53:04
+And if there is any change in your source code management system, when I'm saying there is any change, means there is any commit in your source code management system, an automatic build is going to trigger.
+
+[rochak agrawal] 08:53:16
+Okay, what is a build? Again, we have the sessions lined up for that.
+
+[rochak agrawal] 08:53:23
+So, Babook, what it does, it is going to integrate.
+
+[rochak agrawal] 08:53:30
+You get…
+
+[rochak agrawal] 08:53:31
+I'm just saying Git, not GitHub, GitLab something.
+
+[rochak agrawal] 08:53:36
+You get
+
+[rochak agrawal] 08:53:38
+To your CIA agent.
+
+[rochak agrawal] 08:53:42
+Okay. So that any changes coming to git, it will inform UCI engine, which in our case it will be Jenkins. So that UCI CD pipeline is going to run basically.
+
+[rochak agrawal] 08:53:54
+Okay, so that is a concept of Webhook. We will talk more about it once we actually implement it, but you can understand as of now is Webhook is for integrating two systems.
+
+[Kaushal Patel] 08:54:05
+Okay, so Sonnet Cube integration can also be done through Webhook?
+
+[rochak agrawal] 08:54:08
+Yes, yes, yes, of course.
+
+[rochak agrawal] 08:54:13
+Why it is called the webhook? So, this is called the hook, basically.
+
+[rochak agrawal] 08:54:17
+Why we are calling it as a webhook? Because we are going to integrate over the web URL, HTTP URL. So that's why we are calling it as a webhook.
+
+[rochak agrawal] 08:54:28
+It is, like, basically something, uh, uh, you want to send an automation email to every time, uh, every day, 9 AM, you want to send an email to someone. So what you will do, you will, let's say, schedule something. So that schedule is a hook, basically.
+
+[Kaushal Patel] 08:54:29
+And…
+
+[rochak agrawal] 08:54:45
+Okay.
+
+[rochak agrawal] 08:54:48
+Yes, Anthony?
+
+[Anthony Joseph] 08:54:50
+Oh, I'm sorry. Can you hear me?
+
+[rochak agrawal] 08:54:53
+Yes, yes, I can hear you.
+
+[Anthony Joseph] 08:54:54
+Okay, just wanted to understand, like, usually in a… for a DevOps engineer, it's like, what are the challenges that he usually faces with relation to Git?
+
+[rochak agrawal] 08:55:05
+Abita?
+
+[Anthony Joseph] 08:55:06
+With relation to gate, like, what are the challenges they encounter, yeah?
+
+[rochak agrawal] 08:55:08
+Yes. As I keep mentioning.
+
+[rochak agrawal] 08:55:13
+Git is the tool that you will be the least interacting with, okay?
+
+[rochak agrawal] 08:55:22
+You… I…
+
+[rochak agrawal] 08:55:23
+See, this is a tool which you will just set up.
+
+[rochak agrawal] 08:55:26
+Okay, so I don't see any sort of challenges because this commit, this reset, reverting, your developer is going to do.
+
+[rochak agrawal] 08:55:35
+Okay, so most of the issues that you are going to face will come.
+
+[rochak agrawal] 08:55:42
+After tools like build issue will come, your CI/CD pipeline is failing.
+
+[rochak agrawal] 08:55:48
+Git-related issue, you are not going to work on. It is a developer's work.
+
+[Anthony Joseph] 08:55:53
+So, basically, who's the owner of this Git repository? Is it the DevOps engineer, or is it the project, uh.
+
+[rochak agrawal] 08:55:58
+You are the owner. But see, that's what I'm saying. There's two different things. We will be helping in setting up. For example, let's say you have a GitHub repository. Some new developer is coming. You will assign the permissions and everything. But that is a regular stuff.
+
+[Anthony Joseph] 08:56:10
+Correct.
+
+[Anthony Joseph] 08:56:11
+Right.
+
+[rochak agrawal] 08:56:14
+You will not see any issues, any challenges there.
+
+[rochak agrawal] 08:56:19
+As a DevOps engineer, you will be maintaining the complete environment, but what is happening in this environment? Someone will ask and say, create a feature branch for me, for example. You go create a feature branch.
+
+[Anthony Joseph] 08:56:31
+Okay.
+
+[rochak agrawal] 08:56:33
+But that's the regular stuff. Now, when to merge, how to merge, that is a developer will do.
+
+[Anthony Joseph] 08:56:35
+Okay.
+
+[Anthony Joseph] 08:56:41
+Correct.
+
+[rochak agrawal] 08:56:43
+So, that's what I'm saying. It's a regular work for you, uh, like setting up the branch protection rule, uh, giving some… locking the branch, unlock… freezing your code, depending on… see, different platform will have different issues, and accordingly, you will…
+
+[rochak agrawal] 08:56:58
+uh, set up your strategies, but it is more of a operational work in Git for a DevOps engineer.
+
+[Anthony Joseph] 08:57:04
+Okay.
+
+[rochak agrawal] 08:57:06
+Okay.
+
+[Anthony Joseph] 08:57:07
+And secondly, can you… can you create your own, uh, private Git repository, or is it as it… uh, does it have to be on cloud only?
+
+[rochak agrawal] 08:57:07
+Yours.
+
+[rochak agrawal] 08:57:08
+Mm-hmm.
+
+[rochak agrawal] 08:57:16
+Uh, so this GitHub you are seeing?
+
+[Anthony Joseph] 08:57:18
+Yes, yes.
+
+[rochak agrawal] 08:57:19
+Yeah, yeah, yeah. So, uh… so there are, uh…
+
+[rochak agrawal] 08:57:24
+So, GitLab, for example, uh, see, if you see GitLab, this is also very similar to…
+
+[rochak agrawal] 08:57:34
+So, if you go here…
+
+[rochak agrawal] 08:57:38
+platform, so it also gave the source code management system for you, right? So, if you see the pricing for this is…
+
+[Anthony Joseph] 08:57:42
+Correct.
+
+[rochak agrawal] 08:57:47
+There you can see three options are there, gitlab.com, self-managed, and dedicated. So if you are using, for example, if you say gitlab.com, I want to use the gitlab.com only, then in that case, your repository will be hosted on the gitlab.com as a SaaS offering.
+
+[Anthony Joseph] 08:57:49
+Okay.
+
+[Anthony Joseph] 08:57:53
+Okay.
+
+[Anthony Joseph] 08:58:04
+Right.
+
+[rochak agrawal] 08:58:04
+Okay? But if you say, I want to use a self-managed one, so then…
+
+[rochak agrawal] 08:58:09
+You will have one server.
+
+[rochak agrawal] 08:58:11
+where you will install GitLab.
+
+[Anthony Joseph] 08:58:13
+Okay.
+
+[rochak agrawal] 08:58:14
+Okay, uh… again, it's a very, uh…
+
+[rochak agrawal] 08:58:18
+Very straightforward thing, there is nothing much technical about it, and you have to purchase this license for that, right? So, on that server, you will install GitLab. Now, that GitLab instance is only for you, that's not a cloud offering.
+
+[Anthony Joseph] 08:58:34
+Okay.
+
+[rochak agrawal] 08:58:36
+Okay, and again, in that also, you will have, uh, different, different versions, so if you see the ultimate version, more advanced security and the compliance capabilities were there.
+
+[rochak agrawal] 08:58:46
+Right? So, depending on the platform which you are using, yes, you can have your own version of Git as well, as a…
+
+[rochak agrawal] 08:58:54
+your, uh, installed offering. So you can… we will call it as a self-managed offering. So Azure Repos also give you, uh, the self-managed offering. Bitbucket also gives you… I'm not sure if, uh… I have not seen anywhere about the self-managed offering of GitHub.
+
+[Anthony Joseph] 08:59:00
+Okay.
+
+[rochak agrawal] 08:59:12
+Let me check if that is there.
+
+[rochak agrawal] 08:59:22
+So yes, this is also the GitHub Enterprise Server.
+
+[Anthony Joseph] 08:59:27
+Okay.
+
+[rochak agrawal] 08:59:27
+You see? Which lets you host and run GitHub on your own local infrastructure. So yeah, you can do that.
+
+[Anthony Joseph] 08:59:34
+Yeah, that's what I'm…
+
+[rochak agrawal] 08:59:35
+Yeah, yeah. So, see, I have not used the GitHub's, um…
+
+[rochak agrawal] 08:59:41
+local version, self-managed version, but I have used a self-managed version of GitLab, Azure Repos, Bitbucket, and different other platforms as well.
+
+[Anthony Joseph] 08:59:50
+Some company might be having their own concern about hosting it on a public cloud. They might be wanting… Yeah.
+
+[rochak agrawal] 08:59:53
+Yeah, yeah, see, most of the company enterprise, if you see, they are going to use the self-managed only.
+
+[Anthony Joseph] 08:59:58
+Exactly.
+
+[rochak agrawal] 08:59:59
+Until, unless you're not a very small startup, or just a company which is in open domain, you are not having sensitive data. Yes, you don't want to use it on a… See, even…
+
+[rochak agrawal] 09:00:13
+I'll tell you, I'll give you one more perspective, Anthony, on that. See, for example.
+
+[rochak agrawal] 09:00:24
+This is your GitHub.
+
+[rochak agrawal] 09:00:35
+Okay.
+
+[rochak agrawal] 09:00:37
+Now…
+
+[rochak agrawal] 09:00:38
+Here, what will be there as a code?
+
+[Anthony Joseph] 09:00:42
+Correct.
+
+[rochak agrawal] 09:00:43
+Correct. Now, you… you are saying we have two versions. One is your cloud version.
+
+[rochak agrawal] 09:00:51
+Another is a self-managed.
+
+[rochak agrawal] 09:00:56
+Correct?
+
+[rochak agrawal] 09:00:58
+I can choose any one of them. I can use the SaaS offering also, I can go with the self-managed offering also, correct? Now, see, the question is, when we say about the security, understand from a broader perspective, okay?
+
+[Anthony Joseph] 09:01:05
+Correct.
+
+[rochak agrawal] 09:01:11
+See, of course, your self-managed one will be, uh, you can say, um…
+
+[rochak agrawal] 09:01:17
+more secure, definitely, if you see it in isolation. But we cannot just say, because simply we are using the SaaS offering.
+
+[rochak agrawal] 09:01:27
+It is less secure. Now, the reason I'll give you…
+
+[rochak agrawal] 09:01:32
+Let's say you are using AWS to deploy your application.
+
+[rochak agrawal] 09:01:37
+Okay.
+
+[rochak agrawal] 09:01:43
+Or any other cloud, for example.
+
+[rochak agrawal] 09:01:46
+What is AWS?
+
+[rochak agrawal] 09:01:49
+AWS itself is a sales offering.
+
+[rochak agrawal] 09:01:52
+In a way.
+
+[rochak agrawal] 09:01:54
+Whatever the server I'm creating on AWS.
+
+[rochak agrawal] 09:01:58
+Do you control them?
+
+[Anthony Joseph] 09:02:02
+No.
+
+[rochak agrawal] 09:02:02
+No, AWS controls them. So, let's say I say, in a self-managed mode, I am creating an AWS server.
+
+[rochak agrawal] 09:02:14
+I'm creating an AWS server and installing GitHub on that. See, if you see this line.
+
+[rochak agrawal] 09:02:19
+What does it say? It says GitHub self-managed offering is called the GitHub Enterprise Server, which lets you host and run GitHub on your local infrastructure or public cloud, correct?
+
+[rochak agrawal] 09:02:32
+Now, if you're running it on AWS server, or…
+
+[rochak agrawal] 09:02:36
+It is just you are passing the control from GitHub to AWS, that's it.
+
+[Anthony Joseph] 09:02:41
+No, I understand.
+
+[rochak agrawal] 09:02:42
+Right? So, see, it is… if you are using the cloud, um, I… it's a long debate, actually, right? So… but yes, self-managed, in a general sense, will be more secure.
+
+[rochak agrawal] 09:02:57
+than the hosted one.
+
+[Anthony Joseph] 09:02:58
+What's your number?
+
+[Anthony Joseph] 09:03:01
+Thank you all for your time, Andy.
+
+[rochak agrawal] 09:03:03
+Sure.
+
+[Arif] 09:03:04
+So, Rochek, regarding this repo, so… currently, what we are doing is, I think this is, uh, some… your personal account, and you are creating a personal repo, or something, an individual repo.
+
+[rochak agrawal] 09:03:15
+Okay.
+
+[Arif] 09:03:16
+But what happens in the organizations?
+
+[rochak agrawal] 09:03:16
+Hmm.
+
+[rochak agrawal] 09:03:19
+So see, we are just use exactly same thing happen. If working bias, there is no difference. OK, it is just see first thing is I cannot add another users on it. So user related things I will not be able to do as of now.
+
+[rochak agrawal] 09:03:36
+I can add, for example, if you give me… you have your own account, you give me your ID, I will be able to do it. So, those are public users, right? If you're using an enterprise setup, those users will be exclusive to your enterprise only.
+
+[rochak agrawal] 09:03:50
+That is one thing. Second thing is.
+
+[rochak agrawal] 09:03:53
+we talked about the security and some settings. So, even if you see this GitLab pricing.
+
+[rochak agrawal] 09:04:09
+Even if you see self-managed, we have three versions, Premium and Ultimate, for scaling organizations seeking enhanced productivity and collaboration. But if you go to Ultimate.
+
+[rochak agrawal] 09:04:19
+you have, at the bounds, the security and the compliance capabilities will be… you are going to find, okay? So, RF, working-wise, it is going to… exactly going to work like that.
+
+[rochak agrawal] 09:04:30
+there will be, just on top of it, you are started going to get some security-related features. For example, right now, if I need to do the code scanning, right?
+
+[rochak agrawal] 09:04:42
+It… it will do the code scanning for me, but it will do… since it's a free account, it will do a very basic scanning, right? But if you are using an enterprise version, it will give you the complete scanning, complete vulnerability report for you, uh, complete, uh, secret scanning for you.
+
+[rochak agrawal] 09:04:57
+So, those on top of features you are going to get in the Enterprise versions, but…
+
+[rochak agrawal] 09:05:04
+Work the same way we are doing, you will do in your enterprise setup altogether. That will be no difference.
+
+[Arif] 09:05:11
+Yeah, I understand this thing, but my question was different. My question was, like, uh, there are multiple organizations, uh, uh, hosting their repos in a GitHub, right?
+
+[rochak agrawal] 09:05:11
+Okay.
+
+[rochak agrawal] 09:05:21
+Correct?
+
+[Arif] 09:05:22
+So, if I… if any company, how it owns it, or how it is tagged to a particular company, if it is a private, or…
+
+[rochak agrawal] 09:05:29
+Mm-hmm. Okay. So, for that, uh, Arif, uh, see, uh, any… where I have two options. So, if you see…
+
+[rochak agrawal] 09:05:35
+Even, let's say, GitLab, GitHub, you have two options, gitlab.com or the self-managed, correct? If you are using the self-managed, then the question you are asking is not relevant also, right? Because in that case, I am going to install GitHub or GitLab at my local.
+
+[rochak agrawal] 09:05:53
+server, and I will have a URL, something called myorg.github.com.
+
+[rochak agrawal] 09:05:59
+Correct? That is only for you.
+
+[rochak agrawal] 09:06:01
+Correct?
+
+[rochak agrawal] 09:06:02
+But if you're using, for example, gitlab.com also, okay, so gitlab.com is a cloud hosted by US, instant setup getting you to a value quicker. Now you understand it like this.
+
+[rochak agrawal] 09:06:17
+For example…
+
+[rochak agrawal] 09:06:20
+When you use AWS, okay, in AWS also there is thousands of the customers workloads are running.
+
+[rochak agrawal] 09:06:28
+Correct? But when you go log in into your account, you only see your servers or your organizational users. So for example, if we are part of the same organization and I have given you the access, you create a server, I create a server, I can see both of our servers, correct?
+
+[rochak agrawal] 09:06:43
+But I will not see any third-party servers there. Agree?
+
+[rochak agrawal] 09:06:48
+Same thing happens here, if you are using the managed version also for GitLab or GitHub, an enterprise tenant will be created for you.
+
+[rochak agrawal] 09:07:00
+Okay. And then you will not be using this github.com slash, you will again use an enterprise URL. For example, let's say Infosys using the managed GitHub. So their URL might be infosys.github.com.
+
+[Arif] 09:07:17
+Okay, so under that organization, uh, we can, uh, like, go to the repos.
+
+[rochak agrawal] 09:07:19
+Yes.
+
+[rochak agrawal] 09:07:21
+Correct.
+
+[rochak agrawal] 09:07:22
+So, then, they will not be… they will be only able to see, and this user, for example. And most of the… so, for example, let's say…
+
+[rochak agrawal] 09:07:34
+They said they could GitHub.
+
+[rochak agrawal] 09:07:36
+Now, currently, how I am logging it? With my user ID and the password, which is… I have given my Gmail address, for example. You can give any other, but…
+
+[rochak agrawal] 09:07:46
+I am just… there is an option of logging with Google, and I'm logging in with Google, right?
+
+[rochak agrawal] 09:07:53
+there is something called the SSO. So your, uh, once you use the enterprise version, they are going to integrate, uh, with the SSO.
+
+[rochak agrawal] 09:08:01
+So you go, you try to log in with your Gmail, you will not be able to, because SSO is a single sign-on. Whatever your ID is, for example, my ID is rochak.agrawal at the red infosys.com, I will be able to access only with that ID.
+
+[Arif] 09:08:19
+Okay.
+
+[rochak agrawal] 09:08:19
+Okay? And then, uh… so all the users can be part of your, uh, GitHub, because the SSO is there. Then I can give the permissions. For example, I have thousands of the repo.
+
+[rochak agrawal] 09:08:31
+And I can say, uh, there is a gentleman called RF. RF, I need to give the permission on 1, 5, and 7. I can give it.
+
+[Arif] 09:08:42
+Okay.
+
+[rochak agrawal] 09:08:42
+Yeah?
+
+[Arif] 09:08:43
+And there are two options, like public and private. So you said that public, uh, we can actually, uh, uh, share the reports to…
+
+[rochak agrawal] 09:08:49
+No, uh, so I'll rephrase it, I will rephrase it. Instead of saying public and the private, you say one is a managed offering, one is a self-managed offering.
+
+[Arif] 09:09:04
+Okay.
+
+[rochak agrawal] 09:09:05
+And then, just… okay, I got your question, sorry. So, currently, you are saying, uh…
+
+[Arif] 09:09:09
+I didn't just…
+
+[rochak agrawal] 09:09:11
+This repo, yeah, yeah, yeah.
+
+[Arif] 09:09:11
+No, that's my — yeah, this is my — another question, actually. It's public.
+
+[rochak agrawal] 09:09:14
+This is… this is your talking, right? Public and private?
+
+[Arif] 09:09:17
+Yeah, yeah.
+
+[rochak agrawal] 09:09:18
+Yeah, so in your organization, when you are using the enterprise version, you are not going to create the public report.
+
+[rochak agrawal] 09:09:26
+It is for you.
+
+[Arif] 09:09:26
+No, there can be a scenario when two organizations want to work on the same code or something. That's what we have in our public, I think.
+
+[rochak agrawal] 09:09:36
+Public IP is very different, RF, right? See, uh…
+
+[rochak agrawal] 09:09:42
+You can invite, uh, third-party users to collaborate with you on your code. Does not mean you're, uh…
+
+[rochak agrawal] 09:09:50
+Repo is public.
+
+[rochak agrawal] 09:09:53
+Public is anyone can access without username and the password. Understand?
+
+[rochak agrawal] 09:09:58
+See, understood. See, uh…
+
+[Arif] 09:09:58
+Yeah, yeah.
+
+[rochak agrawal] 09:10:02
+If you… here, if you see…
+
+[rochak agrawal] 09:10:05
+Anyone who's trying to access, they need to present their credentials.
+
+[rochak agrawal] 09:10:10
+Okay, now you say, I have a vendor who also want to access my code. I will make those users in your SSO. See, SSO is not…
+
+[rochak agrawal] 09:10:20
+SSO is very powerful. So, we have identity tools like Okta, uh…
+
+[rochak agrawal] 09:10:25
+there's other tools also, if you're using cloud, so cloud… in AWS, we have Identity Center, which you… which allows external user to access your services, right? That's a… we can manage it at a authentication layer, okay? But…
+
+[rochak agrawal] 09:10:41
+It does not mean my repo is public.
+
+[rochak agrawal] 09:10:44
+I am collaborating with my external partner.
+
+[rochak agrawal] 09:10:47
+But my external partner, when he is trying to access the…
+
+[rochak agrawal] 09:10:52
+um, repo.
+
+[rochak agrawal] 09:10:54
+he also need to supply their credentials. Their credentials may be not Infosys.com, but maybe XYZ.com. That is okay.
+
+[rochak agrawal] 09:11:02
+But they need to present their credential, correct?
+
+[rochak agrawal] 09:11:07
+That means your repo is not public.
+
+[rochak agrawal] 09:11:10
+Public means…
+
+[rochak agrawal] 09:11:10
+Without username and the password, you can access it.
+
+[rochak agrawal] 09:11:16
+That's the difference.
+
+[Arif] 09:11:22
+I don't know, like, why we have that option, public option, if it is not, uh…
+
+[Arif] 09:11:27
+Recommended, or it is not.
+
+[rochak agrawal] 09:11:27
+Public is… see, public is for open… not for enterprise. Public is for you and me.
+
+[rochak agrawal] 09:11:35
+Like, open source solution if you want to create.
+
+[Arif] 09:11:36
+Okay.
+
+[rochak agrawal] 09:11:39
+Right? So, for example, let's say, uh, I…
+
+[rochak agrawal] 09:11:43
+See?
+
+[Arif] 09:11:45
+Yeah, yeah, yeah, this one.
+
+[rochak agrawal] 09:11:45
+I'll tell you. I'll just… see, for example, if you go…
+
+[rochak agrawal] 09:11:50
+Uh, AWS sample.
+
+[rochak agrawal] 09:11:57
+Now, if you see this.
+
+[rochak agrawal] 09:12:00
+AWS Solution Library Sample.
+
+[rochak agrawal] 09:12:02
+These are the public reports.
+
+[rochak agrawal] 09:12:05
+Hey.
+
+[rochak agrawal] 09:12:06
+But…
+
+[rochak agrawal] 09:12:07
+Again, this repository is owned by AWS, correct? That does not mean AWS is using the same solution for their internal users. Maybe for their internal users, they are using the self-managed version.
+
+[rochak agrawal] 09:12:20
+Which… right? So, public is for whatever I want to make it public.
+
+[Arif] 09:12:21
+Yeah, yeah.
+
+[Arif] 09:12:26
+Yeah, yeah, I got your answer.
+
+[rochak agrawal] 09:12:28
+Understood. Yeah.
+
+[Arif] 09:12:30
+The last question is regarding the merge. Uh, so after the merge, is it possible to revert back the commits that have been done on the master or the branches, or it's not possible?
+
+[rochak agrawal] 09:12:31
+Yeah?
+
+[rochak agrawal] 09:12:33
+Mm-hmm.
+
+[Arif] 09:12:40
+Oh, we don't need to do it.
+
+[rochak agrawal] 09:12:41
+Uh, let me understand your question. So you're saying…
+
+[rochak agrawal] 09:12:46
+Let's say I have three commits here.
+
+[rochak agrawal] 09:12:49
+Okay? I created a branch here, done some commands here, and I created a merge.
+
+[Arif] 09:12:57
+Yep.
+
+[rochak agrawal] 09:12:57
+Great. Now, what is the question?
+
+[Arif] 09:13:00
+So, if I want to, like, the second branch, second commit on the branch, I want to revert back.
+
+[rochak agrawal] 09:13:06
+Okay.
+
+[Arif] 09:13:09
+So they're allowed after the merge, or we have to work on the same, uh, branch commit, and…
+
+[rochak agrawal] 09:13:13
+Let me see… Master and Deb.
+
+[rochak agrawal] 09:13:16
+So, Deb, you merged to master, correct?
+
+[Arif] 09:13:16
+Got it.
+
+[Arif] 09:13:19
+No.
+
+[rochak agrawal] 09:13:20
+Then you are saying, on the dev, you want to revert the changes.
+
+[Arif] 09:13:24
+Yeah.
+
+[rochak agrawal] 09:13:25
+Oh yeah, you can do that. See if you see it here.
+
+[rochak agrawal] 09:13:33
+Now I have two branches, okay?
+
+[rochak agrawal] 09:13:37
+Master?
+
+[rochak agrawal] 09:13:38
+Now they are at the same level, correct?
+
+[rochak agrawal] 09:13:41
+Master is also having 4 commits, Dev is also having the 4 commit. But still, if you see…
+
+[rochak agrawal] 09:13:48
+Can I do it, for example?
+
+[rochak agrawal] 09:13:54
+Let's say this is my master.
+
+[rochak agrawal] 09:13:56
+Okay, here you created a branch.
+
+[rochak agrawal] 09:14:02
+And you merge it, finally.
+
+[rochak agrawal] 09:14:06
+Thank you.
+
+[rochak agrawal] 09:14:06
+Now your master and dev both are pointing to this commit.
+
+[rochak agrawal] 09:14:11
+Connect?
+
+[rochak agrawal] 09:14:14
+If you see my dev master branch, this is this master branch, which is having 1, 2, 3, 4 commits, correct? But if you see my dev branch, dev branch trajectory is like this.
+
+[rochak agrawal] 09:14:26
+Correct?
+
+[rochak agrawal] 09:14:29
+In the end, even after the merge, you have two branches.
+
+[rochak agrawal] 09:14:34
+Which is pointing to the common commit right now.
+
+[rochak agrawal] 09:14:37
+Now, the question is, can I do any changes on the dev branch after this? Yes, you can do it. Now, for example, I can go, again, I'll create another commit on the dev branch.
+
+[rochak agrawal] 09:14:48
+I can revert those commit also, but it is generally not recommended. See, there can be multiple permutation combination, uh, arrive, but…
+
+[rochak agrawal] 09:14:58
+What we need to keep in mind also.
+
+[rochak agrawal] 09:15:03
+when we are doing the merge, when… and if you see in the merge also, you have multiple reviewers, uh, multiple, uh, approval phases, you will go, then you're… finally, you are going to merge, correct?
+
+[rochak agrawal] 09:15:15
+So, we are already making it sure that.
+
+[rochak agrawal] 09:15:20
+whatever I want to merge, I am doing the right thing.
+
+[rochak agrawal] 09:15:22
+Okay.
+
+[rochak agrawal] 09:15:24
+Now, if you say, I want to revert it, you can, but it will be very messier when you do it on a large scale.
+
+[rochak agrawal] 09:15:32
+So it is not recommended.
+
+[rochak agrawal] 09:15:35
+Okay. So, for example, now…
+
+[rochak agrawal] 09:15:40
+I… you see here, I have…
+
+[rochak agrawal] 09:15:42
+If you… if I go to the commit.
+
+[rochak agrawal] 09:15:45
+So, if you see, I have 5 commits on my master branch, correct?
+
+[rochak agrawal] 09:15:50
+And if you go to Dev.
+
+[rochak agrawal] 09:15:52
+I have 4 commits, correct?
+
+[rochak agrawal] 09:15:56
+Now, if you say, I want to revert this, reset this, you can do it.
+
+[rochak agrawal] 09:16:01
+Your master will not have any impact, because it is already merged.
+
+[Arif] 09:16:05
+Okay, okay, yeah.
+
+[rochak agrawal] 09:16:05
+But the problem is with that, Arif, you can do it. Absolutely no problem. You can do a Git reset. You can do a Git revert on this branch. But the problem is when after three months, someone will come and try to see the commit history.
+
+[rochak agrawal] 09:16:21
+They are seeing the merges happening in the master, but there is no commit in the dev branch.
+
+[rochak agrawal] 09:16:27
+It will lead to a confusion.
+
+[rochak agrawal] 09:16:30
+Connect.
+
+[rochak agrawal] 09:16:32
+So that is why…
+
+[rochak agrawal] 09:16:34
+you should not do it. And one more thing I'll tell you, uh, I'm not sure if I see that option here as not, so let's say I'll do a one more thing here at my dev branch.
+
+[rochak agrawal] 09:17:06
+Comment changes.
+
+[rochak agrawal] 09:17:13
+Okay. Now, again, this is, uh, one commit behind, uh.
+
+[rochak agrawal] 09:17:18
+Branches, Bangamit Ahead. I'll go to a pull request.
+
+[rochak agrawal] 09:17:23
+New pull request.
+
+[rochak agrawal] 09:17:30
+Here, second file, I want to merge. Create pull request.
+
+[rochak agrawal] 09:17:44
+Create pull request.
+
+[rochak agrawal] 09:17:49
+I wanted to show you an option, which…
+
+[rochak agrawal] 09:17:51
+Let me see if it is coming.
+
+[rochak agrawal] 09:18:18
+Okay, merge pull request.
+
+[rochak agrawal] 09:18:32
+We have no tests coming.
+
+[rochak agrawal] 09:18:35
+Okay, so here it is not coming. Uh, in, uh, Azure Repos and Aadhaar, there is an option when you merge your pull request. So, for example.
+
+[rochak agrawal] 09:18:45
+In GitHub, that option is not coming. So what happens is, so for example, this is my master branch.
+
+[rochak agrawal] 09:18:53
+I created a dev branch, I have done some commits. Okay, now when you go start merge request.
+
+[rochak agrawal] 09:19:02
+It is going to ask you that if you want to delete this dev branch or not.
+
+[rochak agrawal] 09:19:07
+So, generally, we can do that also.
+
+[rochak agrawal] 09:19:11
+See
+
+[rochak agrawal] 09:19:13
+Why we do merge? Because we are saying my work on the dev branch is completed, and that's why we want to merge it, correct? If you still want to work on the dev branch, there is no need to merge, because master will have the stable code.
+
+[rochak agrawal] 09:19:26
+Correct. So then in that case, uh, you only going to merge once your work is finished. And since your work is finished, you do not need that, uh, dev branch anymore. So many of platform will give you that option also when you're merging. So merge and delete.
+
+[rochak agrawal] 09:19:42
+So that option also will be there.
+
+[rochak agrawal] 09:19:44
+So that…
+
+[rochak agrawal] 09:19:47
+So, see, again, that is merge and delete will be an optional feature.
+
+[rochak agrawal] 09:19:51
+you want, you can keep continuing those brands. So, what I'm trying to say, Arif, there can be multiple permutation combination, which we can do. Now, after merging also, I can keep continue working on the.
+
+[rochak agrawal] 09:20:06
+That branch.
+
+[rochak agrawal] 09:20:07
+But the thing is, what we need to do is, we need to have our commit history also clean, so that if someone is coming after 6 months, they will exactly get to know what has happened.
+
+[rochak agrawal] 09:20:21
+Correct. So if I merge it, but if I, uh, delete the merge commit.
+
+[rochak agrawal] 09:20:27
+Then people will get confused how from where this merge is coming.
+
+[rochak agrawal] 09:20:32
+We can do it, but it is not recommended.
+
+[Arif] 09:20:37
+And one more doubt, is it a good practice to have a single branch, development branch, for multiple small features, or it has to be for each feature we have to create a new branch?
+
+[rochak agrawal] 09:20:47
+No. So it is always a good practice that you are going to have individual branches for each feature.
+
+[rochak agrawal] 09:20:57
+It is, if you see this also, here also we are seeing trunk-based. Everyone commits to the main branch daily or whenever your code is ready. But that trunk-based deployment we used when we were having the centralized version control system.
+
+[rochak agrawal] 09:21:13
+Nowadays, it is never a good practice that you are doing every feature into the main branch. It is going to create a chaos.
+
+[rochak agrawal] 09:21:24
+So, every feature, you create a branch.
+
+[rochak agrawal] 09:21:27
+And then you develop that feature there. And once your feature is ready, then you merge it back to the master branch.
+
+[Arif] 09:21:38
+Okay, yeah.
+
+[rochak agrawal] 09:21:39
+Okay?
+
+[Arif] 09:21:40
+I'm done
+
+[rochak agrawal] 09:21:42
+Okay.
+
+[rochak agrawal] 09:21:44
+Yes, Kaushal?
+
+[Kaushal Patel] 09:21:46
+Uh, so is there any strategy to avoid, uh, frequent conflict? Let's say I have an enterprise application. In my enterprise application, I have one migration folder. Inside that, I'm, uh, I'm having, uh, one SQL file, right? So…
+
+[rochak agrawal] 09:21:55
+Hmm?
+
+[Kaushal Patel] 09:22:01
+uh, let's say I have 10 or, let's say, 100 of features, which parallelly being worked upon by developer. Every developer is modifying that change by creating their own feature branch. So when the feature branch is going to be merged into develop, let's say I am merging first.
+
+[rochak agrawal] 09:22:09
+Hmm.
+
+[Kaushal Patel] 09:22:16
+Uh, the CI is in, uh, CI integration is there, Liquibase is run, and the queries, uh, all, once the query is successful, PR is ready to merge, right? So I can merge, but by that time, if at the same time, another developer is also modifying the same file.
+
+[rochak agrawal] 09:22:32
+Okay.
+
+[Kaushal Patel] 09:22:32
+he may end up in a conflict, right? So, is there any strategy that Git provides to fight this frequent conflict?
+
+[rochak agrawal] 09:22:35
+Okay?
+
+[rochak agrawal] 09:22:36
+Okay, I'll explain. So question. Yes, yes, let me explain.
+
+[rochak agrawal] 09:22:42
+See, uh, merge conflicts are bound to happen. There is no doubt about it.
+
+[rochak agrawal] 09:22:48
+Okay, uh…
+
+[rochak agrawal] 09:22:52
+like, how to put it up. See, merge conflict is bound to happen. You are going to have the merge conflict in a multi-development team.
+
+[rochak agrawal] 09:22:59
+That is why your merge request should always have the reviewer. See, for example, uh, now you and me.
+
+[rochak agrawal] 09:23:08
+They both have done the same changes.
+
+[rochak agrawal] 09:23:10
+I have also raised a merge request.
+
+[rochak agrawal] 09:23:13
+You have also raised a merge request, correct?
+
+[rochak agrawal] 09:23:17
+So, in that case, that's why you need to have a reviewer, or the approver.
+
+[rochak agrawal] 09:23:23
+Who will decide which change it will go to?
+
+[rochak agrawal] 09:23:27
+That's the whole purpose of having the reviewer. That's the first thing. Okay?
+
+[Kaushal Patel] 09:23:28
+Correct.
+
+[Kaushal Patel] 09:23:31
+Right.
+
+[rochak agrawal] 09:23:32
+So in the case of the merge conflict is happening.
+
+[rochak agrawal] 09:23:35
+your reviewer will decide which changes it will lead to. That's the first thing. Second thing is, we can reduce the number of the merge conflict. See, when you are seeing… when the developers are working on the same file, okay? See, while you do your sprint planning.
+
+[rochak agrawal] 09:23:51
+You assign developers your user stories, correct?
+
+[Kaushal Patel] 09:23:54
+Right?
+
+[rochak agrawal] 09:23:55
+Right? So, at that time, B…
+
+[rochak agrawal] 09:23:58
+try to…
+
+[rochak agrawal] 09:23:59
+See, we would not want the duplication of the effort. No one would want. So most of the time, your developers will be assigned the different features. Correct?
+
+[rochak agrawal] 09:24:11
+Maybe, let's say you and me, I am working on the same feature also, but you will be working on a different file, I will be working on a different file, because your code is not just a single file. There may be multiple.
+
+[rochak agrawal] 09:24:24
+Tens of files can be there, correct?
+
+[Kaushal Patel] 09:24:26
+Correct.
+
+[rochak agrawal] 09:24:26
+Even if we are… see, if you are working on a different, different feature, there is no question of a merge conflict, first thing. Second thing is, if we are working on a same feature.
+
+[rochak agrawal] 09:24:35
+we are working on a same file, uh, so different file, then also merge conflict will not happen, correct? Because you change file A, I change file B.
+
+[Kaushal Patel] 09:24:41
+Right.
+
+[rochak agrawal] 09:24:45
+Got it?
+
+[Kaushal Patel] 09:24:46
+Right.
+
+[rochak agrawal] 09:24:46
+Let's say, in third scenario.
+
+[rochak agrawal] 09:24:49
+B both are working on the same file.
+
+[rochak agrawal] 09:24:51
+Okay? Again, if we both are working on the same file.
+
+[Kaushal Patel] 09:24:53
+Right.
+
+[rochak agrawal] 09:24:58
+does not mean there is a merge conflict. For example.
+
+[rochak agrawal] 09:25:02
+I created two text file.
+
+[rochak agrawal] 09:25:05
+Oh, sorry, Buntex file.
+
+[rochak agrawal] 09:25:13
+I'll say A is equal to 10.
+
+[rochak agrawal] 09:25:17
+B is equal to 20, C is equal to 30.
+
+[rochak agrawal] 09:25:21
+You have written these values, okay, in the same file you are talking, okay?
+
+[rochak agrawal] 09:25:26
+Now you go…
+
+[rochak agrawal] 09:25:28
+And you say D is equal to 20.
+
+[rochak agrawal] 09:25:32
+E is equal to 40.
+
+[rochak agrawal] 09:25:35
+And F is equal to.
+
+[rochak agrawal] 09:25:38
+50, some number. I'm just trying to show you an example.
+
+[Kaushal Patel] 09:25:42
+Mm-hmm.
+
+[rochak agrawal] 09:25:43
+In this case also, there is no merge conflict.
+
+[rochak agrawal] 09:25:46
+When the merge will happen, you will have a combined file like this.
+
+[Kaushal Patel] 09:25:52
+Got it.
+
+[rochak agrawal] 09:26:00
+Agreed.
+
+[Kaushal Patel] 09:26:01
+Yes.
+
+[rochak agrawal] 09:26:02
+In this case, also, there is no merge.
+
+[rochak agrawal] 09:26:06
+Merge conflict is going to happen when you will also write here, see, for example, A is equal to 10.
+
+[rochak agrawal] 09:26:14
+And you go, and you also ride.
+
+[rochak agrawal] 09:26:17
+A is equal to 50.
+
+[rochak agrawal] 09:26:21
+Okay.
+
+[rochak agrawal] 09:26:22
+Then when you go merge, then there is a merge conflict. See, first I go.
+
+[Kaushal Patel] 09:26:22
+Right.
+
+[rochak agrawal] 09:26:29
+My reviewer will see A is equal to 10. He don't see a problem with this. He will merge it.
+
+[rochak agrawal] 09:26:34
+Okay.
+
+[rochak agrawal] 09:26:35
+After 5 minutes, you go, and you say you also want to merge it.
+
+[rochak agrawal] 09:26:39
+But when you merge, there will be a merge conflict, because A value is equal to 10, now you are saying I want to put up the value of A is equal to 15.
+
+[rochak agrawal] 09:26:46
+Correct.
+
+[Kaushal Patel] 09:26:47
+Got it.
+
+[rochak agrawal] 09:26:48
+So, at that time, it will… reviewer will have a meeting with you both.
+
+[rochak agrawal] 09:26:54
+and come to a conclusion that A should be 10 or A should be 15.
+
+[rochak agrawal] 09:26:59
+So, merge conflict will be… will always be resolved manually. There is no other way.
+
+[Kaushal Patel] 09:26:59
+Right?
+
+[Kaushal Patel] 09:27:06
+Okay, in case if I have changes.sql, right, I mean, you are creating some queries, let's say different tables you are creating altogether, for your feature, and I'm also creating my new table for my feature. That's independent, right? But at the end.
+
+[rochak agrawal] 09:27:20
+That's independent, there is no much conflict.
+
+[Kaushal Patel] 09:27:22
+No, but at the end, we both are modifying the same file, that's changes.sql, and we are appending at the end.
+
+[rochak agrawal] 09:27:27
+That's okay.
+
+[rochak agrawal] 09:27:27
+See, if you are… if you are not changing the same query, I am writing my query, you are writing my query… your query, there is a much conflict.
+
+[Kaushal Patel] 09:27:38
+No, file is same, but uh… query I'm opening at the end of the file.
+
+[rochak agrawal] 09:27:40
+That's okay. File should be same. Until and unless the field is not same, there is no merge conflict.
+
+[rochak agrawal] 09:27:49
+See, that is… see, what is the meaning of merge? I am merging my changes with your changes, correct?
+
+[rochak agrawal] 09:27:56
+What is the meaning of merge? You are doing some changes, I am doing some changes, I want to merge those changes. Correct?
+
+[Kaushal Patel] 09:28:02
+Mm-hmm. Mm-hmm.
+
+[rochak agrawal] 09:28:04
+Until and unless those changes are not seen, where is the conflict?
+
+[Kaushal Patel] 09:28:11
+No, but, uh, we both are modifying, uh, adding the queries at the same line, right? In changes.sql, let's say 1000 is the line where I have created a table, let's say users table I have created, and added my query as part of my feature branch.
+
+[Kaushal Patel] 09:28:25
+And, uh, uh, let's say you also create, uh, uh, a new table. Let's say use… instead of user stability for information.
+
+[rochak agrawal] 09:28:25
+Hmm?
+
+[rochak agrawal] 09:28:30
+Okay. Okay, so you're saying on the same line, I… you are writing a different… ah, yes. See, in that case also, uh, there would be a merge conflict, but we can, uh…
+
+[rochak agrawal] 09:28:42
+it will auto… see, there is an option of auto-merge. It is… the line is same, but the content is different.
+
+[rochak agrawal] 09:28:50
+Date.
+
+[Kaushal Patel] 09:28:51
+Right.
+
+[rochak agrawal] 09:28:52
+So, again, it will go to your reviewer, but reviewer do not need to set up a meeting for that. He will see the changes are different, he will merge it.
+
+[Kaushal Patel] 09:29:01
+Okay. Okay.
+
+[rochak agrawal] 09:29:02
+Okay. Only in case of a conflict there is need to be a resolution need to be there. In this case you have see of course you are not when you will work on this when you when you are going to work on some file.
+
+[rochak agrawal] 09:29:19
+you're not going to start the code from the hundredths of the line, saying that the developer A is writing from line 1 to 100. You are going to start from line 1 only, correct?
+
+[Kaushal Patel] 09:29:29
+Right?
+
+[rochak agrawal] 09:29:29
+So, yeah, that is… see, merge conflict… that's the exact role of the reviewer and approver. They'll see there is no conflicting change, they'll merge it, that's okay.
+
+[rochak agrawal] 09:29:42
+Okay? So, if the different file, there is no merge conflict. If in the same file.
+
+[Kaushal Patel] 09:29:42
+Okay.
+
+[rochak agrawal] 09:29:48
+Only merge conflict is there when you are doing the changes for the same field. Same…
+
+[rochak agrawal] 09:29:56
+line, okay? If there's a conflicting change, then there is a resolution will be needed. If it is non-conflicting change on the same line, it will be automized by your reviewer.
+
+[rochak agrawal] 09:30:09
+Okay.
+
+[Kaushal Patel] 09:30:10
+Okay.
+
+[rochak agrawal] 09:30:12
+Okay, cool. Uh, just the DBAs is remaining now, so I'll cover the DBAs in first 15 minutes tomorrow, and then we will go, uh, about, uh, understanding about the Maven, which is our second.
+
+[rochak agrawal] 09:30:26
+Arif, I'm sorry, I did not get a chance. Someone asked the question yesterday about the Python. I did not get a chance to talk on the Python thing. I'll try to talk today, and we'll come back on that.
+
+[Arif] 09:30:42
+Okay. And what about this, uh, practice things, uh, any…
+
+[rochak agrawal] 09:30:44
+Okay.
+
+[rochak agrawal] 09:30:47
+I'll… I'll give you that. If not today, then by this weekend, I'll give you.
+
+[rochak agrawal] 09:30:54
+Okay? Yeah.
+
+[Arif] 09:30:54
+Okay.
+
+[rochak agrawal] 09:30:57
+Okay, cool, guys, thank you.
+
