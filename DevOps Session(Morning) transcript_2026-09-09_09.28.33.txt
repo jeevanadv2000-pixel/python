@@ -1,0 +1,3537 @@
+[rochak agrawal] 07:37:22
+So we will see some more concept regarding to the gate.
+
+[rochak agrawal] 07:37:26
+So the very first thing is.
+
+[rochak agrawal] 07:37:31
+dot git ignore.
+
+[rochak agrawal] 07:37:32
+This is very important file. Okay, so what is going to happen?
+
+[rochak agrawal] 07:37:38
+is…
+
+[rochak agrawal] 07:37:40
+when you will be working, okay, so let's say you are working on an application, there must be many type of the files which you will be dealing with. So, for example, you're…
+
+[rochak agrawal] 07:37:52
+application would be generating in a log file. You will… your application is generating some temporary files, right? Your application… in your directory, you will be having some username and the password. Now, there will be some sort of the file.
+
+[rochak agrawal] 07:38:10
+which you do not want to version, okay? Now, for the obvious reason, so for example, uh…
+
+[rochak agrawal] 07:38:18
+Why don't you want to version? So, for example, log file. Now, log file is a type… the file which… the nature of the log file will be that they keep changing.
+
+[rochak agrawal] 07:38:28
+themselves, right? So, any type of the files. So, for example, when you are doing a build, a Python build, so a pycache folder, if you are building a node, so node modules folder will be created when you are building your application. What is the building of an application?
+
+[rochak agrawal] 07:38:43
+We'll see in Maven, but there's a different temporary folders which are going to be created.
+
+[rochak agrawal] 07:38:50
+when you're working with a different type of the application, which you do not want to version control, right? So, any sort of the file which you do not want to version control, you are going to.
+
+[rochak agrawal] 07:39:05
+create something called the .ignore. So if you see, I'll copy this.
+
+[rochak agrawal] 07:39:10
+I will go… so I'm inside my directory.
+
+[rochak agrawal] 07:39:13
+Where we created a repo.
+
+[rochak agrawal] 07:39:18
+Right? Now, you just need to do .git.
+
+[rochak agrawal] 07:39:32
+So now you see what this file, uh, is due. Like, you can write anything, this is just an example, okay?
+
+[rochak agrawal] 07:39:40
+Node module, so if you have a folder called node module, if you have a folder pycache, if you have a folder called dist.
+
+[rochak agrawal] 07:39:47
+These folders will not be version controlled. Then you have a file called .envs.nam, credentials.json, or something. So let's say, um…
+
+[rochak agrawal] 07:39:58
+I do not want to version control any type of the log file so star.
+
+[rochak agrawal] 07:40:03
+dot log. Star, you know, is a wild card in Unix.
+
+[rochak agrawal] 07:40:08
+Star means everything, and then, so we are saying anything… so if your file name is file.log, app.log, whatever.
+
+[rochak agrawal] 07:40:16
+this file will not be version controlled anymore, right? So then I'll save this.
+
+[rochak agrawal] 07:40:28
+Okay so you can see it's a dot file starting with the dot.
+
+[rochak agrawal] 07:40:33
+And, uh…
+
+[rochak agrawal] 07:40:37
+So you have a .gitignore file, right? Now, if you go…
+
+[rochak agrawal] 07:40:50
+And if you run it status now.
+
+[rochak agrawal] 07:40:55
+You can see?
+
+[rochak agrawal] 07:40:59
+It is not saying anything about the file.log.
+
+[rochak agrawal] 07:41:02
+But if you see…
+
+[rochak agrawal] 07:41:04
+We have the file dot log here. Why it's it is not saying about the file dot log.
+
+[rochak agrawal] 07:41:12
+it is telling that you have created a file called .ignore, which are… which is not being cracked. There is nothing about the file .log, because we created this .ignore file, and in this .ignore, gitignore, we said any file which is starting with the… which is ending with the .log.
+
+[rochak agrawal] 07:41:31
+Because you do not need to track it. So basically, any log file you create now.
+
+[rochak agrawal] 07:41:36
+this is not going to be tracked. So this is the benefit of a .gitignore.
+
+[rochak agrawal] 07:41:45
+So that, like, any type of the file, which is part of your directory, see, when you initiate a repository, or when you clone a repository, inside a directory, um, your directory, like.
+
+[rochak agrawal] 07:41:57
+Git is going to track all of the directories, which is, uh, all of the file, which is part of your directory, right? But…
+
+[rochak agrawal] 07:42:07
+When you create a .ignore file, now in that, these are some of the examples. Star.log, any file with an extension.log, a whole directory build only at the repository root, so docs pattern inside a folder.
+
+[rochak agrawal] 07:42:23
+and keep.log, right? So then these files will not be version controlled by the Git.
+
+[rochak agrawal] 07:42:31
+So if someone is asking what is, like, the question can come in an interview in two forms. One is, what does .gitignore does? So .gitignore does the pattern matching in your directory, and anything which is there in.
+
+[rochak agrawal] 07:42:48
+dot git ignore, um, it is not going to be tracked by the git, so even though it's a part of the repository, it is just part of the working directory, it is not going into the staging area, it is not going into the commit, and it is not going into local repository.
+
+[rochak agrawal] 07:43:05
+And then, second, let's say someone will ask you, I'm generating a log file now, I do not want those log files to be part of my…
+
+[rochak agrawal] 07:43:14
+a staging area and commits, how can I do that? So then, the answer would be, uh, you can…
+
+[rochak agrawal] 07:43:20
+Write the pattern in a .gitignore file, and then…
+
+[rochak agrawal] 07:43:25
+just, uh, uh, give it in a .ignore file. After that, your files will not be tracked by the Git. Very simple. So that is a utility of .git if.
+
+[rochak agrawal] 07:43:37
+Similar type of the file you are going to find when we will be working. So then there is a file called dockerignore. So this is a general pattern also.
+
+[rochak agrawal] 07:43:49
+Anything which you do not want to be the part of your installation or your setup.
+
+[rochak agrawal] 07:43:55
+Mention in a ignore file.
+
+[rochak agrawal] 07:43:57
+So right now, we have a .gitignore file.
+
+[rochak agrawal] 07:44:03
+Any question in this?
+
+[rochak agrawal] 07:44:09
+Yes, ma'am.
+
+[Vaibhav Gupta] 07:44:16
+Get ignored, like, uh… what is the exact use of this get ignored list, like…
+
+[rochak agrawal] 07:44:22
+So, exact use by your application will be generating multiple types of temporary files, right?
+
+[rochak agrawal] 07:44:28
+which you do not want to be. So, for example, let's say my application is generating logs daily, 1 GB, 2 GB of the logs.
+
+[rochak agrawal] 07:44:35
+If I keep every and you know Git is tracking each changes in your log, correct? Any file.
+
+[rochak agrawal] 07:44:43
+Your logs might be changing every second, every minute.
+
+[rochak agrawal] 07:44:47
+How many version you are going to store?
+
+[rochak agrawal] 07:44:50
+Right? So this type of the file, we do not need to version control.
+
+[rochak agrawal] 07:44:56
+So this type of the use cases, when you will be building — so for example, you are doing a Java build, then you must need some third-party libraries, which again, you will download on your system. Now, these are the type of the file you, again, don't need to version control.
+
+[rochak agrawal] 07:45:11
+Because that is not your core application.
+
+[rochak agrawal] 07:45:17
+Hey!
+
+[Vaibhav Gupta] 07:45:20
+Yeah, but uh…
+
+[rochak agrawal] 07:45:23
+What is… see, uh… what is the confusion?
+
+[Vaibhav Gupta] 07:45:29
+like, uh… what is the exact use of these things? Like, uh, when we are…
+
+[rochak agrawal] 07:45:33
+That's the exact use I told you. Any temporary file… see, your log files are 50GB, for example. If you version control your repository size, it will also be 50GB.
+
+[Vaibhav Gupta] 07:45:34
+Like, uh, we are using some log from…
+
+[Vaibhav Gupta] 07:45:40
+Mm-hmm.
+
+[rochak agrawal] 07:45:44
+Predict?
+
+[Vaibhav Gupta] 07:45:45
+Mm-hmm.
+
+[rochak agrawal] 07:45:47
+And log file is part of your application functionality, no?
+
+[rochak agrawal] 07:45:51
+Correct?
+
+[rochak agrawal] 07:45:53
+So, anything which is not…
+
+[rochak agrawal] 07:45:56
+part of my application functionality. I do not want to version control it.
+
+[Vaibhav Gupta] 07:46:00
+Right.
+
+[rochak agrawal] 07:46:01
+So simple, I will put them in a .ignore file.
+
+[Vaibhav Gupta] 07:46:06
+Okay.
+
+[rochak agrawal] 07:46:07
+Understood.
+
+[Vaibhav Gupta] 07:46:07
+Which is a part of code, but not a… we do not have any version control on it, so that is part.
+
+[rochak agrawal] 07:46:13
+No, it is… yes. See, any type of the file. So, for example, let's say right now, when you do a build, uh, you need some username and the password. So, what you did, you created a .env file, uh, and then you use your username and the password there, and you.
+
+[rochak agrawal] 07:46:29
+use that file for the build process, for example, right? Now, if you commit that file, for example, then your username and the password will be version controlled.
+
+[rochak agrawal] 07:46:38
+Correct?
+
+[Vaibhav Gupta] 07:46:41
+Right.
+
+[rochak agrawal] 07:46:42
+And you do not want that.
+
+[Vaibhav Gupta] 07:46:44
+Mm-hmm, mm-h.
+
+[rochak agrawal] 07:46:45
+No one would want to share their username and the password, correct?
+
+[Vaibhav Gupta] 07:46:50
+Correct.
+
+[rochak agrawal] 07:46:50
+So then any type… see, it is up to us what type of file. It is a functionality which is available. Now, it is up to us how we want to use it.
+
+[rochak agrawal] 07:47:00
+What type of file? I do not want to version control.
+
+[rochak agrawal] 07:47:04
+Log or the ENV file is just an example.
+
+[Vaibhav Gupta] 07:47:07
+Hmm.
+
+[rochak agrawal] 07:47:08
+Okay.
+
+[Vaibhav Gupta] 07:47:09
+Okay.
+
+[rochak agrawal] 07:47:17
+Yes, Ganninder.
+
+[Gyanendra Narayan] 07:47:19
+Yes, sir, good morning.
+
+[rochak agrawal] 07:47:20
+Good morning.
+
+[Gyanendra Narayan] 07:47:21
+So, I was saying that this…
+
+[Gyanendra Narayan] 07:47:25
+Git ignore will be for the remote repository or for the.
+
+[rochak agrawal] 07:47:29
+No, it is for the local repository.
+
+[Gyanendra Narayan] 07:47:31
+Local repository. It means…
+
+[rochak agrawal] 07:47:32
+See, anything you are doing with the gate, if you…
+
+[rochak agrawal] 07:47:35
+Define the pattern in the dot get ignore. See, you see the flow.
+
+[rochak agrawal] 07:47:43
+If you see the flow.
+
+[rochak agrawal] 07:47:48
+You are doing everything in the working directly, correct?
+
+[Gyanendra Narayan] 07:47:51
+Good.
+
+[rochak agrawal] 07:47:53
+Now, I define a .ignore file in the working directory. After that, so for example.log. Now, my file.log is not being tracked.
+
+[rochak agrawal] 07:48:04
+So, it is not going even the staging area, it is not even going into the local repository. See?
+
+[Gyanendra Narayan] 07:48:09
+Hmm.
+
+[rochak agrawal] 07:48:10
+What goes into the remote repository, what you already committed in the local repository, correct?
+
+[Gyanendra Narayan] 07:48:14
+Correct, correct.
+
+[rochak agrawal] 07:48:15
+Now if your file is not being going into the local repository how it will go to remote.
+
+[rochak agrawal] 07:48:21
+Right? Because that's the beauty of Git. Anything you are doing, you are doing it with the local repository.
+
+[Gyanendra Narayan] 07:48:29
+So, this…
+
+[Gyanendra Narayan] 07:48:31
+Whatever we don't want to commit or sync with the remote repository, we can put in the gitignore directory, so that we can work locally, and it will not be committed.
+
+[rochak agrawal] 07:48:36
+Exactly, exactly.
+
+[rochak agrawal] 07:48:40
+But look, see, yes, if there is a log file present in your working directory, but you do not want to version control it, but you can see the logs, right?
+
+[rochak agrawal] 07:48:50
+So yeah, yes.
+
+[Gyanendra Narayan] 07:48:54
+Yes, thank you.
+
+[rochak agrawal] 07:48:59
+Yes and no.
+
+[Dhanu] 07:49:04
+No, no, check, my doubt was cleared.
+
+[rochak agrawal] 07:49:05
+Okay, okay.
+
+[rochak agrawal] 07:49:08
+Yes, I do.
+
+[Arif] 07:49:13
+Yeah, hi Rochelle.
+
+[Arif] 07:49:16
+So, Ruchak, actually, I was not able to attend the last session with GitHub.
+
+[rochak agrawal] 07:49:21
+Mm-hmm.
+
+[Arif] 07:49:21
+I went to the recording, so I could understand some… some sort of things, but, uh… So, repository… when you say repository, what it is exactly? This is, uh…
+
+[rochak agrawal] 07:49:32
+Or if I think, uh, you need to raise this question in a mentorship session now.
+
+[Arif] 07:49:37
+Not actually…
+
+[rochak agrawal] 07:49:40
+I cannot go and explain this, uh, I'm sorry about, like, it will be very time-consuming now.
+
+[Arif] 07:49:45
+Yeah, I understand the… I understand the repository things, the concepts and everything, but, uh, what exactly it is? It is some kind of a server or something? What it is?
+
+[rochak agrawal] 07:49:54
+You're asking about the remote repository or the local repository?
+
+[Arif] 07:49:57
+Yeah, remote repository, as well as the local also.
+
+[rochak agrawal] 07:49:58
+Yeah, it can be a server. There are many hosting platforms are available. For example, for our demos, we are using the GitHub. It is, you can say, for example, Gmail or Google Drive. See, everything runs on some server.
+
+[Arif] 07:50:05
+Okay.
+
+[Arif] 07:50:13
+Okay.
+
+[rochak agrawal] 07:50:15
+Okay? But GitHub, let's say, if you take an example of a GitHub, uh, GitHub is a software-as-a-service offering, right?
+
+[Arif] 07:50:26
+Okay.
+
+[rochak agrawal] 07:50:27
+giving us as a managed service where you can host my repos. Now, if you want, you have the on-prem version of a GitHub as well, where in your servers you can install GitHub.
+
+[Arif] 07:50:41
+Okay.
+
+[rochak agrawal] 07:50:42
+So yes, in the end, it is a server where your repository is running.
+
+[Arif] 07:50:46
+Okay, and uh… regarding this gitignore, how can I see… how can I find out, like, what all type of files have been ignored?
+
+[rochak agrawal] 07:50:55
+That is, you need to define it. So if you go, uh, we created a dot ignore, right? So if you go…
+
+[rochak agrawal] 07:51:04
+You can find it here.
+
+[Arif] 07:51:07
+So, inside the gitignore, it will list all the…
+
+[rochak agrawal] 07:51:10
+It will list all the files, like, for example, right now, I just…
+
+[rochak agrawal] 07:51:15
+So you can see.
+
+[rochak agrawal] 07:51:18
+dot log, these folders.
+
+[Arif] 07:51:18
+Okay.
+
+[rochak agrawal] 07:51:21
+You see, this is just an example, right? You can just ignore one type of a file, you can ignore two types of… any permutation combination.
+
+[rochak agrawal] 07:51:30
+Okay.
+
+[Arif] 07:51:33
+Okay.
+
+[Arif] 07:51:37
+Okay, thanks.
+
+[rochak agrawal] 07:51:40
+Yes, you were.
+
+[rochak agrawal] 07:51:53
+Okay, um…
+
+[rochak agrawal] 07:51:56
+So now, you see, uh…
+
+[rochak agrawal] 07:52:02
+there are 3 very important commands in Git, and uh… see, as I told you.
+
+[rochak agrawal] 07:52:08
+from
+
+[rochak agrawal] 07:52:09
+a working perspective, Git, and Maven.
+
+[rochak agrawal] 07:52:14
+Are primarily the, the…
+
+[rochak agrawal] 07:52:17
+a developer, uh, tools. Like, we are not going to interact with Git and Maven much.
+
+[rochak agrawal] 07:52:22
+But since it's a part of the DevOps lifecycle, people generally ask the questions.
+
+[rochak agrawal] 07:52:27
+In interviews.
+
+[rochak agrawal] 07:52:29
+Get the word.
+
+[rochak agrawal] 07:52:42
+Hit reset.
+
+[rochak agrawal] 07:52:47
+Very… yeah.
+
+[rochak agrawal] 07:52:49
+Now we'll start with the git revert, then we'll see git reverse and git reset. Revase we'll see after the branching.
+
+[rochak agrawal] 07:52:58
+Now, till now, we were talking about that this is a flow. My file is in a working directory, and then I… when I'm doing something, I will add it to the staging area, and then once I'm done, I will make the commit.
+
+[rochak agrawal] 07:53:14
+And then I will push it to my remote repository. Correct? Four things, very straightforward.
+
+[rochak agrawal] 07:53:21
+Now if you see about the Git revert.
+
+[rochak agrawal] 07:53:25
+Sometime what is going to happen that you have done a commit.
+
+[rochak agrawal] 07:53:29
+which you don't want, or you have done a commit.
+
+[rochak agrawal] 07:53:33
+Which is wrong, correct? So then…
+
+[rochak agrawal] 07:53:38
+Version control is, like, if you have done the wrong commit also, it is going to be… always be present in your, uh…
+
+[rochak agrawal] 07:53:48
+repository, so if someone comes and say, I do not want that commit, a specific commit, so then git revert is a safe undo command. So it is basically undoing the commit.
+
+[rochak agrawal] 07:54:00
+So, reverse create a new commit that applies the inverse of an earlier one. History is added to, never rewritten. Very important. History is added to. So, for example, I'll say…
+
+[rochak agrawal] 07:54:14
+I draw this.
+
+[rochak agrawal] 07:54:16
+I done one commit, C1.
+
+[rochak agrawal] 07:54:19
+I done second commit, C2.
+
+[rochak agrawal] 07:54:23
+Are you done?
+
+[rochak agrawal] 07:54:25
+Third commit.
+
+[rochak agrawal] 07:54:26
+CP.
+
+[rochak agrawal] 07:54:27
+Okay, now you find out that whatever changes you have done in C2.
+
+[rochak agrawal] 07:54:35
+They are not right. There are some mistakes in it. So then you do get…
+
+[rochak agrawal] 07:54:44
+Z word?
+
+[rochak agrawal] 07:54:49
+Okay, then whatever changes you have done in C2, those will be reverted, and it will create a new commit called C4.
+
+[rochak agrawal] 07:54:57
+But C4 is nothing, but whatever the changes you have done in this commit, those will be reverted, basically.
+
+[rochak agrawal] 07:55:06
+How this works? Let's see this.
+
+[rochak agrawal] 07:55:12
+So, if you see, I have a repository.
+
+[rochak agrawal] 07:55:17
+Let me delete .gitignore for now, because we don't need, uh, we do not have so much of data.
+
+[rochak agrawal] 07:55:23
+So, I have a file, okay?
+
+[rochak agrawal] 07:55:27
+If you see git log.
+
+[rochak agrawal] 07:55:30
+So it says your current branch master does not have any commit yet.
+
+[rochak agrawal] 07:55:35
+Let me do… commit… status… sorry.
+
+[rochak agrawal] 07:55:40
+Yeah, get a status, if I see.
+
+[rochak agrawal] 07:55:44
+So, say, untrained file is there, so I'll…
+
+[rochak agrawal] 07:55:48
+Say git add.
+
+[rochak agrawal] 07:55:51
+There are multiple files you can run git add star. It is going to add everything at one go.
+
+[rochak agrawal] 07:55:57
+Okay, and I'll say git commit.
+
+[rochak agrawal] 07:56:01
+Hyphen M.
+
+[rochak agrawal] 07:56:05
+This is my first comment.
+
+[rochak agrawal] 07:56:13
+Simple.
+
+[rochak agrawal] 07:56:14
+To run git status now.
+
+[rochak agrawal] 07:56:18
+So, nothing to commit, and if you see git log.
+
+[rochak agrawal] 07:56:21
+So there is one gamut now.
+
+[rochak agrawal] 07:56:23
+Correct. Now, you will not stop at one commit, right?
+
+[rochak agrawal] 07:56:29
+Let's see…
+
+[rochak agrawal] 07:56:35
+I create… I'm creating another file.
+
+[rochak agrawal] 07:56:38
+So I'll say equal.
+
+[rochak agrawal] 07:56:45
+this file…
+
+[rochak agrawal] 07:56:47
+is containing bulk.
+
+[rochak agrawal] 07:56:59
+Okay, again, if you run get status…
+
+[rochak agrawal] 07:57:05
+I'll say git add.
+
+[rochak agrawal] 07:57:10
+Okay? I'll run it.
+
+[rochak agrawal] 07:57:15
+hyphen M.
+
+[rochak agrawal] 07:57:18
+This is the second commit.
+
+[rochak agrawal] 07:57:29
+This is the second commit where.
+
+[rochak agrawal] 07:57:32
+I introduced…
+
+[rochak agrawal] 07:57:34
+The bug.
+
+[rochak agrawal] 07:57:36
+I will reward this.
+
+[rochak agrawal] 07:57:44
+Here. Now, if you see git status, uh, sorry, git log.
+
+[rochak agrawal] 07:57:49
+So you can see I have created two commits. One is this is my first commit whereby I added two files.
+
+[rochak agrawal] 07:57:57
+Then, I have done a second commit, which mistakenly, I will say.
+
+[rochak agrawal] 07:58:03
+See, these are the text files. Instead of them, there might be code files. So, but you see the example, that's the second comment, where we are saying, whereby I introduce a bug, and I am… I'm going to revert this, okay?
+
+[rochak agrawal] 07:58:15
+Now on top of this, I will do another comment. So I'll zip equal.
+
+[rochak agrawal] 07:58:21
+Commit 3.
+
+[rochak agrawal] 07:58:28
+It's a new feature.
+
+[rochak agrawal] 07:58:35
+The feature.
+
+[rochak agrawal] 07:58:38
+And I append this to my app.txt only.
+
+[rochak agrawal] 07:58:45
+Okay.
+
+[rochak agrawal] 07:58:46
+Now, again, I need to add this.
+
+[rochak agrawal] 07:58:55
+Click commit.
+
+[rochak agrawal] 07:58:58
+Hyphen M.
+
+[rochak agrawal] 07:59:01
+I have done hard permit.
+
+[rochak agrawal] 07:59:11
+Dear?
+
+[rochak agrawal] 07:59:14
+No, if you don't get…
+
+[rochak agrawal] 07:59:16
+Nog?
+
+[rochak agrawal] 07:59:17
+So you can see.
+
+[rochak agrawal] 07:59:19
+First commit, second commit, and third commit.
+
+[rochak agrawal] 07:59:23
+Now, and if you see your app.txt.
+
+[rochak agrawal] 07:59:29
+So you see?
+
+[rochak agrawal] 07:59:31
+this part, this file is created containing a bug. This is part of your commit 2, and then this part is part of your commit 3. Correct?
+
+[rochak agrawal] 07:59:40
+Now, you, after some time, you realize that, uh.
+
+[rochak agrawal] 07:59:47
+Okay, this is the problem. Instead of this, there should be something else.
+
+[rochak agrawal] 07:59:53
+Right? I do not know what is, but this is wrong. I don't want this, okay? Basically, I do not want this commit.
+
+[rochak agrawal] 08:00:00
+Correct. This is my second commit, where I introduce the bug, and I need to revert this. Right. So…
+
+[rochak agrawal] 08:00:08
+Now, if you see, there is another version of log, which is bundling.
+
+[rochak agrawal] 08:00:18
+Okay, so this is the short form of this long commit ID. This is called the commit hash. Okay, so I got this commit hash, so you can see I have done three commits. First commit, second commit, and third commit.
+
+[rochak agrawal] 08:00:32
+Okay, now what I'm going to do…
+
+[rochak agrawal] 08:00:37
+I will just run
+
+[rochak agrawal] 08:00:40
+Levert.
+
+[rochak agrawal] 08:00:42
+Which commit I want to roll back? I want to roll back this second commit.
+
+[rochak agrawal] 08:00:47
+Okay.
+
+[rochak agrawal] 08:00:48
+I'll copy.
+
+[rochak agrawal] 08:00:53
+East.
+
+[rochak agrawal] 08:00:59
+Okay? Now, if you see it, log…
+
+[rochak agrawal] 08:01:11
+Okay, this is saying go.
+
+[rochak agrawal] 08:01:16
+Git config set.
+
+[rochak agrawal] 08:01:17
+Okay, I need to run this command first.
+
+[rochak agrawal] 08:01:27
+Okay.
+
+[rochak agrawal] 08:01:37
+What film?
+
+[rochak agrawal] 08:02:08
+Just that.
+
+[rochak agrawal] 08:02:09
+Revert fail says reverting is not possible because you have unmerged file. Fix them in a bug tree, then use them as a…
+
+[rochak agrawal] 08:02:21
+Okay? Let me do…
+
+[rochak agrawal] 08:02:39
+Why it is giving us this error? Conflict. Modify delete app.txt is deleted in the parent of this.
+
+[rochak agrawal] 08:02:52
+What does this mean? Let me check.
+
+[rochak agrawal] 08:02:57
+Hello?
+
+[rochak agrawal] 08:03:49
+Right, just look at our thing.
+
+[rochak agrawal] 08:04:28
+Data status is clear.
+
+[rochak agrawal] 08:04:30
+Get log, if you see.
+
+[rochak agrawal] 08:04:34
+So, it is giving me…
+
+[rochak agrawal] 08:04:38
+Three commits. Yes, it is also okay.
+
+[rochak agrawal] 08:04:55
+Yep.
+
+[rochak agrawal] 08:04:56
+3, 6…
+
+[rochak agrawal] 08:04:58
+Yeah, this is a commit.
+
+[rochak agrawal] 08:05:02
+I'll be thankful about another one.
+
+[rochak agrawal] 08:05:05
+Yeah, it's the same comment.
+
+[rochak agrawal] 08:05:17
+It says conflict app.txt deleted.
+
+[rochak agrawal] 08:05:21
+In the parent of this, this is the second commit where I introduced the bug, and I will revert this and modify it in head.
+
+[rochak agrawal] 08:05:28
+Belgian head of left is in 3.
+
+[rochak agrawal] 08:05:36
+If I try to revert the third comment, let me see…
+
+[rochak agrawal] 08:05:47
+It is also failing. Reverting is not possible because you have.
+
+[rochak agrawal] 08:05:51
+Let's see, you can…
+
+[rochak agrawal] 08:05:58
+Hmm.
+
+[rochak agrawal] 08:06:02
+This reverse commit, please enter the commit message.
+
+[rochak agrawal] 08:06:12
+This is the…
+
+[rochak agrawal] 08:06:23
+Okay?
+
+[rochak agrawal] 08:06:27
+Now, if you see…
+
+[rochak agrawal] 08:06:34
+Okay, so it, uh…
+
+[rochak agrawal] 08:06:36
+You see what is going what happened is.
+
+[rochak agrawal] 08:06:43
+It was going to…
+
+[rochak agrawal] 08:06:47
+revert the commit 3, but it was not reverting commit 2 somehow. Uh, let me do one more thing. Just come back here.
+
+[rochak agrawal] 08:06:55
+And do…
+
+[rochak agrawal] 08:06:57
+CD.
+
+[rochak agrawal] 08:07:00
+Maybe, yeah, yeah.
+
+[rochak agrawal] 08:07:05
+The word triple.
+
+[rochak agrawal] 08:07:07
+I'll initialize the repository again.
+
+[rochak agrawal] 08:07:11
+Here, let's do the fetch commits. There was some conflict is coming, I'll check on that error.
+
+[rochak agrawal] 08:07:17
+Eco.
+
+[rochak agrawal] 08:07:19
+This is my…
+
+[rochak agrawal] 08:07:22
+file number one.
+
+[rochak agrawal] 08:07:30
+App1.txt.
+
+[rochak agrawal] 08:07:44
+This is Mike Busted.
+
+[rochak agrawal] 08:07:51
+Okay, now I see git log. Do you have first command?
+
+[rochak agrawal] 08:07:56
+Now I'll create another.
+
+[rochak agrawal] 08:08:06
+One, two…
+
+[rochak agrawal] 08:08:23
+Yes?
+
+[rochak agrawal] 08:08:28
+So, you have two comments. Similarly, let me create a third comment.
+
+[rochak agrawal] 08:08:59
+Uh, if you see…
+
+[rochak agrawal] 08:09:01
+Good status.
+
+[rochak agrawal] 08:09:08
+Okay?
+
+[rochak agrawal] 08:09:10
+Get to log.
+
+[rochak agrawal] 08:09:11
+So you have 3 commits, git log…
+
+[rochak agrawal] 08:09:15
+Hyphen, online.
+
+[rochak agrawal] 08:09:17
+Now, if we try to revert a second…
+
+[rochak agrawal] 08:09:28
+Okay?
+
+[rochak agrawal] 08:09:31
+This is my reverse…
+
+[rochak agrawal] 08:09:37
+Two. Revert.
+
+[rochak agrawal] 08:09:39
+Done?
+
+[rochak agrawal] 08:09:40
+Second, I'm…
+
+[rochak agrawal] 08:09:42
+Right? So this reverse commits.
+
+[rochak agrawal] 08:09:45
+On branch master, app2.txt will be deleted.
+
+[rochak agrawal] 08:09:52
+Okay, now if you see the history, get status.
+
+[rochak agrawal] 08:09:57
+Sorry, git log.
+
+[rochak agrawal] 08:09:59
+Now you can see.
+
+[rochak agrawal] 08:10:01
+You are going to see one, first commit, second commit.
+
+[rochak agrawal] 08:10:06
+Third commit and the fourth commit. Now the fourth commit is a revert of the second commit. So if you see LS hyphen LRT, you are not going to see the app2.txt because app2.txt was part of the commit number two.
+
+[rochak agrawal] 08:10:23
+App2.txt was a part of the commit number two and the commit number two we have reverted with the help of bit revert command. Now in the previous example also there was some conflict occurred. That's why the commit was not revert was not happening.
+
+[rochak agrawal] 08:10:38
+But…
+
+[rochak agrawal] 08:10:39
+That is how Git revert is going to work.
+
+[rochak agrawal] 08:10:44
+Right? So, it is basically the undo of your, uh…
+
+[rochak agrawal] 08:10:49
+commits.
+
+[rochak agrawal] 08:10:51
+Non-destructive. So you see nothing disappears means you already if you anytime want to go to this commit number two. So the commit is already there. It is just git revert. It creates a new commit on top of.
+
+[rochak agrawal] 08:11:07
+Uh, your, uh, present commit, so for example.
+
+[rochak agrawal] 08:11:11
+You have C1, C2, C3, and C3, right? Now…
+
+[rochak agrawal] 08:11:18
+Git revert is not doing anything with the C1, C2, C3. What it is doing, it is creating a new commit, C4, where whatever changes you've done in C2 will not be there. So C2 will still be there.
+
+[rochak agrawal] 08:11:33
+So, you can very well see the commit 2 is still there. It is not doing anything with the commit 2.
+
+[rochak agrawal] 08:11:39
+What it is doing, so it says this reverts commit.
+
+[rochak agrawal] 08:11:44
+This this one. So very clearly we can say. So it is non-destructive. So it is not playing around with your history. Right. And again reverting or revert restore the original changes. So if I go.
+
+[rochak agrawal] 08:11:59
+And again, do not forget the word.
+
+[rochak agrawal] 08:12:10
+Okay, now if I again go to look at the word…
+
+[rochak agrawal] 08:12:27
+reverting the revert.
+
+[rochak agrawal] 08:12:32
+Okay, now if you see it here…
+
+[rochak agrawal] 08:12:36
+ls-lrt, you are going to see the app2.txt.
+
+[rochak agrawal] 08:12:39
+Because I have revert…
+
+[rochak agrawal] 08:12:43
+the reward.
+
+[rochak agrawal] 08:12:45
+And if you see.
+
+[rochak agrawal] 08:12:48
+log
+
+[rochak agrawal] 08:12:49
+Now you're seeing FIP coming.
+
+[rochak agrawal] 08:12:52
+Right.
+
+[rochak agrawal] 08:12:54
+So, that is about the Git reward.
+
+[rochak agrawal] 08:12:58
+Basically, Git revert is going to, uh…
+
+[rochak agrawal] 08:13:04
+reverting your commits, which… so you need to give a… command is git revert.
+
+[rochak agrawal] 08:13:08
+And, uh, the commit hash, and then…
+
+[rochak agrawal] 08:13:12
+It can be reverted itself altogether, also.
+
+[rochak agrawal] 08:13:18
+Clear about get revert?
+
+[Arif] 08:13:22
+Uh, Ruchak, so, uh, this is about the file, so, uh, can we try one more thing, like, uh, inside the file, if I do some changes…
+
+[Arif] 08:13:31
+and committed, and if I revert the commit, the file will be lost, or the… only the changes will be reverted.
+
+[rochak agrawal] 08:13:36
+Only the changes will be reverted. So for example, let's say.
+
+[rochak agrawal] 08:13:47
+Now, I go open app.txt, app2.txt, or let's say app3.txt.
+
+[rochak agrawal] 08:13:53
+Okay.
+
+[rochak agrawal] 08:13:54
+See? This is my file number 3.
+
+[rochak agrawal] 08:14:01
+I am doing some more things.
+
+[rochak agrawal] 08:14:07
+Okay, now you see get status.
+
+[rochak agrawal] 08:14:14
+I'll, again, add this…
+
+[rochak agrawal] 08:14:22
+And get up.
+
+[rochak agrawal] 08:14:25
+It's an M.
+
+[rochak agrawal] 08:14:27
+And…
+
+[rochak agrawal] 08:14:32
+Do we… done some changes?
+
+[rochak agrawal] 08:14:38
+On file 3.
+
+[rochak agrawal] 08:14:42
+Is it clear? Do you see your file 3 now?
+
+[rochak agrawal] 08:14:47
+This is file number 3, and I'm doing some more changes, correct? New version of file, right? And if you see git log.
+
+[rochak agrawal] 08:14:59
+you have the latest commit, which is the commit number 6. Now, you say, if I revert this commit number 6, will my file will be lost, or the content will be lost, right? So, if you go with…
+
+[Arif] 08:15:09
+Mmhm.
+
+[rochak agrawal] 08:15:14
+Log.
+
+[rochak agrawal] 08:15:15
+One line.
+
+[rochak agrawal] 08:15:16
+Okay? Good.
+
+[rochak agrawal] 08:15:19
+Z word.
+
+[rochak agrawal] 08:15:31
+the changes.
+
+[rochak agrawal] 08:15:35
+Okay?
+
+[rochak agrawal] 08:15:37
+Now, if you go…
+
+[rochak agrawal] 08:15:41
+Your file is there?
+
+[rochak agrawal] 08:15:43
+But if you see.
+
+[rochak agrawal] 08:15:49
+The changes have been lost.
+
+[Arif] 08:15:53
+So, it will do the undo for the last change, or, like, when it is…
+
+[rochak agrawal] 08:15:57
+No, so we are… see, uh… we are giving, if you remember, we are, uh…
+
+[rochak agrawal] 08:16:03
+You are giving the commit ID.
+
+[rochak agrawal] 08:16:06
+Can you see?
+
+[rochak agrawal] 08:16:07
+So, whatever…
+
+[rochak agrawal] 08:16:08
+Changes you do as part of this commit, that will be undo.
+
+[Arif] 08:16:15
+So, first we need to find out which commit we have, like, on which line what we have changed.
+
+[rochak agrawal] 08:16:17
+Correct, of course. Like, you need to know which commit there is a problem.
+
+[Arif] 08:16:21
+Okay, okay.
+
+[rochak agrawal] 08:16:23
+Yeah, so that is about the git revert.
+
+[Arif] 08:16:24
+Okay.
+
+[rochak agrawal] 08:16:27
+Now, understand this thing, and when we will see git reset.
+
+[rochak agrawal] 08:16:32
+Git revert once you have committed the changes. If you want to revert those changes, then we have Git revert.
+
+[rochak agrawal] 08:16:40
+Then there is something called the git reset.
+
+[rochak agrawal] 08:16:43
+Okay.
+
+[rochak agrawal] 08:16:48
+Now, before I go to reset, I'll explain one more thing.
+
+[rochak agrawal] 08:16:54
+This is something called the Git Stash. This is for a DevOps engineer.
+
+[rochak agrawal] 08:17:00
+It's a very, very, very favorite interview question. Explain git stash with examples. What is git stash?
+
+[rochak agrawal] 08:17:08
+Okay.
+
+[rochak agrawal] 08:17:11
+Just give me a second.
+
+[rochak agrawal] 08:17:14
+So, Git stashes, so you know, uh, now, we have to be very well aware, there are some… forget about the remote repository for now, okay? Because, if you see.
+
+[rochak agrawal] 08:17:29
+Remote is, once you're done your work, then you push your changes to remote. Like, till now, that's the beauty of a distributed version control system, that you are going to…
+
+[rochak agrawal] 08:17:41
+Work on your, uh…
+
+[rochak agrawal] 08:17:45
+A remote, sorry, local repository. So we have three areas.
+
+[rochak agrawal] 08:17:50
+We have your working directory.
+
+[rochak agrawal] 08:17:54
+We have your staging area.
+
+[rochak agrawal] 08:18:01
+Then we have the commit.
+
+[rochak agrawal] 08:18:04
+Correct? And then the changes go to your remote.
+
+[rochak agrawal] 08:18:14
+Now…
+
+[rochak agrawal] 08:18:18
+Git stats, very important to understand.
+
+[rochak agrawal] 08:18:22
+You do your changes in your working directory.
+
+[rochak agrawal] 08:18:25
+You add them into staging area?
+
+[rochak agrawal] 08:18:29
+And then, finally, you commit them.
+
+[rochak agrawal] 08:18:32
+Got it?
+
+[rochak agrawal] 08:18:33
+Now, the git stash command acts as a temporary drawer.
+
+[rochak agrawal] 08:18:38
+where you can safely hide your current uncommitted work.
+
+[rochak agrawal] 08:18:44
+both staged and unstaged changes.
+
+[rochak agrawal] 08:18:48
+without making a formal commit.
+
+[rochak agrawal] 08:18:52
+Now, this gives you a clean working directory, so that we can switch branches, fixing an urgent bug, or pull new code.
+
+[rochak agrawal] 08:19:00
+Now…
+
+[rochak agrawal] 08:19:01
+Let's say, uh, you have two files.
+
+[rochak agrawal] 08:19:04
+Okay.
+
+[rochak agrawal] 08:19:09
+file1.txt.
+
+[rochak agrawal] 08:19:15
+There can be a number of the file, but let's say there's two files.
+
+[rochak agrawal] 08:19:20
+In file one, you are doing some changes, okay? What are your changes like when you write the code? Right now, we are just lining one line. Doesn't matter for us. When you will write one code, your code may be finished in one day.
+
+[rochak agrawal] 08:19:35
+Code may be finished in one week also. What I'm trying to say…
+
+[rochak agrawal] 08:19:42
+You… at some point, you may be in an intermediary state where you have progressed something.
+
+[rochak agrawal] 08:19:49
+But you have not finished it yet.
+
+[rochak agrawal] 08:19:51
+Okay.
+
+[rochak agrawal] 08:19:54
+Now, let's say suddenly some urgent work is coming, some bug is coming, and you need to work on file 2.
+
+[rochak agrawal] 08:20:02
+Okay, but your file 1.txt changes has not been completed yet.
+
+[rochak agrawal] 08:20:09
+Since they are not completed, you cannot commit them, correct?
+
+[rochak agrawal] 08:20:16
+And…
+
+[rochak agrawal] 08:20:18
+What's going to happen is…
+
+[rochak agrawal] 08:20:25
+So, what we can do here is…
+
+[rochak agrawal] 08:20:28
+You can save your work.
+
+[rochak agrawal] 08:20:32
+temporarily in your staging area with the help of the Git stash.
+
+[rochak agrawal] 08:20:38
+Okay, now how does James Dash work?
+
+[rochak agrawal] 08:20:45
+Let's see…
+
+[rochak agrawal] 08:20:48
+I'll again go to my repository.
+
+[rochak agrawal] 08:20:55
+No.
+
+[rochak agrawal] 08:20:56
+If you see good status.
+
+[rochak agrawal] 08:20:59
+There is nothing.
+
+[rochak agrawal] 08:21:01
+less hyphen LRT we have three files now let's say you uh.
+
+[rochak agrawal] 08:21:07
+We created an index.stm.
+
+[rochak agrawal] 08:21:17
+Hi, I am working.
+
+[rochak agrawal] 08:21:20
+on this file.
+
+[rochak agrawal] 08:21:23
+I am in process of completing it.
+
+[rochak agrawal] 08:21:29
+What? It is?
+
+[rochak agrawal] 08:21:32
+Still in progress.
+
+[rochak agrawal] 08:21:37
+Okay? You see gate status?
+
+[rochak agrawal] 08:21:42
+index.html.
+
+[rochak agrawal] 08:21:44
+Now…
+
+[rochak agrawal] 08:21:49
+you need to do something very urgent. You cannot continue working with the index.html. So what you can do?
+
+[rochak agrawal] 08:21:56
+You can run a command called git -save.
+
+[rochak agrawal] 08:22:04
+working on index.
+
+[rochak agrawal] 08:22:06
+No.
+
+[rochak agrawal] 08:22:07
+dot HTML.
+
+[rochak agrawal] 08:22:12
+Incomplete.
+
+[rochak agrawal] 08:22:14
+Or, I would say, in progress.
+
+[rochak agrawal] 08:22:21
+Okay, now if you…
+
+[rochak agrawal] 08:22:29
+If you can get the status.
+
+[rochak agrawal] 08:22:37
+Okay, the slash push, it has been changed, let me see.
+
+[rochak agrawal] 08:22:43
+Okay, I need first git add index.html.
+
+[rochak agrawal] 08:22:49
+Hey, now you go get.
+
+[rochak agrawal] 08:22:52
+Push.
+
+[rochak agrawal] 08:23:14
+Okay.
+
+[rochak agrawal] 08:23:17
+git status, uh, stash saved. Now, if you see git status.
+
+[rochak agrawal] 08:23:25
+this index.html, which is there in your staging area, but you don't want to commit it yet, because that file.
+
+[rochak agrawal] 08:23:34
+is in progress, right? So you saved this.
+
+[rochak agrawal] 08:23:40
+with a stash. Okay, now if you want to list what is a stashed work you are having, so git stash.
+
+[rochak agrawal] 08:23:50
+You see, there is one stash on master working on index.html in progress. Okay, now what you do, you start working on something, let's say BIE.
+
+[rochak agrawal] 08:24:04
+File, or JSON.
+
+[rochak agrawal] 08:24:12
+This is my new file.
+
+[rochak agrawal] 08:24:15
+Which I will work.
+
+[rochak agrawal] 08:24:18
+and Venice.
+
+[rochak agrawal] 08:24:19
+Okay.
+
+[rochak agrawal] 08:24:22
+will be my secret adapter, Jason.
+
+[rochak agrawal] 08:24:29
+Git commit.
+
+[rochak agrawal] 08:24:32
+Hyphen M.
+
+[rochak agrawal] 08:24:34
+This was my urgent work.
+
+[rochak agrawal] 08:24:41
+I will pick up.
+
+[rochak agrawal] 08:24:45
+index.html.
+
+[rochak agrawal] 08:24:50
+If you see git log.
+
+[rochak agrawal] 08:24:54
+It is committed.
+
+[rochak agrawal] 08:24:55
+And if you see…
+
+[rochak agrawal] 08:25:00
+If you do LS-LRT.
+
+[rochak agrawal] 08:25:06
+You're not seeing the index.html here.
+
+[rochak agrawal] 08:25:09
+Right? Because the index.html is still saved in your…
+
+[rochak agrawal] 08:25:19
+stashed area. Okay. Now, how to reload your incomplete work.
+
+[rochak agrawal] 08:25:24
+Then we have a command called git stash.
+
+[rochak agrawal] 08:25:35
+Okay.
+
+[rochak agrawal] 08:25:39
+Now if you see.
+
+[rochak agrawal] 08:25:41
+Index.html.
+
+[rochak agrawal] 08:25:43
+And if you see Git status.
+
+[rochak agrawal] 08:25:47
+Okay? Git commit.
+
+[rochak agrawal] 08:25:50
+Type of name?
+
+[rochak agrawal] 08:25:52
+If you want to do some more changes, you can do it. And if you say, now I am committing.
+
+[rochak agrawal] 08:26:04
+index.html.
+
+[rochak agrawal] 08:26:08
+From this dashed area.
+
+[rochak agrawal] 08:26:16
+Get dogs.
+
+[rochak agrawal] 08:26:18
+You can see.
+
+[rochak agrawal] 08:26:19
+Now I'm committing the index.html.
+
+[rochak agrawal] 08:26:22
+So what you can… you… you need to know about this is Git stash is park… you can park your work.
+
+[rochak agrawal] 08:26:31
+without committing, okay? So, stress takes your uncommitted changes, saves them on a stack, returns your working directly into the clean state, and see some urgent work if you need to do.
+
+[rochak agrawal] 08:26:44
+You can do it with the help of a git stash command.
+
+[rochak agrawal] 08:26:49
+Very simple.
+
+[rochak agrawal] 08:26:50
+If you… and you… it is not… you can do only one stack.
+
+[rochak agrawal] 08:26:54
+You can have multiple stacks together, and that is where, when we say git stash list.
+
+[rochak agrawal] 08:27:02
+If you see, there'll be use.
+
+[rochak agrawal] 08:27:04
+Okay, it is not showing now.
+
+[rochak agrawal] 08:27:08
+So when you use the git stash list.
+
+[rochak agrawal] 08:27:14
+So, currently, I do not have any, but whatever work you have stashed, uh, you can see, uh, with this, uh…
+
+[rochak agrawal] 08:27:22
+There was some command syntax like this.
+
+[rochak agrawal] 08:27:26
+Right? At the rate 0, it was showing to us, but if you have multiple stashes, so it will be at the rate 0, at the rate 1, at the rate 2, something like that.
+
+[rochak agrawal] 08:27:35
+Right. So we can list out when you want to. So if you have multiple stashes and if you want to apply the latest stash, then you will just run the command called get stash pop. It will be apply the newest and remove it.
+
+[rochak agrawal] 08:27:50
+But if you want to, uh, apply any particular stash, so then you will do git stash apply, and the stash at the rate 1, at the rate 0, or something. So, reapply a specific one.
+
+[rochak agrawal] 08:28:04
+And we can keep it stashed. And then if you say no, I do not want to continue the work, you will just say get stash dropped. It will be dropped.
+
+[rochak agrawal] 08:28:14
+within the Stash India altogether. So now you can say that.
+
+[rochak agrawal] 08:28:21
+Instead of these four areas, we have one more area, which is a stash area.
+
+[rochak agrawal] 08:28:29
+Where you can park your uncommitted work.
+
+[rochak agrawal] 08:28:38
+Here, you can part your uncommitted work, which you want to later revisit.
+
+[rochak agrawal] 08:28:52
+Okay, any question?
+
+[rochak agrawal] 08:28:58
+Yes, ma'am.
+
+[Vaibhav Gupta] 08:29:01
+So, basically, sir, uh, what we are doing, like, in this, uh, we are, uh, just doing the file changes without any using commit, right?
+
+[rochak agrawal] 08:29:09
+Mm-hmm. See, you do the file changes, you will do commit after that only, correct?
+
+[Vaibhav Gupta] 08:29:14
+Mm-hmm.
+
+[rochak agrawal] 08:29:16
+It is just, I have changed the file, but still I don't want to commit it, and I want to do something else, right? If the file will be in your staging area, it will go to your commit.
+
+[Vaibhav Gupta] 08:29:28
+Mm-hmm.
+
+[rochak agrawal] 08:29:28
+Correct?
+
+[rochak agrawal] 08:29:29
+But I don't want to commit it, because maybe I have not completed the work yet.
+
+[rochak agrawal] 08:29:35
+So then, I will park it to the station here.
+
+[Vaibhav Gupta] 08:29:35
+Huh, so…
+
+[Vaibhav Gupta] 08:29:39
+So, uh, what's the benefit of this session, Vitaly? I mean.
+
+[rochak agrawal] 08:29:44
+There are multiple benefits, Bevo, because, see, uh, when you are… when you… when you are…
+
+[rochak agrawal] 08:29:49
+You are a developer.
+
+[Vaibhav Gupta] 08:29:50
+Mm-hmm.
+
+[rochak agrawal] 08:29:51
+You're not going to work on a single file, correct?
+
+[Vaibhav Gupta] 08:29:53
+Yeah.
+
+[rochak agrawal] 08:29:54
+you are going to work on multiple files. Let's say you are working on a file, and your code is not a one-line code, or when you will be developing the feature, your feature development can go up to days and weeks, right? So at any point of time, you are.
+
+[rochak agrawal] 08:30:12
+You may be in an intermediate state, correct?
+
+[rochak agrawal] 08:30:16
+Now you are in a process of something and some bug has come to the production and you need to start working on some other feature.
+
+[rochak agrawal] 08:30:27
+Okay, then in that case, you can park your unfinished work, in-progress work, and you start working on something else.
+
+[rochak agrawal] 08:30:37
+So that's the use of this.
+
+[Vaibhav Gupta] 08:30:40
+Okay, okay.
+
+[rochak agrawal] 08:30:41
+Okay?
+
+[rochak agrawal] 08:30:42
+See, it is a feature. If you do not have any such requirement, you don't use it.
+
+[rochak agrawal] 08:30:51
+Right? If you're never occurring any such situation where you need to park your unfinished work. See, it is not a mandatory requirement, right? It is when you want to use it.
+
+[Vaibhav Gupta] 08:30:57
+Hmm.
+
+[rochak agrawal] 08:31:05
+Okay.
+
+[rochak agrawal] 08:31:09
+Yes, Rajesh?
+
+[Rajesh Chandran] 08:31:11
+Uh, Rajak, this Git stash is working basically from the staging area only, or by default, or staging area? From the working directory, what we will do then?
+
+[rochak agrawal] 08:31:16
+From the staging area, yes, yes, from the staging area.
+
+[rochak agrawal] 08:31:20
+No, you see, working directly anyways, uh… until… see…
+
+[rochak agrawal] 08:31:26
+the whole use case for this Rajesh is, I don't want to commit it, right? Until and unless my file is not going into the staging area, you can anyway not commit it.
+
+[Rajesh Chandran] 08:31:37
+That is right, yeah.
+
+[rochak agrawal] 08:31:39
+Correct. And see if the file will remain in the working area and I started working on something else, my working directory will look messy. Correct. Because again, when you run the Git status, it will say your index.html is changed. You need to add this.
+
+[rochak agrawal] 08:31:56
+So, just… I will hide it. I am hiding it. It is like you're in… it is going into the incognito mode.
+
+[Rajesh Chandran] 08:32:02
+Right, yeah, that point I got. So my question is, if the file is in working directory, do we need to move it to staging first, then only we can cache it?
+
+[rochak agrawal] 08:32:04
+Hmm.
+
+[rochak agrawal] 08:32:09
+Correct, yes. Move it to staging, then it's staged.
+
+[Rajesh Chandran] 08:32:12
+Okay. So if you unstash it, it will come back to the staging area again.
+
+[rochak agrawal] 08:32:17
+Come back to staging area, and then you, uh, we can anyways modify our file in the staging area altogether.
+
+[Rajesh Chandran] 08:32:23
+Okay, okay.
+
+[Rajesh Chandran] 08:32:25
+Okay, fine. Thank you.
+
+[rochak agrawal] 08:32:27
+Yep.
+
+[rochak agrawal] 08:32:33
+Yes, Minga?
+
+[Megha Uthaman] 08:32:38
+Uh, yeah, hi, Roshan. So, uh, during the development activities, these kind of features, we used to enable it from the GitHub or from the Visual Studio.
+
+[rochak agrawal] 08:32:47
+No, this is not something we enable. This is already there. So if developer is using the Git console terminal, I would say.
+
+[Megha Uthaman] 08:32:49
+Right?
+
+[Megha Uthaman] 08:32:52
+Yes.
+
+[Megha Uthaman] 08:32:56
+Yeah, we… yes, we used to do that from the… I mean, so my question was, like, when you're coming to the DevOps site, is it mandatory it should be done from this GitHash, or he can also do it from the GitHub also, right?
+
+[rochak agrawal] 08:32:58
+This this is these things are already there.
+
+[rochak agrawal] 08:33:05
+Mm-hmm.
+
+[Megha Uthaman] 08:33:13
+Like, now you are showing the… the CMT.
+
+[rochak agrawal] 08:33:13
+No, see, I'll tell you. Yeah, I'll tell you. See, there is something, and as I explained, we will see the GitHub also.
+
+[rochak agrawal] 08:33:23
+See a developer, when you say, uh…
+
+[rochak agrawal] 08:33:26
+you cannot do many things from the GitHub.
+
+[rochak agrawal] 08:33:30
+GitHub will give you some features, okay? You can commit from GitHub, et cetera, et cetera. But when you are in a multi-developer team, see, in the end, you need to understand this.
+
+[rochak agrawal] 08:33:44
+Git is a distributed version control system, okay? So…
+
+[rochak agrawal] 08:33:50
+This is your GitHub repo, right? This is your central repo, correct?
+
+[rochak agrawal] 08:33:58
+Then everyone will download their own repo.
+
+[rochak agrawal] 08:34:05
+Right?
+
+[rochak agrawal] 08:34:06
+And you are doing the changes with this repo.
+
+[rochak agrawal] 08:34:10
+Correct? Megha? Hillier till now? Now, see, when you say, can I do it with the GitHub?
+
+[Megha Uthaman] 08:34:11
+Yes, yes, yes.
+
+[rochak agrawal] 08:34:17
+First, the answer to that is, uh, there are many things. So, for example, stashing you cannot do with GitHub, but commit you can do with GitHub.
+
+[rochak agrawal] 08:34:25
+Okay, but it will depend on platform to platform, which platform you are using, and you need to see what features they are giving. So, for example, maybe there is a feature which will be available in GitHub, but that may not be available in GitLab.
+
+[rochak agrawal] 08:34:40
+OK, so the first thing is.
+
+[rochak agrawal] 08:34:42
+You need to see the platform you're using is giving you the feature or not.
+
+[rochak agrawal] 08:34:47
+will depend on platform to platform.
+
+[rochak agrawal] 08:34:49
+Second thing is, now you say I can commit from GitHub. Should I go ahead? Why I am installing everything on my local system? I will just go do and do the commit directly on the GitHub only, correct?
+
+[rochak agrawal] 08:35:05
+See, you can do it, no problem. But then, you need to understand, Megha, is…
+
+[rochak agrawal] 08:35:10
+If you're doing directly on GitHub, you're doing it in a central repo, correct?
+
+[rochak agrawal] 08:35:16
+And that defies the whole purpose of using a distributed version control system.
+
+[rochak agrawal] 08:35:24
+Okay, so it is not recommended. If you are, let's say, one or two users, then it is okay. But when you are working on a multi-developer team, let's say you are working on a source code repository where 20 or 30 developers are working.
+
+[rochak agrawal] 08:35:41
+It is not recommended that you go and do it with your central repository. You always do your changes with your local repository, and with the help of something called a merge request.
+
+[rochak agrawal] 08:35:55
+you merge your code into the central repository. In fact, and I'll show you that also, sometimes we even don't allow the users, so there are security rules we can apply, where.
+
+[rochak agrawal] 08:36:10
+be bill…
+
+[rochak agrawal] 08:36:11
+block everyone to directly do the commit to the central level.
+
+[rochak agrawal] 08:36:16
+Okay, so now there is two things that first you need to see on the platform if they are what things, what features they are allowing. Second is you can do it, but it is not recommended.
+
+[rochak agrawal] 08:36:31
+Okay.
+
+[Megha Uthaman] 08:36:33
+Okay.
+
+[Megha Uthaman] 08:36:38
+So, as you mentioned, from the DevOps side, we should perform this, uh, using this git bash.
+
+[rochak agrawal] 08:36:44
+Hmm. See, as a DevOps, see, uh, in the end, it's a right developers which is writing the code, correct?
+
+[Megha Uthaman] 08:36:51
+There you go. Yes.
+
+[rochak agrawal] 08:36:52
+So, most of the Git-related work, all these merge, conflict, restoring.
+
+[rochak agrawal] 08:36:59
+I cannot go and revert some changes of a developer, because I don't know what he is doing, correct?
+
+[Megha Uthaman] 08:37:04
+Um, yes.
+
+[rochak agrawal] 08:37:06
+So, Git and Maven, these two tools are more… 80% developers are working, 20% we, as a DevOps engineer, is working. So, for example, someone will come to us and ask them to give a.
+
+[rochak agrawal] 08:37:20
+permission on a repository, uh, B mentioned about the security rules, right? So we'll set up these security rules, branch protection rules, and other things, right? So those type of activities we do, but your code changes, uh, you're reverting, restoring.
+
+[rochak agrawal] 08:37:37
+Which we generally don't do.
+
+[rochak agrawal] 08:37:38
+But it's a developer will do.
+
+[rochak agrawal] 08:37:41
+Okay, now…
+
+[rochak agrawal] 08:37:45
+there is a very, very, very interesting feature about the Git, and this is called the branch.
+
+[rochak agrawal] 08:37:52
+So, restore and re-waste, we will understand once we know the branch.
+
+[rochak agrawal] 08:37:57
+Now, what is a branch?
+
+[rochak agrawal] 08:37:59
+Okay.
+
+[rochak agrawal] 08:38:04
+So, branches…
+
+[rochak agrawal] 08:38:11
+Let's say I am…
+
+[rochak agrawal] 08:38:13
+working on this Word document.
+
+[rochak agrawal] 08:38:19
+Okay, now I'll say hi.
+
+[rochak agrawal] 08:38:22
+I am working on this.
+
+[rochak agrawal] 08:38:26
+And this is my…
+
+[rochak agrawal] 08:38:29
+Final draft.
+
+[rochak agrawal] 08:38:31
+Okay, now you can save this file.
+
+[rochak agrawal] 08:38:38
+So I'll save it on the desktop.
+
+[rochak agrawal] 08:38:41
+It's a simple dog.
+
+[rochak agrawal] 08:38:43
+Right? Now, this is my final version. I don't want to touch it. Right? Same thing happens with your application code.
+
+[rochak agrawal] 08:38:52
+Now, once you…
+
+[rochak agrawal] 08:38:54
+let's say you are developing some feature. Your feature is developed, you deployed that application, your application is working absolutely fine, correct?
+
+[rochak agrawal] 08:39:04
+Now, you… you say, I want to develop feature 2.
+
+[rochak agrawal] 08:39:07
+But it should not happen that once I'm developing the feature 2.
+
+[rochak agrawal] 08:39:13
+I…
+
+[rochak agrawal] 08:39:15
+I'm messing around with feature one, correct? My feature one should be available. So what you can do is, so for example, let's say we'll understand from this word document. Now my word document is ready. I want to write something else as well. So what I'll do.
+
+[rochak agrawal] 08:39:32
+Someone is saying, you can do anything, but you should not…
+
+[rochak agrawal] 08:39:35
+do anything with this, right? So, what you can do, uh, you can do a save as copy, and again, you say, I am saving another one.
+
+[rochak agrawal] 08:39:45
+Simple one.
+
+[rochak agrawal] 08:39:47
+dot Word document.
+
+[rochak agrawal] 08:39:49
+Great, and now you can write something.
+
+[rochak agrawal] 08:39:54
+So the point here is.
+
+[rochak agrawal] 08:39:56
+Now, you have two documents. One is a simple one, and another is a simple and simple one.
+
+[rochak agrawal] 08:40:03
+Derive the sample one document from the sample document, but whatever changes you are doing in the sample one is not impacting the sample document.
+
+[rochak agrawal] 08:40:14
+Correct. Similar case happened with the branching.
+
+[rochak agrawal] 08:40:18
+So when you have a stable code and you want to do a new development.
+
+[rochak agrawal] 08:40:25
+You will always do the new development.
+
+[rochak agrawal] 08:40:29
+in a parallel line of development, okay? So that it is not going to impact your current code. So let's say in my folder, I'll… I think we should have a slide on the branch.
+
+[rochak agrawal] 08:40:41
+Okay, yeah. So you see, a branch is a movable pointer to a commit, creating one writes a small file and switching over it.
+
+[rochak agrawal] 08:40:50
+So you can see.
+
+[rochak agrawal] 08:40:53
+Now…
+
+[rochak agrawal] 08:40:55
+Let's see…
+
+[rochak agrawal] 08:40:56
+This is your stable line of development. You have commit one, you commit two, commit three, and commit four.
+
+[rochak agrawal] 08:41:03
+Okay.
+
+[rochak agrawal] 08:41:04
+Now, when you create your Git repo.
+
+[rochak agrawal] 08:41:11
+and you see Git branch.
+
+[rochak agrawal] 08:41:17
+I only have one branch as of now, and this is a default branch.
+
+[rochak agrawal] 08:41:21
+So when you are not creating any branch, okay.
+
+[rochak agrawal] 08:41:27
+By default, a master branch will be created.
+
+[rochak agrawal] 08:41:31
+This is somewhere it is called a main branch. Somewhere it will be called as a master branch. They both branches are same. So this is a default branch and the single branch and you right see you always work on a branch okay.
+
+[rochak agrawal] 08:41:46
+Now, understand what happens is.
+
+[rochak agrawal] 08:41:58
+So you, as you say, when you initialize the Git repository.
+
+[rochak agrawal] 08:42:03
+there is always a master branch created for you. This is a default branch, so any…
+
+[rochak agrawal] 08:42:07
+Every time you are in a master branch.
+
+[rochak agrawal] 08:42:11
+Now, you will do commit C1, commit C2, commit C3, commit C4, now whatever the number of the commit you want.
+
+[rochak agrawal] 08:42:18
+Now you say commit C4 is your final commit where you deployed your application.
+
+[rochak agrawal] 08:42:24
+Now you want to deploy some other features. So what you can see, now if I do start like this, that may hamper my previous things.
+
+[rochak agrawal] 08:42:35
+This is my stable code. I don't want to do anything with this.
+
+[rochak agrawal] 08:42:39
+And I want to do a new development, so what I'll do, I'll create a branch out of here.
+
+[rochak agrawal] 08:42:48
+I'll create a branch out of here. Now.
+
+[rochak agrawal] 08:42:52
+from whatever commit you are creating a branch. This is very important.
+
+[rochak agrawal] 08:42:56
+From whatever commit you… you have the, uh…
+
+[rochak agrawal] 08:43:01
+you are creating the branch. We call it creating the branch, we sometimes call it as cutting the branch also. Now, whatever is there in C4.
+
+[rochak agrawal] 08:43:10
+It is come here, and then you can move your parallel line of development altogether.
+
+[rochak agrawal] 08:43:17
+So that it is not impacting your existing code.
+
+[rochak agrawal] 08:43:22
+Now, you can create multiple branches, and every branch will have its own line of development.
+
+[rochak agrawal] 08:43:32
+Now, the use case for this is, um…
+
+[rochak agrawal] 08:43:40
+you will work… you will be working on multiple features, okay? So, every feature will be unrelated to another, so then, what we can do is, we can create multiple branches, and we can do the feature development in…
+
+[rochak agrawal] 08:43:56
+parallel. Okay? Now, how does it work? We'll see that.
+
+[rochak agrawal] 08:43:59
+So currently if you see in my repository I have a master branch okay.
+
+[rochak agrawal] 08:44:08
+And if you see…
+
+[rochak agrawal] 08:44:10
+It…
+
+[rochak agrawal] 08:44:13
+I mean, uh, sorry, bit log.
+
+[rochak agrawal] 08:44:16
+So, I have…
+
+[rochak agrawal] 08:44:22
+Like, how many commits are there? 1, 2, 3, 4, 5, 6…
+
+[rochak agrawal] 08:44:30
+7…
+
+[rochak agrawal] 08:44:33
+8, 9 commits are there. Correct. Now, what I can do is…
+
+[rochak agrawal] 08:44:38
+Very importantly, this is the one.
+
+[rochak agrawal] 08:44:40
+And here you can see, head is currently pointing to the master. Head is pointing to this commit, and head is pointing to the master.
+
+[rochak agrawal] 08:44:48
+Which means my… I am currently on my master branch. Okay, now if I do git branch.
+
+[rochak agrawal] 08:44:56
+I'm creating another branch called Dev.
+
+[rochak agrawal] 08:44:59
+Okay, now my web branch is created, and if you see it…
+
+[rochak agrawal] 08:45:05
+branch.
+
+[rochak agrawal] 08:45:09
+I have two branch, master and dev. But if you see, the star is pointing to master. This means I am still on the master branch.
+
+[rochak agrawal] 08:45:19
+And we can verify this also from the git log command.
+
+[rochak agrawal] 08:45:26
+If you see here.
+
+[rochak agrawal] 08:45:30
+Now…
+
+[rochak agrawal] 08:45:33
+Okay, this is all revert.
+
+[rochak agrawal] 08:45:35
+So, you can see my head is both on a master, it's the same commit.
+
+[rochak agrawal] 08:45:44
+Head is pointing to master, but my dev and master both on this commit.
+
+[rochak agrawal] 08:45:50
+So, it is like…
+
+[rochak agrawal] 08:45:57
+I had 9 commit on my master branch, 1…
+
+[rochak agrawal] 08:46:02
+2, 3.
+
+[rochak agrawal] 08:46:06
+6, 7, 8, 9. Okay. So, I was here.
+
+[rochak agrawal] 08:46:17
+To the master.
+
+[rochak agrawal] 08:46:21
+And here, I created a branch.
+
+[rochak agrawal] 08:46:25
+Which is there.
+
+[rochak agrawal] 08:46:28
+Now, whatever you do on the dev branch will work like this.
+
+[rochak agrawal] 08:46:32
+Nothing will happen on the master branch. And how do I work on the dev suite?
+
+[rochak agrawal] 08:46:37
+you will see your current branches, two options. One is where the star is pointing to, or where the head is pointing to.
+
+[rochak agrawal] 08:46:44
+OK, now if you see.
+
+[rochak agrawal] 08:46:54
+If you want to switch to another branch, so it's a checkout.
+
+[rochak agrawal] 08:47:01
+them.
+
+[rochak agrawal] 08:47:03
+Is this switched to branch web?
+
+[rochak agrawal] 08:47:06
+Okay.
+
+[rochak agrawal] 08:47:11
+Now, if you run, get…
+
+[rochak agrawal] 08:47:25
+Check out. And now, if you run Git branch.
+
+[rochak agrawal] 08:47:30
+You can see, now my star is pointing to dev.
+
+[rochak agrawal] 08:47:33
+Right. And then, if you run Git, uh…
+
+[rochak agrawal] 08:47:37
+Log?
+
+[rochak agrawal] 08:47:40
+You can see, now my head is pointing to the dev branch.
+
+[rochak agrawal] 08:47:45
+Clear? So now I go find my dev.
+
+[rochak agrawal] 08:47:48
+Now, here's a very interesting thing I'll show you.
+
+[rochak agrawal] 08:47:52
+Currently, if you see, I am on my dev branch.
+
+[rochak agrawal] 08:47:57
+Okay? Now, whatever was there in my master branch, it is there in my dev branch also.
+
+[rochak agrawal] 08:48:05
+Now, whatever you create. So, what is this? Download reward repo. So, if you go download…
+
+[rochak agrawal] 08:48:14
+revert repo. So you can see index, app, app3, app1, app2.
+
+[rochak agrawal] 08:48:18
+Now you see.
+
+[rochak agrawal] 08:48:23
+You can understand your head is your working directory.
+
+[rochak agrawal] 08:48:29
+on which branch I have, you can see here also it is very clearly telling you that you are on dev branch. Okay, now if I go clear…
+
+[rochak agrawal] 08:48:39
+get…
+
+[rochak agrawal] 08:48:41
+Okay, sorry. Uh, I'll say VI…
+
+[rochak agrawal] 08:48:45
+Let me create a file called web.txt.
+
+[rochak agrawal] 08:49:03
+I… this file…
+
+[rochak agrawal] 08:49:06
+I am creating.
+
+[rochak agrawal] 08:49:09
+On the…
+
+[rochak agrawal] 08:49:15
+And…
+
+[rochak agrawal] 08:49:17
+It will not be visible on the…
+
+[rochak agrawal] 08:49:22
+Master branch.
+
+[rochak agrawal] 08:49:26
+Okay, save this. Again, the same thing.
+
+[rochak agrawal] 08:49:30
+Hit add.
+
+[rochak agrawal] 08:49:33
+dab.txt.
+
+[rochak agrawal] 08:49:35
+And here, if you see…
+
+[rochak agrawal] 08:49:37
+you are going to see the dev file, correct? And if you open this.
+
+[rochak agrawal] 08:49:42
+I am creating this on a dev branch, and it will be… it will not be visible on the master branch.
+
+[rochak agrawal] 08:49:46
+Okay, very simple. Now, again, if I go commit this, git add dev.txt and git commit.
+
+[rochak agrawal] 08:50:03
+This is my first commit.
+
+[rochak agrawal] 08:50:07
+On the tab branch.
+
+[rochak agrawal] 08:50:11
+Right?
+
+[rochak agrawal] 08:50:12
+Very interestingly, now you see what has happened. Git status.
+
+[rochak agrawal] 08:50:18
+Nothing? Yeah?
+
+[rochak agrawal] 08:50:23
+You see.
+
+[rochak agrawal] 08:50:25
+Your master is here.
+
+[rochak agrawal] 08:50:26
+But your dev has moved ahead. So something similar, if you visualize this.
+
+[rochak agrawal] 08:50:37
+So, previously, your head and dev, master and dev, both were here.
+
+[rochak agrawal] 08:50:43
+When you checked out.
+
+[rochak agrawal] 08:50:47
+Your head, instead of moving to master.
+
+[rochak agrawal] 08:50:50
+It has pointing to Deb.
+
+[rochak agrawal] 08:50:57
+Then, you made one commit here.
+
+[rochak agrawal] 08:51:01
+So now your head, your head always point to the latest commit.
+
+[rochak agrawal] 08:51:06
+To your head?
+
+[rochak agrawal] 08:51:07
+has moved.
+
+[rochak agrawal] 08:51:14
+Okay.
+
+[rochak agrawal] 08:51:17
+So, that is how it works. Now, you see, I have made one commit on the branch.
+
+[rochak agrawal] 08:51:24
+Uh, on the dev branch.
+
+[rochak agrawal] 08:51:27
+So now, anything, any development you are doing.
+
+[rochak agrawal] 08:51:32
+now you are doing on the dev branch itself. You are not doing anything on the master.
+
+[rochak agrawal] 08:51:39
+You created a dev.txt on the dev branch.
+
+[rochak agrawal] 08:51:42
+And how we will show, we'll prove it.
+
+[rochak agrawal] 08:51:45
+So if you see here.
+
+[rochak agrawal] 08:51:49
+depth, right? Now, if you see, I'll do a queue.
+
+[rochak agrawal] 08:51:53
+Yeah?
+
+[rochak agrawal] 08:51:56
+Now, if I again go back to… if I want to again go back to master, so I'll say get checkout.
+
+[rochak agrawal] 08:52:03
+Master.
+
+[rochak agrawal] 08:52:04
+But before that…
+
+[rochak agrawal] 08:52:05
+Let me do a ls hyphen lrp.
+
+[rochak agrawal] 08:52:09
+You can see there is a dev.txt. And same thing, you can see it.
+
+[rochak agrawal] 08:52:14
+here in your File Load Explorer. Basically, it's the same thing, right?
+
+[rochak agrawal] 08:52:18
+All the files.
+
+[rochak agrawal] 08:52:20
+Now you see the magic.
+
+[rochak agrawal] 08:52:24
+check out.
+
+[rochak agrawal] 08:52:27
+Okay? Switched to branch master. Now you can see your current cursor is master. Previously it was there.
+
+[rochak agrawal] 08:52:35
+Now you see.
+
+[rochak agrawal] 08:52:37
+Where is the dev.txt?
+
+[rochak agrawal] 08:52:39
+Can you see the dev.txt?
+
+[rochak agrawal] 08:52:42
+No.
+
+[rochak agrawal] 08:52:49
+There is no dev.txt. Where is dev.txt?
+
+[Vaibhav Gupta] 08:52:56
+It is deleted.
+
+[rochak agrawal] 08:53:00
+It is not deleted.
+
+[Gyanendra Narayan] 08:53:05
+It is in the dev branch.
+
+[rochak agrawal] 08:53:06
+It is in the dev branch, and we are pointing to the master branch.
+
+[rochak agrawal] 08:53:11
+If you again switch back to…
+
+[rochak agrawal] 08:53:18
+You'll see the WTXT.
+
+[rochak agrawal] 08:53:21
+You see?
+
+[rochak agrawal] 08:53:26
+So, we can have.
+
+[rochak agrawal] 08:53:29
+Multiple parallel line of development.
+
+[rochak agrawal] 08:53:33
+You can see that?
+
+[rochak agrawal] 08:53:35
+Clear? Any question in the branch?
+
+[rochak agrawal] 08:53:37
+How you can create the branch, how you can switch the branch, and you see?
+
+[rochak agrawal] 08:53:43
+And it does, uh…
+
+[rochak agrawal] 08:53:48
+I'll show you one more thing, then I'll take the question. So it does not mean that I cannot do any further development on the master. I can do a development on master also.
+
+[rochak agrawal] 08:54:00
+Okay, I'll say VIN.
+
+[rochak agrawal] 08:54:07
+app.txt.
+
+[rochak agrawal] 08:54:14
+this file.
+
+[rochak agrawal] 08:54:18
+I am creating.
+
+[rochak agrawal] 08:54:21
+On the master branch.
+
+[rochak agrawal] 08:54:27
+This is Bill.
+
+[rochak agrawal] 08:54:29
+On the app.
+
+[rochak agrawal] 08:54:32
+Routes. See? Uh, again, same thing. Get add.
+
+[rochak agrawal] 08:54:36
+master.txt.
+
+[rochak agrawal] 08:54:47
+I edit app.
+
+[rochak agrawal] 08:54:49
+EXT.
+
+[rochak agrawal] 08:54:50
+Okay? Git commit.
+
+[rochak agrawal] 08:54:55
+Hyphen M.
+
+[rochak agrawal] 08:54:58
+This is…
+
+[rochak agrawal] 08:55:00
+One master branch.
+
+[rochak agrawal] 08:55:05
+Ilya?
+
+[rochak agrawal] 08:55:06
+If you see this tree.
+
+[rochak agrawal] 08:55:09
+git log.
+
+[rochak agrawal] 08:55:10
+So you can see it here.
+
+[rochak agrawal] 08:55:19
+Your head is now pointing to master. Okay. And here you can see.
+
+[rochak agrawal] 08:55:29
+app.txt, you can see, see it here, okay? But if you, again, uh, switch back to…
+
+[rochak agrawal] 08:55:42
+You check out.
+
+[rochak agrawal] 08:55:43
+Yep.
+
+[rochak agrawal] 08:55:44
+Switch to branch dev, and here you can see there is no app.txt.
+
+[rochak agrawal] 08:55:50
+App.json is there, that's a different file.
+
+[rochak agrawal] 08:55:52
+And then there is a dev.txt.
+
+[rochak agrawal] 08:55:55
+So now visually if you see.
+
+[rochak agrawal] 08:55:58
+Here, also, you have moved one time.
+
+[rochak agrawal] 08:56:01
+Now you can run parallel development here. Whenever you want to, let's say, work on feature one, you can jump to a feature one branch whenever you want to. And it is not only the one branch. You can create multiple branches. I can create 10 branches. I have worked with the development team. They used to work.
+
+[rochak agrawal] 08:56:18
+Uh, with almost 70 branches, 70 branches, okay?
+
+[rochak agrawal] 08:56:25
+75 branches. So you can have as many branches as you want, and you can run your development in parallel of different functionalities.
+
+[rochak agrawal] 08:56:34
+And that is the use of the…
+
+[rochak agrawal] 08:56:39
+branches. Any question for me?
+
+[rochak agrawal] 08:56:55
+Yes, Gannon?
+
+[Gyanendra Narayan] 08:56:58
+First of all, I want to ask, suppose that we have two parallel development, then when we can merge it? Suppose that…
+
+[rochak agrawal] 08:57:04
+Yes, but I'll come to that, I'll come to that again. So there are different merge patterns are there, and there's a different flows are there. We'll come back to it.
+
+[Gyanendra Narayan] 08:57:06
+Okay, okay. Then…
+
+[Gyanendra Narayan] 08:57:14
+Okay. Now, second, sir, you told that it will be always to the latest commit, it will be a head. Head will be always to the latest commit. But now we think that the previous commit was the more stable version. So how to point that head to the previous commit so that it can be copied to different.
+
+[rochak agrawal] 08:57:22
+Got it.
+
+[Gyanendra Narayan] 08:57:34
+user or something like that. So it can be done, or it can be always be to… will be the last commit as a head.
+
+[rochak agrawal] 08:57:38
+No, it's…
+
+[rochak agrawal] 08:57:41
+Correct. So it will take, uh, again, it is going to take the latest commit where head will be pointing to.
+
+[rochak agrawal] 08:57:48
+Right? But we keep saying that you can always go to any of the previous version. Version is a commit, right?
+
+[rochak agrawal] 08:57:55
+So you will just run the command git checkout and the commit ID, and your head will point to the previous commit also. So this can be done. But when you say, uh, in this case, the last commit is the latest one.
+
+[Gyanendra Narayan] 08:57:56
+Hmm.
+
+[rochak agrawal] 08:58:08
+Uh, the stable one.
+
+[rochak agrawal] 08:58:09
+It will not always be the case, right? So, for example, when I cut a branch from here, right, this is my latest commit.
+
+[Gyanendra Narayan] 08:58:17
+Correct.
+
+[rochak agrawal] 08:58:18
+Now, why I cut a branch? Because I need to do a parallel development.
+
+[rochak agrawal] 08:58:23
+So then, I need to move ahead.
+
+[Gyanendra Narayan] 08:58:27
+Yes, that I got it, but in case I want a step back, so is it possible…
+
+[rochak agrawal] 08:58:33
+Yes, yes, it is possible.
+
+[rochak agrawal] 08:58:36
+Correct. See, if you see it here, you are taking this branch from here.
+
+[Gyanendra Narayan] 08:58:39
+able to take…
+
+[rochak agrawal] 08:58:42
+Late.
+
+[rochak agrawal] 08:58:42
+That means whatever content is there, that the commit history, you are taking it from here.
+
+[rochak agrawal] 08:58:49
+Now, from this point on, these are two parallel streams.
+
+[Gyanendra Narayan] 08:58:55
+Yeah.
+
+[rochak agrawal] 08:58:55
+Till here, it is all common.
+
+[rochak agrawal] 08:58:57
+Late.
+
+[rochak agrawal] 08:58:59
+So all the versions will be there for master also, for dev also.
+
+[Gyanendra Narayan] 08:59:04
+Okay.
+
+[rochak agrawal] 08:59:06
+Now, these are two different, uh, streams.
+
+[Gyanendra Narayan] 08:59:06
+Yes.
+
+[Gyanendra Narayan] 08:59:10
+streams.
+
+[rochak agrawal] 08:59:11
+And even not that, I can, for example, see, there can be multiple permutation combinations. So, for example.
+
+[rochak agrawal] 08:59:22
+This is my master branch going on. I created a branch from here.
+
+[rochak agrawal] 08:59:26
+I did some development.
+
+[rochak agrawal] 08:59:29
+I create a branch from here also.
+
+[rochak agrawal] 08:59:34
+You move ahead.
+
+[rochak agrawal] 08:59:35
+You can create a branch.
+
+[rochak agrawal] 08:59:39
+So, you just need to see what is a common ancestor for a branch. Now, if I compare…
+
+[rochak agrawal] 08:59:48
+And in this case, there will be… there will always be two branch, okay? One is a source branch, one is a destination branch, right? So in this case, master is a source branch.
+
+[rochak agrawal] 09:00:01
+And this dev is a…
+
+[rochak agrawal] 09:00:05
+Destination branch. But now, in this case, let's say it's a feature 1 branch.
+
+[rochak agrawal] 09:00:11
+So dev is the source branch, and feature one is the destination branch. Correct?
+
+[Gyanendra Narayan] 09:00:16
+Correct.
+
+[rochak agrawal] 09:00:16
+There will always be two branches. From the branch, you are cutting the stream.
+
+[Gyanendra Narayan] 09:00:23
+Yeah. So if the number of branches increases, then it will be a confusion. If we do the branches, branches, branches, branches, lot of branches, so it don't make any confusion.
+
+[rochak agrawal] 09:00:35
+It will, of course, it will. See, uh, sometimes what happens is, uh, uh, and when we will talk about the merge, uh, so the good practice is, so…
+
+[Gyanendra Narayan] 09:00:35
+There's a lot of branches.
+
+[rochak agrawal] 09:00:50
+So, let's say…
+
+[rochak agrawal] 09:00:53
+Good practice is
+
+[rochak agrawal] 09:00:55
+Let's say this is your stable code, right? Now…
+
+[rochak agrawal] 09:01:00
+B generally don't do.
+
+[rochak agrawal] 09:01:02
+As a best practice, as a recommendation, uh, we don't do any, uh.
+
+[rochak agrawal] 09:01:10
+What you can say, um…
+
+[rochak agrawal] 09:01:17
+development work on a master branch.
+
+[rochak agrawal] 09:01:20
+Okay.
+
+[rochak agrawal] 09:01:20
+What we do, um…
+
+[rochak agrawal] 09:01:23
+We create multiple feature branches.
+
+[rochak agrawal] 09:01:29
+Okay? Now, there is a different, different workflow, and uh…
+
+[rochak agrawal] 09:01:33
+This is basically not hard and fast rule. Now, whatever strategy good for you, you can take it ahead.
+
+[rochak agrawal] 09:01:41
+Buns?
+
+[rochak agrawal] 09:01:42
+You will start developing your features.
+
+[rochak agrawal] 09:01:49
+Okay? And then you will cut a release branch.
+
+[rochak agrawal] 09:01:55
+And you merge those features into the release.
+
+[rochak agrawal] 09:01:59
+Maybe a different point, for example.
+
+[rochak agrawal] 09:02:02
+And you deploy this release branch to the production environment.
+
+[rochak agrawal] 09:02:09
+Once it is deployed, okay, uh, to the production environment, your testing is done, it means the code is working fine, means the code is stable, then…
+
+[rochak agrawal] 09:02:20
+We are going to merge it.
+
+[rochak agrawal] 09:02:22
+from again with the master.
+
+[rochak agrawal] 09:02:25
+So that master has a stable code from here, and master has a stable code from here.
+
+[rochak agrawal] 09:02:32
+And then, again, you will cut a release branch. Again, so for example, let's say this was an August release.
+
+[rochak agrawal] 09:02:39
+Now you cut a December release and then start work.
+
+[rochak agrawal] 09:02:43
+And you delete all these branches.
+
+[rochak agrawal] 09:02:46
+But it is up to you. You want to keep the branches, you want to delete the branches, but generally, once the merges happens with the… with your source branch, then you delete the branch.
+
+[Gyanendra Narayan] 09:02:57
+Sir, one last. Sir, one last thing I want to ask. We have a central repository that is remote repository, and.
+
+[rochak agrawal] 09:02:57
+So…
+
+[rochak agrawal] 09:03:04
+Correct.
+
+[Gyanendra Narayan] 09:03:05
+Three of the developer is working parallelly in the three different nodes. Now, wherever the…
+
+[rochak agrawal] 09:03:10
+3 different notes, yes.
+
+[Gyanendra Narayan] 09:03:11
+Yeah, 3 different nodes, or 3 different PC, or something like that. So what happened now, when we are committing these small, small amendments, so this is going to sync with the remote repository.
+
+[rochak agrawal] 09:03:14
+Correct?
+
+[rochak agrawal] 09:03:23
+Okay, yes. This is going to sync when you push it.
+
+[Gyanendra Narayan] 09:03:24
+Okay.
+
+[Gyanendra Narayan] 09:03:27
+When we proceed and do the commit command, after staging everything, then…
+
+[rochak agrawal] 09:03:29
+Look, first you commit it. See, commit happens on your local repository, correct?
+
+[Gyanendra Narayan] 09:03:33
+Correct. And after it, we'll push it to the remote repository. Now, anyhow, we have a remote repository where we have the central data.
+
+[rochak agrawal] 09:03:35
+B push it, correct, yes. Correct.
+
+[rochak agrawal] 09:03:40
+Mm-hmm.
+
+[rochak agrawal] 09:03:43
+Correct?
+
+[Gyanendra Narayan] 09:03:43
+And whenever we take to whenever new user is added or whenever we take the data, it's always the latest from the remote repository to our local repository.
+
+[rochak agrawal] 09:03:51
+Got it.
+
+[rochak agrawal] 09:03:53
+Got it.
+
+[Gyanendra Narayan] 09:03:54
+So, when we have a central repository, and from there only we are getting a copy of the data, and we are working, then why the need of this branch came? Because anyway, we are not touching the report, uh, remote repository. We are always taking a copy and working, and after we commit and push.
+
+[rochak agrawal] 09:04:08
+Correct.
+
+[Gyanendra Narayan] 09:04:09
+Then it would go to the…
+
+[Gyanendra Narayan] 09:04:12
+Remote repository. Then what the use of branching came here?
+
+[rochak agrawal] 09:04:13
+Got it.
+
+[rochak agrawal] 09:04:15
+Okay. See, um…
+
+[rochak agrawal] 09:04:18
+Again, these two are different use cases, okay? Remote repository is for collaboration.
+
+[rochak agrawal] 09:04:26
+Understand?
+
+[rochak agrawal] 09:04:28
+Hey.
+
+[rochak agrawal] 09:04:30
+Clear?
+
+[Gyanendra Narayan] 09:04:31
+Yep.
+
+[rochak agrawal] 09:04:32
+Branching is for the parallel development, okay? See, remote repository, let's say, forget about.
+
+[rochak agrawal] 09:04:39
+you do not have a branch, right? Now, in that case, I… whatever I'm developing.
+
+[rochak agrawal] 09:04:52
+So let's say I do not have a branch, then I will develop everything here in a linear fashion, correct?
+
+[Gyanendra Narayan] 09:04:59
+Got it.
+
+[rochak agrawal] 09:05:01
+Now, let's say…
+
+[rochak agrawal] 09:05:04
+Uh, see, remote repository, you understand it is for collaboration.
+
+[rochak agrawal] 09:05:08
+Okay, now understand the use case of a branch. Now everything is here.
+
+[rochak agrawal] 09:05:14
+Okay? Now, whatever commit you are doing.
+
+[rochak agrawal] 09:05:20
+Everything will go in a single line, correct? Now, the problem with this is…
+
+[rochak agrawal] 09:05:25
+Now, here you deploy something to your production.
+
+[rochak agrawal] 09:05:34
+Headache?
+
+[Gyanendra Narayan] 09:05:35
+Correct.
+
+[rochak agrawal] 09:05:36
+And it is not like that, once you deploy something, you will stop. You will… maybe will get some feature on your existing product, you will add more feature, correct? So you always need to double up, even though you release something into the production. Agree?
+
+[Gyanendra Narayan] 09:05:50
+Yeah, I agree.
+
+[rochak agrawal] 09:05:51
+Now, what may happen here, if you are not using the branch, whatever incremental code you are developing.
+
+[rochak agrawal] 09:05:59
+It may create a mess with your existing code.
+
+[rochak agrawal] 09:06:03
+Okay, there might be some feature which is probably not backward compatible.
+
+[Gyanendra Narayan] 09:06:04
+Okay, okay.
+
+[rochak agrawal] 09:06:12
+So whatever the new development you are doing, it may create a problem for your existing code.
+
+[rochak agrawal] 09:06:19
+Okay.
+
+[Gyanendra Narayan] 09:06:20
+Okay.
+
+[rochak agrawal] 09:06:21
+For that, what we do, we say, okay, you have double… you have deployed this.
+
+[rochak agrawal] 09:06:32
+You have deployed this to production.
+
+[rochak agrawal] 09:06:38
+This is my stable code, correct?
+
+[Gyanendra Narayan] 09:06:40
+Correct.
+
+[rochak agrawal] 09:06:41
+I am not going to touch it.
+
+[rochak agrawal] 09:06:42
+What I am going to do, I am going to run a parallel stream of development.
+
+[rochak agrawal] 09:06:52
+So that if any breakage happens, I have my stable code always available with me.
+
+[rochak agrawal] 09:07:00
+Understood.
+
+[Gyanendra Narayan] 09:07:01
+Understood.
+
+[rochak agrawal] 09:07:03
+Once I test this code, and I found this code also stable.
+
+[rochak agrawal] 09:07:08
+I'm going to merge this.
+
+[rochak agrawal] 09:07:12
+So that your main branch, or the master branch, always has the stable code.
+
+[rochak agrawal] 09:07:17
+That is one thing.
+
+[Gyanendra Narayan] 09:07:18
+In other word, in other word, we can say that if you are not sure about how this code or this feature is going to impact our main repository or our main stable code, we will take a branch, we'll do on work, and we will come to a conclusion and we'll check, check and test.
+
+[rochak agrawal] 09:07:32
+Got it. C. Yes.
+
+[Gyanendra Narayan] 09:07:35
+Then we'll must do our previous thing.
+
+[rochak agrawal] 09:07:35
+You can say that, yes. Yes, you can say that, and uh… Gannon, as I mentioned.
+
+[rochak agrawal] 09:07:42
+most probably 99%, if there is good DevOps practices are going to implement in your organization, you are never going to commit on your master branch directly.
+
+[Gyanendra Narayan] 09:07:55
+Okay.
+
+[rochak agrawal] 09:07:56
+Okay, you will never do it.
+
+[rochak agrawal] 09:07:58
+Once you deploy it, you find it is stable, you merge it with the master.
+
+[Gyanendra Narayan] 09:08:02
+Correct, sir. Got it.
+
+[rochak agrawal] 09:08:02
+Okay, so now, see, now there is two use cases. One, you say the remote repository. Now, if you go any of this repository also, so for example, if I go to GitHub.
+
+[rochak agrawal] 09:08:19
+And if I…
+
+[rochak agrawal] 09:08:21
+For example, take this repository.
+
+[rochak agrawal] 09:08:25
+Here, I have only one branch, okay?
+
+[rochak agrawal] 09:08:39
+One branch.
+
+[rochak agrawal] 09:08:48
+We are also one branch only.
+
+[rochak agrawal] 09:08:54
+Here, you can see, those are two branches. Okay. So…
+
+[rochak agrawal] 09:08:59
+It is not…
+
+[rochak agrawal] 09:09:01
+If I am seeing this.
+
+[rochak agrawal] 09:09:05
+Okay, one might be stale.
+
+[rochak agrawal] 09:09:09
+Yeah, this is still, uh, 3 years ago.
+
+[rochak agrawal] 09:09:13
+So the point is this remote repository, whatever is the platform we are using, we are using GitHub, it just for sharing between the resources. So you can see I can share the branches also. It is not only that I am going to share the master.
+
+[rochak agrawal] 09:09:28
+I am going to share the multiple branches, whatever the branch is. I am not seeing code.
+
+[rochak agrawal] 09:09:34
+Where I have multiple branches.
+
+[Gyanendra Narayan] 09:09:37
+So branches can be shared and collaborated with the other people also.
+
+[rochak agrawal] 09:09:40
+Correct, you can share your branches also.
+
+[rochak agrawal] 09:09:42
+Absolutely.
+
+[rochak agrawal] 09:09:44
+Okay, so your remote repository is for the collaboration, your branches is for the parallel line of development, two different use cases.
+
+[Gyanendra Narayan] 09:09:56
+Okay, so thank you.
+
+[rochak agrawal] 09:09:57
+Okay.
+
+[rochak agrawal] 09:10:03
+Yes, Bebo.
+
+[rochak agrawal] 09:10:12
+Yes, Adif?
+
+[Arif] 09:10:21
+Yeah
+
+[Arif] 09:10:21
+So, regarding this, uh, so sometime we have, like, uh, heard or seen something, like, uh, there is some issues with the stable release as well.
+
+[rochak agrawal] 09:10:30
+Mm-hmm.
+
+[Arif] 09:10:31
+How can we revert back the commit? Is the same process, or if we revert back the commit, how it is going to integrate or sync with the branches?
+
+[rochak agrawal] 09:10:39
+Okay. See, uh, we don't reward the commit as such. When you are saying… so you are saying, uh, let me understand your question. Uh, so you are saying, uh, uh, that you deploy something into the production, and, uh, in production, you might get some issue.
+
+[Arif] 09:10:55
+Yep.
+
+[rochak agrawal] 09:10:56
+Yeah? So, you see, there is something, uh, I'll show you.
+
+[Arif] 09:10:57
+No.
+
+[rochak agrawal] 09:11:14
+So you can see the branching could be very complicated.
+
+[rochak agrawal] 09:11:20
+Yeah, this is a nice one.
+
+[rochak agrawal] 09:11:30
+So you see how this is going to happen.
+
+[rochak agrawal] 09:11:35
+So, for example, uh…
+
+[rochak agrawal] 09:11:37
+from master, you are cutting the developer branch. Okay, these are the name, okay, this is… these are not hard and fast names. You can name it according to your convenience also.
+
+[rochak agrawal] 09:11:52
+Okay.
+
+[rochak agrawal] 09:11:59
+Just a second, yeah. So you can see from the master, you are cutting the develop branches, and on the develop branch, you will again create multiple feature, and you merge it. And from the develop branch, you will create a release. Once the release is deployed, you again merge back to the master.
+
+[rochak agrawal] 09:12:15
+That's the usual flow. Now, if I answer your question, uh, Arif, generally what happens is, uh.
+
+[rochak agrawal] 09:12:22
+And from the master.
+
+[rochak agrawal] 09:12:25
+See, your master will always have a stable code.
+
+[rochak agrawal] 09:12:28
+Okay, now…
+
+[rochak agrawal] 09:12:31
+When there is an issue with your stable release, then…
+
+[rochak agrawal] 09:12:36
+from the master, see, for example, that release… this release is deployed, for example, in your production environment, correct? Now, once the release is deployed, I have.
+
+[rochak agrawal] 09:12:46
+Merge it into the master.
+
+[rochak agrawal] 09:12:49
+And you found a issue in your, uh…
+
+[rochak agrawal] 09:12:54
+stabilities. So then what we are going to do, we are going to create a hotfix branch directly from here, because this is having all the code.
+
+[rochak agrawal] 09:13:05
+So, we can create a hotfix branch from here.
+
+[rochak agrawal] 09:13:12
+And then we are going to resolve this bug on the hotfix branch. We deploy this hotfix branch to the production.
+
+[rochak agrawal] 09:13:21
+And the merge it.
+
+[rochak agrawal] 09:13:22
+So that is how we generally follow. Okay.
+
+[rochak agrawal] 09:13:26
+In production environments, RF, we…
+
+[rochak agrawal] 09:13:30
+See, generally, don't… if you need to roll back, for example, okay, when you say, uh, do I need to revert?
+
+[rochak agrawal] 09:13:38
+the commit. We generally don't revert the commits, because reverting the commits is more of a local operation.
+
+[rochak agrawal] 09:13:44
+But you can roll back to a previous version of deployment. So, let's say this… I have 3 releases. R1.
+
+[rochak agrawal] 09:13:52
+R2?
+
+[rochak agrawal] 09:13:53
+R3.
+
+[rochak agrawal] 09:13:55
+Now, you released R3, but then there was some issue with R3. So, what you can do is build your CICD backlink. So, we are here to see our CI engine, which is our Jenkins. From the Jenkins, I will immediately deploy R to my production.
+
+[rochak agrawal] 09:14:12
+So, we are going to deploy the previous version of our code with the help of CICD.
+
+[rochak agrawal] 09:14:16
+But we generally don't do the rollback, right? If we do the rollback, then how we will come to know what was the issue and how we are going to fix it. So we immediately roll back to the previous version for our live users, and then we will cut a hotfix branch and we will see what was the issue.
+
+[Arif] 09:14:37
+I actually don't get this, uh, how to merge this branch, uh, and, uh, main, like, uh…
+
+[rochak agrawal] 09:14:45
+We are here to see that, Arif. I can just… So for example, very simple. See, very simple it is. Merging is very simple. There are two ways of merge. One is normal merge. Okay, so…
+
+[Arif] 09:14:50
+After the… okay.
+
+[rochak agrawal] 09:15:00
+Now how is going to happen? So let's say I have two branches.
+
+[rochak agrawal] 09:15:05
+Hey!
+
+[rochak agrawal] 09:15:07
+One is Dev, another is Master. Now, I will go to Master, hit Checkout Master.
+
+[rochak agrawal] 09:15:13
+And we have two different files, right? On there, we have… what is LSILRT?
+
+[rochak agrawal] 09:15:21
+Dev.txt is there, and if I do check out…
+
+[rochak agrawal] 09:15:26
+Check out.
+
+[rochak agrawal] 09:15:27
+Master.
+
+[rochak agrawal] 09:15:29
+to BHAB?
+
+[rochak agrawal] 09:15:33
+uh, app.txt. There is no dev.txt. So you just simply say, get merge.
+
+[rochak agrawal] 09:15:41
+I maybe see the command, but let's try.
+
+[rochak agrawal] 09:15:44
+You see? Get merge. Okay.
+
+[rochak agrawal] 09:15:51
+Margin.
+
+[rochak agrawal] 09:15:59
+You see? Now, if you see the git…
+
+[rochak agrawal] 09:16:03
+Log.
+
+[rochak agrawal] 09:16:07
+It has been merged, and if you see now.
+
+[rochak agrawal] 09:16:26
+So we are yet on the master, but you can see the app.txt and dev.txt.
+
+[rochak agrawal] 09:16:32
+Both the files are there. Both the branches has been merged. Now, after merging, we can just say git branch -d app.
+
+[rochak agrawal] 09:16:44
+So say deleted the branch. Now you have all the content of the dev branch into the master branch and your dev branch is deleted. If you don't want to delete it, you can continue. Now you see this is a very simple type of a merge where it is called a three-way merge.
+
+[rochak agrawal] 09:17:00
+Very important point here is.
+
+[rochak agrawal] 09:17:03
+It's a very simple merge. Now you see this type of the merge is going to use.
+
+[rochak agrawal] 09:17:11
+So let's say there was a master branch.
+
+[rochak agrawal] 09:17:15
+Now we created a branch, okay, and we did some commits on there.
+
+[rochak agrawal] 09:17:22
+Now, whatever the type of the merge we did with the help of a git merge command, it is going to be useful, or we can do it in a way.
+
+[rochak agrawal] 09:17:31
+when this branch, there is nothing happened on this source branch. And we can simply merge it.
+
+[rochak agrawal] 09:17:37
+with the git merge command.
+
+[rochak agrawal] 09:17:39
+That is we did just now. Okay.
+
+[rochak agrawal] 09:17:43
+Correct. Now, there can be another scenario.
+
+[rochak agrawal] 09:17:47
+In which…
+
+[rochak agrawal] 09:17:50
+There is a branch.
+
+[rochak agrawal] 09:17:53
+Again, you cut a branch, you do a development on the branch.
+
+[rochak agrawal] 09:17:58
+Then you are doing some development here also, right?
+
+[rochak agrawal] 09:18:02
+Then, when you want to merge these branch, you need to do something called the rebase.
+
+[rochak agrawal] 09:18:08
+Which we will see now, let's tomorrow, because it is also a very important topic. Again, we need to have an understanding about the rebase, but it is practically you might not, if you're not a developer, you might not do the rebase anytime.
+
+[rochak agrawal] 09:18:25
+But yes, it is being asked in the interview, so we should definitely be having an understanding about the rebates.
+
+[rochak agrawal] 09:18:31
+So this is a simple merge.
+
+[rochak agrawal] 09:18:34
+Uh, which we did right now.
+
+[rochak agrawal] 09:18:37
+Then the second will be the DBAs.
+
+[Arif] 09:18:38
+So
+
+[Arif] 09:18:40
+So, like, I'm not getting this… the stage where we are merging it, at what stage? Locally, or…
+
+[rochak agrawal] 09:18:45
+No, locally. Anything is locally. See, everything is local right now.
+
+[Arif] 09:18:46
+After pushing…
+
+[Arif] 09:18:48
+Okay.
+
+[rochak agrawal] 09:18:50
+Until unless you are not doing the push.
+
+[rochak agrawal] 09:18:56
+Nothing goes to your remote.
+
+[rochak agrawal] 09:19:00
+Is everything at local?
+
+[Arif] 09:19:02
+So, what are the best practices? After merging only, we should push, or we can push and then merge?
+
+[rochak agrawal] 09:19:07
+No. See, generally, uh, in a… again, it will depend, um…
+
+[rochak agrawal] 09:19:14
+If you are working on a very small team, local merges are encouraged, you can do it, but if you are in a multi-dev team.
+
+[rochak agrawal] 09:19:25
+it should always be, uh, the remote merge, okay? There is something called, uh…
+
+[rochak agrawal] 09:19:31
+The merge request?
+
+[rochak agrawal] 09:19:37
+or the pull request. So for example, I'll show you from the GitHub itself.
+
+[rochak agrawal] 09:19:44
+So let's say…
+
+[rochak agrawal] 09:19:52
+I have a branch, right? I'll create a new branch.
+
+[rochak agrawal] 09:19:58
+See, all those things we are doing from the terminal, we can do it from here also.
+
+[rochak agrawal] 09:20:03
+LZDep.
+
+[rochak agrawal] 09:20:04
+You can see source from the master it is we are cutting a branch. I'll create a new branch.
+
+[rochak agrawal] 09:20:11
+Okay, so now if you go…
+
+[rochak agrawal] 09:20:16
+We have two branches, master and dev. Now, if you go on to dev.
+
+[rochak agrawal] 09:20:22
+I am going to add a file, for example, let's say upload a file.
+
+[rochak agrawal] 09:20:32
+Can you see?
+
+[rochak agrawal] 09:20:34
+It will commit directly to the dev branch, okay?
+
+[rochak agrawal] 09:20:42
+Okay, now if you see the commits…
+
+[rochak agrawal] 09:20:48
+You can see on a dev branch, we have three commit, and on the master branch.
+
+[rochak agrawal] 09:20:53
+We have two comments.
+
+[rochak agrawal] 09:20:55
+Now you want to merge it. Okay. So there is.
+
+[rochak agrawal] 09:21:00
+You see dev has recent pushes 19 second ago. Okay. So you push it, you can push it, but merging should happen with the pull request. So this is compare and pull request. So if you do create a pull request.
+
+[rochak agrawal] 09:21:16
+Now, different platform will say it differently. Uh, in Azure repos, it is called the merge request, okay? Now, very importantly, um, here you can see, I am…
+
+[rochak agrawal] 09:21:28
+It's already there. You can add a description. Very importantly, here you can add the reviewers and assignee, assign yourself. You can add the reviewers.
+
+[rochak agrawal] 09:21:39
+So your pull request, your merge request should not go like you are merging anything from anywhere. No, it will go by a proper review process. Okay. So you can assign a reviewer.
+
+[rochak agrawal] 09:21:54
+Once the reviewer will see what you are merging, once they approve it, then only you return.
+
+[rochak agrawal] 09:21:59
+it is going to be merged. So here, I am creating this pull request.
+
+[rochak agrawal] 09:22:05
+It is not merged yet. You just created a pull request, okay? Now, if you… if there is a reviewer, so then the request will go to your reviewer, they will see what you are trying to do, they will see everything, right? Checking, uh…
+
+[rochak agrawal] 09:22:24
+So that is how we follow. So whatever changes you are doing on the branch, okay, you do it, you push the branch.
+
+[rochak agrawal] 09:22:31
+to your remote repository, but you merge via this method, which we call it as a pull request. That's the standard we follow.
+
+[Arif] 09:22:42
+Okay.
+
+[rochak agrawal] 09:22:43
+Okay, now different. If you go to Azure repo, the syntax, not syntax, the options will some more, some plus minus options will be there. It will depend on the platform to platform, but overall process more or less will be same.
+
+[rochak agrawal] 09:22:59
+So here you can see, um…
+
+[rochak agrawal] 09:23:02
+It will totally tell you what file has been changed.
+
+[rochak agrawal] 09:23:05
+8.
+
+[rochak agrawal] 09:23:07
+this genai.pdf we've created, one commit which we want to merge it, so everything you will get it here, graphically also.
+
+[rochak agrawal] 09:23:16
+So, you just do the development locally, whether on a branch or something, but…
+
+[rochak agrawal] 09:23:23
+All those, uh…
+
+[rochak agrawal] 09:23:26
+Merging the stuff you will do with the help of your platform.
+
+[rochak agrawal] 09:23:31
+Okay.
+
+[Arif] 09:23:33
+Okay. Uh, in the stashing, so I, I, like, didn't confuse with the staging and, uh, stashing. So, what is the difference?
+
+[rochak agrawal] 09:23:38
+Okay.
+
+[rochak agrawal] 09:23:40
+It's staging and stashing.
+
+[Arif] 09:23:46
+Yeah, difference between staging and stashing.
+
+[rochak agrawal] 09:23:48
+Okay, see, staging… you see, staging is an area.
+
+[rochak agrawal] 09:23:55
+where we collect our work which we want to commit.
+
+[rochak agrawal] 09:23:58
+Okay, that is clear.
+
+[Arif] 09:24:02
+Yep.
+
+[rochak agrawal] 09:24:03
+Now you say…
+
+[rochak agrawal] 09:24:10
+In your staging area.
+
+[rochak agrawal] 09:24:14
+You have to file.
+
+[rochak agrawal] 09:24:15
+Okay.
+
+[rochak agrawal] 09:24:17
+If I commit…
+
+[rochak agrawal] 09:24:23
+Both will be committed?
+
+[rochak agrawal] 09:24:28
+Yes or no?
+
+[Arif] 09:24:32
+Yep.
+
+[rochak agrawal] 09:24:33
+Ready?
+
+[rochak agrawal] 09:24:35
+But later you realize, okay, my file A and file B both will be committed.
+
+[rochak agrawal] 09:24:40
+But you say, no, no, no, I, I still have some work to do on file B. I don't want to commit it at this moment.
+
+[rochak agrawal] 09:24:48
+Okay, so what you will do…
+
+[rochak agrawal] 09:24:51
+You will park it into something called the stashing area.
+
+[rochak agrawal] 09:24:58
+So your file will be deleted from the staging area and it will be parked in the staging area. So when you will commit, the only file A is going to be committed and then when you want to resume the work on file B.
+
+[rochak agrawal] 09:25:14
+You do a stash pop, and you can resume your work on the file B. So stashing area is something where you are still working on the changes, but you don't want to commit it.
+
+[rochak agrawal] 09:25:28
+So those type of files, I am going to change, uh, I am going to park it in a stashing area.
+
+[Arif] 09:25:29
+That's what happened.
+
+[Arif] 09:25:37
+Yeah, that's what… so the B, file B, uh, after the staging, the file B will be removed from the staging area, or it will be there?
+
+[rochak agrawal] 09:25:46
+Yeah, it will be removed from the staging area. It has gone to stash now.
+
+[rochak agrawal] 09:25:50
+And we have seen that if we want to bring it back, we will do the stash pop.
+
+[rochak agrawal] 09:25:55
+So it is not…
+
+[Arif] 09:25:55
+So Pop will… so Pop will actually add this file again to the staging API.
+
+[rochak agrawal] 09:25:58
+Again, to the staging area. Correct. And, uh, I can do… resume my work again.
+
+[Arif] 09:26:01
+Okay.
+
+[Arif] 09:26:06
+Okay, I think because… but if I'm not sure, if the work is not complete on file B, I would not put it into staging area itself, right?
+
+[rochak agrawal] 09:26:13
+Correct. So the now the reason why I want to put it in a staging area is because the path for the see the goal is not to put it in a staging area. Goal is to put it put it in a stash. OK, so let's say this is my working directory.
+
+[Arif] 09:26:29
+Hmm.
+
+[rochak agrawal] 09:26:33
+Okay, your file is in a working directory, you are doing some… let's say file B was never meant to be part of the staging area.
+
+[rochak agrawal] 09:26:42
+you are doing some changes in a file B, but those changes are still incomplete, okay? Now, something urgent comes up, you want to work on something else. Now, you want to save those changes, okay? So, that is where, if you keep.
+
+[rochak agrawal] 09:26:57
+them in a working directory, and when you see… and you have seen that when you do a commit.
+
+[rochak agrawal] 09:27:03
+Then your working directory will change, correct?
+
+[Arif] 09:27:06
+Mmhm.
+
+[rochak agrawal] 09:27:07
+So then…
+
+[rochak agrawal] 09:27:10
+Any intermediary work, I want to store it in a stretching area. The path goes from here.
+
+[rochak agrawal] 09:27:22
+Understood.
+
+[Arif] 09:27:24
+So, file B will directly move to stairs, or it will… staging, and then move it…
+
+[rochak agrawal] 09:27:27
+No, first we need to add it into the staging area, then to the staging area.
+
+[rochak agrawal] 09:27:35
+Okay? So that is a difference. Anything in my staging area will go to the commit.
+
+[rochak agrawal] 09:27:41
+But anything in the stashing area is hidden. It is not in your working directory. It is not in your staging area. It is saved in some cache kind of a thing. Whenever you want to resume it, you will do a stash pop or if you have multiple stashes.
+
+[rochak agrawal] 09:27:58
+So then you will find out with the stash zero stash one or something ID with the stash ID.
+
+[rochak agrawal] 09:28:04
+And you can start resuming your work.
+
+[Arif] 09:28:10
+Okay, and one more thing that came in mind is, it would be very basic. So while developing any software, so multiple languages can be used for a single software, or only if I use Python, I will be using Python end-to-end?
+
+[rochak agrawal] 09:28:15
+Yeah, yeah.
+
+[rochak agrawal] 09:28:25
+So, multiple languages can be used, okay, in fact, we use it. So, for example, if you say any software, see, very simple
+
+[Arif] 09:28:30
+Okay.
+
