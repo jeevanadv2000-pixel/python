@@ -1,0 +1,3147 @@
+[rochak agrawal] 07:37:09
+Hey, good morning, everyone.
+
+[rochak agrawal] 07:37:12
+So, as we discussed yesterday, in Git, there is one topic left, Git rebase, which we will cover alongside with the CICD.
+
+[rochak agrawal] 07:37:20
+Today, we are going to start about the build tool, which is Maven. Now, before we discuss what is Maven, we need to clearly understand.
+
+[rochak agrawal] 07:37:31
+What is build process? And what is the build tool?
+
+[rochak agrawal] 07:37:35
+Now you see a developer is going to write the source code. He may have a.
+
+[rochak agrawal] 07:37:48
+He may have one file
+
+[rochak agrawal] 07:37:50
+to file, or he may have N number of the file. Correct?
+
+[rochak agrawal] 07:37:56
+He writes his source code. But…
+
+[rochak agrawal] 07:38:00
+You understand that, let's say I want to install Notepad++ or Notepad on my laptop.
+
+[rochak agrawal] 07:38:07
+Am I going to download the source code file?
+
+[rochak agrawal] 07:38:12
+No. What I'm going to download is the .exe file.
+
+[rochak agrawal] 07:38:20
+okay.exe file, or depending on the type of the application.bll.jar file.war file. So this, these are the.
+
+[rochak agrawal] 07:38:34
+So.dlls.
+
+[rochak agrawal] 07:38:38
+jar.gar, what different type of files are there?
+
+[rochak agrawal] 07:38:42
+So these files are called the executable files.
+
+[rochak agrawal] 07:38:54
+Late.
+
+[rochak agrawal] 07:38:57
+When you download the .exe file, you are not worried about what is inside it, what is the source code, right? It is not visible to you.
+
+[rochak agrawal] 07:39:06
+For example, we talked about the kit also, right? What we downloaded.
+
+[rochak agrawal] 07:39:12
+In fact, it is, uh… so, let's say, for example.
+
+[rochak agrawal] 07:39:16
+If I need to install the gate.
+
+[rochak agrawal] 07:39:26
+So, yeah.
+
+[rochak agrawal] 07:39:31
+What it downloads for you?
+
+[rochak agrawal] 07:39:33
+is a exe file correct. Now that exe file will have everything which git need itself to run.
+
+[rochak agrawal] 07:39:43
+Great. So…
+
+[rochak agrawal] 07:39:45
+The point here is, you are going… see, you, in the end, your end user, will need this .exe file.
+
+[rochak agrawal] 07:39:54
+Or simply the executable file which they are going to run.
+
+[rochak agrawal] 07:39:57
+Which they are going to use. They don't have to worry about how many source code file is there, and…
+
+[rochak agrawal] 07:40:06
+How they are related? Nothing. So the process of converting your source code file into an executable file.
+
+[rochak agrawal] 07:40:16
+will happen via something called the build process.
+
+[rochak agrawal] 07:40:22
+Okay? This is called the build process. If you see the definition here also.
+
+[rochak agrawal] 07:40:28
+And…
+
+[rochak agrawal] 07:40:29
+Whatever tools does this process?
+
+[rochak agrawal] 07:40:32
+is called the build tool, very simple. So, build tool automate every step between a source code and deployable artifact, which is your executable file.
+
+[rochak agrawal] 07:40:43
+So the same input produce the same output on any machine.
+
+[rochak agrawal] 07:40:47
+Okay, so once you build it.
+
+[rochak agrawal] 07:40:53
+Once you build it, now, instead of sharing the source code with everyone.
+
+[rochak agrawal] 07:40:59
+What you share is this file. You can give it to me, you can give it to… I can give it to anywhere. Now, this executable file will have everything.
+
+[rochak agrawal] 07:41:10
+Which is that you needed for?
+
+[rochak agrawal] 07:41:14
+running your application. So it's like a bundled package. Now, I installed git.exe on my laptop, you install git.exe on your laptop, it is going to work exactly the same.
+
+[rochak agrawal] 07:41:25
+So that is a role of a builder process. Now, what is a major task a builder tool does?
+
+[rochak agrawal] 07:41:34
+It resolved the dependencies.
+
+[rochak agrawal] 07:41:37
+Now, for example, let's say.
+
+[rochak agrawal] 07:41:39
+One of my applications requires some database libraries, so BuildTool is going to provide you that.
+
+[rochak agrawal] 07:41:47
+Very importantly, it is going to compile your code. So any programming language, if you are using.
+
+[rochak agrawal] 07:41:54
+Before running the code, you need to compile it so that it is going to be checked that if the code is correct or not. See, functionality is the second thing, but you should need to see if the syntax is correct.
+
+[rochak agrawal] 07:42:07
+If the format is correct and everything, so it turns source code into the class file with the correct Java version and the class path.
+
+[rochak agrawal] 07:42:14
+Now, it is an example of a Java, it is going to have the same thing across the programming language. Then, it is going to test also.
+
+[rochak agrawal] 07:42:24
+When we talk about the testing, there is multiple type of testing which will be there. So for example, unit testing, your integration testing, functional testing, non-functional testing, load testing, there are a number of the testing.
+
+[rochak agrawal] 07:42:41
+But your build tool, before even going to the testing stage, it is going to help you doing the unit testing and the integration testing.
+
+[rochak agrawal] 07:42:51
+Once your code is compiled and tested, see, and unless your test is not going to pass, there is no artifact, correct? So once the compile and testing is successful, then it is going to package your code.
+
+[rochak agrawal] 07:43:06
+And we say package your code.
+
+[rochak agrawal] 07:43:10
+This EXE is a packaging. This DLL is a packaging. This JAR is a packaging. BAR is a packaging. So depending on the type of your application, you need to choose an appropriate package for itself.
+
+[rochak agrawal] 07:43:28
+And then verify report, install and deploy. So again, it can do the code coverage and documentation generation as well. But when we are saying documentation generation, like unit test report, code coverage report, also your build tool.
+
+[rochak agrawal] 07:43:44
+can generate. And then finally, you can publish that artifact to some repositories also. So, for example, let's say.
+
+[rochak agrawal] 07:43:58
+When you will be writing, say, Python packages. Now, there are many open source packages are available.
+
+[rochak agrawal] 07:44:04
+So your main, uh, build tool is going to…
+
+[rochak agrawal] 07:44:08
+Deploy and install your packages wherever you want.
+
+[rochak agrawal] 07:44:11
+So that's the overall work of the build tool.
+
+[rochak agrawal] 07:44:16
+Now there are multiple type of build tool is available in the market.
+
+[rochak agrawal] 07:44:23
+Syntactically, they all is going to be different, and every programming language will have a different build tool. So, for example, when we talk about the Maven, Maven is a build tool for the Java programming language.
+
+[rochak agrawal] 07:44:38
+I will not be able to build a…
+
+[rochak agrawal] 07:44:42
+NET application with Maven. I'm not… I will not be able to build a…
+
+[rochak agrawal] 07:44:49
+Python or Node.js based application with Maven.
+
+[rochak agrawal] 07:44:53
+So, there are multiple build tools available in the market. So, Make is a very, uh…
+
+[rochak agrawal] 07:45:00
+old build tool, which is going to work with the CEC++ type of the application.
+
+[rochak agrawal] 07:45:05
+If you see Apache Ent, Apache Maven, and Gradle.
+
+[rochak agrawal] 07:45:10
+These all are the Java based packages.
+
+[rochak agrawal] 07:45:14
+build tool is there. Apache End is the one which has started the build process, okay? Then it has been transitioned, so we can say End is also used nowadays, but very, uh, less frequently. Apache Maven is an upgraded version of, uh.
+
+[rochak agrawal] 07:45:32
+Maven, sorry, Apache Maven is an upgraded version of Apache Ant. And then nowadays we have Gradle also.
+
+[rochak agrawal] 07:45:41
+Again, Gradle is also a Java build tool. Now then other is there. NPM is for running, building your Node.js based application. Pip is there for building your Python application. NuGet or MS build is to build your.
+
+[rochak agrawal] 07:45:59
+NET-based application and cargo is…
+
+[rochak agrawal] 07:46:03
+there's one tool where you can do everything, okay? But for the building, you…
+
+[rochak agrawal] 07:46:09
+In most of the cases, you would need a specialized tool.
+
+[rochak agrawal] 07:46:13
+Again?
+
+[rochak agrawal] 07:46:15
+Build tool is the one which is going to be used by.
+
+[rochak agrawal] 07:46:20
+The development team, and then, um…
+
+[rochak agrawal] 07:46:24
+We just need to have an understanding about what is the process, what happens in the build, but your build tool, again, will be used by the development team, because they know what their application is doing and how to get it built.
+
+[rochak agrawal] 07:46:45
+Now, if you see here, there are 3 tools are there.
+
+[rochak agrawal] 07:46:50
+Okay.
+
+[rochak agrawal] 07:46:52
+These three are…
+
+[rochak agrawal] 07:46:55
+Java Literature Pool.
+
+[rochak agrawal] 07:46:58
+Maven is the most popular amongst them, but Gradle is also getting a lot of traction nowadays.
+
+[rochak agrawal] 07:47:06
+ENT is kind of an old tool, becoming obsolete, but some older projects still use ENT.
+
+[rochak agrawal] 07:47:13
+Build file, so when you use a build tool.
+
+[rochak agrawal] 07:47:17
+So there is something called a build file, where you will write all your instructions.
+
+[rochak agrawal] 07:47:23
+How your build is going to happen.
+
+[rochak agrawal] 07:47:25
+Okay, so in Ant, this is called the build.xml. In Maven, it is called the pom.xml. In Gradle, it is called the build.gradle.
+
+[rochak agrawal] 07:47:35
+Now style, imperative, declarative. Again, Gradle is declarative.
+
+[rochak agrawal] 07:47:40
+Now, this is very important. You need to understand the difference between imperative and declarative. I'll come to that. The dependency management, project structure, and there is no project structure. In Maven, the standard convention, Gradle, you can say, is an upgraded version of a Maven itself.
+
+[rochak agrawal] 07:47:58
+So, lifecycle, none. Maven, again, has a fixed lifecycle.
+
+[rochak agrawal] 07:48:02
+Build speeds fast, but no caching. Maybe an adequate rebuilds a lot.
+
+[rochak agrawal] 07:48:08
+Learning curve, low. Low for the standard project. Gradle is a very complicated language.
+
+[rochak agrawal] 07:48:14
+Now, before I move further, we need to understand what is the imperative and declarative.
+
+[rochak agrawal] 07:48:23
+This is very, very important, uh…
+
+[rochak agrawal] 07:48:27
+For DevOps, actually.
+
+[rochak agrawal] 07:48:33
+sometimes being asked in the interviews also, because all of the DevOps tools you are going to use.
+
+[rochak agrawal] 07:48:44
+They are declarative in nature.
+
+[rochak agrawal] 07:48:46
+Now, for example.
+
+[rochak agrawal] 07:48:48
+Let's say you are at point A.
+
+[rochak agrawal] 07:48:54
+And you need to go to point B.
+
+[rochak agrawal] 07:48:58
+I'm in Delhi, I want to go to Mumbai, for example. See, one way is…
+
+[rochak agrawal] 07:49:06
+Self-drive.
+
+[rochak agrawal] 07:49:10
+Now, in the self-drive, I exactly need to know the path where I need to take a left, where I need to take a right, and then how much straight I need to go.
+
+[rochak agrawal] 07:49:22
+And then finally, you are going to reach to point B.
+
+[rochak agrawal] 07:49:28
+This is imperative.
+
+[rochak agrawal] 07:49:32
+In an interactive syntax, you have to do everything.
+
+[rochak agrawal] 07:49:37
+So all your programming languages uses the imperative syntax.
+
+[rochak agrawal] 07:49:43
+all your programming, Java, Python, um…
+
+[rochak agrawal] 07:49:47
+C++, C, they all are imperative. So, in this, if you want to achieve something, you need to define the logic.
+
+[rochak agrawal] 07:49:59
+How you want to do it.
+
+[rochak agrawal] 07:50:00
+Correct.
+
+[rochak agrawal] 07:50:01
+Second option is, let's say, self-drive. Similar to this, you exactly need to know what… how you want to do the things, right? Second option is…
+
+[rochak agrawal] 07:50:15
+I'll book a cab.
+
+[rochak agrawal] 07:50:18
+and tell the driver. Even, like, with the Uber, I do not even need to tell, right? I'll just tell the destination, for example.
+
+[rochak agrawal] 07:50:28
+Hey
+
+[rochak agrawal] 07:50:30
+So.
+
+[rochak agrawal] 07:50:30
+I will just sit in the car.
+
+[rochak agrawal] 07:50:33
+Just sit in the car.
+
+[rochak agrawal] 07:50:35
+No.
+
+[rochak agrawal] 07:50:37
+I will just… maybe I will enjoy my music, I'll sleep.
+
+[rochak agrawal] 07:50:41
+I don't need to do anything. I just tell the driver, this is my destination, and this driver will look out for the location.
+
+[rochak agrawal] 07:50:49
+Whatever he is doing, I don't care. I will reach to my destination, correct?
+
+[rochak agrawal] 07:50:55
+This is called the declarative way of doing the things.
+
+[rochak agrawal] 07:51:02
+in DevOps, whatever tool you are going to use.
+
+[rochak agrawal] 07:51:06
+Terraform, Kubernetes, Ansible, even Jenkins.
+
+[rochak agrawal] 07:51:14
+Me, when we are seeing, they all are declarative in nature.
+
+[rochak agrawal] 07:51:19
+What does it mean? It means whatever you need to do, you will tell the tool.
+
+[rochak agrawal] 07:51:26
+Tool will do the thing for you, okay? So, for example, let's say I want to do the unit testing of my code.
+
+[rochak agrawal] 07:51:33
+I will just tell Maven, do the unit testing. I will define that step in the build.xml. Now, how the unit testing is happening, I don't care.
+
+[rochak agrawal] 07:51:42
+Similar thing will happen in Terraform.
+
+[rochak agrawal] 07:51:46
+In Terraform, Terraform is used to create the cloud infrastructure, for example. Now, if I need to create one virtual machine or 10 virtual machines, I will just tell Terraform, create one virtual machine or create 10 virtual machines.
+
+[rochak agrawal] 07:52:01
+How Terraform is doing, it's Terraform's problem.
+
+[rochak agrawal] 07:52:05
+Right? So that is called the declarative way of doing the things.
+
+[rochak agrawal] 07:52:12
+Very important to understand declarative versus imperative. All your programming languages are imperative. Most of the DevOps tools are going to be declarative.
+
+[rochak agrawal] 07:52:28
+Because you have built the intelligence around the tool and then you are using that tool, right?
+
+[rochak agrawal] 07:52:41
+No.
+
+[rochak agrawal] 07:52:43
+Yeah, by the way, you have a question?
+
+[Vaibhav Gupta] 07:52:50
+we do not have to declare anything. Uh, in, uh, declarations, we do not have to, uh, not choose, uh, how to do, uh, perform this task or something, which…
+
+[rochak agrawal] 07:52:59
+Yes. You will tell what to do, not how to do.
+
+[Vaibhav Gupta] 07:53:04
+Okay. And, uh, so in DevOps, we do not use any imperative, like, we do not use any paths, like, how we do that.
+
+[rochak agrawal] 07:53:14
+Oh, no, see, um…
+
+[rochak agrawal] 07:53:16
+Tools are declarative, that is what I said, but for example, if you are using Python for some automations, Python is imperative.
+
+[Vaibhav Gupta] 07:53:24
+Yes.
+
+[rochak agrawal] 07:53:25
+Tools are declarative. So, for example, if you're using Maven, Maven is declarative. If you use Terraform, Terraform is declarative. If you use Kubernetes, Kubernetes is dec.
+
+[rochak agrawal] 07:53:37
+But if you're using Shell script or Python, they are imperative. Tools are declared.
+
+[rochak agrawal] 07:53:45
+Okay, and DevOps is mostly… DevOps is an ecosystem that is mostly built around these tools, right? Your CICD pipeline, when I go create a CICD pipeline, my CICD pipeline role is to.
+
+[Vaibhav Gupta] 07:53:45
+All right.
+
+[Vaibhav Gupta] 07:53:53
+Yes, yes.
+
+[rochak agrawal] 07:53:59
+go through multiple stages, and at every stage, I'm going to leverage some or other tools.
+
+[Vaibhav Gupta] 07:54:06
+Okay.
+
+[Vaibhav Gupta] 07:54:07
+So, uh, yeah, I just want to ask one other question. Like, uh, for Java, we have used them even, and for the other, uh, like, platforms, like for Node, or for some, uh, Python, so what we use, like, we have used a different tool, or, uh, something?
+
+[rochak agrawal] 07:54:08
+Okay.
+
+[rochak agrawal] 07:54:23
+Be very clearly, uh, explain this here, Nawab.
+
+[rochak agrawal] 07:54:26
+PIP is for Python, NPM is for Node.js, MSBuild is for Microsoft.net. So yes.
+
+[rochak agrawal] 07:54:34
+These are different, different tools.
+
+[Vaibhav Gupta] 07:54:36
+That's what I'm asking.
+
+[rochak agrawal] 07:54:38
+Yeah, yeah. Thank you. Bonus. Yeah?
+
+[rochak agrawal] 07:54:44
+Now, if you see, these are three fundamental.
+
+[rochak agrawal] 07:54:53
+Then, uh, pillars of Maven, okay?
+
+[rochak agrawal] 07:54:57
+convention over configuration, and these are not something that we have written. This is standard.
+
+[rochak agrawal] 07:55:03
+Convention over configuration, declarative dependency management, and a standard build lifecycle.
+
+[rochak agrawal] 07:55:09
+When we say convention over configuration, see, uh…
+
+[rochak agrawal] 07:55:17
+Maven follows a standard convention, okay?
+
+[rochak agrawal] 07:55:22
+If you are working on Maven, and you know Maven, for example, you know where to find something there. See, for example, if I give you my laptop.
+
+[rochak agrawal] 07:55:31
+And let's say there is no such facility is there, and…
+
+[rochak agrawal] 07:55:35
+I will ask you.
+
+[rochak agrawal] 07:55:37
+Can you find…
+
+[rochak agrawal] 07:55:39
+demo.txt on my laptop. See, my laptop can have multiple folders, multiple folders inside the folder, subfolder. It would be very tough for you to go into each folder and.
+
+[rochak agrawal] 07:55:52
+find that particular file, correct? Same thing happens with your projects also. Your projects, when you write the source code, it is not a single source code file. There will be multiple files will be there. There can be hundreds of the file can be there, and those hundreds file can be.
+
+[rochak agrawal] 07:56:11
+organized across multiple folders, right? Now, if you need to find some file, or you are writing some script, if your project is different than my project.
+
+[rochak agrawal] 07:56:21
+one script is not going to work, because your folder structure is different, my folder structure is different, correct? So that is where Maven follows a standard convention.
+
+[rochak agrawal] 07:56:33
+Okay, if you're using Maven, there is a folder called SRC. All the source code will be there. There is a folder will be there called TST, uh, test.
+
+[rochak agrawal] 07:56:45
+All the test cases will be there, for example. There will be a file named pom.xml, all your build instructions will be there.
+
+[rochak agrawal] 07:56:52
+Okay.
+
+[rochak agrawal] 07:56:55
+So, it follows a standard approach. You use it on your laptop, my laptop, anywhere. If you initiate a project in Maven, it is going to create a standard file folder structure for you.
+
+[rochak agrawal] 07:57:08
+Second is a declarative dependency management.
+
+[rochak agrawal] 07:57:13
+Now, when you want to build your application, there may be some… see, for example, let's say when you run a Python code.
+
+[rochak agrawal] 07:57:21
+You might need an external package, right? You don't build every functionality in your application. Some standard packages are already there. Similarly, in Java, when you're running your application, you might need some dependencies, for example.
+
+[rochak agrawal] 07:57:38
+The very basic example of dependencies is, uh, when you…
+
+[rochak agrawal] 07:57:43
+want to do something on your laptop, you install the drivers. For example, I inserted a device. I want to connect my printer to my laptop. What do you need to do? You need to install the drivers for it, correct?
+
+[rochak agrawal] 07:57:57
+Same thing, why you need to driver? Because your printer is not going to work without these drivers. So that's a dependency to run the printers, connect to the printer, right? Similar for your application, maybe there might be some dependency for logging, there might be some dependency for…
+
+[rochak agrawal] 07:58:15
+Database management, etc, etc.
+
+[rochak agrawal] 07:58:18
+You just need to tell Maven what is that you need as it's saying declarative then.
+
+[rochak agrawal] 07:58:26
+Maven itself will download those dependencies.
+
+[rochak agrawal] 07:58:30
+Okay.
+
+[rochak agrawal] 07:58:32
+Maven will store it, so Maven will do the complete dependency management for you.
+
+[rochak agrawal] 07:58:37
+Okay, then a standard build lifecycle.
+
+[rochak agrawal] 07:58:42
+As we are explaining in the first point, where we are seeing convention over the configuration.
+
+[rochak agrawal] 07:58:48
+The build lifecycle also in Maven is very standard. We will discuss about the build lifecycle in detail.
+
+[rochak agrawal] 07:58:56
+But we have every Maven project go through the same ordered phases. Now, I can choose to skip some of the phases, that is okay, but it will go through all these…
+
+[rochak agrawal] 07:59:08
+is this? Uh, so for example, maybe an install means the same thing everywhere.
+
+[rochak agrawal] 07:59:13
+What is the lifecycle? You'll see that. And then, um…
+
+[rochak agrawal] 07:59:18
+Onboarding, so you say it is very easy to run, we will see that, we'll do a demo. It is very easy to initiate a Maven build or a Maven project.
+
+[rochak agrawal] 07:59:28
+CI/CD friendly it is and we will do a complete demo around how we are going to integrate Maven because see this is the first process of any CI/CD pipeline until unless you do not have a build.
+
+[rochak agrawal] 07:59:45
+There is no CI, sorry, there is no build, there is no CD. There is no deployment. Like I'm not going to deploy my source code. You are going to deploy your build file. The output of the build is the input for the deployment.
+
+[rochak agrawal] 08:00:02
+And then there's a very rich ecosystems out there with the Maven. So Maven, you can say, is right now is a very popular, most popular, if you say, build tool for Java. Again, if it is a Node.js, Maven is not going to work.
+
+[rochak agrawal] 08:00:17
+So we can say it's a most popular build tool for Java, okay? And, uh, there is, like, we have GitHub, there is something called the Maven Central.
+
+[rochak agrawal] 08:00:29
+Where many people will create multiple plugins, uh, dependencies, all of those.
+
+[rochak agrawal] 08:00:36
+You can find on the Maven Center, and you can download to use it.
+
+[rochak agrawal] 08:00:45
+Now, you see, we have understood the overall picture of what is a build.
+
+[rochak agrawal] 08:00:51
+Okay? Now, how does Maven do it?
+
+[rochak agrawal] 08:00:57
+All your build step.
+
+[rochak agrawal] 08:00:59
+Okay.
+
+[rochak agrawal] 08:01:02
+Now, we need to understand this very, very deeply.
+
+[rochak agrawal] 08:01:06
+Carefully.
+
+[rochak agrawal] 08:01:07
+all your build step will be written in the pom.xml. Okay, so pom.xml is the file which will have all the information.
+
+[rochak agrawal] 08:01:19
+about how your build is going to happen. So, our developer is going to write the pom.xml.
+
+[rochak agrawal] 08:01:28
+Basically, the role of the pom.xml is, when you run the Maven build, it will read the… so you can see it here, Maven core will read the…
+
+[rochak agrawal] 08:01:39
+the POM.xml. So it says, read the POM.xml, reads the POM, and runs the lifecycle. Now, the lifecycle will also be defined.
+
+[rochak agrawal] 08:01:49
+in the pom.xml, and if you are not going to define the number right here, in the pom.xml, it is going to run some default types, okay? So…
+
+[rochak agrawal] 08:02:00
+Maven… when you initiate a Maven build, Maven reads the form.xml, and then whatever the instructions.
+
+[rochak agrawal] 08:02:08
+Written in the…
+
+[rochak agrawal] 08:02:11
+what you can say, pom.xml, it is going to happen. Now, how it is going to happen? With the help of these plugins.
+
+[rochak agrawal] 08:02:20
+So, plugins is nothing, but… so, for example, let's say I written an instruction compile.
+
+[rochak agrawal] 08:02:31
+So Maven will have a compile plugin, which is actually going to…
+
+[rochak agrawal] 08:02:38
+Compile your code. When we say test, there will be a test plugin, right? There are multiple plugins available.
+
+[rochak agrawal] 08:02:45
+And then?
+
+[rochak agrawal] 08:02:47
+you can download the plugin from the repository also. So you can see there will be a central repository from which you can download these plugins and the dependencies. So overall processes, you write the build file.
+
+[rochak agrawal] 08:03:01
+You initiate a build, Maven reads the build file, Maven invokes the plugin, which is going to do the actual work. And while doing the work, if there is some dependency is needed, Maven is going to download that dependency from the local repository.
+
+[rochak agrawal] 08:03:17
+or the central repository. Okay, now Maven itself does very little. What does it mean? It is, and this is the pattern you see across multiple DevOps tools. For example, when we go to Jenkins also, Jenkins does not do anything.
+
+[rochak agrawal] 08:03:32
+Same thing as there is.
+
+[rochak agrawal] 08:03:34
+The core reads the POM in sequence phases. Every real action, compile, testing, packaging is performed by a plugin.
+
+[rochak agrawal] 08:03:42
+Plugin, you can say, is a software within Maven which is doing that thing.
+
+[rochak agrawal] 08:03:48
+Same thing will happen in Jenkins also.
+
+[rochak agrawal] 08:03:51
+Then comes the local repository.
+
+[rochak agrawal] 08:03:57
+When you run Maven, it is going to set up the local repository for you.
+
+[rochak agrawal] 08:04:01
+So what is going to happen is…
+
+[rochak agrawal] 08:04:12
+Now, let's see…
+
+[rochak agrawal] 08:04:14
+Your Maven build is running.
+
+[rochak agrawal] 08:04:17
+Okay.
+
+[rochak agrawal] 08:04:19
+So Maven itself will create a local repository.
+
+[rochak agrawal] 08:04:27
+And then there is a central repository, maybe in central we discussed.
+
+[rochak agrawal] 08:04:36
+Or, if you have something related to your organization, you say, no, Maven Central is too open, I want to have my organization, uh, by the central repository, so it can have a central repository also.
+
+[rochak agrawal] 08:04:52
+So when the build runs, it needs some dependency, so it requires Maven to download it. Maven first check within your local.
+
+[rochak agrawal] 08:05:02
+If the dependency is there in your local, maybe you run something previously, for example, for some different application, and at that time it is downloaded, so it will be cached in your local repository. If the dependency is not there in your local repository.
+
+[rochak agrawal] 08:05:18
+It goes to the Maven Central.
+
+[rochak agrawal] 08:05:22
+Download the dependency.
+
+[rochak agrawal] 08:05:26
+Store all the cache here, and then…
+
+[rochak agrawal] 08:05:29
+it is going to run your Maven build. So the next time you do not need to go to Maven Central or your central repository of your organization, you can take help from this local repository altogether.
+
+[rochak agrawal] 08:05:41
+Now…
+
+[rochak agrawal] 08:05:42
+You can see the path will always be the same.
+
+[rochak agrawal] 08:05:46
+dot M2 where your Maven installation is there, and slash repository. Caches every downloaded artifact and every artifact you install. Nothing is downloaded twice, right?
+
+[rochak agrawal] 08:05:59
+Now, there is another file. CPOM.xml is the standard build file.
+
+[rochak agrawal] 08:06:05
+Sometime in an interview, people generally ask about the setting.xml also. So, setting.xml, if you see.
+
+[rochak agrawal] 08:06:16
+See, the difference between the pom.xml and setting.xml is…
+
+[rochak agrawal] 08:06:21
+pom.xml gives you the build instructions, okay, how your application is going to build.
+
+[rochak agrawal] 08:06:30
+Settings.xml gives you the machine-level configuration. For example, where your Maven is installed, what is a path of your local repository, which central repository you need to use, your credentials.
+
+[rochak agrawal] 08:06:46
+Uh, so all those information will go into this.
+
+[rochak agrawal] 08:06:50
+Settings.xml.
+
+[rochak agrawal] 08:06:55
+Ilya, till now, any question?
+
+[Vaibhav Gupta] 08:07:02
+Hello.
+
+[rochak agrawal] 08:07:05
+Please move on.
+
+[Vaibhav Gupta] 08:07:05
+So, uh, the thing is, like, uh, if we, uh, we need so many, uh, repository configuration, then we, uh, the Maven will check on the local, then after that, if they, uh, require further repositories, then they, uh.
+
+[Vaibhav Gupta] 08:07:21
+Fulfill that, uh, requirement from the center repository, right?
+
+[rochak agrawal] 08:07:27
+Correct, yeah.
+
+[Vaibhav Gupta] 08:07:30
+So, what is the actual use of setting.xml that I'm confusing it?
+
+[rochak agrawal] 08:07:34
+See, uh, if you see here…
+
+[rochak agrawal] 08:07:40
+Maven Central is a very common public repository. Sometimes your organization will not use the Maven Central, right? Because you are downloading the open source packages from there.
+
+[rochak agrawal] 08:07:54
+So you are going to…
+
+[Vaibhav Gupta] 08:07:55
+Sorry, your voice is… sorry, your voice is breaking.
+
+[rochak agrawal] 08:07:59
+Okay, um…
+
+[rochak agrawal] 08:08:01
+Let me see.
+
+[rochak agrawal] 08:08:03
+Is it better to?
+
+[Vaibhav Gupta] 08:08:07
+Just a moment. Just a second, just a second.
+
+[rochak agrawal] 08:08:14
+Jeeva, is this for you also? My voice is breaking.
+
+[Vaibhav Gupta] 08:08:16
+Yeah, I expect to know.
+
+[rochak agrawal] 08:08:17
+Okay, okay.
+
+[Jeeva Koli] 08:08:18
+Uh, for me, it is clear.
+
+[rochak agrawal] 08:08:19
+Okay, okay. So, Jeeva, I'll take your question. Let me answer to Bevo. So, Bevo, Maven Central is an open-source repository like GitHub, right? But your organization may have your central repository, which is private to your organization.
+
+[Jeeva Koli] 08:08:24
+Sure.
+
+[rochak agrawal] 08:08:35
+Okay now setting.xml you will give this information which repository to use then if it is a private repository you cannot download just as it is you need to give some credentials also so all those profile related setting will go in a settings.xml.
+
+[Vaibhav Gupta] 08:08:54
+Okay.
+
+[rochak agrawal] 08:08:56
+Okay.
+
+[rochak agrawal] 08:08:58
+Yeah.
+
+[rochak agrawal] 08:08:59
+Yes, you will.
+
+[Jeeva Koli] 08:09:01
+Uh, can you go to that previous PPT, like, where I'm living, and yeah, here, this one?
+
+[rochak agrawal] 08:09:05
+Yep.
+
+[Jeeva Koli] 08:09:06
+So, uh, developer will develop the application, and that all will be, uh, mentioned in the pom.xml file, right?
+
+[rochak agrawal] 08:09:17
+build steps will be mentioned in a pom.xml file, correct?
+
+[Jeeva Koli] 08:09:20
+Okay. Now, as a DevOps engineer, uh… what file I need to write, actually, to configure this everything? Like, in… normally, we write the YAML file, right?
+
+[Jeeva Koli] 08:09:31
+So here, what…
+
+[rochak agrawal] 08:09:32
+Right.
+
+[Jeeva Koli] 08:09:34
+Here, we… what we write in a declarative way.
+
+[rochak agrawal] 08:09:35
+Okay.
+
+[rochak agrawal] 08:09:37
+Right, right, I'll delete. See, Maven-related, you do not need to write anything. Again, as I said, Maven is a build tool which a developer is going to use.
+
+[rochak agrawal] 08:09:47
+Okay? Now, why you need to understand this? Then, you may ask. So, what is going to happen is, if you see.
+
+[rochak agrawal] 08:09:57
+So let's say you have multiple developers.
+
+[rochak agrawal] 08:10:06
+Okay.
+
+[rochak agrawal] 08:10:08
+They will check in their code where? In Git?
+
+[rochak agrawal] 08:10:14
+Right? Everyone will check in their code into the GitHub.
+
+[rochak agrawal] 08:10:17
+Connect.
+
+[Jeeva Koli] 08:10:18
+Right, right.
+
+[rochak agrawal] 08:10:19
+Now your Git will be integrated with your CI engine.
+
+[rochak agrawal] 08:10:26
+Where we will have our CICD pipeline.
+
+[rochak agrawal] 08:10:36
+Okay.
+
+[rochak agrawal] 08:10:38
+Now, as a CIC — see, when the — let's say a developer checks in their code into the Git, Git will inform the CI engine.
+
+[Jeeva Koli] 08:10:40
+Yes.
+
+[rochak agrawal] 08:10:47
+And the CI engine, let's say Jenkins, will run the CICD pipeline, correct?
+
+[rochak agrawal] 08:10:53
+As a first step, so your CICT pipeline will have multiple stages. For example, first it will say check out the code.
+
+[rochak agrawal] 08:11:04
+Then, we'll say, build the code.
+
+[rochak agrawal] 08:11:08
+I'm just making it very simple as of now.
+
+[rochak agrawal] 08:11:12
+Third is, let's say, test the code.
+
+[rochak agrawal] 08:11:16
+And…
+
+[rochak agrawal] 08:11:17
+Fourth is, let's say, deploy the port.
+
+[rochak agrawal] 08:11:21
+Did it?
+
+[rochak agrawal] 08:11:23
+Now, you see?
+
+[rochak agrawal] 08:11:26
+you, as a DevOps engineer, you are going to write the CICD pipeline.
+
+[rochak agrawal] 08:11:37
+You need to understand him.
+
+[rochak agrawal] 08:11:40
+So we'll write this pipeline, correct? Now, in the pipeline, there is a step called build the code.
+
+[rochak agrawal] 08:11:45
+So you will… you will go to your developer. So your pom.xml will be there in the gate itself.
+
+[rochak agrawal] 08:11:55
+Developer will ship it for you.
+
+[rochak agrawal] 08:11:58
+Okay.
+
+[rochak agrawal] 08:11:59
+Now, when you write the step for the building the code, you will write something called MBN install…
+
+[rochak agrawal] 08:12:07
+We'll see those commands.
+
+[rochak agrawal] 08:12:11
+MBN deploy or something. Again, you will take help of the developer to write this Maven command because building is primarily a development activity.
+
+[rochak agrawal] 08:12:24
+So, on the Maven front, you don't need to do anything.
+
+[Jeeva Koli] 08:12:25
+Correct.
+
+[rochak agrawal] 08:12:27
+It is just, for example, since build is a part of the process, your CICD process. Let's say your CICD pipeline failed. When you're looking at the error.
+
+[rochak agrawal] 08:12:40
+You just need to have a basic understanding to figure out if it is a build-related error, or if it is error due to some other issues.
+
+[rochak agrawal] 08:12:49
+That's the only thing you need to do. So, for example, let's say I'm running Jenkins, I run a build, uh, now…
+
+[rochak agrawal] 08:12:57
+my CPU memory on my Jenkins server is filled. So when you run it, your job is going to fill. There is nothing wrong with the build. It is just your infrastructure is faulty at this moment, correct?
+
+[rochak agrawal] 08:13:10
+But there might be sometimes when you run your CI/CD pipeline, when the command MBN install is going to run, it itself is going to fail. Then you go back to your developer, you tell them that this is an error, this you are getting, this we are getting.
+
+[rochak agrawal] 08:13:27
+And you need to fix it. They will again fix it, push in their code again, and then your again new CICD pipeline is going to run. So from a Git Maven perspective, you do not need to write anything. You just need to have a basic understanding as a DevOps engineer so that you can figure out.
+
+[rochak agrawal] 08:13:42
+if any errors are coming in the CICD pipeline, you can figure out if it is a build-related error, you can redirect them to, again, to the development team.
+
+[Jeeva Koli] 08:13:54
+Okay, got it.
+
+[rochak agrawal] 08:13:56
+Okay.
+
+[rochak agrawal] 08:14:00
+And it is… I'll show you. So, that's a very standard process. So, if you go to any of my…
+
+[rochak agrawal] 08:14:08
+let's say…
+
+[rochak agrawal] 08:14:15
+Jenkins Java project, if I go…
+
+[rochak agrawal] 08:14:19
+So you can see pom.xml will always be there.
+
+[rochak agrawal] 08:14:23
+So you see SRC is there. We'll discuss that. But pom.xml is a file which a developer will ship alongside with its code.
+
+[rochak agrawal] 08:14:33
+Okay.
+
+[Jeeva Koli] 08:14:35
+Okay.
+
+[rochak agrawal] 08:14:38
+I can show you another simple Java application.
+
+[rochak agrawal] 08:14:51
+Simple Java maven app, which we are going to use, uh, once we install the Jenkins. It's an official simple app from the Jenkins itself. Here also, if you see, pom.xml.
+
+[rochak agrawal] 08:15:03
+So, this file will…
+
+[rochak agrawal] 08:15:06
+A developer itself will give it to you. You do not need to write anything, okay?
+
+[Jeeva Koli] 08:15:11
+Okay.
+
+[Jeeva Koli] 08:15:13
+It means, after all, the build process is going by developer only, just we need to monitor.
+
+[rochak agrawal] 08:15:18
+No, no, no, no, no, Jiva. The build process will be part of the CICD pipeline.
+
+[Jeeva Koli] 08:15:24
+Okay, okay.
+
+[rochak agrawal] 08:15:25
+Okay.
+
+[rochak agrawal] 08:15:27
+How that is going to happen will be defined by…
+
+[rochak agrawal] 08:15:31
+symbol which will be created by the developer.
+
+[Jeeva Koli] 08:15:35
+Okay.
+
+[rochak agrawal] 08:15:37
+Okay.
+
+[rochak agrawal] 08:15:38
+But it is not… it will not be a manual build, it's an automated build. See, you can do the manual build also, for example, if you are not using DevOps, your developer will do the build, and they will give you the .exe file, which you are going to deploy. That's a manual process.
+
+[rochak agrawal] 08:15:53
+Correct, you can do that as well. Maybe if your changes are not very frequent, why you are going to take a tool to create all those automated CI/CD pipelines. But nowadays, this is a standard.
+
+[rochak agrawal] 08:16:07
+And we are focusing on the DevOps, and that is a process which we follow in DevOps.
+
+[Jeeva Koli] 08:16:13
+Okay, so my work will start from the build, right?
+
+[rochak agrawal] 08:16:18
+Your work will start seeing.
+
+[rochak agrawal] 08:16:22
+Your work is going to start when?
+
+[rochak agrawal] 08:16:26
+developers checks out their code. For example, developer writes their code to Git, correct? Now, before that, you will…
+
+[rochak agrawal] 08:16:35
+First, you need to set up Jenkins, you need to write a CICD pipeline, then only it is going to run, correct? So first, and this CICD pipeline also, uh, you do not know, uh, the build steps, right?
+
+[Jeeva Koli] 08:16:41
+Yes.
+
+[rochak agrawal] 08:16:48
+I should run the MBN install, or I should run the MBN deploy, or I should run the MBN validate, right? So, for these different, different steps, you will take help of the development team again.
+
+[rochak agrawal] 08:17:01
+You will create your CICD pipeline, and then…
+
+[rochak agrawal] 08:17:05
+CCICD pipeline setup is more or less a one-time activity.
+
+[rochak agrawal] 08:17:09
+Okay, there might be the modifications going forward, but once you set up your process, it is majorly going to remain the same.
+
+[Jeeva Koli] 08:17:11
+Okay.
+
+[rochak agrawal] 08:17:17
+Okay, so this is CICD pipeline setup is, uh, is the activity when you are initiating your project.
+
+[rochak agrawal] 08:17:25
+Now, after that, you need to maintain Kubernetes cluster, writing the Terraform code.
+
+[rochak agrawal] 08:17:31
+doing the modification in the CICD pipeline, and all of that will be there.
+
+[Jeeva Koli] 08:17:36
+Got it. Yeah.
+
+[rochak agrawal] 08:17:38
+Okay.
+
+[Jeeva Koli] 08:17:40
+Yeah.
+
+[rochak agrawal] 08:17:41
+Yes, sir.
+
+[Arif] 08:17:44
+Yeah, hi Roger.
+
+[Arif] 08:17:46
+So, Rojak, I'm not very much clear about the whole picture here. Can you please describe the flow from the source code to the deployment, what all things have been included, and step by step?
+
+[Arif] 08:17:57
+But CICD would you cover the CICD?
+
+[rochak agrawal] 08:17:58
+Uh, Arif, I think, uh, yeah, yeah. So Arif, uh, uh, let's park this question for now. Uh, we are going to do a complete, uh, understanding of this once we do the CI engine, because your CI engine, uh, Jenkins will be the heart of this.
+
+[rochak agrawal] 08:18:13
+Okay, so that will make more sense at this moment. So I'll park this question for now.
+
+[Arif] 08:18:21
+Okay.
+
+[rochak agrawal] 08:18:22
+We'll do a complete workflow.
+
+[rochak agrawal] 08:18:26
+Okay.
+
+[Arif] 08:18:27
+Maven is applicable when the company is using JavaScript only, right? If they are not using JavaScript, the Maven will not be applicable?
+
+[rochak agrawal] 08:18:31
+Correct.
+
+[rochak agrawal] 08:18:35
+Maven will not be working. Yes.
+
+[Arif] 08:18:37
+Okay, and regarding the repository, so…
+
+[rochak agrawal] 08:18:38
+So, you see, uh…
+
+[Arif] 08:18:43
+So, central repository, you said that Maven have their own central repository, so what are other repositories we have, like, organization uses?
+
+[rochak agrawal] 08:18:43
+Yeah, yeah, regarding the repository.
+
+[rochak agrawal] 08:18:55
+See, uh, Maven has its own repository. Now, there is two aspects to this RF.
+
+[rochak agrawal] 08:19:01
+When you say which repositories organization also uses, so there are multiple tools are available. See, GitHub is a repository.
+
+[rochak agrawal] 08:19:12
+For the…
+
+[rochak agrawal] 08:19:15
+storing the source code, right? Similarly, to handle the Maven packages.
+
+[rochak agrawal] 08:19:20
+not only the Maven packages, um, I would say packages, or the artifacts, there are multiple other sources are available. So, for example, organization uses.
+
+[rochak agrawal] 08:19:32
+something called, uh, Nexus.
+
+[rochak agrawal] 08:19:36
+Nexus is a very popular repository. Then, in Azure DevOps, there is a feature called Azure Artifacts.
+
+[rochak agrawal] 08:19:44
+Where we can store your packages, your deployable artifacts.
+
+[rochak agrawal] 08:19:51
+There is something called JFrog also.
+
+[rochak agrawal] 08:19:57
+So these are the type of, these are the repository which we can use.
+
+[rochak agrawal] 08:20:02
+Now, the thing is, see, Maven Central we are talking about, so if you go here, and just say Maven Central.
+
+[rochak agrawal] 08:20:12
+It's in mavenrepository.com, Maven Central. So this is a repository you are going to find the Maven plugins, right?
+
+[rochak agrawal] 08:20:19
+Apache Maven compiler plugin, source plugin, Javadoc plugin. Javadoc is… is going to generate the documentation for your application. So, Surefire is, again, a testing plugin.
+
+[rochak agrawal] 08:20:30
+So this is a repository, MIBN repository, MBN repository. So if you are not defining any repository and your package is not available in the local repository, it is going to be downloaded from your.
+
+[rochak agrawal] 08:20:47
+central repository, right? But sometime what is going to happen, this is open source, right? So there is… there might… when your organization might say, okay, uh, I don't want to use it, uh, open source, like, uh, package.
+
+[rochak agrawal] 08:21:01
+So what they do is, they will download the package first, they will do the hardening of the package, and they are going to… let's say I'm using Nexus.
+
+[rochak agrawal] 08:21:10
+So they are going to upload all the hardened package onto the Nexus.
+
+[rochak agrawal] 08:21:15
+And I even define these settings in the settings.xml that if you are not finding something into the local repository instead of going to this Nexus repository.
+
+[rochak agrawal] 08:21:28
+Now, Nexus is like, for example, in GitHub. GitHub is a platform where you can have multiple repositories, correct?
+
+[rochak agrawal] 08:21:36
+Similarly, Nexus also is a platform.
+
+[rochak agrawal] 08:21:41
+It's a hosting platform. I can store multiple artifacts there.
+
+[rochak agrawal] 08:21:48
+I hope that answers.
+
+[Arif] 08:21:52
+Yeah, and, uh, you will be giving demo, like, uh, what we will configure in pom.txtable.
+
+[rochak agrawal] 08:21:57
+Yes, yes, yes, we will do a demo. See, mostly, uh, right now, what we will do is, we will understand about the demo, about the Maven, uh, structure, installing the Maven and other thing. Then, with the Jenkins integration, because, see, in the end, as a DevOps engineer, you're not going to run the Maven command.
+
+[rochak agrawal] 08:22:15
+Manually, correct? You're going to run this Maven build from the Jenkins itself. So, we will… and that's why we have this complete application with us, right?
+
+[rochak agrawal] 08:22:26
+So…
+
+[rochak agrawal] 08:22:29
+this is a Java application. We are going to deploy this Java application with the help of, uh, Jenkins, Maven, and… so you see…
+
+[rochak agrawal] 08:22:40
+This repository also builds a Java app with Maven, and it's a simple application given from the Jenkins itself. So we'll do that, complete.
+
+[rochak agrawal] 08:22:49
+Okay.
+
+[Arif] 08:22:51
+Okay, yep.
+
+[rochak agrawal] 08:22:52
+Yep.
+
+[rochak agrawal] 08:22:53
+Now, if you see this, okay, the standard directory layout where we were talking about the convention over the configuration.
+
+[rochak agrawal] 08:23:01
+if you initiate any of the Maven project.
+
+[rochak agrawal] 08:23:06
+Okay.
+
+[rochak agrawal] 08:23:07
+any of the Maven project, this is going to be there.
+
+[rochak agrawal] 08:23:15
+The structure. Okay.
+
+[rochak agrawal] 08:23:16
+it follows it and configures nothing. So Maven already knows where your source code, tests, and resources… there is no deviation for it. So, for example.
+
+[rochak agrawal] 08:23:27
+Uh, if you see this…
+
+[rochak agrawal] 08:23:30
+This job.
+
+[rochak agrawal] 08:23:32
+This JAR is an output of the build process. So JAR is an executable, basically. It's a Java… we call it as a Java archive. It's a, uh…
+
+[rochak agrawal] 08:23:42
+it's a Java executable. So if I… if I run java-jar and give the name of this, my application is going to run, right?
+
+[rochak agrawal] 08:23:51
+Now if you're using the Maven and you run the build process, now I exactly know where my output will be. It will be in a target folder.
+
+[rochak agrawal] 08:24:00
+Okay, so this is a structure. SRC is source.
+
+[rochak agrawal] 08:24:05
+Now, inside the SRC, you will have two folders, main folder and test folder. Main will have your source code.
+
+[rochak agrawal] 08:24:14
+Test will have your test cases.
+
+[rochak agrawal] 08:24:17
+Okay.
+
+[rochak agrawal] 08:24:17
+And it is exactly going to remain the same. So, for example, if you do not have the test cases, you will have… you will not have this. You will only have the SRC folder, and I can show you this.
+
+[rochak agrawal] 08:24:29
+From the sample app.
+
+[rochak agrawal] 08:24:36
+CC, SRC?
+
+[rochak agrawal] 08:24:37
+You see, Main is there.
+
+[rochak agrawal] 08:24:42
+So my source code is here, right?
+
+[rochak agrawal] 08:24:45
+Similarly.
+
+[rochak agrawal] 08:24:47
+Now, you see…
+
+[rochak agrawal] 08:24:51
+There are two aspects to it.
+
+[rochak agrawal] 08:25:02
+Build process.
+
+[rochak agrawal] 08:25:04
+Okay.
+
+[rochak agrawal] 08:25:07
+Now you say build a process, I'm going to run with the CI/CD, but here you are saying you are getting the structure, right?
+
+[rochak agrawal] 08:25:16
+Okay, so build process is going to happen with the CICD, but when a developer writes the code.
+
+[rochak agrawal] 08:25:25
+See, there are multiple developers, they all are writing the code.
+
+[rochak agrawal] 08:25:29
+if you are right in some other folder, I am also writing in some other folder, that will be a chaos, right? So, everyone need to initiate a Maven.
+
+[rochak agrawal] 08:25:40
+Project.
+
+[rochak agrawal] 08:25:42
+Even… not everyone. So, buns…
+
+[rochak agrawal] 08:25:47
+you initiate a Maven project, it is going to create the structure for you, okay? Then you…
+
+[rochak agrawal] 08:25:56
+let's say, push it to the GitHub repository, and then your every developer is going to clone that repository, so they are going to have this structure, and they are going to develop your code in a required.
+
+[rochak agrawal] 08:26:09
+format only. Format when we are saying the folder format. So that every source code file is in SRC folder, test is in a test folder, uh, there is a pom.xml, right? And then once you build this, build process is going to run when you run nbn install, for example.
+
+[rochak agrawal] 08:26:27
+then it exactly knows where to pick up the source code, how to run it, uh, with the instruction written in the pom.xml, and how to… where to send the output in the target folder. So right now, if you see it here.
+
+[rochak agrawal] 08:26:43
+There is no target folder, correct?
+
+[rochak agrawal] 08:26:47
+Because the target folder will be created once your build is completed.
+
+[rochak agrawal] 08:26:52
+target folder is the output of the build. Now, inside the target folder, uh, there might be different, different things, depending on, uh, for example, classes, uh, if you're generating any reports, code coverage report or something, all those will be there in the.
+
+[rochak agrawal] 08:27:09
+target folder. And finally, your artifact, myapp.jar. If we are developing a WAR file, mostly nowadays, you are going to work with the JAR file. JAR is for Java archive, WAR is a web archive. Okay, so if you're developing a front-end application with Java, you will do a WAR file.
+
+[rochak agrawal] 08:27:28
+But…
+
+[rochak agrawal] 08:27:29
+Mostly, Java is being used nowadays for a Spring Boot backend application. Front-end is being developed with the…
+
+[rochak agrawal] 08:27:39
+this soon.
+
+[rochak agrawal] 08:27:40
+and Node.js. And see, the build process, there also will be same. So, for example, here I'm going to run the command maven build.
+
+[rochak agrawal] 08:27:49
+there you are going to run the command npm build. That's the only difference. Apart from it, more or less the process is going to be the same.
+
+[rochak agrawal] 08:27:57
+Okay, now for installing the Maven. Installing the Maven is very easy.
+
+[rochak agrawal] 08:28:05
+You go.
+
+[rochak agrawal] 08:28:06
+Maven install.
+
+[rochak agrawal] 08:28:11
+Again, since it's a Java-based application, you need to make sure you have a Java installed on your system. If the Java is not installed, then you are not going to run Maven. Let me see if Java is there.
+
+[rochak agrawal] 08:28:28
+I do not have Java, so first I need to install Java.
+
+[Vaibhav Gupta] 08:28:58
+I just want to ask one thing, like, uh, as you said, the Java is used for backend with Spring Boot.
+
+[Vaibhav Gupta] 08:29:03
+That's okay, but, uh, Node.js also used for the backend.
+
+[rochak agrawal] 08:29:11
+I'm sorry, I missed the question, Bevo.
+
+[Vaibhav Gupta] 08:29:13
+I'm saying, as you said, Java is a huge backend for the Spring Boot, so that's okay, but Node.js is also used for backend.
+
+[Vaibhav Gupta] 08:29:24
+As you said, uh, no GSE is front-end.
+
+[rochak agrawal] 08:29:25
+Yeah, I am.
+
+[rochak agrawal] 08:29:27
+See, uh, I am telling you the general conception. You develop your front-end application with Java also.
+
+[Vaibhav Gupta] 08:29:30
+Okay, okay.
+
+[rochak agrawal] 08:29:34
+Yeah, so that is… that's not a problem.
+
+[Vaibhav Gupta] 08:29:38
+Okay.
+
+[rochak agrawal] 08:29:39
+Okay.
+
+[rochak agrawal] 08:29:41
+See, Java can do multiple things, even, for example, if you…
+
+[rochak agrawal] 08:29:45
+Just a second.
+
+[rochak agrawal] 08:29:50
+Even, for example, if you talk about the Python, right? With the Python, you can do multiple things.
+
+[rochak agrawal] 08:30:05
+So Java is being installed.
+
+[rochak agrawal] 08:30:45
+I'll close this.
+
+[rochak agrawal] 08:30:49
+Just restart.
+
+[rochak agrawal] 08:30:56
+So, okay, Java is installed. We say version.
+
+[rochak agrawal] 08:31:11
+What is wrong?
+
+[rochak agrawal] 08:31:28
+1.8.
+
+[rochak agrawal] 08:31:30
+Okay, now I'll go.
+
+[rochak agrawal] 08:31:34
+Install Maven.
+
+[rochak agrawal] 08:31:50
+Okay, it is very simple to install Maven.
+
+[rochak agrawal] 08:31:58
+So, you can see the steps.
+
+[rochak agrawal] 08:32:01
+There is Windows.
+
+[rochak agrawal] 08:32:05
+Okay? So say, download the Apache Maven binary distribution archive. I'll download.
+
+[rochak agrawal] 08:32:13
+Current Maven is 3.9.16.
+
+[rochak agrawal] 08:32:19
+Binary JPARKI, I'll download.
+
+[rochak agrawal] 08:32:22
+Now you see very simple steps. Extract the distribution folder in any directory depending on the archive.
+
+[rochak agrawal] 08:32:32
+And then add the bin directory to the created directory to the path environment menu.
+
+[rochak agrawal] 08:32:38
+So, let me see if it is downloaded. I'll see.
+
+[rochak agrawal] 08:32:43
+I'll just take it on a desktop.
+
+[rochak agrawal] 08:32:51
+So there is nothing in movement installation, basically.
+
+[rochak agrawal] 08:32:57
+Okay? I'll unzip it.
+
+[rochak agrawal] 08:33:06
+Okay, inside this, there is a bin directory.
+
+[rochak agrawal] 08:33:10
+Okay, now what I need to do, I need to copy this path.
+
+[rochak agrawal] 08:33:16
+Go to my environment variables.
+
+[rochak agrawal] 08:33:30
+There is something called a path.
+
+[rochak agrawal] 08:33:32
+So I'll add a new variable here. So you need to give the directory from LBIN, okay?
+
+[rochak agrawal] 08:33:40
+I'll say okay.
+
+[rochak agrawal] 08:33:43
+Okay.
+
+[rochak agrawal] 08:33:45
+Let me see once if it is there.
+
+[rochak agrawal] 08:33:57
+Yeah, it is there. Okay? Now if you open your command prompt.
+
+[rochak agrawal] 08:34:05
+You run MBN?
+
+[rochak agrawal] 08:34:11
+You see? My command is running. Okay? Maven is running. It says build failure because it is not finding something. But my Maven is installed.
+
+[rochak agrawal] 08:34:20
+Now you can find out the version of Maven, mbn-b.
+
+[rochak agrawal] 08:34:25
+So, say, Apache Maven 3.9.12.
+
+[rochak agrawal] 08:34:29
+Java version is 1.8. Maven home is this.
+
+[rochak agrawal] 08:34:35
+Right? And default local is this. So, your Maven is installed, basically. Right? Now, if you go…
+
+[rochak agrawal] 08:34:52
+Now I'll generate a project structure.
+
+[rochak agrawal] 08:34:59
+What is the command?
+
+[rochak agrawal] 08:35:03
+Yes.
+
+[rochak agrawal] 08:35:05
+Okay, so if you see…
+
+[rochak agrawal] 08:35:10
+Let me write it in a notepad.
+
+[rochak agrawal] 08:35:35
+I'll explain this command.
+
+[rochak agrawal] 08:35:57
+Okay.
+
+[rochak agrawal] 08:36:00
+So you see, uh…
+
+[rochak agrawal] 08:36:02
+If you see this command, maven archetype generate, okay, so it is…
+
+[rochak agrawal] 08:36:07
+It is going to generate a project structure for you.
+
+[rochak agrawal] 08:36:11
+this is… these optionals are just the name of my application, which I'm going to build with Maven, okay? Uh, group ID, you do not need to give all of this, but…
+
+[rochak agrawal] 08:36:22
+It will generate a default pom.xml with these options and then archetype artifact ID.
+
+[rochak agrawal] 08:36:29
+In Maven, there are multiple type of artifacts. For example, JAR, VAR, Spring Boot JAR, et cetera, et cetera, right? But we are using just a quick start one, simple one.
+
+[rochak agrawal] 08:36:43
+if you want to, let's say, generate a JAR file, so you'll find the artifact ID for that, and generate, uh, that.
+
+[rochak agrawal] 08:36:48
+And if you run this.
+
+[rochak agrawal] 08:37:00
+You see what… what has happened here.
+
+[rochak agrawal] 08:37:05
+This says, scanning for the project.
+
+[rochak agrawal] 08:37:08
+Since we have an empty repo, there's nothing. It is downloading from Central.
+
+[rochak agrawal] 08:37:14
+Some Maven metadata.xml, Maven metadata, this, this, this, this, this.
+
+[rochak agrawal] 08:37:19
+Because it's downloaded dependencies from your central repository right now. Right? And then you see archetype 3.4.generate, generate sources, standalone POM.
+
+[rochak agrawal] 08:37:30
+It generate a downloading again from the central archetype catalog.xml, archetype catalog.xml using follow following parameter.
+
+[rochak agrawal] 08:37:40
+And then, if you see now.
+
+[rochak agrawal] 08:37:44
+Go to my app. Why my app? Because I have given this my app name here.
+
+[rochak agrawal] 08:37:49
+Okay, now if you go inside the My App.
+
+[rochak agrawal] 08:37:56
+Duotia, yeah.
+
+[rochak agrawal] 08:37:57
+You can see SRC is there, POM.XML is there. So default POM.XML and default SRC is created for you. Now what you need to do, you need to…
+
+[rochak agrawal] 08:38:10
+So you can go to SRC. Complete folder structure is created for you.
+
+[rochak agrawal] 08:38:15
+You can see main and test, and then if you go, uh…
+
+[rochak agrawal] 08:38:22
+And if you open pom.xml, so.
+
+[rochak agrawal] 08:38:33
+So there's a pom.xml also. So I'll go, I'll open the pom.xml.
+
+[rochak agrawal] 08:38:47
+And you can see this m2.m2 has also been created where we have a repository. So you can see.
+
+[rochak agrawal] 08:38:58
+All those, uh, uh, dependencies, whatever it has downloaded, it is coming here. JUnit, JBacks.NET, and this is…
+
+[rochak agrawal] 08:39:08
+Till now, we have not done anything, right? We just say archetype generate, and if you open this archetype catalog.
+
+[rochak agrawal] 08:39:18
+So, here it is not coming very nicely, but here, uh…
+
+[rochak agrawal] 08:39:24
+there is multiple type of artifacts. For example, if you want to generate AWS Elastic Beanstalk project.
+
+[rochak agrawal] 08:39:30
+So, multiple type of projects are there. Artifacts is there. So, you need to generate artifact, which, again, it's a more of a developer decision.
+
+[rochak agrawal] 08:39:41
+And then, uh, if you go…
+
+[rochak agrawal] 08:39:46
+where I was going.
+
+[rochak agrawal] 08:39:55
+You see?
+
+[rochak agrawal] 08:39:57
+pom.xml, if you see.
+
+[rochak agrawal] 08:40:02
+So you can see it might be looking, like, very complex as of now, but if you see, this is very simple. It is written in XML. So here…
+
+[rochak agrawal] 08:40:15
+I… am I coming to some other directory?
+
+[rochak agrawal] 08:40:20
+Maven app.
+
+[rochak agrawal] 08:40:21
+Okay.
+
+[rochak agrawal] 08:40:23
+Oh, yeah.
+
+[rochak agrawal] 08:40:25
+Here also we have only the SRC and POM. If you open the POM, you see yes. So this is very simple.
+
+[rochak agrawal] 08:40:33
+Model version, group ID. This is a group ID which we have given.
+
+[rochak agrawal] 08:40:38
+Artifact ID. Packaging is JAR. Java Cookie Start is a JAR. Version is this. Name is this. URL is maven.apache.org. Now, if you see.
+
+[rochak agrawal] 08:40:48
+the dependency.
+
+[rochak agrawal] 08:40:50
+So…
+
+[rochak agrawal] 08:40:51
+When we run this build, okay?
+
+[rochak agrawal] 08:40:55
+this JUnit dependency, JUnit will automatically will download with the version 3.8.1, okay?
+
+[rochak agrawal] 08:41:04
+Scope is test. Test is, again, a lifecycle phase. We are here to discuss the lifecycle. But you see, I have just defined some dependency and just some project. So when you run the Maven build.
+
+[rochak agrawal] 08:41:20
+Maven is going to read this pom.xml, and it will see, OK, there is a dependency on JUnit. It will automatically download the dependency of JUnit. And see, this is called a declarative way. This is my project configuration.
+
+[rochak agrawal] 08:41:36
+Okay, and this is the dependencies we need to.
+
+[rochak agrawal] 08:41:40
+Vocal.
+
+[rochak agrawal] 08:41:42
+So now you see, I can define multiple dependencies here. If you see this pom.xml, here you have multiple dependencies, but the…
+
+[rochak agrawal] 08:41:51
+But the overall structure remained the same. You have a project. Inside the project, you have this group ID, artifact ID version, and you have the dependency. And here I have multiple dependency. I have reactive JEX. This one, there is a JUnit dependency.
+
+[rochak agrawal] 08:42:08
+Right? Now, after the dependency, we can define the build. Okay? So here, you are saying…
+
+[rochak agrawal] 08:42:17
+there's a compiler plugin I need to use, and the version I need to use is a 1.8.
+
+[rochak agrawal] 08:42:23
+So you can define everything in the pom.xml. If you are not defining it in a pom.xml, it is going to take the default values.
+
+[rochak agrawal] 08:42:34
+Okay.
+
+[rochak agrawal] 08:42:38
+So that is what we were discussing it here. It is going to create a standard directory layout for you.
+
+[rochak agrawal] 08:42:44
+Target is disposable means, um, like, as part of my automation process or the CICD process, because, see, every time I'm running a build, um.
+
+[rochak agrawal] 08:42:55
+my JAR file will be a new JAR file, correct? So, what happens is.
+
+[rochak agrawal] 08:43:01
+every time I'm starting my CICD process, I'll delete the target folder so that it is generating a new target folder.
+
+[rochak agrawal] 08:43:11
+And then resources are copied, not compiled. Anything in SRC main resources land on the classified inside the artifact. See, compilation happens first, but then after it, when you are creating the JAR file, every…
+
+[rochak agrawal] 08:43:28
+Pile Baby, um…
+
+[rochak agrawal] 08:43:30
+We'll go inside the artifact, it will be copied.
+
+[rochak agrawal] 08:43:33
+Similarly, if you see here.
+
+[rochak agrawal] 08:43:39
+A minimal real form. So group ID, your organization in the reverse domain form. Generally, for example, it is not a mandatory step, but for example, com, whatever the company you're working on, it gives the name.
+
+[rochak agrawal] 08:43:54
+Artifact ID is a project name. MyApp, we are also given the name MyApp. You can get the name of the artifact. Version.
+
+[rochak agrawal] 08:44:02
+While in a development, okay, your version is going to change.
+
+[rochak agrawal] 08:44:07
+Then…
+
+[rochak agrawal] 08:44:09
+Packaging, so you can see Maven compiler, I can define it in properties, dependencies.
+
+[rochak agrawal] 08:44:16
+Packaging, JAR or ER, POM, decide how it is assembled. Properties, we can define. Reusable value. Dependencies. Library, the project name. Build.
+
+[rochak agrawal] 08:44:27
+That's where plugin configuration when defaults are not enough. Now, we can define the build configuration at two places. For example, I will define everything in a pom.xml.
+
+[rochak agrawal] 08:44:39
+But if you don't want to define it in a pom.xml, I will just simply go here.
+
+[rochak agrawal] 08:44:46
+and say whatever the steps I want. For example, I can go here and say MBN compile.
+
+[rochak agrawal] 08:44:54
+Okay, so it is going to execute the compile phase.
+
+[rochak agrawal] 08:45:01
+You see?
+
+[rochak agrawal] 08:45:03
+No compiler is provided in this environment. Perhaps you are running a JRE rather than a JDK. Now we need to understand this.
+
+[rochak agrawal] 08:45:13
+Login?
+
+[rochak agrawal] 08:45:16
+This writing the build file and other things is not your problem as a developer.
+
+[rochak agrawal] 08:45:21
+you will get build file, pom.xml, and everything from the development team. Now, your problem is when you are running this command from your CICD pipeline, for example.
+
+[rochak agrawal] 08:45:33
+Then you need to see.
+
+[rochak agrawal] 08:45:36
+Boss, if the build is failing.
+
+[rochak agrawal] 08:45:39
+Whose error is this?
+
+[rochak agrawal] 08:45:42
+Is this an application error or is this a platform error? If it is a platform error, we are going to resolve it. We are going to see what is the issue. Okay.
+
+[rochak agrawal] 08:45:54
+If it is an application error, let's say your application started the compiling.
+
+[rochak agrawal] 08:46:00
+But in the compilation, it failed. Then it is definitely an application error, and that is where you are going to, um…
+
+[rochak agrawal] 08:46:09
+Send it back to your development team.
+
+[rochak agrawal] 08:46:20
+Okay.
+
+[rochak agrawal] 08:46:21
+So, where I was saying, uh, I have not, uh…
+
+[rochak agrawal] 08:46:26
+clear about the project. See, it's a very simple thing. This is a command, maven archetype generate.
+
+[rochak agrawal] 08:46:31
+This is the group ID and the artifact ID. Here, you need to give the artifact ID. For example, what type of artifact you want to generate. Uh, if you want to generate the artifact, uh, WAR file, JAR file, you need to give the artifact ID here.
+
+[rochak agrawal] 08:46:46
+That's it.
+
+[Arif] 08:46:52
+No, uh, Rojak, I'm not very clear about this dependency and this, uh, plugins on the team.
+
+[rochak agrawal] 08:46:58
+Hmm?
+
+[rochak agrawal] 08:46:59
+See, uh, dependency is, uh…
+
+[rochak agrawal] 08:47:02
+For example.
+
+[Vaibhav Gupta] 08:47:05
+Same here.
+
+[rochak agrawal] 08:47:07
+Okay, no problem. Let me explain.
+
+[rochak agrawal] 08:47:12
+So there is two things. Dependencies.
+
+[rochak agrawal] 08:47:23
+And plug in.
+
+[rochak agrawal] 08:47:25
+Okay, now let's see.
+
+[rochak agrawal] 08:47:31
+You are developing an e-commerce website, okay? Now, every e-commerce website, more or less, will have a payment option, correct?
+
+[rochak agrawal] 08:47:42
+Right? Now, I have two options for it.
+
+[rochak agrawal] 08:47:49
+Either I will write.
+
+[rochak agrawal] 08:47:56
+Full payment code.
+
+[rochak agrawal] 08:47:58
+From scratch.
+
+[rochak agrawal] 08:48:01
+Got it?
+
+[rochak agrawal] 08:48:02
+Second option is, let's say…
+
+[rochak agrawal] 08:48:05
+We'll use some payment gateway.
+
+[rochak agrawal] 08:48:11
+Delayed till now?
+
+[rochak agrawal] 08:48:17
+Arif Webber?
+
+[Arif] 08:48:22
+Yep.
+
+[rochak agrawal] 08:48:23
+Great! Now, let's say I am using this.
+
+[rochak agrawal] 08:48:27
+payment date. Let's say I'm using Visa, for example.
+
+[rochak agrawal] 08:48:34
+If I'm using this, then I have a dependency on Visa.
+
+[rochak agrawal] 08:48:41
+Got it?
+
+[Arif] 08:48:44
+Yep.
+
+[rochak agrawal] 08:48:44
+Now, Visa, like, for their payment gateway, they will also be developing… let's say there is multiple versions of payment gateway, V1, V2, V3, V4. You are using the V3, but Visa will say, okay, I'm deprecating the V3, you need to upgrade your…
+
+[rochak agrawal] 08:49:02
+A version. So you have a dependency on Visa, correct?
+
+[rochak agrawal] 08:49:08
+Similarly, now that's a very high-level example. Now, let's say your application.
+
+[rochak agrawal] 08:49:17
+There is a functionality for the database connection. Now, for the database connection, again, you can use any of the approach. You can write the full database connection code from scratch.
+
+[rochak agrawal] 08:49:28
+Okay.
+
+[rochak agrawal] 08:49:29
+Then there is a library, which, if you are going to use, that will give you the connection facility automatically.
+
+[rochak agrawal] 08:49:37
+Now, there are multiple software libraries are available over the internet, and we are also going to use, for example.
+
+[rochak agrawal] 08:49:44
+when we used… let's say if you're writing a very small code for Python, right, and you say compare your application, uh, compare to number A is equal to B or something, right? In the backend, we are using some package. The logic is written somewhere, correct?
+
+[rochak agrawal] 08:50:00
+Similarly, let's say I am using
+
+[rochak agrawal] 08:50:06
+the DB connection library.
+
+[rochak agrawal] 08:50:12
+Now, this is a dependency. Understood. Now, maybe it is in…
+
+[rochak agrawal] 08:50:17
+wherever it is, I am going to download this dependency from my remote repository. Of course, it should be there. For example, when you go…
+
+[rochak agrawal] 08:50:26
+To Maven Central.
+
+[rochak agrawal] 08:50:35
+You see we have multiple package logging framework, for example. Now there's a SLF4J API module is there, Apache Log4J. Apache Log4J is a standard logging mechanism for your Java Spring Boot application.
+
+[rochak agrawal] 08:50:50
+If you are using this library, for example, if you are using this framework, you need to download this framework from somewhere, correct? That's a dependency.
+
+[rochak agrawal] 08:50:59
+Another way is you will write the complete code yourself.
+
+[rochak agrawal] 08:51:03
+So, you understand the dependency now?
+
+[Arif] 08:51:12
+Yeah, the concept is okay.
+
+[rochak agrawal] 08:51:14
+Mm-hmm.
+
+[Arif] 08:51:15
+But we have to learn about all the dependencies available, or we have to define what's defined by the…
+
+[rochak agrawal] 08:51:20
+No, it's a developer and team which will define. See, you do not know what they are writing in the application.
+
+[Arif] 08:51:23
+Okay.
+
+[Arif] 08:51:25
+World Children, sure.
+
+[rochak agrawal] 08:51:27
+Correct. So we don't need to worry about all of this. We need to see…
+
+[rochak agrawal] 08:51:30
+We need to focus on about these errors which is coming.
+
+[Arif] 08:51:37
+If there is any error regarding dependencies, it would be…
+
+[rochak agrawal] 08:51:41
+Then, then it will again go back to the development team.
+
+[Arif] 08:51:44
+Okay, okay, got it.
+
+[rochak agrawal] 08:51:46
+Only the platform-related error a DevOps engineer is going to solve.
+
+[rochak agrawal] 08:51:50
+Anything related to the application.
+
+[rochak agrawal] 08:51:53
+Or, see, dependencies, plugins, is all part of the application, correct?
+
+[rochak agrawal] 08:51:59
+I don't know. You have written the pom.xml. Maybe you have given the wrong version. Correct the version and give it to me again.
+
+[rochak agrawal] 08:52:07
+Okay.
+
+[rochak agrawal] 08:52:09
+See, even you do not need to explicitly go and tell them. When you create your CICD engine, they will also have the read-only permission to see the logs of a particular build.
+
+[rochak agrawal] 08:52:22
+So they will also see what is error. It's a collaborative effort.
+
+[rochak agrawal] 08:52:28
+Second thing is about the plugin.
+
+[rochak agrawal] 08:52:34
+And plugin is a concept which you are going to use in DevOps very frequently.
+
+[rochak agrawal] 08:52:40
+In?
+
+[rochak agrawal] 08:52:43
+In Jenkins, see, uh, Maven is all… is still a little okay, but Jenkins does not do anything about the plugin, okay? Plugin, you can say, for example.
+
+[rochak agrawal] 08:52:57
+Nick, which analogy I should give you?
+
+[rochak agrawal] 08:53:00
+Okay. So for example, let's say, um.
+
+[rochak agrawal] 08:53:07
+You go buy a car.
+
+[rochak agrawal] 08:53:09
+Okay, now when you when you go trying to buy a car, there are multiple models available, right? This model gives you this functionality, this model gives you this functionality, this model gives you this functionality.
+
+[rochak agrawal] 08:53:25
+Let's say there is only one model for a car. Now you purchased a car which does not have a back camera.
+
+[rochak agrawal] 08:53:33
+Okay.
+
+[rochak agrawal] 08:53:35
+Now, you want to use this functionality, so you'll go to some external vendor, and you will ask him, can you install the back camera into my car?
+
+[rochak agrawal] 08:53:45
+He will check your car, and he will say, yes, I can install the back camera. Okay? Now, back camera is not the inbuilt facility. You…
+
+[rochak agrawal] 08:53:53
+You're plugged in.
+
+[rochak agrawal] 08:53:55
+Correct? So that is called a plugin. Plugin, basically, what does they do? They, uh…
+
+[rochak agrawal] 08:54:02
+They extend the functionality of your… whatever the product you are using.
+
+[rochak agrawal] 08:54:06
+So, for example, Maven itself does nothing.
+
+[rochak agrawal] 08:54:12
+For example, I need to do a compile.
+
+[rochak agrawal] 08:54:20
+Okay.
+
+[Vaibhav Gupta] 08:54:22
+Hello.
+
+[rochak agrawal] 08:54:23
+Now…
+
+[rochak agrawal] 08:54:25
+If you see it here in the pom.xml where it was created.
+
+[rochak agrawal] 08:54:32
+Do you see?
+
+[rochak agrawal] 08:54:34
+We are saying use the Maven compiler plugin.
+
+[rochak agrawal] 08:54:38
+Version 3.5.1.
+
+[rochak agrawal] 08:54:40
+Okay.
+
+[rochak agrawal] 08:54:43
+Now, this is a very general plugin.
+
+[rochak agrawal] 08:54:46
+if you are not using the plugin, Maven will probably compile your code with some default plugin, okay? But you say, no, I want to compile only with this plugin. For example.
+
+[rochak agrawal] 08:55:00
+If you go
+
+[rochak agrawal] 08:55:01
+Maven plugins
+
+[rochak agrawal] 08:55:05
+So compiler plugin is there. Let's say Java plugin. Where is this?
+
+[rochak agrawal] 08:55:13
+Javadoc plugin, okay?
+
+[rochak agrawal] 08:55:15
+Now, what this plugin does, Apache Maven Javadoc plugin is a plugin that uses the Javadoc tool.
+
+[rochak agrawal] 08:55:23
+for generating Java docs for a specified project. Basically, it generates the documentation for your project. Okay, now to use this.
+
+[rochak agrawal] 08:55:32
+I need to tell Maven that.
+
+[rochak agrawal] 08:55:35
+You need to use this plugin. Then only I can use this functionality, correct?
+
+[rochak agrawal] 08:55:41
+So that is a…
+
+[rochak agrawal] 08:55:43
+Again, it is not mandatory to use the plugin. Plugin basically extends the functionality.
+
+[rochak agrawal] 08:55:54
+You understood now. So, dependency is the application functionality.
+
+[rochak agrawal] 08:55:59
+But plugins, it's the Maven's functionality which is getting extended. If you do not use the Javadoc plugin, you will not be able to generate the documentation for your project.
+
+[rochak agrawal] 08:56:14
+Clear?
+
+[rochak agrawal] 08:56:18
+Yes, no.
+
+[Vaibhav Gupta] 08:56:19
+Yeah, yeah.
+
+[Arif] 08:56:19
+Yeah, yeah, got it.
+
+[Arif] 08:56:22
+So.
+
+[rochak agrawal] 08:56:26
+Again, this is where you are writing this code.
+
+[rochak agrawal] 08:56:31
+in your pom.xml, and who owns the pom.xml is your development team. You do not need to worry about this also.
+
+[rochak agrawal] 08:56:39
+It is just… then you say, why we are studying this? See, we should have an understanding, because in the end, uh, see, for the… if it is a platform error, and you are going to your development team and saying, see, if you go, uh, with this error.
+
+[rochak agrawal] 08:56:55
+Right.
+
+[rochak agrawal] 08:56:58
+to your development team. Development team will think you don't know anything. It's a platform error, correct? So that's where we should have a high-level understanding.
+
+[rochak agrawal] 08:57:08
+Why it is failing? Sometime your build is going to fail because you are using a wrong version of a compiler plugin or any plugin for that matter. Then in that case, you will go to your development team and say, boss, you are using the wrong version of a plugin. Please correct it.
+
+[rochak agrawal] 08:57:23
+So that's why we need to have a understanding about what all there, but again, it will be owned by the development team.
+
+[rochak agrawal] 08:57:34
+I hope that makes things clear.
+
+[Arif] 08:57:39
+You know.
+
+[Arif] 08:57:41
+So this Maven thing comes after when the code is getting merged, and then we'll start this process.
+
+[rochak agrawal] 08:57:50
+Okay, yeah. See, first thing, Arif, uh, what you are saying, in a general sense, it is correct. Okay. But…
+
+[rochak agrawal] 08:57:59
+Uh, when you say Maven thing comes.
+
+[rochak agrawal] 08:58:03
+Your form.xml is very much part of the code only.
+
+[rochak agrawal] 08:58:07
+Okay, so maybe your developer, they might not change the code, but they can change the pom.xml. Okay, so your pom.xml is a part of the code itself, but the build process is, once you merge it, then, see, it will all depend, uh, there can be multiple permutation combination.
+
+[rochak agrawal] 08:58:27
+For example, if you are a single developer, then there is no merging, or there is no integration of code with other developers, right?
+
+[rochak agrawal] 08:58:33
+I can, uh, for… and this, um, this is a half statement, okay? When you're saying this process comes, uh, after the merging, uh.
+
+[rochak agrawal] 08:58:44
+This is a half statement and I'll explain why. For example.
+
+[rochak agrawal] 08:58:54
+If you remember, I'm not sure if we had this from tomorrow.
+
+[rochak agrawal] 08:59:00
+Yeah. Right. So, for example.
+
+[rochak agrawal] 08:59:07
+We discussed yesterday that you are creating a release branch, okay? You will merge it to the master once my code is deployed to production, correct?
+
+[rochak agrawal] 08:59:22
+Right? Remember?
+
+[rochak agrawal] 08:59:26
+So then, if you want to deploy the release to the production, you need to build and deploy this code only.
+
+[rochak agrawal] 08:59:32
+Once it is deployed, then I'm going to merge it.
+
+[rochak agrawal] 08:59:37
+Correct?
+
+[rochak agrawal] 08:59:40
+So, seek.
+
+[rochak agrawal] 08:59:42
+menu.
+
+[rochak agrawal] 08:59:45
+When you design your CICD pipeline.
+
+[rochak agrawal] 08:59:50
+I can have multiple branches, okay? I will have a one master branch.
+
+[rochak agrawal] 08:59:58
+I will have a bun.
+
+[rochak agrawal] 09:00:02
+Dev branch, I can have feature branch.
+
+[rochak agrawal] 09:00:06
+Then I… I have a release branch, for example, correct?
+
+[rochak agrawal] 09:00:12
+Now…
+
+[rochak agrawal] 09:00:14
+C.
+
+[rochak agrawal] 09:00:16
+Depending on what is the strategy you are using.
+
+[rochak agrawal] 09:00:20
+Becomes your statement is right or wrong.
+
+[rochak agrawal] 09:00:22
+Okay, that is not completely wrong, that is not completely right. For example, you are developing a feature, okay?
+
+[rochak agrawal] 09:00:31
+Once the feature development is completed, then I'm going to merge it with the developed branch. Correct?
+
+[rochak agrawal] 09:00:36
+Now, how would I verify my feature is developed?
+
+[rochak agrawal] 09:00:39
+I need to deploy it to my dev environment.
+
+[rochak agrawal] 09:00:44
+Correct? Now, for deploying into the dev environment, first I need to build it, then only I will be able to deploy it.
+
+[rochak agrawal] 09:00:49
+So then I will build this feature branch. So see, in the end, these branches, if you see, these are the parallel and the independent stream of development.
+
+[rochak agrawal] 09:01:03
+Great.
+
+[rochak agrawal] 09:01:05
+Until, unless I'm not merging them, they are parallel.
+
+[rochak agrawal] 09:01:07
+I can do some changes on feature A, I can do some other changes on feature B, etc, etc. Similarly, I can build and deploy them also independently.
+
+[rochak agrawal] 09:01:20
+Okay.
+
+[Arif] 09:01:20
+Okay.
+
+[rochak agrawal] 09:01:21
+It is up to us when we want to merge. If you merge it, for example.
+
+[rochak agrawal] 09:01:27
+Then it's a…
+
+[rochak agrawal] 09:01:28
+combined build for both these branches, correct? But you say, no, I want to build the developer branch only. You do that. So there is a concept of a multi-branch pipeline.
+
+[rochak agrawal] 09:01:46
+Where each branch will have its own pipeline.
+
+[rochak agrawal] 09:01:50
+You want to deploy… see, that's where, uh, when we say, uh.
+
+[rochak agrawal] 09:01:55
+you are going to have a production issue, and you are going to create a hotfix branch, and I'm going to deploy the hotfix branch. How I am able to do it? Because I have a multi-branch pipeline. I'll run the pipeline for the hotfix branch. So whatever code will be there in the hotfix branch.
+
+[rochak agrawal] 09:02:10
+It will get built, and it will get deployed.
+
+[rochak agrawal] 09:02:13
+Now, what code is there in a hotfix branch? That comes in your branching strategy.
+
+[rochak agrawal] 09:02:18
+But for pipeline, it's an independent piece of development.
+
+[rochak agrawal] 09:02:24
+Okay.
+
+[Arif] 09:02:26
+So any developer can make this build, right?
+
+[rochak agrawal] 09:02:30
+Yes?
+
+[rochak agrawal] 09:02:32
+See, most of the time, what's going to happen, uh, is… so…
+
+[Arif] 09:02:32
+Okay.
+
+[rochak agrawal] 09:02:48
+Let's say this is your developers.
+
+[rochak agrawal] 09:02:53
+Okay? Now, they are going to check in their code into Git. I'm just saying Git, not GitHub, GitLab, whatever. You can use any platform.
+
+[rochak agrawal] 09:03:03
+Great.
+
+[rochak agrawal] 09:03:05
+Correct? Now…
+
+[rochak agrawal] 09:03:08
+There might be one branch, there may be different, different branches. Correct?
+
+[rochak agrawal] 09:03:13
+then it… your gate is connected with your CI engine.
+
+[rochak agrawal] 09:03:17
+That's it, Jenkins.
+
+[rochak agrawal] 09:03:22
+Now, in Jenkins, you are going to write your CICD pipeline, which is going to have multiple steps, right? Check out the code.
+
+[rochak agrawal] 09:03:33
+uh, build the code.
+
+[rochak agrawal] 09:03:36
+scan the code.
+
+[rochak agrawal] 09:03:38
+Unit testing the code can be any number of the steps.
+
+[rochak agrawal] 09:03:42
+And then, um…
+
+[rochak agrawal] 09:03:45
+unit testing, uh, Docker, if you're using containerization, so Docker image creation.
+
+[rochak agrawal] 09:03:51
+Okay.
+
+[rochak agrawal] 09:03:52
+Uh, and then you will do a deploy. Now, deploy will have, again, multiple phases, depending on the environment. This is a deploy to dev.
+
+[rochak agrawal] 09:04:06
+Lloyd who?
+
+[rochak agrawal] 09:04:09
+staging.
+
+[rochak agrawal] 09:04:12
+Finally, you deploy to prod.
+
+[rochak agrawal] 09:04:16
+Hey, now…
+
+[rochak agrawal] 09:04:18
+when a developer will be working on a development environment. See, till that time, his features are not finalized. Your developer checks in their code.
+
+[rochak agrawal] 09:04:29
+If a developer checks in their code into the source code management.
+
+[rochak agrawal] 09:04:33
+source code management with the help of webhook, and there is other, uh, mechanism also. They are going to trigger a build in Jenkins.
+
+[rochak agrawal] 09:04:42
+Jenkins will only going to run a build till this environment.
+
+[rochak agrawal] 09:04:49
+Then finally, you will deploy it to the test environment, to the staging environment, and finally, production environment. You have all these steps in a CI/CD pipeline, but you will control. If I'm running it into the dev environment, this step should be running.
+
+[rochak agrawal] 09:05:05
+Test environment.
+
+[rochak agrawal] 09:05:07
+this step should be running. If I'm running it for the production environment, this step should be running. Now, tell me one thing.
+
+[rochak agrawal] 09:05:14
+Let's say if I want to deploy something onto the test environment.
+
+[rochak agrawal] 09:05:19
+Bill, these steps are going to run, yes or no?
+
+[rochak agrawal] 09:05:28
+It's a very important interview question.
+
+[Vaibhav Gupta] 09:05:30
+We need to run in the required steps, like…
+
+[rochak agrawal] 09:05:35
+Remember, your voice is very low.
+
+[Vaibhav Gupta] 09:05:38
+I'm saying, uh, in test environment, we use only the test required steps.
+
+[Vaibhav Gupta] 09:05:43
+And we're not…
+
+[rochak agrawal] 09:05:43
+So what, like, if you see these steps.
+
+[rochak agrawal] 09:05:46
+Okay, what are the test related steps?
+
+[Vaibhav Gupta] 09:05:53
+Deploy to test, and deploy to schedule.
+
+[rochak agrawal] 09:05:55
+Only deployed to this, yes?
+
+[Vaibhav Gupta] 09:05:57
+Yep.
+
+[rochak agrawal] 09:05:58
+Correct. That is the key, okay? If you understood this, then you understood the CAICD.
+
+[rochak agrawal] 09:06:06
+All your build steps.
+
+[rochak agrawal] 09:06:11
+are going to happen only onto the development environment. See, I'm not going to.
+
+[rochak agrawal] 09:06:18
+Do a build on the test environment.
+
+[rochak agrawal] 09:06:21
+You understood.
+
+[rochak agrawal] 09:06:22
+Test environment is for the testing purpose. Staging environment is for the staging purpose, load testing, user acceptance testing, right? Build is always going to happen at the dev environment.
+
+[rochak agrawal] 09:06:36
+The funda is, you will build it at a dev environment, and if everything goes right, for example, scanning result is correct, unit testing result is good, my image is… Docker image is created.
+
+[rochak agrawal] 09:06:48
+Then I am going to promote this build to the test environment.
+
+[rochak agrawal] 09:06:53
+Okay, then once the testing is successful, I'm going to promote this build to the staging environment.
+
+[rochak agrawal] 09:07:00
+Then to production environment.
+
+[rochak agrawal] 09:07:03
+You don't do the repetitive build on multiple environments.
+
+[rochak agrawal] 09:07:09
+Clear? But if… so that is the overall flow.
+
+[rochak agrawal] 09:07:13
+which we are going to have, now your CICD pipeline can be very straightforward.
+
+[rochak agrawal] 09:07:18
+It can be very complex also.
+
+[rochak agrawal] 09:07:22
+Depending on what you require.
+
+[Arif] 09:07:27
+So, Maven is part of the builder code? Okay.
+
+[rochak agrawal] 09:07:29
+Build the code. Only build the code.
+
+[rochak agrawal] 09:07:34
+Now when we are saying build the code, so then there is, if you see, we have this.
+
+[rochak agrawal] 09:07:40
+Next phase.
+
+[rochak agrawal] 09:07:42
+So this is, if you see, the default builder lifecycle.
+
+[Vaibhav Gupta] 09:07:46
+But, uh, I'm still confused on that code that we copied and started.
+
+[rochak agrawal] 09:07:47
+Okay.
+
+[rochak agrawal] 09:07:52
+Uh, Babo, your voice is very low.
+
+[Vaibhav Gupta] 09:07:54
+I'm saying that I'm confusing that code that you used, because, uh, if we… we need to utilize that code or not, that you, uh, use it as the copy… the code that you copied from the PDF.
+
+[rochak agrawal] 09:08:01
+Which code?
+
+[Vaibhav Gupta] 09:08:08
+Of 4 to 5.2.
+
+[rochak agrawal] 09:08:11
+No, no, I… sorry, I did not get your question. So, in this, where you are confused?
+
+[Vaibhav Gupta] 09:08:16
+Not here, uh, the code that we used from starting at the time of, uh, when we, uh…
+
+[Vaibhav Gupta] 09:08:23
+set up the Marvin project structure.
+
+[rochak agrawal] 09:08:24
+Okay, yeah, see, okay, this one you are seeing.
+
+[Vaibhav Gupta] 09:08:28
+We are discussing it, but suddenly Arif asked a question about it.
+
+[rochak agrawal] 09:08:31
+No, no, they hear you are saying, right?
+
+[Vaibhav Gupta] 09:08:34
+No, no, that's the Linux code, basically Linux things come on, I know that, but the above code that you use, like, for the group ID or something, like…
+
+[rochak agrawal] 09:08:42
+So this is… this is a very simple command, there is… this is…
+
+[Vaibhav Gupta] 09:08:44
+So, we need to write it, or we need to, uh, like…
+
+[rochak agrawal] 09:08:47
+Yeah, this is a one-time activity when you are generating the structure for your project.
+
+[rochak agrawal] 09:08:53
+Just generate.
+
+[rochak agrawal] 09:08:55
+Right? See, we were saying every Maven project has a fixed structure, correct?
+
+[rochak agrawal] 09:09:02
+To generate this structure, you need to write this command once.
+
+[Vaibhav Gupta] 09:09:08
+So, how we, uh, like, uh…
+
+[Vaibhav Gupta] 09:09:10
+Understand, like, the, uh… that the structure will be fixed, like, uh, predefined structure, man.
+
+[rochak agrawal] 09:09:14
+It's a fixed session, yes, yes, yes.
+
+[rochak agrawal] 09:09:17
+This is a fixed structure and you see we have this. So there is various type of Maven artifacts are there. So for example, Java, JAR is a one type of artifact. Now you see, again, it's a developer's work.
+
+[rochak agrawal] 09:09:34
+Now, when you are developing your application, you know that what will be the output, a jar, a war, a EAR, right? Elastic Beanstalk application, you know it, right? A developer would know it. So then, accordingly, he will create a, uh, generate the structure.
+
+[Arif] 09:09:52
+So, developer will run that command, right?
+
+[rochak agrawal] 09:09:54
+Yes, yes, yes, it is not you.
+
+[Arif] 09:09:56
+Okay.
+
+[rochak agrawal] 09:09:56
+Okay. C. Gate and Maven. This is, uh…
+
+[rochak agrawal] 09:10:02
+one of the tools which you are… sometime you will not use it at all, okay? Git and Maven. It's a… because…
+
+[rochak agrawal] 09:10:11
+All those merging, committing developers will do.
+
+[rochak agrawal] 09:10:15
+Build your developer nose.
+
+[rochak agrawal] 09:10:17
+what is being… what he's creating, correct? We are here to deploy what you are giving it to me, but I don't know what is inside it, correct?
+
+[rochak agrawal] 09:10:26
+So just a basic understanding we should be having because this process is part of my CI/CD pipeline. If let's say developer is doing the build manually and giving you the jar file and say you deploy this jar file, so then you do not need to interact with the Maven at all.
+
+[rochak agrawal] 09:10:45
+Okay.
+
+[Vaibhav Gupta] 09:10:49
+Can you come back to court?
+
+[rochak agrawal] 09:10:52
+Okay, yeah, see this?
+
+[Vaibhav Gupta] 09:10:58
+That I'm saying, like, uh, just, like…
+
+[rochak agrawal] 09:10:58
+And first, it is not a code, it is a command.
+
+[Vaibhav Gupta] 09:11:00
+Mm-hmm.
+
+[Vaibhav Gupta] 09:11:04
+Like, they're archived in January, TG.
+
+[rochak agrawal] 09:11:06
+So I'll explain. MBN, any Maven command you are going to run, it starts with MBN. Then archetype generate is a command to generate the projected structure.
+
+[rochak agrawal] 09:11:17
+Group ID and the artifact ID is related to application. You can give any name here, okay?
+
+[rochak agrawal] 09:11:24
+The archetype artifact ID.
+
+[rochak agrawal] 09:11:28
+Maven art type Quickstart, we are just using a simple structure. If you know what type of artifact you want to generate, you will give it here, like jar, bar, ear, whatever it is. You need to find the correct Maven artifact type for that.
+
+[rochak agrawal] 09:11:40
+And then interactive mode is false, as we are giving. Otherwise, let's say, for example, if I run this.
+
+[rochak agrawal] 09:11:48
+Interactive mode true.
+
+[rochak agrawal] 09:11:55
+If I run this command also, for example.
+
+[rochak agrawal] 09:11:57
+Simple this, that is also going to work.
+
+[rochak agrawal] 09:12:04
+You see?
+
+[rochak agrawal] 09:12:05
+Now, since the interactive mode is not false, it is asking me everything from me.
+
+[rochak agrawal] 09:12:14
+Right? What is the group ID?
+
+[rochak agrawal] 09:12:16
+form.example.com.
+
+[rochak agrawal] 09:12:20
+choose a number, uh, so I'll say 2389, default number I'm giving.
+
+[rochak agrawal] 09:12:28
+So, it is asking me the artifact ID, right? So, if you see it here, if you go…
+
+[rochak agrawal] 09:12:34
+to this.
+
+[rochak agrawal] 09:12:41
+Maybe almost there.
+
+[rochak agrawal] 09:12:47
+There was an art catalog, art type catalog. Here, you are going to find the art type ID.
+
+[rochak agrawal] 09:12:54
+So, it is not giving you the very nice look, but let me see…
+
+[rochak agrawal] 09:13:16
+So you can see it here. Maven archetype quick start is the default which we used. Then Maven archetype web app, Maven archetype simple. So there's a multiple type of archetype which we generate.
+
+[rochak agrawal] 09:13:29
+So, you can see the same command, right? So, since we have given the interact… it was not asking for our input, we have given everything, and it is just running it.
+
+[rochak agrawal] 09:13:39
+So very simple command, there's nothing much in it.
+
+[rochak agrawal] 09:13:43
+It will just generate a project structure for you.
+
+[rochak agrawal] 09:13:47
+Okay.
+
+[rochak agrawal] 09:13:54
+Now, one more thing when we are saying about the build process, that build the code. So now in the building the code, that's a default build lifecycle. These are the steps.
+
+[rochak agrawal] 09:14:10
+Which Maven is going to do.
+
+[rochak agrawal] 09:14:12
+First, it is going to validate.
+
+[rochak agrawal] 09:14:15
+Now what it is going to validate if your project structure is correct or not. So for example, instead of generating Maven archetype, you created your project structure manually and you go run the Maven build. So then it will validate if the structure is correct or not. If the structure is not correct.
+
+[rochak agrawal] 09:14:32
+then it is going to give you an error. Once the validation is done, it is going to compile your code. As we all know, compiling is… so when we run the Java.
+
+[rochak agrawal] 09:14:45
+save our file, let's say, A.java, then compilation will convert your code so that the machine can understand it.
+
+[rochak agrawal] 09:14:53
+Once the compilation is done.
+
+[rochak agrawal] 09:14:56
+whatever if… now, this is an optional step. If the test cases you have given, only the unit tests, okay.
+
+[rochak agrawal] 09:15:05
+If you have given the unit test, then it is going to be done there.
+
+[rochak agrawal] 09:15:08
+Otherwise, it will skip that. Once the compilation and testing is done.
+
+[rochak agrawal] 09:15:14
+It is going to package it. Now, in which format it is going to package, depending on the archetype ID you have used.
+
+[rochak agrawal] 09:15:23
+Then, once the package is done, it will run some verifications, some checksums, integration test, or smoke test to verify if the thing is working fine.
+
+[rochak agrawal] 09:15:33
+Then, once the integration… so, let's say, uh, see, every time you are not going to.
+
+[rochak agrawal] 09:15:40
+deploy your end application. Sometime you will… let's say I was talking about the database library.
+
+[rochak agrawal] 09:15:47
+Sometime you will…
+
+[rochak agrawal] 09:15:49
+develop some dependencies also, which your other application is going to use. So those dependencies will be installed in this repository, which is in .m2. And finally, if you want to install that dependency on some Nexus or.
+
+[rochak agrawal] 09:16:06
+some Azure artifact, it is going to deploy them. So that is the overall process which Maven follows.
+
+[rochak agrawal] 09:16:14
+Faces, now very important thing is.
+
+[rochak agrawal] 09:16:16
+Phases runs in order, and running one run every phase before it.
+
+[rochak agrawal] 09:16:22
+Now, if you give the command ambient package, for example.
+
+[rochak agrawal] 09:16:27
+it will first validate, compile, and test also. If you give mbn verify, then it will do validate, compile, test, package, and then verify. Okay, now…
+
+[rochak agrawal] 09:16:37
+if you do MBN deploy, so all those steps, like validate, compile, test, package, verify, install, and deploy is going to work.
+
+[rochak agrawal] 09:16:46
+So, we are not going to run them separately. So, for example, I will not say MBN compile, MBN test, MBN package separately.
+
+[rochak agrawal] 09:16:53
+I want to run till package, I will just say ambient package, and all the subsequent, uh, below stages are going to run automatically.
+
+[rochak agrawal] 09:17:02
+Okay? So that's a default build lifecycle.
+
+[rochak agrawal] 09:17:08
+Which is now here.
+
+[rochak agrawal] 09:17:12
+Apart from this default build lifecycle, we have…
+
+[rochak agrawal] 09:17:16
+Clean and site also. Clean is basically MBN clean. It is going to delete the target. So we remember that once your build process is going to run, there will be a target folder.
+
+[rochak agrawal] 09:17:28
+In which your, uh…
+
+[rochak agrawal] 09:17:31
+Artifacts is going to be generated. So then ambient clean is going to delete the target, run it before a build when you want certainty rather than the speed. So we will first run the ambient clean, then the ambient delete.
+
+[rochak agrawal] 09:17:48
+install something okay which is the default build lifecycle. Then site is it generates the project documentation and report.
+
+[rochak agrawal] 09:17:56
+it is not being used very frequently, right? So, any project generation report you want to do, you can do it with the MBN site.
+
+[rochak agrawal] 09:18:05
+So, this is the default build lifecycle of the Maven. So, these are the steps which it is going to follow. Validate, compile, test, package, verify.
+
+[rochak agrawal] 09:18:18
+Install and deploy.
+
+[rochak agrawal] 09:18:20
+It is not going to change.
+
+[rochak agrawal] 09:18:23
+And very importantly, if you are looking at someone is saying ambient package, then it means validate, compile, and test are already running with it. It is not only the package is going to run. How can a package can be completed when the code is not compiled, correct?
+
+[rochak agrawal] 09:18:41
+So all of this runs in a linear fashion.
+
+[Arif] 09:18:52
+So, uh, what's up?
+
+[rochak agrawal] 09:18:55
+Yep.
+
+[Arif] 09:18:55
+So, may I know, like, all each phases are independent of the earlier phases?
+
+[rochak agrawal] 09:19:01
+No, see, that's what I said. See, for example, it is not independent. It can be, it may not be, okay? So, for example, when you run the MBN package.
+
+[rochak agrawal] 09:19:12
+Now, ambient package is not dependent on ambient test, but it is dependent on compile.
+
+[rochak agrawal] 09:19:20
+Till that time, your code is not compiled.
+
+[rochak agrawal] 09:19:22
+You're not going to package it.
+
+[rochak agrawal] 09:19:24
+Correct because in your package dot class file will go right.
+
+[rochak agrawal] 09:19:30
+And dot class file is a result of the compile phase.
+
+[rochak agrawal] 09:19:36
+Correct. See, that is what we are…
+
+[Arif] 09:19:38
+Yeah, I meant to say…
+
+[rochak agrawal] 09:19:40
+Hmm?
+
+[Arif] 09:19:41
+If the testing is done, if there is an issue with testing.
+
+[Arif] 09:19:45
+Or if there's any bug or something. Irrespective of anything, it will create a build, or it will not create the build.
+
+[rochak agrawal] 09:19:52
+No, no, it will not create. So, for example, and we will see that, Arif. So, when you run, for example, MBN package, okay?
+
+[rochak agrawal] 09:20:02
+When you go run ambient package.
+
+[rochak agrawal] 09:20:11
+Ambient package you run.
+
+[rochak agrawal] 09:20:13
+So we discussed what is going to happen. First, the verify is run.
+
+[rochak agrawal] 09:20:18
+Then the compile will run.
+
+[rochak agrawal] 09:20:20
+Then the test is run, and then finally package will run.
+
+[rochak agrawal] 09:20:25
+any of the phases failing, the next phase is not going to happen, and Maven will say benefit.
+
+[rochak agrawal] 09:20:32
+Verify will fail, then compile test package is not going to happen. Verify successful, compile happen.
+
+[rochak agrawal] 09:20:38
+compile failed, then test and package is not going to happen. So, every phase needs to be successful to go to other phase.
+
+[Arif] 09:20:46
+Okay
+
+[rochak agrawal] 09:20:46
+Okay, test is, again, if you have not given any unit test cases, so then there is no meaning of the test phase.
+
+[rochak agrawal] 09:20:54
+Hey!
+
+[Vaibhav Gupta] 09:20:56
+If verify, compile, all pass but test cases fail.
+
+[rochak agrawal] 09:21:03
+Can you come again, Bevo?
+
+[Vaibhav Gupta] 09:21:06
+Uh, if verify and compile will, like, uh, verify will pass, and, uh, compile pass, and then test, test cases fail if, in that case.
+
+[rochak agrawal] 09:21:15
+Then also build fill.
+
+[rochak agrawal] 09:21:17
+Any, any, uh, step is failing means build is failing.
+
+[rochak agrawal] 09:21:23
+See, for example, for us.
+
+[Vaibhav Gupta] 09:21:23
+If any test cases failed in between, so we will do it again.
+
+[rochak agrawal] 09:21:29
+Yeah, of course, the test case is filling means there is some issue in your code, right?
+
+[Vaibhav Gupta] 09:21:34
+Hmm.
+
+[rochak agrawal] 09:21:35
+So then the developer will modify the test cases or modify your code and you will run the build again.
+
+[Vaibhav Gupta] 09:21:43
+We will tell the developer that your test case is failed.
+
+[rochak agrawal] 09:21:46
+It depends on how your project is structured. Generally, what happens is if I'm running this from a Jenkins, for example, so your developer will also have a read-only access to your Jenkins console where they can see the output of this build.
+
+[rochak agrawal] 09:22:02
+Okay, and even, uh, we can set up the notification, for example, if a build is failing, then we will send the notification to your development team with the output, uh, with the Jenkins logs, uh, the build logs, so then they can, like.
+
+[Vaibhav Gupta] 09:22:03
+Okay.
+
+[rochak agrawal] 09:22:18
+See that, uh, see the logs, and then they can do the needful.
+
+[rochak agrawal] 09:22:23
+Right. That depends, uh, see, those are more of the operational issues, uh, which will depend on team structure to team structure. Now, sometime, like, before the CICD was not there.
+
+[rochak agrawal] 09:22:37
+Uh, that was a huge problem. I remember one time, uh, when there was such small issues, we have, uh, mailed to the developer that this is an issue, and somehow they have missed it.
+
+[rochak agrawal] 09:22:47
+You won't believe, like…
+
+[rochak agrawal] 09:22:50
+For the next 3-4 days, nothing happened, because we are in the impression that we have sent the email, and the developer team will… of course, they should be looking at it, but somehow they missed the email, and then the release got pushed by.
+
+[rochak agrawal] 09:23:06
+a week. Now, but this is nothing to do with the technology, it is more of the operational issue.
+
+[rochak agrawal] 09:23:12
+And how you want to involve your development team. But majorly nowadays, development team will have the read-only access also to your CICT tool where they can see the logs of the build which is failing. And also we can send them a notification in a form of automated email as well with the logs attached.
+
+[Arif] 09:23:35
+So, in this life cycle, where the DevOps have to troubleshoot anything?
+
+[rochak agrawal] 09:23:41
+See this example only when we run this.
+
+[Arif] 09:23:48
+No, it… so, every time it is a developer, right? Because of the developer have some… something, right?
+
+[rochak agrawal] 09:23:51
+Yeah. See, for example.
+
+[rochak agrawal] 09:23:54
+When your CICD pipeline runs.
+
+[rochak agrawal] 09:23:56
+it is going to follow these steps. Now, this is a high level, you may be plus-minus steps there, correct? Now, build the code.
+
+[rochak agrawal] 09:24:05
+you will run a command like this ambient compile, or ambient test, ambient package. Now, this is a very small command.
+
+[rochak agrawal] 09:24:11
+you will have some, for example, plugins you are using, you will get… so your command can be complex also. Uh, but again, that command come from developer, okay? Now, let's say a build is failing. So, for example, I run MBN compile, and my build is failed.
+
+[rochak agrawal] 09:24:26
+If you look at this error this is clearly a platform error this is nothing related to the application correct.
+
+[rochak agrawal] 09:24:36
+So, if it is a platform-related error, then we need to look out for what is that we need to fix.
+
+[rochak agrawal] 09:24:43
+If it is an application-related error, for example, they need to make some changes, their test cases are failing, their application code is not compatible, their plugin version is missing, we will redirect those errors to the development team. And even that's what we were discussing previously also.
+
+[rochak agrawal] 09:24:59
+You do not need to redirect also, because they also will get the automated alerts from the Jenkins that your build got failed. So they can see why the build has failed. Sometimes there might be some issue that developer will say, it is your issue, you will say.
+
+[rochak agrawal] 09:25:15
+It is your issue. Maybe some, uh…
+
+[rochak agrawal] 09:25:19
+Application compatibility, so for example, uh…
+
+[rochak agrawal] 09:25:23
+Now, there can be one issue that…
+
+[rochak agrawal] 09:25:25
+Let's say…
+
+[rochak agrawal] 09:25:30
+This is a developer system.
+
+[rochak agrawal] 09:25:34
+Okay.
+
+[rochak agrawal] 09:25:35
+This is the Jenkins running.
+
+[rochak agrawal] 09:25:42
+Here, the build will happen, where the Jenkins is running, correct? Now, developer is using, let's say, Java 20.
+
+[rochak agrawal] 09:25:49
+One.
+
+[rochak agrawal] 09:25:53
+And you are using Java 25.
+
+[rochak agrawal] 09:25:56
+Your Jenkins is using.
+
+[rochak agrawal] 09:26:00
+Now, sometime, it will not be always, but sometime there might be some package which may be compatible with Java 21, uh, but…
+
+[rochak agrawal] 09:26:10
+they might not be compatible with the Java 25, correct? So then, the build will happen on the developer's laptop, because his…
+
+[rochak agrawal] 09:26:21
+he has developed it with the help of… with the context of Java 21, but when the build is running on the Jenkins server.
+
+[rochak agrawal] 09:26:29
+it might fail, correct? Now, you will say this is… and you will get an error, something like, uh, the package is missing, or the package version is not compatible. Now, you will say this is an application-related issue.
+
+[rochak agrawal] 09:26:42
+And, uh, Deb will say, this is your platform issue because you are using the Java 25. Then you need to come, uh, to a collaboration, discuss it internally, uh, and come to a conclusion that either the development team need to.
+
+[rochak agrawal] 09:26:58
+upgrade to Java 25, or this need to be downgraded to Java 25.
+
+[rochak agrawal] 09:27:04
+Something like that, right? So then there might be some issues which will look like it is a platform will say, DevOps will say it's a dev issue, dev will say it's a DevOps issue.
+
+[rochak agrawal] 09:27:15
+Those type of scenarios can also be arised. So then in that case, we need to sit together, understand what is the root cause.
+
+[rochak agrawal] 09:27:24
+And do accordingly.
+
+[Arif] 09:27:31
+Uh, now I, I've got confused here. You said the maven command will be the, the developer will run those commands, right? We don't need to do that. So the life cycle is the responsibility of the DevOps or the development?
+
+[rochak agrawal] 09:27:46
+No, see, understand this, Arif. Maven is going to run here, right? Build the code, correct?
+
+[Arif] 09:27:52
+Yes, correct.
+
+[rochak agrawal] 09:27:53
+This is a part of what?
+
+[rochak agrawal] 09:27:56
+CICD?
+
+[Arif] 09:27:57
+Okay.
+
+[rochak agrawal] 09:27:59
+Who is going to own the CICT? It's a DevOps team.
+
+[Arif] 09:28:03
+Yo.
+
+[rochak agrawal] 09:28:05
+So, see, this… we have discussed this at least 5, 6 times, uh, in the next, uh, in the last 2 hours.
+
+[rochak agrawal] 09:28:12
+Maven is going to run as the part of one step as a CICD pipeline.
+
+[rochak agrawal] 09:28:18
+But the command, the pom.xml, everything will come from the development team.
+
+[rochak agrawal] 09:28:24
+So, if it is a platform-related issue, it is our responsibility, but if it is an application-related issue, it is a development team responsibility.
+
+[rochak agrawal] 09:28:34
+As simple as that.
+
+[Arif] 09:28:39
+I think I may be clear once you explain the CICD, because…
+
+[rochak agrawal] 09:28:43
+Yes, yes. So that's why I said the complete flow we will get once we'll get the CICD, yeah? But, uh, yeah, probably, yes.
+
+[Arif] 09:28:52
+Okay, and this is unit testing, so what is unit testing? Well, this, this is the…
+
+[rochak agrawal] 09:28:57
+Unit testing is, uh… yeah, so unit testing is, Zarif, uh… see, for example.
+
+[rochak agrawal] 09:29:05
+Your code can have 100 files, okay?
+
+[rochak agrawal] 09:29:09
+Every file will have a different purpose, so unit test is, like, testing the individual files, if they are doing what they are supposed to do.
+
+[rochak agrawal] 09:29:20
+Okay, there is multiple type of testing, unit testing, unit tests cases.
+
+[rochak agrawal] 09:29:25
+In most of the cases, development team writes.
+
+[rochak agrawal] 09:29:28
+Because generally, for the testing, there is a separate testing team would be there, correct? But unit testing is a type of a testing which a development team does.
+
+[rochak agrawal] 09:29:37
+It writes the test cases for the unit testing.
+
+[rochak agrawal] 09:29:40
+Any other functional testing, smoke testing, black box testing, load testing, there is a separate testing team, but a unit test will… 99% it will be written by the development team.
+
+[Arif] 09:29:53
+Okay. So, what type of testing we are doing in this second step is build the code. There is a testing, right? Validation.
+
+[rochak agrawal] 09:30:00
+Yes, yes, unit testing.
+
+[Arif] 09:30:02
+That is all the unit testing, this is all the… again, we are doing the unit testing.
+
+[rochak agrawal] 09:30:06
+No, no. Build the code means the complete build lifecycle, right?
+
+[Arif] 09:30:11
+Hmm.
+
+[rochak agrawal] 09:30:12
+Which is… the test is a part of.
+
+[Arif] 09:30:15
+Yeah, there will be test cases for the particular code, and we… it will be validated.
+
+[rochak agrawal] 09:30:17
+Correct, yeah. If test cases are not there, there will be no unit testing.
+
+[Arif] 09:30:22
+Okay, so once the build is ready, after deploy, this push to remote, then again, we are doing unit testing, or we're doing…
+
+[rochak agrawal] 09:30:29
+No, no, then why don't… then you do other type of testing, like integration testing, functional testing. Unit testing is part of the build process only.
+
+[Arif] 09:30:33
+Okay.
+
+[Arif] 09:30:38
+Yeah, yeah, okay.
+
+[rochak agrawal] 09:30:39
+Okay.
+
+[rochak agrawal] 09:30:42
+Okay, uh, cool guys, uh, I'll take on the next questions in tomorrow's class, so…
+
+[rochak agrawal] 09:30:49
+There's nothing in Maven from DevOps perspective. It is just, it needs to be integrated well with your CICD pipeline, and that is where we will understand once we will create the CICD pipeline, more from a flow perspective.
+
+[rochak agrawal] 09:31:11
+Thank you!
+
