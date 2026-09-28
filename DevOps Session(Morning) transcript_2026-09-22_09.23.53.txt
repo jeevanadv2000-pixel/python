@@ -1,0 +1,3138 @@
+[rochak agrawal] 07:35:14
+Hey, good morning, everyone. So let's just start. Today, we are going to start about the Docker.
+
+[rochak agrawal] 07:35:20
+Because in our project, what we have on Jenkins, there are multiple tools are available, and we are going to run them as Docker containers. So we need to understand first what Docker is. If without understanding Docker, we'll go to the project, that will lead to more confusion.
+
+[rochak agrawal] 07:35:35
+First, we are going to understand what is Docker, and then we will cover the projects.
+
+[rochak agrawal] 07:35:42
+Now, Docker is a technology, not till now, whatever we have seen, it is kind of very straightforward, like, there's a Git, Git is a tool, how that tool is working, Maven is a build tool.
+
+[rochak agrawal] 07:35:51
+Jenkins is, let's say, automation engine.
+
+[rochak agrawal] 07:35:56
+But for Docker, Docker is a very different technology.
+
+[rochak agrawal] 07:36:01
+Okay, and I'm sure when we go through the slide, there will be a lot of questions, but understanding Docker is very, very fundamental.
+
+[rochak agrawal] 07:36:12
+in today's scenario.
+
+[rochak agrawal] 07:36:14
+Every…
+
+[rochak agrawal] 07:36:16
+Most, I would not say every, but most of the application today are running as in a containerized format and container is equal to Docker. So once we understand Docker and next the Kubernetes, Kubernetes is an.
+
+[rochak agrawal] 07:36:32
+layer on top of Docker. So, if you do not understand containers.
+
+[rochak agrawal] 07:36:38
+And you won't be able to understand the Kubernetes at all, okay?
+
+[rochak agrawal] 07:36:42
+And this is, um, like, if someone is coming from Azure background, so in Azure, in the storage account, we call it as a container, or, uh, we see…
+
+[rochak agrawal] 07:36:54
+Tomcat also we call it as a deploy to container. But those containers are very different from the containers what we are going to study.
+
+[rochak agrawal] 07:37:02
+Okay.
+
+[rochak agrawal] 07:37:05
+So, understand this very, very, very carefully. If you understand this concept… See, Docker, as a tool, there is nothing in Docker, okay? Kubernetes is a heavy tool. We are going to dedicate, let's say, 8…
+
+[rochak agrawal] 07:37:19
+uh, 7-8 classes for Kubernetes, but Docker as a tool, if you understand the concept, there is nothing much in Docker.
+
+[rochak agrawal] 07:37:27
+Now, before I go to Docker.
+
+[rochak agrawal] 07:37:30
+We need to understand why do you need Docker? What was the problem it was trying to solve?
+
+[rochak agrawal] 07:37:36
+So, when you run an application, any application, so application can be… let's say I want to run Jenkins. Jenkins is… in the end, it is… it is an application only.
+
+[rochak agrawal] 07:37:46
+It requires three things. One is the application code.
+
+[rochak agrawal] 07:37:55
+Then it requires the libraries.
+
+[rochak agrawal] 07:38:01
+any application. And then third is the dependencies.
+
+[rochak agrawal] 07:38:11
+Okay. Generally, whenever you download a VAR or a ER file, the application plus code plus libraries.
+
+[rochak agrawal] 07:38:20
+Are going to come bundled together.
+
+[rochak agrawal] 07:38:23
+Dependencies, you need to install separately. So, for example, when we were running Jenkins or Maven.
+
+[rochak agrawal] 07:38:34
+What was the dependency?
+
+[rochak agrawal] 07:38:36
+Java.
+
+[rochak agrawal] 07:38:39
+Hey, so…
+
+[rochak agrawal] 07:38:40
+If the Java is not there on my system, then Jenkins is not going to run. Correct?
+
+[rochak agrawal] 07:38:48
+Now, let's say you are installing Jenkins. I'm just giving some dummy numbers.
+
+[rochak agrawal] 07:38:54
+Version 20
+
+[rochak agrawal] 07:38:56
+Now, version 20 is compatible with Java 21.
+
+[rochak agrawal] 07:39:00
+Okay. Now, there are two developers. One is having Java 7.
+
+[rochak agrawal] 07:39:09
+Bun is having…
+
+[rochak agrawal] 07:39:15
+Java 18.
+
+[rochak agrawal] 07:39:16
+Another is having Java 21.
+
+[rochak agrawal] 07:39:23
+Right? So the same application, it is not going to work.
+
+[rochak agrawal] 07:39:27
+Here, it is not going to work.
+
+[rochak agrawal] 07:39:30
+Here, it is going to.
+
+[rochak agrawal] 07:39:32
+Right? So that was the problem. Every developer machine.
+
+[rochak agrawal] 07:39:38
+may have different versions of the software when you try to run your application.
+
+[rochak agrawal] 07:39:44
+you might face difficulties. Jenkins maybe worked with Java 18 also, right? But you might face difficulties.
+
+[rochak agrawal] 07:39:54
+Version drift, okay. Developer has Java 17, the test server has Java 11, production has 17.002, but the patch, nobody documented. Now, let's say one developer says, okay, I want to run Jenkins and.
+
+[rochak agrawal] 07:40:09
+they updated their version to Java 21. But all other machines are not updated to Java 21. So whenever there is a new product is coming, that might not work with the old machines. So the version drift is…
+
+[rochak agrawal] 07:40:22
+very, very evident across. See, one option is either you will keep a check on the version, and you will make ensure that every machine is running the same version of the, uh…
+
+[rochak agrawal] 07:40:34
+dependency, but version drift is a reality. Then dependency can conflict. Now, the second thing can be, let's say.
+
+[rochak agrawal] 07:40:43
+You do not have multiple, uh…
+
+[rochak agrawal] 07:40:48
+Machine. Let's say a developer will have a one dev machine.
+
+[rochak agrawal] 07:40:52
+Now on the same machine you want to run Java, oh sorry, Tomcat.
+
+[rochak agrawal] 07:41:00
+You want to run Jenkins.
+
+[rochak agrawal] 07:41:05
+Now, both of them run on port 8080.
+
+[rochak agrawal] 07:41:10
+Right.
+
+[rochak agrawal] 07:41:11
+Now, on a single port, you can run only one application. Either you need to change the port of one of the applications, or you can run only one application. Correct? Or, let's say Tomcat requires Java 17.
+
+[rochak agrawal] 07:41:26
+Jenkins requires Java 21.
+
+[rochak agrawal] 07:41:30
+Again, these are just examples, okay? Jenkins can work with the previous versions of the Java as well, but just to make you understand. Now, either you need to install multiple installations of Java on your system, or you can run only one application.
+
+[rochak agrawal] 07:41:44
+Correct? Then, server configured by the hand over the years, nobody can rebuild one, so nobody dares touch one. So, if you go to any of the projects, you will see there are certain servers.
+
+[rochak agrawal] 07:41:55
+which are running, okay? Applications are running, but nobody knows how they are configured, right? So, if…
+
+[rochak agrawal] 07:42:05
+People are very skeptical if there is any issue comes.
+
+[rochak agrawal] 07:42:08
+anytime. You do not know where to look for this.
+
+[rochak agrawal] 07:42:13
+Because of all these things, whenever you want to deploy an application, you want to run an application, the onboarding is very slow, because…
+
+[rochak agrawal] 07:42:22
+First, you need to understand all the dependencies, all the software you need to install. It is going to take some time. You need to install the right version of dependency, Java, database, anything. It is going to take a lot of time.
+
+[rochak agrawal] 07:42:39
+Environment mismatch is similar to the Virgin Drift. And then, uh…
+
+[rochak agrawal] 07:42:45
+Because of this, because of all this, what we do is, we typically run one application per server.
+
+[rochak agrawal] 07:42:51
+Okay, now this is like wasting of our resources.
+
+[rochak agrawal] 07:42:58
+Why? Because, let's say I'm creating a virtual machine, and I'm just running Tomcat on it.
+
+[rochak agrawal] 07:43:03
+Now, Tomcat is utilizing only 20% of my server. I can run another application on the server, but then there will be version drift, there will be dependency conflict, and all of that.
+
+[rochak agrawal] 07:43:12
+Because of that, because of this, we are going to waste our.
+
+[rochak agrawal] 07:43:18
+resources. Right. These were certain problems because of that.
+
+[rochak agrawal] 07:43:26
+A need felt for the containers, okay? Now, when we talk about…
+
+[rochak agrawal] 07:43:31
+containers.
+
+[rochak agrawal] 07:43:33
+before we go understand about the containers, we need to understand about the physical servers and the virtual machine. If we don't understand physical server and the virtual machine.
+
+[rochak agrawal] 07:43:43
+We cannot go to containers, okay?
+
+[rochak agrawal] 07:43:47
+So, physical server is…
+
+[rochak agrawal] 07:43:50
+One application per machine, slow to provision, expensive, and most hardware sits idle.
+
+[rochak agrawal] 07:43:58
+Startup time is weeks to provision. Now…
+
+[rochak agrawal] 07:44:04
+The very basic example of a physical server is my laptop.
+
+[rochak agrawal] 07:44:15
+So…
+
+[rochak agrawal] 07:44:20
+The very basic example of a physical server is my laptop.
+
+[rochak agrawal] 07:44:31
+Okay?
+
+[rochak agrawal] 07:44:33
+I can run multiple applications, but uh…
+
+[rochak agrawal] 07:44:37
+When you go into environment, so there will be laptop is just an example. Physical servers are big servers where you are only going to run one application and people are going to access those applications.
+
+[rochak agrawal] 07:44:51
+Now, it is going to take a lot of time, because you need to first purchase the server, then you will install all the required dependencies on them, and etc, etc, and it is going to take a lot of time.
+
+[rochak agrawal] 07:45:03
+Then the next, um…
+
+[rochak agrawal] 07:45:07
+evolution from the physical server was the VMs.
+
+[rochak agrawal] 07:45:17
+Which is called the virtual machine. We are using virtual machine from the day one. EC2 is an example.
+
+[rochak agrawal] 07:45:26
+of a virtual machine. Now, how it is going to happen in a virtual machine? You will have one big physical server.
+
+[rochak agrawal] 07:45:34
+Okay? And we are going to divide that physical server into multiple virtual machines.
+
+[rochak agrawal] 07:45:48
+So when we are launching an EC2 instance, the EC2 instance is going to deploy onto one of the physical servers on the AWS data center.
+
+[rochak agrawal] 07:45:58
+Now, this virtual machine will have its own operating system.
+
+[rochak agrawal] 07:46:03
+And on one physical server, I can create multiple virtual machines.
+
+[rochak agrawal] 07:46:10
+So, for example, one virtual machine can be Windows.
+
+[rochak agrawal] 07:46:15
+Another can be Linux.
+
+[rochak agrawal] 07:46:18
+Ubuntu?
+
+[rochak agrawal] 07:46:22
+Et cetera, et cetera. Okay, so this virtual machine has its own operating system.
+
+[rochak agrawal] 07:46:31
+Like, Linux or Ubuntu or whatsoever.
+
+[rochak agrawal] 07:46:35
+So, only for the physical resources, they are, uh, they are dependent on the physical server.
+
+[rochak agrawal] 07:46:46
+But for all their needs, we have a diagram also. So if you see this diagram, this one, virtual machine, you have an infrastructure. Infrastructure is a physical server.
+
+[rochak agrawal] 07:46:58
+which will have its own operating system. So whenever you purchase a physical server.
+
+[rochak agrawal] 07:47:04
+The physical server will always have a operating system. Now, you need a tool. You need a virtualization tool, for example, hypervisor.
+
+[rochak agrawal] 07:47:15
+There are multiple tools available in the market, like Oracle VirtualBox.
+
+[rochak agrawal] 07:47:20
+VMware, which is going to help you.
+
+[rochak agrawal] 07:47:24
+Create virtual machines out of.
+
+[rochak agrawal] 07:47:26
+the host operating system, okay? Now, you can create multiple virtual machines. Each virtual machine is going to have its own operating system.
+
+[rochak agrawal] 07:47:37
+And all the application and libraries you can install on top of them.
+
+[rochak agrawal] 07:47:43
+Any question in virtual machine? Pooja has one.
+
+[rochak agrawal] 07:47:47
+Yes, Pooja?
+
+[pooja.dole01@gmail.com] 07:47:50
+Hi, Rachel, good morning. Can you clean, uh, slide number 5th again?
+
+[rochak agrawal] 07:47:50
+Good morning.
+
+[rochak agrawal] 07:47:55
+Yeah, yeah, so I'm just…
+
+[rochak agrawal] 07:47:58
+doing it one by one. So, we have discussed about the physical server, and now, right now, we are running, uh, talking about the virtual machines, right? So, virtual machine, that is what I'm explaining here. So, you will have a big physical server, okay? And then, on the top of that physical server, you are going to create.
+
+[pooja.dole01@gmail.com] 07:47:59
+Yeah, okay.
+
+[rochak agrawal] 07:48:16
+multiple smaller machines, which we say the virtual machines. Now, the virtual machine will not have a physical identity, okay? So, a hypervisor runs many isolated operating systems on one host.
+
+[rochak agrawal] 07:48:29
+Better utilization, but every VM carries a full operating system.
+
+[rochak agrawal] 07:48:34
+And I can create a virtual machine, depending on the platform you're using, in minutes. So, for example, if I want to launch a Windows-based server, I'll go to AWS, and I'll launch an EC2 instance within a minute, right? So…
+
+[rochak agrawal] 07:48:52
+the virtual machine is, uh… I can launch a virtual machine on my laptop also, so it is like you are dividing your…
+
+[rochak agrawal] 07:49:01
+Um, what you can say.
+
+[rochak agrawal] 07:49:04
+Your host operating system, your physical host into multiple smaller…
+
+[rochak agrawal] 07:49:10
+machines which will have its own capacity. Now, I use analogy… this analogy while talking about the virtual machine and the containers. So, let's say when we talk about the urban planning.
+
+[rochak agrawal] 07:49:27
+So there are sectors in your, uh, for example.
+
+[rochak agrawal] 07:49:33
+cities. Now, inside the sector, let's say there is one housing complex, multi-story building.
+
+[rochak agrawal] 07:49:44
+Then there are, for example, individual houses.
+
+[rochak agrawal] 07:50:04
+And the sector have a, let's say, entry gate or exit gate. Now, if you say this house.
+
+[rochak agrawal] 07:50:12
+Only for going to the outside world.
+
+[rochak agrawal] 07:50:16
+they need this path, correct? But they will have their own electricity.
+
+[rochak agrawal] 07:50:25
+Water.
+
+[rochak agrawal] 07:50:28
+pooling, everything, right? So this is a complete ecosystem in itself, but for some things, it is depending on your external host. For example.
+
+[rochak agrawal] 07:50:40
+Right? Uh, you might have a common clubhouse or something. Similar case is there. You have…
+
+[rochak agrawal] 07:50:48
+One big… I would say…
+
+[rochak agrawal] 07:50:52
+Physical server?
+
+[rochak agrawal] 07:50:58
+On the top, with the help of a virtualization software, Hypervisor is one example. There are multiple virtualization softwares out there.
+
+[rochak agrawal] 07:51:08
+with the help of a virtualization software, I am going to virtualize my hardware into multiple smaller virtual machines.
+
+[rochak agrawal] 07:51:18
+Now, physical infrastructure, for example, if you say my laptop.
+
+[rochak agrawal] 07:51:22
+My laptop has a physical.
+
+[rochak agrawal] 07:51:25
+Identification or it has a physical space.
+
+[rochak agrawal] 07:51:29
+Virtual machines are the logical entities. Virtual machines don't have any.
+
+[rochak agrawal] 07:51:36
+Physical…
+
+[rochak agrawal] 07:51:37
+existence. They are running on top of something, and that's why we are saying the virtual.
+
+[rochak agrawal] 07:51:43
+They are virtual, there is nothing physical about them.
+
+[rochak agrawal] 07:51:46
+Clear about the virtual machine, then we will move to the container, because container is a one level above.
+
+[pooja.dole01@gmail.com] 07:51:54
+Yes, clear, Roger.
+
+[pooja.dole01@gmail.com] 07:51:56
+Thank you.
+
+[rochak agrawal] 07:51:56
+Sure.
+
+[rochak agrawal] 07:51:57
+Anyone else? Any question about the virtual machine? Because this is very, very, very critical to understand. A virtual machine is a complete system in itself.
+
+[rochak agrawal] 07:52:07
+So if, let's say, um, if I'm not managing the virtualization, you do not need to know about it, like, in case of EC2. Uh, if I give you two IEPs, and you're connecting to both of the IEPs, you…
+
+[rochak agrawal] 07:52:21
+will not be able to tell which one is a virtual machine, which one is a physical machine. So virtual machine in itself is a complete ecosystem, right? It has… it will have your network interface, you can attach graphic cards to it, you can attach memory to it, RAM to it, everything.
+
+[rochak agrawal] 07:52:38
+Okay, but it is just… it does not have a physical identification. It does not have a physical existence. It is running on top of one physical server.
+
+[rochak agrawal] 07:52:46
+And similar to that, there can be multiple machines which can run across.
+
+[rochak agrawal] 07:52:54
+Yes, they were seasoned.
+
+[Debasis Patra] 07:52:59
+Hi, Razor, good morning.
+
+[rochak agrawal] 07:53:01
+Good morning.
+
+[Debasis Patra] 07:53:01
+Uh, yeah, actually, hypervisor, uh, we need to install on top of, uh, the physical server.
+
+[rochak agrawal] 07:53:08
+Yes. So, for example, you can… Hypervisor is one example. So, for example, Hypervisor is a very heavy software. So, for example, if you want to do… Let's say I want to run a Linux virtual machine on my laptop.
+
+[rochak agrawal] 07:53:23
+Okay, so you… there are multiple tools, Oracle VirtualBox, Oracle, uh…
+
+[rochak agrawal] 07:53:30
+VMware tools are available, if this hypervisor is not there. Because this hypervisor is a thing which is… which is giving you the functionality to run the virtual machines.
+
+[Debasis Patra] 07:53:32
+Mm-hmm.
+
+[rochak agrawal] 07:53:42
+Okay.
+
+[Debasis Patra] 07:53:43
+Okay, we need to install… if we need to create a virtual machine, then we have to install…
+
+[rochak agrawal] 07:53:49
+Yes. So, basically, hypervisor, you can say, the virtualization software, which is, see, for example, if I need to run a Java program, you need to install the Java, right? Without…
+
+[rochak agrawal] 07:53:59
+Installing the Java, I cannot run a Java program, correct?
+
+[rochak agrawal] 07:54:04
+Similarly, Hypervisor is a virtualization software.
+
+[Debasis Patra] 07:54:04
+Good.
+
+[rochak agrawal] 07:54:09
+If you have…
+
+[rochak agrawal] 07:54:11
+So instead of saying hypervisor, let's just say the virtualization software. So if the virtualization software is not there, then you will not be able to run the virtual machines on any of the physical server. You need one virtualization software, either the hypervisor, either the Oracle VirtualBox.
+
+[rochak agrawal] 07:54:28
+Or the bean bear.
+
+[Debasis Patra] 07:54:31
+Okay, okay, and another thing, like, after creating virtual machine, if you want to restart some VM, so it will restart physical server also, or it will only…
+
+[rochak agrawal] 07:54:31
+Okay.
+
+[rochak agrawal] 07:54:36
+Hmm?
+
+[rochak agrawal] 07:54:39
+Hmm?
+
+[rochak agrawal] 07:54:44
+No, no, no, no. See, uh, if you're… physical server, you can manage separately, but if you're restarting the virtual machine, it is only going to restart the virtual machine. It has nothing to do with the physical server.
+
+[rochak agrawal] 07:54:56
+So, for example, uh, if I have a machine in EC2, okay, and if I go here, I say reboot the instance, right? So, it is only installing the server 2, which is a virtual machine.
+
+[Debasis Patra] 07:55:04
+Yeah.
+
+[rochak agrawal] 07:55:09
+Nothing to do with the physical.
+
+[rochak agrawal] 07:55:11
+I'm not managing the physical server here, right?
+
+[Debasis Patra] 07:55:15
+Okay, okay, okay.
+
+[rochak agrawal] 07:55:16
+Okay, uh, physical server will be restarted, like, someone will be managing this physical server also.
+
+[rochak agrawal] 07:55:22
+And if you want to restart your physical server, then your virtual machines, whatever the virtual machines are running on that physical server.
+
+[rochak agrawal] 07:55:30
+they will get rebooted automatically, because they're running on that physical server. If I stop the physical server.
+
+[rochak agrawal] 07:55:36
+See, for example, I am talking to you on my laptop, right? The Zoom is installed. If I shut down my laptop, can I talk to you? No, right? Because all the applications running on my laptop will get shut down.
+
+[Debasis Patra] 07:55:49
+Yes, yes.
+
+[rochak agrawal] 07:55:49
+So similarly, if any physical server, you are running three virtual machines, if I shut down my physical server, those machines will automatically be shut down, because they do not have a platform to run.
+
+[Debasis Patra] 07:56:01
+Okay, after shutdown, it will automatically… VM will come up, or we need to install again?
+
+[rochak agrawal] 07:56:09
+Automatically will come.
+
+[Debasis Patra] 07:56:10
+Okay.
+
+[rochak agrawal] 07:56:11
+These are just some functionalities. So for example, in your laptop also, you can do the settings that there are certain applications which is going to come up when your laptop is getting started.
+
+[Debasis Patra] 07:56:26
+Yes.
+
+[rochak agrawal] 07:56:28
+So, those are some minor, uh…
+
+[rochak agrawal] 07:56:32
+Functionalities, and they will depend on platform to platform.
+
+[rochak agrawal] 07:56:36
+Like, which virtualization software you're using.
+
+[Debasis Patra] 07:56:39
+Okay, understood. Okay.
+
+[rochak agrawal] 07:56:40
+So that is about the virtual machine.
+
+[rochak agrawal] 07:56:45
+Okay, now, you see, whatever the servers we use, we installed Maven, we installed Jenkins, we were using the virtual machine.
+
+[rochak agrawal] 07:56:52
+Okay, now the virtual machine is very good. There is no problem with the virtual machines.
+
+[rochak agrawal] 07:56:59
+Right? Uh, but this…
+
+[rochak agrawal] 07:57:02
+The wasteful isolation, version drift, dependency conflict.
+
+[rochak agrawal] 07:57:08
+This could still happen.
+
+[rochak agrawal] 07:57:11
+So, for example, when I'm going onto my virtual machine, I can have, uh…
+
+[rochak agrawal] 07:57:18
+a particular version of Java is being run, right? I can have particular version. So, for example, let's say, um, this we were talking about.
+
+[rochak agrawal] 07:57:33
+Jenkins, I have a virtual machine, Server 2, for example, and I want to run Tomcat and Jenkins both. My machine has the capacity, but the problem is Tomcat and Jenkins, they both run on port 8080.
+
+[rochak agrawal] 07:57:48
+Either I need to change the port of one of the application, or I can run only one application, correct? So, the problem which we discussed, virtual machine is an advancement over the physical server.
+
+[rochak agrawal] 07:58:00
+Because it is not going to take a lot of time to start up, but all those version mismatch, conflict… dependency conflict, all those issues are still there.
+
+[rochak agrawal] 07:58:12
+Okay? And that is why, um, because, see, when we talk about the virtual machine, all those we discuss, see, these applications, uh, these servers.
+
+[rochak agrawal] 07:58:22
+What will these servers will be? VMs only.
+
+[rochak agrawal] 07:58:26
+Okay.
+
+[rochak agrawal] 07:58:28
+So now, we already discussed what was the issues with the VMs, and that is why we need…
+
+[rochak agrawal] 07:58:37
+the containers. Okay.
+
+[rochak agrawal] 07:58:40
+Now…
+
+[rochak agrawal] 07:58:42
+What is the container?
+
+[rochak agrawal] 07:58:44
+Here, if you see.
+
+[rochak agrawal] 07:58:48
+When we talk about the individual houses.
+
+[rochak agrawal] 07:58:56
+We discussed that, uh, electricity, water, cooling, everything they are managing individually, so they are like the VMs.
+
+[rochak agrawal] 07:59:07
+But if you talk about the apartment building.
+
+[rochak agrawal] 07:59:11
+Who's going to manage the electricity?
+
+[rochak agrawal] 07:59:16
+Water.
+
+[rochak agrawal] 07:59:18
+or cooling. For example, there could be multiple things, right?
+
+[rochak agrawal] 07:59:24
+Is being managed at a central level.
+
+[rochak agrawal] 07:59:28
+Right? It is just…
+
+[rochak agrawal] 07:59:33
+A piece of block.
+
+[rochak agrawal] 07:59:39
+So, you can understand, we will, um… an individual house is like a BM.
+
+[rochak agrawal] 07:59:46
+While your apartment is like a container.
+
+[rochak agrawal] 07:59:54
+Now, what is a container?
+
+[rochak agrawal] 07:59:57
+A container?
+
+[rochak agrawal] 07:59:59
+Applications share the host kernel, but are isolated from each other, no guest operating system, so they are small and start instantly. Okay, seconds or less.
+
+[rochak agrawal] 08:00:10
+Here, also, you'll read line 9. Containers do not replace the virtual machine. In the cloud, containers usually run inside the virtual machine. They replace the habit of giving every application its own operating system.
+
+[rochak agrawal] 08:00:24
+Okay, now…
+
+[rochak agrawal] 08:00:28
+This is a little complicated, but I'll try to explain as simply as possible.
+
+[rochak agrawal] 08:00:36
+Now let's say we have a virtual machine.
+
+[rochak agrawal] 08:00:44
+We have a beer.
+
+[rochak agrawal] 08:00:47
+Or I would simply say the machine.
+
+[rochak agrawal] 08:00:52
+Because I am going to run my container on my laptop also, and laptop is a physical machine. So, it is… it need not necessarily that it should be the virtual machine, but…
+
+[rochak agrawal] 08:01:03
+Mostly, you would be running on the virtual machine. Now, virtual machine will have its own operating system.
+
+[rochak agrawal] 08:01:15
+Okay?
+
+[rochak agrawal] 08:01:18
+Now, similar to a virtualization software, you need a containerization software.
+
+[rochak agrawal] 08:01:26
+Which is Docker?
+
+[rochak agrawal] 08:01:28
+So, if you are not running Docker on your machine.
+
+[rochak agrawal] 08:01:34
+you cannot run the containers. So, to run the containers, like, running the virtual machine, you need the hypervisor. For running the containers, you need the containerization software, which is Docker.
+
+[rochak agrawal] 08:01:45
+Now, what we do…
+
+[rochak agrawal] 08:01:47
+Now, let's say, previously.
+
+[rochak agrawal] 08:01:52
+We discussed that an application needs three things. Code.
+
+[rochak agrawal] 08:02:00
+Dependency.
+
+[rochak agrawal] 08:02:03
+And lively.
+
+[rochak agrawal] 08:02:08
+Now, if I am running my application, I am basically managing everything separately.
+
+[rochak agrawal] 08:02:16
+Code and libraries will definitely manage together, but dependencies mostly we are going to manage separately. So, for example, if I wanted to run Jenkins, first I installed the Java, and then I have.
+
+[rochak agrawal] 08:02:29
+Uh, install Jenkins, and then I have run it.
+
+[rochak agrawal] 08:02:32
+Correct.
+
+[rochak agrawal] 08:02:34
+Containers, what they do.
+
+[rochak agrawal] 08:02:38
+They packaged everything together, okay? So, understand containers is like a CD.
+
+[rochak agrawal] 08:02:49
+See, for example.
+
+[rochak agrawal] 08:02:54
+previously, nowadays, everything is on Netflix, or Prime Videos, or YouTube, but if you remember, previously, we used to have the CD players, right? Where we insert the movie.
+
+[rochak agrawal] 08:03:06
+Uh, the CD has all…
+
+[rochak agrawal] 08:03:08
+the component run to, uh, play the movie. And then, um…
+
+[rochak agrawal] 08:03:15
+you just need to have a CD player, and then you insert your CD, and that CD is going to play your movie, so the movie will have everything, your songs, your dialogue, your audio, or display, right?
+
+[rochak agrawal] 08:03:26
+So, because we have packaged everything into that CD, and we are playing it. Now, whoever wants to watch that movie.
+
+[rochak agrawal] 08:03:35
+they just need to have that CD or a copy of that CD, and they will run their own CD player, and they are going to have exactly the same movie, correct? Now, it does not matter, I have a Samsung CD player, you have a Sensui CD player, you have a LG CD player, it does not matter.
+
+[rochak agrawal] 08:03:51
+It is about the CD, correct? Similarly.
+
+[rochak agrawal] 08:03:57
+Docker, what it does…
+
+[rochak agrawal] 08:03:59
+It packaged everything.
+
+[rochak agrawal] 08:04:03
+to run your application.
+
+[rochak agrawal] 08:04:05
+into something called an image.
+
+[rochak agrawal] 08:04:12
+Okay?
+
+[rochak agrawal] 08:04:15
+Whatever is needed to run your application.
+
+[rochak agrawal] 08:04:20
+In something called an image.
+
+[rochak agrawal] 08:04:22
+And when you run this image here on this machine, it is going to create a container.
+
+[rochak agrawal] 08:04:31
+Where your application is running inside the container.
+
+[rochak agrawal] 08:04:37
+So I can have multiple containers here.
+
+[rochak agrawal] 08:04:41
+Each with the same application or with the different applications.
+
+[rochak agrawal] 08:04:46
+And this image…
+
+[rochak agrawal] 08:04:48
+Okay, this image, I can distribute it to multiple people, okay?
+
+[rochak agrawal] 08:04:56
+And when they are going to run this image, they are going to have the same application. Now, it does not matter I have Java 17.
+
+[rochak agrawal] 08:05:07
+Old Java 21.
+
+[rochak agrawal] 08:05:11
+Why? Because whatever I need, it's everything packaged in this image.
+
+[rochak agrawal] 08:05:16
+So I don't care what is running on your operating system.
+
+[rochak agrawal] 08:05:19
+Okay? So containers are the isolated processes which are running. So in the end, it is running on your virtual machine only.
+
+[rochak agrawal] 08:05:29
+Okay? They do not have their own operating system, so…
+
+[rochak agrawal] 08:05:34
+The containers will need to rely on the… see, this will be called as a host operating system, where they are running.
+
+[rochak agrawal] 08:05:42
+So, all their operating system tasks, like memory management, CPU, RAM, they are dependent on the host where they are running, but they will be running in a completely isolated environment. So, this container… so, for example, let's say this is a Netflix…
+
+[rochak agrawal] 08:06:00
+Jenkins container.
+
+[rochak agrawal] 08:06:04
+This is a template container.
+
+[rochak agrawal] 08:06:08
+This is an NGINX container, for example.
+
+[rochak agrawal] 08:06:12
+This is…
+
+[rochak agrawal] 08:06:14
+May would not be there for it.
+
+[rochak agrawal] 08:06:15
+Now, these containers don't know… so, for example, Jenkins container don't know that Tomcat container is also running, Nginx container is also running, or the Maven container is also running.
+
+[rochak agrawal] 08:06:26
+until we are explicitly connecting them, okay? So they are isolated processes on the host operating system with everything running, everything running needed to run that particular application packaged.
+
+[rochak agrawal] 08:06:43
+Something called a image. And that is what we are seeing here. Applications share the host kernel means applications shares the host operating system but are isolated from each other. No guest operating system.
+
+[rochak agrawal] 08:06:58
+What does it mean? Uh, containers does not have a full operating system. So they are very small, and they can start within seconds.
+
+[rochak agrawal] 08:07:10
+Okay, so if you see it here, infrastructure, host operating system.
+
+[rochak agrawal] 08:07:16
+Docker engine?
+
+[rochak agrawal] 08:07:18
+Right.
+
+[rochak agrawal] 08:07:19
+And then you see application A and libraries, there is no guest operating system.
+
+[rochak agrawal] 08:07:26
+The operating system requirements, it need to depend on, um…
+
+[rochak agrawal] 08:07:32
+the host operating system. So basically, um…
+
+[rochak agrawal] 08:07:37
+And this is one of the punchline we use generally.
+
+[rochak agrawal] 08:07:42
+The difference between the virtualization and containers is…
+
+[rochak agrawal] 08:07:47
+Virtualization is a hardware-level virtualization. Here, I am dividing my hardware into multiple virtual machines.
+
+[rochak agrawal] 08:07:57
+While the containerization is a operating system level virtualization, here my operating system is.
+
+[rochak agrawal] 08:08:06
+being used by multiple processes simultaneously.
+
+[rochak agrawal] 08:08:11
+In containers, there will be no operating system. Containers share the host kernel. This is the most important piece of information here.
+
+[rochak agrawal] 08:08:19
+Then they are very small in size, and we will see that once we download the image, we can create the image.
+
+[rochak agrawal] 08:08:27
+Generally, the image size is in MBs. If there is very heavy application, then it will go into gigabytes.
+
+[rochak agrawal] 08:08:37
+So, since they are small in size, they are going to start up very fast, and um…
+
+[rochak agrawal] 08:08:45
+weaker isolation. So isolation is there, but as we said, we can connect them explicitly, which matters for the multi-tenant security. So we can, of course, have some security measures, but it is…
+
+[rochak agrawal] 08:09:02
+little less isolated in comparison to the virtual machines.
+
+[rochak agrawal] 08:09:07
+Now, if I compare…
+
+[rochak agrawal] 08:09:12
+Virtual machine is a hardware-level isolation. Container is a operating system-level isolation.
+
+[rochak agrawal] 08:09:19
+Okay?
+
+[rochak agrawal] 08:09:20
+Virtual machine contains the full operating system, libraries, and application.
+
+[rochak agrawal] 08:09:26
+Containers does not have a full operating system.
+
+[rochak agrawal] 08:09:30
+It only contains what is required to run that application. Typical size also we discussed, startup time we discussed, isolation also we discussed.
+
+[rochak agrawal] 08:09:40
+Density per host. Now, on one physical host, you can run.
+
+[rochak agrawal] 08:09:46
+Let's say 1020 virtual machine, but you can run hundreds of containers on a virtual machine or on a server.
+
+[rochak agrawal] 08:09:53
+Best for different operating system, uh, strong isolation, and packaging and shipping the application. Very important. Now, since we understood the definition.
+
+[rochak agrawal] 08:10:07
+So you see what a container actually is. Now this is little more on the operating system side.
+
+[rochak agrawal] 08:10:16
+So a container is an ordinary Linux process that has been told to isolate. There is no container object in a kernel.
+
+[rochak agrawal] 08:10:26
+Just three features used together.
+
+[rochak agrawal] 08:10:30
+Now, these three features you are seeing.
+
+[rochak agrawal] 08:10:34
+This is more of the Linux admin side. They are the Linux features. So the namespaces, control groups, and.
+
+[rochak agrawal] 08:10:42
+Union file system.
+
+[rochak agrawal] 08:10:48
+So, container does not have… so, we are very clearly saying…
+
+[rochak agrawal] 08:10:55
+that, uh, container does not have a physical existence. Even though your virtual machine does not have a physical existence, um.
+
+[rochak agrawal] 08:11:03
+But they have a full-fledged operating system.
+
+[rochak agrawal] 08:11:07
+Right? But containers does not have a full-fledged operating systems also, so they uses, actually, this, uh…
+
+[rochak agrawal] 08:11:18
+What you can say.
+
+[rochak agrawal] 08:11:21
+Operate… host operating system, uh, things.
+
+[rochak agrawal] 08:11:22
+Now, if someone is asking you what are the Linux feature, or I would say what are the operating system feature, which makes the containerization possible, so these are the features. Namespace.
+
+[rochak agrawal] 08:11:37
+and cgroups. Uh, cgroups, or called the control groups, are two core kernel features that makes container possible. Okay, so namespace gives a process.
+
+[rochak agrawal] 08:11:50
+It controls what a process can see, its own process, the network interfaces, host name, mount points, user inside. It looks like it has the machine to itself.
+
+[rochak agrawal] 08:12:00
+So namespace gives process its own view of system resources, making it feel like running on a separate machine. Now, we can think of namespace as the walls that separate process from each other.
+
+[rochak agrawal] 08:12:16
+Now, if you see…
+
+[rochak agrawal] 08:12:19
+Uh, what is the common type of a namespace? Is there a PID?
+
+[rochak agrawal] 08:12:24
+to see the process ID. So there are multiple namespaces out there in Linux.
+
+[rochak agrawal] 08:12:35
+B. I. D.
+
+[rochak agrawal] 08:12:37
+N-E-T.
+
+[rochak agrawal] 08:12:40
+M&D.
+
+[rochak agrawal] 08:12:44
+UPS.
+
+[rochak agrawal] 08:12:46
+IBC.
+
+[rochak agrawal] 08:12:49
+user.
+
+[rochak agrawal] 08:12:52
+Now, there are multiple others as well, but these are some of the common ones. BID is process IDs. NET is about the network interfaces. IP, routing table. MNT is the file system mount points.
+
+[rochak agrawal] 08:13:08
+UTS is a host name and domain name, IPC is a memory, uh, message queues, user is a user and group IDs, and…
+
+[rochak agrawal] 08:13:17
+It's not group, it is C group.
+
+[rochak agrawal] 08:13:20
+C-groups is, uh, a C-group visibility. C-group we are going to discuss next. So, the… the thing is, uh, when… see, with the help of these namespaces.
+
+[rochak agrawal] 08:13:32
+We can run these containers as the isolated processes inside the same operating system.
+
+[rochak agrawal] 08:13:38
+Next is the C group. C group limits and monitor how much hardware resources, processor.
+
+[rochak agrawal] 08:13:47
+or a group of processor is going to take. For example, control what a process can use. CPU, memory, disk IO, this is how memory and CPU limits are imposed.
+
+[rochak agrawal] 08:13:59
+Right, we can think of cgroup as the resource quota. They are going to control CPU uses, memory uses, disk IO, network bandwidth, and number of the processes.
+
+[rochak agrawal] 08:14:09
+So…
+
+[rochak agrawal] 08:14:11
+You can understand if we imagine an apartment building. So namespace is like the separate apartment.
+
+[rochak agrawal] 08:14:20
+Each family has its own rooms and does not see inside other apartments. While the C-group is electricity and water limits for each apartment, so one family cannot over-consume everything.
+
+[rochak agrawal] 08:14:34
+Now, how… when Docker starts a container, it creates namespaces to isolate the process network file system.
+
+[rochak agrawal] 08:14:42
+Uh, and host name, and it creates C groups to limit.
+
+[rochak agrawal] 08:14:47
+CPU, memory, and the input operations, input-output operations. Then we have a file system. File system, I'll leave it for now. When we will create the images, Docker images, then we will understand more about it.
+
+[rochak agrawal] 08:15:04
+Okay, so this is the basic introduction about the Docker or the containerization.
+
+[rochak agrawal] 08:15:12
+We will see how to put everything together, but fundamentally, this is what a container is.
+
+[rochak agrawal] 08:15:20
+Yes, Rohit.
+
+[Rohit Shekhawat] 08:15:22
+Yes, sir, Rochak, I want to know that we can also run a container on Windows operating system.
+
+[rochak agrawal] 08:15:28
+Yeah, we can run, uh, containers over the Windows operating system, uh, yes, but…
+
+[rochak agrawal] 08:15:35
+Uh, mostly it is suitable for the Linux, um…
+
+[rochak agrawal] 08:15:39
+type of the operating systems. There are certain things you need to do to run the containers on the Windows operating system. To answer it generally, yes, you can run it.
+
+[Rohit Shekhawat] 08:15:49
+Okay.
+
+[rochak agrawal] 08:15:50
+But it's a core, you can say it's a more of a Linux feature.
+
+[Rohit Shekhawat] 08:15:57
+Okay, okay. Thank you.
+
+[rochak agrawal] 08:16:01
+Yes, Alf.
+
+[arif] 08:16:05
+Yeah, I'll check. So, um, I'm not getting completely this container's concept.
+
+[rochak agrawal] 08:16:09
+That's okay, I can totally understand it, because it is a little more complicated. So, uh…
+
+[rochak agrawal] 08:16:15
+We will do a demo, and then the things will get more clearer, but if you have any question at this moment, you can ask.
+
+[arif] 08:16:22
+Yeah, so regarding this physical server host in terms of container, so we can use only one operating system if it is… if that is the case.
+
+[rochak agrawal] 08:16:32
+Correct.
+
+[rochak agrawal] 08:16:32
+Hmm. Okay.
+
+[arif] 08:16:33
+But in virtual machine, we can have different operating systems running on different applications.
+
+[rochak agrawal] 08:16:36
+Correct.
+
+[rochak agrawal] 08:16:39
+Got it.
+
+[rochak agrawal] 08:16:40
+So here, this is one distinction, if you can do right click on here.
+
+[rochak agrawal] 08:16:46
+So, here, what is going to happen, Arif, so, for example, if I talk about the virtual machine case.
+
+[rochak agrawal] 08:16:53
+So your host operating system can be anything. You can have a different guest operating system. So for example, if my host operating system is Unix, my guest operating system can be Unix, Linux, Fedora.
+
+[arif] 08:16:59
+Yeah.
+
+[rochak agrawal] 08:17:09
+Uh, Windows, Mac OS, it could be anything.
+
+[rochak agrawal] 08:17:11
+Clear till now.
+
+[rochak agrawal] 08:17:13
+Here, in containerization, see, we are saying.
+
+[rochak agrawal] 08:17:19
+There is no…
+
+[rochak agrawal] 08:17:20
+There is no guest operating system here, correct?
+
+[rochak agrawal] 08:17:26
+See, when the container does not have an operating system altogether, then…
+
+[rochak agrawal] 08:17:32
+The things about…
+
+[rochak agrawal] 08:17:34
+the Windows container or the, uh… but there is… there is one small, uh, thing here. When we say libraries.
+
+[rochak agrawal] 08:17:42
+See, in the end, every…
+
+[rochak agrawal] 08:17:46
+Application need the operating system to run.
+
+[rochak agrawal] 08:17:50
+application, right? So, in containers, how does it happen is… see, for example, it… if my host operating system is…
+
+[rochak agrawal] 08:17:59
+Linux, for example. Then, I can only run the…
+
+[rochak agrawal] 08:18:05
+Unix flavor container. So, for example, my container can be Linux, my container can be, uh, Fedora, Ubuntu, those all container I can run because they all are Unix, correct? So they all have, uh, these namespaces and, uh.
+
+[rochak agrawal] 08:18:20
+Uh, your, uh…
+
+[rochak agrawal] 08:18:22
+cgroups. I cannot run a Windows-based container on top of a Linux host operating system and vice versa.
+
+[rochak agrawal] 08:18:32
+Genetically.
+
+[rochak agrawal] 08:18:34
+by default. There are wrappers available, there are tools available, which is going to provide you that capabilities, but by default, if my host operating system is a Windows, then I can run only Windows-based container. If my host system is.
+
+[rochak agrawal] 08:18:48
+any of the Unix flavor, I can run the Unix containers. Unix flavor container, it could be Linux, it could be Windows, uh, sorry, it could be Ubuntu, it could be Fedora.
+
+[rochak agrawal] 08:18:58
+So that restriction is there in the containers.
+
+[arif] 08:19:06
+But, uh, in the container, so we are still doing some partitioning, right, with the help of this C group.
+
+[rochak agrawal] 08:19:10
+Yes, we are doing.
+
+[arif] 08:19:11
+I'm actually defining this, okay.
+
+[arif] 08:19:13
+So it's all about the processes are going to distribute, uh, the Linux operating system process.
+
+[rochak agrawal] 08:19:13
+Yep.
+
+[rochak agrawal] 08:19:18
+Correct. See, in the end, in the end, uh…
+
+[rochak agrawal] 08:19:22
+you think…
+
+[rochak agrawal] 08:19:24
+of C.
+
+[rochak agrawal] 08:19:26
+Let's say…
+
+[rochak agrawal] 08:19:31
+In my laptop, I am running a process, let's say Google Chrome.
+
+[rochak agrawal] 08:19:36
+Correct? Google Chrome is a process only.
+
+[rochak agrawal] 08:19:38
+Now, I go to Amazon website, and I am running, for example.
+
+[rochak agrawal] 08:19:44
+a Unix server I am accessing. So, eventually, if you see, you are running a Unix server inside the Windows laptop.
+
+[rochak agrawal] 08:19:52
+Effectively, correct?
+
+[rochak agrawal] 08:19:55
+Now, this is also a type of virtualization, for example.
+
+[rochak agrawal] 08:20:00
+Where you are running a process which is a Google Chrome and inside the Google Chrome you are running a Unix machine.
+
+[rochak agrawal] 08:20:05
+Correct.
+
+[rochak agrawal] 08:20:07
+Similarly, you can think of the container as the same example.
+
+[rochak agrawal] 08:20:13
+When you run a container, it is essentially a process. Now, inside the process, that complete application is running. That complete application does not have any existence outside.
+
+[rochak agrawal] 08:20:25
+It is running inside a container.
+
+[rochak agrawal] 08:20:28
+Now, for example, this server, I cannot access the server from outside, correct?
+
+[rochak agrawal] 08:20:35
+This is running only, uh, within a Chrome.
+
+[rochak agrawal] 08:20:39
+Correct?
+
+[rochak agrawal] 08:20:40
+So it is also kind of isolation only.
+
+[rochak agrawal] 08:20:43
+So, the similar thing, you can think of a container. So, for example, let's say when I run…
+
+[rochak agrawal] 08:20:56
+Let's say this is my machine. Again, it could be my laptop, it could be my EC2 instance, both physical or…
+
+[rochak agrawal] 08:21:03
+Now, if I need to run Jenkins on it.
+
+[rochak agrawal] 08:21:07
+So, as a dependency, I need to have Java installed on it, correct?
+
+[rochak agrawal] 08:21:19
+And installation is not… installation is one part.
+
+[rochak agrawal] 08:21:23
+When the Jenkins is running.
+
+[rochak agrawal] 08:21:30
+When Jenkins is running, Jenkins should be able to use this, correct?
+
+[rochak agrawal] 08:21:36
+Then only it will run all the dependencies and everything. Here you say I'm running two processes.
+
+[rochak agrawal] 08:21:44
+On my server…
+
+[rochak agrawal] 08:21:45
+Okay.
+
+[rochak agrawal] 08:21:49
+can see each other, they are interacting with each other, correct? They are not isolated from one another.
+
+[rochak agrawal] 08:21:59
+But when I'm… when I will be running the container.
+
+[rochak agrawal] 08:22:08
+When I am going to run the container, let's say I'm running one Jenkins container.
+
+[rochak agrawal] 08:22:18
+I am running one Jenkins container.
+
+[rochak agrawal] 08:22:23
+I'm running one engine extension.
+
+[rochak agrawal] 08:22:27
+Now, Jenkins will never know, when I'm saying never, by default, I can connect these two containers, that's a separate thing, but Jenkins does not know NGINX is running, NGINX does not know Jenkins is running.
+
+[rochak agrawal] 08:22:40
+They… they are completely isolated from one another.
+
+[rochak agrawal] 08:22:44
+It is like they are running on their own machine.
+
+[rochak agrawal] 08:22:50
+Okay?
+
+[arif] 08:22:52
+So, what is the benefit of this isolation?
+
+[rochak agrawal] 08:22:55
+Because the benefit of the benefit this isol of this isolation is.
+
+[rochak agrawal] 08:23:01
+See, first we need to understand this.
+
+[rochak agrawal] 08:23:08
+Now there will be no version drift because I am packaging everything in an image and I'm distributing that image. Now whatever is running on your system, I don't care. That is resolved.
+
+[rochak agrawal] 08:23:21
+Dependency conflict.
+
+[rochak agrawal] 08:23:23
+No dependency conflict because now your Nginx container is running differently. If your Jenkins container is running differently, you can use your own Java. I will use my own Java. There is no dependency conflict.
+
+[rochak agrawal] 08:23:39
+Snowflake server, since, and we will see that you are going to use something like the Jenkins file was there in Docker, we call it as a Docker file. So whenever you will be creating an image or you will be having an image, you will have a complete configuration step. So you will exactly know what your servers are doing.
+
+[rochak agrawal] 08:23:57
+Fast onboarding, now you just need to create one…
+
+[rochak agrawal] 08:24:04
+the image at a one time. Now, you will distribute that image.
+
+[rochak agrawal] 08:24:09
+So your developer, let's say you are 100 developers, and every developer needs Java, Jenkins, Maven, everything to install. That is going to take some time. So you do what you do, you will create one Docker image, or I would say the container image at this moment.
+
+[rochak agrawal] 08:24:24
+You distribute that container image to everyone. Now what they need to do, they just need to run that container image and the container they will be creating will have everything. It will have Jenkins, Maven, Java, everything.
+
+[rochak agrawal] 08:24:40
+Since there will be no version drip, there will be no environment mismatch.
+
+[rochak agrawal] 08:24:44
+Now, these all are benefits of the containerization.
+
+[rochak agrawal] 08:24:48
+Now, why do we need isolation? Because, see, in the end, these two applications are at a different application, correct?
+
+[rochak agrawal] 08:24:56
+So, we are giving…
+
+[rochak agrawal] 08:25:00
+If Jenkins need to talk to NGINX, we can create a connection between them.
+
+[rochak agrawal] 08:25:04
+That is possible. Okay? But we will discuss that in a networking… Docker networking section. But you see, isolation is…
+
+[rochak agrawal] 08:25:13
+Even if you're running your virtual machines.
+
+[rochak agrawal] 08:25:16
+you're isolating them. Your one virtual machine does not know that there is another virtual machine running. Correct?
+
+[rochak agrawal] 08:25:22
+So the isolation is always important, because then…
+
+[rochak agrawal] 08:25:26
+This is running their own set of processes, NGINX is running their own set of processes, so that they… there is not a resource conflict.
+
+[rochak agrawal] 08:25:34
+And that is why isolation is needed.
+
+[arif] 08:25:39
+Okay. This controller image, so you're saying that it will contain all the dependencies and libraries, uh…
+
+[rochak agrawal] 08:25:40
+Okay?
+
+[rochak agrawal] 08:25:46
+Mm-hmm.
+
+[arif] 08:25:47
+like, with respect to any… what tools you… what application you want to run. It has all the information in an image, and the image can be shared with the other… other, uh, like…
+
+[rochak agrawal] 08:25:48
+Correct.
+
+[rochak agrawal] 08:25:54
+Correct.
+
+[rochak agrawal] 08:25:58
+Correct.
+
+[arif] 08:25:58
+So.
+
+[arif] 08:26:00
+So there is no virtual machine, right? In case of… there is no machine the container is running on.
+
+[rochak agrawal] 08:26:04
+No, no, see, but your container is going to run on the VM, right?
+
+[rochak agrawal] 08:26:10
+Where are your container going to run?
+
+[arif] 08:26:14
+Okay.
+
+[rochak agrawal] 08:26:14
+Okay, so that is where I… this image, if you see, we are seeing the infrastructure. Your infrastructure could be…
+
+[rochak agrawal] 08:26:24
+My laptop, I can run a container since I have a Windows machine, I'm going to run a Windows-based container. But mostly 99 percent you are going to use the Linux-based containers. Or it could be an EC2 instance. Now, EC2 instance, what is the EC2 instance? A virtual machine.
+
+[rochak agrawal] 08:26:40
+Basically, you are running your containers over the virtual machines.
+
+[rochak agrawal] 08:26:46
+Okay?
+
+[arif] 08:26:47
+You can say, like, a virtual machine without any operating system.
+
+[rochak agrawal] 08:26:53
+You can say that, yes. In a way, yes.
+
+[rochak agrawal] 08:26:57
+But, um…
+
+[rochak agrawal] 08:26:59
+In general language, yes, it is true. Okay.
+
+[rochak agrawal] 08:27:02
+But if you say technically, is it correct or not? Yeah, that's a different thing. But yeah, in a general language, to understand it better, you can say that.
+
+[arif] 08:27:04
+At the back end, yeah.
+
+[arif] 08:27:11
+At the backend, it is, anyways, going to use the existing physical operating system only, but for understanding, we can say, like, it is creating…
+
+[rochak agrawal] 08:27:15
+Got it.
+
+[rochak agrawal] 08:27:19
+You can say that, yes. So that's what I said. From a general understanding purpose, to make a visualization of it, you can say that. Technically, there are certain caveats or nuances to it.
+
+[rochak agrawal] 08:27:31
+Okay, now…
+
+[rochak agrawal] 08:27:34
+So we'll discuss this. Now, you see…
+
+[rochak agrawal] 08:27:38
+How Docker? Container is all about now when we will complete the slide, you will have a slightly more idea.
+
+[rochak agrawal] 08:27:48
+So you see, uh, Docker host.
+
+[rochak agrawal] 08:27:51
+Docker host is a place where first you are running the Docker, because for the containerization, you need to run the Docker.
+
+[rochak agrawal] 08:27:59
+And then where you are going to run the containers. Now, this host can be physical machine or can be virtual machine, does not matter at all.
+
+[rochak agrawal] 08:28:07
+Okay, that should be Docker.
+
+[rochak agrawal] 08:28:10
+That's it. So first, if you want to run the container, you need to run this Docker daemon. So you need to install the Docker, and then you will think about anything else as well.
+
+[rochak agrawal] 08:28:21
+Okay, so Docker D is a Docker daemon which need to run on your system where you want to run the container. So basically, it is your, uh…
+
+[rochak agrawal] 08:28:32
+containerization software, which allows the containerization, okay? Then how you are going to interact with the Docker D with the help of the Docker client?
+
+[rochak agrawal] 08:28:41
+Again, Docker, so we are going to run all these commands like Docker build, Docker pull, Docker run. We will run all these commands. So Docker client is going to interact with the Docker D, which is a Docker daemon, okay?
+
+[rochak agrawal] 08:28:57
+And so now you see there's a different, different commands, build, pull, run. So you can create your own Docker images.
+
+[rochak agrawal] 08:29:05
+Or you can…
+
+[rochak agrawal] 08:29:07
+Use a existing.
+
+[rochak agrawal] 08:29:11
+Docker images, okay? I'll show you from where you can use existing Docker images, and we will also see how we can create our own Docker images, both of the things we are going to see.
+
+[rochak agrawal] 08:29:22
+So you see, when you run the docker build command, it is going to…
+
+[rochak agrawal] 08:29:26
+interact with your Docker daemon, and it is going to build a new Docker image. While when you run the Docker pull command.
+
+[rochak agrawal] 08:29:33
+It is going to download an image for you, okay?
+
+[rochak agrawal] 08:29:36
+And then…
+
+[rochak agrawal] 08:29:39
+in the right-hand side, if you see the registry, again, registry is the place where your Docker images are going to be stored.
+
+[rochak agrawal] 08:29:47
+Now, Docker images are… will not be your normal files.
+
+[rochak agrawal] 08:29:53
+you cannot store them everywhere. Like, you cannot understand them as, like, a normal file, and you put them in a folder. You need a separate software, uh, which is called the registry.
+
+[rochak agrawal] 08:30:06
+Into that registry, you are going to store your Docker images. Now, every cloud provider is going to provide you a registry option. So if you see ECR is the Elastic Container Registry, which is AWS provide.
+
+[rochak agrawal] 08:30:20
+ACR is a Azure Container Registry. GCR is a Google Container Registry. Then we have other third-party solution like Hardware and Nexus. Then very important for us right now is the Docker Hub. Now, Docker Hub, you can understand…
+
+[rochak agrawal] 08:30:37
+is more of, like, a GitHub. Uh, GitHub is a public collaboration platform where you store your code.
+
+[rochak agrawal] 08:30:44
+Docker Hub is a public collaboration platform where you are going to store your Docker images, similar to that. So you see Docker client send command to the daemon, can talk to a daemon on another machine also.
+
+[rochak agrawal] 08:31:00
+Okay? So your Docker daemon can run on a different machine, it can run on the same machine.
+
+[rochak agrawal] 08:31:06
+Daemon does the actual work. So Docker Daemon, or the Docker, is a containerization software. It builds the images, it runs the containers, it manages the network and the volume, everything.
+
+[rochak agrawal] 08:31:18
+Then comes the images. Images are the heart and soul. If you do not have an image, you do not have a container. It is like, if you do not have a CD.
+
+[rochak agrawal] 08:31:28
+what is that you're going to put inside a CD player, right? You cannot run a movie until and unless you do not have a CD, correct? So, image is like the templates where you will define everything.
+
+[rochak agrawal] 08:31:40
+what you want inside a container. So…
+
+[rochak agrawal] 08:31:44
+In the end, if you want a customized, uh, application to run, you need a image. So image is the read-only template, uh, the blueprint a container is created from.
+
+[rochak agrawal] 08:31:57
+Uh, you may ask a question in an interview, what is the difference between an image or a container?
+
+[rochak agrawal] 08:32:03
+Okay, so you can see images are the static template. Once you run an image.
+
+[rochak agrawal] 08:32:11
+A container is getting created, so you can say a container is a runtime version of an image.
+
+[rochak agrawal] 08:32:18
+So when you…
+
+[rochak agrawal] 08:32:21
+play your CD, a movie is running, so the movie is a container, while the CD is an image.
+
+[rochak agrawal] 08:32:27
+Okay? And, uh, in the end, we have the registry where you are going to store and distribute your images.
+
+[rochak agrawal] 08:32:35
+Docker Hub is a public default. If you are not…
+
+[rochak agrawal] 08:32:40
+saying otherwise
+
+[rochak agrawal] 08:32:42
+And you say Docker, uh, pull Nginx.
+
+[rochak agrawal] 08:32:46
+It is going to download the images from the Docker Hub registry.
+
+[rochak agrawal] 08:32:51
+If you have any other registry, then you need to… we need to explicitly mention that registry.
+
+[rochak agrawal] 08:32:57
+So these four component we have.
+
+[rochak agrawal] 08:33:01
+Okay, now…
+
+[rochak agrawal] 08:33:04
+I'll come…
+
+[rochak agrawal] 08:33:05
+back to this later. Now, if I'll show you Docker Hub first.
+
+[rochak agrawal] 08:33:13
+And… oh.
+
+[rochak agrawal] 08:33:13
+If you're not getting a perspective now, you see…
+
+[rochak agrawal] 08:33:19
+Most of the applications are running in a containerized format now.
+
+[rochak agrawal] 08:33:25
+And I believe, um, any new application which is being developed are being developed as a containerization format.
+
+[rochak agrawal] 08:33:33
+Okay, so if you go to hub.docker.com.
+
+[rochak agrawal] 08:33:40
+Susie?
+
+[rochak agrawal] 08:33:43
+now you see there's a MCP server also for this, but you can… this is something. So you see, most pulled images, and you see machine learning AI, so you have an image for TensorFlow, PyTorch, LangChain, Python.
+
+[rochak agrawal] 08:33:57
+So you will have image for almost everything. Nginx, Memcache, BugiBox, you name the software and you are going to find an image for that.
+
+[rochak agrawal] 08:34:08
+Can you see this image, nginx?
+
+[rochak agrawal] 08:34:13
+You see the downloads.
+
+[rochak agrawal] 08:34:16
+1 billion plus.
+
+[rochak agrawal] 08:34:19
+means 100 CR.
+
+[rochak agrawal] 08:34:23
+Okay, so you can see official images. If you see official images are being.
+
+[rochak agrawal] 08:34:33
+shared by the Docker itself. So, Docker is a product as well as an organization, so…
+
+[rochak agrawal] 08:34:39
+So Nginx, Memcached, Gbox, Alpine, Postgres, Redis, you name the software, Ubuntu, Node.js, so if you want to run a Node.js-based application, say Docker, Node.js, HTTPD, Mongo, My.
+
+[rochak agrawal] 08:34:52
+Traffic, there's a Docker image is also available. Hello World, MariaDB. I'm seeing you name the software and OpenJDK which have Java installed, WorldPlus, PHP, CentOS.
+
+[rochak agrawal] 08:35:04
+SonarQube.
+
+[rochak agrawal] 08:35:05
+And that was the reason we have covered, covering Java before, covering Docker before running a project because we are also going to use the SonarQube image. Otherwise, installing SonarQube is going to take a lot of time.
+
+[rochak agrawal] 08:35:22
+And it is not… you will see multiple images are there, okay? Not only the Docker images, you will have your own… you can have your own images also.
+
+[rochak agrawal] 08:35:33
+Right, I can… so if you see, I can sign in, and…
+
+[rochak agrawal] 08:35:39
+Okay, let me do a sign in.
+
+[rochak agrawal] 08:35:43
+Don't worry, we will completely see how we can push and pull the images. I'm just…
+
+[rochak agrawal] 08:35:50
+Walking you through the platform, so you can see I have these images. About two months ago, we have created two images for Swiggy and Gemetto, DCT demo. So these are my images, which is currently inactive, but these are my images, okay?
+
+[rochak agrawal] 08:36:06
+And if I want to download something.
+
+[rochak agrawal] 08:36:09
+So…
+
+[rochak agrawal] 08:36:10
+let's say nginx only. So if you go to nginx.
+
+[rochak agrawal] 08:36:17
+So there
+
+[rochak agrawal] 08:36:19
+You can see.
+
+[rochak agrawal] 08:36:22
+Almost 3 lakh images are there for NGINX.
+
+[rochak agrawal] 08:36:26
+Right? So there are certain… you will see who has released this image, so this is Docker official image, this is by NGINX itself, and you can see there is multiple images from NGINX itself.
+
+[rochak agrawal] 08:36:38
+This is from VMware. So every vendor is also releasing the image for Docker now. And if you go here.
+
+[rochak agrawal] 08:36:47
+And here you can see it will give you complete option also how to run this image and everything.
+
+[rochak agrawal] 08:36:55
+So, currently, it will not be making much sense to you, because we have not gone through the commands yet, but in the Docker Hub, you are going to find the image for almost everything.
+
+[rochak agrawal] 08:37:08
+Okay, you name the product. Let's say I want to search the image for Tribi. Now, Tribi is a product that we are also going to use.
+
+[rochak agrawal] 08:37:17
+Is there an image? What you can see? Trivy.
+
+[rochak agrawal] 08:37:20
+Albine Tribi. There's, um, 1500 images for Tribi.
+
+[rochak agrawal] 08:37:24
+Ecoside Tribute, Bitnami Tribute, right?
+
+[rochak agrawal] 08:37:27
+Now, of course, uh, the, like, you may ask, like, which image I am going to use.
+
+[rochak agrawal] 08:37:33
+So be, uh, in your production environments, in your enterprise settings, we can take a base image from, um.
+
+[rochak agrawal] 08:37:40
+Docker Hub, and then you will do multiple hardening of your image. You will customize the image, and then you will use those images. So we will see how to create your custom images also, but you are not… you may not use these open source images in your production environment. You can…
+
+[rochak agrawal] 08:37:58
+You are going to take a base image from this, and then you will build your custom images on top of that.
+
+[rochak agrawal] 08:38:03
+So, this is about the Docker Hub. So…
+
+[rochak agrawal] 08:38:13
+Yes, sir, if you have a question?
+
+[arif] 08:38:15
+This Docker image and container image, both are different or same, right?
+
+[rochak agrawal] 08:38:17
+No, no, no, that's what I said. See, image is a static version, so when you run an image, a container is created.
+
+[rochak agrawal] 08:38:26
+So, container is a… container is a runtime version of an image.
+
+[rochak agrawal] 08:38:32
+So, for example, let's say you have two homes. One is, let's say, three idiots, another is…
+
+[rochak agrawal] 08:38:42
+For example, let's say Pathan. Now, you…
+
+[rochak agrawal] 08:38:46
+You can only watch 3 idiots when you are running the CD for 3 idiots, correct? You cannot, uh…
+
+[rochak agrawal] 08:38:54
+watch three videos while running the CD of Pathan, correct? Similarly, here you can see, let's say I want to run an NGINX. So I will search for an NGINX image.
+
+[rochak agrawal] 08:39:10
+Right? And I'm going to run an NGINX image, and here there is an option, use this image.
+
+[rochak agrawal] 08:39:18
+Something downloaded. This is hardened image.
+
+[rochak agrawal] 08:39:25
+So let's say I… this is, um…
+
+[rochak agrawal] 08:39:34
+Okay, so here, also, you will get some commands, right? So here, if you see this command, and…
+
+[rochak agrawal] 08:39:48
+This command, this… let me copy this.
+
+[rochak agrawal] 08:39:52
+I'm not… I'll not explain the full command, because we will go through this. Here, it is using this NGINX image, okay? Now, what… when you will run this command, what it will do, it will download the NGINX image.
+
+[rochak agrawal] 08:40:04
+And then create a container out of it.
+
+[rochak agrawal] 08:40:06
+So, you can see…
+
+[rochak agrawal] 08:40:09
+Image is the static version. When you run that image, whatever template… whatever configuration you have defined in that template.
+
+[rochak agrawal] 08:40:18
+it is going to run in that container. So basically, container is the runtime version of your image.
+
+[arif] 08:40:23
+Yeah, yeah, I got it. So that image… that image itself called… we call it as a Docker image. Once you run it, it will become a Docker image.
+
+[rochak agrawal] 08:40:25
+Okay.
+
+[rochak agrawal] 08:40:29
+Docker image, container image, you can say anything.
+
+[arif] 08:40:32
+Okay, and about the Docker, so where we are going to run this daemon, like, uh…
+
+[rochak agrawal] 08:40:38
+On a virtual machine? Any virtual machine? Or any laptop?
+
+[arif] 08:40:42
+Virtual machine, so… infrastructure… so, anyways, the virtual machine, there will be a physical server. Okay, got it.
+
+[rochak agrawal] 08:40:43
+Yeah, yeah. See, that's what I… that's what…
+
+[rochak agrawal] 08:40:50
+No, no, uh, RF, your virtual machine is a virtual machine. Your virtual machine is not a physical server.
+
+[arif] 08:40:58
+No, no, in this example, container side…
+
+[rochak agrawal] 08:40:59
+In this example, yes. In this example, yes. So that's where you see here, we are writing only the infrastructure. Neither we are saying the physical server, neither we are saying the virtual machine.
+
+[rochak agrawal] 08:41:10
+Your Docker daemon can run on both.
+
+[arif] 08:41:13
+Yeah, yeah, that's what…
+
+[arif] 08:41:14
+Okay.
+
+[rochak agrawal] 08:41:15
+Okay.
+
+[arif] 08:41:16
+Yep.
+
+[rochak agrawal] 08:41:19
+Yes, Suraj.
+
+[Soorej Uthaman] 08:41:23
+Uh, yeah, hi, Roshik. Uh, so, in this diagram for the containers.
+
+[rochak agrawal] 08:41:27
+Mm-hmm.
+
+[Soorej Uthaman] 08:41:28
+So, suppose the image is having everything, which is having all the packages, then for each application, why do you again need libraries?
+
+[rochak agrawal] 08:41:32
+Correct.
+
+[Soorej Uthaman] 08:41:38
+Is that the understanding, or… because image, uh, you said all the dependencies will be there, right, or Docker may?
+
+[rochak agrawal] 08:41:43
+Correct. Yeah, yeah. So if you see this diagram.
+
+[rochak agrawal] 08:41:49
+This is a container, correct?
+
+[Soorej Uthaman] 08:41:52
+Yes.
+
+[rochak agrawal] 08:41:58
+Okay, so yes, see.
+
+[rochak agrawal] 08:42:02
+When we are saying…
+
+[rochak agrawal] 08:42:04
+When you're saying, image will have the libraries, every library, correct?
+
+[rochak agrawal] 08:42:10
+All containers and images are different. They are the same thing. That's what we are saying. Containers are the running version of the image.
+
+[rochak agrawal] 08:42:17
+Essentially, it is your image only.
+
+[rochak agrawal] 08:42:19
+Got it?
+
+[Soorej Uthaman] 08:42:23
+Yes.
+
+[rochak agrawal] 08:42:24
+So that's what we…
+
+[Soorej Uthaman] 08:42:25
+So, this library is like a…
+
+[Soorej Uthaman] 08:42:28
+Just like for the diagram, is it? Or do we need to, again, for application, suppose you need Java 7, and for application, do we need…
+
+[rochak agrawal] 08:42:34
+No, no, no, everything should be in your image itself.
+
+[Soorej Uthaman] 08:42:37
+Oh.
+
+[rochak agrawal] 08:42:38
+As a rule of thumb.
+
+[Soorej Uthaman] 08:42:41
+Yeah, that's what… so again, we need not install anything, right?
+
+[rochak agrawal] 08:42:42
+Okay? As a… yeah, yeah. No, no, no, no, you do not… see, you can do.
+
+[rochak agrawal] 08:42:47
+But, and when we will run the container, and that is where this slide is.
+
+[rochak agrawal] 08:43:05
+If you see the image layers in the containers.
+
+[rochak agrawal] 08:43:11
+This, I generally take a little later when we have some run one or two containers. But what happens is, see, let's say…
+
+[rochak agrawal] 08:43:20
+I'll just give you a high level.
+
+[rochak agrawal] 08:43:23
+Now, let's say you have an image.
+
+[rochak agrawal] 08:43:27
+Okay. Now, in an image, you have…
+
+[rochak agrawal] 08:43:32
+Let the Jenkins installed.
+
+[rochak agrawal] 08:43:35
+Java installed, and everything. For example, now you go…
+
+[rochak agrawal] 08:43:40
+When you run this, this is an image.
+
+[rochak agrawal] 08:43:44
+Okay? When you run, then you will have a container out of it.
+
+[rochak agrawal] 08:43:51
+Which will have Jenkins?
+
+[rochak agrawal] 08:43:57
+Plus Java. Will you wait till long?
+
+[rochak agrawal] 08:44:04
+Megha?
+
+[Soorej Uthaman] 08:44:07
+Yes, yes, yeah, that's clear.
+
+[rochak agrawal] 08:44:08
+So see, image is a static object. Image is like a file, you can say, and that too in a very different format. You cannot do anything directly to image. You need to go through the build process and then you build it.
+
+[rochak agrawal] 08:44:24
+But when you can run the container, I can connect to this container, I can run a command inside a container, and I can play around. For example, I can see the logs when Jenkins is running. I can do multiple things. Now you go.
+
+[rochak agrawal] 08:44:39
+Install Nginx inside this container.
+
+[rochak agrawal] 08:44:41
+For example, hypothetically.
+
+[rochak agrawal] 08:44:45
+Okay.
+
+[rochak agrawal] 08:44:47
+Now, when you will install that nginx inside a container, the nginx is not there in your image, correct?
+
+[rochak agrawal] 08:44:54
+Now, when this container will restart.
+
+[rochak agrawal] 08:44:59
+The engineers will be gone.
+
+[rochak agrawal] 08:45:02
+you will only have the things which is there in your image. So any changes you want to do, you will do in your image itself.
+
+[rochak agrawal] 08:45:11
+Containers are transitory in nature. Anything you are doing in the container, once the container is going to restart, that will be lost.
+
+[rochak agrawal] 08:45:22
+So containers are ephemeral in nature. They will only look…
+
+[rochak agrawal] 08:45:26
+for an image, whatever is there in an image, they are going to run that, as simple as that. So, let's say if there are any version, uh, library version is changing, you need any additional software.
+
+[rochak agrawal] 08:45:39
+As a best practice, as…
+
+[rochak agrawal] 08:45:42
+You always do.
+
+[rochak agrawal] 08:45:44
+The change in your image configuration, and then build a new image out of it.
+
+[rochak agrawal] 08:45:48
+So the version of the image.
+
+[rochak agrawal] 08:45:50
+Okay?
+
+[rochak agrawal] 08:46:01
+So, Docker Hub and the images names, uh, so, uh…
+
+[rochak agrawal] 08:46:08
+If you see, please.
+
+[rochak agrawal] 08:46:14
+Let's… we will do it from the demo itself.
+
+[rochak agrawal] 08:46:18
+Now you see let's start with the installation. Okay, so installation is.
+
+[rochak agrawal] 08:46:24
+Very straightforward, there is nothing much that we need to do.
+
+[rochak agrawal] 08:46:29
+Uh, so very straightforward. I'll go to the…
+
+[rochak agrawal] 08:46:35
+Official page, Docker installation.
+
+[rochak agrawal] 08:46:41
+So here you see install Docker engine.
+
+[rochak agrawal] 08:46:44
+Now, depending on the platform, you have CentOS, Fedora, Ubuntu. Now, here you see you are not seeing the windows.
+
+[rochak agrawal] 08:46:53
+Okay.
+
+[rochak agrawal] 08:46:55
+And that's why I said in the starting, natively, containers are the Linux feature.
+
+[rochak agrawal] 08:47:02
+Okay.
+
+[rochak agrawal] 08:47:03
+Uh, you can run it, there is something called, uh, so you see, um…
+
+[rochak agrawal] 08:47:07
+This section describes how to install Docker Engine on Linux. Docker Engine is also available for the Mac, Windows, macOS, and Linux through the Docker Desktop. For instruction how to install the Docker Desktop, you can go search for the Docker Desktop, overview of Docker Desktop.
+
+[rochak agrawal] 08:47:23
+So that's what, uh, so containers primarily are, um, Linux feature, Linux or the Linux flavor Fedora Ubuntu. It's a Unix feature, basically.
+
+[rochak agrawal] 08:47:34
+So natively, what about the containers you would be running? See, from the last 10 years, I have not run a single container on a Windows machine.
+
+[rochak agrawal] 08:47:43
+Okay, so you probably never run a container on a Windows machine, um…
+
+[rochak agrawal] 08:47:49
+And 95, 97% containers are running on the Unix flavors. So we do not need to worry about much about the Windows until unless there's a very specific requirement.
+
+[rochak agrawal] 08:48:00
+So I'll search for Ubuntu, because I'm running a machine which is Ubuntu, and installation steps are very similar, there's nothing much. I'll take the command one by one.
+
+[rochak agrawal] 08:48:11
+So you see it says sudo apt remove. So this is a command which says if you have any previous version of a Docker which is running, it is going to remove them.
+
+[rochak agrawal] 08:48:22
+Okay, so it said no package found. This does this.
+
+[rochak agrawal] 08:48:26
+And installation method. So we are going to install using the APT repository. So what it will do before you install Docker Engine for the first time on a new machine, you need to set the Docker APT repository. Afterward, you can install and update Docker from the repository. So I'll copy this command.
+
+[rochak agrawal] 08:48:43
+Now, this command does nothing, okay?
+
+[rochak agrawal] 08:48:46
+So basically, it is going to…
+
+[rochak agrawal] 08:48:49
+So it is downloading some key, uh, CA certificate, uh, key rings.
+
+[rochak agrawal] 08:48:55
+docker.asc from this docker repository, and…
+
+[rochak agrawal] 08:49:01
+So that when you run sudo apt install docker, it is going to install from this repository only, this download.docker.com.
+
+[rochak agrawal] 08:49:10
+Once this is done, you will just run this install command.
+
+[rochak agrawal] 08:49:15
+Okay?
+
+[rochak agrawal] 08:49:17
+Just three commands.
+
+[rochak agrawal] 08:49:24
+So, I have already installed, that's why it is not doing anything. Do you see? Docker app install Docker CE.
+
+[rochak agrawal] 08:49:30
+Now, how would you verify that Docker is installed? You will just run the command Docker hyphen version.
+
+[rochak agrawal] 08:49:37
+See? Docker version 29.8.1, it is running. Very simple.
+
+[rochak agrawal] 08:49:42
+Now, Docker has certain commands. So if you run Docker…
+
+[rochak agrawal] 08:49:48
+So, there is…
+
+[rochak agrawal] 08:49:52
+You can see common commands.
+
+[rochak agrawal] 08:49:54
+And you can see there's only 20, 30 commands are there. Very simple. Create and run a new container from my image. Exec, you are going to execute a command in the running container.
+
+[rochak agrawal] 08:50:07
+Yes, Docker is going to list all the containers, build an image from a Docker file.
+
+[rochak agrawal] 08:50:12
+Pull, push, bake is not very commonly used. Pull, push, download an image from a registry. Push, upload an image to a registry. Uh, images, list the images, log in. Again, uh, as I said, uh…
+
+[rochak agrawal] 08:50:27
+when you run a Docker pull nginx, Docker is going to pull the images from the Docker Hub repository, or… so, uh, one more thing, repository and registry are the two terms used interchangeably.
+
+[rochak agrawal] 08:50:42
+Okay.
+
+[rochak agrawal] 08:50:44
+And then log out, search, version we have already run, and docker info.
+
+[rochak agrawal] 08:50:50
+So, these are the commands, and these are some container-related commands we will see time to time. So, if you run docker info…
+
+[rochak agrawal] 08:51:00
+It will give you information about your Docker installation. So, currently, I have 4 images.
+
+[rochak agrawal] 08:51:07
+I have three containers and three are stopped, right? So it will basically tell you everything. Driver type, logging, cgroup driver is systemd, cgroup version is two, plugins. So basically about the Docker installation.
+
+[rochak agrawal] 08:51:22
+Now, it is saying we have three images, so I'll see Docker images.
+
+[rochak agrawal] 08:51:27
+So you have four images, right? Yeah, four images, three containers. And Alpine latest, Postgres 12.
+
+[rochak agrawal] 08:51:36
+SonarQube and SonarType Nexus. Okay.
+
+[rochak agrawal] 08:51:41
+we will discuss how to create and everything. I'll just giving you a walkthrough as of now. Um, disk users, size, ID. So, whenever you want to run a command, you can run it with the name.
+
+[rochak agrawal] 08:51:53
+Or with the ID. Both is going to work fine. So your container will also have the name, or container is also going to have the…
+
+[rochak agrawal] 08:52:03
+ID. Now there is one important command is a docker ps.
+
+[rochak agrawal] 08:52:07
+Okay? Now, Docker PS is going to list you all the running containers.
+
+[rochak agrawal] 08:52:15
+So you see, I do not have a running container, correct?
+
+[rochak agrawal] 08:52:19
+But if you want to see whatever container was stopped or something, so then you need to run docker ps-a.
+
+[rochak agrawal] 08:52:27
+It is going to show you all the running containers altogether.
+
+[rochak agrawal] 08:52:33
+So you can see there was three containers which was created 14 hours, 15 hours ago, and exited 14 hours ago.
+
+[rochak agrawal] 08:52:42
+Names is Nexus, Ubuntu, SonarQube, Ubuntu database. So we have three containers, which is there, but they're not running as of now.
+
+[rochak agrawal] 08:52:50
+Okay, now…
+
+[rochak agrawal] 08:52:54
+we want to see the image, we can run it, the docker image command, which is going to run that. Now, if you say, if you want to download an image, so I will simply say docker pull.
+
+[rochak agrawal] 08:53:05
+Nginx, for example. Okay.
+
+[rochak agrawal] 08:53:08
+As clearly mentioned, if you have not any other repository or registry, it is going to download the image from the Docker Hub.
+
+[rochak agrawal] 08:53:16
+Now you see I have four images and let's see after.
+
+[rochak agrawal] 08:53:20
+This is done docker pull nginx.
+
+[rochak agrawal] 08:53:25
+So you see?
+
+[rochak agrawal] 08:53:31
+Now, her images, if you see.
+
+[rochak agrawal] 08:53:35
+You have?
+
+[rochak agrawal] 08:53:37
+Engine accelerate test.
+
+[rochak agrawal] 08:53:43
+Can you see?
+
+[rochak agrawal] 08:53:46
+Now, one more important thing I would show you is there is something called the U.
+
+[rochak agrawal] 08:53:52
+U means these images are in use.
+
+[rochak agrawal] 08:53:57
+Okay, so for example, if I try to remove… so I can, uh, I have downloaded an image, I can remove the image from my system. It's a Docker RMI.
+
+[rochak agrawal] 08:54:07
+and Alpine latest.
+
+[rochak agrawal] 08:54:10
+Okay? Now it is going to delete the image. If you run Docker images now.
+
+[rochak agrawal] 08:54:16
+So, see? I can remove…
+
+[rochak agrawal] 08:54:20
+Docker.
+
+[rochak agrawal] 08:54:24
+RMI?
+
+[rochak agrawal] 08:54:26
+Nginx.
+
+[rochak agrawal] 08:54:27
+Okay? Again, I'll run Docker images.
+
+[rochak agrawal] 08:54:36
+Now you see these images are reused. Let me try to.
+
+[rochak agrawal] 08:54:40
+Remove one of the image.
+
+[rochak agrawal] 08:54:45
+You see, it is an error. Error response from the daemon conflict unable to delete Postgres 12 must be forced because the container is using its referenced image.
+
+[rochak agrawal] 08:54:57
+Right? So, one way is, I can remove this image forcefully, or I can first remove the container, and then remove the image.
+
+[rochak agrawal] 08:55:05
+Okay, so I can say Docker.
+
+[rochak agrawal] 08:55:09
+RMI-F.
+
+[rochak agrawal] 08:55:12
+Forcefully, and…
+
+[rochak agrawal] 08:55:14
+I am going to…
+
+[rochak agrawal] 08:55:20
+Now, Docker images.
+
+[rochak agrawal] 08:55:22
+You see, I have only two images, correct?
+
+[rochak agrawal] 08:55:26
+Another option was, if I'm going to…
+
+[rochak agrawal] 08:55:29
+remove the container, so docker rm, and here you can give, let's say, container ID.
+
+[rochak agrawal] 08:55:52
+Okay? Now, if you run docker ps-a.
+
+[rochak agrawal] 08:55:57
+So, we have only two contacts. Now, let me clear first…
+
+[rochak agrawal] 08:56:03
+Docker.
+
+[rochak agrawal] 08:56:05
+And, uh, images.
+
+[rochak agrawal] 08:56:08
+Now, if I try to remove image with Docker RMI.
+
+[rochak agrawal] 08:56:15
+You see, it is going to be deleted. So we can download the images, we can remove the images, and we can run a container out of the image. So let me show you how to run a container.
+
+[rochak agrawal] 08:56:30
+Okay? Now, even if I run docker run nginx, for example, okay?
+
+[rochak agrawal] 08:56:38
+Then, if… see, uh, if you're running Docker run Nginx, so what Docker will do, it will try to find the image within your local system. If the image is not there on the local system, then it is going to download the image first, and then create a container out of it.
+
+[rochak agrawal] 08:56:54
+Okay, so let me search for NGINX image.
+
+[rochak agrawal] 08:57:01
+I'll go to hub.docker.com.
+
+[rochak agrawal] 08:57:19
+We'll take a simple command.
+
+[rochak agrawal] 08:57:23
+This is good.
+
+[rochak agrawal] 08:57:45
+Okay?
+
+[rochak agrawal] 08:57:48
+You see.
+
+[rochak agrawal] 08:57:50
+Very simple command, I'll explain what it is doing, even if I don't give it here.
+
+[rochak agrawal] 08:57:56
+this option.
+
+[rochak agrawal] 08:57:58
+Then also it is going to find if you do not give the name of a container.
+
+[rochak agrawal] 08:58:03
+By default, Docker will pick a random name and assign it to a container. Very cool names. We will see that.
+
+[rochak agrawal] 08:58:10
+very, uh, genuine type of the name it gives to its containers. Samurai Warrior, or something like that.
+
+[rochak agrawal] 08:58:17
+If you want to give a particular name, let me remove the name, I don't need it, okay?
+
+[rochak agrawal] 08:58:22
+If I give it hyphen… if I don't give it hyphen D, okay, let's… let me remove it.
+
+[rochak agrawal] 08:58:29
+All the option. Even if I give this command, then also it is going to work fine. But the problem that we need to see.
+
+[rochak agrawal] 08:58:38
+Let's see what's going to happen. So it is going to download the NGINX image.
+
+[rochak agrawal] 08:58:42
+First, because the nginx image we deleted, and it started a container.
+
+[rochak agrawal] 08:58:47
+Okay, but the problem is, it is running in the foreground. I cannot do anything else now. It is keep running.
+
+[rochak agrawal] 08:58:55
+Correct?
+
+[rochak agrawal] 08:58:56
+So I need to run the application in the background. See, I cannot do anything here. I cannot do anything here. The terminal is being taken by this container. So for that purpose, what we do —.
+
+[rochak agrawal] 08:59:11
+So, and if you do a Ctrl-C, then it says Docker process exited with code 0, this is exiting. If you see Docker PS, there is no running container, but if you see Docker PS-A.
+
+[rochak agrawal] 08:59:25
+You see? There is a container.
+
+[rochak agrawal] 08:59:26
+Entry point created 41 seconds ago, exited 12 seconds ago. And you can see the name.
+
+[rochak agrawal] 08:59:33
+Cool page. It gives very, uh, random, very cool names.
+
+[rochak agrawal] 08:59:37
+Now, I'll do…
+
+[rochak agrawal] 08:59:43
+I'll run this command.
+
+[rochak agrawal] 08:59:52
+Now, important thing here, if you see.
+
+[rochak agrawal] 08:59:55
+So, image, you understand, it is using the Nginx image. Now, in this instance, it is not going to download the image, because now the image, uh, when we run the previous command, the image was already downloaded.
+
+[rochak agrawal] 09:00:08
+Instead of choosing some random name, I am giving a meaningful name to my container. I'll say some NGINX, or I would say, let's say…
+
+[rochak agrawal] 09:00:20
+My NGINX.
+
+[rochak agrawal] 09:00:21
+Okay.
+
+[rochak agrawal] 09:00:22
+Hyphen d option, if you see, this is going to run the container in the background. Previously, when we run it without hyphen d, the container was running in the foreground, and your terminal is basically blocked. Nginx is a continually running process.
+
+[rochak agrawal] 09:00:39
+And then I cannot take it, right? So I need to run it in the background. Hyphen D gives you that option.
+
+[rochak agrawal] 09:00:48
+I can choose to run it in a bag.
+
+[rochak agrawal] 09:00:52
+Now this option is particularly very important.
+
+[rochak agrawal] 09:00:56
+Okay.
+
+[rochak agrawal] 09:00:58
+Previously, if you run… let's say we have run…
+
+[rochak agrawal] 09:01:02
+When we run Jenkins, for example.
+
+[rochak agrawal] 09:01:08
+Let's say this is my machine, VM.
+
+[rochak agrawal] 09:01:15
+And here, I am running Jenkins.
+
+[rochak agrawal] 09:01:24
+Let's say my machine's IP is…
+
+[rochak agrawal] 09:01:35
+So, what we did is…
+
+[rochak agrawal] 09:01:47
+HTTP?
+
+[rochak agrawal] 09:01:58
+IP. And, where my port is running.
+
+[rochak agrawal] 09:02:06
+Let's say 8080. Correct? That is how we did it.
+
+[rochak agrawal] 09:02:09
+But now my application is not running inside a VM.
+
+[rochak agrawal] 09:02:24
+My application is running inside the container.
+
+[rochak agrawal] 09:02:35
+Containers, do they have a…
+
+[rochak agrawal] 09:02:40
+Do they have a physical identity? No, they don't have. Do they have the IP address? They have, but that IP is a private IP. You cannot access it from the outside. Basically, they are isolated.
+
+[rochak agrawal] 09:02:57
+Right? We said that they are isolated. So then what we do, with the help of this hyphen P option.
+
+[rochak agrawal] 09:03:04
+My NGINX is running on port 80, so what I do is, I'm creating a mapping between my host port.
+
+[rochak agrawal] 09:03:13
+and my container port.
+
+[rochak agrawal] 09:03:15
+So, it is listening on port 80.
+
+[rochak agrawal] 09:03:18
+So what I'm saying, any traffic coming on host port 80.
+
+[rochak agrawal] 09:03:24
+should be redirected to the container port 80.
+
+[rochak agrawal] 09:03:27
+You can give…
+
+[rochak agrawal] 09:03:29
+80 here.
+
+[rochak agrawal] 09:03:31
+8080 here does not matter.
+
+[rochak agrawal] 09:03:34
+You can do any mapping here. Okay? So that is where the hyphen P option is being used.
+
+[rochak agrawal] 09:03:42
+Because we are creating the mapping between my virtual machine and my…
+
+[rochak agrawal] 09:03:46
+Containers IP.
+
+[rochak agrawal] 09:03:52
+And I run it. Now you see?
+
+[rochak agrawal] 09:03:55
+Everything is running in the background. It has given me a good container ID, and if you run Docker PS now.
+
+[rochak agrawal] 09:04:03
+What does the Docker PS is going to give you? Docker PS is going to give you the…
+
+[rochak agrawal] 09:04:09
+Running containers.
+
+[rochak agrawal] 09:04:11
+You see?
+
+[rochak agrawal] 09:04:12
+created 18 seconds ago, and from last 70 seconds, it is up and running. Name is myNGINX, whatever the name I have given here.
+
+[rochak agrawal] 09:04:22
+Now, how can I verify? I will just go take the public IP.
+
+[rochak agrawal] 09:04:28
+Let's see…
+
+[rochak agrawal] 09:04:35
+You see?
+
+[rochak agrawal] 09:04:35
+Welcome to NGINX. Now, without…
+
+[rochak agrawal] 09:04:39
+Installing Nginx on my server.
+
+[rochak agrawal] 09:04:44
+My Nginx is running on the server.
+
+[rochak agrawal] 09:04:47
+Okay, now I can see the logs also, so if you say Docker…
+
+[rochak agrawal] 09:04:54
+Logs…
+
+[rochak agrawal] 09:04:55
+My Nginx.
+
+[rochak agrawal] 09:04:57
+You can see the complete logs.
+
+[rochak agrawal] 09:05:00
+Started, and then there's a…
+
+[rochak agrawal] 09:05:04
+Complete logs, you will be getting it here.
+
+[rochak agrawal] 09:05:08
+Correct. And then, uh, if you want to go inside a container, it is like the inception. You see dream inside the dream.
+
+[rochak agrawal] 09:05:15
+Docker, uh…
+
+[rochak agrawal] 09:05:17
+Docker, yes?
+
+[rochak agrawal] 09:05:19
+Okay, now you say, I want to see, uh, what is the file inside the container, how they are working. So then there is a command called docker exec.
+
+[rochak agrawal] 09:05:28
+So, doctor, exec.
+
+[rochak agrawal] 09:05:32
+Hyphen, IT, uh, to give you the interactive terminal, and my images.
+
+[rochak agrawal] 09:05:39
+At least two arguments.
+
+[rochak agrawal] 09:05:45
+Let me take the command.
+
+[rochak agrawal] 09:06:01
+Yeah, I need to add the bash in the end so that it will give you the bash shell. Now, do you see?
+
+[rochak agrawal] 09:06:08
+Ubuntu, currently on my host machine. I am at my host machine.
+
+[rochak agrawal] 09:06:13
+If I paste this…
+
+[rochak agrawal] 09:06:17
+You see, I am now inside the container.
+
+[rochak agrawal] 09:06:22
+Okay, now I can run a command, I can see, uh, let's say, uh, CD, bar.
+
+[rochak agrawal] 09:06:33
+You can see.
+
+[rochak agrawal] 09:06:37
+Now, let's say, what I wanted to show you is, let's say, Tim.
+
+[rochak agrawal] 09:06:42
+Okay.
+
+[rochak agrawal] 09:06:45
+LSI130. Let me create a file here. Touch.
+
+[rochak agrawal] 09:06:49
+Inside.
+
+[rochak agrawal] 09:06:52
+container.txt.
+
+[rochak agrawal] 09:06:54
+Okay.
+
+[rochak agrawal] 09:06:56
+LS-LRT, file is there, correct?
+
+[rochak agrawal] 09:06:59
+Take a seat.
+
+[rochak agrawal] 09:07:02
+Now, I will go again inside a container.
+
+[rochak agrawal] 09:07:08
+CDM.
+
+[rochak agrawal] 09:07:11
+And then, hey, oh, sorry.
+
+[rochak agrawal] 09:07:12
+The file should be there.
+
+[rochak agrawal] 09:07:14
+Correct? Because my container is continuously running.
+
+[rochak agrawal] 09:07:18
+I'll come down.
+
+[rochak agrawal] 09:07:19
+I'll… stop… stop…
+
+[rochak agrawal] 09:07:23
+my…
+
+[rochak agrawal] 09:07:24
+And you're next.
+
+[rochak agrawal] 09:07:26
+Okay? You see Docker? Yes.
+
+[rochak agrawal] 09:07:31
+But if you run docker ps-a.
+
+[rochak agrawal] 09:07:35
+These are my nginx. Now if you see nginx will be gone.
+
+[rochak agrawal] 09:07:39
+I'll start it again.
+
+[rochak agrawal] 09:07:42
+poker start.
+
+[rochak agrawal] 09:07:46
+My Linux.
+
+[rochak agrawal] 09:07:53
+You see? Now it is again bulking.
+
+[rochak agrawal] 09:07:58
+Now, if you go…
+
+[rochak agrawal] 09:08:10
+CDM?
+
+[rochak agrawal] 09:08:15
+So your files can survive the restarts, right? You can see. But if I delete the container and run it again.
+
+[rochak agrawal] 09:08:23
+For example.
+
+[rochak agrawal] 09:08:26
+I'll take an exit. I'll say I'm deleting the container.
+
+[rochak agrawal] 09:08:31
+Docker stop.
+
+[rochak agrawal] 09:08:34
+My… and your next?
+
+[rochak agrawal] 09:08:44
+Yes.
+
+[rochak agrawal] 09:08:47
+Docker, RM-F.
+
+[rochak agrawal] 09:08:50
+Okay? Docker PS
+
+[rochak agrawal] 09:08:54
+You see Docker PS hyphen A.
+
+[rochak agrawal] 09:08:56
+From here also, there is no my-nginx there. Now, if you run the same container again.
+
+[rochak agrawal] 09:09:15
+Okay? Same container?
+
+[rochak agrawal] 09:09:18
+Now, if you go inside this container…
+
+[rochak agrawal] 09:09:25
+CDM?
+
+[rochak agrawal] 09:09:29
+No file.
+
+[rochak agrawal] 09:09:31
+Okay, so once your container is going to be recreated, your file is… whatever you are doing inside a container, it is going to be lost. So it is always a good practice if you want to do some changes. You do it in an image, you create a newer version of your image.
+
+[rochak agrawal] 09:09:49
+And then you run a container from that new image. So that is how…
+
+[rochak agrawal] 09:09:55
+containers are going to work.
+
+[rochak agrawal] 09:09:57
+So that's a basic overview of… you can download an image, you can list the image, you can delete the image, you can see… list out the running containers, you can list down all the containers, you can stop the container, you can go inside a container, you can run a container.
+
+[rochak agrawal] 09:10:14
+Okay, um…
+
+[rochak agrawal] 09:10:21
+Yes, William?
+
+[Vyom Gupta] 09:10:24
+Sir, I didn't understand that how to go inside the pentagon.
+
+[rochak agrawal] 09:10:28
+So, this is a command, docker exec.
+
+[Vyom Gupta] 09:10:31
+Okay.
+
+[rochak agrawal] 09:10:31
+You just need to, uh, you… do… see, I…
+
+[rochak agrawal] 09:10:37
+See, basically, docker exec command, if you see, it will allow you to.
+
+[rochak agrawal] 09:10:43
+do something inside a container. Now, I am, instead of going inside a container.
+
+[rochak agrawal] 09:10:52
+Okay, let's say I want to find out what is in my tempo directory.
+
+[rochak agrawal] 09:10:57
+So I will do ls hyphen lrt slash temp.
+
+[rochak agrawal] 09:11:02
+So you see, total zero.
+
+[rochak agrawal] 09:11:05
+So basically, docker exec command is going to give you… Here, it is basically give you the command which you can run inside a container. When you run a bash, it is basically attaching a shell where you can run the command one by one.
+
+[rochak agrawal] 09:11:18
+So, docker exec is a command. With the help of that, you can run a command inside a container.
+
+[Vyom Gupta] 09:11:28
+Okay, and when we are removing that docker, we are putting that RF-A.
+
+[rochak agrawal] 09:11:37
+Forcefully.
+
+[rochak agrawal] 09:11:40
+So what happens is, see, if a container is running, so for example.
+
+[rochak agrawal] 09:11:46
+docker ps, if you see, my container is running, correct? My Nginx. If I try to remove this container.
+
+[rochak agrawal] 09:11:58
+So it says container is running. See, first we need to stop the container, then we can remove it.
+
+[rochak agrawal] 09:12:05
+Or there is an option of force remove, correct?
+
+[rochak agrawal] 09:12:08
+So, when you see Docker RM hyphen…
+
+[rochak agrawal] 09:12:14
+RF my Nginx, it is basically removing the container forcefully.
+
+[rochak agrawal] 09:12:25
+So that is that option.
+
+[rochak agrawal] 09:12:28
+Otherwise, you need to stop the container, then you run docker rm myenginex, it will remove the container.
+
+[rochak agrawal] 09:12:34
+Okay.
+
+[rochak agrawal] 09:12:50
+Use the no.
+
+[Dhanu] 09:12:54
+Uh, yes, hi, Rochak.
+
+[Dhanu] 09:12:56
+Uh, like, uh, when we install Docker.
+
+[rochak agrawal] 09:12:58
+Mm-hmm.
+
+[Dhanu] 09:12:59
+After that, we just saw the, uh, images in, uh… I could see there was a couple of images, like, PostgreSQL and MySQL, like that.
+
+[rochak agrawal] 09:13:03
+Connect.
+
+[rochak agrawal] 09:13:08
+Ready?
+
+[Dhanu] 09:13:09
+So, once we install Docker, it will be automatically installed, or…
+
+[rochak agrawal] 09:13:11
+No, no, no.
+
+[rochak agrawal] 09:13:13
+No, no, no, no, no. So Danu, if you see, remember when we run the installation command, the command gave me the output that the version is already installed. There is nothing need to be done. So on my system, Docker was already installed. That is why you see those images.
+
+[rochak agrawal] 09:13:29
+If you run a Docker installation, you… there will be no images will be downloaded. You need to download all those images yourself.
+
+[Dhanu] 09:13:37
+Oh, okay, okay, then this was, uh, previously I've used, uh, so…
+
+[rochak agrawal] 09:13:40
+Yes, yes, correct. I have used them previously.
+
+[Dhanu] 09:13:44
+Okay, so if you want to, like, I have created image, and I've created, uh, container, like, thing. If I want to remove image, means we have to remove first containers, right?
+
+[rochak agrawal] 09:13:51
+Mm-hmm.
+
+[rochak agrawal] 09:13:56
+Yes, you… because it is like your container, if the container is using the image, you will not be able to remove that image.
+
+[Dhanu] 09:14:05
+Okay, if I want, I can remove forcefully, then the container also will be…
+
+[rochak agrawal] 09:14:08
+Then the container will also be removed.
+
+[Dhanu] 09:14:10
+Okay.
+
+[rochak agrawal] 09:14:11
+Okay? If you want the container to be running, that image need to be present. As simple as that.
+
+[Dhanu] 09:14:16
+Okay, okay, yeah.
+
+[rochak agrawal] 09:14:18
+Okay?
+
+[rochak agrawal] 09:14:26
+Yes, you can.
+
+[Jeeva Koli] 09:14:30
+Am I audible?
+
+[rochak agrawal] 09:14:31
+Yes, you are audible.
+
+[Jeeva Koli] 09:14:33
+Okay.
+
+[Jeeva Koli] 09:14:35
+So, uh, on the slide number 9, you explain the Docker Daemon and the Docker…
+
+[Jeeva Koli] 09:14:43
+Slide number nine, yes. It is three.
+
+[rochak agrawal] 09:14:44
+Yep.
+
+[rochak agrawal] 09:14:46
+Yep.
+
+[Jeeva Koli] 09:14:47
+So…
+
+[Jeeva Koli] 09:14:49
+In a Docker, where we can see the Docker daemon, actually…
+
+[rochak agrawal] 09:14:52
+So, Docker daemon is when you install the Docker. So, if you say, for example.
+
+[rochak agrawal] 09:14:59
+Just a second.
+
+[rochak agrawal] 09:15:08
+See, for example, if you say PS-EF GrabDocker.
+
+[rochak agrawal] 09:15:12
+So, this user win docker deal, right?
+
+[rochak agrawal] 09:15:17
+So, when you install Docker, Docker is running. When I'm running Docker pull command, or something.
+
+[rochak agrawal] 09:15:25
+It is interacting with the Docker thing internally, so you…
+
+[rochak agrawal] 09:15:28
+Do not need to interact with Docker D directly.
+
+[rochak agrawal] 09:15:32
+Docker command, so here, if you see in the slide, docker client, right? So.
+
+[rochak agrawal] 09:15:39
+you will give the command to Docker client, like Docker build, Docker pull, Docker RM, and it is going to be interacted with the Docker D, which is a Docker software itself, which is running in the back end.
+
+[rochak agrawal] 09:15:53
+You understood.
+
+[Jeeva Koli] 09:15:55
+Uh, means exactly where, I mean, in the Docker container it will run, or on host machine? Means…
+
+[rochak agrawal] 09:16:00
+No, no, it is C. No, no, no. You, you see this?
+
+[rochak agrawal] 09:16:07
+If you see this diagram.
+
+[rochak agrawal] 09:16:09
+Here we are seeing a Docker engine should be there, correct?
+
+[rochak agrawal] 09:16:14
+Right?
+
+[Jeeva Koli] 09:16:14
+Correct, correct, correct.
+
+[rochak agrawal] 09:16:16
+So, Docker D is your Docker engine, basically.
+
+[rochak agrawal] 09:16:19
+It is like your containerization software. So, for example, let's say, uh, when I run the command VI.
+
+[Jeeva Koli] 09:16:19
+Okay, okay.
+
+[rochak agrawal] 09:16:28
+Great.
+
+[rochak agrawal] 09:16:30
+VA.
+
+[rochak agrawal] 09:16:32
+BI is running somewhere, correct?
+
+[Jeeva Koli] 09:16:36
+Right, right.
+
+[rochak agrawal] 09:16:37
+Similarly, Docker runs as a Docker D and we can very well see this is running in user VIN.
+
+[rochak agrawal] 09:16:44
+Correct?
+
+[Jeeva Koli] 09:16:45
+Correct.
+
+[Jeeva Koli] 09:16:46
+I mean, what…
+
+[rochak agrawal] 09:16:47
+So, Docker D is the Docker engine. See, basically, let's say if you go…
+
+[rochak agrawal] 09:16:55
+Doodle?
+
+[rochak agrawal] 09:16:59
+System CTL status.
+
+[rochak agrawal] 09:17:03
+So you can see here.
+
+[rochak agrawal] 09:17:06
+You will get all those information loaded.
+
+[rochak agrawal] 09:17:09
+Docker.service enabled, preset enabled, active running since Tuesday, right? 1 hour, 15 minutes ago.
+
+[rochak agrawal] 09:17:17
+Docker dot socket.
+
+[rochak agrawal] 09:17:19
+Main PID is 967, which you can see it from here as well.
+
+[rochak agrawal] 09:17:24
+Correct? There's a 13 task running, it is taking this much of memory, C group is this, so you can get all those information. Now, let's say, if I go and.
+
+[rochak agrawal] 09:17:40
+Okay. Yes.
+
+[rochak agrawal] 09:17:43
+So you can see now Docker PS is not giving you any running containers.
+
+[rochak agrawal] 09:17:50
+I think it got started again.
+
+[rochak agrawal] 09:17:53
+Yeah, it got started again.
+
+[rochak agrawal] 09:18:04
+Got started again, because the service is enabled on the operating system level, so it is restarting itself, right?
+
+[rochak agrawal] 09:18:10
+So the point here is, Jeeva.
+
+[rochak agrawal] 09:18:14
+this Docker D is the Docker engine, basically. Okay? So, any command you are going to run.
+
+[rochak agrawal] 09:18:21
+With the help of Docker client, it goes to Docker D.
+
+[rochak agrawal] 09:18:25
+And then Docker D does the needful.
+
+[rochak agrawal] 09:18:30
+Okay, so that is your containerization software, basically.
+
+[Jeeva Koli] 09:18:36
+Okay, got it.
+
+[Jeeva Koli] 09:18:38
+And the image downloading and all, uh… who do the… do the actual list? Docker daemon only, right? If…
+
+[rochak agrawal] 09:18:46
+Yeah, everything is stored in with the help of daemon. So this is the overall software.
+
+[rochak agrawal] 09:18:50
+So it is so if you see there.
+
+[rochak agrawal] 09:18:56
+If you go, I'll get his mice.
+
+[rochak agrawal] 09:18:59
+So if you go here.
+
+[rochak agrawal] 09:19:04
+If you see Docker images, so we have two images as of now. One is NGINX latest and one is the SonarQube. Now both of these images are used.
+
+[rochak agrawal] 09:19:14
+See, you are not going to find these images in file systems, so if you do ls-lrt.
+
+[rochak agrawal] 09:19:19
+Are you going to see those images? No.
+
+[rochak agrawal] 09:19:23
+This image is stored in Docker. Now, where these images are stored, we will see Docker info.
+
+[rochak agrawal] 09:19:30
+And you will see docker root directory is this val lib docker. Okay.
+
+[rochak agrawal] 09:19:36
+So here, if you go, CD, VAL.
+
+[rochak agrawal] 09:19:42
+Docker
+
+[rochak agrawal] 09:19:45
+Sudo.
+
+[rochak agrawal] 09:19:46
+3D, well…
+
+[rochak agrawal] 09:19:52
+Okay.
+
+[rochak agrawal] 09:20:05
+Now, here, if you see, there is an option of images, so if you go…
+
+[rochak agrawal] 09:20:10
+Images.
+
+[rochak agrawal] 09:20:14
+So, yeah…
+
+[rochak agrawal] 09:20:15
+Still, you are not going to find those in the file format. Here is the databases available. If you see…
+
+[rochak agrawal] 09:20:24
+It is not in a human readable format.
+
+[rochak agrawal] 09:20:27
+This only doctor can read. You can see?
+
+[rochak agrawal] 09:20:30
+I cannot read it. Maybe there might be some information, but it's not very useful for me, correct?
+
+[rochak agrawal] 09:20:39
+So, what happens is, when you now… when you run the Docker image.
+
+[rochak agrawal] 09:20:46
+See, Docker is a client. Now, the request goes to the Docker D daemon.
+
+[rochak agrawal] 09:20:51
+Docker Daemon reads the file, which is there in a val/lib/docker-images.db.
+
+[rochak agrawal] 09:20:56
+And then it knows whatever the images present in your system, and it is going to display you here.
+
+[rochak agrawal] 09:21:04
+Okay? So, all those… and here you will see the containers also.
+
+[rochak agrawal] 09:21:12
+So, containers, you can see the containers folders is also there. Again, if you see the containers.
+
+[rochak agrawal] 09:21:20
+you will see the container ID.
+
+[rochak agrawal] 09:21:23
+Those will be the ID, same ID will be there, Docker, yes, hyphen, A.
+
+[rochak agrawal] 09:21:27
+So you can see 2, 3, 4, 5, 2, E, B, 7, E.
+
+[rochak agrawal] 09:21:34
+C2DB, C2DB, right? All those containers, you are going to find it here. And you remove it. So for example, if I say Docker RM.
+
+[rochak agrawal] 09:21:47
+Copy.
+
+[rochak agrawal] 09:21:49
+Paste.
+
+[rochak agrawal] 09:21:51
+Okay? Now, if you do LS-LRT, you are only going to find proof.
+
+[rochak agrawal] 09:21:57
+Because we removed one, correct? So you see, we are not removing the folder like RM hyphen RF or something, correct? We are doing, we are giving the command with the help of Docker, which is our client. Then the request goes to the Docker D daemon.
+
+[rochak agrawal] 09:22:12
+And Docker DD1 actually does the thing in the back end.
+
+[Jeeva Koli] 09:22:19
+Okay, Dr. Demon is playing the master role here, right?
+
+[rochak agrawal] 09:22:22
+Yeah, yeah, see, Docker Daemon is your actual software, is your actual Docker.
+
+[Jeeva Koli] 09:22:30
+And in the future, are we going to learn also how to assign static IP address, or…
+
+[rochak agrawal] 09:22:38
+static IP address to your containers.
+
+[Jeeva Koli] 09:22:41
+Continuous, yes.
+
+[rochak agrawal] 09:22:42
+Yes, uh, so we will see a basics about, uh, the networking and the storage in Docker, but the thing, Jeeva, is, uh, see, um…
+
+[rochak agrawal] 09:22:51
+Right now, it must be looking very exciting for everyone to see the Docker, but Docker also has its own challenges. We will discuss those challenges. There are multiple challenges in Docker and that is where there is a need for the container orchestration.
+
+[rochak agrawal] 09:23:11
+Okay? And that is the place where Kubernetes comes into the picture. Kubernetes is a container orchestration tool. So all those networking, all those storage management, now we manage at the Kubernetes layer, not on the Docker layer.
+
+[rochak agrawal] 09:23:29
+But yes, we will have a basic understanding how it works at the Docker layer also, but in your practical scenarios, you will be managing it at the Kubernetes layer.
+
+[Jeeva Koli] 09:23:44
+Okay, go on.
+
+[rochak agrawal] 09:23:46
+Okay.
+
+[rochak agrawal] 09:23:49
+So we have covered the basics about the locker today, understanding about the containerization. So, container
+
