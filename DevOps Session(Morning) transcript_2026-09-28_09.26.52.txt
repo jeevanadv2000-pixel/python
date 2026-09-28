@@ -1,0 +1,3183 @@
+[rochak agrawal] 07:40:57
+So, let's say I'll create a Docker file.
+
+[rochak agrawal] 07:41:03
+So, very, uh, normal Docker file. So, from, let's say, I'm taking an example of Golden.
+
+[rochak agrawal] 07:41:17
+Goal length 1.23. You always need a base image.
+
+[rochak agrawal] 07:41:21
+I'll say, for DIR.
+
+[rochak agrawal] 07:41:25
+Slash app.
+
+[rochak agrawal] 07:41:29
+of tea
+
+[rochak agrawal] 07:41:30
+Main.go. I have a Go… very simple Go file.
+
+[rochak agrawal] 07:41:34
+And then, I will run the command.
+
+[rochak agrawal] 07:41:45
+No, this is a go command.
+
+[rochak agrawal] 07:41:47
+And finally…
+
+[rochak agrawal] 07:42:03
+Me.
+
+[rochak agrawal] 07:42:07
+Now, that is your normal, uh, Docker file, where I am taking the Golang base image. Okay.
+
+[rochak agrawal] 07:42:14
+And then, I am, uh…
+
+[rochak agrawal] 07:42:17
+Building the application, complete application here itself. So now I'll just save this.
+
+[rochak agrawal] 07:42:27
+And…
+
+[rochak agrawal] 07:42:29
+Oh, good.
+
+[rochak agrawal] 07:42:33
+Type in E.
+
+[rochak agrawal] 07:42:38
+Damble.
+
+[rochak agrawal] 07:42:39
+Single stage.
+
+[rochak agrawal] 07:42:42
+Just I'm giving some name and since my Docker file is here, I'm going to run this.
+
+[rochak agrawal] 07:43:19
+It is running, you can see.
+
+[rochak agrawal] 07:43:23
+Copy main dot goo, run go build.
+
+[rochak agrawal] 07:44:04
+Okay, I think image has been created. Docker images.
+
+[rochak agrawal] 07:44:14
+So, you can see, demo single stage.
+
+[rochak agrawal] 07:44:17
+Is… you can see that this uses…
+
+[rochak agrawal] 07:44:20
+1.34 GB and content size is 325 MB. And now I'm going to run container out of it.
+
+[rochak agrawal] 07:44:30
+So, you said doctor?
+
+[rochak agrawal] 07:44:42
+Thank you very much.
+
+[rochak agrawal] 07:44:52
+Then, I'm used my…
+
+[rochak agrawal] 07:45:09
+Giving the name wrong place.
+
+[rochak agrawal] 07:45:13
+Okay, so if you see Docker PS, my container is running.
+
+[rochak agrawal] 07:45:19
+Frosty Faraday. Now, if I take the IP address…
+
+[rochak agrawal] 07:45:31
+Sir, hello from a lightweight container. Your application available.
+
+[rochak agrawal] 07:45:34
+Okay, so that is a normal process we did till now. You have… you write a Docker image, and you create a container out of it, and it is working. But the problem with that is, and I would not say a problem.
+
+[rochak agrawal] 07:45:50
+It is working fine, but to optimize it further, what we are going to do, we are going to build this image as a multi-stage build, okay? And we will compare it. So, right now, what I'm going to do, let's say…
+
+[rochak agrawal] 07:46:06
+More Docker file
+
+[rochak agrawal] 07:46:08
+This is my Docker file.
+
+[rochak agrawal] 07:46:19
+Okay, very simple, looking very similar, but this Golang image itself is very heavy. Okay, so what we are going to do…
+
+[rochak agrawal] 07:46:31
+Let me…
+
+[rochak agrawal] 07:46:33
+Zoom first, the container.
+
+[rochak agrawal] 07:46:36
+So let's see, docker, item, item, item, F.
+
+[rochak agrawal] 07:46:39
+The container ID.
+
+[rochak agrawal] 07:46:44
+Good.
+
+[rochak agrawal] 07:46:46
+Now what I'm going to do, I'm going to just build this image in a different way.
+
+[rochak agrawal] 07:46:53
+So, I'll say, from Docker…
+
+[rochak agrawal] 07:47:04
+Here, I'm going to use something.
+
+[rochak agrawal] 07:47:09
+As builder, I'm going to…
+
+[rochak agrawal] 07:47:13
+build my app, but I'm not going to run it here.
+
+[rochak agrawal] 07:47:18
+Okay, so I'll just use this image to build my application, and I'll go, I'll take a very small image from Alpine.
+
+[rochak agrawal] 07:47:30
+3.20. Alpine is basically a very lightweight image.
+
+[rochak agrawal] 07:47:34
+Okay.
+
+[rochak agrawal] 07:47:36
+Now, what I'm going to do…
+
+[rochak agrawal] 07:47:38
+I'm going to say WorkDIA.
+
+[rochak agrawal] 07:47:44
+slash app…
+
+[rochak agrawal] 07:47:48
+And now…
+
+[rochak agrawal] 07:47:50
+Or P?
+
+[rochak agrawal] 07:47:53
+Prone
+
+[rochak agrawal] 07:47:58
+Okay.
+
+[rochak agrawal] 07:48:02
+Yeah, app.
+
+[rochak agrawal] 07:48:08
+slash main.
+
+[rochak agrawal] 07:48:12
+Now I'm going to run this code.
+
+[rochak agrawal] 07:48:32
+Okay.
+
+[rochak agrawal] 07:48:34
+Now, I am going to build this image.
+
+[rochak agrawal] 07:48:49
+So I'll say multi-stage now this time.
+
+[rochak agrawal] 07:48:58
+What is it, MF?
+
+[rochak agrawal] 07:49:07
+32, sorry. Okay? Now…
+
+[rochak agrawal] 07:49:09
+Authorization failed.
+
+[rochak agrawal] 07:49:20
+Maybe there is another version.
+
+[rochak agrawal] 07:49:36
+Goodbye. Okay.
+
+[rochak agrawal] 07:49:39
+You can see I made a small typo. A line I have written.
+
+[rochak agrawal] 07:50:02
+Just reading the image now.
+
+[rochak agrawal] 07:50:05
+Now, if you see local images…
+
+[rochak agrawal] 07:50:10
+You can see the difference.
+
+[rochak agrawal] 07:50:13
+the size. Let me first run the application, and then we will see.
+
+[rochak agrawal] 07:50:36
+Okay, now I should walk in.
+
+[rochak agrawal] 07:50:46
+See docker logs.
+
+[rochak agrawal] 07:51:03
+Okay. It says, no such file or directly.
+
+[rochak agrawal] 07:51:10
+We have one step somewhere.
+
+[rochak agrawal] 07:51:38
+They're saying use this line.
+
+[rochak agrawal] 07:52:10
+That's okay. So, the point here is, if you see…
+
+[rochak agrawal] 07:52:15
+Previously.
+
+[rochak agrawal] 07:52:18
+We have a flow.
+
+[rochak agrawal] 07:52:24
+So, I am doing everything in this.
+
+[rochak agrawal] 07:52:28
+file. So, for example, I…
+
+[rochak agrawal] 07:52:32
+Copied the file here.
+
+[rochak agrawal] 07:52:33
+Then I'm running it here.
+
+[rochak agrawal] 07:52:36
+And then I'm building… and then finally…
+
+[rochak agrawal] 07:52:41
+So, everything was happening with this
+
+[rochak agrawal] 07:52:45
+Since you were doing everything with this image, there was this Go dependencies were getting downloaded here.
+
+[rochak agrawal] 07:52:54
+Okay.
+
+[rochak agrawal] 07:52:56
+And that is why, if you see the image size is
+
+[rochak agrawal] 07:53:13
+1.34 GB, and content size is 325 MB. Now, the reason for that is, if you see this, here we are using the Golang image, okay?
+
+[rochak agrawal] 07:53:24
+And the… you're doing the building of your application, main.go, where you are actually, um…
+
+[rochak agrawal] 07:53:35
+Building your application, so we have a small Go file is here.
+
+[rochak agrawal] 07:53:41
+So, main.google, very small file.
+
+[rochak agrawal] 07:53:45
+So, they just… it is listening on port 8080, that's it. So, basically, when you are doing the building, it is downloading all the packages, all the dependencies.
+
+[rochak agrawal] 07:53:56
+in your image, and that is why your image is going to be heavier.
+
+[rochak agrawal] 07:54:01
+Okay, now what you need to do in this place, you say, I am going to use this as builder.
+
+[rochak agrawal] 07:54:08
+Okay, you are going to build your application here.
+
+[rochak agrawal] 07:54:14
+Once your application is going to be built.
+
+[rochak agrawal] 07:54:19
+Once your application is going to be built, you are going to use another image.
+
+[rochak agrawal] 07:54:29
+Okay, you're going to build another image, and here…
+
+[rochak agrawal] 07:54:35
+you are going to copy from Builder, because the result of this will be in main.file, right?
+
+[rochak agrawal] 07:54:45
+And then from here, you are going to copy. So you'll…
+
+[rochak agrawal] 07:54:49
+If you see, your image building, uh, sorry, app building happens here, but you're not using this image as a final product.
+
+[rochak agrawal] 07:54:56
+So you're seeing, once your app is built.
+
+[rochak agrawal] 07:55:02
+Copy.
+
+[rochak agrawal] 07:55:04
+Rome
+
+[rochak agrawal] 07:55:07
+Builder.
+
+[rochak agrawal] 07:55:10
+What do you need to copy? App?
+
+[rochak agrawal] 07:55:15
+Min?
+
+[rochak agrawal] 07:55:22
+And finally, you are going to run this command.
+
+[rochak agrawal] 07:55:31
+Okay, so you see now your final product has this image. It is just this one.
+
+[rochak agrawal] 07:55:42
+If you compare both the Docker files now.
+
+[rochak agrawal] 07:55:51
+Now you see…
+
+[rochak agrawal] 07:55:53
+This is a transitory stage. Here, you are doing the compilation and building. Once your image or your application is going to build, that is being copied into this stage.
+
+[rochak agrawal] 07:56:07
+which is your final, uh, version. So, if you are not using this multi-stage builds.
+
+[rochak agrawal] 07:56:14
+We are getting this, uh…
+
+[rochak agrawal] 07:56:20
+1.34 GB, 325, uh, so if you compare the content size, 325 MB size image is there. But if you see, this is only 8 MB because.
+
+[rochak agrawal] 07:56:32
+Why? Because the base image for this is…
+
+[rochak agrawal] 07:56:37
+Base image for this is Alpine 3.0.
+
+[rochak agrawal] 07:56:41
+So this is…
+
+[rochak agrawal] 07:56:44
+Now, here, what is going to happen when we will create this multi-stage build? First, everything has happened on a go line. Your application is going to build and everything. Then…
+
+[rochak agrawal] 07:56:57
+A fine image will be created, and from the output.
+
+[rochak agrawal] 07:57:01
+The output of this, you're going to copy app main.
+
+[rochak agrawal] 07:57:07
+Yeah.
+
+[rochak agrawal] 07:57:08
+Simple. So that is called multi-stage build. Now we are having two stages here. Now you can have multiple stages. Like I can have one more stage where I am copying the output of this.
+
+[rochak agrawal] 07:57:24
+Second stage.
+
+[rochak agrawal] 07:57:30
+To another, uh…
+
+[rochak agrawal] 07:57:33
+stage you can write. So you can have multiple stages. Now, whatever will be the last stage will be your final stage in your Docker file.
+
+[rochak agrawal] 07:57:42
+All the previous stages will be transitory in nature. So that is called the multi-stage.
+
+[rochak agrawal] 07:57:49
+So if you see him, um…
+
+[rochak agrawal] 07:57:51
+Now, this is an example of a…
+
+[rochak agrawal] 07:57:55
+Java-based image. Here you can see stage one, build with full JDK and Maven. From Maven, this bug here. Copy pom.xml. You are going to run dependencies and everything. You are going to copy SRC.
+
+[rochak agrawal] 07:58:10
+And then we… you are going to run the packages, okay? So you see, um, what is going to happen here.
+
+[rochak agrawal] 07:58:20
+Buns, let's see…
+
+[rochak agrawal] 07:58:22
+The output of this will be?
+
+[rochak agrawal] 07:58:25
+Let's say JAR file, or depending on your application. Now…
+
+[rochak agrawal] 07:58:31
+From eclipse this. Copy from build.
+
+[rochak agrawal] 07:58:36
+You are only copying the jar file from this to this.
+
+[rochak agrawal] 07:58:40
+You do not need all the dependencies and everything to be built, because, see, in the end, you are going to run java-jar.xyz.jar, right? And that is what we are going to do here, java-jar.
+
+[rochak agrawal] 07:58:54
+So, if you do not use the multi-stage build, you need to have doing everything in a…
+
+[rochak agrawal] 07:59:03
+in one particular build, and then your image will have all the dependencies, all the libraries, and everything.
+
+[rochak agrawal] 07:59:11
+Which is going to increase the.
+
+[rochak agrawal] 07:59:14
+image size, okay? So, you can see typical result for a Java service is roughly 600MB with the full Maven image, while 200MB with the GRE-only final stage.
+
+[rochak agrawal] 07:59:26
+So, the result for this is smaller images, fewer vulnerabilities, because, um…
+
+[rochak agrawal] 07:59:34
+Since you do not have all the dependencies and all the libraries required.
+
+[rochak agrawal] 07:59:39
+The less your attack surface area is, less vulnerabilities you are going to have.
+
+[rochak agrawal] 07:59:46
+And this, if you see the final image, hold a JRE.
+
+[rochak agrawal] 07:59:51
+And the jar, not Maven, not the JDK, but not the source code. Nothing. Your final image will only contain the jar.
+
+[rochak agrawal] 07:59:59
+And the whole build run inside the Docker?
+
+[rochak agrawal] 08:00:04
+So nobody needs Maven installed to produce the image on their local system altogether. Because this…
+
+[rochak agrawal] 08:00:11
+Everything is happening inside the Docker only, correct? And that is why everything is…
+
+[rochak agrawal] 08:00:19
+You do not need Maven or something to build. See, another thing is… would be… you can do it on your local also. See, this process…
+
+[rochak agrawal] 08:00:29
+For example.
+
+[rochak agrawal] 08:00:31
+You can do in your local also.
+
+[rochak agrawal] 08:00:35
+In that case, I will say copy.
+
+[rochak agrawal] 08:00:38
+this, instead of from build, you will say copy.jar to app.jar, simple, right? So, it is just, uh, the first stage, whatever you are going to create.
+
+[rochak agrawal] 08:00:50
+It will be transitory in nature. It will do what is written in your Docker file and then pass on the output to the next stage. And that is called the multi-stage build.
+
+[rochak agrawal] 08:01:06
+Yes, Alex.
+
+[arif] 08:01:15
+Uh, so Roshan, uh, this is the…
+
+[arif] 08:01:17
+file, I'm not able to understand completely, so how you're writing codes and all those things.
+
+[rochak agrawal] 08:01:19
+Okay?
+
+[arif] 08:01:23
+Uh, we will do this, like…
+
+[rochak agrawal] 08:01:25
+But in our last class, we discussed about how to write the Dockerfile. See your Dockerfile.
+
+[rochak agrawal] 08:01:33
+You just need to know about these directives. What does the from do? What is a work DIR? What is a copy? What is a run going to do?
+
+[rochak agrawal] 08:01:42
+Because your Docker file is going to depend on what is your application, so…
+
+[rochak agrawal] 08:01:48
+and how you want to write it.
+
+[rochak agrawal] 08:01:50
+at this moment, you need to understand about these directives, because your Dockerfile will be depend on your application, what your application is going to do.
+
+[arif] 08:02:00
+Okay, I just want to understand this entry point and the CMD that you wrote in the last example.
+
+[rochak agrawal] 08:02:07
+Okay.
+
+[arif] 08:02:08
+What the… uh-huh…
+
+[rochak agrawal] 08:02:08
+Okay.
+
+[rochak agrawal] 08:02:10
+I'll explain this. Okay, so, um…
+
+[rochak agrawal] 08:02:14
+If you see this file.
+
+[rochak agrawal] 08:02:26
+So here you see there is two things, CMD and entry point.
+
+[rochak agrawal] 08:02:32
+A CMD we have used in our one.
+
+[rochak agrawal] 08:02:35
+Okay, CMD here. So CMD and entry point, basically.
+
+[rochak agrawal] 08:02:41
+So what happens is, uh…
+
+[rochak agrawal] 08:02:48
+So let's say, uh…
+
+[rochak agrawal] 08:02:52
+This is your Docker file.
+
+[rochak agrawal] 08:03:03
+When you run the docker build command.
+
+[rochak agrawal] 08:03:07
+Uh, image is going to be created.
+
+[rochak agrawal] 08:03:09
+Correct? Now, from the image, you are going to run a container.
+
+[arif] 08:03:10
+Mmhm.
+
+[rochak agrawal] 08:03:19
+Correct? So, container, uh, we discussed multiple times, a container is nothing, but…
+
+[arif] 08:03:20
+Huh.
+
+[rochak agrawal] 08:03:25
+But it is a runtime instance of an image.
+
+[rochak agrawal] 08:03:31
+Okay? Now…
+
+[rochak agrawal] 08:03:34
+both CMD.
+
+[rochak agrawal] 08:03:39
+and entry point.
+
+[rochak agrawal] 08:03:50
+CMD and entry point, they both tell, uh…
+
+[rochak agrawal] 08:03:55
+The container. See, for example, your image is created.
+
+[rochak agrawal] 08:04:00
+Okay, now when you run a container out of this image.
+
+[rochak agrawal] 08:04:04
+So, whatever written in the CMD or entry point, that will be the command which your container is going to run when the container is starting. So, for example, if you see this one example.
+
+[rochak agrawal] 08:04:19
+Okay, when you see this example, in this example.
+
+[rochak agrawal] 08:04:26
+The first command that the container is going to run when it is starting is Java.
+
+[rochak agrawal] 08:04:30
+hyphen chat, and Android chat.
+
+[rochak agrawal] 08:04:35
+Okay? So when a container is starting, it is going to start with the entry point.
+
+[rochak agrawal] 08:04:39
+Understood. And similarly, CMD also. So when your container will be starting, it will start with this.
+
+[rochak agrawal] 08:04:48
+me.
+
+[rochak agrawal] 08:04:49
+Now, whatever is written in the mail.
+
+[rochak agrawal] 08:04:52
+It is going to start with that.
+
+[rochak agrawal] 08:04:54
+Okay.
+
+[rochak agrawal] 08:04:55
+Clear now. So till now, you see there is no difference with the CMD or entry point.
+
+[arif] 08:04:57
+Hmm, hmm
+
+[rochak agrawal] 08:05:01
+Okay, so they both are the first command that you are going to run in your…
+
+[rochak agrawal] 08:05:08
+When your container is going to start it. Now, you can ask a follow-up question. Then, when both of the commands are doing the same thing, then why do you need both directives?
+
+[rochak agrawal] 08:05:19
+That can I… I can either use the CMD, or either I can use the entity point, correct? So, the difference between the CMD and entity point is…
+
+[rochak agrawal] 08:05:28
+Whatever you are defining the entry point.
+
+[rochak agrawal] 08:05:37
+It is fixed.
+
+[rochak agrawal] 08:05:39
+You cannot change this.
+
+[rochak agrawal] 08:05:41
+Okay.
+
+[rochak agrawal] 08:05:43
+What I am defining with CMD, you understand this, this is a default one.
+
+[rochak agrawal] 08:05:49
+Okay, this is the default command.
+
+[rochak agrawal] 08:05:53
+which is going to run when my container is starting, but I can override it.
+
+[rochak agrawal] 08:06:07
+While running the container.
+
+[rochak agrawal] 08:06:12
+Okay, now I'll show you the examples for this. So you understand theoretically. Entry point is, like, whatever you give this as an entry point, both that is fixed. Every time a container is going to run.
+
+[rochak agrawal] 08:06:24
+Entry point, java-jar, app.jar, it is going to run. There's no question about it.
+
+[rochak agrawal] 08:06:30
+But what do you give as a CMD?
+
+[rochak agrawal] 08:06:32
+It is also going to run as a first command.
+
+[rochak agrawal] 08:06:37
+But it is going to run if you're not overriding it.
+
+[rochak agrawal] 08:06:40
+It's a default command, but default values can be changed.
+
+[rochak agrawal] 08:06:46
+Okay.
+
+[rochak agrawal] 08:06:50
+Gilead Arish?
+
+[arif] 08:06:52
+You mean that, like, we can change the… or… while running this?
+
+[rochak agrawal] 08:06:58
+While running the container.
+
+[arif] 08:07:02
+But we first define the Docker file, then we run the container.
+
+[rochak agrawal] 08:07:05
+Yes, yes, of course. CMD and entity point where you are defining in your Docker file only. So I'll give you an example. Let me give you an example.
+
+[rochak agrawal] 08:07:16
+So, let's see…
+
+[rochak agrawal] 08:07:20
+You create the Dockerfile.
+
+[rochak agrawal] 08:07:29
+Okay? So what do you do in a Docker file? You first take the…
+
+[rochak agrawal] 08:07:34
+This image with the help of command.
+
+[rochak agrawal] 08:07:37
+So let's say I'm using Python…
+
+[rochak agrawal] 08:07:41
+the 0.11 slim.
+
+[rochak agrawal] 08:07:50
+SimpleBugDIR.
+
+[rochak agrawal] 08:07:52
+slash app.
+
+[rochak agrawal] 08:07:54
+Copy.
+
+[rochak agrawal] 08:07:56
+Let's say app.py.
+
+[rochak agrawal] 08:07:58
+And, uh, you're popping the app.py.
+
+[rochak agrawal] 08:08:02
+Right? And now, if you see…
+
+[rochak agrawal] 08:08:05
+Entity Point.
+
+[rochak agrawal] 08:08:09
+You… this is the main thing now.
+
+[rochak agrawal] 08:08:15
+Now in this one example, we will see what we are going to do. Okay, so I'll say Python.
+
+[rochak agrawal] 08:08:31
+dot…
+
+[rochak agrawal] 08:08:33
+Okay.
+
+[rochak agrawal] 08:08:35
+And…
+
+[rochak agrawal] 08:08:35
+You see, I've given CMD.
+
+[rochak agrawal] 08:08:38
+And I'll say…
+
+[rochak agrawal] 08:08:48
+Warp.
+
+[rochak agrawal] 08:08:54
+8, 0, 8, 0.
+
+[rochak agrawal] 08:08:58
+Okay? And that's about it. Now, you see, um…
+
+[rochak agrawal] 08:09:03
+Let me give you the…
+
+[rochak agrawal] 08:09:06
+I can give this command also.
+
+[rochak agrawal] 08:09:14
+Python?
+
+[rochak agrawal] 08:09:15
+Like, I have given there. So this is, I'm writing a comment, basically.
+
+[rochak agrawal] 08:09:28
+Okay, now you see what is going to happen. So when your…
+
+[rochak agrawal] 08:09:35
+This cell.
+
+[rochak agrawal] 08:09:37
+This image is going to run.
+
+[rochak agrawal] 08:09:39
+It is going to create a container, correct? Now…
+
+[rochak agrawal] 08:09:46
+What's going to happen here? So, your Python…
+
+[rochak agrawal] 08:09:50
+app.py is going to run, correct? Because that is your entry point.
+
+[rochak agrawal] 08:09:55
+With the CMD?
+
+[rochak agrawal] 08:09:57
+Hyphen port.
+
+[rochak agrawal] 08:09:59
+It's equal to 80 right now.
+
+[rochak agrawal] 08:10:01
+Okay, so this is going to run. Now.
+
+[rochak agrawal] 08:10:07
+You see, whatever is there as an entry point, that is not going to change. So now what you can do is, so when you run a, let's say this image name is my app, for example. Right now, what you're doing, docker run.
+
+[rochak agrawal] 08:10:24
+Name.
+
+[rochak agrawal] 08:10:26
+my app, right? And, uh…
+
+[rochak agrawal] 08:10:30
+You will run your container. My, uh…
+
+[rochak agrawal] 08:10:33
+dot 1.0, correct? So then, whatever is given as the entry point, it is going to run, correct?
+
+[arif] 08:10:42
+Mmhm.
+
+[rochak agrawal] 08:10:43
+And then whatever you have given as a CMD will pass on as an argument to your.
+
+[rochak agrawal] 08:10:51
+Uh, runtime command.
+
+[rochak agrawal] 08:10:53
+Now, as we discussed that.
+
+[rochak agrawal] 08:10:56
+Whatever you are going… so if you run it like this, okay?
+
+[rochak agrawal] 08:10:59
+Then it is going to run.
+
+[rochak agrawal] 08:11:04
+This is going to run, correct?
+
+[rochak agrawal] 08:11:09
+Right? Are you clear till now?
+
+[arif] 08:11:14
+Both will be running this Python app.
+
+[rochak agrawal] 08:11:16
+Both will be running, because, see, this is an argument. Port 8080, right?
+
+[arif] 08:11:17
+Okay.
+
+[arif] 08:11:18
+Okay.
+
+[rochak agrawal] 08:11:21
+Right? Now, whatever is given as an entity point is not going to change.
+
+[arif] 08:11:21
+Hmm.
+
+[rochak agrawal] 08:11:26
+But what you have given as a CMD.
+
+[rochak agrawal] 08:11:30
+8080 is the default value, but sometimes you say, no, no, I don't want to run it as a port 8080, so you can overwrite it.
+
+[rochak agrawal] 08:11:42
+Then what is going to run? Like this.
+
+[rochak agrawal] 08:11:45
+So CMD value can be overridden.
+
+[rochak agrawal] 08:11:49
+That's the one aspect of it.
+
+[rochak agrawal] 08:11:50
+Okay.
+
+[rochak agrawal] 08:11:52
+When you are using the entity point and CMD together.
+
+[rochak agrawal] 08:11:55
+Okay now let's say I have not given the CMD sorry entry point.
+
+[rochak agrawal] 08:12:04
+Let me comment it out. Sorry.
+
+[rochak agrawal] 08:12:08
+You are using this.
+
+[rochak agrawal] 08:12:12
+CMD pythonapp.py and CMD port 8080. You can have one entry point, but you can have multiple CMDs. Okay, now also, by default.
+
+[rochak agrawal] 08:12:24
+If you're not giving anything.
+
+[rochak agrawal] 08:12:31
+It is going to run like this, but…
+
+[rochak agrawal] 08:12:34
+Now, since you have given this also as a CMD, someone will go and say, um…
+
+[rochak agrawal] 08:12:42
+didn't bash…
+
+[rochak agrawal] 08:12:48
+I want to do something like that. Something like that.
+
+[rochak agrawal] 08:12:53
+then this is not going to run. LSF and LIT is going to run.
+
+[rochak agrawal] 08:12:58
+So, what you are given on the CMD, while running the container, you are going to, um…
+
+[rochak agrawal] 08:13:10
+You are going to… you can change it.
+
+[rochak agrawal] 08:13:13
+So that is a difference between the CMD and entry point. Now what we can do is I'll I'll I'll.
+
+[rochak agrawal] 08:13:21
+Take a simple Python script, and let's try to build this script.
+
+[rochak agrawal] 08:13:31
+Okay, so this is my script from Python this, this, this. We need a simple app.py.
+
+[rochak agrawal] 08:13:38
+Okay, I need…
+
+[rochak agrawal] 08:13:44
+Similar.
+
+[rochak agrawal] 08:13:51
+program, which…
+
+[rochak agrawal] 08:13:53
+Runs on port.
+
+[rochak agrawal] 08:14:04
+Okay, let's copy this.
+
+[rochak agrawal] 08:14:12
+B-A-M dot…
+
+[rochak agrawal] 08:14:15
+Anyway.
+
+[rochak agrawal] 08:14:20
+So, a simple script, uh, 8080, we are exposing, serving your file with this…
+
+[rochak agrawal] 08:14:26
+Okay.
+
+[rochak agrawal] 08:14:28
+Now, let's see.
+
+[rochak agrawal] 08:14:30
+And this is my Docker file.
+
+[rochak agrawal] 08:14:34
+From Python, uh, I'm copying app.py into slash app.
+
+[rochak agrawal] 08:14:38
+And I'm running Python app.py. Very simple. And by default, the port is 8080.
+
+[rochak agrawal] 08:14:44
+Okay. Now
+
+[rochak agrawal] 08:14:51
+Clear?
+
+[rochak agrawal] 08:14:54
+Doctor
+
+[rochak agrawal] 08:15:00
+Build.
+
+[rochak agrawal] 08:15:04
+my app.
+
+[rochak agrawal] 08:15:06
+0, and this is my buffer failure.
+
+[rochak agrawal] 08:15:18
+Okay, I think it should be created local.
+
+[rochak agrawal] 08:15:22
+Mages.
+
+[rochak agrawal] 08:15:26
+Maya 1.0, 187 MB, uh, 45.6 MB.
+
+[rochak agrawal] 08:15:31
+Now, if you see, I am going to run a container out of it, docker run.
+
+[rochak agrawal] 08:15:38
+my app…
+
+[rochak agrawal] 08:15:53
+Mine is giving me this error.
+
+[rochak agrawal] 08:15:57
+Item not found.
+
+[rochak agrawal] 08:16:09
+That looks okay.
+
+[rochak agrawal] 08:16:33
+Okay.
+
+[rochak agrawal] 08:16:35
+Yeah, so maybe that is some.
+
+[rochak agrawal] 08:16:51
+Okay.
+
+[rochak agrawal] 08:16:54
+Okay, let me build this.
+
+[rochak agrawal] 08:16:59
+Let's say 2.2.
+
+[rochak agrawal] 08:17:02
+Okay, let's create it.
+
+[rochak agrawal] 08:17:06
+Now, when you run…
+
+[rochak agrawal] 08:17:16
+Take this.
+
+[rochak agrawal] 08:17:19
+Now, if you go to port 8080 of this.
+
+[rochak agrawal] 08:17:39
+Maybe it is running locally. So if you see Docker, uh, PS-A.
+
+[rochak agrawal] 08:17:46
+So many containers…
+
+[rochak agrawal] 08:17:53
+Okay. Oops.
+
+[rochak agrawal] 08:18:19
+Some variables there.
+
+[rochak agrawal] 08:18:21
+Okay. Uh, in the code file, there is a… it says app.py line 10 in module.
+
+[rochak agrawal] 08:18:29
+Support issue is there, but let's leave it. So, the point here is, my image is created.
+
+[rochak agrawal] 08:18:34
+Okay, now if I'm running like this, for example.
+
+[rochak agrawal] 08:18:41
+Right? Without any argument, without any, um…
+
+[rochak agrawal] 08:18:46
+specifying a point, then whatever you have defined in your Docker file, like your CMD and entity point, it is going to run like that. But if you say whatever you have given as a CMD, uh, if you want to change it.
+
+[rochak agrawal] 08:19:01
+Is it pork?
+
+[rochak agrawal] 08:19:03
+8090.
+
+[rochak agrawal] 08:19:04
+Even though you have written.
+
+[rochak agrawal] 08:19:07
+CMD port 8080. Now, if I'm going to run it here with 8090, then it is going to…
+
+[rochak agrawal] 08:19:16
+Overwritten. So that is a difference between the CMD and entity point. Now, if you want, you can run it on port 8090. So that is a difference between CMD and entity point. So anything which you want to fix. So you can see here CMD.
+
+[rochak agrawal] 08:19:32
+is going to
+
+[rochak agrawal] 08:19:35
+do two things here. CMD is going to act as an entity point. When the entity point is not defined.
+
+[rochak agrawal] 08:19:40
+It is going to act as an argument to entry point when the entry point is defined.
+
+[rochak agrawal] 08:19:44
+Okay, now
+
+[rochak agrawal] 08:19:47
+Second point is, whatever you are defining as CMD directive, you can override it. While running the container, you can pass the new values at your…
+
+[rochak agrawal] 08:20:02
+runtime, while what you give as an entity point is not going to change.
+
+[rochak agrawal] 08:20:07
+Now.
+
+[rochak agrawal] 08:20:10
+there is another aspect to it is… so, for example, if someone will say, okay, I… can I change my entry point also? So, you can see, you…
+
+[rochak agrawal] 08:20:20
+You can change the entry point also, but then here I'm not saying to change the CMD, correct? I'm just giving the port value and my CMD is going to change. You can change your entry point also. So here you need to specifically mention.
+
+[rochak agrawal] 08:20:36
+That you want to change your entry point, let's say.
+
+[rochak agrawal] 08:20:39
+entry point is…
+
+[rochak agrawal] 08:20:42
+Bin?
+
+[rochak agrawal] 08:20:46
+And you can give my app.
+
+[rochak agrawal] 08:20:49
+2.0. So, if you give this, your entry point is also going to change. Do you see the difference? Here, I'm not saying CMD… change the CMD. Here, I'm just saying…
+
+[rochak agrawal] 08:21:00
+the value. Your value is going to be replaced. Here, you need to give the complete redirect, uh, directive itself.
+
+[rochak agrawal] 08:21:07
+So, in general, uh, it is not a good practice to replace your entry point. So, something that you want to keep fixed.
+
+[rochak agrawal] 08:21:15
+Okay, you keep it as the entry point, something that may be changing as per the value, as per the environment, as per the application, as per different, different business requirement. You keep them as CMD, and that is how we are going to.
+
+[rochak agrawal] 08:21:30
+work on it.
+
+[arif] 08:21:36
+So we, we cannot change any other parameter, uh, like, uh, while running these images.
+
+[rochak agrawal] 08:21:41
+No, we… you can change other parameters also, but entry point and CMD are specifically useful. Uh…
+
+[arif] 08:21:44
+Okay.
+
+[rochak agrawal] 08:21:49
+Because they are the starting point.
+
+[rochak agrawal] 08:21:51
+You can change other parameters. For example, if you expose port 80, you can, while running the container, you can override those as
+
+[rochak agrawal] 08:22:01
+Again, as I said, it is not recommended.
+
+[rochak agrawal] 08:22:07
+Because, see, if you are changing, overriding them at the runtime, then the whole.
+
+[rochak agrawal] 08:22:14
+point of creating the Dockerfile goes for a DOS.
+
+[rochak agrawal] 08:22:19
+Correct. Because you are creating the Docker file so that you have the image and then you are going to run it everywhere. Correct. Now you say in a dev environment, I am changing this value. In a prod environment, you are changing this value. Then essentially you are not.
+
+[rochak agrawal] 08:22:34
+You may not be running the similar image.
+
+[arif] 08:22:39
+Hmm. Okay.
+
+[rochak agrawal] 08:22:40
+Correct. So, generally.
+
+[rochak agrawal] 08:22:42
+it is not recommended. Enter vPoint to CMD is okay, uh, because that's the starting of the container, but any other layer, any other configuration, you should not be doing any change of.
+
+[arif] 08:22:57
+Okay.
+
+[rochak agrawal] 08:22:57
+Okay.
+
+[rochak agrawal] 08:23:01
+Now…
+
+[rochak agrawal] 08:23:04
+There's a very interesting thing about…
+
+[rochak agrawal] 08:23:07
+the volumes. Uh, volumes is… we discussed that, uh…
+
+[rochak agrawal] 08:23:13
+Anything you are writing in containers, so…
+
+[rochak agrawal] 08:23:16
+Whatever the instructions you are going to write.
+
+[rochak agrawal] 08:23:21
+Your Docker file is going to be created in these layers.
+
+[rochak agrawal] 08:23:27
+So whenever you add an instruction, then Docker is going to use all those layers and put a top of another layer. So every instruction, you can consider it as a layer. And then when you create a container.
+
+[rochak agrawal] 08:23:42
+Then, a write table layer.
+
+[rochak agrawal] 08:23:44
+is going to create.
+
+[rochak agrawal] 08:23:48
+Yep.
+
+[rochak agrawal] 08:23:49
+Okay, now all the remaining these layers are read-only.
+
+[rochak agrawal] 08:24:00
+Okay?
+
+[rochak agrawal] 08:24:03
+The container layer, you can write something.
+
+[rochak agrawal] 08:24:05
+It is a right table layer.
+
+[rochak agrawal] 08:24:10
+But the problem with this layer is it is only going to be there till the time your container is there.
+
+[rochak agrawal] 08:24:19
+As soon as your container is deleted, this layer will also.
+
+[rochak agrawal] 08:24:26
+Be gone, essentially.
+
+[rochak agrawal] 08:24:27
+So, till the time your container is running, you can have your data, but basically, you… you are not… you will not be able to persist your data.
+
+[rochak agrawal] 08:24:37
+So, let's say your application is generating the log, you are displaying some images, or…
+
+[rochak agrawal] 08:24:45
+You want to keep record of anything who is coming to your website or something. So you need to persist your data.
+
+[rochak agrawal] 08:24:52
+And that is where Docker volumes comes into the picture.
+
+[rochak agrawal] 08:24:58
+Now, there are multiple ways in which we are going to.
+
+[rochak agrawal] 08:25:04
+Told my, uh…
+
+[rochak agrawal] 08:25:07
+Data, persist my data.
+
+[rochak agrawal] 08:25:09
+One is volumes, one is bind mounts, one is TMPS, T temp FS mounts.
+
+[rochak agrawal] 08:25:16
+Okay.
+
+[rochak agrawal] 08:25:17
+Again, as I discussed in our last class also at this point, see, volume and networking, you need to understand from the Docker side, but…
+
+[rochak agrawal] 08:25:28
+again, um, for example, when you will be using a container orchestration layer, anything, uh, there's a Docker Swarm, there's a Kubernetes, also the de facto standard nowadays.
+
+[rochak agrawal] 08:25:41
+Uh, they also will give you certain volume and networking options. So, if you are using Kubernetes, for example, you will… you are never going to use Docker volumes and Docker networking. But…
+
+[rochak agrawal] 08:25:52
+As a concept, you should be aware about it.
+
+[rochak agrawal] 08:25:56
+Now, in Docker, there are three ways. Volumes, bind mounts, and…
+
+[rochak agrawal] 08:26:02
+Temp amounts.
+
+[rochak agrawal] 08:26:03
+Volume, as the name is suggesting, like, in AWS, we have an EVS volume, your external hard disk. So these all are volumes, which we are going to attach to my container, okay? And then, when the work is done.
+
+[rochak agrawal] 08:26:19
+Then…
+
+[rochak agrawal] 08:26:20
+your data will be persisted in those volumes. So how it is going to happen? So let's say…
+
+[rochak agrawal] 08:26:36
+You have this container. You are going to attach a volume.
+
+[rochak agrawal] 08:26:41
+Out of this. Okay, now the volume can be a local disk.
+
+[rochak agrawal] 08:26:49
+Okay? It can be your EBS volume.
+
+[rochak agrawal] 08:26:55
+Azure Desk.
+
+[rochak agrawal] 08:27:03
+or any other third-party disk also, where you are going to, whenever the container is writing the data, we can configure our application to write the data into this volume. So now this is going to be persisted whenever your container is.
+
+[rochak agrawal] 08:27:18
+destroyed or deleted. Doesn't matter, because your data is in this volume, and you create another container.
+
+[rochak agrawal] 08:27:28
+And you attach this volume and you can use this data again. So that is basically a volume, how we are going to create, how we are going to attach. We are going to see that. But that is overall a volume is. It managed by Docker in its own storage area.
+
+[rochak agrawal] 08:27:44
+Portable, easy to backup, and the recommended default for the persistent storage.
+
+[rochak agrawal] 08:27:50
+You want to do something?
+
+[rochak agrawal] 08:27:53
+You want to purchase something, you are going to use.
+
+[rochak agrawal] 08:27:56
+the volumes.
+
+[rochak agrawal] 08:27:58
+Second option is a bind amounts.
+
+[rochak agrawal] 08:28:00
+Again, volumes are good for database application state. Anything you want to persist your data, you are going to use the volumes.
+
+[rochak agrawal] 08:28:08
+Then the second option is the bind amounts.
+
+[rochak agrawal] 08:28:11
+Now, bind mount, you can understand in a way that… so, for example, if you see…
+
+[rochak agrawal] 08:28:19
+When you're doing the bind mount.
+
+[rochak agrawal] 08:28:22
+A specific host directory mapped into the container.
+
+[rochak agrawal] 08:28:26
+So, for example, let's say I have a directory called, um, Ubuntu Home Roadshow.
+
+[rochak agrawal] 08:28:33
+I map this directory to my container directory, okay? So, for example, app.src.
+
+[rochak agrawal] 08:28:38
+So then, whatever you are doing in this directory, or whatever you are doing inside the container.
+
+[rochak agrawal] 08:28:46
+All the…
+
+[rochak agrawal] 08:28:48
+Instance… instantly…
+
+[rochak agrawal] 08:28:50
+be replicated to one another.
+
+[rochak agrawal] 08:28:52
+So you create a file here, that file will be replicated there. You create a file inside a container, that file will be replicated outside of the container. So that is called…
+
+[rochak agrawal] 08:29:04
+The bone mount?
+
+[rochak agrawal] 08:29:06
+bind mounts, sorry, not the bound mounts, and then there is something called the TMPFS mount. Now, TMPFS is your writeable layer only, basically, nothing else. So any temporary data you want to store.
+
+[rochak agrawal] 08:29:21
+you can use… there's a tempfs, um, so stored in host memory only, never written to disk, goes when the container stops. So when we are saying, uh, when a container is going to start.
+
+[rochak agrawal] 08:29:32
+It is going to start… it is going to create a writable layer, but…
+
+[rochak agrawal] 08:29:39
+That high table layer is your temp, uh, mount, basically.
+
+[rochak agrawal] 08:29:44
+So these three are the.
+
+[rochak agrawal] 08:29:48
+One which I am going to, which you can use to persist your data.
+
+[rochak agrawal] 08:29:53
+Okay, so now bind mount.
+
+[rochak agrawal] 08:29:56
+If you say volumes, so volumes, um, again.
+
+[rochak agrawal] 08:30:02
+There's two types of volumes, named volumes and anonymous volume.
+
+[rochak agrawal] 08:30:07
+Okay, now named volume means…
+
+[rochak agrawal] 08:30:12
+When you're creating your volume, you are giving the name to your volume.
+
+[rochak agrawal] 08:30:16
+Okay, my volume, volume 1, volume 2. If you do not get the name.
+
+[rochak agrawal] 08:30:22
+It is going to pick up the random, um, you know, you can say random, uh, name, like it is doing for your containers.
+
+[rochak agrawal] 08:30:30
+Okay, so…
+
+[rochak agrawal] 08:30:35
+Let me show you. So, if you see here.
+
+[rochak agrawal] 08:30:39
+Docker volumes.
+
+[rochak agrawal] 08:30:44
+So, you can see…
+
+[rochak agrawal] 08:30:47
+Then, add…
+
+[rochak agrawal] 08:30:49
+Certain volume I already have, some of my previous containers. PostgreSQL volume I have, PostgreSQL data volume I have, SonarQube data volume I have, and SonarQube extension volume I have. And then one volume is a Nexus data.
+
+[rochak agrawal] 08:31:05
+Now, if you want to figure out.
+
+[rochak agrawal] 08:31:08
+the properties of your volume, so the Docker volume.
+
+[rochak agrawal] 08:31:13
+inspect…
+
+[rochak agrawal] 08:31:15
+And let's access data.
+
+[rochak agrawal] 08:31:17
+So you can see mount point is this.
+
+[rochak agrawal] 08:31:21
+Okay?
+
+[rochak agrawal] 08:31:24
+Option… scope is local, so it's a local, uh, this… so your volume is basically this directory.
+
+[rochak agrawal] 08:31:30
+Okay. And then, uh, if you want to delete a volume, so you say docker volume.
+
+[rochak agrawal] 08:31:38
+RM.
+
+[rochak agrawal] 08:31:43
+Nexus data.
+
+[rochak agrawal] 08:31:45
+You see? Now, if you come docker volume LS.
+
+[rochak agrawal] 08:31:51
+You see, Nexus data is gone.
+
+[rochak agrawal] 08:31:53
+They…
+
+[rochak agrawal] 08:32:00
+Now, it is removed every unused volume.
+
+[rochak agrawal] 08:32:03
+Okay, so, doctor volume prune.
+
+[rochak agrawal] 08:32:18
+Okay.
+
+[rochak agrawal] 08:32:21
+See? It has deleted this volume.
+
+[rochak agrawal] 08:32:25
+And total reclaimed volume is 330 MB. Now, if you run Docker volume LS.
+
+[rochak agrawal] 08:32:32
+You see? Unused volume is gone now. But docker prune, uh, volume prune command is a… can be a dangerous command, so you are going to use it, uh…
+
+[rochak agrawal] 08:32:42
+very judiciously, because it is… see, probably this volume is not being used at this moment, but it may have some sensitive information. So, until and unless you're not very sure.
+
+[rochak agrawal] 08:32:54
+you should not be running the docker volume prune command. And prune command, if you see, it is going to be available with.
+
+[rochak agrawal] 08:33:02
+all type of options, so I can run Docker, Images, Prune.
+
+[rochak agrawal] 08:33:08
+Susie?
+
+[rochak agrawal] 08:33:23
+You see? This will remove all dangling images. Dangling images means.
+
+[rochak agrawal] 08:33:28
+image which is not being referenced at the moment. So you see I do not have probably any such type of image.
+
+[rochak agrawal] 08:33:36
+So prune, um, network prune, volume prune, image prune, container prune.
+
+[rochak agrawal] 08:33:41
+It is going to prune command basically is going to remove all the URLs.
+
+[rochak agrawal] 08:33:48
+Containers. All the unused spaces.
+
+[rochak agrawal] 08:33:51
+Okay, now let's say… let me clear it out.
+
+[rochak agrawal] 08:33:56
+Docker. Yes, so there's no container. Now let's take an example of…
+
+[rochak agrawal] 08:34:03
+Bind mode, basically. Okay.
+
+[rochak agrawal] 08:34:06
+So…
+
+[rochak agrawal] 08:34:07
+you run a Docker container, Docker…
+
+[rochak agrawal] 08:34:22
+PWD.
+
+[rochak agrawal] 08:34:26
+Let's see.
+
+[rochak agrawal] 08:34:29
+Okay? I created a directory, CD.
+
+[rochak agrawal] 08:34:35
+Okay. Now let's run a container, docker run…
+
+[rochak agrawal] 08:34:45
+Hyphen D.
+
+[rochak agrawal] 08:34:48
+Thanks for nice name.
+
+[rochak agrawal] 08:34:50
+my…
+
+[rochak agrawal] 08:34:53
+Bone, bone, bone.
+
+[rochak agrawal] 08:34:54
+nginx you can give any name just the reference. And here I am going to define a mount.
+
+[rochak agrawal] 08:35:01
+Mount?
+
+[rochak agrawal] 08:35:05
+Type is equal to bind.
+
+[rochak agrawal] 08:35:13
+source is equal to.
+
+[rochak agrawal] 08:35:20
+East.
+
+[rochak agrawal] 08:35:21
+Okay.
+
+[rochak agrawal] 08:35:25
+Target is equal to, let's say, slash app.
+
+[rochak agrawal] 08:35:29
+And…
+
+[rochak agrawal] 08:35:31
+Nginx.
+
+[rochak agrawal] 08:35:35
+So here you see, uh, I'm not using a volume. I am using a bind mount. What it is going to do, it is going to bound my disk directly, which is on my host.
+
+[rochak agrawal] 08:35:48
+to this directory, which will be on my container. So you do anything on the slash app directory, uh, it will be reflected here. You do anything in this directory, it will be… So basically, this directory on my home machine.
+
+[rochak agrawal] 08:36:04
+host machine and this directory on my container will be synced basically.
+
+[rochak agrawal] 08:36:15
+Let me run for the syntax check.
+
+[rochak agrawal] 08:36:36
+So the error was the space I was giving, I think.
+
+[rochak agrawal] 08:36:42
+Okay? So now my container is created.
+
+[rochak agrawal] 08:36:45
+Now, if you see Docker…
+
+[rochak agrawal] 08:36:49
+PS, container is there. Now, I am in this directory.
+
+[rochak agrawal] 08:36:53
+Uh, PWD.
+
+[rochak agrawal] 08:36:55
+Home Ubuntu Rocha. Now, if you go…
+
+[rochak agrawal] 08:37:04
+Let's see.
+
+[rochak agrawal] 08:37:07
+Post.txt.
+
+[rochak agrawal] 08:37:10
+Okay, I created a directory, host.txt. Now, that directory should be where.
+
+[rochak agrawal] 08:37:16
+It should be in the Docker exec.
+
+[rochak agrawal] 08:37:23
+Okay, token exec.
+
+[rochak agrawal] 08:37:27
+Hyphen.
+
+[rochak agrawal] 08:37:29
+ID?
+
+[rochak agrawal] 08:37:31
+My.
+
+[rochak agrawal] 08:37:33
+Bye, Nanjingx.
+
+[rochak agrawal] 08:37:37
+What's the syntax of the command?
+
+[rochak agrawal] 08:37:48
+And let's say for NLRT.
+
+[rochak agrawal] 08:37:51
+Slash
+
+[rochak agrawal] 08:38:10
+You can see.
+
+[rochak agrawal] 08:38:12
+post.txt.
+
+[rochak agrawal] 08:38:15
+And if I do something here, uh, for example, let's say…
+
+[rochak agrawal] 08:38:22
+Dutch.
+
+[rochak agrawal] 08:38:24
+slash app…
+
+[rochak agrawal] 08:38:26
+Slash, uh…
+
+[rochak agrawal] 08:38:27
+Uh, let's say container.txt.
+
+[rochak agrawal] 08:38:34
+This file I'm going to create inside a container.
+
+[rochak agrawal] 08:38:38
+And now, if you see
+
+[rochak agrawal] 08:38:41
+container.txt file.
+
+[rochak agrawal] 08:38:43
+So your… whatever you are doing at the home, it will be replicated to the container. Whatever you are doing within a container, you are going to use it.
+
+[rochak agrawal] 08:38:56
+Video, bro.
+
+[rochak agrawal] 08:38:59
+Room.
+
+[rochak agrawal] 08:39:00
+So this is basically the bind mount, um, where I am going to sync, um, two directories across, um.
+
+[rochak agrawal] 08:39:09
+For example, your Docker host as well as Docker containers.
+
+[rochak agrawal] 08:39:15
+So, very simple. Now…
+
+[rochak agrawal] 08:39:19
+This is, uh…
+
+[rochak agrawal] 08:39:22
+Now, let's go to the volume. Creating the volume is very simple. You will just go, say, Docker.
+
+[rochak agrawal] 08:39:28
+Volume.
+
+[rochak agrawal] 08:39:31
+my volume.
+
+[rochak agrawal] 08:39:33
+It is created. Now, if you do docker volume ls.
+
+[rochak agrawal] 08:39:39
+So you see, my volume is there.
+
+[rochak agrawal] 08:39:42
+And if you run this Docker volume inspect.
+
+[rochak agrawal] 08:39:51
+You see val lab docker volumes my volume. It's a it's a folder. It has been created because we are using these the local right.
+
+[rochak agrawal] 08:40:01
+Now, when you want to run this.
+
+[rochak agrawal] 08:40:06
+Currently, we have used the…
+
+[rochak agrawal] 08:40:10
+And what you can see is.
+
+[rochak agrawal] 08:40:14
+The bind mount. Now, let's run the container, Docker container, and use the volumes there.
+
+[rochak agrawal] 08:40:23
+Okay, now I'll see my…
+
+[rochak agrawal] 08:40:27
+Volume engine X.
+
+[rochak agrawal] 08:40:47
+So, hyphen B, volume option, and uh… I will give the name of my volume, my volume.
+
+[rochak agrawal] 08:40:54
+And…
+
+[rochak agrawal] 08:40:57
+slash app.
+
+[rochak agrawal] 08:40:58
+Okay, and simply index.
+
+[rochak agrawal] 08:41:02
+So here, I am not using a particular folder, I am using a volume, okay?
+
+[rochak agrawal] 08:41:09
+No?
+
+[rochak agrawal] 08:41:10
+Let's see…
+
+[rochak agrawal] 08:41:14
+Again, if I run Docker PS.
+
+[rochak agrawal] 08:41:17
+Okay? So my volume nginx container is running. Now, if you see, again, I'm going to run this, uh…
+
+[rochak agrawal] 08:41:25
+Let's create a file there.
+
+[rochak agrawal] 08:41:39
+So I'm creating a file.
+
+[rochak agrawal] 08:41:42
+Okay, containertest.txt.
+
+[rochak agrawal] 08:41:46
+I'll create it.
+
+[rochak agrawal] 08:41:47
+Now you go create another container with the same volume, you will see the file there.
+
+[rochak agrawal] 08:41:54
+My volume in the next two.
+
+[rochak agrawal] 08:41:57
+Okay, and now if you run…
+
+[rochak agrawal] 08:42:18
+So you'll see this in the container, or…
+
+[rochak agrawal] 08:42:22
+1, as well as in container 2 as well.
+
+[rochak agrawal] 08:42:26
+Why? Because they both are referring to the same volume. And how we can verify this? If you, again, do a Docker volume inspect.
+
+[rochak agrawal] 08:42:54
+AI should be doing it in a container.
+
+[rochak agrawal] 08:43:00
+Yes?
+
+[rochak agrawal] 08:43:01
+Poker inspection.
+
+[rochak agrawal] 08:43:04
+My.
+
+[rochak agrawal] 08:43:18
+You see here?
+
+[rochak agrawal] 08:43:28
+Mounts?
+
+[rochak agrawal] 08:43:30
+High volume?
+
+[rochak agrawal] 08:43:31
+This is the name of the volume which I'm using. This is the source of the volume.
+
+[rochak agrawal] 08:43:36
+And this is a destination. It is mounted on slash app.
+
+[rochak agrawal] 08:43:39
+driver is local at this moment, so if you, let's say, want to use Amazon EBS, or Azure Disk, or Google Persistent Disk, or any other, uh, same VIN type of.
+
+[rochak agrawal] 08:43:52
+Any third-party, uh, storage solution. So you need to have this, um…
+
+[rochak agrawal] 08:44:00
+write drivers you need to install. So currently, by default, we are using a local driver. And then you can use those as well. So this is how the volume works.
+
+[rochak agrawal] 08:44:10
+Right? And then, of course, I… if you… if you… if your container is using the volume, so then you will not be able to delete those volumes. So, for example, if I go…
+
+[rochak agrawal] 08:44:22
+Oh, good.
+
+[rochak agrawal] 08:44:24
+Volume.
+
+[rochak agrawal] 08:44:27
+S.
+
+[rochak agrawal] 08:44:28
+Now, if you'd like to remove…
+
+[rochak agrawal] 08:44:45
+You see? Error response from the daemon. Remove this volume is in use. When I try to delete my volume, it is easily deleted because this volume is not being used by…
+
+[rochak agrawal] 08:44:59
+Any one of them.
+
+[rochak agrawal] 08:45:01
+Okay? So if the volume is not being used by any of the learning containers.
+
+[rochak agrawal] 08:45:05
+then not even the running containers, even any containers, running container might be a wrong word. So if the volume is not a reference by a container, then you can delete it, but if it is.
+
+[rochak agrawal] 08:45:17
+being referenced by any of the container, then you will not be able to delete it.
+
+[rochak agrawal] 08:45:32
+Uh, Bevo is saying, I am not able to understand bind volume. So, Bevo, uh, it is pretty simple. Uh, basically, you just, um…
+
+[rochak agrawal] 08:45:42
+I think you have a…
+
+[rochak agrawal] 08:45:46
+There were any questions, we think we… I think we did a practical…
+
+[Vaibhav Gupta] 08:45:48
+Good morning. Actually, I'm trying to speak from…
+
+[Vaibhav Gupta] 08:45:56
+like, from more times, like, I've raised a hand more, like, one or more times, but you have not, I think you have not noticed. So, Rochok, I'm not able to understand the bind volume. I think, uh, I'm able to understand the volume, but not able to understand the bind volume.
+
+[rochak agrawal] 08:46:02
+Mm-hmm.
+
+[rochak agrawal] 08:46:04
+Oh, yeah.
+
+[rochak agrawal] 08:46:10
+Hmm?
+
+[rochak agrawal] 08:46:12
+Understood.
+
+[Vaibhav Gupta] 08:46:13
+So, yeah.
+
+[rochak agrawal] 08:46:13
+Okay, no problem. So, for example, button mount is, uh…
+
+[rochak agrawal] 08:46:19
+So, let's say…
+
+[Vaibhav Gupta] 08:46:20
+Even, I'm not understand what is bind, like, uh, what's, like, if, uh, what…
+
+[rochak agrawal] 08:46:23
+Bind is just a word, okay? So, you do the binding. Binding is a generic word.
+
+[rochak agrawal] 08:46:29
+Okay, now let's say…
+
+[rochak agrawal] 08:46:36
+This is your local host, where your container is running, correct?
+
+[rochak agrawal] 08:46:46
+Here, your container is running inside the host.
+
+[rochak agrawal] 08:46:50
+Okay?
+
+[rochak agrawal] 08:46:52
+Now, in your host, you will have multiple directories, like slash, app.
+
+[rochak agrawal] 08:46:58
+like, depending on your file system. Now, on the host, I have chosen a directory. Let's say, in our case, what we did, slash home slash…
+
+[rochak agrawal] 08:47:10
+Ubuntu?
+
+[rochak agrawal] 08:47:12
+slash project.
+
+[rochak agrawal] 08:47:14
+I have picked this directory, okay? I might have multiple other directories also, but I have picked this one.
+
+[rochak agrawal] 08:47:22
+Okay, and…
+
+[rochak agrawal] 08:47:24
+Inside the container, I have picked, let's say, slash after it.
+
+[rochak agrawal] 08:47:32
+And I created a bind mount between those.
+
+[rochak agrawal] 08:47:37
+So this is my source, this is my destination. Correct? Elliot, till now?
+
+[rochak agrawal] 08:47:44
+Now what is happening is basically this is the same thing. So for example, now something happened in this directory.
+
+[rochak agrawal] 08:47:53
+Will be reflected here.
+
+[rochak agrawal] 08:47:55
+Something happened in this directory.
+
+[rochak agrawal] 08:47:58
+will be reflected here.
+
+[rochak agrawal] 08:48:00
+So, it is like these directories.
+
+[rochak agrawal] 08:48:03
+are singed.
+
+[rochak agrawal] 08:48:04
+You do it inside a container.
+
+[rochak agrawal] 08:48:08
+It will be…
+
+[rochak agrawal] 08:48:09
+Basically, you are writing it here.
+
+[rochak agrawal] 08:48:11
+You write it here. Basically, you are writing here.
+
+[rochak agrawal] 08:48:15
+So you write anywhere, it is more or less, they are pointing to the same directory now.
+
+[rochak agrawal] 08:48:22
+Okay.
+
+[Vaibhav Gupta] 08:48:23
+If you perform any change in any one directory, though, it impacts on another, okay.
+
+[rochak agrawal] 08:48:25
+Yes.
+
+[rochak agrawal] 08:48:27
+Correct, correct. And that is what we have seen, uh, right? When we created the host.txt.
+
+[rochak agrawal] 08:48:37
+From my local, I was able to see it from my container, inside a container, correct?
+
+[Vaibhav Gupta] 08:48:42
+Mm-hmm.
+
+[rochak agrawal] 08:48:43
+When I created a container.txt, then I was able to see it in my local directory also.
+
+[rochak agrawal] 08:48:53
+Correct. So the changes are bi-directional.
+
+[rochak agrawal] 08:48:56
+You do the changes at any place, you are going to see it at the other place. Basically now these directories are synced.
+
+[rochak agrawal] 08:49:06
+You do the change anywhere, any place, it is bidirectional. It will be reflected at both the places.
+
+[rochak agrawal] 08:49:16
+Yeah, understood.
+
+[Vaibhav Gupta] 08:49:18
+Yeah.
+
+[rochak agrawal] 08:49:19
+So this is called the bind mount.
+
+[rochak agrawal] 08:49:21
+Now, this is if you delete something from here. So now since we are at it, now let's say…
+
+[rochak agrawal] 08:49:33
+dot PS.
+
+[rochak agrawal] 08:49:38
+Okay? So my bind nginx was the container where we binded it. So docker inspect.
+
+[rochak agrawal] 08:49:47
+My Bind Nginx.
+
+[rochak agrawal] 08:49:55
+Okay. Here, if you see the mount.
+
+[rochak agrawal] 08:50:07
+You see?
+
+[rochak agrawal] 08:50:08
+Type is bind.
+
+[rochak agrawal] 08:50:10
+Source is Home Ubuntu project, correct?
+
+[rochak agrawal] 08:50:13
+Destination slash app.
+
+[Vaibhav Gupta] 08:50:14
+Hmm.
+
+[rochak agrawal] 08:50:16
+Read write is true. Now, so whatever happening in the home Ubuntu row check.
+
+[rochak agrawal] 08:50:21
+It should be reflected to slash app.
+
+[rochak agrawal] 08:50:25
+Okay, and now let's verify this also. We have verified it once. Let's do it again. So let me run the command.
+
+[rochak agrawal] 08:50:39
+It's the volume.
+
+[Vaibhav Gupta] 08:50:40
+Those are the commands that we are using, like, how we will, like, um, I mean…
+
+[rochak agrawal] 08:50:44
+I'll come to that.
+
+[Vaibhav Gupta] 08:50:45
+Mmhm.
+
+[rochak agrawal] 08:50:46
+Dogs.
+
+[rochak agrawal] 08:50:49
+Now, if you see slash app.
+
+[rochak agrawal] 08:50:51
+Okay, so there is two files, correct?
+
+[rochak agrawal] 08:50:55
+host.txt, containers.txt. Now, in my local also, I am seeing two files, host.txt and container.txt, correct? Can you see?
+
+[rochak agrawal] 08:51:06
+Now, let's say I'm deleting this host.txt.
+
+[rochak agrawal] 08:51:13
+Okay.
+
+[rochak agrawal] 08:51:15
+LS-LRT.
+
+[rochak agrawal] 08:51:16
+you are only seeing container.txt because I have deleted the host.txt. Now, if you go inside your container.
+
+[rochak agrawal] 08:51:25
+How many files you are going to see.
+
+[Vaibhav Gupta] 08:51:29
+One, container or TXT.
+
+[rochak agrawal] 08:51:32
+You see?
+
+[rochak agrawal] 08:51:36
+Okay, now regarding the command. So, you see, there are very few things, uh…
+
+[rochak agrawal] 08:51:42
+In Dhaka.
+
+[rochak agrawal] 08:51:44
+Three, four things.
+
+[rochak agrawal] 08:51:48
+Docker, if you see.
+
+[rochak agrawal] 08:51:55
+There are containers.
+
+[rochak agrawal] 08:51:58
+There are images.
+
+[rochak agrawal] 08:52:00
+There are volumes.
+
+[rochak agrawal] 08:52:02
+the run network.
+
+[rochak agrawal] 08:52:04
+Basically, these four things are there. Now, you say how I'm going to run the command, so there are two ways of it.
+
+[rochak agrawal] 08:52:10
+Okay.
+
+[rochak agrawal] 08:52:12
+There can be multiple ways of it, but I am showing you two ways. So, if you run Docker, for example.
+
+[rochak agrawal] 08:52:18
+Docker is going to give you the commands.
+
+[rochak agrawal] 08:52:21
+So there is nothing much of the command in Docker. So for example, we have used.
+
+[rochak agrawal] 08:52:29
+Where is this? So stop, start, RMI, RM, restart, pause, logs, kill, inspect, most of the command we have used. Top command, docker top command we have used.
+
+[rochak agrawal] 08:52:41
+So you can see how many commands are there.
+
+[rochak agrawal] 08:52:45
+maybe 20, 25 commands. Okay, so here you can see all the commands related to Docker. Now, then you have…
+
+[rochak agrawal] 08:52:55
+Docker volume, Docker system, Docker network, Docker image-related commands. So from here, you can run… so run exec, PS, build.
+
+[rochak agrawal] 08:53:05
+Pull, push images, log in, log out. You can see it from here, the commands. Most of the command we have used.
+
+[rochak agrawal] 08:53:14
+So you can get it from here, all the commands. You just type the Docker, and you will get the commands. For example, if I run Docker images.
+
+[rochak agrawal] 08:53:22
+You want to see how many commands are there in Docker images.
+
+[rochak agrawal] 08:53:31
+So you can see, Docker image has Docker image, build, history, inspect, load, prune, pull, push, RM.
+
+[rochak agrawal] 08:53:40
+Right? If you want to see the command related to volume.
+
+[rochak agrawal] 08:53:46
+So you can see, volume, we have only 4 commands, and we have 5 commands, and we have used all 5.
+
+[rochak agrawal] 08:53:52
+Create creates a volume inspect.
+
+[rochak agrawal] 08:53:55
+LS, list the volume. Prune, removed unused local volumes. And RM, remove one or more volumes.
+
+[rochak agrawal] 08:54:04
+Simply, you just…
+
+[rochak agrawal] 08:54:07
+Granddaughter.
+
+[rochak agrawal] 08:54:09
+And you will get all the commands. So these are the commands.
+
+[rochak agrawal] 08:54:12
+which is used for the container lifecycle, then these are the common commands, then these are the management commands. For example, if you want to find out the network-related command, so you will just say docker.
+
+[rochak agrawal] 08:54:26
+network.
+
+[rochak agrawal] 08:54:28
+And you will hear Connect, Create, Disconnect, Inspect, LS, Guru, and Adam.
+
+[rochak agrawal] 08:54:34
+Okay, so from here, you can…
+
+[rochak agrawal] 08:54:38
+And it is a matter of practice. You will get to know what type of command you want to run.
+
+[rochak agrawal] 08:54:43
+Second option is, if you go to, uh, the Google, uh, link.
+
+[rochak agrawal] 08:55:04
+In the material, I have already uploaded this command sheet.
+
+[Vaibhav Gupta] 08:55:09
+Yeah, cheat sheet.
+
+[rochak agrawal] 08:55:10
+Yeah? So here you are going to find all the commands and what they are doing.
+
+[rochak agrawal] 08:55:15
+So you can see, lifecycle, command, docker stop, docker start.
+
+[rochak agrawal] 08:55:20
+Every command I have what you are going to use commonly is there.
+
+[rochak agrawal] 08:55:27
+Okay, so I have uploaded, already uploaded two documents.
+
+[rochak agrawal] 08:55:31
+So general commands, installation, images, containers. So everything is listed out there. So whatever the command docker exec we have used, docker logs, right?
+
+[rochak agrawal] 08:55:42
+Docker container stats, Docker login behaviors, so all those are there.
+
+[rochak agrawal] 08:55:47
+Okay.
+
+[Vaibhav Gupta] 08:55:50
+Right now, uh, what we are challenging, I'm facing, like, uh, I'm just using the commands, but not able to, like, uh, get it, but because of, uh, I'm, like, doing Google, or by using the, like, AI mode, so I'm taking the commands from there.
+
+[rochak agrawal] 08:55:54
+Hmm?
+
+[rochak agrawal] 08:56:06
+No, but whatever the command we are doing, we are explaining every command. So, for example.
+
+[Vaibhav Gupta] 08:56:10
+No, no, no, that's the thing is, like, I'm not able to remember that commands, because if you practice, so you can do that.
+
+[rochak agrawal] 08:56:15
+So you would see… I'll tell you, you do not need to remember the commands nowadays, right?
+
+[Vaibhav Gupta] 08:56:19
+Mm-hmm. Mm-hmm.
+
+[rochak agrawal] 08:56:21
+Even, see, if you are remembering the commands in today's scenario.
+
+[Vaibhav Gupta] 08:56:26
+Mm-hmm.
+
+[rochak agrawal] 08:56:27
+And see, when you will be working Docker day in and out, let's say you got deployed into a project where you are building the images, working the Docker image, deploying the containers, right?
+
+[Vaibhav Gupta] 08:56:41
+Mm-hmm.
+
+[rochak agrawal] 08:56:42
+These commands, you do not need to remember, they will come on your fingertips with the help of practice.
+
+[rochak agrawal] 08:56:48
+And, see, when you are saying Google…
+
+[rochak agrawal] 08:56:50
+Nowadays, in every company, there is a LLM available to everyone.
+
+[Vaibhav Gupta] 08:56:55
+Mm-hmm.
+
+[rochak agrawal] 08:56:56
+Either it will be Claude, Copilot, Gemini, whatever it is. So… and don't worry about the syntax. Like, I… I'm… I'm…
+
+[rochak agrawal] 08:57:04
+I have made certain syntax wrong in some of the commands. You go to Gemini and correct the syntax. I think at this point, in the technological advancement, what we are having right now.
+
+[rochak agrawal] 08:57:15
+we do not need to focus and worry much about my syntax is correct or wrong, uh, I am not remembering the command. These things are obsolete. You… what you need to understand is, if there is a command.
+
+[rochak agrawal] 08:57:28
+What it is doing, if you are able to understand that or not, that should be your priority.
+
+[rochak agrawal] 08:57:34
+So, for example, whatever the command we have run, if you say, I did not understand this command, that is the right question.
+
+[rochak agrawal] 08:57:45
+Because
+
+[rochak agrawal] 08:57:46
+And not only about Docker, we go to Kubernetes, we go to Ansible, we will learn Terraform.
+
+[Vaibhav Gupta] 08:57:52
+Mm-hmm.
+
+[rochak agrawal] 08:57:52
+Syntax and remembering the command has become obsolete now.
+
+[rochak agrawal] 08:57:59
+I I know the people see um.
+
+[rochak agrawal] 08:58:02
+Concept, absolutely, absolutely, you should be aware, because.
+
+[rochak agrawal] 08:58:06
+If you don't understand… so, for example, if you do not know what is the positional parameter, right?
+
+[rochak agrawal] 08:58:12
+then you may not be able to implement it fully. But if you say… see, right now, if you ask me.
+
+[rochak agrawal] 08:58:20
+And I'm being very honest with you. Uh, so there is two commands in, uh, Linux, which is called the SCD and AWK.
+
+[rochak agrawal] 08:58:30
+which are the streamlines editor. So, for example, when you are using Microsoft Word, you do a Ctrl-H to replace something, Ctrl-F to find something, correct?
+
+[Vaibhav Gupta] 08:58:43
+Hmm.
+
+[rochak agrawal] 08:58:44
+Similarly, in Unix, let's say if you have a large file and you want to replace something, the multiple instances of that, you want to replace it. So then there is SVD editor, which is called the stream editor, and there is a AWK command.
+
+[rochak agrawal] 08:58:59
+Now, I'm using this AWK command from…
+
+[rochak agrawal] 08:59:03
+Like, you can see tensile here.
+
+[rochak agrawal] 08:59:06
+If you today also ask me, you write an ADK command into it, I would not be able to.
+
+[rochak agrawal] 08:59:12
+Okay.
+
+[rochak agrawal] 08:59:14
+But I know what AWS command does, AWK command does, and so previously when the, uh, this, um…
+
+[rochak agrawal] 08:59:23
+LLMs were not there. I simply, like, you go to Google, you go to documentation, and find out the syntax, and then structure your command. Nowadays, I do not need to do even that as well.
+
+[rochak agrawal] 08:59:37
+Correct. And then…
+
+[Vaibhav Gupta] 08:59:37
+Yeah.
+
+[rochak agrawal] 08:59:39
+Uh, so…
+
+[rochak agrawal] 08:59:40
+That's what I'm saying. If we are running some command, which you are not able to understand what it is doing.
+
+[rochak agrawal] 08:59:47
+Then it is a right question. We should be understand what it is doing.
+
+[rochak agrawal] 08:59:51
+But if you say, I don't remember the command, how I will going to remember the command? See, from a Docker perspective, I have told you two ways, right?
+
+[rochak agrawal] 09:00:01
+I have given you all the commands, all the common commands which we will be… which we have used or will be using.
+
+[rochak agrawal] 09:00:06
+But apart from it, also…
+
+[rochak agrawal] 09:00:09
+It is not very important for us at this moment, or for the matter of fact, for not anyone.
+
+[Vaibhav Gupta] 09:00:16
+During interview, it's not, uh, face challenges, like, uh…
+
+[rochak agrawal] 09:00:18
+No, no one is going to ask you, write a command, for example, Webho. Okay, so, see, for example, if someone is… see, of course, they are going to… if you say, let's say someone is asking you.
+
+[Vaibhav Gupta] 09:00:22
+Okay.
+
+[rochak agrawal] 09:00:30
+what is a multi-stage build, okay? So then they… you have… you will explain what is a multi-stage build, why you are going to use it. Then they will… they may ask you for your experience on the multi-stage build.
+
+[rochak agrawal] 09:00:43
+Okay.
+
+[rochak agrawal] 09:00:44
+So, you will explain, let's say I have built a Go image, where I, in the previous stage, I was able to, uh… previously, I was doing everything in a one Docker file, where…
+
+[rochak agrawal] 09:00:57
+All the artifacts and everything I was generating in the one image itself and that is what making my image very heavy, correct? But then I use it as a multi-stage build and then in that I used one stage where I was building and passing the artifact to my second stage.
+
+[rochak agrawal] 09:01:13
+And that second stage is my final stage, which is making my image very, very slimmer.
+
+[rochak agrawal] 09:01:21
+or very less in size. Correct. Now.
+
+[rochak agrawal] 09:01:24
+You're see.
+
+[rochak agrawal] 09:01:27
+This Docker image, what you're creating.
+
+[rochak agrawal] 09:01:32
+it is… even though you are using the Go application, I can use the Go application, but still, our Docker images, or the Docker file.
+
+[rochak agrawal] 09:01:42
+files can look very, very, very different.
+
+[rochak agrawal] 09:01:46
+They might look same, they might look different. So, see, there is no standard or…
+
+[rochak agrawal] 09:01:52
+Um, you cannot say my Docker file is correct, your Docker file is wrong. Okay?
+
+[rochak agrawal] 09:01:57
+It's just, you need to understand your business requirement, and then…
+
+[rochak agrawal] 09:02:02
+you need to build your Docker file or the Docker command accordingly. And it is true with your… which we discussed in the… while designing the CI-CD pipeline also. For example, I…
+
+[rochak agrawal] 09:02:16
+I… I have… I have a Java running… running a Java application.
+
+[Vaibhav Gupta] 09:02:20
+Mm-hmm.
+
+[rochak agrawal] 09:02:21
+And I want to deploy it on NomGet. Now…
+
+[rochak agrawal] 09:02:25
+I can do that in 10 different ways, using the same Jenkins, same Maven, and same Tomcat. Three tools.
+
+[rochak agrawal] 09:02:32
+I can still do it in a three uh five or seven different ways.
+
+[rochak agrawal] 09:02:37
+Nothing is wrong and right.
+
+[rochak agrawal] 09:02:39
+Okay? When… and I'm telling you from an experience perspective, when you go for a DevOps interview, or a cloud interview specifically.
+
+[rochak agrawal] 09:02:49
+Okay.
+
+[rochak agrawal] 09:02:50
+People are going to look your conceptual knowledge.
+
+[rochak agrawal] 09:02:55
+The reason for that is every DevOps project.
+
+[rochak agrawal] 09:02:59
+Can be very different from another project.
+
+[rochak agrawal] 09:03:01
+Okay, for example, you learned Jenkins. Okay, now you say, I know five tools. Jenkins, Docker, Kubernetes, Ansible.
+
+[rochak agrawal] 09:03:11
+and Terraform. Now, there is a requirement.
+
+[rochak agrawal] 09:03:16
+which you might be a good fit, but what they need are, uh, they need Docker, Kubernetes, Ansible, Terraform.
+
+[rochak agrawal] 09:03:25
+and GitHub Actions, or, let's say, Azure DevOps.
+
+[rochak agrawal] 09:03:28
+Now you say, I know Jenkins pipeline, but I do not know Azure pipelines.
+
+[rochak agrawal] 09:03:34
+That's very okay. People are not going to judge you because you do not know Azure pipelines.
+
+[rochak agrawal] 09:03:42
+Because, see, there are n number of the tools available in the market, what they are going to do or what is generally followed. Now, maybe out of 100 interviews, there may be three, four interviews where they will look for the specific tool knowledge. But see, when we talk about something, we talk about the general trends.
+
+[rochak agrawal] 09:03:59
+It is absolutely okay that you do not know Azure DevOps or Azure Pipeline or a GitHub Action. But if you know Jenkins, you should be good.
+
+[Vaibhav Gupta] 09:04:00
+Hmm.
+
+[rochak agrawal] 09:04:08
+How the pipeline works? What is the stage? So, the next question they will ask you is.
+
+[rochak agrawal] 09:04:14
+Can you explain me, uh, the pipeline which you created end-to-end? What other stages were there, how developers were checking in the code, how your build was getting created, and how the deployment is happening?
+
+[rochak agrawal] 09:04:25
+If you are able to explain that properly.
+
+[rochak agrawal] 09:04:28
+You're doing it in a Jenkins, you're doing it in an Azure DevOps, you're doing it as a negative action.
+
+[rochak agrawal] 09:04:35
+Because, see, it is… in the end, this is a tool-specific knowledge. If you know…
+
+[rochak agrawal] 09:04:40
+the flow and the concept, you can easily switch the tools. In fact, um, I'll give you, uh, a very, very, um…
+
+[Vaibhav Gupta] 09:04:40
+Hmm.
+
+[rochak agrawal] 09:04:49
+Big example of like my experience.
+
+[rochak agrawal] 09:04:52
+I am an ex-AWS, okay? I worked in AWS for around…
+
+[rochak agrawal] 09:04:59
+Bernarda Hofier?
+
+[rochak agrawal] 09:05:01
+When I gave interview in AWS.
+
+[Vaibhav Gupta] 09:05:04
+Hmm.
+
+[rochak agrawal] 09:05:06
+Um, I was of an understanding that, um…
+
+[rochak agrawal] 09:05:09
+when you're going to go into AWS.
+
+[rochak agrawal] 09:05:13
+that you should know AWS, correct? You should be an expert in AWS, then only they are going to take you, correct?
+
+[rochak agrawal] 09:05:20
+When I gave the interview in AWS, I got a call from the recruiter. I told him that I have never worked on AWS, and in fact, I did not know anything about AWS. I was…
+
+[rochak agrawal] 09:05:30
+Working in Azure, I had an experience of Azure, and uh…
+
+[rochak agrawal] 09:05:37
+I had some working knowledge of Google Cloud at that point of time.
+
+[Vaibhav Gupta] 09:05:40
+Mm-hmm.
+
+[rochak agrawal] 09:05:42
+So the recruiter said, okay, yeah, we can manage with it. But still, I was very skeptical, uh, if that is going to happen or not, because… so I… I went into interview with the zero expectation, because I knew that I don't know anything about AWS, so how can I get selected?
+
+[Vaibhav Gupta] 09:05:55
+Mm-hmm.
+
+[rochak agrawal] 09:05:57
+In AWS, there were six rounds.
+
+[rochak agrawal] 09:06:00
+Okay.
+
+[Vaibhav Gupta] 09:06:01
+Oh my god.
+
+[rochak agrawal] 09:06:02
+And in those 6 rounds.
+
+[rochak agrawal] 09:06:05
+No one has asked me a single question about AWS.
+
+[rochak agrawal] 09:06:12
+Okay, the reason?
+
+[rochak agrawal] 09:06:15
+The reason was, if you compare all these three clouds.
+
+[Vaibhav Gupta] 09:06:19
+Hmm.
+
+[rochak agrawal] 09:06:20
+they are 90% similar to each other. Like, all the services, virtual machine, are there in AWS, which we call it as an EC2 instance. Uh, then virtual machine is Azure, we call it as Azure virtual machine, and GCP, we call it as a computer engine. Correct? So, 90% services are similar to each other. You talk about.
+
+[rochak agrawal] 09:06:39
+databases, you talk about, uh, compute, you talk about networking, you talk… you talk about storage. Here, we call it as a S3 bucket. In Azure, we call it as a blob. And, uh…
+
+[rochak agrawal] 09:06:51
+GCS bucket, Google Cloud bucket, we call it as an NGCP, right? So, the focus in all those six rounds, because it was very clear when I go to an interview, I clearly told them that I don't know AWS, right? So, they say, how you're going to build, uh.
+
+[Vaibhav Gupta] 09:06:55
+Mm-hmm.
+
+[Vaibhav Gupta] 09:07:04
+Mm-hmm.
+
+[rochak agrawal] 09:07:07
+They will give me a scenario, and they say, how are you going to build it on Azure?
+
+[rochak agrawal] 09:07:11
+Because… and in the end, I asked them, like, I don't know anything about AWS, why are you selecting me? You see, if you can build a scalable, fault-tolerant architecture on Azure, you can very well build on AWS as well.
+
+[Vaibhav Gupta] 09:07:25
+Right, because, uh, Azure is more, like, more conceptual and more, uh, like, in depth, but, uh, AWS is so simple, like, we can do that, so, I think…
+
+[rochak agrawal] 09:07:25
+To send them out.
+
+[rochak agrawal] 09:07:35
+No, no, it's not about which one is simple. See, some people will say AWS is simple, some people will say Azure is simple. Okay. See, the point is not the comparison. Point is they, they all are exactly, the working model is exactly the same.
+
+[Vaibhav Gupta] 09:07:37
+Mm-hmm.
+
+[Vaibhav Gupta] 09:07:51
+Right.
+
+[rochak agrawal] 09:07:51
+For example, if you talk about the networking, you say it is BPC, but in Azure we call it as a VNet, but it is same thing, correct?
+
+[Vaibhav Gupta] 09:07:53
+Thank you.
+
+[rochak agrawal] 09:08:00
+So that is what, um, we as… I'm trying to explain it to you, even if you go to DevOps.
+
+[rochak agrawal] 09:08:06
+It is the same thing. Someone will, uh, using you, the AWS DevOps, where AWS itself has the services like CodePipeline, CodeBuild, CodeCommit.
+
+[rochak agrawal] 09:08:16
+Okay, so if you have not worked on that, does not mean they are not going to select you.
+
+[Vaibhav Gupta] 09:08:16
+Hmm.
+
+[rochak agrawal] 09:08:22
+They will select you based on what experience you are having, and if that experience is good enough or not.
+
+[Vaibhav Gupta] 09:08:29
+Wait.
+
+[rochak agrawal] 09:08:30
+Right? So, my focus and my, uh, suggestion to everyone would be.
+
+[rochak agrawal] 09:08:36
+Then on…
+
+[rochak agrawal] 09:08:37
+N number of the tools.
+
+[rochak agrawal] 09:08:40
+in every area of DevOps.
+
+[rochak agrawal] 09:08:43
+mostly in the CIE space, there are 10, 15 tools are there.
+
+[rochak agrawal] 09:08:49
+Configuration management, there is Ansible, Chef, Puppet, IAC, Terraform is there, CloudFormation is there. Azure launched something very new. It's called Bicep is there. Then in Amazon, CDK is there. In Google, there's a deployment manager is there.
+
+[rochak agrawal] 09:09:06
+monitoring, there are hundreds of the tools available. Hundreds, I'm seeing. Okay, uh, then, uh, for scanning, SonarQube, Tribi, Snyk.
+
+[rochak agrawal] 09:09:18
+Multiple tools are there in that space also. So the focus…
+
+[rochak agrawal] 09:09:24
+Your focus should not be.
+
+[rochak agrawal] 09:09:27
+To know every tool.
+
+[rochak agrawal] 09:09:29
+at this moment, okay? Your focus should be, if I know Jenkins.
+
+[rochak agrawal] 09:09:34
+or if I know Docker, or if I know Kubernetes, I should know everything about it. When I'm seeing everything, which is…
+
+[rochak agrawal] 09:09:42
+relevant for a DevOps engineer. For example, in Kubernetes, if you say, there is a developer exam also. So that, there they will teach Kubernetes from a developer point of view, which is not necessary for us.
+
+[rochak agrawal] 09:09:54
+Okay, what is required?
+
+[rochak agrawal] 09:09:55
+You should build the expertise in one tool. When you know one tool.
+
+[rochak agrawal] 09:10:01
+then you go to other tools. So, for example, even… it is not…
+
+[rochak agrawal] 09:10:06
+Fully honesty, someone who is a 2 years, 4 years, 6 years of experience. Even people with 15, 20 years of experience, they don't.
+
+[rochak agrawal] 09:10:14
+know each one of them. So, example, I have… in configuration management, there is another tool called Salt. Mostly, we talk about three tools, Chef.
+
+[rochak agrawal] 09:10:24
+Puppet, Ansible. But there is a fourth tool is also available, which is equally very good. It's called Salt.
+
+[rochak agrawal] 09:10:29
+Now, I have never worked on salt.
+
+[rochak agrawal] 09:10:33
+in whole seven, eight years from the time the configuration management came, right?
+
+[rochak agrawal] 09:10:38
+But if I go to any of the interview and where salt is required.
+
+[rochak agrawal] 09:10:44
+I don't think they are going to reject me, because I have not worked on salt.
+
+[rochak agrawal] 09:10:48
+Because I can showcase my experience on Ansible, I can showcase my experience on Chef, whatever work I have done.
+
+[rochak agrawal] 09:10:55
+And I know Salt in the backend would be exactly the same how Ansible and Shep are working.
+
+[rochak agrawal] 09:11:01
+Maybe some…
+
+[rochak agrawal] 09:11:02
+as I said, 85-90%, they all are similar. Of course, every tool will have its own USPs, um, which you are going to find in that particular tool, but that is very minimal, 5-7%.
+
+[Vaibhav Gupta] 09:11:16
+Mm-hmm.
+
+[rochak agrawal] 09:11:17
+Okay, so.
+
+[rochak agrawal] 09:11:20
+When you go to an DevOps interview.
+
+[rochak agrawal] 09:11:24
+any… see, DevOps and CloudAs are very overlapping in nature nowadays, okay?
+
+[rochak agrawal] 09:11:32
+most of the DevOps job will require certain knowledge of cloud and cloud…
+
+[rochak agrawal] 09:11:36
+DevOps. It is very overlapping. Even when we interview some of the people, we look out for some DevOps knowledge, some cloud knowledge.
+
+[rochak agrawal] 09:11:47
+So the focus, whatever you are writing in the resume.
+
+[rochak agrawal] 09:11:52
+Most of the time, I'm telling you this, most of the time.
+
+[rochak agrawal] 09:11:58
+If what you're writing… see, when you… when you apply to a job, your resume goes through a shortlisting process, okay? If your resume is shortlisted, for example.
+
+[rochak agrawal] 09:12:09
+Then…
+
+[rochak agrawal] 09:12:11
+People are interested to interesting interested in.
+
+[rochak agrawal] 09:12:16
+to know what you have worked. Because, see, if I'm shortlisting your resume for a job interview, it means your resume is good enough for me.
+
+[rochak agrawal] 09:12:26
+For my job, correct?
+
+[rochak agrawal] 09:12:28
+Then most more of the job interviews.
+
+[rochak agrawal] 09:12:32
+If you are able to explain what you have written in your resume.
+
+[rochak agrawal] 09:12:38
+It is done.
+
+[rochak agrawal] 09:12:40
+Most of the time.
+
+[rochak agrawal] 09:12:41
+Okay, so if you… I have seen many people, they will write.
+
+[rochak agrawal] 09:12:46
+n number of the things which they have not even heard about.
+
+[rochak agrawal] 09:12:50
+So then it creates a distrust.
+
+[rochak agrawal] 09:12:54
+Now, um, we conducted a weekend drive last, last month, and there is a person came, uh, with a very nice resume, okay? And if you see, uh, look at that resume, it was very impressive.
+
+[rochak agrawal] 09:13:07
+So, of course, the resume got shortlisted, and when we called that person to the…
+
+[rochak agrawal] 09:13:15
+interview and we asked the thing he said no I don't know this I don't know this and we asked him how how could you like how could you write those in in your profile so he said I give the JD to ChatGPT and upload my resume and ask.
+
+[rochak agrawal] 09:13:31
+ChatGPT to prepare a resume.
+
+[rochak agrawal] 09:13:34
+I should do.
+
+[rochak agrawal] 09:13:36
+scene.
+
+[rochak agrawal] 09:13:36
+Everything should be of our help. We cannot rely 100% on ChatGPT or Gemini.
+
+[rochak agrawal] 09:13:43
+So, if you are building your resume also.
+
+[rochak agrawal] 09:13:47
+Never…
+
+[rochak agrawal] 09:13:49
+Write something.
+
+[rochak agrawal] 09:13:50
+which you cannot explain.
+
+[rochak agrawal] 09:13:53
+Because, see, Resume is the interface of you.
+
+[rochak agrawal] 09:13:57
+They…
+
+[rochak agrawal] 09:13:58
+Your resume is the only medium by which an interviewer is judging you.
+
+[rochak agrawal] 09:14:06
+Correct? I don't know about you personally, what is your experience, what is your struggles at your job.
+
+[Vaibhav Gupta] 09:14:07
+Thank you.
+
+[rochak agrawal] 09:14:12
+It is your resume that I am in my hand, and when I'm reading your resume, then a certain impression of a candidate is emerging in my mind.
+
+[rochak agrawal] 09:14:22
+Correct. So then, if you are writing something which you cannot explain.
+
+[rochak agrawal] 09:14:27
+Then it is of no use to write that.
+
+[rochak agrawal] 09:14:32
+Right? So we are going a little off topic, but the point here, WebO, is you do not need to…
+
+[rochak agrawal] 09:14:38
+Remember all these commands and everything. Focus on the conceptual knowledge.
+
+[rochak agrawal] 09:14:44
+So, if any command we are writing…
+
+[Vaibhav Gupta] 09:14:47
+You don't believe, actually, I'm also ex-Amazonian, so the thing is, like, I'm facing the issues right now here, like, I do the AWS, I can perform AWS, everything in terms, but the thing is, like.
+
+[rochak agrawal] 09:14:57
+Okay.
+
+[Vaibhav Gupta] 09:15:01
+from, uh, right now, when I, uh, go in the market outside and for the DevOps, so, like, I'm just confused and a little bit, like, in n number of technologies in DevOps, for example, you said 10 to 12 n tools are here, so in which tool I have do my so best so I can, uh, not, uh, face our rejections or…
+
+[rochak agrawal] 09:15:11
+Got it?
+
+[Vaibhav Gupta] 09:15:21
+Uh, like, challenges, so that's why my conceptual, like, my mind is something confusion about that.
+
+[rochak agrawal] 09:15:29
+Sorry, Paper, can you come again?
+
+[Vaibhav Gupta] 09:15:31
+I mean, uh, I, uh, previously worked with Amazon, so I do the performance in AWS also, uh, can do very betterly, and I have a knowledge of AWS, so I do that. But the thing is, the challenges I'm facing is, like, when I, uh.
+
+[rochak agrawal] 09:15:35
+Okay.
+
+[Vaibhav Gupta] 09:15:47
+go for the DevOps positions and for the interview with me. So, the challenges is, like, what I'm facing, like, uh, they ask anything from that. So, uh, like.
+
+[Vaibhav Gupta] 09:15:59
+in DevOps, there are a number of tools, as you explained, 10 to 12 tools are there. So, in that end tools, which tools I have to do for my best, and so I not face any challenges or any rejections here. So, that is easy for me to, like.
+
+[rochak agrawal] 09:16:01
+Get it?
+
+[Vaibhav Gupta] 09:16:16
+Took, uh, you know…
+
+[Vaibhav Gupta] 09:16:18
+a very good place in the industry, so that's why I'm just confused in that.
+
+[rochak agrawal] 09:16:23
+So that is what I tried to explain. So we have picked up the tools which is most widely adopted and accepted. So for example, if you talk about the configuration management, so we are going to study Ansible right now.
+
+[Vaibhav Gupta] 09:16:27
+Mm-hmm.
+
+[Vaibhav Gupta] 09:16:37
+Mm-hmm.
+
+[rochak agrawal] 09:16:38
+There are a number of other tools, like, as I said, um…
+
+[rochak agrawal] 09:16:42
+Puppet Chef, Salt is there, but if you know Ansible, I think that should be good enough.
+
+[rochak agrawal] 09:16:48
+So, as you already said, there are…
+
+[rochak agrawal] 09:16:51
+multiple tools are available, okay? And, like, I also don't know some of the tools, because I have not worked on them. If needed, I can very easily ramp up myself on those tools. For example, if you give me a project on SALT.
+
+[Vaibhav Gupta] 09:16:54
+Hmm.
+
+[Vaibhav Gupta] 09:17:00
+Yeah.
+
+[rochak agrawal] 09:17:07
+Uh, today, it will take me 3-4 days to ramp up on Salt, and since I have experience of Ansible and Chef.
+
+[rochak agrawal] 09:17:14
+a little bit of puppet as well, I can very well easily do so.
+
+[Vaibhav Gupta] 09:17:18
+Mm-hmm.
+
+[rochak agrawal] 09:17:18
+So, that is what, um, uh, Devo, I'm trying to explain. See, you…
+
+[rochak agrawal] 09:17:24
+cannot… it is not humanly possible to know each tool at this moment.
+
+[rochak agrawal] 09:17:30
+Okay, uh, because in monitoring only, there are, uh, 25, 30 tools are there, and every tool is very heavy. If you compare ELK, Splunk… now, Splunk, previously, um, Splunk was used to be included in the DevOps job.
+
+[rochak agrawal] 09:17:44
+But now Splunk was so complex that now there is a separate category of job for a Splunk admin, or a Splunk user.
+
+[Vaibhav Gupta] 09:17:52
+Mm-hmm.
+
+[rochak agrawal] 09:17:53
+So Splunk nowadays not considered in DevOps, right? So that is where…
+
+[rochak agrawal] 09:17:59
+We have chosen.
+
+[rochak agrawal] 09:18:00
+The tools which is widely accepted.
+
+[rochak agrawal] 09:18:05
+Mostly used?
+
+[rochak agrawal] 09:18:07
+and the tools which will give you end-to-end knowledge about the particular space. For example.
+
+[rochak agrawal] 09:18:14
+there are tools available in a containerization space also. So there is… RKT is one of them, then there is another tool list there.
+
+[rochak agrawal] 09:18:23
+But the point is, Docker is the de facto standard of the containerization. So if you, uh… if you know Docker, and…
+
+[rochak agrawal] 09:18:32
+in future, if you need to work on RKT, you can very well do so. And in the interview, no one is going to ask you an RKT question. Most of the time, 99% of the time. Until and unless they need someone who is going to develop RKT itself.
+
+[Vaibhav Gupta] 09:18:46
+Mm-hmm.
+
+[rochak agrawal] 09:18:46
+Right.
+
+[rochak agrawal] 09:18:47
+The tool we are using is good enough so that you can start building your foundations and then start going into the interviews. We have three, four projects in this DevOps only.
+
+[rochak agrawal] 09:19:02
+where we will do end-to-end pipeline. So, if you explain these end-to-end pipeline, and see, uh, the very important thing, uh, for an interview is.
+
+[rochak agrawal] 09:19:14
+Not to explain what you have done, okay?
+
+[rochak agrawal] 09:19:18
+But…
+
+[rochak agrawal] 09:19:19
+to explain the follow-up questions.
+
+[rochak agrawal] 09:19:22
+Uh, so there is something called the break glass scenarios, okay?
+
+[Vaibhav Gupta] 09:19:25
+Okay.
+
+[rochak agrawal] 09:19:26
+you need to be very well aware about the break glass scenarios in every concept. So, for example, let's say.
+
+[rochak agrawal] 09:19:33
+Someone will ask you, what is your CICD pipeline doing? Good. Now, if you only have the theoretical knowledge.
+
+[rochak agrawal] 09:19:40
+then you will say, okay, I'm developing the check-in, the code is developed by the developer, check-in by the developer, my Maven build is doing this, a unit test is happening, blah blah blah blah, and you explain all your pipeline.
+
+[Vaibhav Gupta] 09:19:41
+Hmm.
+
+[Vaibhav Gupta] 09:19:55
+Mm-hmm.
+
+[rochak agrawal] 09:19:56
+But if you have a real-time experience, then you will come to know that, um.
+
+[rochak agrawal] 09:20:02
+What happens if, let's say, someone will ask you, let's say, your tribute scan got failed?
+
+[rochak agrawal] 09:20:07
+Okay, now what you will do?
+
+[rochak agrawal] 09:20:11
+So these type of question being asked now.
+
+[rochak agrawal] 09:20:15
+people will not ask, for example, if it is failed in Jenkins or Azure Pipeline.
+
+[rochak agrawal] 09:20:20
+They will ask, what if your security scan fail? Now, what you will do in that case? Your Docker build is failing. Now, what can be the reason for Docker build failure, and how you are going to resolve it? That's the first question. Second question people generally ask is.
+
+[rochak agrawal] 09:20:36
+When you give… when you explain this, let's say my Docker build is failing because I have used the wrong version of Python in my image, in my Docker file, which was not compatible. Any… any example, right? And because of that, my container image was not getting built, and the subsequent stages, I was running in a…
+
+[rochak agrawal] 09:20:55
+sequential manner, and that got failed. Now, you see.
+
+[rochak agrawal] 09:21:00
+People may ask, the next question is, what is the typical issues you face.
+
+[rochak agrawal] 09:21:08
+Doing the Docker build.
+
+[rochak agrawal] 09:21:12
+So now in the interviews these type of questions are being asked and I always do this.
+
+[rochak agrawal] 09:21:22
+Now, once you know the fundamentals, see, of course, uh, to do all of that, you need to be very good with the fundamentals. That's the first thing, correct? If you don't know what is Docker, what is the Docker volume, what is Docker network, and so on, so forth.
+
+[rochak agrawal] 09:21:36
+then you will not be able to understand the advanced scenarios, for example. Correct?
+
+[Vaibhav Gupta] 09:21:43
+Thank you.
+
+[rochak agrawal] 09:21:43
+The very good way of interview preparation nowadays is…
+
+[rochak agrawal] 09:21:48
+Very good.
+
+[rochak agrawal] 09:21:49
+You go to…
+
+[rochak agrawal] 09:21:51
+So, for example, um…
+
+[rochak agrawal] 09:21:54
+You prepare your resume well, okay?
+
+[rochak agrawal] 09:21:57
+Now you give your resume to Gemini or Claude.
+
+[rochak agrawal] 09:22:02
+And ask them to conduct a mock interview.
+
+[rochak agrawal] 09:22:05
+Okay?
+
+[rochak agrawal] 09:22:08
+Every day you conduct a mock interview. In 10, 15 days, you will get all the interview questions. What type of question is being asked?
+
+[rochak agrawal] 09:22:17
+Many… I have suggested this to many people, and it is very, very, very effective.
+
+[rochak agrawal] 09:22:23
+Okay? And not only from the interview, mock interview, you can do the help of interview preparation also. So, for example, you tell, uh…
+
+[rochak agrawal] 09:22:35
+Once, let's say, we've done a project, okay? You upload that project to…
+
+[rochak agrawal] 09:22:40
+Gemini or Claude.
+
+[rochak agrawal] 09:22:42
+and ask them.
+
+[rochak agrawal] 09:22:44
+Can you please help me with the break glass scenarios for this project? Where it can fail, how it can fail, what can be the interview question, what can be the follow-up questions on that?
+
+[rochak agrawal] 09:22:54
+That way, we need to prepare. See, we have to understand that we have a limited hands-on experience.
+
+[rochak agrawal] 09:23:02
+How we can…
+
+[rochak agrawal] 09:23:04
+make up for that is the way that we need to work on that. In a most…
+
+[rochak agrawal] 09:23:10
+effective and most.
+
+[rochak agrawal] 09:23:13
+time-constrained situation. See, if you go to learn Docker and Kubernetes, it is going to take a lot of time in that itself.
+
+[Vaibhav Gupta] 09:23:15
+Mm-hmm.
+
+[rochak agrawal] 09:23:23
+Right? So that is where we need to optimally.
+
+[rochak agrawal] 09:23:26
+do the things, and this is the best way nowadays. Like, they will give you, um, easy to advance question. I can give you certain prompts, uh, which is going to help you, uh.
+
+[rochak agrawal] 09:23:37
+start your interview preparation with Claude. I have the MD files are available with me, which I've created the prompts. Okay, you give these prompts to any of the LLMs, they are going to give you, so example, you say, I want to have.
+
+[rochak agrawal] 09:23:53
+Uh, this is a project I have done, two, three projects you gave, uh, to Claude, and then, um…
+
+[rochak agrawal] 09:23:59
+you are… once you upload the prompt, which I can give you, they will give you the easy question, they can give you medium question, it will give you hard question, it will give you scenario-based question, it will give you the break glass question, and if you prepare those.
+
+[rochak agrawal] 09:24:14
+Right, I think it would not be very tough for anyone to clear the interviews.
+
+[rochak agrawal] 09:24:21
+DevOps interviews, generally, if you ask me.
+
+[rochak agrawal] 09:24:26
+are very easy in comparison to other interviews.
+
+[rochak agrawal] 09:24:29
+development or data science or machine learning. These are very, you can say.
+
+[rochak agrawal] 09:24:36
+very, very, uh, easy interviews in comparison to other interviews. If you know the fundamentals, conceptual.
+
+[rochak agrawal] 09:24:44
+It is not very tough to crack a DevOps interview.
+
+[Vaibhav Gupta] 09:24:50
+the same challenge I'm facing, like, I'm new in DevOps, so that's why I'm facing challenges.
+
+[rochak agrawal] 09:24:53
+I'm sorry, uh, Bebo?
+
+[Vaibhav Gupta] 09:24:56
+I'm saying, like, I'm new in DevOps, so that's why I'm facing some challenges.
+
+[rochak agrawal] 09:25:00
+Yeah, of course, but that's the reason you are in this class, I think.
+
+[Vaibhav Gupta] 09:25:05
+Yeah, yes, yes, yes. And, uh, one more thing, recently I, uh, like, faced an interview, in which I just reject because of, uh, they asked me about a kube control manager, like, uh, the JD requirement is, like, for AWS and Linux kit.
+
+[rochak agrawal] 09:25:06
+Amazing.
+
+[rochak agrawal] 09:25:10
+Mm-hmm.
+
+[rochak agrawal] 09:25:16
+Hmm.
+
+[Vaibhav Gupta] 09:25:20
+Docker, and, uh, like, uh, Jenkins and all, like, just Kubernetes. So, I give some questions, uh, like, but the thing is, like, I face the challenges, and they ask about Kube Control Manager and the functionality or something.
+
+[rochak agrawal] 09:25:25
+Mmhm.
+
+[Vaibhav Gupta] 09:25:35
+I just don't know about that. So that's the thing, I'm, like, just facing these issues, and as you… as you provide the prompt, so it's really helpful for me to…
+
+[rochak agrawal] 09:25:46
+Of course, of course, see, um, I'm going to provide you the prompts for, uh, your projects, as well as for a particular… Okay, so that, uh, because, um…
+
+[Vaibhav Gupta] 09:25:47
+Yeah, yeah, yeah.
+
+[Vaibhav Gupta] 09:25:53
+Yes, yes, yes.
+
+[Vaibhav Gupta] 09:25:55
+Yes, yes, yes.
+
+[rochak agrawal] 09:25:57
+as I said, we need to optimally, uh, need to do the things in…
+
+[Vaibhav Gupta] 09:26:02
+Mm-hmm.
+
+[rochak agrawal] 09:26:04
+Uh, so what is your total experience, Webho?
+
+[Vaibhav Gupta] 09:26:08
+Uh, actually, uh, I have almost, uh, 3.0… 3 to 4 years experience, so almost, uh, 2.8 years I was in Amazon, and after that, I joined another company in Noida.
+
+[rochak agrawal] 09:26:12
+Okay.
+
+[rochak agrawal] 09:26:15
+Okay.
+
+[rochak agrawal] 09:26:20
+Okay, understood. So yeah, the prompts which I can share with everyone is going to help you prepare for an interview in a very, very good manner. I can say that.
+
+[Vaibhav Gupta] 09:26:26
+Mm-hmm, mm-h.
+
+[Vaibhav Gupta] 09:26:35
+My really target is to crack the… my dream is to crack the Amazon again, or just for the PwC.
+
+[rochak agrawal] 09:26:43
+Okay. So, but one more thing I would say, uh, see, most of the DevOps, so JDs you see.
+
+[rochak agrawal] 09:26:50
+They are not actual jetties, they are very dummy jetties.
+
+[Vaibhav Gupta] 09:26:55
+Okay.
+
+[rochak agrawal] 09:26:55
+Okay?
+
