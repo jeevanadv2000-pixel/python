@@ -1,0 +1,3138 @@
+[rochak agrawal] 07:36:24
+Good morning, everyone. Uh, let's start.
+
+[rochak agrawal] 07:36:39
+So today, uh, we are going to start with Jenkins. That is where our actual DevOps work is going to start. So what we are going to do, uh, we will understand what Jenkins is, and then, uh, with the help of Jenkins, we are going to build one.
+
+[rochak agrawal] 07:36:55
+Maven, Java Maven application.
+
+[rochak agrawal] 07:36:58
+So before we go understand it, we need to understand some fundamental concept.
+
+[rochak agrawal] 07:37:03
+Now…
+
+[rochak agrawal] 07:37:11
+What continuous integration, uh…
+
+[rochak agrawal] 07:37:15
+provides you, okay, and why continuous integration requires. So, if we say, uh…
+
+[rochak agrawal] 07:37:21
+Like, if…
+
+[rochak agrawal] 07:37:23
+you are in a multi-developer team, okay, when multiple developers are checking their code into the source code management system. Now, we discussed in the Git that you have a merge request where you are going to merge your code with the different developers.
+
+[rochak agrawal] 07:37:39
+But, see, I am developing something, you are developing something, so that is where merging is not only… merging is only one thing. But until and unless I am not…
+
+[rochak agrawal] 07:37:51
+deploying or creating a… See, in the end, I am going to deploy the executable to my applications, to my users, right? So, till the time I am not…
+
+[rochak agrawal] 07:38:01
+Creating an executable, or building my integrated or the merged code.
+
+[rochak agrawal] 07:38:07
+I don't know if the merging is working or not, correct? So that is where…
+
+[rochak agrawal] 07:38:12
+Continuous integration is very, very, very important for a DevOps lifecycle to run.
+
+[rochak agrawal] 07:38:19
+Okay, um…
+
+[rochak agrawal] 07:38:22
+Now…
+
+[rochak agrawal] 07:38:23
+Continuous integration, a single shared machine. Okay. Single shared machine means…
+
+[rochak agrawal] 07:38:30
+Everyone merges to the same branch frequently, daily at minimum. Long-lived branches defeat the purpose. So we are going to have long-lived branches where you are going to only have the stable code.
+
+[rochak agrawal] 07:38:43
+Then fully automated build, okay?
+
+[rochak agrawal] 07:38:45
+Fully automated build means…
+
+[rochak agrawal] 07:38:49
+Once a developer checks in the code, your build should automatically trigger, okay, with no manual steps and no machine-specific setup.
+
+[rochak agrawal] 07:38:59
+An automated test suite. Now, it is up to you that you want to do the testing within the CICD pipeline or outside of the CICD pipeline. Fast feedback, okay?
+
+[rochak agrawal] 07:39:10
+If the build is failing, you will immediately get the feedback, what is the error, and…
+
+[rochak agrawal] 07:39:15
+how you are going to resolve it. A neutral build server, now…
+
+[rochak agrawal] 07:39:20
+Build runs somewhere that is not everyone's laptop, so environment differences surfaces immediately, right? So we are going to have our build server equivalent to our server, which is running on the production environment.
+
+[rochak agrawal] 07:39:32
+And…
+
+[rochak agrawal] 07:39:33
+With the help of continuous integration, I am going to fix my build at the very fast stage.
+
+[rochak agrawal] 07:39:39
+Now, with the continuous integration, there are three things. Continuous integration, continuous delivery, and continuous deployment.
+
+[rochak agrawal] 07:39:49
+Very, very famous interview question, common interview question, what is the difference between continuous delivery and continuous deployment?
+
+[rochak agrawal] 07:39:57
+Now, you see?
+
+[rochak agrawal] 07:39:59
+Continuous integration, every commit is automatically built and tested on the build server. Shared server, build server, CI server.
+
+[rochak agrawal] 07:40:09
+You can say anything.
+
+[rochak agrawal] 07:40:11
+and with a tested artifact. Every time you are doing a commit to your remote repository, that commit is going to… see, merge is a different thing. Even a single commit is going to.
+
+[rochak agrawal] 07:40:25
+push your CI server to trigger a build. So now, whatever changes you have done in that particular commit.
+
+[rochak agrawal] 07:40:31
+It will result in a, um…
+
+[rochak agrawal] 07:40:36
+executable artifact, you will… that will be deployed on your dev server. So that is called the continuous integration. Your code is continuously being deployed on the dev environment.
+
+[rochak agrawal] 07:40:48
+So that you will get to know if your… whatever changes you are working, uh…
+
+[rochak agrawal] 07:40:53
+Automatically or not.
+
+[rochak agrawal] 07:40:55
+No.
+
+[rochak agrawal] 07:40:56
+Continuous integration only talks about the dev environment.
+
+[rochak agrawal] 07:41:01
+While continuous delivery and continuous deployment, now every tested artifact is automatically prepared for the release. Deployment is one-click business decision.
+
+[rochak agrawal] 07:41:13
+While continuous deployment is every artifact that passes the pipeline goes to production with no human care. Now understand this.
+
+[rochak agrawal] 07:41:22
+Let's see…
+
+[rochak agrawal] 07:41:28
+I will have multiple developers.
+
+[rochak agrawal] 07:41:33
+Where they are going to send the code to get.
+
+[rochak agrawal] 07:41:41
+Hey
+
+[rochak agrawal] 07:41:42
+Now.
+
+[rochak agrawal] 07:41:44
+As we are seeing, the whole purpose of the continuous integration is as soon as a developer is doing a commit.
+
+[rochak agrawal] 07:41:51
+it should trigger my build process. Where you are… this is running?
+
+[rochak agrawal] 07:41:57
+See you soon.
+
+[rochak agrawal] 07:41:59
+It is going to trigger the build process.
+
+[rochak agrawal] 07:42:06
+And deploy it over the…
+
+[rochak agrawal] 07:42:09
+Devin.
+
+[rochak agrawal] 07:42:13
+Okay? So that is… you call it as a continuous integration.
+
+[rochak agrawal] 07:42:19
+Your developer is building the code. Now, as soon as someone is making a commit to the remote repository.
+
+[rochak agrawal] 07:42:25
+it will push the CI, which in our case it will be Jenkins, to trigger a build, and then the build will be deployed onto the dev environment.
+
+[rochak agrawal] 07:42:35
+Now, this is called the continuous integration. Now, you might not have only one environment, you will have multiple environments, right? For example, the…
+
+[rochak agrawal] 07:42:46
+You will have test.
+
+[rochak agrawal] 07:42:52
+staging.
+
+[rochak agrawal] 07:42:59
+And finally, production environment.
+
+[rochak agrawal] 07:43:05
+Okay, now…
+
+[rochak agrawal] 07:43:08
+As we discussed in our last class also, you do not do the build development on the test or the staging branch, or the staging environment.
+
+[rochak agrawal] 07:43:20
+Right? Uh, build process will happen at the dev environment only. Then, whatever the build you want to promote, you…
+
+[rochak agrawal] 07:43:28
+Build, deploy, or to the testing environment. You promote it to the staging environment. And finally, you deploy it to the prod environment.
+
+[rochak agrawal] 07:43:36
+Okay, now that is called the CD, CD part, continuous delivery. Now the difference between the continuous delivery and continuous deployment is, understand this.
+
+[rochak agrawal] 07:43:50
+Continuous delivery and deployment. Um, so you see.
+
+[rochak agrawal] 07:43:54
+Build is happening at a dev environment, and then later you are promoting that build, uh, to your, uh.
+
+[rochak agrawal] 07:44:02
+Test, staging, like, you can have multiple, right? So…
+
+[rochak agrawal] 07:44:08
+Continuous delivery, what it says.
+
+[rochak agrawal] 07:44:12
+Every tested artifact is automatically prepared for release. Deployment is one-click business decision. What does it mean? It means…
+
+[rochak agrawal] 07:44:23
+That…
+
+[rochak agrawal] 07:44:30
+From there, you deploy to test environment. From test, you deploy to staging environment.
+
+[rochak agrawal] 07:44:36
+This process will be automated, okay? But to deploy onto the production environment, you need something called the business level.
+
+[rochak agrawal] 07:44:58
+Okay, so you say, my artifact is ready, whenever the business will say, I am going to deploy it onto the production environment.
+
+[rochak agrawal] 07:45:08
+Now, people get confused that we manually deploy into the production environment. No. We… see, whatever my pipeline is… will have the steps to deploy it, it is going to happen in an automated manner only. It is just…
+
+[rochak agrawal] 07:45:22
+you need an alignment with the business. Now, business will probably say you need… you, uh, you can deploy your artifact, um, uh, in the non-business hours, off hours, right? Something like that. So, your…
+
+[rochak agrawal] 07:45:36
+artifact your release need to follow a release management process, basically, only for the production environment. Lower environments, dev, test, uh, staging, it is all going to happen automatically.
+
+[rochak agrawal] 07:45:49
+So that is called the continuous delivery. In a continuous delivery, to deploy something in the production environment, you need a human approval. Without a human approval, you will not.
+
+[rochak agrawal] 07:46:04
+Deploy anything into the production. Human approval means your business team will say, "Okay, my application is running fine now. I'll deploy it next week." Something like that, okay?
+
+[rochak agrawal] 07:46:16
+In case of a continuous deployment, remember this very, very important introduction.
+
+[rochak agrawal] 07:46:24
+Very common interview question.
+
+[rochak agrawal] 07:46:25
+In the continuous deployment, dev to test, test to stage.
+
+[rochak agrawal] 07:46:31
+Stage 2 production.
+
+[rochak agrawal] 07:46:34
+All happen automatically.
+
+[rochak agrawal] 07:46:42
+Okay.
+
+[rochak agrawal] 07:46:44
+You did this?
+
+[rochak agrawal] 07:46:45
+Every artifact that passes the pipeline goes to production with no human gate.
+
+[rochak agrawal] 07:46:52
+So whatever you have written in a pipeline, so you say, my code coverage should be this, um, my unit tests should pass, my smoke tests should pass, like, whatever you are writing in your pipeline.
+
+[rochak agrawal] 07:47:03
+If your artifact is getting past all of the checks which you mentioned, it is automatically go deploy into the production environment.
+
+[rochak agrawal] 07:47:13
+As simple as that. There is no human in the loop.
+
+[rochak agrawal] 07:47:17
+Okay, so for example, your developer checks.
+
+[rochak agrawal] 07:47:21
+check out something, commit something, the commit goes to your remote repo, remote repo triggers a build in your CI server, which goes deploy to dev, dev to test, test to stage, and stage to prod.
+
+[rochak agrawal] 07:47:37
+in a completely automated manner. So, if everything goes well.
+
+[rochak agrawal] 07:47:41
+A single commit will go deployed into your production environment without any human in loop. That is called the continuous deployment. Okay, now you may ask what is that that company uses continuous delivery or continuous deployment?
+
+[rochak agrawal] 07:47:58
+So, see, um…
+
+[rochak agrawal] 07:48:02
+It depends. A company can have both continuous delivery as far as for the continuous deployment. So the applications which are very business critical, you do not want the downtime or something like that, you choose the continuous delivery where you are going to deploy your application with the proper release management plan.
+
+[rochak agrawal] 07:48:20
+But your application is, uh…
+
+[rochak agrawal] 07:48:23
+Not so critical, you can choose the continuous deployment altogether. So you can have a combination of both as well.
+
+[rochak agrawal] 07:48:31
+Okay, now, where Jenkins fits in. Jenkins is the…
+
+[rochak agrawal] 07:48:39
+UCI Indian.
+
+[rochak agrawal] 07:48:42
+Okay, so Jenkins is, you can say, um…
+
+[rochak agrawal] 07:48:48
+As we are saying, it's a CIA engine.
+
+[rochak agrawal] 07:49:01
+Or, secondly, I would like to say Jenkins is your automation agent.
+
+[rochak agrawal] 07:49:09
+Okay.
+
+[rochak agrawal] 07:49:11
+Automation engine means, uh…
+
+[rochak agrawal] 07:49:13
+See, Jenkins itself will not do anything.
+
+[rochak agrawal] 07:49:17
+Okay, you need to define the workflow. So, for example, when we are saying the pipeline, hey, or instead of pipeline, I now, since we are moving towards Jenkins, I would call it a Jenkins job.
+
+[rochak agrawal] 07:49:31
+So a Jenkins job will not do anything on its own.
+
+[rochak agrawal] 07:49:35
+You need to tell.
+
+[rochak agrawal] 07:49:37
+what it need to do. So, for example, you need to tell it need to run maven compile command, you need to tell that once the compile command is okay, you need to run the nbn test command. So.
+
+[rochak agrawal] 07:49:48
+It is you as a DevOps engineer who need to create the pipeline.
+
+[rochak agrawal] 07:49:54
+or the Jenkins job in Jenkins term. Second thing is, of course, it's a DevOps engineer responsibility to create the pipeline, but again, it's a collaborative effort in terms of, so for example, the first step is the build.
+
+[rochak agrawal] 07:50:10
+Process. Now…
+
+[rochak agrawal] 07:50:12
+you… you… the build steps, for example, will be given to you by the, uh, development team. You just translate it in terms of the changes pipeline.
+
+[rochak agrawal] 07:50:22
+Okay, so now what Jenkins is? Jenkins is a free, very important, it's a free.
+
+[rochak agrawal] 07:50:30
+Free tool, okay? You do not need to pay anything to anyone. It's a free tool, open source automation server.
+
+[rochak agrawal] 07:50:39
+As I, as I'm saying, open source means.
+
+[rochak agrawal] 07:50:43
+like, if you want to do a custom development on top of Jenkins, Jenkins source code is available, you can do that as well. Open source automation server written in Java.
+
+[rochak agrawal] 07:50:55
+So, you need Java to be installed on your system.
+
+[rochak agrawal] 07:51:01
+to run Jenkins on your system.
+
+[rochak agrawal] 07:51:03
+It watches your source repository, runs your build on the schedule, on every changes, and reports the result.
+
+[rochak agrawal] 07:51:11
+Extended by the plugin to do almost anything else.
+
+[rochak agrawal] 07:51:16
+Okay.
+
+[rochak agrawal] 07:51:18
+Now…
+
+[rochak agrawal] 07:51:18
+What Jenkins is? Jenkins is open source and free. No license got large community originally released at Hudson in 2005 before becoming Jenkins in 2011. So anywhere someone is asking, have you worked on Hudson?
+
+[rochak agrawal] 07:51:35
+So no one will ask you, but you need to remember Jenkins was previously named as Hudson and later renamed as Jenkins.
+
+[rochak agrawal] 07:51:47
+Second is…
+
+[rochak agrawal] 07:51:48
+This is a very important point.
+
+[rochak agrawal] 07:51:52
+Massively extensively.
+
+[rochak agrawal] 07:51:54
+Now, what does it mean? It means even if you are, whatever you are writing, reading, it watches your source repository, runs your build on schedule, on every change, reports the result.
+
+[rochak agrawal] 07:52:07
+See, when you…
+
+[rochak agrawal] 07:52:21
+Jenkins is like an empty box.
+
+[rochak agrawal] 07:52:25
+Okay.
+
+[rochak agrawal] 07:52:26
+Jenkins does not do anything.
+
+[rochak agrawal] 07:52:30
+And literally, I'm telling you, it does not do anything.
+
+[rochak agrawal] 07:52:34
+So then, Jenkins is… but Jenkins is extensible with the help of plugins. So, for example, you say, I want to do…
+
+[rochak agrawal] 07:52:41
+something related to Docker. What do you need to install first? You need to install the Docker plugin.
+
+[rochak agrawal] 07:52:49
+You say, I want to work with Tomcat. You go, you will install the Tomcat plugin.
+
+[rochak agrawal] 07:52:55
+You say, I want to authenticate, you will go install authentication plugin.
+
+[rochak agrawal] 07:53:01
+You want to work with Git? You need to install the Git plugin. You need to work with Maven? You need to install the Maven plugin.
+
+[rochak agrawal] 07:53:10
+So, Jenkins, like we discussed in the Maven also, plugins.
+
+[rochak agrawal] 07:53:15
+At that time, also, I said, in Jenkins' case, plugins are very, very important.
+
+[rochak agrawal] 07:53:22
+You want to work with AWS, you… and I'll show you how to install the plugin, and where you are going to find it. But plugins…
+
+[rochak agrawal] 07:53:30
+Is that, uh, services, or I will say connectors, or…
+
+[rochak agrawal] 07:53:35
+You can say anything. So first, you need to figure out what would be the correct plugins, what you need.
+
+[rochak agrawal] 07:53:41
+You install that plugin, then Jenkins will do that thing. Okay? So when I'm saying…
+
+[rochak agrawal] 07:53:48
+When you are saying it watches your source repository, runs your build on the schedule on every change. Till the time I am not using the Git plugin, it is not going to watch my source repository. So first you need to, so when you will install Jenkins.
+
+[rochak agrawal] 07:54:04
+It is like an empty box, it is without a brain. So the functionality, whatever you want to use, you need to, uh…
+
+[rochak agrawal] 07:54:14
+Just a second.
+
+[rochak agrawal] 07:54:20
+You need to find the right plugins, and so you can see right now, uh, there's 1,800 plugins, so cover source control, build tools, cloud providers, notification and reporting.
+
+[rochak agrawal] 07:54:33
+Okay.
+
+[rochak agrawal] 07:54:35
+We'll see, we'll discuss more about the plugin, but you need to understand Jenkins itself does nothing. You need to have a right plugin for that.
+
+[rochak agrawal] 07:54:42
+Runs everywhere. Jenkins runs on containers, although we do not know anything about containers now, but new Jenkins runs on virtual machine, a container, it can run anywhere, basically.
+
+[rochak agrawal] 07:54:54
+Fourth thing is the pipeline is a code. Uh, so when we will install Jenkins, and we'll see, uh…
+
+[rochak agrawal] 07:55:01
+So, you can have two things. Either you can configure everything manually.
+
+[rochak agrawal] 07:55:06
+Okay, which we will do first. Second is, you can run everything.
+
+[rochak agrawal] 07:55:12
+In a declarative way.
+
+[rochak agrawal] 07:55:13
+like a pipeline as a code, so you… I will define everything in a file, I will give that file to Jenkins, and then Jenkins will do the things.
+
+[rochak agrawal] 07:55:23
+Distributed by design, uh, again, um…
+
+[rochak agrawal] 07:55:27
+I'll keep that part for now. We will discuss. So Jenkins works on a master slave architecture. We can have multiple nodes working as an agent to Jenkins where I can run my builds. And then it's a vendor neutral. So it's an open source as we discussed in the first point altogether.
+
+[rochak agrawal] 07:55:43
+So, um…
+
+[rochak agrawal] 07:55:45
+it's an open source, you… it does not matter, you want to, uh, build… you want to run a pipeline for the Java application.NET application, you want to run a build on AWS, Azure, it… it is going to run everywhere.
+
+[rochak agrawal] 07:55:59
+Okay? Now, Jenkins is the most, most widely deployed CI server, and…
+
+[rochak agrawal] 07:56:07
+more robust also. The only problem I see with the Jenkins is, since it's an open source.
+
+[rochak agrawal] 07:56:14
+If you stuck in some issues, which is very, uh…
+
+[rochak agrawal] 07:56:19
+like, very less likely to be, uh, chances of, then, uh, you would not get a dedicated support. Since there is no enterprise version.
+
+[rochak agrawal] 07:56:29
+So you would not get a dedicated support, you will go to open source community, uh…
+
+[rochak agrawal] 07:56:34
+And dig up on your own.
+
+[rochak agrawal] 07:56:36
+Otherwise, Jenkins is a fantastic tool.
+
+[rochak agrawal] 07:56:41
+Now, what are the alternatives of Jenkins?
+
+[rochak agrawal] 07:56:43
+So you can see Jenkins, GitHub Actions, GitLab CI, then we have Azure Pipeline, Circle CI, TeamCity, Bamboo, AWS Code Pipeline, Argo CD for Kubernetes. So there are multiple others CI/CD tools are available.
+
+[rochak agrawal] 07:57:01
+Jenkins, maximum flexibility and control. You run and maintain the server yourself, right? Then others, if you see GitHub Action, GitLab CI.
+
+[rochak agrawal] 07:57:13
+They come as a sales offering also.
+
+[rochak agrawal] 07:57:16
+And you can install on your own servers as well.
+
+[rochak agrawal] 07:57:21
+Now, why learn Jenkins? See, it may…
+
+[rochak agrawal] 07:57:24
+there are very likely chances that you are learning Jenkins, but when you go to project, you either need to work on Azure Pipelines, or you either need to work on GitHub Action. Very, very high chances, okay?
+
+[rochak agrawal] 07:57:38
+Because…
+
+[rochak agrawal] 07:57:39
+These tools are also getting popularity nowadays.
+
+[rochak agrawal] 07:57:43
+See, uh, now why to learn Jenkins first? Because once you know Jenkins.
+
+[rochak agrawal] 07:57:48
+You will know the concept of CI/CD on a conceptual level, on a fundamental level. You will understand what is the trigger is, what is the agent, what are the steps that you need to run for your pipeline, right?
+
+[rochak agrawal] 07:58:04
+Everything. Jenkins make every one of these spaces visible, rather than hiding them behind a hosted server, which is exactly why it teaches the model well. Here, you will see everything, how it is happening.
+
+[rochak agrawal] 07:58:18
+Um, that you might not see with the GitHub Action or the GitLab CIO or the other pipelines. So it is always better, uh, better, uh, to learn Jenkins first, because you…
+
+[rochak agrawal] 07:58:28
+Cannot learn each and every tool which is available in the market on the…
+
+[rochak agrawal] 07:58:33
+first day, right? You need to build step by step, and that is where Jenkins is a natural choice.
+
+[rochak agrawal] 07:58:39
+uh, to learn, and then you can, if you need to build, uh, once you understand what is a pipeline, how many, uh, steps should be there in a pipeline, it will not matter, you are writing the pipeline in Jenkins or GitLab.
+
+[rochak agrawal] 07:58:51
+Syntax is not a problem nowadays, you understand, right? So, we need to focus on the conceptual knowledge.
+
+[rochak agrawal] 07:58:58
+So now, before we go install the Jenkins, uh…
+
+[rochak agrawal] 07:59:05
+If you have any question, Arif has raised your hand. Yes, Arif.
+
+[Arif] 07:59:11
+Yeah, hi, Ruchik. Uh, Ruchik, uh, I was… I'm not clear about this, the flow. Uh, so you said that the… every commit will be triggered and built and tested.
+
+[Arif] 07:59:25
+Yeah, just…
+
+[Arif] 07:59:27
+So without any, like, without pushing to GitHub or Git platform, the CI engine will start.
+
+[rochak agrawal] 07:59:34
+No, no, no, see, uh, every commit means, uh, see.
+
+[rochak agrawal] 07:59:40
+The point here was, every commit you are pushing to… so, for example, I can push my, uh, one commit, or I can have 10 commits, right? When I push it to your, uh…
+
+[Arif] 07:59:53
+Yeah, okay.
+
+[rochak agrawal] 07:59:53
+Uh, in remote repo, correct? So the point was, even if you have a single commit, you are pushing it to your central remote repo, it is going to trigger a build.
+
+[rochak agrawal] 08:00:04
+So you need to push it, yes.
+
+[Arif] 08:00:04
+Yeah, that's right.
+
+[rochak agrawal] 08:00:06
+Because your CIE will be connected to your central repo, which is your remote repo, correct?
+
+[rochak agrawal] 08:00:10
+So any commit coming, even a single commit coming to your remote repo, it is going to trigger a build.
+
+[Arif] 08:00:18
+Okay, and one more thing. So, can you compare this Jenkins and GitHub, at least between two, if we can get some comparison?
+
+[rochak agrawal] 08:00:26
+See, Jenkins and… I…
+
+[rochak agrawal] 08:00:30
+When you say compare means you're saying GitHub Actions.
+
+[Arif] 08:00:33
+Yeah, GitHub Actions and, uh, Jenkins.
+
+[rochak agrawal] 08:00:34
+So, once we… see, right now, there is no need to compare. You need to understand Jenkins first.
+
+[rochak agrawal] 08:00:41
+Right? Right now, we don't know anything about Jenkins.
+
+[Arif] 08:00:45
+Uh, see, in terms of CICD, so because I think this GitHub, uh, also…
+
+[rochak agrawal] 08:00:48
+See, it's the same. See, conceptually, they are the same.
+
+[rochak agrawal] 08:00:52
+There is no difference.
+
+[rochak agrawal] 08:00:53
+It is just maybe… so, for example, in Jenkins.
+
+[Arif] 08:00:54
+Okay.
+
+[rochak agrawal] 08:00:58
+there is everything you need to do by your own. So, for example, we very clearly saying Jenkins is an open box.
+
+[rochak agrawal] 08:01:06
+With the help of plugins, you need to define, let's say I want to do a sonar cube analysis. I first need to install sonar cube analysis, then configure my sonar cube, et cetera, et cetera. Then you will be able to run it.
+
+[rochak agrawal] 08:01:22
+In terms of GitHub or GitLab, those configuration steps you don't need to do, you will just GitHub that I want SonarQube analysis, and it will do it.
+
+[rochak agrawal] 08:01:33
+So there are multiple managed services you're going to find in GitHub Actions or GitLab CI, wherein in Jenkins, you have to do everything on your own.
+
+[Arif] 08:01:45
+So, still, the Gen King is popular, or which one is popular?
+
+[rochak agrawal] 08:01:48
+Yeah, yeah, Jenkins is very much popular.
+
+[rochak agrawal] 08:01:51
+Jenkins is very, very much… and the reason for that, uh, RF is Jenkins is free.
+
+[rochak agrawal] 08:01:58
+It's a open source. Uh, if you go to GitHub Actions or the GitLab CI, there are certain charges for it.
+
+[Arif] 08:01:58
+Okay, that's okay.
+
+[rochak agrawal] 08:02:05
+Unless you do not want to sharag off this complete responsibility about managing the CICD tool, you can use the GitHub Actions or the GitLab CI, otherwise Jenkins is quite popular nowadays also. And it is, like, as you see, it is started in 2005.
+
+[rochak agrawal] 08:02:23
+Uh, running, uh, renamed in 2011, but still, it is, uh, standing tall and strong.
+
+[Arif] 08:02:31
+Okay.
+
+[rochak agrawal] 08:02:32
+Yep.
+
+[Arif] 08:02:33
+So, CI just required an input of source code only, right? After that, it will be delivered, and…
+
+[rochak agrawal] 08:02:37
+Yeah, but see, if there is no source code, what we are going to build?
+
+[Arif] 08:02:41
+Okay.
+
+[Arif] 08:02:42
+So it starts after the code, not after the build. Okay, okay.
+
+[rochak agrawal] 08:02:42
+Hey!
+
+[rochak agrawal] 08:02:44
+Yes, yes.
+
+[rochak agrawal] 08:02:47
+Yep.
+
+[rochak agrawal] 08:02:50
+And we will see, we will visualize this flow completely with the help of a demo RF.
+
+[Arif] 08:02:55
+Okay.
+
+[rochak agrawal] 08:02:56
+No.
+
+[rochak agrawal] 08:02:57
+Yes, Suraj.
+
+[Soorej Uthaman] 08:03:03
+Yeah, hello?
+
+[rochak agrawal] 08:03:03
+Hello?
+
+[Soorej Uthaman] 08:03:04
+Yeah, my name was showing different, yeah, um, myself, Megha. So, my question is, like, uh, the entire… the diagram, right? So, the entire thing is what is called continuous integration.
+
+[rochak agrawal] 08:03:15
+Okay, yes.
+
+[Soorej Uthaman] 08:03:16
+While, uh, deployment to production, you call it, like, uh, continuous delivery.
+
+[rochak agrawal] 08:03:22
+Yes?
+
+[Soorej Uthaman] 08:03:22
+And whatever is deployed to leave.
+
+[rochak agrawal] 08:03:24
+If the deployment is happening automatically, it is called continuous deployment. If you need business approval, it will be called continuous delivery.
+
+[Soorej Uthaman] 08:03:34
+Yeah, so delivery and deployment is almost the same, but where you need a human input, uh, is called, or to the production is called continuous delivery.
+
+[rochak agrawal] 08:03:37
+Almost the same, yes.
+
+[rochak agrawal] 08:03:39
+Got it.
+
+[rochak agrawal] 08:03:43
+So basically, you need a human check, uh, to deploy something into the production environment.
+
+[rochak agrawal] 08:03:48
+If that process is also automated, there is no human check, it will become the continuous deployment.
+
+[rochak agrawal] 08:03:56
+And these are just the logic, like conceptual terms, right? In an organization, for one application, you can choose to go continuous delivery. Another application, it can be completely automated, which is continuous deployment.
+
+[Soorej Uthaman] 08:04:01
+Yeah.
+
+[Soorej Uthaman] 08:04:14
+Yeah, so the entire process of, uh, this deployment, we call it, like, conceptually con…
+
+[rochak agrawal] 08:04:18
+It's called the CICD. This is called CICD.
+
+[Soorej Uthaman] 08:04:23
+Okay, yeah, combined one, okay.
+
+[rochak agrawal] 08:04:26
+Combined. Okay.
+
+[Soorej Uthaman] 08:04:26
+Seriously, look at the heart button.
+
+[rochak agrawal] 08:04:27
+CICD. So this is exactly what CICD is. Now, D can be delivery or deployment, based on what you are using.
+
+[Arif] 08:04:38
+So, regarding the CI engine, so that's something server, right? Some machine, shared machine or something.
+
+[rochak agrawal] 08:04:43
+Yes, yes, yes. So that is where, uh, see, you are… wherever you are going to install Jenkins, that will become your CI engine.
+
+[Arif] 08:04:49
+Okay, so that'll always be running, right? Uh, because…
+
+[rochak agrawal] 08:04:53
+Yes, it need to be running always because you're develop… see, when we are saying continuous integration, continuous word itself is saying whenever, right? Whenever there is a change in your source code management.
+
+[Arif] 08:04:56
+Okay.
+
+[rochak agrawal] 08:05:06
+Trigger. Correct? Now the change can happen at 2 AM at the night. It can happen 6 AM in the morning.
+
+[rochak agrawal] 08:05:13
+Depending on your requirement.
+
+[rochak agrawal] 08:05:17
+See, continuous means it should be available.
+
+[Arif] 08:05:20
+Okay, okay.
+
+[rochak agrawal] 08:05:21
+Yeah? But see, um…
+
+[rochak agrawal] 08:05:24
+let's say now, uh, you're running your Jenkins server on, uh, somewhere on, let's say, AWS. Now, if you keep the server running, there will be charges, correct? So now.
+
+[rochak agrawal] 08:05:36
+And let's say you are aware that, uh.
+
+[rochak agrawal] 08:05:39
+There is no developer who is working after 6 PM.
+
+[rochak agrawal] 08:05:43
+Okay.
+
+[rochak agrawal] 08:05:45
+So, you, for your organization, continuous means 9am to 6pm.
+
+[Arif] 08:05:45
+Yeah.
+
+[rochak agrawal] 08:05:52
+You got my point.
+
+[Arif] 08:05:53
+Yeah, yeah, got it. Your schedule, you can append it.
+
+[rochak agrawal] 08:05:55
+Hey!
+
+[rochak agrawal] 08:05:56
+Yeah, we can do that as well.
+
+[rochak agrawal] 08:05:58
+See, the point is, whenever… whenever developers are working.
+
+[rochak agrawal] 08:06:02
+At that time, your CI engine should be available.
+
+[rochak agrawal] 08:06:11
+Yes, ma'am.
+
+[Vaibhav Gupta] 08:06:14
+Hey, good morning, Roger. So, uh, in this entire…
+
+[rochak agrawal] 08:06:14
+Good morning.
+
+[Vaibhav Gupta] 08:06:17
+workflow. Like, we have to plug in the kit in the… with Jenkins, right? And when… if any commit will… if any change is committed, then it starts the build process then further.
+
+[rochak agrawal] 08:06:22
+Correct. Correct.
+
+[rochak agrawal] 08:06:29
+Mm-hmm.
+
+[Vaibhav Gupta] 08:06:30
+The step process.
+
+[rochak agrawal] 08:06:31
+Correct.
+
+[Vaibhav Gupta] 08:06:31
+So, it is a part of the continuous delivery. Like, I understand the integrations of when committee is changing, and any commitment, any changes is committed, and any… So, the build process starts. But what is the role of the delivery?
+
+[rochak agrawal] 08:06:34
+Mm-hmm.
+
+[rochak agrawal] 08:06:49
+Role of the delivery is, uh… see, you would not want build is happening on a dev environment, correct?
+
+[Vaibhav Gupta] 08:06:56
+Mm-hmm.
+
+[rochak agrawal] 08:06:58
+Right? See, what is your end objective? Your end objective is…
+
+[rochak agrawal] 08:07:03
+You want to…
+
+[rochak agrawal] 08:07:05
+deliver those changes to your end users. Correct?
+
+[Vaibhav Gupta] 08:07:09
+Okay.
+
+[rochak agrawal] 08:07:11
+Right? See, that's why you are developing the code.
+
+[rochak agrawal] 08:07:16
+Yes? No?
+
+[Vaibhav Gupta] 08:07:18
+Not able to understand this.
+
+[rochak agrawal] 08:07:20
+See, let's say if you are…
+
+[rochak agrawal] 08:07:23
+Developing a food delivery application, for example.
+
+[rochak agrawal] 08:07:27
+Now, why you are developing the food delivery application? Because once you release it, your users, whatever your users is.
+
+[rochak agrawal] 08:07:35
+They will be, they will use this application, correct?
+
+[Vaibhav Gupta] 08:07:38
+Correct.
+
+[rochak agrawal] 08:07:40
+That deployment happens where? On the production environment, and that is the meaning of a production. Production means something available for your end users to access.
+
+[rochak agrawal] 08:07:49
+Clear till now?
+
+[Vaibhav Gupta] 08:07:51
+Yep.
+
+[Vaibhav Gupta] 08:07:52
+So, if any changes happen, then it continuously delivers it to a prod environment.
+
+[rochak agrawal] 08:07:53
+So…
+
+[rochak agrawal] 08:07:58
+To production in bulk. So that your end user is going to…
+
+[rochak agrawal] 08:08:03
+Access it.
+
+[rochak agrawal] 08:08:03
+Because that's the end goal, right? I do not want to…
+
+[rochak agrawal] 08:08:08
+do some changes in my application just for my own sake, right? I want to make those changes so that I can ship those to your users. So let's say for example you you you develop your food delivery application in the first iteration you just.
+
+[rochak agrawal] 08:08:25
+have integration with the credit card for the payment. But you are getting a feedback that we also need to integrate UPI also. Now, in the second iteration, second commit, you are adding the UPI feature. Now, with the help of.
+
+[rochak agrawal] 08:08:41
+CI, your build is going to deploy on the dev environment, correct? But how you… how my users is going to access it?
+
+[Vaibhav Gupta] 08:08:45
+Hmm.
+
+[rochak agrawal] 08:08:48
+So you need to go through the journey depth to test, test to stage. Now, this is…
+
+[rochak agrawal] 08:08:53
+Just for the reference purpose, you can have less than four environment, you can have more than four environment, depending on your requirement. For example, for the testing, we can have multiple environments. One environment for testing, functional testing, one for load testing, one for smoke testing.
+
+[rochak agrawal] 08:09:08
+So, depending on how many environments you… how many checks you want to add, right? Your build will go through all these stages, and then, finally, it goes through the production.
+
+[Vaibhav Gupta] 08:09:21
+So that, uh, the steps of belt staging is a part of integration, right?
+
+[rochak agrawal] 08:09:27
+You know, build to staging is part of CI.
+
+[rochak agrawal] 08:09:29
+No, build to stage, uh, is part of your CD.
+
+[rochak agrawal] 08:09:33
+See, that is where we call it as a CI/CD. Your CI only talks about dev, till dev. In the last class also we discussed.
+
+[Vaibhav Gupta] 08:09:42
+Mmhm.
+
+[rochak agrawal] 08:09:43
+Okay, this is called the CI process, that your code is integrating, and the integrated code will have a build which we deploy onto the dev environment.
+
+[rochak agrawal] 08:09:52
+Okay, this is called a CI process.
+
+[rochak agrawal] 08:09:55
+Now, once… see, you will be doing multiple commits, uh, right? And then all those commits, all those pushes, you do not want to…
+
+[rochak agrawal] 08:10:04
+Promote to the higher environments, correct?
+
+[rochak agrawal] 08:10:07
+So you will do multiple development on the dev environment. Like, every feature will not be successful, every feature will not be, uh…
+
+[rochak agrawal] 08:10:17
+as, uh, giving you the result as you want it, correct? So you will do multiple R&D on the dev environment, correct?
+
+[Vaibhav Gupta] 08:10:24
+Confirmed.
+
+[rochak agrawal] 08:10:25
+Right? So then, let's say I deployed 10 builds here. 1, 2, 3, 4, 5, 6, 7, 8.
+
+[rochak agrawal] 08:10:33
+If, let's say, I am using continuous delivery, right?
+
+[Vaibhav Gupta] 08:10:36
+Right.
+
+[rochak agrawal] 08:10:37
+Then, all those changes also will go to the production if it is completely automated. But then, that is where…
+
+[rochak agrawal] 08:10:43
+CI talks about till dev environment.
+
+[rochak agrawal] 08:10:47
+Then I will decide out of this 10 which build I need to promote further.
+
+[rochak agrawal] 08:10:54
+Because…
+
+[rochak agrawal] 08:10:55
+For the production environment, for your end user, you want to give the product or the feature which is working as expected.
+
+[rochak agrawal] 08:11:03
+Correct? So that will be part of your CCD journey.
+
+[rochak agrawal] 08:11:07
+But the pipeline will be same only in all in a single pipeline. You will write all these steps, but depending on what input you are giving, only CI steps will run, only CD steps will run, or the complete steps will run.
+
+[rochak agrawal] 08:11:23
+Okay, it is like, you see, uh, you understand. See, when, when a train goes from station A to station B.
+
+[rochak agrawal] 08:11:31
+Right. There are there can be multiple, uh, stations in between. So, for example, if I need to go from Delhi to Mumbai, uh, I can. There are multiple stations in between. There come Agra, there come Kota, there come, uh, Surat, et cetera, et cetera.
+
+[rochak agrawal] 08:11:48
+I can get down at Agra, I can get down at Kota, I can get down at Surat, and I can go to Mumbai also, correct?
+
+[Vaibhav Gupta] 08:11:55
+Correct.
+
+[rochak agrawal] 08:11:56
+So your CICD pipeline is like this. There are multiple intermediary stations in between. Anywhere you say I only want the CI process. You run only CI. You want the CICD process till the test environment. We'll do that. So when you will be running the pipeline.
+
+[rochak agrawal] 08:12:12
+Then, at that time, you can decide what exactly you want.
+
+[rochak agrawal] 08:12:17
+We'll do the demo, then you'll understand it more, but conceptually, it works like it.
+
+[Vaibhav Gupta] 08:12:22
+Okay.
+
+[rochak agrawal] 08:12:23
+Okay.
+
+[Vaibhav Gupta] 08:12:24
+Oh, and one more question is, uh, not related to doubts. Uh, the question is, like, on Friday, we have started about Marvin. So Marvin is not… is she completed, right?
+
+[rochak agrawal] 08:12:34
+Sorry, can you come again?
+
+[Vaibhav Gupta] 08:12:35
+Uh, I'm saying, uh, Friday we started about Maven. So, Maven is about…
+
+[rochak agrawal] 08:12:42
+So Maven, see, Maven, as I said, we will continue Maven with Jenkins also. Maven is a tool which, like, developers mostly need. We need to have a fundamental understanding of the Maven. That's it. Okay, and we will continue using, when we will build a Java application with Maven, with the help of Jenkins.
+
+[Vaibhav Gupta] 08:12:43
+Okay, okay.
+
+[Vaibhav Gupta] 08:12:50
+Okay.
+
+[rochak agrawal] 08:12:57
+At that time, also, we will see, uh, how Maven is integrated, uh, what are the Maven commands we need to run, so we'll see it with the help of CICD pipeline, yeah. Okay?
+
+[Vaibhav Gupta] 08:13:05
+Sure.
+
+[rochak agrawal] 08:13:08
+Now, we will first go…
+
+[rochak agrawal] 08:13:10
+install the Jenkins, okay? Now, installing Jenkins is a very straightforward process. I have one server.
+
+[rochak agrawal] 08:13:19
+Okay? AWS server, like, whatever the Linux command we have done, similar server I have.
+
+[rochak agrawal] 08:13:28
+I will go Jenkins installation page.
+
+[rochak agrawal] 08:13:34
+Official link, nothing here and there.
+
+[rochak agrawal] 08:13:37
+you go to?
+
+[rochak agrawal] 08:13:41
+Depending on your operating system, see, it's a very straightforward. If you go to Windows… now, why I am using Linux? Because in your most… see, Git is a tool which you… which a developer need to work on their own system, right?
+
+[rochak agrawal] 08:13:55
+Now their own system can be Windows, it could be Mac OS, something.
+
+[rochak agrawal] 08:14:00
+I get on Windows, it's okay, but now Linux, Ansible, Docker, Kubernetes, they are the production, uh, related, uh.
+
+[rochak agrawal] 08:14:10
+servers and 90 95% you always going to be interacting with the Linux server and that's why we understood Linux fundamental of Linux. Now it may be different different flavors of Linux but mostly it will be Linux based flavor.
+
+[rochak agrawal] 08:14:24
+So I'll go to Linux.
+
+[rochak agrawal] 08:14:26
+You can run it with the Docker and Kubernetes also, right? Uh, Docker and Kubernetes, we do not know as of now. I'll go to Ubunt.
+
+[rochak agrawal] 08:14:34
+Now, as we discussed, okay.
+
+[rochak agrawal] 08:14:38
+Jenkins is a tool.
+
+[rochak agrawal] 08:14:41
+which is written in Java.
+
+[rochak agrawal] 08:14:43
+Okay, since it is written in Java, you need to have Java installed on your server, on your system, then only you will be able to run Jenkins. Okay, so I'll just go run these commands.
+
+[rochak agrawal] 08:14:58
+Now, what this command is doing, sudo apt update, it is, like, refreshing all the packages which is installed on your system to the latest version.
+
+[rochak agrawal] 08:15:16
+Then I'll look up the second command.
+
+[rochak agrawal] 08:15:25
+Let's see…
+
+[rochak agrawal] 08:15:26
+So now apt update we have run, apt install we are running, and this is the package name for the Java. Let me see.
+
+[rochak agrawal] 08:15:36
+So say yes, and say yes.
+
+[rochak agrawal] 08:16:07
+Okay, now if you run java hyphen hyphen version…
+
+[rochak agrawal] 08:16:19
+Devices for.
+
+[rochak agrawal] 08:16:21
+Now, I'm going…
+
+[rochak agrawal] 08:16:24
+So, see, Java is installed.
+
+[rochak agrawal] 08:16:26
+Now, you just run these commands.
+
+[rochak agrawal] 08:16:31
+Copy.
+
+[rochak agrawal] 08:16:38
+So now you see, wget is a command, so if I… you want to install, uh… if you want to download a file.
+
+[rochak agrawal] 08:16:46
+from some remote place okay then you use the wget command. So this command what is saying wget I'll explain here.
+
+[rochak agrawal] 08:16:58
+it is going to downloading this file jenkinsio2026.key, and it is storing this file here. It downloads it and stores it here. Okay, and then it is again updating the repository, uh, the local system, and then I'm running a command apt install jenkins.
+
+[rochak agrawal] 08:17:21
+Very simple. So you say, installing Jenkins.
+
+[rochak agrawal] 08:17:24
+and installing Mencius.
+
+[rochak agrawal] 08:17:31
+Now, installing the Jenkins, obviously, like, it would be a…
+
+[rochak agrawal] 08:17:35
+One time effort, once you set it up.
+
+[rochak agrawal] 08:17:38
+And then, unless you do not want another instance of Jenkins or something like that, it is, like, you'll probably, uh…
+
+[rochak agrawal] 08:17:46
+And tell us you are not… even if it is a new project. See, Jenkins, mostly what happens is…
+
+[rochak agrawal] 08:17:53
+There are 50 applications, okay?
+
+[rochak agrawal] 08:17:56
+Those all can use Jenkins at the same time. So even if you're using a new project, you will probably use a Jenkins which is already set up.
+
+[rochak agrawal] 08:18:05
+So now, Jenkins is installed.
+
+[rochak agrawal] 08:18:12
+Now, what you need to do…
+
+[rochak agrawal] 08:18:17
+You… we need to…
+
+[rochak agrawal] 08:18:20
+Start the genkit. So here you can see systemctl is the command.
+
+[rochak agrawal] 08:18:24
+Now, these are not Jenkins commands, whatever we have run. These are Unix, Linux commands. Systemctl start Jenkins, okay? Now, before starting the Jenkins, we are doing it enable Jenkins. Now, what is this command going to do?
+
+[rochak agrawal] 08:18:40
+This is something when you do not enable the Jenkins, okay? I will just say start Jenkins, so Jenkins will start, but the problem with the start Jenkins command is…
+
+[rochak agrawal] 08:18:51
+Um, once your server will…
+
+[rochak agrawal] 08:18:52
+shut down. Then, at the time when your server will come up, you need to restart the Jenkins again.
+
+[rochak agrawal] 08:18:59
+Okay, uh, not restart, start the Jenkins again. But if you enable it, uh, systemctl enable Jenkins, then what is going to happen? Even when your server is getting restarted.
+
+[rochak agrawal] 08:19:12
+Anytime your server will shut down and start it again, your Jenkins will automatically start. It is like somewhere you have noticed that whenever you open your laptop, there are certain programs which will come up automatically. So it is something similar to that.
+
+[rochak agrawal] 08:19:29
+And I'll go.
+
+[rochak agrawal] 08:19:35
+Start Jenkins.
+
+[rochak agrawal] 08:19:35
+Okay? Now you can see the status.
+
+[rochak agrawal] 08:19:50
+Okay? My Jenkins is running completely fine. It says…
+
+[rochak agrawal] 08:19:55
+Running.
+
+[rochak agrawal] 08:19:56
+2 minutes, 4 seconds ago.
+
+[rochak agrawal] 08:19:59
+Now, how to access the Jenkins? So I'll take the IP of the server.
+
+[rochak agrawal] 08:20:03
+So I'll take the public IP.
+
+[rochak agrawal] 08:20:05
+And I'll go. Now I don't need it.
+
+[rochak agrawal] 08:20:14
+Jenkins always run on port 8080 until and unless explicitly you're not changing it.
+
+[rochak agrawal] 08:20:25
+See, these are all, uh, you see, these are all steps which you will do while setting up the Jenkins. You might never got a chance, uh, to set up the Jenkins for your organization.
+
+[rochak agrawal] 08:20:37
+But you should be aware about it, OK? Now I say to ensure Jenkins is securely set up by the administrator, a password has been written to the log.
+
+[rochak agrawal] 08:20:47
+And this file on the server. So you can see this file on the server, they are also giving you the name of the file. So I'll go.
+
+[rochak agrawal] 08:20:59
+And the file name?
+
+[rochak agrawal] 08:21:02
+You can see.
+
+[rochak agrawal] 08:21:04
+Poppy, this is the initial admin password.
+
+[rochak agrawal] 08:21:17
+Now you see?
+
+[rochak agrawal] 08:21:20
+Customize Jenkins. Plugin extends Jenkins with additional features to support many different needs.
+
+[rochak agrawal] 08:21:27
+Without plugins, Jenkins is nothing.
+
+[rochak agrawal] 08:21:32
+Okay, so I'll go install suggested plugin as of now.
+
+[rochak agrawal] 08:21:36
+So it's an install plugin the Jenkins community find most useful.
+
+[rochak agrawal] 08:21:41
+Okay, you click on it.
+
+[rochak agrawal] 08:21:45
+So, you can see, uh, git plugin, pipeline plugin.
+
+[rochak agrawal] 08:21:50
+Gradle plugin. You'll see multiple plugin it is installing, right? Build agents, metrics…
+
+[rochak agrawal] 08:21:59
+theme, LDAP.
+
+[rochak agrawal] 08:22:01
+These are some of the common. Without plugin, Jenkins is just an empty box.
+
+[rochak agrawal] 08:22:08
+So, it says, create first admin user. So, I will give name anything, admin…
+
+[rochak agrawal] 08:22:14
+admin, admin, and I'll give my name.
+
+[rochak agrawal] 08:22:19
+Email ID. Although it is not necessary, but I'll just save it.
+
+[rochak agrawal] 08:22:26
+So now, this is my Jenkins URL. If I go log in.
+
+[rochak agrawal] 08:22:32
+I can now log in with the admin admin, the username and the password, which we set it up right now.
+
+[rochak agrawal] 08:22:38
+Okay, I do not need this initial admin password anymore. This is only to set up your Jenkins.
+
+[rochak agrawal] 08:22:45
+You save infamous.
+
+[rochak agrawal] 08:22:47
+Okay, let's say Jenkins is ready, your Jenkins setup is complete, start using Jenkins.
+
+[rochak agrawal] 08:22:59
+Okay? Now you… here you can see, uh, before I go, create a Jenkins job.
+
+[rochak agrawal] 08:23:06
+Okay.
+
+[rochak agrawal] 08:23:10
+we first need to understand, um, before your jobs is going to use multiple items from, uh, the Jenkins functionality itself, so before we create a job, we need to understand what are the features Jenkins gives you, and those we are going to use in our.
+
+[rochak agrawal] 08:23:28
+Uh, jobs. Okay? So I'll go…
+
+[rochak agrawal] 08:23:33
+Here, there is a button called Manage Jenkins. I clicked on it.
+
+[rochak agrawal] 08:23:37
+Okay, so now you… here you can see system, plugins, cloud, appearance, notes, tools.
+
+[rochak agrawal] 08:23:45
+security…
+
+[rochak agrawal] 08:23:46
+Now, some… everything is not important for us right now, but…
+
+[rochak agrawal] 08:23:50
+The features which we are going to use.
+
+[rochak agrawal] 08:23:53
+I'll show you.
+
+[rochak agrawal] 08:23:54
+So first is plugins, okay? So if you click on plugins.
+
+[rochak agrawal] 08:24:01
+It will… you, uh, go to… so, and see, plugins, whatever the plugins you are installing on Jenkins, they will also keep releasing the new versions.
+
+[rochak agrawal] 08:24:11
+So, and if your… whatever plugin you installed.
+
+[rochak agrawal] 08:24:15
+has a latest version, which you can show it in, uh… which you can be… see here in the updates. Then if you go to installed plugin.
+
+[rochak agrawal] 08:24:26
+Here, you are going to see whatever the plugin you have installed while installing the Jenkins itself. So it's an end plugin, HTTP component, multiple plugins are there, build a timeout plugin, right?
+
+[rochak agrawal] 08:24:40
+Dark theme, folders, git client…
+
+[rochak agrawal] 08:24:43
+But if you see, um…
+
+[rochak agrawal] 08:24:45
+Let's hit bokeh.
+
+[rochak agrawal] 08:24:48
+or HomeGate.
+
+[rochak agrawal] 08:24:51
+So you see there is no plugin available for Tomcat right now. Even though you will be able to build your application, you would not be able to deploy it on Tomcat, you would not be able to deploy it on Kubernetes.
+
+[rochak agrawal] 08:25:07
+So that is where, uh…
+
+[rochak agrawal] 08:25:09
+You can go to available plugins.
+
+[rochak agrawal] 08:25:12
+And here you can see there are multiple plugins are there. So Docker, Javadoc, Docker Commons.
+
+[rochak agrawal] 08:25:18
+Right, maybe an integration…
+
+[rochak agrawal] 08:25:21
+HTML publisher, so there is multiple plugins out there. So if you search for Tomcat.
+
+[rochak agrawal] 08:25:34
+So there is a plugin. The plugin allows you to deploy a war to a container after a successful build. So this is a plugin which will help you deploy a file to Tomcat. Now we are just taking an example. So for example, if you want to find out plugin related to AWS.
+
+[rochak agrawal] 08:25:52
+So you see, AWS credential, AWS SDK, right? So you can see multiple plugins for AWS.
+
+[rochak agrawal] 08:26:01
+So what you need to do, you will just click on here, and you will just click on install.
+
+[rochak agrawal] 08:26:07
+And your plugin is going to be installed.
+
+[rochak agrawal] 08:26:10
+So plugins is the one which will extend the functionality of your channels.
+
+[rochak agrawal] 08:26:16
+Okay, um…
+
+[rochak agrawal] 08:26:19
+There you can see multiple plugins are there for AWS, right?
+
+[rochak agrawal] 08:26:23
+So.
+
+[rochak agrawal] 08:26:25
+And install plugin we have seen, and in the advanced setting, if you see. So, you see, if you have, for example, you now…
+
+[rochak agrawal] 08:26:34
+You can create your own plugins also.
+
+[rochak agrawal] 08:26:36
+Jenkins is open source, we discussed, right? So you can develop your own plugins, and then you will just upload the plugin, and that plugin also will be installed with Jenkins.
+
+[rochak agrawal] 08:26:48
+But…
+
+[rochak agrawal] 08:26:49
+that is a very advanced thing. We do not need to do it, uh, like, there will be… there will not be even a one, or I would say 0.5% people who have developed the plugin.
+
+[rochak agrawal] 08:27:00
+I never think about developing a plugin, because most of the plugins are immediately available for us to use. But yes, if someone is coming from a development background, they can develop the plugin.
+
+[rochak agrawal] 08:27:12
+So, this is about the plugin.
+
+[rochak agrawal] 08:27:14
+Then comes the tools. This is very… plugins are also important, but this… there comes the tools.
+
+[rochak agrawal] 08:27:22
+Now, what does it mean by the tool? For example.
+
+[rochak agrawal] 08:27:43
+Now, to tell me one thing, this is my Jenkins CI. Now, I need to do a… as a build process, there is a step called Maven Build.
+
+[rochak agrawal] 08:27:56
+Correct?
+
+[rochak agrawal] 08:28:01
+Now, what is that you require to run this? Maybe it'll be interesting.
+
+[rochak agrawal] 08:28:11
+Anyone?
+
+[Vaibhav Gupta] 08:28:15
+To download the dependencies, which you require to run the…
+
+[rochak agrawal] 08:28:20
+You know, before downloading the dependencies.
+
+[rochak agrawal] 08:28:24
+What do you need?
+
+[Arif] 08:28:27
+I think instructions palm dot xml.
+
+[rochak agrawal] 08:28:30
+No, that is a part of your source code anyways.
+
+[rochak agrawal] 08:28:33
+Let's say, let me ask you a question in a different way.
+
+[rochak agrawal] 08:28:38
+Uh, if I want to run a Maven build on my laptop.
+
+[rochak agrawal] 08:28:41
+What do you need?
+
+[Soorej Uthaman] 08:28:50
+Okay.
+
+[rochak agrawal] 08:28:53
+What do we need?
+
+[rochak agrawal] 08:28:56
+Yes, Gannon?
+
+[Gyanendra Narayan] 08:28:59
+Installation file.
+
+[rochak agrawal] 08:29:00
+Sorry?
+
+[Gyanendra Narayan] 08:29:01
+Installation file.
+
+[rochak agrawal] 08:29:03
+Correct. You need to install Maven.
+
+[rochak agrawal] 08:29:05
+Connect.
+
+[rochak agrawal] 08:29:06
+Like, if on my laptop Maven is not installed, then I am… I cannot, like, run it. If I want to use Java, and Java is not installed, I cannot use Java. Similarly, on the CI… see, this is your machine.
+
+[rochak agrawal] 08:29:22
+where your Maven is going to run, then on this machine, Maven should be installed. So the point here is, whatever tool.
+
+[rochak agrawal] 08:29:31
+you want to use with your build steps, with your pipeline, you need to have those installed on your Jenkins machine.
+
+[rochak agrawal] 08:29:40
+And how we are going to do that?
+
+[rochak agrawal] 08:29:43
+with the help of these tools. So here you can see JDK installation, Git installation, Gradle installation, Ant installation, Maven installation.
+
+[rochak agrawal] 08:29:53
+Now, remember one more thing. You are seeing these options.
+
+[rochak agrawal] 08:29:58
+Because…
+
+[rochak agrawal] 08:29:59
+you have installed the Git End plugin or the Maven plugin. If you have not installed the plugin, those options will not come here. Okay? So I'll go…
+
+[rochak agrawal] 08:30:09
+Click on Add Maven.
+
+[rochak agrawal] 08:30:12
+And you just give it a name, for example, anything.
+
+[rochak agrawal] 08:30:18
+Submit. Okay.
+
+[rochak agrawal] 08:30:21
+And it says install automatically. Install from Apache. This is a version, so you can see multiple versions are there.
+
+[rochak agrawal] 08:30:28
+And you just save this.
+
+[rochak agrawal] 08:30:32
+Now, whenever I need to run my Maven build.
+
+[rochak agrawal] 08:30:35
+I will use this name.
+
+[rochak agrawal] 08:30:39
+Which we have given to our Maven. It says, Maven is there. So we'll use this name.
+
+[rochak agrawal] 08:30:45
+I just give up.
+
+[rochak agrawal] 08:30:51
+Some names, so that it is…
+
+[rochak agrawal] 08:30:55
+When we will be running in our pipeline, we can identify this. So now let's say if going forward I need to use SonarQube. Okay, so first thing is I will go and I'll show you right away. Let me see.
+
+[rochak agrawal] 08:31:10
+I see it here.
+
+[rochak agrawal] 08:31:12
+So currently if you see you are not seeing an option for Sonar you have an option of Git you have an option of JDK.
+
+[rochak agrawal] 08:31:20
+Whatever the plugin is installed, you are only Gradle is there, and then Maven. Okay, so I'll go to…
+
+[rochak agrawal] 08:31:27
+Plugins?
+
+[rochak agrawal] 08:31:29
+Available plugins.
+
+[rochak agrawal] 08:31:31
+Let's say I'm searching for sonar.
+
+[rochak agrawal] 08:31:35
+Now you see, I will say I'll install these two plugins.
+
+[rochak agrawal] 08:31:43
+Okay, yeah, I think it should be good. So now it was installed.
+
+[rochak agrawal] 08:31:48
+You can see down… go down.
+
+[rochak agrawal] 08:31:52
+You see it is installing. Perfect. Success. It's a loading plugin extension. Now, there will be certain plugins which, after the installation of which, you need to restart the Jenkins. So if you click on this button — so right now, I don't need it.
+
+[rochak agrawal] 08:32:08
+But there will be certain plugins after which you need to restart your Jenkins.
+
+[rochak agrawal] 08:32:12
+Restarting is very simple, you will just click on this button.
+
+[rochak agrawal] 08:32:16
+And your Jenkins will be restarted. That's it.
+
+[rochak agrawal] 08:32:21
+So, this is Jenkins's restarting.
+
+[rochak agrawal] 08:32:43
+It will take a minute or so.
+
+[rochak agrawal] 08:32:50
+Okay, again, I need to give my username and the password.
+
+[Vaibhav Gupta] 08:32:51
+Awesome.
+
+[rochak agrawal] 08:32:55
+So, admin…
+
+[rochak agrawal] 08:32:57
+Admin.
+
+[rochak agrawal] 08:33:00
+Which I created at the time of setting it up.
+
+[rochak agrawal] 08:33:09
+So, my plugin is installed. Now, if you go…
+
+[rochak agrawal] 08:33:14
+Tools.
+
+[rochak agrawal] 08:33:22
+You see?
+
+[rochak agrawal] 08:33:25
+So now the scanner option is there now.
+
+[rochak agrawal] 08:33:27
+So understand this.
+
+[rochak agrawal] 08:33:31
+Jenkins, see, sometime you will see, okay, I was working on some Jenkins, there was this functionality. I can configure it from the GUI, but that option, I'm not finding it on my… and this happens when you watch certain YouTube videos, they will do something.
+
+[rochak agrawal] 08:33:47
+Right? And you say there is some, uh, functionality they were using, but you… when you install Jenkins, uh, you don't find that functionality. The reason for that is the plugins.
+
+[rochak agrawal] 08:33:58
+They might be using some plugin, which is…
+
+[rochak agrawal] 08:34:01
+Pushing that functionality. Now, very clear you have seen, you can see SonarQube scanner installation. Sonar scanner for MS build installation was not there previously, correct?
+
+[rochak agrawal] 08:34:13
+Once we install the SonarQube plugin, those options are coming for me.
+
+[rochak agrawal] 08:34:17
+And it will happen across, not about only the tools. You have authorization strategy, you need to store the credential, you need to show something in a particular format.
+
+[rochak agrawal] 08:34:29
+multiple options, multiple plugins are there. Okay, so now there is a plugin for monitoring your Jenkins, right? So there can be n number of the plugins, so you just need to see what plugins you need, and you install it.
+
+[rochak agrawal] 08:34:43
+So this is about the tools. Then…
+
+[rochak agrawal] 08:34:47
+If you go to System, so here you have a Jenkins-related setting. Now, what is important for us is…
+
+[rochak agrawal] 08:34:55
+Home directory.
+
+[rochak agrawal] 08:34:57
+So, this is our home directory. I will come back to this home directory, okay? We'll see the content of the home directory, but you remember that, by default, Jenkins store all of its data in this directory on the file system.
+
+[rochak agrawal] 08:35:11
+So anyone is asking how to backup your Jenkins, you take the backup of this directory.
+
+[rochak agrawal] 08:35:18
+Okay, then what is important for us…
+
+[rochak agrawal] 08:35:23
+These are some default options.
+
+[rochak agrawal] 08:35:25
+So again, SonarQube servers here also you can find.
+
+[rochak agrawal] 08:35:35
+So you see, here also I can add the GitHub servers, GitHub API users, multiple options will be there.
+
+[rochak agrawal] 08:35:42
+So these are some normal settings are there.
+
+[rochak agrawal] 08:35:46
+Then, there is something called…
+
+[rochak agrawal] 08:35:50
+Plugins we covered. Notes. Cloud and appearance is not important for us. Notes.
+
+[rochak agrawal] 08:35:57
+This is very important. Okay. Now here.
+
+[rochak agrawal] 08:36:08
+Till now, we are saying this is my CIE, correct? Um…
+
+[rochak agrawal] 08:36:14
+It's a single machine?
+
+[rochak agrawal] 08:36:17
+Now, this machine will have certain limitation, maybe it will be 2GB machine, 8GB machine, 16GB machine, right? So then, you would run, let's say, a…
+
+[rochak agrawal] 08:36:30
+like a limited number of the jobs, right? But you might have hundreds of applications which are continuously running the pipelines. So then see, there is two things. One, it is a single machine. Anytime your machine is not available, your complete CI engine is stopped.
+
+[rochak agrawal] 08:36:45
+Second, the machine will have a physical limitation. You can only run a limited number of the.
+
+[rochak agrawal] 08:36:56
+of the jobs. So that is where I can add multiple.
+
+[rochak agrawal] 08:37:03
+Notes.
+
+[rochak agrawal] 08:37:07
+to my Jenkins installation.
+
+[rochak agrawal] 08:37:10
+Multiple means any, um, uh…
+
+[rochak agrawal] 08:37:14
+N number of the notes I can add, okay? We will do a demo of this also, uh, once we, uh…
+
+[rochak agrawal] 08:37:21
+Go through the basic stuff.
+
+[rochak agrawal] 08:37:24
+So, we can add n number of the machines to my, uh…
+
+[rochak agrawal] 08:37:29
+Jenkins installation, these will be called as a slave agents.
+
+[rochak agrawal] 08:37:38
+And this will be called as a master.
+
+[rochak agrawal] 08:37:44
+Now, in this case, why do we use it? Because now there is not a single point of failure. My job can run on any of these servers, right? Second thing is, if these at any point of time, I think I need more servers, I can add more server.
+
+[rochak agrawal] 08:38:00
+So my Jenkins installation will become extensible.
+
+[rochak agrawal] 08:38:05
+Correct?
+
+[rochak agrawal] 08:38:06
+Second thing is, these slaves need not to be.
+
+[rochak agrawal] 08:38:11
+Same. For example, my one slave can be macOS.
+
+[rochak agrawal] 08:38:19
+Another can be Windows.
+
+[rochak agrawal] 08:38:25
+And these can be Linux, for example.
+
+[rochak agrawal] 08:38:31
+Okay, um…
+
+[rochak agrawal] 08:38:34
+These can be, uh, livings. Now, why do you need such type of, uh.
+
+[rochak agrawal] 08:38:40
+slave configuration, because.
+
+[rochak agrawal] 08:38:43
+Basis on your application requirement, you need certain specialized type of machines. So for example, if you're developing an iOS application.
+
+[rochak agrawal] 08:38:53
+The iOS application only need to be built here.
+
+[rochak agrawal] 08:38:56
+You cannot build an iOS application on Windows or a Linux machine. You need a Mac machine for that.
+
+[rochak agrawal] 08:39:03
+if you're using a .NET, uh, type of application that need to be built on a Windows machine, right?
+
+[rochak agrawal] 08:39:09
+So that is where we can have this heterogeneous configuration of the agents. And by the way, this machine also your master machine, it can also be Mac OS like for example when you see the installation of Jenkins you have seen you can install.
+
+[rochak agrawal] 08:39:32
+Say, Mac OS, Linux, Docker, Kubernetes, Windows, anywhere you can install it, right.
+
+[rochak agrawal] 08:39:37
+So, that is about the notes. Now, while adding the note, you do not need to do anything. You will just go click on new note.
+
+[rochak agrawal] 08:39:47
+You will just give a node name, node name, permanent agent, you create. Simple.
+
+[rochak agrawal] 08:39:55
+Let's say you… the directory on the server, same I am giving as of now.
+
+[rochak agrawal] 08:40:07
+And here, this is important, the launch method. So there is an option of a launch agent by SSH.
+
+[rochak agrawal] 08:40:14
+And you will just give the… your host name, username, and the password, uh, credentials, okay? Uh, host username and host password.
+
+[rochak agrawal] 08:40:26
+Sorry. First you need to give the IP of the host. Okay. And then the credential, you will give the username and the password and you just save it. If they have the network connectivity, it will be connected to your host agent. That's it. Nothing much we need to do.
+
+[rochak agrawal] 08:40:41
+So we'll do a demo of this.
+
+[rochak agrawal] 08:40:45
+Anyway, just give me some time, I'll take your question once we go through the options.
+
+[rochak agrawal] 08:40:53
+Then, after the note, the important thing for us is credentials.
+
+[rochak agrawal] 08:40:58
+So…
+
+[rochak agrawal] 08:41:00
+Jenkins, um…
+
+[rochak agrawal] 08:41:03
+Like, Jenkins would be interacting with the multiple private repos, uh, Docker repos, your GitHub repos, your servers, right? So it need to have the username and the password for that particular. So if I want to, let's say, check in the code.
+
+[rochak agrawal] 08:41:19
+Promo.
+
+[rochak agrawal] 08:41:21
+private repository, then you… I need to have the path username and the password, right? So I can add these credentials here.
+
+[rochak agrawal] 08:41:28
+And so you can see normal username and the password, GitHub has secret file, secret text, certificate. So I'll just say for example, username and the password for now.
+
+[rochak agrawal] 08:41:38
+And, uh, scope is global, and system, you can see, global for now. Let's say, I'll say…
+
+[rochak agrawal] 08:41:46
+Admin?
+
+[rochak agrawal] 08:41:48
+and admin.
+
+[rochak agrawal] 08:41:50
+And I will say, this is my…
+
+[rochak agrawal] 08:41:54
+Admin credential, for example.
+
+[rochak agrawal] 08:41:57
+Okay? And I'll create.
+
+[rochak agrawal] 08:42:00
+Now, I can use this credential anywhere in Jenkins.
+
+[rochak agrawal] 08:42:04
+Previously, also, when we were going into the node.
+
+[rochak agrawal] 08:42:15
+Menu go, new note.
+
+[rochak agrawal] 08:42:25
+When you go launch agent via SS>CEH?
+
+[rochak agrawal] 08:42:28
+Now, here in the credential, you can see, now my admin credential are coming here.
+
+[rochak agrawal] 08:42:33
+So we can store multiple, uh, credentials. I can add it directly from here. Same thing.
+
+[rochak agrawal] 08:42:40
+Great. So…
+
+[rochak agrawal] 08:42:42
+You can store your, uh, Jenkins will have multiple credentials, and you can select what credential is, uh, apt for this.
+
+[rochak agrawal] 08:42:49
+So that is about the credentials.
+
+[rochak agrawal] 08:42:53
+Then, you can create a user. So, right now, I have only the admin user, right? I can create multiple users, so I go create a user for myself.
+
+[rochak agrawal] 08:43:07
+Because in your organization, you will not be the single person.
+
+[rochak agrawal] 08:43:44
+So you can see now I have two users. You cannot delete an admin user but you can delete whatever users you are creating.
+
+[rochak agrawal] 08:43:52
+So, now, even I can, uh, uh, log in with this Rojak user, and now whatever you will do.
+
+[rochak agrawal] 08:43:59
+it will be recorded that either admin has done it, or the router has done it. So you can have multiple users you can create.
+
+[rochak agrawal] 08:44:06
+Then…
+
+[rochak agrawal] 08:44:08
+The last important thing for us in Manage Jenkins is…
+
+[rochak agrawal] 08:44:14
+Security. It says, secure Jenkins, define who is allowed to access or to use the system. So you go…
+
+[rochak agrawal] 08:44:25
+So currently, we are using our own database, and you can see…
+
+[rochak agrawal] 08:44:30
+Logged-in authorization, logged-in user can do anything. So, now whatever user I'm creating, uh, they can do anything once they are able to log in, right? But that is not the right approach. We discussed that you would like to want, uh.
+
+[rochak agrawal] 08:44:45
+your developers to give the.
+
+[rochak agrawal] 08:44:49
+What you can say is, uh…
+
+[rochak agrawal] 08:44:52
+Read-only access, right? So you can see?
+
+[rochak agrawal] 08:44:55
+There is multiple things. Is it anyone can do anything? It isn't, like, anonymous access, uh, right? That is, of course, I don't know why they have given this option. This you will not use ever.
+
+[rochak agrawal] 08:45:07
+Then, you have a legacy mode. Uh, legacy mode, again, it's a deprecated, we don't use it.
+
+[rochak agrawal] 08:45:13
+One is a logged in user can do anything. And it says allow anonymous read access. Again, this is also not a good security practice. What we use it, the metrics based security or the project based metrics authorization strategy.
+
+[rochak agrawal] 08:45:28
+If you go to metrics-based security, so you have these options, okay? You have anonymous, there is no permission granted. Authenticated user, what they can do.
+
+[rochak agrawal] 08:45:40
+Right? Uh, authenticated you…
+
+[rochak agrawal] 08:45:43
+They can do everything, right?
+
+[rochak agrawal] 08:45:45
+Then.
+
+[rochak agrawal] 08:45:47
+What in… what you're going to use in…
+
+[rochak agrawal] 08:45:51
+organization is what is called the Project-Based Metrics Authorization and Strategy.
+
+[rochak agrawal] 08:45:56
+Okay.
+
+[rochak agrawal] 08:45:58
+In the project-based metrics authorization strategy.
+
+[rochak agrawal] 08:46:02
+you will, uh…
+
+[rochak agrawal] 08:46:04
+Let's say I add a user.
+
+[rochak agrawal] 08:46:08
+I'll say…
+
+[rochak agrawal] 08:46:10
+project.
+
+[rochak agrawal] 08:46:14
+So, you see, row check, currently no permission granted, but what it can do, it can, uh…
+
+[rochak agrawal] 08:46:21
+let's say, build. It can build, it can…
+
+[rochak agrawal] 08:46:26
+I… I… let's say I want to give only, uh, the read-only permission to Rochar, uh, so I will just go build and… that's it.
+
+[rochak agrawal] 08:46:35
+And I'll save this.
+
+[rochak agrawal] 08:46:39
+So we can totally control, uh, who is going to use what.
+
+[rochak agrawal] 08:46:44
+Right? So you can see, uh, project based and row check a job lead.
+
+[rochak agrawal] 08:46:49
+This admin user is the overall administrator.
+
+[rochak agrawal] 08:46:52
+Anonymous.
+
+[rochak agrawal] 08:46:53
+Currently, no permission granted. Authenticated user, also no permission granted. Right? The difference between metrics and the project-based metrics is, currently, we do not have a project.
+
+[rochak agrawal] 08:47:06
+Right? Once you have multiple projects, right, your application A, B, C, D.
+
+[rochak agrawal] 08:47:11
+Metrics-based is the overall… give you the… so in the metrics-based strategy, if I can give Rochak a read-only access, then Rochak can read all the projects which is there.
+
+[rochak agrawal] 08:47:22
+But in a project-based, I can give the access on a project level, so I can define this user would not be able to access.
+
+[rochak agrawal] 08:47:30
+project B. It needs to access only project A. So that is the difference between project-based and the matrix-based strategy.
+
+[rochak agrawal] 08:47:41
+So…
+
+[rochak agrawal] 08:47:43
+You can see, uh, then you have, uh, so all these are there, logs also.
+
+[rochak agrawal] 08:47:49
+if you see, if you want to check the logs, so you click on the Jenkins logs, and you can see.
+
+[rochak agrawal] 08:47:55
+started…
+
+[rochak agrawal] 08:47:56
+Right? Started version started. So all the Jenkins… Jenkins is fully up and running, so all the logs… although we generally don't see the logs from here, uh, if you go to your home directory.
+
+[rochak agrawal] 08:48:12
+Bell Lab Jenkins, you will have a logging folder there itself.
+
+[rochak agrawal] 08:48:17
+Then, uh…
+
+[rochak agrawal] 08:48:20
+If you want to run C, uh…
+
+[rochak agrawal] 08:48:24
+Some command also, you can run it from here, script console.
+
+[rochak agrawal] 08:48:29
+Right? So, use the printing command to see the output. So, if you run this…
+
+[rochak agrawal] 08:48:35
+You run, and here you are going to see all the plugin which is installed in your system. So if you want to have some command you want to run on your Jenkins.
+
+[rochak agrawal] 08:48:46
+See, for example, you want to find the status of the last.
+
+[rochak agrawal] 08:48:50
+10 failed builds. So you construct the command here, you run it, and you will get the output, uh, here itself.
+
+[rochak agrawal] 08:48:58
+But this is written in Groovy, by the way. Okay, so Groovy is another programming language in which you need to write this command.
+
+[rochak agrawal] 08:49:05
+So, these are the options which…
+
+[rochak agrawal] 08:49:09
+is important for us to understand, right? Node, we will do a separate demo, but apart from Node, if you have any question in anything.
+
+[rochak agrawal] 08:49:27
+Yes, Animesh, you were raising your hand.
+
+[Animesh Jain] 08:49:31
+Yeah, I was just asking, like, uh, if there was some plugin which is not there, which we want, then in that case, uh, uh, what, uh, what a DevOps engineer will do?
+
+[rochak agrawal] 08:49:43
+See, I'll explain. See, first, Animesh, like, when you say the plugin is not there you want to use, I'll answer it in two, three ways.
+
+[rochak agrawal] 08:49:55
+First, you are going to use anything.
+
+[rochak agrawal] 08:50:01
+Not about the tools. Anything.
+
+[rochak agrawal] 08:50:01
+That… that particular thing will have a…
+
+[rochak agrawal] 08:50:05
+Limitation, correct?
+
+[rochak agrawal] 08:50:07
+See, for example, you say, I am… I'm purchasing a car, can it fly?
+
+[rochak agrawal] 08:50:12
+It cannot fly. Correct?
+
+[rochak agrawal] 08:50:14
+The basic job of the car is to run on the road. So yes, every tool, anything which you are using will have certain limitations, correct?
+
+[rochak agrawal] 08:50:26
+Uh, second thing is, let's say, uh, you are saying, no, I… I want to use it, for example.
+
+[rochak agrawal] 08:50:31
+So we discussed there is an option of custom plugins. You can develop your own plugins also. You upload it to the Jenkins, and you will get those functionality. That's the second thing.
+
+[rochak agrawal] 08:50:42
+Third thing is, let's say, um…
+
+[rochak agrawal] 08:50:46
+I want to deploy something on the Tomcat, for example. Okay, now I'll show you from the UI.
+
+[rochak agrawal] 08:50:57
+Let's say I go create a job, very… just…
+
+[rochak agrawal] 08:51:03
+demo, and…
+
+[rochak agrawal] 08:51:04
+I'll come back to this later.
+
+[rochak agrawal] 08:51:07
+I'm just giving you a plugin example.
+
+[rochak agrawal] 08:51:12
+Now, if you go to…
+
+[rochak agrawal] 08:51:15
+the build steps.
+
+[rochak agrawal] 08:51:17
+Okay.
+
+[rochak agrawal] 08:51:21
+You are going to see multiple options. You can get the SonarQube scanner, you can have Shell, Invoke-And, Invoke-Gradle, Maven targets, right? There is no option for deployment, correct? In simply post-build action also, you're not going and getting anything related to.
+
+[rochak agrawal] 08:51:40
+This, uh…
+
+[rochak agrawal] 08:51:42
+Deployment, correct?
+
+[rochak agrawal] 08:51:44
+Great. Now I go.
+
+[rochak agrawal] 08:51:50
+I go to…
+
+[rochak agrawal] 08:51:54
+Plugins?
+
+[rochak agrawal] 08:52:01
+deploy to contain.
+
+[rochak agrawal] 08:52:02
+Let's say I install this plugin.
+
+[rochak agrawal] 08:52:13
+Okay?
+
+[rochak agrawal] 08:52:15
+Now, if we refresh this page…
+
+[rochak agrawal] 08:52:25
+You see, there is an option now, deploy one EAR to container.
+
+[rochak agrawal] 08:52:30
+Why you are getting this option?
+
+[rochak agrawal] 08:52:34
+Because, uh…
+
+[rochak agrawal] 08:52:38
+you have installed this plugin. So, now, anyways, uh, we have discussed. If the plugin is not there, first you develop your own plugin, uh, right? But that is a very advanced thing.
+
+[rochak agrawal] 08:52:49
+So you have to have a plugin. Now, you can ask, if the plugin is not there, can I still deploy it to my Tomcat? See, you can deploy, but then you need to come up with a custom solution. So for example, all those commands, if I click on this.
+
+[rochak agrawal] 08:53:06
+Here, I will just give the path of my WAR file. I will add, uh, let's say, Tomcat.
+
+[rochak agrawal] 08:53:10
+and I will give the Tomcat URL, everything will happen with the help of a plugin. But you say, without the help of a plugin, can I also deploy? Then you will just go into the build step, you…
+
+[rochak agrawal] 08:53:23
+There is an option of execute shell.
+
+[rochak agrawal] 08:53:25
+You write the complete shell script yourself.
+
+[rochak agrawal] 08:53:29
+For the… for the deployment script.
+
+[rochak agrawal] 08:53:32
+it will also do the work. So, but that would not be true for every plugin, right? There will be certain functionality which is only available to you by the help of plugin.
+
+[Animesh Jain] 08:53:46
+Yes.
+
+[rochak agrawal] 08:53:47
+Okay, so if there is not a plugin, then yes, that's a limitation. That will be a limitation of that. And this is this is going to hold true for everything. This is not only true with Jenkins. This is true with everything.
+
+[rochak agrawal] 08:54:00
+Every, uh, functionality, every tool will have one or more limitations.
+
+[Animesh Jain] 08:54:07
+Yeah.
+
+[rochak agrawal] 08:54:08
+Okay?
+
+[Animesh Jain] 08:54:09
+Yeah, and can you just explain the notes part again, just a little bit of explanation?
+
+[rochak agrawal] 08:54:17
+What is the question here, Animesh?
+
+[Animesh Jain] 08:54:19
+Uh, I don't understand the note that was mentioned in the game thing.
+
+[rochak agrawal] 08:54:24
+Hmm?
+
+[Animesh Jain] 08:54:26
+Uh, can you please come up again, just a small definition? I understand the whole point, but…
+
+[rochak agrawal] 08:54:30
+No, but what is your confusion? What is that you are not able to understand? See, if I explain it again, I will explain it in the same way. I need to understand.
+
+[Animesh Jain] 08:54:37
+No, I just want to understand that, uh, why we are using that.
+
+[rochak agrawal] 08:54:39
+Great.
+
+[rochak agrawal] 08:54:42
+be explained. It is…
+
+[Animesh Jain] 08:54:43
+Uh, when we… when we are using it, just to resist it.
+
+[rochak agrawal] 08:54:46
+See, we, we explain both of the scenario animates, uh, you are going to use when you need different configuration, because with your CI engine, there will be, uh, multiple, uh.
+
+[Animesh Jain] 08:54:54
+Okay.
+
+[rochak agrawal] 08:55:00
+type of application you are going to deploy. Now I cannot build my iOS application on a Windows-based instance or a Linux-based instance. I need a Mac OS machine, correct? So that is where I need a Mac OS machine as a node.
+
+[rochak agrawal] 08:55:15
+where I am going to run my iOS build.
+
+[rochak agrawal] 08:55:17
+That is the one thing. Second thing is, let's say, uh, let's forget about these for now.
+
+[rochak agrawal] 08:55:24
+I can have all the Linux instance, uh, Linux servers as a slave, because.
+
+[rochak agrawal] 08:55:30
+My central machine, which it has currently, this machine.
+
+[rochak agrawal] 08:55:35
+will have a certain, uh, memory and CPU. It can only run 5 jobs, 10 jobs, 50 jobs, maybe, for example.
+
+[rochak agrawal] 08:55:42
+What if you need to run 500 jobs? You need more power?
+
+[rochak agrawal] 08:55:48
+Connect?
+
+[rochak agrawal] 08:55:49
+So that is where we will be adding the nodes, so that I can distribute my workload of the central server to these nodes.
+
+[Animesh Jain] 08:55:49
+Gotcha.
+
+[rochak agrawal] 08:55:59
+So now, your build process, instead of running it here.
+
+[rochak agrawal] 08:56:04
+Instead of running it here, it can run here, it can run here, it can run here. I can choose where I want to run my build job.
+
+[rochak agrawal] 08:56:13
+Okay?
+
+[rochak agrawal] 08:56:17
+Yes, Alex.
+
+[Arif] 08:56:18
+Yeah. So, regarding the plugins, uh, I'm not sure. Uh, like, how can we decide? Who is going to decide that what plugins are required for a particular application or for building this thing?
+
+[rochak agrawal] 08:56:30
+See, it is up. We need to decide. That is what you need to do. Go through the browse, the documentation. See, there is a very fixed steps. This is not a very challenging task. I'll say, for example, I'm working with Maven. I'll install the Maven plugin. I'm working with AWS ECR.
+
+[rochak agrawal] 08:56:47
+For example, I'll I'll search for a.
+
+[rochak agrawal] 08:56:53
+plugin for Amazon ECR or AWS, Azure. So, see, it depends on the platform with which you are working, and you will select the right plugin. You can search for the plugins, right?
+
+[Arif] 08:57:04
+So we have to search, and we have to decide, right, the plugin, what plugins are required.
+
+[rochak agrawal] 08:57:06
+Yeah, yeah, yeah. And, and you, you, you can see it here if I go to plugins.
+
+[rochak agrawal] 08:57:17
+So, for example, if you go to Available Plugin, this is a list of the plugin which is there for you, okay? There may be multiple, at least 1,500 or something.
+
+[rochak agrawal] 08:57:28
+So, you can search for the plugin.
+
+[rochak agrawal] 08:57:32
+So the point here is, let's say if I go Azure, for example.
+
+[rochak agrawal] 08:57:36
+I'm working with Azure. So, say, Azure Credential, we have a plugin. Enter ID, we have a plugin. And, see, that is where, of course, we need to do a little bit understanding about how this plugin is working. So, let's say you're working with Azure Key Vault.
+
+[rochak agrawal] 08:57:50
+So there is a complete documentation is available.
+
+[rochak agrawal] 08:57:53
+Plugin enables Jenkins to fetch the secret from the Azure Key Vault and inject them directly into your builder jobs. It works similarly to the credential binding plugin and borrows much from the HashiCorp Vault plugin. The plugin acts as an Azure Active Directory application and must be configured with a valid credential.
+
+[rochak agrawal] 08:58:13
+So, and uh…
+
+[rochak agrawal] 08:58:14
+You will completely see how you can do it. So yes, that is, of course, you can see a very…
+
+[rochak agrawal] 08:58:26
+And how you are going to use it in your pipeline, that the complete syntax is given, right?
+
+[rochak agrawal] 08:58:32
+So, uh, are there for…
+
+[rochak agrawal] 08:58:34
+the platform selection is basically depend on, uh… the plugin selection basically will depend on the platform which you are using. And most of the time, you will be working with a common, uh…
+
+[rochak agrawal] 08:58:47
+Or plugins like Git, Maven, Java. And then as you build the advanced job, then yes, you need to look for the correct plugins for you.
+
+[rochak agrawal] 08:58:56
+And then you use them.
+
+[Arif] 08:59:09
+Uh, so we have to, we have to learn these things, right?
+
+[rochak agrawal] 08:59:12
+It is not something about to learn RFC. First, you will define and…
+
+[rochak agrawal] 08:59:20
+There might be the cases that, uh, that whatever you want to do might be… there is not a plugin for that. And you will write, uh, this with a shell script or something.
+
+[rochak agrawal] 08:59:33
+See, this is not a very, what I'm trying to say is this is not a very challenging part.
+
+[rochak agrawal] 08:59:38
+Because plugins is, let's say, uh…
+
+[rochak agrawal] 08:59:42
+I want to work with Azure. Now I know the type of the plugins is available. Now you just read. For example, you work with the VMs. Azure plugin to provision and deprovision agents. Azure App Service. A Jenkins plugin to deploy application directly to the Azure App Service.
+
+[rochak agrawal] 08:59:57
+So you can see, now, if you are deploying your application on the Azure App Service.
+
+[rochak agrawal] 09:00:03
+It is very clearly written, this is the right plugin.
+
+[rochak agrawal] 09:00:08
+Correct. I'll not go and use this plugin. So, very clear. So, first.
+
+[rochak agrawal] 09:00:12
+If you know what you want to do.
+
+[rochak agrawal] 09:00:15
+Plugin selection would not be a challenging part.
+
+[Arif] 09:00:19
+Okay.
+
+[rochak agrawal] 09:00:20
+Okay.
+
+[rochak agrawal] 09:00:22
+So, you see, container agents, there is a provision agent on the Azure container instances. Now, app service is a different Azure service, container instance is a different Azure service, right? Now, but, uh, you say, uh.
+
+[rochak agrawal] 09:00:34
+Second thing, uh, let's say if, uh, we'll…
+
+[rochak agrawal] 09:00:37
+Understand, that's it, with the help of an AWS example.
+
+[rochak agrawal] 09:00:40
+Now, AWS SDK, there's multiple plugins, right?
+
+[rochak agrawal] 09:00:44
+Now.
+
+[rochak agrawal] 09:00:46
+AWS Lambda, for example.
+
+[rochak agrawal] 09:00:49
+Now…
+
+[rochak agrawal] 09:00:51
+You see, this plugin allows you to upload a GIF file or folder to AWS Lambda, correct?
+
+[rochak agrawal] 09:00:58
+First, what do you need to do? You need to.
+
+[rochak agrawal] 09:01:02
+Identify what you want to do. You decided that I want to deploy my code to AWS Lambda.
+
+[rochak agrawal] 09:01:07
+Then you search for the plugin, and you found this plugin, okay?
+
+[rochak agrawal] 09:01:11
+plugin allows you to upload a GIF file or folder to AWS Lambda. You are going to use this plugin.
+
+[rochak agrawal] 09:01:16
+earlier till now.
+
+[rochak agrawal] 09:01:19
+Now, let's say this plugin is not there. Does that mean will you not be able to deploy your file to AWS Lambda? Absolutely not.
+
+[rochak agrawal] 09:01:30
+what we… let's say I'm not using this plugin, okay?
+
+[rochak agrawal] 09:01:46
+What do you need to do?
+
+[rochak agrawal] 09:01:49
+So let's say this is your command, for example.
+
+[rochak agrawal] 09:01:53
+I'm not using the plugin. Or, let's say the plugin is not available. Okay?
+
+[rochak agrawal] 09:01:59
+Does not mean we cannot do the works. For example, I'll go…
+
+[rochak agrawal] 09:02:05
+Configure.
+
+[rochak agrawal] 09:02:09
+There is something called the
+
+[rochak agrawal] 09:02:11
+bootstraps.
+
+[rochak agrawal] 09:02:12
+Execute the shell. Just keep the command. Simple.
+
+[rochak agrawal] 09:02:16
+This command also will do the same thing.
+
+[rochak agrawal] 09:02:18
+Correct? It is just in your build machine, where your build is running. AWS CLI should be installed.
+
+[rochak agrawal] 09:02:28
+You got it.
+
+[Arif] 09:02:33
+Yeah, yeah.
+
+[rochak agrawal] 09:02:34
+Right? So, see, you are not going to find the plugin of each and everything.
+
+[Arif] 09:02:35
+Some part of it, yeah.
+
+[rochak agrawal] 09:02:41
+That is a given. Maybe, for example, right now I'm working with Amazon SageMaker. There is not a plugin for SageMaker. After 4 months, 6 months, there might be, because, like, there's an open source community, new plugins are coming or not.
+
+[rochak agrawal] 09:02:54
+But if the plugin is not there, does not mean I will not be able to use that functionality. There are… there will be other ways of using it.
+
+[rochak agrawal] 09:03:04
+Maybe the effort will be more than that?
+
+[rochak agrawal] 09:03:07
+Right? But I can run this command function. It is exactly like running this command. See, for example.
+
+[rochak agrawal] 09:03:14
+let's say…
+
+[rochak agrawal] 09:03:20
+Okay, very simple, uh…
+
+[rochak agrawal] 09:03:23
+Give me any command which I'm going to run.
+
+[rochak agrawal] 09:03:28
+What command I should run?
+
+[rochak agrawal] 09:03:29
+let's say PWD.
+
+[rochak agrawal] 09:03:40
+I'll do CD.
+
+[rochak agrawal] 09:03:52
+And let's watch.
+
+[rochak agrawal] 09:03:55
+Okay.
+
+[rochak agrawal] 09:03:57
+I'll save this.
+
+[rochak agrawal] 09:04:01
+And you build now.
+
+[rochak agrawal] 09:04:03
+Let's see what is going to happen.
+
+[rochak agrawal] 09:04:07
+Why it is not running.
+
+[rochak agrawal] 09:04:26
+Okay.
+
+[rochak agrawal] 09:04:42
+It is not running.
+
+[rochak agrawal] 09:04:47
+Disk spaces below threshold of 1GB.
+
+[rochak agrawal] 09:04:51
+That is why it is not running.
+
+[rochak agrawal] 09:04:54
+We need to disk spaces below threshold.
+
+[rochak agrawal] 09:05:17
+This is the problem. This is not going to run. I have…
+
+[rochak agrawal] 09:05:21
+I have provisioned a small machine.
+
+[rochak agrawal] 09:05:24
+We need to set it up again.
+
+[rochak agrawal] 09:06:57
+We are not getting this option, Jenkins Notes.
+
+[rochak agrawal] 09:07:05
+Configure monitors.
+
+[rochak agrawal] 09:07:10
+Please press threshold.
+
+[rochak agrawal] 09:07:12
+Okay. Set zero.
+
+[rochak agrawal] 09:07:18
+Save this.
+
+[rochak agrawal] 09:07:24
+I think this should be good now.
+
+[rochak agrawal] 09:07:31
+We have done it.
+
+[rochak agrawal] 09:07:45
+Free space threshold.
+
+[rochak agrawal] 09:07:52
+Set to jiggle.
+
+[rochak agrawal] 09:08:11
+Let me move this out soon.
+
+[rochak agrawal] 09:08:27
+Should be good now.
+
+[rochak agrawal] 09:08:30
+Okay, got filled.
+
+[rochak agrawal] 09:08:41
+cannot CD to home Ubuntu, okay? I'll just do it in the home directory itself.
+
+[rochak agrawal] 09:08:57
+That's it, I do PWD.
+
+[rochak agrawal] 09:08:59
+Same.
+
+[rochak agrawal] 09:09:01
+And build now.
+
+[rochak agrawal] 09:09:07
+Now you see what is my output.
+
+[rochak agrawal] 09:09:10
+This PWD is this, and that's file.txt. Now let me go here and see if the file is created or not.
+
+[rochak agrawal] 09:09:23
+You see?
+
+[rochak agrawal] 09:09:26
+So in the end, you can run the shell commands, shell scripts from the Jenkins itself, right?
+
+[rochak agrawal] 09:09:33
+See, understand Jenkins as the empty box.
+
+[rochak agrawal] 09:09:38
+Now, you can do anything from Jenkins, but you need to tell Jenkins what you need to do, right? So now, instead of running this basic command.
+
+[rochak agrawal] 09:09:48
+I can run my complete AWS CLI commands from here, right, without any plugins. So the plugin is just…
+
+[rochak agrawal] 09:09:56
+See, understand plugins as if, uh…
+
+[rochak agrawal] 09:10:01
+They are…
+
+[rochak agrawal] 09:10:02
+just reducing the number of steps which you need to do or perform the action. For example.
+
+[rochak agrawal] 09:10:08
+Now, uh…
+
+[rochak agrawal] 09:10:12
+we have used the tool called Maven in the tool section. Now, Jenkins, what it will do, it will automatically install the Jenkins on your machine, where the build is running.
+
+[rochak agrawal] 09:10:21
+But if you say the Maven plugin is not there, or, for example, let's say, uh…
+
+[rochak agrawal] 09:10:26
+You are using a tool for which?
+
+[rochak agrawal] 09:10:30
+That option is not there, right? So what you can do is, I will just go to my build script.
+
+[rochak agrawal] 09:10:41
+configure, and here I will run these commands. For example, I'll say…
+
+[rochak agrawal] 09:10:47
+pseudo… app…
+
+[rochak agrawal] 09:10:54
+Yeah, let me, let me, uh, let's say sudo apt install.
+
+[rochak agrawal] 09:11:00
+Nginx. If you run these commands.
+
+[rochak agrawal] 09:11:04
+Those things will be installed or see whatever you want to do.
+
+[rochak agrawal] 09:11:09
+Plugin, you understand, are the medium which is reducing the number of the steps which you need to perform to achieve your functionality. Of course, for everything, you will not get.
+
+[rochak agrawal] 09:11:21
+the plugins, right? There will be some new functionality, let's say you are working with Tribi. Now, Tribi is a tool which is, uh… which is being used to scan your…
+
+[rochak agrawal] 09:11:31
+Docker images, for example.
+
+[rochak agrawal] 09:11:34
+For Tribi, there might not be a plugin. Last time I used Jenkins, there was not a plugin for Tribi. Let me see if that is there now.
+
+[rochak agrawal] 09:12:01
+See, there is no plugin available for Tribi, right? Now, Tribi is a tool, which I said, and we will use it with the containers. Now, that does not mean that I cannot run the Tribi.
+
+[rochak agrawal] 09:12:15
+with the help of my CICD pipeline. Now, everything which I need to do with that Ruby, I need to write in the configuration. That's it.
+
+[rochak agrawal] 09:12:27
+So, Arif, I… in Animesh, I hope the point is clear now with this.
+
+[Arif] 09:12:34
+Yeah, I got the point. Uh, so if some… so this… these plugins are different from the plugins that we have learned from the source code or programming languages.
+
+[Animesh Jain] 09:12:35
+Yes.
+
+[Arif] 09:12:45
+So, these are different things, right?
+
+[rochak agrawal] 09:12:47
+No, no, I did not understand this. Can you come again?
+
+[Arif] 09:12:50
+in source code, writing code, we are also using plugins, so those plugins are different from the plugins that we are using right now in the ZMP.
+
+[rochak agrawal] 09:12:58
+Exactly. See, uh, every tool might have a plugin. See, what… what is a plugin?
+
+[rochak agrawal] 09:13:03
+Plugin is something which you can extend… which is going to extend the functionality of the underlying technology.
+
+[rochak agrawal] 09:13:09
+Okay, right? If you are using plugin in Jenkins, it is extending Jenkins functionality. In Maven, if you are using it, it is extending Maven's functionality. If you use it in Ansible, if you use it in Terraform.
+
+[Arif] 09:13:10
+Yeah.
+
+[Arif] 09:13:23
+Okay.
+
+[rochak agrawal] 09:13:24
+So every tool, more or less, will have plugins.
+
+[Arif] 09:13:27
+Okay.
+
+[rochak agrawal] 09:13:28
+Okay.
+
+[Arif] 09:13:29
+Thank you.
+
+[rochak agrawal] 09:13:29
+But in Jenkins, everything depends on the plugin.
+
+[Arif] 09:13:33
+Okay.
+
+[rochak agrawal] 09:13:34
+Okay.
+
+[Arif] 09:13:36
+And what will happen if the plugin is not available? How will we come to know that this is the plugin issue?
+
+[rochak agrawal] 09:13:41
+But that is what we were discussing, RF, the whole time.
+
+[Arif] 09:13:41
+Suppose if I'm running some build…
+
+[Arif] 09:13:45
+No, no, sir, because I'm running some build.
+
+[Arif] 09:13:48
+It has started running, right?
+
+[Arif] 09:13:50
+But we were getting that error, right? This, uh… this, uh… space is very low or something.
+
+[rochak agrawal] 09:13:56
+Mm-hmm.
+
+[Arif] 09:13:56
+So, uh, like, do we get the same thing when there is no, uh, like, uh…
+
+[Arif] 09:14:04
+Uh, plugins for a particular, uh, build.
+
+[rochak agrawal] 09:14:06
+No, but you are going in reverse, RF. See, uh…
+
+[rochak agrawal] 09:14:11
+Understand it, when you say your build is running, right? For example.
+
+[Arif] 09:14:14
+Hmm, yeah.
+
+[rochak agrawal] 09:14:18
+Let's say this is my job.
+
+[rochak agrawal] 09:14:26
+Let's say I go to configure.
+
+[rochak agrawal] 09:14:29
+Okay, configure means you can change it. Now, for example.
+
+[rochak agrawal] 09:14:36
+you…
+
+[rochak agrawal] 09:14:37
+Whatever option you are seeing here, right, in the build steps.
+
+[rochak agrawal] 09:14:41
+It means all these plugins are already installed.
+
+[Arif] 09:14:44
+Okay.
+
+[rochak agrawal] 09:14:46
+You can use them only.
+
+[rochak agrawal] 09:14:48
+So when you say, when you build is running and then you are finding that the plugin is not there, it's not going to happen, because only
+
+[Arif] 09:14:54
+Okay, okay.
+
+[rochak agrawal] 09:14:56
+The plugins are available to you.
+
+[Arif] 09:14:58
+Okay, so I got it.
+
+[rochak agrawal] 09:15:00
+Understood. So, it is…
+
+[Arif] 09:15:01
+Yeah, yeah.
+
+[rochak agrawal] 09:15:03
+The one way. While setting up your pipeline, you can only leverage those options which is available as the plugins, which is the uninstalled plugin.
+
+[rochak agrawal] 09:15:14
+Right now, you are seeing this option, Sonar Cube Scanner, because we have installed the plugin. If you do not install the plugin, you are not going to see this option.
+
+[Arif] 09:15:23
+Okay, got it. So building depends on when… first, the first thing is we have to define all the plugins that is required, then we will…
+
+[rochak agrawal] 09:15:25
+Understood.
+
+[rochak agrawal] 09:15:26
+Yes.
+
+[rochak agrawal] 09:15:29
+Correct, correct. So the thing, the use case you are seeing is not, never going to happen, because if the plugin is not there, you cannot use it altogether.
+
+[Arif] 09:15:33
+Okay.
+
+[Arif] 09:15:38
+Okay, okay, uh…
+
+[Vaibhav Gupta] 09:15:39
+Roger, can you please, uh, come again this point?
+
+[rochak agrawal] 09:15:42
+Okay, so RF… the RF question was, let's say I'm running a build, and in the build, I am getting an error.
+
+[rochak agrawal] 09:15:49
+Saying that plugin XYZ is not available, I cannot run it.
+
+[rochak agrawal] 09:15:54
+Okay, you understood the use case now?
+
+[Vaibhav Gupta] 09:15:58
+Yes, yes.
+
+[rochak agrawal] 09:15:59
+Yeah. So the thing is, what…
+
+[rochak agrawal] 09:16:02
+The use case was not valid, because…
+
+[rochak agrawal] 09:16:06
+you can only use the plugin which is available while you're designing your pipeline, while you're creating the pipeline, or the Jenkins job, okay?
+
+[rochak agrawal] 09:16:16
+So right now, whatever the plugins is, you can see it from here.
+
+[rochak agrawal] 09:16:20
+So, you cannot use a plugin which is not installed on your Jenkins server.
+
+[rochak agrawal] 09:16:26
+So, since you cannot use it, you are not going to get an error related to that plugin.
+
+[rochak agrawal] 09:16:30
+That's an imaginary scenario, basically.
+
+[rochak agrawal] 09:16:34
+Understood. So you are seeing this option Gradle, you are seeing this option Maven, you are seeing this option End, because if you go here.
+
+[rochak agrawal] 09:16:53
+Install plugin.
+
+[rochak agrawal] 09:16:55
+You see, end plugin is there.
+
+[rochak agrawal] 09:16:57
+If you search for Gradle.
+
+[rochak agrawal] 09:17:01
+Gradle plugin is there. Now, let's say I go…
+
+[rochak agrawal] 09:17:04
+Uninstall the little plugin.
+
+[rochak agrawal] 09:17:08
+Okay?
+
+[rochak agrawal] 09:17:13
+An installation pending.
+
+[rochak agrawal] 09:17:24
+Installation pending. So once your uninstallation will be completed.
+
+[rochak agrawal] 09:17:32
+I think I need to restart.
+
+[rochak agrawal] 09:17:40
+Once the uninstallation will be done, you see that you will not get an option for Gradle.
+
+[Vaibhav Gupta] 09:17:49
+So, Rochak, while, uh, creating the Jenkins, starting, we installed some plugins also, right?
+
+[rochak agrawal] 09:17:55
+Some suggested plugins, some plugin which is very commonly used.
+
+[Vaibhav Gupta] 09:17:59
+Which is, by default, provided by the Jenkins, right?
+
+[rochak agrawal] 09:18:02
+Yes. By default, yes. You can say that.
+
+[rochak agrawal] 09:18:22
+If you go…
+
+[rochak agrawal] 09:18:23
+To manage and is. Let me see if…
+
+[rochak agrawal] 09:18:37
+See? There is no Gradle plugin now.
+
+[rochak agrawal] 09:18:40
+Correct?
+
+[rochak agrawal] 09:18:43
+Previously, we were getting this Invoke Gradle script. Now, let me refresh.
+
+[rochak agrawal] 09:19:01
+You see? Can you see the Gradle?
+
+[rochak agrawal] 09:19:04
+No.
+
+[rochak agrawal] 09:19:07
+It's gone.
+
+[Arif] 09:19:13
+And Ruchak, so these plugins will keep on updating their software, right? Versions…
+
+[rochak agrawal] 09:19:16
+Correct. The versions will keep updating? Yes.
+
+[rochak agrawal] 09:19:19
+So all those updates you will see in this update sections.
+
+[Arif] 09:19:24
+So it will be automatically updated, or…
+
+[rochak agrawal] 09:19:24
+But…
+
+[rochak agrawal] 09:19:26
+No, no, it will not be automatically updated, and this, uh… Adith, this is a very tricky task, okay? Uh…
+
+[rochak agrawal] 09:19:35
+See, what happens is, your one plugin can be dependent on another plugin.
+
+[rochak agrawal] 09:19:40
+Okay. Then, in that case, if you are updating one plugin and you are not updating another plugin, that might break the functionality, so…
+
+[rochak agrawal] 09:19:52
+Like, I would suggest, um…
+
+[rochak agrawal] 09:19:56
+before, like, you have a dummy version of Jenkins, where you test these plugins update, and then, like.
+
+[rochak agrawal] 09:20:05
+Until, unless you do not need it, don't update it. That would be my recommendation.
+
+[rochak agrawal] 09:20:10
+If you are okay working the functionality you need, you are getting it from the older version, keep using it.
+
+[Arif] 09:20:19
+So, do we have to keep checking on, like, if the new version is available for a particular, uh…
+
+[rochak agrawal] 09:20:20
+Okay.
+
+[rochak agrawal] 09:20:23
+No, that's what I'm saying. If, until and unless, you do not need a new functionality, keep using the old version. Let's say, if there is a function of…
+
+[rochak agrawal] 09:20:34
+plug-in, there is a new functionality came up. See, that is where…
+
+[rochak agrawal] 09:20:39
+You need to go to documentation of the plugin and understand what is the new functionality they have come up with. And if you really needed the functionality, then only you update it.
+
+[Arif] 09:20:48
+Okay.
+
+[rochak agrawal] 09:20:50
+Until and unless you do not need to update it.
+
+[Arif] 09:20:54
+Okay, yeah, got it.
+
+[rochak agrawal] 09:20:54
+Okay. Yeah. So that is about the plugins.
+
+[Vaibhav Gupta] 09:20:59
+So, Rochak, that, uh, plugin we did, uh, install it, we can, uh, download it again from the available plugin, right?
+
+[rochak agrawal] 09:20:59
+End note.
+
+[rochak agrawal] 09:21:05
+Yeah, yeah, yeah, so you go to… see, these are… these are very basic things. Obviously, you can do it, any point of time, any tool.
+
+[Vaibhav Gupta] 09:21:13
+No, I, I just, uh, no, because, because, uh, the, maybe I was thinking that if we deleted it, and it permitted late, that's why I'm stressed.
+
+[rochak agrawal] 09:21:21
+No, it is nothing like it. You can download it again, install it again at any point of time. Any plugin, every plugin.
+
+[rochak agrawal] 09:21:29
+You can update it when the update is available, you can download it, you can delete it.
+
+[Vaibhav Gupta] 09:21:33
+And, uh, one more?
+
+[rochak agrawal] 09:21:33
+And not only with Jenkins, with other tools also.
+
+[Vaibhav Gupta] 09:21:38
+And one more thing is, like, uh, we have, uh, no, like, I'm not able to get the, uh, like, project metrics, uh, the…
+
+[Vaibhav Gupta] 09:21:47
+Started at Project Matrix. I'm not able to get this project, but it's, uh…
+
+[rochak agrawal] 09:21:51
+In Project Matrixes, you will create multiple applications in Jenkins, right? Multiple jobs.
+
+[rochak agrawal] 09:21:58
+Correct? You are not going to run only the single application build. Your app… your project, um, will have 500 applications, right? So, the project-based metric will give you.
+
+[rochak agrawal] 09:22:10
+Access to a particular projects.
+
+[rochak agrawal] 09:22:13
+So that is what the project-based matrix is for.
+
+[rochak agrawal] 09:22:17
+So when you go to your company, you have only… and the ODCs are there, and you are only allowed to enter into one ODC, correct? You cannot enter into every room.
+
+[rochak agrawal] 09:22:28
+Similar to that.
+
+[Arif] 09:22:31
+So, for example, you're saying that, uh, for, like, Zomato have only one application.
+
+[rochak agrawal] 09:22:35
+Hmm?
+
+[Arif] 09:22:36
+So they will not be using that… this project.
+
+[rochak agrawal] 09:22:38
+Correct. See, for example, you have 5 applications, right? But I won't…
+
+[rochak agrawal] 09:22:43
+And all of those 5 applications have different developers, right? So I will only give you the access for your application, not the other 4.
+
+[Vaibhav Gupta] 09:22:48
+Mm-hmm.
+
+[rochak agrawal] 09:22:52
+That is what a project-based matrix security do.
+
+[Arif] 09:22:58
+Okay. And regarding the node, uh, Rojak, I have questions, uh…
+
+[rochak agrawal] 09:23:01
+Note, we will do a demo RF.
+
+[Arif] 09:23:03
+But before the conceptual, this master slave, I don't get it. Why it is master and why it is slave?
+
+[rochak agrawal] 09:23:08
+Because your Jenkins is installed here.
+
+[rochak agrawal] 09:23:12
+Okay.
+
+[rochak agrawal] 09:23:14
+And it is controlling these nodes.
+
+[rochak agrawal] 09:23:19
+So, if this Jenkins will say, I don't want to run any build on this server.
+
+[rochak agrawal] 09:23:25
+then this will be unutilized. You will use only this. So this is a controlling machine, correct? From where I am controlling these machines.
+
+[rochak agrawal] 09:23:32
+So that's why this is called a master slave.
+
+[Arif] 09:23:34
+Okay, okay, okay.
+
+[rochak agrawal] 09:23:35
+This is… see, there is multiple names, Master Slave, uh, Controller Manager, uh…
+
+[Vaibhav Gupta] 09:23:36
+So, uh…
+
+[rochak agrawal] 09:23:42
+Different, different name.
+
+[Arif] 09:23:46
+So inside the tanking, I think, please go ahead.
+
+[Vaibhav Gupta] 09:23:47
+So…
+
+[Vaibhav Gupta] 09:23:51
+No, Arif, please, uh, I'm asking the same question as thing. Like, if, uh, you said, like, uh, the CI is, uh, like, Genkit decided to not use this, uh, this first node or second node, so maybe it, uh, you know, uh, like, impact on the functionality.
+
+[Vaibhav Gupta] 09:24:08
+You're working?
+
+[rochak agrawal] 09:24:10
+See, um, Bebo, you need to understand one thing here.
+
+[rochak agrawal] 09:24:15
+There can be n number of the permutation combination. For example, I have three machine. One is Mac OS, one is Windows, one other is Linux, right? Now I have 10 application. Only one application is Mac OS. So for one application, I'm going to only use the Mac OS machine. For the remaining nine, I can use the Windows or Linux, anything.
+
+[Vaibhav Gupta] 09:24:28
+Okay.
+
+[rochak agrawal] 09:24:36
+In the end, it is you who need to decide. You means your team, DevOps engineer, how you want… a tool is only going to give you the functionality.
+
+[Vaibhav Gupta] 09:24:47
+Mm-hmm.
+
+[rochak agrawal] 09:24:47
+Okay. How we want to leverage it, it is up to us.
+
+[rochak agrawal] 09:24:53
+As simple as that. And it will hold true in any of the tools we are going to see, we are going to study.
+
+[rochak agrawal] 09:25:05
+Okay.
+
+[Vaibhav Gupta] 09:25:08
+Mm-hmm.
+
+[Arif] 09:25:12
+Roger, can you go to the tools, uh, under the tools, what are the options there, I think?
+
+[rochak agrawal] 09:25:18
+In tools, there will not be options. Whatever plugins you will install, you will keep getting those options.
+
+[Arif] 09:25:18
+Something called Agent… I'm not getting…
+
+[Arif] 09:25:27
+Okay.
+
+[Arif] 09:25:31
+Remember, I have seen this agent. Is there any agent in this, in this, or it is in that mode?
+
+[rochak agrawal] 09:25:35
+Agent is the node only.
+
+[rochak agrawal] 09:25:37
+I don't.
+
+[Arif] 09:25:37
+Okay.
+
+[rochak agrawal] 09:25:44
+Okay, so next, tomorrow we will start working on the jobs. So there is a two type of job.
+
