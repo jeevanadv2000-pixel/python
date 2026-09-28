@@ -1,0 +1,3069 @@
+[rochak agrawal] 07:35:13
+Hey, good morning everyone. So we'll wait for a couple of minutes and then we'll start.
+
+[rochak agrawal] 07:38:24
+Good morning, everyone. Let's just start.
+
+[rochak agrawal] 07:38:28
+So, in our last class, we have, uh…
+
+[rochak agrawal] 07:38:31
+discussed about the containerization.
+
+[rochak agrawal] 07:38:35
+First we understood what is the virtualization, then we talked about what is the containerization, what is containers. We have seen how to install the Docker, what are the Docker components like Docker D, Docker client and we run some of the commands we download and we have.
+
+[rochak agrawal] 07:38:52
+Um, got a walkthrough of the Docker Hub. We download some of the images, uh, Nginx and others, and then we run a container out of it.
+
+[rochak agrawal] 07:39:01
+Now, we will go deep, understand some more commands about the containers, and we will also see how we are going to create the images.
+
+[rochak agrawal] 07:39:11
+So, let's just go…
+
+[rochak agrawal] 07:39:14
+Now, basically, if you see, overall, there are two very important components, I would say.
+
+[rochak agrawal] 07:39:23
+Bun is…
+
+[rochak agrawal] 07:39:25
+The image.
+
+[rochak agrawal] 07:39:29
+And another thing is a continuum. So when you run an image.
+
+[rochak agrawal] 07:39:36
+a container is created. And container is going to run the application, what you are going to define inside the image. Okay, so…
+
+[rochak agrawal] 07:39:47
+If I'm running a nginx image.
+
+[rochak agrawal] 07:39:55
+then whatever the container you are running, it is going to run the NGINX, and so on and so forth.
+
+[rochak agrawal] 07:40:02
+Now, when we talk about, if you go to slide.
+
+[rochak agrawal] 07:40:06
+So there are multiple stages container moves through, and we have seen that. When you, uh, run a Docker run command, or…
+
+[rochak agrawal] 07:40:15
+It is, for example, when we run docker run, your container is going to create.
+
+[rochak agrawal] 07:40:21
+Then
+
+[rochak agrawal] 07:40:22
+Docker run basically create and start in one step. And this is a command that we are going to use almost every time. So whenever you have an image, you will say just run nginx and Docker will create a container and start running a container.
+
+[rochak agrawal] 07:40:38
+Then, if we want to stop our running container, so let's do this from the demo itself.
+
+[rochak agrawal] 07:40:48
+So I'll read the command which we were running previously.
+
+[rochak agrawal] 07:40:53
+Sorry.
+
+[rochak agrawal] 07:40:58
+So, for example, I was running the command docker run nginx, or this command I would pick.
+
+[rochak agrawal] 07:41:14
+Okay, so Docker run, what it does, it is going to create a container, and it is going to start.
+
+[rochak agrawal] 07:41:21
+Now, if you see Docker PS, it's giving me this container ID.
+
+[rochak agrawal] 07:41:25
+Now, if you want to stop the container, so you will just say docker stop, and either you can give the name.
+
+[rochak agrawal] 07:41:34
+or the container ID, both is going to work. So, your container is going to stop. Now, if you see Docker TS.
+
+[rochak agrawal] 07:41:40
+There is no container. There is no running container, because docker ps is going to show you only the running containers. Then if you run docker ps-a.
+
+[rochak agrawal] 07:41:51
+It is going to show you NGINX.
+
+[rochak agrawal] 07:41:54
+created 38 seconds ago, exited 13 seconds ago. If I want to start this container, so I'll just say docker start.
+
+[rochak agrawal] 07:42:04
+Again, you can give the name or the container ID.
+
+[rochak agrawal] 07:42:07
+And if you run the Docker PS again.
+
+[rochak agrawal] 07:42:11
+So, start, stop, we can do. Then, if we want to delete the container, so I'll just say docker-rm.
+
+[rochak agrawal] 07:42:18
+And you, again, can give the container name as well as the container ID. So…
+
+[rochak agrawal] 07:42:27
+Now, if you run Docker, yes.
+
+[rochak agrawal] 07:42:32
+Hyphen A. So now only two containers are there. Now, if a container is running, for example, if I try to remove this container, docker stop my nginx.
+
+[rochak agrawal] 07:42:43
+It is going to give me another.
+
+[rochak agrawal] 07:42:45
+Okay? So, doctors…
+
+[rochak agrawal] 07:42:49
+RM is going to remove the container which is in a stopped state.
+
+[rochak agrawal] 07:42:53
+If you want to remove the running container, we need to remove it forcefully with the help of rm-fmi.
+
+[rochak agrawal] 07:43:04
+Now, it is not…
+
+[rochak agrawal] 07:43:07
+Right? So…
+
+[rochak agrawal] 07:43:10
+These are the stages. We can restart it, we can do a Docker kill also. Okay, so if you container, when you are going to use Docker stop, or when you are going to use Docker kill.
+
+[rochak agrawal] 07:43:22
+So.
+
+[rochak agrawal] 07:43:24
+Docker stop, uh, is going to forcefully.
+
+[rochak agrawal] 07:43:29
+stop your containers. Whatever the request your container might be serving at that moment.
+
+[rochak agrawal] 07:43:34
+It will just serve those requests and then gracefully shut it down. While the Docker kill immediately, it is like you go to task manager, click and say end a task. So Docker kill is something like that. It will immediately kill the container.
+
+[rochak agrawal] 07:43:49
+So, these are the command. Then, there are certain command with the images. Now, most of the command we have bugged, so Docker images is for…
+
+[rochak agrawal] 07:44:03
+to see what are the images are currently in… is there, right? Then, uh, if you want to remove the image, so you say Docker RMI.
+
+[rochak agrawal] 07:44:14
+Nginx, for example.
+
+[rochak agrawal] 07:44:17
+So it is going to remove the image.
+
+[rochak agrawal] 07:44:21
+Okay, now…
+
+[rochak agrawal] 07:44:26
+So, docker pull, docker image, now there is very, uh…
+
+[rochak agrawal] 07:44:30
+Interesting, uh, command is called the inspect.
+
+[rochak agrawal] 07:44:35
+So, if you run docker inspect.
+
+[rochak agrawal] 07:44:47
+So basically, it is going to give you all the details about your image.
+
+[rochak agrawal] 07:44:52
+So you can see…
+
+[rochak agrawal] 07:44:55
+Yeah, if I go you…
+
+[rochak agrawal] 07:45:00
+What is important for this is when it is created, which is the user which is running, which is the port it is exposed.
+
+[rochak agrawal] 07:45:08
+What are the environment variables is there, right? So you can get all the details.
+
+[rochak agrawal] 07:45:14
+entry point. So this is… this might not be making much sense of you right now, because we do not know how to create the image, but volume, working DIR, so you will get basically every details. Operating system is Linux.
+
+[rochak agrawal] 07:45:29
+Size is, uh, 22.
+
+[rochak agrawal] 07:45:32
+50 MBOs, uh, right? And there are different layers. So don't worry about these layers and everything, we will see all of that, we will discuss all of that when we are going to see the create images, okay?
+
+[rochak agrawal] 07:45:45
+And what I want to show you one more thing.
+
+[rochak agrawal] 07:45:49
+I'll run docker-nginx again.
+
+[rochak agrawal] 07:45:59
+Okay, so since we have removed the image, it is downloading the image again and running. Now, if you see docker inspect command, you can run on everything.
+
+[rochak agrawal] 07:46:09
+If you see docker ps, now I'll say docker inspect.
+
+[rochak agrawal] 07:46:15
+my instance. So this time, I am not inspecting the image, I am inspecting the container.
+
+[rochak agrawal] 07:46:21
+You can see.
+
+[rochak agrawal] 07:46:24
+Now…
+
+[rochak agrawal] 07:46:26
+If you go here, so you can see there are many details.
+
+[rochak agrawal] 07:46:30
+arguments.
+
+[rochak agrawal] 07:46:33
+At… no, and don't worry about these things, uh, we will see all of that, we'll discuss all of that.
+
+[rochak agrawal] 07:46:38
+And you can see the state. Running. Running is true.
+
+[rochak agrawal] 07:46:42
+Okay, so for example, let's say some of your container is getting killed because of the out-of-memory error. So then, this out-of-memory killed will equal to true.
+
+[rochak agrawal] 07:46:52
+So when you…
+
+[rochak agrawal] 07:46:54
+Inspect your container, then you will get to know what is the reason why it is failing or what can be there, right? So you can see there you will get the exit code which will probably tell you some information. Error also it will tell you what is the error.
+
+[rochak agrawal] 07:47:09
+So you will get all of this, right? And then, uh, the important thing for us is…
+
+[rochak agrawal] 07:47:17
+This network mode. So, in Docker, uh…
+
+[rochak agrawal] 07:47:21
+there are multiple networks are there, and again, we are going to see that. Uh, what… right now, what I want to show you the command, what the Docker inspect command does, and you can see the port binding.
+
+[rochak agrawal] 07:47:34
+We have given the port binding 8080, and you can see all of those port bindings here.
+
+[rochak agrawal] 07:47:45
+So this is the inspect command. So all the environment variable command, which image it is using, which is a working directly, all those things we are going to get in the docker inspect command. Now there is another command called docker logs.
+
+[rochak agrawal] 07:48:04
+With the help of docker logs command, you are going to see, uh…
+
+[rochak agrawal] 07:48:10
+The logs of a container.
+
+[rochak agrawal] 07:48:12
+Okay.
+
+[rochak agrawal] 07:48:14
+So, uh, tag, uh, let's leave it for now. Uh, push and tag, uh, we are going to see when we will be creating the image, and push that to our Docker Hub repository.
+
+[rochak agrawal] 07:48:27
+Then, we have seen that Docker run, Docker stop, RMA. It's okay.
+
+[rochak agrawal] 07:48:33
+No.
+
+[rochak agrawal] 07:48:36
+Inspect exec we have seen. Now there is something called the docker info, docker stats.
+
+[rochak agrawal] 07:48:45
+So…
+
+[rochak agrawal] 07:48:48
+Now, there is certain commands, which is for the Docker itself. So, Docker info, if you run…
+
+[rochak agrawal] 07:48:53
+It is going to give you what is the status of your Docker, right?
+
+[rochak agrawal] 07:48:59
+Uh, basically, Docker D. So you can see there is 2 containers. One is running, one is stopped. You have 3 images. What is the server version? 8.
+
+[rochak agrawal] 07:49:09
+You will get every detail here. So there is a very specific thing in Docker which is called the Docker Swarm. The Swarm mode is currently inactive.
+
+[rochak agrawal] 07:49:19
+Multiple operating system, total memory, name, Docker root DIR, so all your… so we've discussed that.
+
+[rochak agrawal] 07:49:28
+bal, lib, docker, all the images and containers will go inside this directory, right? And currently, if you see insecure registries.
+
+[rochak agrawal] 07:49:37
+Then…
+
+[rochak agrawal] 07:49:40
+Apart from docker info, we have these commands, docker stats and docker top.
+
+[rochak agrawal] 07:49:47
+The Docker, that's what it does.
+
+[rochak agrawal] 07:49:53
+So it is going to show you what are your containers running. So you can see there is one container running, which is the name of my nginx.
+
+[rochak agrawal] 07:50:02
+What CPU percentage it is, uh, using? What is the memory uses of this, and what is the limit?
+
+[rochak agrawal] 07:50:08
+What is the memory percentage? What is the IO? What is the block IO? What is the process inside this container is running? Okay, so it gives when you will be having multiple containers, you will see with CPU. So basically it is going to show you the CPU percentage and the memory percentage.
+
+[rochak agrawal] 07:50:26
+Okay.
+
+[rochak agrawal] 07:50:27
+Then there is a command called docker top.
+
+[rochak agrawal] 07:50:35
+You can see, uh, within the docker top here, you can see it's 3.
+
+[rochak agrawal] 07:50:41
+Three processes are running, okay? So you can see this…
+
+[rochak agrawal] 07:50:45
+three processes is running inside the container. So, with the help of docker top command, we can get.
+
+[rochak agrawal] 07:50:52
+Processes running inside a container. Okay. And then, uh, Docker starts.
+
+[rochak agrawal] 07:50:58
+Exit we have seen, right? Now this is very important, okay? Now let me remove the container and I'll show you.
+
+[rochak agrawal] 07:51:24
+We discussed this yesterday also, in our last class also, but let me…
+
+[rochak agrawal] 07:51:30
+Walk you through again on this. So, when you run a container.
+
+[rochak agrawal] 07:51:34
+You run a container in three mode, attached, detached, and interactive.
+
+[rochak agrawal] 07:51:40
+Very important to understand.
+
+[rochak agrawal] 07:51:46
+So, for example, this is the default mode.
+
+[rochak agrawal] 07:51:49
+which is attached.
+
+[rochak agrawal] 07:51:51
+What does it mean? Attach mode is output streams to your terminal. Ctrl-C stops the container. Good for a quick test. So, for example, if I go here…
+
+[rochak agrawal] 07:52:03
+And I'll say docker run nginx.
+
+[rochak agrawal] 07:52:06
+Okay, so whatever processes running inside a container.
+
+[rochak agrawal] 07:52:12
+Okay, the output I am going to see directly on my terminal.
+
+[rochak agrawal] 07:52:18
+So right now, if I go…
+
+[rochak agrawal] 07:52:22
+And, uh, let's say…
+
+[rochak agrawal] 07:52:26
+Open another instance, I'm not sure, let me see if that allows it or not.
+
+[rochak agrawal] 07:52:36
+will not allow. So if you, let's say, somehow duplicate, uh, open a duplicate instance, you will see my container.
+
+[rochak agrawal] 07:52:46
+Would be running.
+
+[rochak agrawal] 07:52:48
+Great!
+
+[rochak agrawal] 07:52:48
+Because now, on the terminal, I will not be able to do anything.
+
+[rochak agrawal] 07:52:54
+Okay, so the point here is, this is the default mode. If you are not explicitly saying anything, your container always going to run in an attached mode.
+
+[rochak agrawal] 07:53:08
+A test mode is everything you will see on the terminal. And when you do a Ctrl-C.
+
+[rochak agrawal] 07:53:15
+Your container is going to exit. Now, as written in the slide, it is good for a quick test. Maybe you are testing something and you want to run and see if the thing is working fine. So then it is a good way of doing the things.
+
+[rochak agrawal] 07:53:29
+Now, how can we verify that my container was running? If you see docker ps, there is no running container, and if you see docker ps-a.
+
+[rochak agrawal] 07:53:39
+Created about a minute ago. And you see we have let the container run for 20, 30 minutes. So it says exited 22 seconds ago. And since we have not given the name, you see the name.
+
+[rochak agrawal] 07:53:52
+infallible chaplain. It gives very cool name, Docker, right? So.
+
+[rochak agrawal] 07:53:57
+This is the attached mode.
+
+[rochak agrawal] 07:53:59
+Now.
+
+[rochak agrawal] 07:54:00
+Second is a detached mode. In the detached mode, what happens is, and we were running the containers all through this in a detached mode.
+
+[rochak agrawal] 07:54:09
+So if you see, uh, forget this hyphen P for now, if you see hyphen D.
+
+[rochak agrawal] 07:54:15
+Okay. Hyphen D command…
+
+[rochak agrawal] 07:54:19
+hyphen D flag runs in the background and prints the container ID. And that is how you are going to run your container in your environment.
+
+[rochak agrawal] 07:54:30
+most of the time in a detached mode. So when you run in a detached mode.
+
+[rochak agrawal] 07:54:39
+You will just get the container ID, your container is running in the background, if you run local PS.
+
+[rochak agrawal] 07:54:45
+You can see, created 6 seconds ago.
+
+[rochak agrawal] 07:54:49
+Okay, so that is a detached mode. Now, there is third mode also. So, attached and detached, then there is a third mode. Now, in this, if you see, in this container.
+
+[rochak agrawal] 07:55:00
+I have not gone inside a container, and I'm not doing anything. It just is running in the background. Correct. Then there is a third thing where you say, okay, I want to run a container.
+
+[rochak agrawal] 07:55:11
+And let's say I want to see something inside a container. Then, in that case.
+
+[rochak agrawal] 07:55:19
+You need to run the container in an interactive mode. So you see, interactive mode you need to run is hyphen IT. I keeps the standard input open so that you can type your commands and hyphen T allocates a terminal.
+
+[rochak agrawal] 07:55:36
+And we will get a shell inside the container. Now, if you see here, if I'm going to run this, let's say I'm running a Ubuntu container.
+
+[rochak agrawal] 07:55:48
+So, say, docker run hyphen it. I is, uh, keep the standard input open so that I can type my command. Hyphen t allocates a bash terminal.
+
+[rochak agrawal] 07:55:59
+And if you see here, it says unable to find Ubuntu locally.
+
+[rochak agrawal] 07:56:03
+And you can see it.
+
+[rochak agrawal] 07:56:07
+Now, I am inside the container.
+
+[rochak agrawal] 07:56:10
+I can do anything, LS-LRD.
+
+[rochak agrawal] 07:56:12
+So you can see, this LS-LRT is inside the container, PWD.
+
+[rochak agrawal] 07:56:19
+Right, inside group. Now, if you come exit.
+
+[rochak agrawal] 07:56:24
+Do PWD?
+
+[rochak agrawal] 07:56:25
+You see, now I'm outside of the container, and if you run the VS.
+
+[rochak agrawal] 07:56:30
+Only one container, because we have exited the container. And if you say docker ps-a.
+
+[rochak agrawal] 07:56:44
+So you can see?
+
+[rochak agrawal] 07:56:46
+You created a Ubuntu container?
+
+[rochak agrawal] 07:56:50
+Chest, elgic, kepler, kepler.
+
+[rochak agrawal] 07:56:53
+And, uh, you created 41 second ago, and you exited 21 second ago.
+
+[rochak agrawal] 07:56:58
+So you can see, uh, I can run a container in attached mode.
+
+[rochak agrawal] 07:57:03
+Where everything you will see on a container on the terminal itself, I can run it in a detest mode or I can run it in an interactive mode where I can go inside a container, see what are the files are there. I can run a script and anything and when you exit.
+
+[rochak agrawal] 07:57:19
+Your container is…
+
+[rochak agrawal] 07:57:21
+I'm going to accept it.
+
+[rochak agrawal] 07:57:28
+Then port binding also we discussed yesterday, but this is very important. Arif, let me complete this port binding and then I'll take the question.
+
+[rochak agrawal] 07:57:38
+So, port binding…
+
+[rochak agrawal] 07:57:41
+Here, we discussed yesterday also.
+
+[rochak agrawal] 07:57:46
+let's say, whatever the container I'm running, okay.
+
+[rochak agrawal] 07:58:04
+So, we are running Jenkins container… oh, sorry, Nginx container, if I'm not.
+
+[rochak agrawal] 07:58:19
+Now, as we discussed yesterday also.
+
+[rochak agrawal] 07:58:24
+Container does not have a physical existence, like, if you compare it with the virtual machine.
+
+[rochak agrawal] 07:58:30
+Even virtual machine does not have a physical existence, but they have their own network.
+
+[rochak agrawal] 07:58:37
+NIC will be attached to you. So they will have its own IP address, and you can access it from outside and everything. But in case of a container, container.
+
+[rochak agrawal] 07:58:49
+will get its IP, but it will always be a private IP.
+
+[rochak agrawal] 07:58:53
+And I'm saying it will always be a private IP, means you cannot access it from outside the world. Okay, now what is going to happen? So let's say Nginx always runs on port 80.
+
+[rochak agrawal] 07:59:07
+So, we need to expose this port 80 to our host port.
+
+[rochak agrawal] 07:59:12
+Now, we can expose it to the same port, or you can expose it to the… any other port. Now, when we expose the port with the help of hyphen P.
+
+[rochak agrawal] 07:59:22
+And I'm saying 8080.
+
+[rochak agrawal] 07:59:27
+slash, uh, colon 80. So that is the host port.
+
+[rochak agrawal] 07:59:35
+And that is the container.
+
+[rochak agrawal] 07:59:41
+Okay, it means that, um…
+
+[rochak agrawal] 07:59:45
+Whatever traffic comes on the port 8080, it will be redirected to the container port 80.
+
+[rochak agrawal] 07:59:52
+Okay, now let's verify this. So, for example, currently we have.
+
+[rochak agrawal] 08:00:00
+Okay, yes.
+
+[rochak agrawal] 08:00:01
+Right? It is saying port 80, it is exposing. Correct? So…
+
+[rochak agrawal] 08:00:07
+Let me open this.
+
+[rochak agrawal] 08:00:16
+So you see, I'll come to NGINX, but there is no NGINX running on my server, it is running inside a container. So what is happening right now, since we have given this, uh…
+
+[rochak agrawal] 08:00:30
+Yes, this hyphen P8080, so what is going to happen is any traffic coming to…
+
+[rochak agrawal] 08:00:40
+Post port 80, it is being redirected to the container port 80. Now, let's change this.
+
+[rochak agrawal] 08:00:47
+So, I'll say Docker RM hyphen F my…
+
+[rochak agrawal] 08:00:52
+And you're next.
+
+[rochak agrawal] 08:00:54
+And now, instead of…
+
+[rochak agrawal] 08:00:56
+port 80.
+
+[rochak agrawal] 08:00:58
+I will support 8087.
+
+[rochak agrawal] 08:01:03
+Okay.
+
+[rochak agrawal] 08:01:06
+Clear?
+
+[rochak agrawal] 08:01:08
+Double PS. Perfect.
+
+[rochak agrawal] 08:01:11
+Now it's 8080. Now, if you try to access this.
+
+[rochak agrawal] 08:01:16
+It's not going to work.
+
+[rochak agrawal] 08:01:18
+Because we have not exposed port 80, we have exposed port 8080.
+
+[rochak agrawal] 08:01:26
+You see?
+
+[rochak agrawal] 08:01:28
+Now, whatever traffic is coming on host port 8080 is being redirected to the container's port 80 where NGINX is running. So, it is not always you need to keep the port same.
+
+[rochak agrawal] 08:01:40
+Okay, it is up to us which port.
+
+[rochak agrawal] 08:01:44
+which are the ports we are going to expose. Okay, so you can see it here.
+
+[rochak agrawal] 08:01:52
+Port 8080 containers nginx listening. So host 8080 container 80. If we give like this, so it will be only reachable from the host itself because 127.0.0.1 is a.
+
+[rochak agrawal] 08:02:07
+Local hosted representation. And then, uh… hyphen P maps…
+
+[rochak agrawal] 08:02:13
+every exposed port to a random port, which we generally don't use, because we need to know which port I'm exposing, and uh… docker port bab, if you run…
+
+[rochak agrawal] 08:02:24
+Uh, so Docker…
+
+[rochak agrawal] 08:02:29
+Or…
+
+[rochak agrawal] 08:02:30
+My Nginx.
+
+[rochak agrawal] 08:02:31
+So you can see, it is very clearly telling that your port 8080 is exposed.
+
+[rochak agrawal] 08:02:39
+Okay? So, we can see if we… if, let's say, someone else runs the container and you do not know, you can run this command, or you can see with the help of Docker inspect command altogether.
+
+[rochak agrawal] 08:02:51
+Containers are private by default, as we discussed also, so, um…
+
+[rochak agrawal] 08:02:56
+Without hyphen p, nothing outside the host can reach the container port.
+
+[rochak agrawal] 08:03:02
+That is very, very important. So, for example.
+
+[rochak agrawal] 08:03:06
+Now, you can see I can reach out to the container, correct?
+
+[rochak agrawal] 08:03:10
+Now, if I remove this…
+
+[rochak agrawal] 08:03:20
+I'll run the same container.
+
+[rochak agrawal] 08:03:24
+But…
+
+[rochak agrawal] 08:03:25
+Without exposing the order.
+
+[rochak agrawal] 08:03:29
+Okay? The dog cut.
+
+[rochak agrawal] 08:03:32
+PS, your container will be running, uh, is running, but…
+
+[rochak agrawal] 08:03:37
+You will not be able to access this.
+
+[rochak agrawal] 08:03:41
+Never.
+
+[rochak agrawal] 08:03:43
+So you can see.
+
+[rochak agrawal] 08:03:45
+It's not working.
+
+[rochak agrawal] 08:03:46
+Same container you are running, same everything, you just not expose the port and…
+
+[rochak agrawal] 08:03:53
+For the external world, it is not working.
+
+[rochak agrawal] 08:03:55
+Okay, so containers are private by default, you need to remember this. Without hyphen p, nothing outside the host can reach the container pool.
+
+[rochak agrawal] 08:04:06
+Okay, uh…
+
+[rochak agrawal] 08:04:09
+It records which port exposes, um… it does not publish anything by itself. With the hyphen P, we need to explicitly expose our ports, and one host port, one container.
+
+[rochak agrawal] 08:04:20
+So, of course, like, for example, let's say, uh, you are running, uh.
+
+[rochak agrawal] 08:04:31
+Let's say Jenkins also.
+
+[rochak agrawal] 08:04:39
+Or let's say Tomcat.
+
+[rochak agrawal] 08:04:44
+Now, both of them run on 8080.
+
+[rochak agrawal] 08:04:52
+So what we can do is, uh, so, uh, what we can say is, let's say if the traffic is coming to 8080, go to Jenkins.
+
+[rochak agrawal] 08:05:00
+What's the word?
+
+[rochak agrawal] 08:05:02
+And if the traffic is going to 8090, coming to 8090.
+
+[rochak agrawal] 08:05:08
+You go to Tomcat. So, internally, containers can have the same port, but we…
+
+[rochak agrawal] 08:05:15
+This port is exclusive to one container. So if I open, let's say, 8080 to NGINX already, then I'll say 8070.
+
+[rochak agrawal] 08:05:25
+Right? So that is how we need to do it. So one host port, one container. Two container cannot bind host port 8080. Let's do that. Let's try this.
+
+[rochak agrawal] 08:05:35
+Okay, so we have…
+
+[rochak agrawal] 08:05:42
+Dr. Adam, I have my…
+
+[rochak agrawal] 08:05:47
+Okay, now let's say…
+
+[rochak agrawal] 08:05:51
+I'll run a container on exposing port 8080.
+
+[rochak agrawal] 08:05:55
+Okay, perfect, no problem. Now I run the same… another container, try to open port 8080.
+
+[rochak agrawal] 08:06:07
+Let's say I'll try to run this.
+
+[rochak agrawal] 08:06:13
+Hyphen B.
+
+[rochak agrawal] 08:06:15
+hyphen P8080 flash.
+
+[rochak agrawal] 08:06:19
+Maybe something April.
+
+[rochak agrawal] 08:06:22
+You see?
+
+[rochak agrawal] 08:06:23
+Error response from the daemon.
+
+[rochak agrawal] 08:06:26
+Failed to set up container networking. 808080, sorry, 8080 failed. Port is already allocated.
+
+[rochak agrawal] 08:06:36
+If I try to run it something else.
+
+[rochak agrawal] 08:06:39
+Let's say I'm saying 8090.
+
+[rochak agrawal] 08:06:43
+Perfect, no problem.
+
+[rochak agrawal] 08:06:45
+Okay? So that is how your ports are going to work.
+
+[rochak agrawal] 08:06:59
+Yes, Alex.
+
+[arif] 08:07:08
+Yeah, no, sir. So, this, uh, Docker, like, uh, so, as you, uh, go under the container, only re-typing the command, and we, we went into, inside the container, and we can edit the things.
+
+[rochak agrawal] 08:07:15
+Mm-hmm.
+
+[arif] 08:07:23
+So, my type of user it is, it is, like, uh…
+
+[rochak agrawal] 08:07:23
+Correct.
+
+[arif] 08:07:28
+I see that the root user, or…
+
+[rochak agrawal] 08:07:29
+Correct. Okay. So Arif, this is depend on the image. Whatever the image you are having. So for example, whatever the container we have gone, we were using the Ubuntu image. So in the Ubuntu image, maybe it's the root user.
+
+[rochak agrawal] 08:07:47
+But while you will be creating your image, you can define which user will be… when you will be logged in, you will log in as a which user. So we can control that.
+
+[arif] 08:07:58
+Okay, and regarding this port, so every container image will have, like, it depends on the image you are downloading, so image will have their specific port, or we can configure it.
+
+[rochak agrawal] 08:08:00
+Yep.
+
+[rochak agrawal] 08:08:07
+Correct.
+
+[rochak agrawal] 08:08:12
+Okay, so yes, we can configure it, first thing. Second thing is…
+
+[rochak agrawal] 08:08:19
+Uh, see, um…
+
+[rochak agrawal] 08:08:20
+Port is going to be useful.
+
+[rochak agrawal] 08:08:23
+when you are running the web application which other users are accessing, correct? Now, let's say I am running a container which is…
+
+[rochak agrawal] 08:08:34
+And I'm giving, let's say, 10,000 images to that container as a storage, and I'm saying compress those images.
+
+[rochak agrawal] 08:08:41
+Now that is more of a batch process. Now in that case no one is accessing that application. You do not need to expose the port. That is one thing. So most of the application which is accessed by the users will have to get their port exposed.
+
+[rochak agrawal] 08:08:57
+Correct.
+
+[rochak agrawal] 08:08:58
+Second thing is, see, let's say if I talk about NGINX. NGINX, by default, runs… forget about the containerization for a moment.
+
+[rochak agrawal] 08:09:07
+Nginx by default runs on the port 80, correct?
+
+[rochak agrawal] 08:09:12
+Can I change it? Yes, absolutely, I can change it. I want my web server to run on…
+
+[rochak agrawal] 08:09:18
+90 port. I can do it. In normal scenario also. So in container image also, you can define, okay, I want my nginx to be running on port 5.
+
+[rochak agrawal] 08:09:27
+Okay, that is this part.
+
+[rochak agrawal] 08:09:31
+So, hyphen P has two parts, right?
+
+[rochak agrawal] 08:09:39
+80?
+
+[rochak agrawal] 08:09:40
+slash 80.
+
+[rochak agrawal] 08:09:42
+Correct? Now, can I configure this? Yes. Now, this will depend on which image you are using. If you are using your custom image, you can absolutely do so.
+
+[rochak agrawal] 08:09:53
+Then the second part is, absolutely, we have seen it, like, I can change it to 80808090, it is up to us.
+
+[arif] 08:10:02
+But at the back end, we need to make some changes on the EC2 machine also, right? Because we have some security…
+
+[rochak agrawal] 08:10:07
+So that is… see, that is nothing related to the container. It depends on the platform which you are using, correct?
+
+[rochak agrawal] 08:10:12
+So that is a separate thing. Even, for example, if you're using on-premises environment and there is a firewall which is blocking the traffic. So of course, you always do the whitelisting of the IPs, whitelisting of the port, but that is not a container's work.
+
+[rochak agrawal] 08:10:27
+That is… that depends on which environment you are using.
+
+[rochak agrawal] 08:10:35
+Right? So, for example, I… first, I run the container on port 80.
+
+[rochak agrawal] 08:10:40
+It was working. Then I run the container on port 8080, and same container on Nginx, it was working. Did I do any changes in the EC2 instance? No.
+
+[arif] 08:10:51
+Because we have already created the security ground.
+
+[rochak agrawal] 08:10:53
+Correct. So, that's what I'm saying. That is not a container-related bar.
+
+[rochak agrawal] 08:10:58
+It depends on… so if you are, let's say, managing your AWS environment, yes, you have to do the changes, but let's say someone else is managing the AWS environment, you will request them to open the correct ports.
+
+[arif] 08:11:08
+So we should know the exact port number, default port number for all the container images, right?
+
+[rochak agrawal] 08:11:15
+Uh, see, when you say, uh, Arev, you need to know the default code of the containers, uh, images, see, uh, most of the time, you are not going to use the, the open source images, like we are doing right now. As a next step, uh.
+
+[rochak agrawal] 08:11:30
+we will be building our own custom images, okay? So while you will be building the images, you, uh…
+
+[rochak agrawal] 08:11:36
+you will… you can give your ports. For example, I don't want to run it on port 80, I want to run on port 90. You can absolutely do so. So, when you will be creating your Docker file, which is our next step also.
+
+[arif] 08:11:39
+Mm-hmm.
+
+[rochak agrawal] 08:11:50
+that will be documented, like, which port is exposed and everything, okay? So you do not need to remember this, first thing. Second thing is, of course, like, for example.
+
+[rochak agrawal] 08:12:01
+Um, you will be working with the N number of the application. So, general port, you already remember. So, for example, if you ask me, um, DNS works on port 53, RDP works on port, uh, like, I forgot.
+
+[rochak agrawal] 08:12:14
+What is 2389 SSA work on port 22 your HTTPS.
+
+[arif] 08:12:20
+Okay, so these are the… okay, okay, so these are the networking port numbers, these are the same for the containers also.
+
+[rochak agrawal] 08:12:23
+Yeah.
+
+[rochak agrawal] 08:12:25
+These are the networking port, right? And every application, so for example, if you talk about, let's say, MySQL, MySQL work on port 5432.
+
+[arif] 08:12:27
+Okay.
+
+[rochak agrawal] 08:12:37
+So these are some common ports which is being used. So don't don't stress too much of remembering the port. That's what that's the point.
+
+[arif] 08:12:47
+Okay, and when we are, like, running the, uh, this container and exiting it, so what happened with the application, like, sub…
+
+[arif] 08:12:55
+Did it get stopped, or what?
+
+[rochak agrawal] 08:12:56
+See, yeah, that stopped container… see, because your application is running inside a container, right?
+
+[arif] 08:13:00
+So, in the real environment, nobody, like, if it is running, nobody will stop it until it is required.
+
+[rochak agrawal] 08:13:06
+Of course, correct.
+
+[arif] 08:13:08
+Okay.
+
+[rochak agrawal] 08:13:08
+And, uh, if you see, uh, so there… and that is where, uh, once we understand, uh, Docker, uh.
+
+[rochak agrawal] 08:13:16
+And if so, there is…
+
+[rochak agrawal] 08:13:18
+As I said in the last class also.
+
+[rochak agrawal] 08:13:22
+Docker is very good for the isolation part, okay? But there are certain serious challenges with Docker, and we are going to discuss that as well. And that is where…
+
+[rochak agrawal] 08:13:32
+There is a need for Kubernetes, a container orchestration tool.
+
+[rochak agrawal] 08:13:37
+Okay, so, um…
+
+[arif] 08:13:37
+Mmhm.
+
+[rochak agrawal] 08:13:40
+Lake.
+
+[rochak agrawal] 08:13:42
+For real environments.
+
+[rochak agrawal] 08:13:45
+Whatever the command you are running, docker run, docker exec, or docker logs.
+
+[rochak agrawal] 08:13:50
+You might never run it.
+
+[rochak agrawal] 08:13:53
+Because there will be a layer on top of it, which is a Kubernetes.
+
+[rochak agrawal] 08:14:00
+Okay, so, but we will discuss that, but keep that aside for now. Uh, and in, uh, Docker itself, uh, there was something called Swarm Mode.
+
+[rochak agrawal] 08:14:10
+which was inactive for us, right? So SOM also provides some of the capabilities of the container orchestration. So you need some orchestration mechanism to control the behavior, like when it will be shut down. Let's say due to out-of-memory error, it got killed. You did not stop it, but it got stopped itself.
+
+[rochak agrawal] 08:14:27
+So then, what should be our DR mechanism for it? So for that, there is another layer coming to the picture, which is the container orchestration.
+
+[arif] 08:14:39
+In microservices architecture, generally we use, like, single container for single microservices, or how it is?
+
+[rochak agrawal] 08:14:48
+Yeah, single container for single microservice, yes. That should be the design pattern.
+
+[arif] 08:14:52
+Okay, okay.
+
+[rochak agrawal] 08:14:54
+Okay. Yeah.
+
+[rochak agrawal] 08:14:58
+Yes, Mira?
+
+[Megha U] 08:15:03
+Yeah, so hi, Roshak. So in order to practice these commands and all just to have a high end thing, so should we create again a different instance like with 2.0 or in the existing EC2 instance with Amazon Linux?
+
+[rochak agrawal] 08:15:15
+No, you can do it in an existing environment. Yeah, yeah, you can do it in the existing, uh… in fact, the machine which I'm using… see, you can do so, that's not a problem, uh, right? But we, uh, since we are using a FIDI tier account, you need to…
+
+[rochak agrawal] 08:15:32
+Use the resources judiciously. That's the only thing.
+
+[rochak agrawal] 08:15:36
+Okay, in fact, uh, I am using the server which I have used as our Jenkins slave agent.
+
+[Megha U] 08:15:37
+Okay.
+
+[rochak agrawal] 08:15:44
+Just the same server.
+
+[rochak agrawal] 08:15:45
+Okay?
+
+[Megha U] 08:15:48
+So, this is another, uh, agent which you created, right? And you are utilizing it up?
+
+[rochak agrawal] 08:15:52
+No, this is not an agent, this is not related to me, you are getting confused here. I am saying I am using the same server. So, for example, on my laptop.
+
+[rochak agrawal] 08:16:01
+I am using…
+
+[rochak agrawal] 08:16:03
+Zoom also, I'm using Chrome also, correct?
+
+[Megha U] 08:16:06
+Yes.
+
+[rochak agrawal] 08:16:07
+So, similarly, on this server, I have installed the Jenkins agent, and I have installed the Docker also. They are not related to each other.
+
+[rochak agrawal] 08:16:17
+If you want, you can create another server and install Docker on a separate server altogether, it does not matter.
+
+[Megha U] 08:16:18
+Okay.
+
+[rochak agrawal] 08:16:24
+For your practice.
+
+[Megha U] 08:16:26
+Okay.
+
+[rochak agrawal] 08:16:26
+Okay?
+
+[Megha U] 08:16:26
+Okay.
+
+[Megha U] 08:16:31
+Okay.
+
+[rochak agrawal] 08:16:32
+Yes, I'm this.
+
+[avadhesh pathak] 08:16:36
+Hey, Rosa, good morning.
+
+[rochak agrawal] 08:16:38
+Good morning.
+
+[avadhesh pathak] 08:16:38
+So, my question here is, like, whatever command we, uh, we are running, so that is not on image, right?
+
+[rochak agrawal] 08:16:45
+No, no, that is not an image, okay? So, see, uh…
+
+[rochak agrawal] 08:16:50
+Your image is like… you understand it that way.
+
+[rochak agrawal] 08:16:54
+So we have taken an example of a CD player, okay?
+
+[rochak agrawal] 08:16:59
+your movie… your CD is your image, right? And let's say your CD player is the Docker, which is… you put up your…
+
+[rochak agrawal] 08:17:08
+CD in the CD player, and then your movie is going to run, which is, let's say, your container. Now, from your remote, you can fast-forward it, you can pause it, you can go, let's say, 10 minutes faster, right? You can do all of those from your remote.
+
+[rochak agrawal] 08:17:24
+Correct?
+
+[rochak agrawal] 08:17:28
+Same thing here. It is nothing in the image. It is the Docker commands. I can stop the container, I can run a container, I can pause it.
+
+[rochak agrawal] 08:17:37
+I can remove it. It is… it is the Docker commands.
+
+[avadhesh pathak] 08:17:42
+We will be building an image as well, right?
+
+[rochak agrawal] 08:17:44
+Yeah, so as a next step, we will be building our own custom images.
+
+[avadhesh pathak] 08:17:50
+Okay, good, good, good. Thank you.
+
+[rochak agrawal] 08:17:50
+Currently, we are using the open source… I would not say the open source images, I… so we are using the pre-built images right now we are using. So, for example, when we run the NGINX, we use the image someone else has created. Now.
+
+[rochak agrawal] 08:18:05
+From an use case perspective, also.
+
+[rochak agrawal] 08:18:09
+This is not a page that I would want for my, uh…
+
+[rochak agrawal] 08:18:14
+application, right? Welcome to Engineering. This is the default page. You would want where your website is displayed or something, correct? So that is where you need to create the custom images for your applications. And as a next step, you'll see that.
+
+[rochak agrawal] 08:18:28
+Okay. Okay.
+
+[rochak agrawal] 08:18:36
+Yes, ma'am.
+
+[vaibhav] 08:18:40
+Uh, good morning, don't check it. So, uh, like, uh, the command we are… can you please go on command? Like, the command we are running on, uh, the Docker run, in which is the host and the container port, like, so how will, uh, uh, like, uh, know about, like, you have to say, uh.
+
+[rochak agrawal] 08:18:41
+Good morning.
+
+[vaibhav] 08:18:57
+We do not have to worry for it, to remember it. How will, uh, like…
+
+[vaibhav] 08:19:03
+Remember the ports.
+
+[rochak agrawal] 08:19:03
+No, you don't need to remember it, that's what I'm saying. You, um… see, hyphen P gives you an option that I can expose this port 80…
+
+[rochak agrawal] 08:19:17
+to container port 80, right? So there is two things here.
+
+[rochak agrawal] 08:19:21
+Host port?
+
+[vaibhav] 08:19:23
+Container booth.
+
+[rochak agrawal] 08:19:24
+And container port.
+
+[rochak agrawal] 08:19:31
+Correct? Now, both of these ports you can customize, correct?
+
+[rochak agrawal] 08:19:35
+So why do you want to remember this? Why you are stressing about, how do I remember it? You don't need to remember it. Do I remember that, uh, to close the application, I need to click here? No.
+
+[rochak agrawal] 08:19:46
+Right? It is… it is you are going to define it.
+
+[rochak agrawal] 08:19:50
+When you will be creating your images, it is when you're running your command, you will define these ports, so there is no need to remember this.
+
+[rochak agrawal] 08:20:01
+Currently, we are running Nginx, which is running on port 80. I will run Jenkins, which will run on port 8080. You will run a Node.js-based application, which is going to run on port 5000.
+
+[rochak agrawal] 08:20:11
+How will you remember it? You cannot. It will depend on your application where it is running.
+
+[vaibhav] 08:20:14
+So that is predefined, right?
+
+[rochak agrawal] 08:20:16
+So, this is not predefined, Bevo, that is what… when you say, uh, I can customize it.
+
+[rochak agrawal] 08:20:21
+So, that means there is a default port, but if I want to run NGINX on port 90, I can do that.
+
+[vaibhav] 08:20:22
+Okay.
+
+[rochak agrawal] 08:20:30
+80 is a default port. If you don't want to customize it, it will run on port 80.
+
+[vaibhav] 08:20:36
+Okay.
+
+[rochak agrawal] 08:20:36
+Okay, and for different, uh, application, it will be different. So, for example, Jenkins.
+
+[rochak agrawal] 08:20:42
+By default, runs on port 8080, okay?
+
+[rochak agrawal] 08:20:46
+Now…
+
+[rochak agrawal] 08:20:48
+I say, no, I don't want to run on port 8020. Can I run it in 8090? Yes, you can do this. But, see, the point here, WebO, is when you say, how do I remember it?
+
+[rochak agrawal] 08:20:57
+You don't need to remember it, okay? It will depend on… let's say you're not using Jenkins at all.
+
+[rochak agrawal] 08:21:03
+Probably you are using, let's say, Git.
+
+[rochak agrawal] 08:21:06
+Oh, uh, GitLab CI…
+
+[rochak agrawal] 08:21:08
+I don't know, I don't remember at this moment, uh, which code GitLab CIE is… bugs on. When you install GitLab CIE, you will get it from the documentation. When you… when you use another software, TeamCity, for example.
+
+[rochak agrawal] 08:21:21
+TeamCity might be working on another board, I don't remember at this moment. So don't stress it out on remembering the board, there is no need for it.
+
+[arif] 08:21:31
+Yeah, Roger, you're right. I think, uh… but the thing is, the… about the request. So these… the host port number, can we change it?
+
+[rochak agrawal] 08:21:35
+Hmm?
+
+[rochak agrawal] 08:21:39
+Yes, we have changed it, in fact. We run it on port 8081st, and we run it on port 8080, right?
+
+[arif] 08:21:47
+Oh, that is the container port. I'm talking about the host port.
+
+[rochak agrawal] 08:21:48
+No, that is not a container port, RFI, that is what I'm trying to explain. Why are you guys getting confused?
+
+[rochak agrawal] 08:21:56
+Is this the container port? 8080?
+
+[rochak agrawal] 08:21:59
+And if you're thinking this is a container put, I think you have not understood anything till now.
+
+[rochak agrawal] 08:22:06
+This is my host IP, correct?
+
+[arif] 08:22:08
+Mmhm.
+
+[rochak agrawal] 08:22:11
+Why I will give my container code with my host IP? Here, very clearly, we have mentioned.
+
+[rochak agrawal] 08:22:19
+Here, also, if you see…
+
+[rochak agrawal] 08:22:20
+The first part is the host, second part is the container.
+
+[rochak agrawal] 08:22:25
+Correct?
+
+[arif] 08:22:28
+Okay.
+
+[rochak agrawal] 08:22:28
+Okay? And we are repeatedly, uh, saying this.
+
+[rochak agrawal] 08:22:34
+So, when I changed port 8080, what is this?
+
+[rochak agrawal] 08:22:42
+What is this?
+
+[rochak agrawal] 08:22:45
+First part or the second part?
+
+[arif] 08:22:46
+This is the host.
+
+[arif] 08:22:51
+First part, uh…
+
+[rochak agrawal] 08:22:51
+Then, it is the container port or the host port.
+
+[arif] 08:22:54
+And that is a host project, so you changed it alternatively, so I got confused. But the thing is, suppose I have a DNS container, DNS container.
+
+[rochak agrawal] 08:22:58
+Yeah, that's okay.
+
+[arif] 08:23:03
+What should be the host port number?
+
+[rochak agrawal] 08:23:06
+That you need to define, that is what I'm trying to explain. This is no, uh… see, for example.
+
+[rochak agrawal] 08:23:13
+That is what we have explained it here.
+
+[rochak agrawal] 08:23:15
+Now, Tomcat and Jenkins both run on port 8080, correct?
+
+[rochak agrawal] 08:23:21
+You can assign port 8080 to only one, uh, either to Jenkins or to Tomcat.
+
+[arif] 08:23:26
+Okay, so we can define for the host also, okay.
+
+[rochak agrawal] 08:23:27
+So you run it on 8…
+
+[rochak agrawal] 08:23:30
+Exactly. You see…
+
+[arif] 08:23:31
+Okay.
+
+[rochak agrawal] 08:23:31
+Both of the port you can customize.
+
+[rochak agrawal] 08:23:35
+Here, that is what we have explained. 80, you can explain. 80, 80, you can configure. It is up to us.
+
+[rochak agrawal] 08:23:44
+Hyphen PC, you understand?
+
+[rochak agrawal] 08:23:47
+Hyphen P is just creating a relation between these two ports.
+
+[rochak agrawal] 08:23:52
+Okay?
+
+[arif] 08:23:53
+Yeah, mapping of this podium.
+
+[rochak agrawal] 08:23:54
+Mapping of the port, it could be anything, it could be anything. Simple.
+
+[rochak agrawal] 08:23:59
+And you do not need to worry about remembering this.
+
+[rochak agrawal] 08:24:04
+Okay?
+
+[arif] 08:24:06
+Okay, yep.
+
+[vaibhav] 08:24:07
+Okay.
+
+[rochak agrawal] 08:24:11
+Yes, Anthony?
+
+[Anthony Joseph] 08:24:16
+Hello. So good morning. So whatever. Can you hear me?
+
+[rochak agrawal] 08:24:17
+Yes, Anthony?
+
+[rochak agrawal] 08:24:19
+Yes, yes, I can.
+
+[Anthony Joseph] 08:24:22
+So, so far, whatever we have learned, can we practice this on our local Ubuntu box?
+
+[rochak agrawal] 08:24:27
+Yes, you can. Ubuntu box, yes, you can.
+
+[Anthony Joseph] 08:24:31
+Yeah, because I have a Linux machine, so I was just wondering, like, if…
+
+[rochak agrawal] 08:24:33
+No problem. You install Docker and everything we have done, we can do it. That's absolutely not a problem.
+
+[Anthony Joseph] 08:24:41
+Not even… not only Docker, like, the previous ones, Tomcat, or whatever we had done, so that we can do it.
+
+[rochak agrawal] 08:24:45
+Yes, yes, you can do that.
+
+[rochak agrawal] 08:24:47
+Maven, Jenkins, everything.
+
+[Anthony Joseph] 08:24:49
+We'll get about it. Thank you.
+
+[rochak agrawal] 08:24:52
+Okay.
+
+[rochak agrawal] 08:24:55
+Yes, you are.
+
+[rochak agrawal] 08:25:12
+Okay, now…
+
+[rochak agrawal] 08:25:15
+We understood this. The second thing is very important for us is, before I go to the volume and network.
+
+[rochak agrawal] 08:25:28
+Image. Okay.
+
+[rochak agrawal] 08:25:31
+Very, very important to understand. Very straightforward, but important to understand.
+
+[rochak agrawal] 08:25:36
+So, currently…
+
+[rochak agrawal] 08:25:38
+You know, so image as we discussed.
+
+[rochak agrawal] 08:25:46
+Docker image specifically, it's a special type of the file. It is not like your regular file that you do ls hyphen lrd and you are going to see it.
+
+[rochak agrawal] 08:25:57
+So you need something called.
+
+[rochak agrawal] 08:26:02
+The registry?
+
+[rochak agrawal] 08:26:08
+Or repository. You keep hearing those terms, both of these terms.
+
+[rochak agrawal] 08:26:14
+interchangeably. Again, you need a registry or repository. Right now, we are using Docker Hub, but when we do our project, we are going to store the Docker images on our Nexus repository.
+
+[rochak agrawal] 08:26:29
+Okay, the Nexus, I'll keep it apart for now.
+
+[rochak agrawal] 08:26:33
+So, your images.
+
+[rochak agrawal] 08:26:35
+are currently stored in a Docker Hub, okay? And Docker Hub is my registry at this moment, okay? So, right now, what you are doing, you are downloading the images from the Docker Hub.
+
+[rochak agrawal] 08:26:47
+let's say I downloaded NGINX.
+
+[rochak agrawal] 08:26:52
+I downloaded Ubuntu image.
+
+[rochak agrawal] 08:26:58
+et cetera, et cetera. So now IQ, Postgres, hey.
+
+[rochak agrawal] 08:27:02
+And then, of course, like, what is going to happen is, uh, when you… these are, I would say, the pre-built images.
+
+[rochak agrawal] 08:27:15
+3 big images, okay?
+
+[rochak agrawal] 08:27:19
+Pre-built means, like, you are using someone else's created, either maybe an individual, and we have gone to Docker Hub.
+
+[rochak agrawal] 08:27:26
+So if you go to hub.docker.com.
+
+[rochak agrawal] 08:27:31
+are multiple, multiple images, okay? So, if you go search, you search for anything. Let's say you search for, uh.
+
+[rochak agrawal] 08:27:41
+Okay.
+
+[rochak agrawal] 08:27:42
+And you are going to find the image for Tomcat.
+
+[rochak agrawal] 08:27:45
+Right, so you get Tomcat 10 million plus downloads. 500 million plus downloads, so official image for Tomcat. Now, the…
+
+[rochak agrawal] 08:27:53
+I would not say the problem, but see, this Tomcat image, if you see.
+
+[rochak agrawal] 08:28:00
+That will not have… let's say you, as we discussed, that Tomcat by default runs on port 8080, but you say, no, port 8080 is taken by Jenkins, I want to run it on somewhere else, right? So you need to change that configuration.
+
+[rochak agrawal] 08:28:16
+Got it.
+
+[rochak agrawal] 08:28:18
+In a default image.
+
+[rochak agrawal] 08:28:19
+Everything comes with the default value or let's say if some if I'm there are 64,000.
+
+[rochak agrawal] 08:28:28
+Results for Tomcat, right?
+
+[vaibhav] 08:28:30
+Or it will drop suddenly, otherwise trace breaking it in.
+
+[rochak agrawal] 08:28:30
+I didn't…
+
+[rochak agrawal] 08:28:34
+Okay, just give me a second.
+
+[vaibhav] 08:28:36
+So, when you're creating an image on, uh… so, you start the topic, the voice is like…
+
+[rochak agrawal] 08:28:42
+Okay, let me see, let me change my mic, just give me a second.
+
+[rochak agrawal] 08:29:05
+Uh, is it better now?
+
+[vaibhav] 08:29:07
+Yeah, yeah, yeah.
+
+[rochak agrawal] 08:29:08
+Okay, cool.
+
+[vaibhav] 08:29:11
+What you've started is, uh, I skipped it because of voice break.
+
+[rochak agrawal] 08:29:16
+No problem, no problem, I'll repeat it. So,
+
+[rochak agrawal] 08:29:20
+Babu, we were discussing that, uh…
+
+[rochak agrawal] 08:29:25
+we are using right now the pre-built images, uh, right? I can… we can create our own custom images also, and why do we need to create the custom images? So, for example, we have taken the example of a Tomcat, so if I'm using the default image, everything will come with a default value.
+
+[vaibhav] 08:29:28
+Hmm.
+
+[rochak agrawal] 08:29:41
+Or let's say there are 65,000 images for there. If you pick any of them, right, these are also 50K, 100K downloads are there, then I will get the configuration which these images are having. Let's say I want to run it on port 9000.
+
+[rochak agrawal] 08:29:58
+But they are running on port 6000. It may happen, correct? So that is where you need to create your own custom Docker images. That's the first thing
+
+[rochak agrawal] 08:30:11
+So you understand why… so, for example, in the NGINX also, when I'm running NGINX image, it is only giving you the welcome to NGINX page. Now, that is not… that means that NGINX is running, but it is still not very useful for me to run my application.
+
+[vaibhav] 08:30:28
+Like…
+
+[rochak agrawal] 08:30:29
+Because I can just see the default page, correct? So that is where you need to create your own custom images, which is going to serve as per your application requirement
+
+[rochak agrawal] 08:30:38
+Right? That's… that's the premise for,
+
+[rochak agrawal] 08:30:42
+Creating the custom images. Okay, now
+
+[rochak agrawal] 08:30:46
+The important question is, how I am going to create the custom image
+
+[rochak agrawal] 08:30:51
+That's a very important thing, okay?
+
+[rochak agrawal] 08:30:53
+How I'm going to create a custom image? Very simple. You just need to understand a few of the things, the concept behind it.
+
+[rochak agrawal] 08:31:02
+It is one of the simplest tasks.
+
+[rochak agrawal] 08:31:07
+Which you are going to go.
+
+[rochak agrawal] 08:31:09
+To create a container image, you need to write a configuration in a file called a Docker file.
+
+[rochak agrawal] 08:31:18
+Okay?
+
+[rochak agrawal] 08:31:21
+Now Docker file is a very, very specific type of the file. It is not your code file. It is not written in any of the languages. It is not Java. It is not Python. It is just the plain English.
+
+[rochak agrawal] 08:31:38
+So even if you see this
+
+[rochak agrawal] 08:31:51
+Okay, I'm not sure why it is off.
+
+[rochak agrawal] 08:31:54
+Let me copy it here.
+
+[rochak agrawal] 08:32:05
+Okay? Now, if you see this…
+
+[rochak agrawal] 08:32:08
+Let's say you do not know anything about the doctor, but if you read this.
+
+[rochak agrawal] 08:32:15
+You will get to know.
+
+[rochak agrawal] 08:32:17
+Like, what this is doing. It is, like, the plain English. So I'm saying from…
+
+[rochak agrawal] 08:32:24
+Eclipse, Label, Maintainer, Work DIA, OP, Environment, Expose User, and Entry Point.
+
+[rochak agrawal] 08:32:31
+So, if you see the Docker file.
+
+[rochak agrawal] 08:32:35
+It always starts with a directive.
+
+[rochak agrawal] 08:32:39
+Every line starts with a directive.
+
+[rochak agrawal] 08:32:48
+Here, we need to define
+
+[rochak agrawal] 08:32:51
+So first you need to understand how many directives are there and what is the use of every directive, right? Then it is just you need to use those directives and that's about it. And this is the Docker file. So this is your Docker file.
+
+[rochak agrawal] 08:33:07
+And then, when you run a Docker build command.
+
+[rochak agrawal] 08:33:19
+It is going to create an image for you.
+
+[rochak agrawal] 08:33:21
+Image for what configuration you have written here.
+
+[rochak agrawal] 08:33:26
+So now, here you see, I can define the user.
+
+[rochak agrawal] 08:33:29
+So now, when you log in into this container, you will be logged in with the user with the 1000 ID, not the room. So I can define everything here.
+
+[rochak agrawal] 08:33:38
+Now, the important thing for us to understand about these directives, and these are very few.
+
+[rochak agrawal] 08:33:44
+Okay.
+
+[rochak agrawal] 08:33:46
+And out of those also, you are going to use only 78 directives.
+
+[rochak agrawal] 08:33:52
+So you can see from, I'll explain it here, from WorkDir, copy, environment, expose, user, and entry point.
+
+[rochak agrawal] 08:34:03
+From is the heart of every, uh.
+
+[rochak agrawal] 08:34:08
+image.
+
+[rochak agrawal] 08:34:10
+You need to pick up a base image for everything.
+
+[rochak agrawal] 08:34:14
+So, for example, let's say I want to customize my NGINX image.
+
+[rochak agrawal] 08:34:18
+Then I will take this pre-built NGINX image as my base image, and on top of that, I will do the customization.
+
+[rochak agrawal] 08:34:25
+So, every Dockerfile, this is a mandatory field.
+
+[rochak agrawal] 08:34:31
+Every other field can go, come and go, but this is… this should be there, without a base image.
+
+[rochak agrawal] 08:34:37
+You will first pick up a base image, and then on top of it, you will do everything.
+
+[rochak agrawal] 08:34:43
+Okay.
+
+[rochak agrawal] 08:34:45
+Now.
+
+[rochak agrawal] 08:34:46
+See, um…
+
+[rochak agrawal] 08:34:47
+Again.
+
+[rochak agrawal] 08:34:49
+And we need to understand it from a conceptual view.
+
+[rochak agrawal] 08:34:53
+How you are going to do it?
+
+[rochak agrawal] 08:34:56
+will totally be subjective. There is no right and wrong thing for it. For example.
+
+[rochak agrawal] 08:35:00
+Let's say I want to customize my NGINX image. Now, I will have two options.
+
+[rochak agrawal] 08:35:07
+You will have n number of the option. Let's say I'll… I am talking about two options right now. For example.
+
+[rochak agrawal] 08:35:19
+I can choose a Ubuntu image.
+
+[rochak agrawal] 08:35:21
+As my base image.
+
+[rochak agrawal] 08:35:26
+Then, I will install Nginx.
+
+[rochak agrawal] 08:35:33
+And then I'm going to configure.
+
+[rochak agrawal] 08:35:39
+Second option is I will choose the NGINX as my base image.
+
+[rochak agrawal] 08:35:45
+And then I'm going to configure it only, because NGINX is already there.
+
+[rochak agrawal] 08:35:50
+Now, if you ask me what is right and what is wrong, there is no right and wrong.
+
+[rochak agrawal] 08:35:54
+Up to you.
+
+[rochak agrawal] 08:35:56
+Okay, if you're okay with the Nginx image, you know what are the operating system and other things is being used there, you go with this. But if you say, no, I want a plain operating system image, and on top of it, I will do everything on my own, you go with the Ubuntu image.
+
+[rochak agrawal] 08:36:11
+Okay, so this Chrome is…
+
+[rochak agrawal] 08:36:14
+the very important thing, okay? You have to take the base image, and then on the… so everything you are going to do further.
+
+[rochak agrawal] 08:36:25
+you are going to do on your base image. Then we have a bug DIR. Bug DIR means inside the container in which directory. So it is like setting up the PWD inside a container. So when you log in into the container, you will go inside this bug DIR.
+
+[rochak agrawal] 08:36:44
+Then comes the copy. Copy means we will be copying the files from the local machine to the Docker container. So, for example, let's say your code files, right?
+
+[rochak agrawal] 08:36:58
+Those code files need to be sent inside the container.
+
+[rochak agrawal] 08:37:02
+Then, uh, your Docker, um…
+
+[rochak agrawal] 08:37:04
+is going to take them. So, we can do that with a copy directive. So, you can say, copy target invoice service.jar will be copied as an app.jar inside the container.
+
+[rochak agrawal] 08:37:15
+Then ENV, we can set up the environment variable for inside the container. Expose, uh, we are exposing the port 8080. User, for which user you want to run the processes. And finally, the entry point.
+
+[rochak agrawal] 08:37:29
+Now this is very important.
+
+[rochak agrawal] 08:37:32
+You run all of that as a container, then when your container is going to start.
+
+[rochak agrawal] 08:37:38
+which command it is going to run.
+
+[rochak agrawal] 08:37:40
+Okay. This is called the entry rate.
+
+[rochak agrawal] 08:37:44
+So Dockerfile, you understand it as a recipe. Each instruction runs in order and produces a layer.
+
+[rochak agrawal] 08:37:53
+This result is an image anyone can run with the exact environment you have defined.
+
+[rochak agrawal] 08:37:59
+So you can see here, instruction that we need to know from…
+
+[rochak agrawal] 08:38:04
+Run, execute a command at a build time. Now, this is very important.
+
+[rochak agrawal] 08:38:10
+So we discussed that there is an entry point, so when a container is going to start.
+
+[rochak agrawal] 08:38:15
+Which command you are going to run. Okay.
+
+[rochak agrawal] 08:38:18
+That is… will be defined by the…
+
+[rochak agrawal] 08:38:22
+entry point.
+
+[rochak agrawal] 08:38:23
+Run means, while…
+
+[rochak agrawal] 08:38:25
+building the image. So, for example, you say install nginx. So, you need to run it with the run directive. Execute a command at the build time. Copy, and add.
+
+[rochak agrawal] 08:38:37
+Copy, copy from the build context means where you are building, from the local. Add means like copy, but also fetches the URL and unpack the task.
+
+[rochak agrawal] 08:38:46
+Very, very common interview question. What is the difference between the copy and add?
+
+[rochak agrawal] 08:38:52
+Very famous. So, they are same. It is just add is going to… So, copy is only going to copy the local files.
+
+[rochak agrawal] 08:39:01
+from local machine where your Docker is running to the image.
+
+[rochak agrawal] 08:39:06
+While… add…
+
+[rochak agrawal] 08:39:07
+You can give a URL and add directive built.
+
+[rochak agrawal] 08:39:13
+Download the file, and copy it to your image.
+
+[rochak agrawal] 08:39:17
+Then WAG DIR EMB to discuss arguments variable only available at the build time. Health check, we can define expose user volume.
+
+[rochak agrawal] 08:39:27
+Again, if you want to persist the data inside a container. In our last class, we discussed that if you remove the container, whatever you are doing will be gone. But if you want to persist that data, we need to attach the volumes.
+
+[rochak agrawal] 08:39:41
+And then CMD is default argument. So for example, let's say entry pointer is saying sleep and CMD will say five. So it will sleep your process for the five second. But if you want to override it, you can override it by running the.
+
+[rochak agrawal] 08:39:57
+Container.
+
+[rochak agrawal] 08:39:59
+Right. So…
+
+[rochak agrawal] 08:40:00
+I'll show you a…
+
+[rochak agrawal] 08:40:04
+How to build the image?
+
+[rochak agrawal] 08:40:07
+And if you see here.
+
+[rochak agrawal] 08:40:09
+Doc file reference.
+
+[rochak agrawal] 08:40:15
+So you can see these are the directives, add, argue. So you can see only these directives are there.
+
+[rochak agrawal] 08:40:25
+Add argument, CMD, copy, entry point, ENB, expose from health check. Label is add data data to image. Like I want to say who maintains this, who's the environment, right? Maintainer, on build, run, shell.
+
+[rochak agrawal] 08:40:40
+sets a default cell of the image. So most of the things, uh, we have discussed. Now let's build… create a Docker… simple Docker file.
+
+[rochak agrawal] 08:40:49
+And then build an image.
+
+[rochak agrawal] 08:40:56
+Sample Docker file.
+
+[rochak agrawal] 08:40:59
+Water.
+
+[rochak agrawal] 08:41:00
+customizing the.
+
+[rochak agrawal] 08:41:04
+Engineering.
+
+[rochak agrawal] 08:41:16
+I'll just take this, and we are going to…
+
+[rochak agrawal] 08:41:55
+Okay? Uh, I'll just copy this file and index.html.
+
+[rochak agrawal] 08:42:07
+Copy.
+
+[rochak agrawal] 08:42:08
+Okay, now P2D, where are we, and let's clear it.
+
+[rochak agrawal] 08:42:19
+Let's create a folder.
+
+[rochak agrawal] 08:42:32
+Now, BI, uh, index.html.
+
+[rochak agrawal] 08:42:44
+Okay, so this you think of your application code.
+
+[rochak agrawal] 08:42:51
+Okay? Now, I'll create a file called the Dockerfile.
+
+[rochak agrawal] 08:43:01
+And…
+
+[rochak agrawal] 08:43:03
+We will use this, so you can see it here. So what we are going to do, we are going to take this NGINX as a base image. Use the official NGINX base image. Now, optional, add a label or the maintenance. So let's say I'm given my name.
+
+[rochak agrawal] 08:43:19
+Again, it is… I can add multiple levels.
+
+[rochak agrawal] 08:43:27
+Now, the very important thing here is everything, every line of a Dockerfile should start with a.
+
+[rochak agrawal] 08:43:37
+Directive or instruction?
+
+[rochak agrawal] 08:43:39
+So, I'll say…
+
+[rochak agrawal] 08:43:42
+You can give anything, basically. Location is equal to India. Just, I'm giving some dummy thing.
+
+[rochak agrawal] 08:43:52
+I'll just remove this.
+
+[rochak agrawal] 08:43:54
+And I will say…
+
+[rochak agrawal] 08:44:00
+Copy index.html.
+
+[rochak agrawal] 08:44:09
+Okay? To user share Nginx HTML, which is, uh, the default, uh, location for, uh…
+
+[rochak agrawal] 08:44:17
+web pages in the NGINX, and expose port 80 to the outside world, and…
+
+[rochak agrawal] 08:44:22
+CMD, I'm going to run this command. Required to keep the container running. Okay, now if you see this, for example, let's say I don't want to run it on port 80. So then you can see here there was one option for.
+
+[rochak agrawal] 08:44:40
+Changing the configuration so you can create your own configuration and copy it inside the container basically. Now that will depend on application to application which file need to be copied where it need to be copied and all. So I'll not go into that detail because.
+
+[rochak agrawal] 08:44:55
+This is anyways application specific.
+
+[rochak agrawal] 08:44:58
+So, this is my…
+
+[rochak agrawal] 08:45:01
+basic, um…
+
+[rochak agrawal] 08:45:05
+Docker file is created. The very important thing you need to remember, anything starts with a hash is a, uh…
+
+[rochak agrawal] 08:45:14
+uh… comment.
+
+[rochak agrawal] 08:45:16
+And then, every line starts with this directive.
+
+[rochak agrawal] 08:45:21
+Okay.
+
+[rochak agrawal] 08:45:23
+Now I just remove this only.
+
+[rochak agrawal] 08:45:26
+No need.
+
+[rochak agrawal] 08:45:27
+And I'll copy.
+
+[rochak agrawal] 08:45:35
+Okay? So it says, from nginx, label is this, copy index.html here, expose port 80, and…
+
+[rochak agrawal] 08:45:46
+Use this nginx run command.
+
+[rochak agrawal] 08:45:54
+A bit more token file.
+
+[rochak agrawal] 08:46:00
+Simple.
+
+[rochak agrawal] 08:46:01
+Now…
+
+[rochak agrawal] 08:46:05
+You see it here, you build it. Now, what is the command to build this?
+
+[rochak agrawal] 08:46:15
+Simply, you will run…
+
+[rochak agrawal] 08:46:26
+Docker build, okay, hyphen p, hyphen p is a, you can say the name of the image, but in Docker terminology, we call it as a tag. So say I'm saying my custom nginx, and instead of latest, I will say.
+
+[rochak agrawal] 08:46:42
+That's it, one point.
+
+[rochak agrawal] 08:46:45
+0, for example. And you are seeing this dot I am giving here.
+
+[rochak agrawal] 08:46:50
+dot is.
+
+[rochak agrawal] 08:46:51
+You need to give the path.
+
+[rochak agrawal] 08:46:55
+where your Docker file is present. If your Docker file is present in some other folder, you need to give the path for that particular folder.
+
+[rochak agrawal] 08:47:04
+Since it is in my current working directory, I'm just giving it as a dot, which… where dot denotes the current working directory.
+
+[rochak agrawal] 08:47:13
+So I am going to run this and you see what's going to happen.
+
+[rochak agrawal] 08:47:21
+Now, you see.
+
+[rochak agrawal] 08:47:26
+Docker. Images.
+
+[rochak agrawal] 08:47:29
+You can see my custom NGINX 1.0 is…
+
+[rochak agrawal] 08:47:34
+There. Correct?
+
+[rochak agrawal] 08:47:36
+Now what I'm going to do, I'm going to create a container out of it and see what is the place coming out. So currently it is welcome to NGINX, perfectly fine. Now what I'm going to do, I am going to run it.
+
+[rochak agrawal] 08:47:53
+Again, the same thing. Instead of NGINX, I just need to give my image name here.
+
+[rochak agrawal] 08:48:01
+1.0, 1.0, and uh…
+
+[rochak agrawal] 08:48:05
+I'll open the port 80 only, because port 8080 is used by another container.
+
+[rochak agrawal] 08:48:12
+Okay.
+
+[rochak agrawal] 08:48:14
+And now I'm going to run it. Perfect.
+
+[rochak agrawal] 08:48:17
+Now, if I run total PS…
+
+[rochak agrawal] 08:48:19
+So you can see?
+
+[rochak agrawal] 08:48:21
+Two containers are running. One is using the NGINX image. Another is using the custom NGINX image.
+
+[rochak agrawal] 08:48:29
+So one is a my NGINX container, another is a NGINX container.
+
+[rochak agrawal] 08:48:33
+Now, I'll see.
+
+[rochak agrawal] 08:48:40
+You see?
+
+[rochak agrawal] 08:48:43
+Now I'm not getting this, uh…
+
+[rochak agrawal] 08:48:48
+What you can say, um…
+
+[rochak agrawal] 08:48:54
+default page, my application page is live. Now you say, okay, your application is not going to…
+
+[rochak agrawal] 08:49:01
+just build once, your application is constantly going to change. That is absolutely correct. So what we can do is now, let's say.
+
+[rochak agrawal] 08:49:12
+I go through a change in the index.html.
+
+[rochak agrawal] 08:49:16
+Okay, and…
+
+[rochak agrawal] 08:49:19
+I'll say my customized app.
+
+[rochak agrawal] 08:49:24
+Where I'm showing… okay, this is the title.
+
+[rochak agrawal] 08:49:27
+Let's leave this.
+
+[rochak agrawal] 08:49:34
+Your application is live.
+
+[rochak agrawal] 08:49:39
+With… version.
+
+[rochak agrawal] 08:49:41
+Good example.
+
+[rochak agrawal] 08:49:43
+Okay.
+
+[rochak agrawal] 08:49:45
+Now, understand this thing very, very carefully.
+
+[rochak agrawal] 08:49:48
+Now, whatever you are doing on the index.html, now you see.
+
+[rochak agrawal] 08:49:57
+B was written a Docker file.
+
+[rochak agrawal] 08:50:00
+And your index.html was there.
+
+[rochak agrawal] 08:50:04
+Got it?
+
+[rochak agrawal] 08:50:07
+You already created the version 1.0.
+
+[rochak agrawal] 08:50:12
+Now…
+
+[rochak agrawal] 08:50:13
+You see?
+
+[rochak agrawal] 08:50:14
+my index.html is created, correct? Uh, had changed. Now, if you see.
+
+[rochak agrawal] 08:50:21
+I will build this again. And I'll say this time, let's say 2.0.
+
+[rochak agrawal] 08:50:29
+Finished?
+
+[rochak agrawal] 08:50:31
+Very soon, and now, if you say, if you run a container out of 2.0, what's going to happen?
+
+[rochak agrawal] 08:50:40
+I'll say 2.0.
+
+[rochak agrawal] 08:50:44
+And let's say I'll expose 809.
+
+[rochak agrawal] 08:50:49
+Okay, it says the name is already used, so I'll say my container 2.
+
+[rochak agrawal] 08:50:54
+Now, if you see Docker PS, I have three containers. One is running with my default image.
+
+[rochak agrawal] 08:51:02
+Then I created a Docker image, custom Docker image, run a container out of it, perfectly fine. We have tested it, it was working perfectly fine on Portipi.
+
+[rochak agrawal] 08:51:14
+Now I created another image because my index.html got changed and that I am running on port 8090.
+
+[rochak agrawal] 08:51:22
+Correct? So I'll just open this.
+
+[rochak agrawal] 08:51:32
+You see?
+
+[rochak agrawal] 08:51:33
+Your app is like the version 2.
+
+[rochak agrawal] 08:51:37
+So anytime your application code is going to change.
+
+[rochak agrawal] 08:51:41
+You don't need to do anything, you just run a Docker build again, a new image will get created, you will deploy that new image, and that's about it. I have two images, you can see.
+
+[rochak agrawal] 08:51:53
+If I want to run it with the old version, I will run it with the version 1.2. If I want to run it with the…
+
+[rochak agrawal] 08:52:00
+Newer version, I will run it with the version 2.
+
+[rochak agrawal] 08:52:03
+Simple as that. And if you can see here.
+
+[rochak agrawal] 08:52:09
+Open images.
+
+[rochak agrawal] 08:52:12
+You can see I have two images and you can see approximately not approximately they are same in size. We just changed one.
+
+[rochak agrawal] 08:52:22
+Point here and there in index.html. Correct. Now I can push this image to your room.
+
+[rochak agrawal] 08:52:30
+What you can say into my Docker Hub account.
+
+[rochak agrawal] 08:52:33
+So for that, first I need to do a login, so I'll set up a login.
+
+[rochak agrawal] 08:52:52
+Let me do it this way.
+
+[rochak agrawal] 08:52:56
+Docker login hyphen U.
+
+[rochak agrawal] 08:53:01
+What is…
+
+[rochak agrawal] 08:53:38
+Okay, so it says login succeeded.
+
+[rochak agrawal] 08:53:42
+I'll… here also, I'll do a login.
+
+[rochak agrawal] 08:53:46
+Just to show you that my image is pushed. So now you see here…
+
+[rochak agrawal] 08:53:55
+If you open this.
+
+[rochak agrawal] 08:53:59
+So I just need this. So first, I need to tag this with this repository name.
+
+[rochak agrawal] 08:54:05
+So I'm going to tag my image.
+
+[rochak agrawal] 08:54:09
+This is a specific way of doing the things in Docker. I'll say Docker images.
+
+[rochak agrawal] 08:54:14
+Okay, so Docker tag…
+
+[rochak agrawal] 08:54:19
+Let's say my system engineering span point zero.
+
+[rochak agrawal] 08:54:26
+2…
+
+[rochak agrawal] 08:54:33
+I might do something a little wrong, let me see.
+
+[rochak agrawal] 08:54:39
+Okay, it's.
+
+[rochak agrawal] 08:54:43
+Doctor, do this.
+
+[rochak agrawal] 08:54:46
+You can see I have this image.
+
+[rochak agrawal] 08:54:49
+Now, I will just say Docker.
+
+[rochak agrawal] 08:54:52
+Push.
+
+[rochak agrawal] 08:54:54
+I'll just say my custom engine access should not be there.
+
+[rochak agrawal] 08:55:01
+Yeah.
+
+[rochak agrawal] 08:55:02
+So, you will see…
+
+[rochak agrawal] 08:55:04
+I will just take this.
+
+[rochak agrawal] 08:55:08
+Poppy?
+
+[rochak agrawal] 08:55:09
+And?
+
+[rochak agrawal] 08:55:17
+So, this is pushed. Now, if you…
+
+[rochak agrawal] 08:55:22
+See it here?
+
+[rochak agrawal] 08:55:25
+My custom engine X. Can you see?
+
+[rochak agrawal] 08:55:28
+And if you go here.
+
+[rochak agrawal] 08:55:35
+So, if you… now, if you go… if you go to public view.
+
+[rochak agrawal] 08:55:40
+So you can see it here, if you download this image, okay, any one of you.
+
+[rochak agrawal] 08:55:45
+Then you will run this application.
+
+[rochak agrawal] 08:55:49
+Anyone.
+
+[rochak agrawal] 08:55:50
+So you can see here, now you change your index.html or whatsoever. Once your version of an image has been created, it is logged.
+
+[rochak agrawal] 08:56:00
+Now you create another version of it, right? And that is how we work in our real-life environments. So anytime… and this… we have done this manually right now, Docker build and everything.
+
+[rochak agrawal] 08:56:13
+This commands, what we, what, what…
+
+[rochak agrawal] 08:56:17
+Just give me a second.
+
+[rochak agrawal] 08:56:32
+So now what is going to happen in your real time scenarios that you already have your code base integrated with your Jenkins or any other CI engine. Until now we have done like the Maven build or creating an executable.
+
+[rochak agrawal] 08:56:49
+Now, what you can do is, in next step, you can create a Docker image with the newly updated JAR file. So every time there is a code change, a Maven build is triggered, and a Docker build will also trigger with the updated JAR file.
+
+[rochak agrawal] 08:57:03
+So, your Docker image will always have the updated code.
+
+[rochak agrawal] 08:57:09
+At every point of time.
+
+[rochak agrawal] 08:57:10
+Okay, uh, so that is how it is going to work. It is, uh, of course, like, um…
+
+[rochak agrawal] 08:57:18
+again, as I said, you can do it… there is no right and wrong way of doing the things. For example, if I go here, and I will say it's…
+
+[rochak agrawal] 08:57:27
+create a…
+
+[rochak agrawal] 08:57:30
+Custom nginx image using.
+
+[rochak agrawal] 08:57:33
+Ubuntu as base image.
+
+[rochak agrawal] 08:57:38
+So, you see here…
+
+[rochak agrawal] 08:57:40
+If you see the Docker file.
+
+[rochak agrawal] 08:57:43
+It is also same thing. It is also doing the same thing. But first, you need to install Nginx here. So that is one step will be added here.
+
+[rochak agrawal] 08:57:51
+Correct? And then you see expose AT and CMD. It's the same command we are.
+
+[rochak agrawal] 08:57:57
+So…
+
+[rochak agrawal] 08:57:58
+Now…
+
+[rochak agrawal] 08:58:00
+Same thing, right? So the point here is, um, you…
+
+[rochak agrawal] 08:58:06
+need to create. Now, of course.
+
+[rochak agrawal] 08:58:10
+You need to create the Docker file, uh, so you will understand the…
+
+[rochak agrawal] 08:58:16
+sit with your development team. So, for example, let's say you are deploying a Node.js-based application. So, let's say… let's see… simple…
+
+[rochak agrawal] 08:58:28
+Docker.
+
+[rochak agrawal] 08:58:30
+Node.
+
+[rochak agrawal] 08:58:32
+JS-based information.
+
+[rochak agrawal] 08:58:40
+So you can see?
+
+[rochak agrawal] 08:58:43
+Create a simple node. Here you will be using the node base image. And you run npm install, there's expose 300, and that's about it.
+
+[rochak agrawal] 08:58:54
+Hey, so let me run this also.
+
+[rochak agrawal] 08:59:06
+Now, let me create…
+
+[rochak agrawal] 08:59:11
+VIServer.js.
+
+[rochak agrawal] 08:59:17
+Okay? It is running on port 3000.
+
+[rochak agrawal] 08:59:22
+Now, if you go to Dockerfile…
+
+[rochak agrawal] 08:59:43
+So here you see from Node 20, here I'm using the Node 20 base image. I'm setting up the bug directory, copying package.json from here.
+
+[rochak agrawal] 08:59:53
+Running npm install, copy this, this, and just running node server.js.
+
+[rochak agrawal] 08:59:59
+Correct.
+
+[rochak agrawal] 09:00:03
+I copy.
+
+[rochak agrawal] 09:00:05
+And then, you will just say, simply, you need to run this docker build-t my-node app. Let's see if this works or not, because we do not have the package.json, but let me try to run.
+
+[rochak agrawal] 09:00:20
+So you see, it will download the image, run it, it will run everything. CC, run npm install. So you see, it is…
+
+[rochak agrawal] 09:00:28
+Running could not read package.json, no such file or directory. We do not have the package.json. So it was saying run this.
+
+[rochak agrawal] 09:00:45
+Let me see if that works.
+
+[rochak agrawal] 09:00:50
+Ludo app install.
+
+[rochak agrawal] 09:00:56
+Ian?
+
+[rochak agrawal] 09:02:31
+Okay? No.
+
+[rochak agrawal] 09:02:35
+Package.json now. Yeah. Now I'm going to run that.
+
+[rochak agrawal] 09:02:48
+Okay, now I'm going to run a container out of it.
+
+[rochak agrawal] 09:03:02
+I'll do hyphen D also.
+
+[rochak agrawal] 09:03:10
+Okay? You can talk at PS.
+
+[rochak agrawal] 09:03:13
+So, with my Node app, and you see, I have not given the name, so, the name. And now, if you open port 3000 here.
+
+[rochak agrawal] 09:03:25
+You see? Hello from inside the document. A simple Node.js-based application also you have installed.
+
+[rochak agrawal] 09:03:31
+So the point here is, uh…
+
+[rochak agrawal] 09:03:35
+And…
+
+[rochak agrawal] 09:03:36
+At this point.
+
+[rochak agrawal] 09:03:38
+We need to understand how this works. So if you say why I'm using this copy index.html or copy package.json, now that will depend on the application type you are using.
+
+[rochak agrawal] 09:03:53
+Correct. Now, in… if I'm taking the Ubuntu base image, then…
+
+[rochak agrawal] 09:03:59
+I…
+
+[rochak agrawal] 09:04:00
+We'll have to install also the NGINX, correct? But if I'm taking the NGINX base image, I do not need to install. I'm just copying the configuration. I'm exposing the port. I'm running the NGINX. As simple as that. So at this point, you understand how this works.
+
+[rochak agrawal] 09:04:16
+Now…
+
+[rochak agrawal] 09:04:19
+the final product, uh, final Docker file you will be writing, will depends a lot about your exact requirements. But just to give you a background, you only need these.
+
+[rochak agrawal] 09:04:31
+arguments, or directives, or instructions, that's it. Only thing it is needed. So, instructions and argument. That's it. So, every line, if you see, instruction.
+
+[rochak agrawal] 09:04:44
+Argument. Instruction. Argument. Instruction. Argument. That is about it.
+
+[rochak agrawal] 09:04:56
+Yes, you will.
+
+[Jeeva Koli] 09:05:04
+Am I audible?
+
+[rochak agrawal] 09:05:05
+Yes, you are, you are.
+
+[Jeeva Koli] 09:05:08
+In a production, at the place of the copy command, or the instruction, we place the artifact, right?
+
+[rochak agrawal] 09:05:15
+Hmm?
+
+[Jeeva Koli] 09:05:17
+I mean, here you place the HTML page, but in the production, we will place the artifact file, right?
+
+[rochak agrawal] 09:05:25
+I'm sorry, can you come again?
+
+[Jeeva Koli] 09:05:28
+So, here you place the HTML page to post only this. So, in a production, uh…
+
+[rochak agrawal] 09:05:32
+Correct.
+
+[rochak agrawal] 09:05:34
+Got it.
+
+[Jeeva Koli] 09:05:36
+we fetch the artifact file, right? That file, we create a package.
+
+[rochak agrawal] 09:05:39
+Yes, see, it will depend on what… and if you see here, if you, uh, notice in another one, we are, uh, giving the package.json, right?
+
+[Jeeva Koli] 09:05:48
+Mm-hmm.
+
+[rochak agrawal] 09:05:54
+So here we are copying this package.json, correct?
+
+[rochak agrawal] 09:05:59
+So it will totally depend which is the type of the application you… So for example, if I will be building a custom application for a Java archive, then I will copy the JAR file.
+
+[Jeeva Koli] 09:06:13
+Okay, okay.
+
+[rochak agrawal] 09:06:15
+Right? So it will totally… see, that's what I'm saying. The final Docker file will… see, you can create a Docker file for almost…
+
+[Jeeva Koli] 09:06:15
+Got it.
+
+[rochak agrawal] 09:06:25
+Every application, so if you see the docker images.
+
+[rochak agrawal] 09:06:31
+You can see these images are 74 MB, right? 200 MB, very latest.
+
+[rochak agrawal] 09:06:38
+I have worked on a Docker image which was 10 GB in size.
+
+[rochak agrawal] 09:06:44
+Okay.
+
+[rochak agrawal] 09:06:46
+So, you can see, uh, like, these are very, uh, small, like, pipeline lines were there.
+
+[rochak agrawal] 09:06:54
+You can do multiple things in your Docker file. I'll install Java, I'll install Tomcat. You just need to give the right instruction. That's it.
+
+[rochak agrawal] 09:07:02
+And this instruction.
+
+[rochak agrawal] 09:07:05
+will not be same for your application, my application. So, like, we take the example of NGINX.
+
+[rochak agrawal] 09:07:11
+You're building both NGINX you can build.
+
+[rochak agrawal] 09:07:15
+If you are… it will totally depend on what is the base image you are using. Then your Dockerfile is going to change, correct?
+
+[Jeeva Koli] 09:07:22
+Okay.
+
+[rochak agrawal] 09:07:23
+Okay.
+
+[Jeeva Koli] 09:07:24
+Yeah. Okay.
+
+[arif] 09:07:26
+Piero
+
+[Jeeva Koli] 09:07:26
+And, uh…
+
+[Jeeva Koli] 09:07:29
+Uh, one more thing. Inner D, I mean, when creating the, uh, like, images, we mentioned the dash D, means the detached mode, right? The detached mode…
+
+[rochak agrawal] 09:07:29
+Mm-hmm.
+
+[rochak agrawal] 09:07:39
+Correct. Running the container.
+
+[Jeeva Koli] 09:07:41
+Right. So, in that mode, we define the port, that's why we mentioned the D, in a normal mode.
+
+[rochak agrawal] 09:07:47
+No, D is for background, ZVA. We discussed this here.
+
+[rochak agrawal] 09:07:53
+So, container can run in 3 mode.
+
+[rochak agrawal] 09:07:58
+Right? Oh, there it is
+
+[Jeeva Koli] 09:07:59
+Mm-hmm.
+
+[rochak agrawal] 09:08:02
+This attached, detached, and interactive.
+
+[rochak agrawal] 09:08:04
+We discussed this in detail. Hyphen D is for detached mode.
+
+[Jeeva Koli] 09:08:09
+Uh, means, uh, what exactly difference between the attach and detach?
+
+[rochak agrawal] 09:08:11
+Jeeva, we have cleared this. We have discussed this in detail.
+
+[rochak agrawal] 09:08:16
+In the first half.
+
+[Jeeva Koli] 09:08:17
+Yeah, yeah, but I raised the hand, but I was not able to talk on that, actually, because of my issue.
+
+[rochak agrawal] 09:08:22
+So, hyphen D is running the… so, what is the question? Like, we have done the complete demo about hyphen D.
+
+[rochak agrawal] 09:08:31
+What is the question here?
+
+[Jeeva Koli] 09:08:32
+Uh, question means, what is the difference between attached and the detached mode, actually?
+
+[rochak agrawal] 09:08:37
+But attached, we see that, uh, if you're running in attached mode, your container is going to run in the foreground, you will not be able to do anything at all. Background means it is running in the background.
+
+[Jeeva Koli] 09:08:52
+Uh, back… background means it will run continuously, and in, uh…
+
+[rochak agrawal] 09:08:55
+It will run continuously, yes. So, for example, uh, let's say, uh, see, you open, uh.
+
+[rochak agrawal] 09:09:03
+a video, for example, right? Now, if you want to see the video.
+
+[rochak agrawal] 09:09:08
+The video will come on the screen, and you will not be able to do anything at all, correct?
+
+[Jeeva Koli] 09:09:12
+Mm-hmm.
+
+[rochak agrawal] 09:09:13
+Uh, so that is, let's say, the foreground mode. But let's say you say, I am only listening to the song, I do not need to see the video, so instead of running the video, you just go play the song on the video media player. Now, that is running in the background, and you can do your other work also.
+
+[rochak agrawal] 09:09:29
+So that is, like, running in the background.
+
+[rochak agrawal] 09:09:35
+Okay?
+
+[Jeeva Koli] 09:09:35
+Okay.
+
+[Jeeva Koli] 09:09:37
+Okay.
+
+[arif] 09:09:39
+Yeah, Rocha.
+
+[rochak agrawal] 09:09:39
+Yes, I do.
+
+[arif] 09:09:41
+Can you go to the Docker file, the standard Docker file that you've shown?
+
+[arif] 09:09:48
+Not with the directives, all the directives. So, this, this is the, like, it runs sequentially, all the things.
+
+[rochak agrawal] 09:09:53
+This you're seeing? Yeah, yeah, see, yes, yes, yes, that's a very important point. So every line, you see, and if you see here, when it was building the image.
+
+[arif] 09:09:58
+Okay.
+
+[rochak agrawal] 09:10:07
+Do you see?
+
+[rochak agrawal] 09:10:09
+1x5, 2x5, 3x5, 4x5, 5x5. Correct? Can you see this?
+
+[arif] 09:10:15
+Yeah, yeah.
+
+[rochak agrawal] 09:10:16
+So whatever the instruction you are going to write. So I think there will be five instruction in my file.
+
+[rochak agrawal] 09:10:24
+1, 2, 3, 4, 5. Can you see 5 instructions?
+
+[rochak agrawal] 09:10:28
+So every line, every line is an instruction, first thing, okay?
+
+[rochak agrawal] 09:10:34
+And…
+
+[rochak agrawal] 09:10:35
+What is going to happen? That Docker creates the layer. So when your Docker image is going to be created, for example.
+
+[rochak agrawal] 09:10:45
+Very important point you raised, Arif.
+
+[rochak agrawal] 09:10:48
+So, what is going to happen?
+
+[rochak agrawal] 09:10:55
+So how Docker works is okay. So now you see there are five layers, five instructions. One, two.
+
+[rochak agrawal] 09:11:02
+3?
+
+[rochak agrawal] 09:11:04
+4, 5. Correct? So now, Dogger, what it does, it…
+
+[rochak agrawal] 09:11:09
+First, it is going to go into the sequential mode. So if something goes wrong here, you will not go further, okay?
+
+[rochak agrawal] 09:11:17
+So, Docker, what it does, it creates a layer out of it. One…
+
+[rochak agrawal] 09:11:23
+3…
+
+[rochak agrawal] 09:11:27
+Fight.
+
+[rochak agrawal] 09:11:29
+And these layers are non-editable.
+
+[rochak agrawal] 09:11:38
+Okay, now you go, you change from 80 to, let's say, 90.
+
+[rochak agrawal] 09:11:45
+Very good.
+
+[rochak agrawal] 09:11:47
+All those three are same. Docker, what it does, it use the previous layers, 1, 2, 3, and it will change only this layer.
+
+[rochak agrawal] 09:12:01
+So that is how Docker maintains the thing in the internal, um, uh…
+
+[rochak agrawal] 09:12:06
+Perfect. So even if you go, so for example, if I go CD.
+
+[rochak agrawal] 09:12:11
+Bad.
+
+[rochak agrawal] 09:12:13
+Lib.
+
+[rochak agrawal] 09:12:16
+Docker.
+
+[rochak agrawal] 09:12:19
+Let me go through this.
+
+[rochak agrawal] 09:12:23
+CD file. Lib.
+
+[rochak agrawal] 09:12:26
+Docker.
+
+[rochak agrawal] 09:12:29
+So you can go to image.
+
+[rochak agrawal] 09:12:36
+We will not be seeing. Let me show you.
+
+[rochak agrawal] 09:12:41
+Don't curve.
+
+[rochak agrawal] 09:12:43
+Images.
+
+[rochak agrawal] 09:12:53
+Poker, inspect.
+
+[rochak agrawal] 09:12:57
+My number.
+
+[rochak agrawal] 09:13:06
+Image inspector, sorry.
+
+[rochak agrawal] 09:13:14
+Okay, so here you see…
+
+[rochak agrawal] 09:13:16
+There's a layers 1, 2, 3, 4, 5, 6, 7, 8.
+
+[rochak agrawal] 09:13:21
+Because we created the layers, right? Again, it is not for us to use.
+
+[rochak agrawal] 09:13:28
+we created a container also, that's why we are seeing more than 5 layers, but it is going to create the layers, okay? And what…
+
+[rochak agrawal] 09:13:36
+What we need to understand here is, so, whatever the layer is.
+
+[rochak agrawal] 09:13:42
+See, for example, you can have a 5 or 6, doesn't not matter. So let's say this is your image.
+
+[rochak agrawal] 09:13:54
+3, 4, 5. They can have multiple layers. Now, when you create a container out of it, and these layers are non-editable.
+
+[rochak agrawal] 09:14:03
+Non-readable. Uh, sorry, not writable.
+
+[rochak agrawal] 09:14:07
+You cannot write anything to these layers. When you run a container, there is a new layer created on top of it.
+
+[rochak agrawal] 09:14:16
+And that layer is writeable.
+
+[rochak agrawal] 09:14:21
+So if you now connect the dots, now what happens is when you remember that when you, when we created a file in a container and we remove the container and we started again, our file goes.
+
+[rochak agrawal] 09:14:35
+our file was not there, correct? Now, the reason for that was…
+
+[rochak agrawal] 09:14:39
+anything you're doing inside the container, you are doing at this layer. So we created a file at this writeable layer, and when you remove the container, when you delete the container, this writeable layer will…
+
+[rochak agrawal] 09:14:54
+be gone. You only will be left with the image layers.
+
+[rochak agrawal] 09:15:02
+is non-editable. So to answer your question, Arif, yes, it goes into the sequence. That's the first thing. And every instruction is going to create a layer in between. So if you go change anything at a.
+
+[rochak agrawal] 09:15:18
+Further layer, whatever layer has not been changed, it is going to use the old layer only. And that is what the reason is. You will take, because now all these layers are saved internally within Google, sorry, within this Docker.
+
+[rochak agrawal] 09:15:34
+So, when you build a new…
+
+[rochak agrawal] 09:15:38
+What we can say is, uh, new version of an image, you will see that the time being taken is very less, because.
+
+[rochak agrawal] 09:15:45
+you might be changing, so for example, let's say I change only index.html, but all those layers are same.
+
+[rochak agrawal] 09:15:53
+Correct? So that is where, internally, this is how it works.
+
+[arif] 09:15:59
+So we can add an instruction at any point of time in the Docker file and run it again.
+
+[rochak agrawal] 09:16:02
+Yes, yes, yes, any point of time, yeah, yeah, yeah. So I can go here…
+
+[arif] 09:16:04
+So, once you run it, it will create another version, or…
+
+[rochak agrawal] 09:16:07
+Yes, another version, yes. See, once you create an image, that is logged. You cannot change an image.
+
+[arif] 09:16:09
+Walk it.
+
+[arif] 09:16:12
+Okay, okay, got it.
+
+[rochak agrawal] 09:16:14
+Once… because it is already created, you need to create another version of it.
+
+[arif] 09:16:18
+Okay. And in this, you said that the first one is mandatory, and others… all others are optional, or…
+
+[rochak agrawal] 09:16:23
+Mm-hmm.
+
+[rochak agrawal] 09:16:27
+No, all others will depend on the type of the application.
+
+[rochak agrawal] 09:16:30
+Okay.
+
+[arif] 09:16:30
+Yeah, but whatever we want to use, we can use. Okay.
+
+[rochak agrawal] 09:16:32
+Yeah, whatever you want to use. But let's say, if I go create, only give this one.
+
+[rochak agrawal] 09:16:37
+then my Docker, whatever the custom image will be created, that is basically this image only, right?
+
+[arif] 09:16:43
+Yeah, yeah, for sure.
+
+[rochak agrawal] 09:16:44
+So this is absolutely, absolutely mandating. So the point is, anything you want to start with, it… everything starts with a base image. That's it. You have to have a base image.
+
+[rochak agrawal] 09:16:57
+Now, what base image you want to use, it is up to you.
+
+[arif] 09:17:01
+Okay, and we can also copy multiple, like, files if it is a website. You can…
+
+[rochak agrawal] 09:17:04
+Yeah, no problem in that. So, see, that is what we say. You can write multiple instructions. I can write multiple instructions here. I'll say, uh, another app.html.
+
+[arif] 09:17:12
+Okay, okay.
+
+[rochak agrawal] 09:17:16
+You can do that.
+
+[arif] 09:17:20
+Okay, and regarding that command, so if I want to see this app.html, whether it is copied in the container, so to go inside the container, we have to run that command using that interactive.
+
+[rochak agrawal] 09:17:30
+Correct.
+
+[arif] 09:17:31
+Uh, interactive, right?
+
+[rochak agrawal] 09:17:32
+We can run Docker exec also. Docker exec we have shown in the last class.
+
+[rochak agrawal] 09:17:38
+So if you want to, let's say, uh… so you will run a command, something like, uh…
+
+[arif] 09:17:40
+That's it, okay.
+
+[rochak agrawal] 09:17:44
+Docker, uh, exec.
+
+[rochak agrawal] 09:17:47
+H1IT, and then you will give, uh, uh, CAD, uh.
+
+[rochak agrawal] 09:17:52
+You have to give your container name, my-nginx, and you give, let's say, ls-lrt.
+
+[rochak agrawal] 09:18:00
+And, uh…
+
+[rochak agrawal] 09:18:01
+Whatever where your file is there. So you can give it and you can see.
+
+[arif] 09:18:08
+Okay.
+
+[rochak agrawal] 09:18:09
+But then inside a container, you need to run a container out of it. See, there is two-step process now. One, you are creating an image, and then once that image is created, then you are running a container out of it.
+
+[rochak agrawal] 09:18:24
+So, Docker exec is going to be used when you are running a container.
+
+[arif] 09:18:31
+Okay, and uh…
+
+[arif] 09:18:35
+Um, let… let me disconnect here. So, can you please briefly summarize, uh, what has been learned so far? Uh, because, uh, from, like, uh, suppose I have an application running on.
+
+[rochak agrawal] 09:18:40
+Hmm?
+
+[rochak agrawal] 09:18:40
+Sure.
+
+[arif] 09:18:46
+My users are accessing it.
+
+[arif] 09:18:48
+So, from start, like, my developers are keep changing this application on a dev environment. So, what would be the flow, what would be the ingredients, and all those things?
+
+[rochak agrawal] 09:18:57
+Correct. But that, uh, Asif, uh, sorry, Arif, uh, but that is what we have yet to discuss. We will connect our doctor.
+
+[rochak agrawal] 09:19:05
+with our CICD pipeline, then we will discuss that flow. Right now, we have not added this to my CICD pipeline, correct?
+
+[arif] 09:19:08
+Okay.
+
+[rochak agrawal] 09:19:12
+So, what we have done till now is…
+
+[arif] 09:19:13
+Huh.
+
+[rochak agrawal] 09:19:16
+We have understood the concept of containers.
+
+[rochak agrawal] 09:19:18
+Like, what is containers? So, containers are the lightweight versions of the virtual machines, we can say, where virtual machine does the hardware-level virtualization. They do the software-level, operating system-level virtualization. So, you can see, I can run a node-based application, Nginx, Jenkins, everything on my server.
+
+[rochak agrawal] 09:19:38
+without installing this and inside a container, right? Now, to run the container, either you can use the pre-built images.
+
+[rochak agrawal] 09:19:49
+You are going to find millions of the images on Docker Hub, which we will see. You can download any of the images which suits your requirement, and you run that.
+
+[rochak agrawal] 09:19:57
+But for most of the… most of your use cases, you do not want to run the pre-built images. You need to build your…
+
+[rochak agrawal] 09:20:08
+Custom images.
+
+[rochak agrawal] 09:20:12
+Okay, now the custom images are…
+
+[rochak agrawal] 09:20:18
+you need to write a Docker file.
+
+[rochak agrawal] 09:20:22
+In the Docker file, you will pick up a base image and then do your modification, your configuration, everything in the instructional format.
+
+[rochak agrawal] 09:20:34
+Uh, and then, with the help of Docker build command, you're… you are going to create that custom image. Now, that custom image, also, you can share it with everyone, so you can push it to Docker Hub.
+
+[rochak agrawal] 09:20:44
+Uh, with the help of Docker push command, or whatever the repository you are using. So, for example, if you're using Amazon Container Registry, or Google Container Registry, or Azure Container Registry, so you can push that image there. And within your organization, people are going to access that, um…
+
+[rochak agrawal] 09:21:01
+image. And so, whoever is going to access that image, they are going to run exactly the same application, irrespective of what is there on their laptops.
+
+[rochak agrawal] 09:21:11
+They just need to have the Docker, right? Then, um, we can create multiple versions of our image, uh, so anytime a developer… your code is getting changed, you need… you can create another version of our Docker image. So, for example.
+
+[rochak agrawal] 09:21:26
+And that is where we have did well. So if you see Docker images.
+
+[rochak agrawal] 09:21:32
+Okay, so first I created a version 1, my custom Nginx 1.2, but as my index.html got changed, I created another version of my Nginx, which is a 2.0.
+
+[rochak agrawal] 09:21:47
+Now, the burgeoning and everything, you will choose as per your organizational need. So, for example, if daily you are creating.
+
+[rochak agrawal] 09:21:56
+100 images, and every image is, let's say, 100 MB. So you will consume multiple spaces, right? So you will have to decide how many previous images you need to store, and everything. That, based on your organizational constant, you will decide.
+
+[rochak agrawal] 09:22:13
+as a next step, once we will cover Docker Kubernetes, then we will add this, uh, piece, uh, to our CICD pipeline also. So…
+
+[rochak agrawal] 09:22:23
+In our CICD pipeline, till now, what we discussed is, uh, we have a source code repository, and we have a CI engine, Jenkins, and our CI engine is connected with my source code repository. And, uh, let's say I deployed on a Tomcat, so whenever there is any change, is there.
+
+[rochak agrawal] 09:22:40
+It's going to happen.
+
+[rochak agrawal] 09:22:44
+my build is… Jenkins build is going to trigger, and whatever the steps, returns, for example, till now, we did Maven build, then we did, uh, your, uh…
+
+[rochak agrawal] 09:22:54
+uh, sonar we have not done, unit test this, and then we deployed it to, uh, this Tomcat. Now, what we do, instead of directly deploying it as a Tomcat, we…
+
+[rochak agrawal] 09:23:06
+can create a Docker image.
+
+[rochak agrawal] 09:23:09
+with the Tomcat base image, and.
+
+[rochak agrawal] 09:23:13
+we will run the application in a containerized format, correct? Now, so that whenever anything is going to change in your source code, Jenkins will trigger, and Jenkins will, uh, now we will write the steps in our Jenkins.
+
+[rochak agrawal] 09:23:27
+Altogether, so that it will…
+
+[rochak agrawal] 09:23:31
+create a newer version of the Docker image, because your code has been changed, and it will deploy that… it will delete the previous container, and create a new container with the new image.
+
+[rochak agrawal] 09:23:41
+So that will be your typical flow. And as I said, that is one piece. There will be certain challenges with Docker itself, and that is where your container orchestration layer will come into the picture. We will discuss the challenges also, but before that, we will…
+
+[rochak agrawal] 09:23:58
+Understand the…
+
+[rochak agrawal] 09:24:00
+the volumes and networking about Docker.
+
+[rochak agrawal] 09:24:03
+You might never use it if you're using the container orchestration, but we have to understand it.
+
+[rochak agrawal] 09:24:09
+So, that will be our complete flow. So, as we will understand the tools, we will keep adding that into our pipeline.
+
+[rochak agrawal] 09:24:18
+Then we will learn as well, we will…
+
+[rochak agrawal] 09:24:21
+Add and submit also.
+
+[rochak agrawal] 09:24:23
+Okay.
+
+[arif] 09:24:26
+Okay, yeah, thanks.
+
+[rochak agrawal] 09:24:28
+Yeah, sure.
+
+[rochak agrawal] 09:24:29
+So yeah, next, we will understand the volumes and the net
+
