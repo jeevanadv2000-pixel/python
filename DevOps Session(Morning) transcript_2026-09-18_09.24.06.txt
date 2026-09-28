@@ -1,0 +1,2964 @@
+[rochak agrawal] 07:40:52
+Configuration, it's a short form for the configuration. So any configuration file will go inside the conif folder, and then you can see the web apps. Now, on one Tomcat instance, you can deploy multiple web applications. So every web app will go — so if you go here.
+
+[rochak agrawal] 07:40:56
+You can see already examples, host manager, manager, right? So if I…
+
+[rochak agrawal] 07:41:08
+See, even it is X is denied for us now, but there is something running on examples.
+
+[rochak agrawal] 07:41:17
+Every application you are deploying, so it is going to go into the…
+
+[rochak agrawal] 07:41:21
+web apps. Then, there's a library. Library is, let's say, again, um, if your application needs some third-party dependencies. So, your application will go into the web apps folder, but dependencies will go into the library folder. And then, work is, if you're manually deploying everything, so.
+
+[rochak agrawal] 07:41:40
+Your work will be your working directory where you will run your commands. Okay, so currently, you see these are, uh, example, host manager, manager. These are some of the application, which is by, uh, nature coming. Once we will be able to deploy our application, you will see a folder for our application altogether.
+
+[rochak agrawal] 07:41:59
+So this is a basic directory structure for Tomcat.
+
+[rochak agrawal] 07:42:02
+And then, it is going to be the fixed link, okay? Now, if you go to CONF.
+
+[rochak agrawal] 07:42:15
+And inside that, there is multiple, uh, configuration files are there, so we…
+
+[rochak agrawal] 07:42:20
+created a backup file, but we were not able to edit this file, right? So, what I did is, I added this… edit this file, and I added one user called the deployer. You can see, user, username, deployer.
+
+[rochak agrawal] 07:42:35
+And password is admin at the rate 123. And role says manager GUI.
+
+[rochak agrawal] 07:42:41
+And manager is… so Tomcat has different, different roles, okay? Now, if you want to deploy something, so for example, here, if you go…
+
+[rochak agrawal] 07:42:51
+Uh, to manager. Now it is asking you the username and the password.
+
+[rochak agrawal] 07:42:56
+This is the username and the password which I'm going to give now. So I'll say deployer.
+
+[rochak agrawal] 07:43:08
+And admin, at the rate 1, 2.
+
+[rochak agrawal] 07:43:11
+You can choose any username and the password.
+
+[rochak agrawal] 07:43:14
+So here also you can see docs, example, host manager, and manager are the application which is deployed. So I can stop this application. I can undeploy this application. So you can see sessions for the manager because we are on the manager itself.
+
+[rochak agrawal] 07:43:30
+So session is 1, apart from it, sessions are 0. So…
+
+[rochak agrawal] 07:43:35
+From here, also, we can deploy. So, if you want to do manually deployment, you will give the VOR directory part.
+
+[rochak agrawal] 07:43:42
+WAR file to deploy, you choose file, you upload the WAR file, and your WAR file is going to be deployed.
+
+[rochak agrawal] 07:43:48
+So, our focus right now not on Tomcat, uh, we will deploy it, uh, from the… our pipeline.
+
+[rochak agrawal] 07:43:53
+But that is how… that was one issue which we were getting yesterday. We were not able to edit this file.
+
+[rochak agrawal] 07:44:00
+I restarted the server, and it worked fine.
+
+[rochak agrawal] 07:44:03
+Okay, so now, what I'm going to do, I will go…
+
+[rochak agrawal] 07:44:09
+to my changes.
+
+[rochak agrawal] 07:44:10
+So, I already created a file, I'll just go…
+
+[rochak agrawal] 07:44:14
+Configure.
+
+[rochak agrawal] 07:44:15
+So this is my, uh…
+
+[rochak agrawal] 07:44:19
+Sample application is there, I'll copy.
+
+[rochak agrawal] 07:44:26
+Okay.
+
+[rochak agrawal] 07:44:28
+I… it's a public repository, I do not need a credential.
+
+[rochak agrawal] 07:44:31
+So, here, branch main is…
+
+[rochak agrawal] 07:44:35
+Now, all things remain the same. GitHub hook trigger, we will configure at the repository level separately.
+
+[rochak agrawal] 07:44:42
+Now, if you see, again, the same build, previous application, uh, previous job which we used, eco, my build is starting, Maven version, Maven CI server, clean package. Same thing, right? And here, also, I'm adding one test.
+
+[rochak agrawal] 07:44:57
+Now, the important thing is the post-build action. So, in the post-build action.
+
+[rochak agrawal] 07:45:04
+I'll just copy this and let me delete and configure it again. So what I'm going to do in the post build action. So Maven build will be created. Now in the post build action there is a deploy war EA to container.
+
+[rochak agrawal] 07:45:17
+Now I'm just…
+
+[rochak agrawal] 07:45:19
+Clarifying one thing, we will have detailed sessions, not one. Container will be the main focus of your DevOps module.
+
+[rochak agrawal] 07:45:29
+The container which we are going to study, which is Docker or Kubernetes container, this is not a Docker container. Keep that in mind. See, container is something which holds something.
+
+[rochak agrawal] 07:45:43
+In a way, your application server is holding your application war file or the jar file. So, in that sense, it is called the container. It is not your Docker container. Keep that in mind, okay?
+
+[rochak agrawal] 07:45:55
+So, deploy Warrior to container, and here…
+
+[rochak agrawal] 07:46:01
+I just…
+
+[rochak agrawal] 07:46:03
+In a target file, use this war. You can give the path wherever your war file is.
+
+[rochak agrawal] 07:46:09
+And next part, let's say, I'll see my app.
+
+[rochak agrawal] 07:46:12
+Okay, and then add a container.
+
+[rochak agrawal] 07:46:15
+My application is Tomcat 9.
+
+[rochak agrawal] 07:46:20
+Right? So, I'll choose Tomcat 9.
+
+[rochak agrawal] 07:46:24
+Okay? Credential, I have already, uh, saved the credential with the deployer, or the admin, with the same credential we have used here.
+
+[rochak agrawal] 07:46:35
+And then, TONKET URL.
+
+[rochak agrawal] 07:46:43
+So this is the complete model.
+
+[rochak agrawal] 07:46:44
+Simple. Now, I go…
+
+[rochak agrawal] 07:46:48
+And save this.
+
+[rochak agrawal] 07:46:50
+And build now. Let's see what's going to happen.
+
+[rochak agrawal] 07:47:03
+Okay? Says build success, so first, uh, we go…
+
+[rochak agrawal] 07:47:08
+Eco, I will start you.
+
+[rochak agrawal] 07:47:11
+And it does Maven Clean Package.
+
+[rochak agrawal] 07:47:13
+Okay? And…
+
+[rochak agrawal] 07:47:15
+And, uh…
+
+[rochak agrawal] 07:47:17
+After that…
+
+[rochak agrawal] 07:47:18
+Maven test.
+
+[rochak agrawal] 07:47:20
+Once your build is done, say Build Success.
+
+[rochak agrawal] 07:47:24
+See, attempting to deploy one WAR file, deploying via libjenkinsworkspace webapp.war to container Tomcat 9x with the context my app.
+
+[rochak agrawal] 07:47:37
+Okay? And success. Now, if you go refresh this page.
+
+[rochak agrawal] 07:47:43
+My app is here. Can you see?
+
+[rochak agrawal] 07:47:48
+Say, archive created web application. Now, if you…
+
+[rochak agrawal] 07:47:53
+Let's see…
+
+[rochak agrawal] 07:47:55
+I don't see.
+
+[rochak agrawal] 07:47:57
+Mike.
+
+[rochak agrawal] 07:47:59
+You see? Congratulations, you have successfully deployed Java application with the Virgin.
+
+[rochak agrawal] 07:48:07
+Right? Now what we can do, we can… so, it is a manual build right now. Now what I can do, I can trigger a… I can create the webhook trigger, and I will trigger a job after that. Let's see what's going to happen.
+
+[rochak agrawal] 07:48:21
+I'll go to…
+
+[rochak agrawal] 07:48:23
+Settings…
+
+[rochak agrawal] 07:48:26
+DevOps.
+
+[rochak agrawal] 07:48:28
+Add by hook
+
+[rochak agrawal] 07:48:48
+So, we previously configured the webhook.
+
+[rochak agrawal] 07:48:50
+Same thing.
+
+[rochak agrawal] 07:48:55
+What is the syllabus?
+
+[rochak agrawal] 07:49:20
+Yes
+
+[rochak agrawal] 07:49:23
+Okay, now if you go, uh, just push event.
+
+[rochak agrawal] 07:49:36
+Now, I'll go, let's say, make some changes in my code.
+
+[rochak agrawal] 07:49:39
+Currently, you see it says, "Congratulations, you have successfully deployed Java application with version one.
+
+[rochak agrawal] 07:49:46
+Okay, now if I go…
+
+[rochak agrawal] 07:49:50
+Let's say I'll go span changes in a file.
+
+[rochak agrawal] 07:49:57
+Let's say, instead of version 1, I'll say version 2.
+
+[rochak agrawal] 07:50:00
+Nothing much
+
+[rochak agrawal] 07:50:02
+Okay? And I'll commit the changes.
+
+[rochak agrawal] 07:50:09
+Update deployment message to version 2. Commit the changes.
+
+[rochak agrawal] 07:50:13
+Okay? Now, we'll wait for some time.
+
+[rochak agrawal] 07:50:18
+We'll go with that book.
+
+[rochak agrawal] 07:50:21
+The last delivery was successful.
+
+[rochak agrawal] 07:50:23
+Now, if I go…
+
+[rochak agrawal] 07:50:27
+Build number 13 is triggered.
+
+[rochak agrawal] 07:50:32
+Okay, now let's say, refresh this page.
+
+[rochak agrawal] 07:50:37
+You see? Version 2.
+
+[rochak agrawal] 07:50:40
+Now, once… the point here is, once you set up your CICD pipeline.
+
+[rochak agrawal] 07:50:46
+Right? I'm deploying it to the Tomcat application server. Now, it's a miniature version. There must be many intermediary steps also, which also we have to see. We will create a nexus in between. We can do a SonarQube, but.
+
+[rochak agrawal] 07:51:01
+Overall flow is going to remain the same, right? And you trigger it, you do a continuous integration and continuous deployment, right? Right now, I have one environment. You can have four environments, right? So you say, congratulations, you have successfully deployed Java application with the version.
+
+[rochak agrawal] 07:51:17
+Okay, now you can see it here. Whenever you do any changes in your source code repository, that will automatically be going to build.
+
+[rochak agrawal] 07:51:28
+and going to be deployed on the Tomcat server altogether.
+
+[rochak agrawal] 07:51:33
+Delia, till now, any question?
+
+[rochak agrawal] 07:51:46
+Are we good?
+
+[rochak agrawal] 07:51:49
+Yes, Arif.
+
+[arif] 07:51:52
+Yeah, while this entering this war file, there was some slash star, uh, what was that?
+
+[rochak agrawal] 07:51:56
+This is a part of the WAR file. So, for example, um…
+
+[rochak agrawal] 07:52:04
+You go to configure.
+
+[rochak agrawal] 07:52:13
+So start.war is a part of the war file. So if you see war here file to deploy related to the workspace root.
+
+[rochak agrawal] 07:52:20
+Okay. So, in the workspace, where is your file? Where is your file? So, in the workspace, target folder, our file will be. So, if you know the exact path… see, star denotes everything. That's why we are putting up the star. If you know the exact name, you can put up the exact name. Even if you're myapp.war, for example, if I go to workspace.
+
+[rochak agrawal] 07:52:47
+Workspace?
+
+[rochak agrawal] 07:52:49
+So you see, target.
+
+[rochak agrawal] 07:52:52
+And the web.org, right? So, if I give here…
+
+[rochak agrawal] 07:52:57
+Are you good?
+
+[rochak agrawal] 07:53:00
+Dev.org. This is also fine. You should know the exact name, uh, right? Star means it knows everything. Star is the wildcard in Linux, right?
+
+[rochak agrawal] 07:53:11
+So both the ways is going to work fine.
+
+[rochak agrawal] 07:53:18
+So when we give a star star.
+
+[rochak agrawal] 07:53:22
+Or to start.
+
+[rochak agrawal] 07:53:23
+So, it is going to… it does not need to explicitly find for the bareweb.war. Now, what we are saying…
+
+[rochak agrawal] 07:53:31
+inside the workspace folder, in any of the folder, any WAR file is there, you deploy this. That's the meaning.
+
+[arif] 07:53:39
+Okay.
+
+[rochak agrawal] 07:53:43
+It's more of a Unix or Linux thing.
+
+[rochak agrawal] 07:53:50
+Yes or no?
+
+[Dhanu] 07:53:54
+Yes, hi Rocha, good morning.
+
+[rochak agrawal] 07:53:56
+Okay, good morning.
+
+[Dhanu] 07:53:57
+Yeah, I just want to let you know about something which I've discussed with my mentor, sorry, with the support team.
+
+[Dhanu] 07:54:05
+Uh, they also told, uh, please, uh, confess the same thing with your mentor as well, uh, in the morning session.
+
+[rochak agrawal] 07:54:11
+Okay?
+
+[Dhanu] 07:54:12
+Uh, the thing is, I feel, uh, whatever is going, it's a bit, it's going a bit faster.
+
+[rochak agrawal] 07:54:18
+Okay.
+
+[Dhanu] 07:54:20
+Uh, still, I'm practicing in Git, but we are already in the Jenkins. So, for me, it's going a bit fast. I don't know about others.
+
+[rochak agrawal] 07:54:23
+Mmhm.
+
+[rochak agrawal] 07:54:27
+Mm-hmm.
+
+[Dhanu] 07:54:29
+Yeah.
+
+[rochak agrawal] 07:54:30
+No, but a bit faster when you say, uh, the topics are going a bit faster, or the pace is faster?
+
+[Dhanu] 07:54:37
+the topics.
+
+[rochak agrawal] 07:54:39
+But, uh, see, once we cover Git, uh, then naturally we will move to Jenkins, and once we finish Jenkins, uh, we will… so the class has its schedule, right?
+
+[Dhanu] 07:54:51
+Uh, Ruchik, uh, for me, I've taken one year course. It's a PG course.
+
+[rochak agrawal] 07:54:55
+Okay.
+
+[Dhanu] 07:54:57
+Uh, before taking the course, they have promised me something, like, uh, it will be, like, one day, uh, you will be having a practice session, as well as you will be moving with the lab session, one-on-one, on the… one day you'll be having practice, one day you'll be having the lab, like that, they've told.
+
+[rochak agrawal] 07:55:10
+Okay. Hmm.
+
+[Dhanu] 07:55:12
+So if if you complete very fast and there won't be much topics to cover and also they have told me a few things you'll be going with the advanced courses like they'll be covering the python and also they told me get up C. I. C. D.
+
+[rochak agrawal] 07:55:27
+Hmm?
+
+[Dhanu] 07:55:30
+Uh, but you told…
+
+[rochak agrawal] 07:55:31
+GitHub Actions.
+
+[Dhanu] 07:55:32
+GitHub Actions, yeah.
+
+[rochak agrawal] 07:55:34
+Yeah. Hmm.
+
+[Dhanu] 07:55:34
+Are you told that we won't be covering GitHub Actions as of now?
+
+[Dhanu] 07:55:38
+So…
+
+[rochak agrawal] 07:55:38
+I can check on that, Danu, but uh… like, whatever I have been assigned right now is around…
+
+[rochak agrawal] 07:55:48
+34 hours, uh, sorry, 34 sessions for the DevOps, and, uh, we have a curriculum with us, and we are, uh, I am following that, basically. So, for your concern, I'll, uh.
+
+[rochak agrawal] 07:56:02
+What is your full name? I'm not getting your full name.
+
+[Dhanu] 07:56:05
+It's actually mentioned, uh, Pooja, I think. Yeah, you just, uh, ask them with that name.
+
+[Dhanu] 07:56:36
+Um, am I audible?
+
+[rochak agrawal] 07:56:37
+Yeah, yeah, you're on it.
+
+[Dhanu] 07:56:39
+Ah, yeah.
+
+[Dhanu] 07:56:41
+Yeah, that was my question, and also, they told, uh, uh, like, uh, you'll be having the lab session one-on-one, that was the promise they made, and also the topics which I've told, the Python and the GitHub actions, yeah.
+
+[rochak agrawal] 07:56:53
+GitHub action, yeah, yeah.
+
+[Dhanu] 07:56:56
+And…
+
+[rochak agrawal] 07:56:56
+I… I can… I can double click on that, but I, uh, been assigned a DevOps module for 34 sessions.
+
+[Dhanu] 07:57:03
+Yeah, I do understand there might be a student who have enrolled for 3 months or 6 months.
+
+[rochak agrawal] 07:57:04
+Yeah.
+
+[rochak agrawal] 07:57:07
+Yes, yes, yes. So, for you, I will check, uh, Pooja.
+
+[Dhanu] 07:57:08
+Yeah, for them, it…
+
+[Dhanu] 07:57:11
+Yeah, yeah, okay, yeah.
+
+[rochak agrawal] 07:57:11
+Okay, I made a note of it.
+
+[Dhanu] 07:57:17
+Yep.
+
+[rochak agrawal] 07:57:19
+Yes, bye-bye.
+
+[vaibhav] 07:57:25
+Hello. Hello, Oliver.
+
+[rochak agrawal] 07:57:27
+Yes, yes, you are audible.
+
+[rochak agrawal] 07:57:31
+That is an equal level.
+
+[vaibhav] 07:57:32
+Yeah, as I'm audible right now?
+
+[rochak agrawal] 07:57:34
+Yes, yes, you are.
+
+[vaibhav] 07:57:35
+Yeah. So, the thing is, I'm missing, I agree. Like, I'm also doing a practicing kit, and the main challenge is, like, when I check the materials also, the material is not uploaded on the.
+
+[vaibhav] 07:57:51
+drive, so when I asked the team about that, they told, like, your trainer is not uploaded yet.
+
+[rochak agrawal] 07:57:56
+No, it is uploaded, I can show you.
+
+[vaibhav] 07:57:58
+Uh, why the… there's a confusion between you and the team, I am just, uh, confused.
+
+[rochak agrawal] 07:58:02
+No, it is uploaded. I had a confirmation, so if you see…
+
+[vaibhav] 07:58:08
+Let me check on here, under my… this…
+
+[rochak agrawal] 07:58:10
+Uh, there's an assignment, so this is a folder which is shared with me, and if you see the assignments.
+
+[vaibhav] 07:58:15
+Mm-hmm.
+
+[rochak agrawal] 07:58:15
+I have uploaded the Linux one.
+
+[rochak agrawal] 07:58:19
+Shell scripting, Git, GitHub…
+
+[rochak agrawal] 07:58:22
+Uh, maybe. Jenkins, we are still completing, so Jenkins' assignment is not there.
+
+[vaibhav] 07:58:27
+According to my, uh, Google Drive, when I check here, there is only Git uploaded, not Maven uploaded.
+
+[rochak agrawal] 07:58:34
+No, you can see it here, Linux, Shell, GitHub, and…
+
+[rochak agrawal] 07:58:38
+and Maven.
+
+[rochak agrawal] 07:58:40
+all the four is there. Uh, Jenkins, as I'm saying, Jenkins, uh, we have not finished it yet, so Jenkins assignment is not uploaded. And you can see it's the same material for Git, Linux.
+
+[rochak agrawal] 07:58:52
+Everything is there.
+
+[rochak agrawal] 07:58:57
+Right?
+
+[rochak agrawal] 07:58:59
+I'll see, uh, again, I'll have a word with them, um, that should not be any confusion.
+
+[vaibhav] 07:59:04
+Mm-hmm.
+
+[rochak agrawal] 07:59:05
+Okay.
+
+[vaibhav] 07:59:07
+Can you please show me, like, where's the material… when I click on material part…
+
+[rochak agrawal] 07:59:29
+As you can see.
+
+[rochak agrawal] 07:59:35
+Okay. Anyways, I'll double-check with them, uh, not to waste the time here. Any question regarding this, uh, CICD pipeline which we created?
+
+[vaibhav] 07:59:38
+Okay.
+
+[Dhanu] 07:59:47
+Uh, sir, uh, Rochak, sorry to interrupt. Even I couldn't see that assignment.
+
+[Dhanu] 07:59:51
+Also, and also, there was a session on last Saturday, if I'm not wrong.
+
+[Dhanu] 07:59:57
+On AWS.
+
+[rochak agrawal] 07:59:58
+Look, that is different, Anu, right?
+
+[Dhanu] 08:00:00
+Oh, no, no, that was also not uploaded.
+
+[rochak agrawal] 08:00:02
+Okay.
+
+[Dhanu] 08:00:03
+Because I missed that session, so…
+
+[rochak agrawal] 08:00:04
+No, no, I have given everything from my side, um… I will… I can double-check on that.
+
+[rochak agrawal] 08:00:10
+Sure? Okay.
+
+[Dhanu] 08:00:12
+Yeah, yeah, sure, thank you.
+
+[rochak agrawal] 08:00:13
+Okay, so now we have done this manually. When we are saying manually, we have done this in a freestyle job, right? Now, the same thing nowadays, as we discussed, the freestyle jobs are not…
+
+[rochak agrawal] 08:00:29
+Commonly used because the problem with the freestyle jobs were you cannot version control them. If someone is doing something, let's say I go change the URL of your Tomcat or something like that, right? So there is no control over the configuration of the.
+
+[rochak agrawal] 08:00:45
+Uh, of your, uh…
+
+[rochak agrawal] 08:00:51
+how it is changing, right? And that is where your, uh…
+
+[rochak agrawal] 08:00:58
+Pipelines comes into the picture. Pipelines, multi-branch pipeline, it's the same thing. If you have multiple branch, you would like to go with the multi-branch pipeline. Now, when we talk about the pipelines, we have seen the basic pipeline, right? Pipeline.
+
+[rochak agrawal] 08:01:13
+But your pipeline can have multiple directives.
+
+[rochak agrawal] 08:01:18
+So when we say directives, so pipeline itself is a directive, then stages is there. Inside the stages, steps are there, right? We do not need to worry about the syntax because Jenkins gives you a syntax generator also, but we need to understand.
+
+[rochak agrawal] 08:01:35
+From a point of view, what are the important directives are there? And I'll also redirect you where you can find every directives. We will discuss the important ones and I will redirect you where you can find every directives. So when we are saying the directives, this pipeline.
+
+[rochak agrawal] 08:01:52
+this stages, uh, options, tool, agents, environment, these all are called the directives. Now, the benefit of the scripted… by the way, there is two types of the pipeline you can create.
+
+[rochak agrawal] 08:02:04
+One is a declarative pipeline, another is a scripted pipeline, okay? Scripted pipeline, we are not going to touch, because scripted pipeline is a little bit advanced, and when I'm saying the advanced, it is written in Groovy.
+
+[rochak agrawal] 08:02:19
+So…
+
+[rochak agrawal] 08:02:22
+Beacon, uh…
+
+[rochak agrawal] 08:02:23
+What you can say is we can cover almost every use case with the declarative pipeline, but let's say where the scripted pipeline comes into the picture.
+
+[rochak agrawal] 08:02:32
+So let's say your developer is also managing your CICD pipeline. So instead of going for the declarative one, since they know the programming.
+
+[rochak agrawal] 08:02:41
+They will write it in a scripted pipeline. So that is completely written in Groovy. Groovy is a programming language. So if you do not know Groovy, you would not be able to understand the scripted pipeline. But declarative pipeline is like the plain English. You just need to follow a structure.
+
+[rochak agrawal] 08:02:58
+And then you would be able to create the pipeline. So declarative pipeline, there's a fixed structure. That's a good thing about the declarative pipeline. You always write everything within. So there's a fixed structure. So you say everything is in a pipeline block.
+
+[rochak agrawal] 08:03:14
+Okay, then, uh, you will create multiple stages, and inside the stages, you will create the steps. Now, every other thing, agent, tools, option, environment, those are not mandatory.
+
+[rochak agrawal] 08:03:26
+How many steps do you need? How many stages do you need? Up to us. Readable by the non-expert, as I highlighted. Declarative pipeline is like if you do not know anything about the Jenkins and you read this, you can figure it out. Okay, this pipeline has three stages.
+
+[rochak agrawal] 08:03:43
+checkout, build, and test. Everyone, everything is happening in.
+
+[rochak agrawal] 08:03:48
+uh, sequential manual. First, the checkout will happen, build will happen, then the test will happen, and then once the build is done, there are some post actions are there, some notifications, such as a notification type of the thing, right? So even if you do not know anything about, uh, Jenkins.
+
+[rochak agrawal] 08:04:05
+you can figure it out, the basic idea, right? And that's the reason why the declarative pipeline is so much in…
+
+[rochak agrawal] 08:04:14
+Pension, um…
+
+[rochak agrawal] 08:04:15
+Because…
+
+[rochak agrawal] 08:04:18
+It is very easy to read and understand them, and as well as to create them.
+
+[rochak agrawal] 08:04:23
+Then validated early.
+
+[rochak agrawal] 08:04:26
+when you are creating your Jenkins pipeline, okay, syntax error code when a pipeline is read not halfway through a build. Now, what does it mean? So, let's say even there is one syntactical error in your pipeline.
+
+[rochak agrawal] 08:04:41
+Uh, when I'm saying pipeline, in your Jenkins file.
+
+[rochak agrawal] 08:04:44
+It is not going to run at all. So first it will parse, when you run your pipeline, Jenkins is going to parse the file. If there is any syntactical error, it is going to tell you, fix it, then you are going to run it. It is not like you run one stage, two stage.
+
+[rochak agrawal] 08:05:01
+And then it is saying there is an error. Syntactically, it should be correct. Now, functionality may be, uh, your first and second stages functionality is correct, but the third stage functionality is not correct. Then, in that case, it may happen, but.
+
+[rochak agrawal] 08:05:16
+Syntactically it should be correct all at once.
+
+[rochak agrawal] 08:05:22
+Escape, Hatch, like, in a declarative pipeline, also, you can embed your Groovy, you can embed your Python, I can run, let's say, a shell script inside this declarative pipeline altogether.
+
+[rochak agrawal] 08:05:35
+So most of the cases you would not need the scripted pipeline ever, but there may be some developer related scenarios where people are going to use the scripted pipeline.
+
+[rochak agrawal] 08:05:49
+Now, when we talk about.
+
+[rochak agrawal] 08:05:51
+Guys, if you're not talking, please go on mute.
+
+[rochak agrawal] 08:05:57
+Now declarative directive birth knowing there are multiple and I'll show you how many are there. But there are certain directives which are very important.
+
+[rochak agrawal] 08:06:07
+which is like, which will be there in every pipeline, for example. Okay.
+
+[rochak agrawal] 08:06:13
+Eject?
+
+[rochak agrawal] 08:06:15
+Right, agent? Um…
+
+[rochak agrawal] 08:06:16
+You can define the agents, okay?
+
+[rochak agrawal] 08:06:20
+like, I define for… see, everything you are defining in a manual pipeline, freestyle pipeline, you can define everything in the pipeline. So, agent…
+
+[rochak agrawal] 08:06:30
+Where to run? Now…
+
+[rochak agrawal] 08:06:33
+any, none, label, or you can assign the labels. Now the good thing about the pipeline is.
+
+[rochak agrawal] 08:06:40
+If there is multiple stages, okay, I can run each stage in a different agent.
+
+[rochak agrawal] 08:06:49
+Okay.
+
+[rochak agrawal] 08:06:51
+very important to understand. So, it is not like, if I have 10 stages, every stage need to run on.
+
+[rochak agrawal] 08:06:59
+the same agent. Different stages can run on different agents.
+
+[rochak agrawal] 08:07:03
+Then the second is the tool. So tool also be configured like Java, Maven, any tool you are installing. So you will tell your pipeline. So let's say I have multiple installation of Maven or multiple installation of Java. So I will tell my pipeline.
+
+[rochak agrawal] 08:07:21
+which installation of Java you need to use. Okay?
+
+[rochak agrawal] 08:07:25
+Then comes the environment variable. Variable for pipeline or the one stage. So there are certain environment variable you can create. So example, I'll say DB password.
+
+[rochak agrawal] 08:07:36
+Whatever. There are some inbuilt parameters are there in Jenkins itself, or you can create your own.
+
+[rochak agrawal] 08:07:43
+Uh, there are certain environment variables all there in your, uh, Jenkins setup, so, like, build number, build start time.
+
+[rochak agrawal] 08:07:51
+Or you can create your own environment variable, like DB username, DB password, or something.
+
+[rochak agrawal] 08:07:57
+Then comes the options. Options is like.
+
+[rochak agrawal] 08:08:01
+Timeout retries and build discard policy. Timeout means let's say your build is running now sometime because of memory issue, because of network connectivity issue, your build is going to run for a long amount of time, right?
+
+[rochak agrawal] 08:08:15
+So you say, let's say if your build is not getting completed in 30 minutes.
+
+[rochak agrawal] 08:08:21
+Or 5 minutes, like, depending on the nature of the application, you are going to, um…
+
+[rochak agrawal] 08:08:26
+About that bill. So basically, options are like…
+
+[rochak agrawal] 08:08:32
+So, when you configure your job.
+
+[rochak agrawal] 08:08:38
+These are the options, like…
+
+[rochak agrawal] 08:08:41
+Discard old build, like, how many? So currently, if you see…
+
+[rochak agrawal] 08:08:46
+we have 13 builds are there. Like, every build is, uh, uh, creating a workspace, right? So then, in the option, I can, um, timeout settings, I can give throttle builds, number of the builds, right? So these type of things, I can give… so basically, these options, I can give here in the…
+
+[rochak agrawal] 08:09:05
+options.
+
+[rochak agrawal] 08:09:07
+Then comes…
+
+[rochak agrawal] 08:09:09
+parameters.
+
+[rochak agrawal] 08:09:11
+Parameters, of course, we have seen the parameters, uh, build with parameters option. So, choice parameter, boolean parameter, there's a multiple type of the parameters out there.
+
+[rochak agrawal] 08:09:21
+Then comes the trigger. Again, the same thing, which you can do it manually. I can define everything in my pipeline only. So Crone, OSCM, Upstream, if it depends on another project, everything I can define in a trigger block.
+
+[rochak agrawal] 08:09:37
+Then, I'll come to the VIN, then the post. Post is, like, the post build action.
+
+[rochak agrawal] 08:09:42
+Simple. Okay.
+
+[rochak agrawal] 08:09:45
+Then comes the VIN. VIN is the condition. Now, from the name itself, we understand the VIN, okay?
+
+[rochak agrawal] 08:09:53
+Run a stage only after a condition.
+
+[rochak agrawal] 08:09:57
+So, there can be multiple scenarios. So, for example, your pipeline have multiple stages, right? So, for example, let's say…
+
+[rochak agrawal] 08:10:06
+I'll pick up…
+
+[rochak agrawal] 08:10:07
+This one would be.
+
+[rochak agrawal] 08:10:25
+Okay, now let's say build is happening, right?
+
+[rochak agrawal] 08:10:29
+I can put… see, your build… in your pipeline only, I can have, let's say, instead of deployment, I will say it deploy to dev environment.
+
+[rochak agrawal] 08:10:38
+For example.
+
+[rochak agrawal] 08:10:42
+Now, I can have a…
+
+[rochak agrawal] 08:10:45
+Different stage.
+
+[rochak agrawal] 08:10:58
+Where I am deploying into, let's say, prod environment.
+
+[rochak agrawal] 08:11:01
+Okay. And, uh…
+
+[rochak agrawal] 08:11:04
+you will give, let's say, the server will be different for the prod, right? Now, in your one pipeline, you have deploy to dev and deploy to prod. Now, you see, you build when the build is going to happen. I will define an environment variable here.
+
+[rochak agrawal] 08:11:21
+Or the parameter.
+
+[rochak agrawal] 08:11:33
+ENBs should be there.
+
+[rochak agrawal] 08:11:35
+or syntactically, it might not be correct. I'm just showing you how… what is the role… what can be the role of the VIN.
+
+[rochak agrawal] 08:11:43
+Default as dev, for example.
+
+[rochak agrawal] 08:11:45
+Okay, now…
+
+[rochak agrawal] 08:11:48
+Yeah, if you see…
+
+[rochak agrawal] 08:11:51
+Ben?
+
+[rochak agrawal] 08:11:52
+ENB is equal to 10.
+
+[rochak agrawal] 08:11:58
+Simple.
+
+[rochak agrawal] 08:12:02
+When?
+
+[rochak agrawal] 08:12:03
+ENV is equal to 10.
+
+[rochak agrawal] 08:12:06
+But for the last stage, you will say when ENV is equal to crawl.
+
+[rochak agrawal] 08:12:13
+So you see what is going to happen when you trigger your pipeline, you will have an option to select the environment, right? Dev and prod. If you are selecting, let's say, dev environment, then…
+
+[rochak agrawal] 08:12:23
+your build is going to happen, your deploy to dev environment is going to happen. But when you are selecting.
+
+[rochak agrawal] 08:12:30
+Broad.
+
+[rochak agrawal] 08:12:32
+Then only this stage is going to run.
+
+[rochak agrawal] 08:12:34
+Correct? And when, let's say, for example, for the archive artifact, you have not defined it, then it is going to run in every case.
+
+[rochak agrawal] 08:12:43
+Okay, so that is the role of this, uh, what you can say.
+
+[rochak agrawal] 08:12:50
+the VIN directive.
+
+[rochak agrawal] 08:12:52
+When directed.
+
+[rochak agrawal] 08:12:53
+Then, if I go here, uh, if I go to configure.
+
+[rochak agrawal] 08:13:04
+Let's say I go to pipeline syntax. So here you have the declarative directive generator.
+
+[rochak agrawal] 08:13:11
+You click on this, and you are going to see agent, environment, input, metrics, options, parameters, post. Like, this is all we have discussed, right? Then we have… So you can see these are only the directives. Stages…
+
+[rochak agrawal] 08:13:27
+uh, stage, stages, tools, triggers, and when. Only these directives are there. Everything you need to define in that.
+
+[rochak agrawal] 08:13:34
+So options, parameters, post. Now let's say you want to use a tool.
+
+[rochak agrawal] 08:13:40
+So you can see.
+
+[rochak agrawal] 08:13:42
+So now you can see it is going to give you the option what you have. So right now I have two tools installed, right? Git and Maven. I'll say Maven and Maven CI server.
+
+[rochak agrawal] 08:13:55
+Lucie, may I even say hi, sir?
+
+[rochak agrawal] 08:13:57
+This is just, you will pick it up and just go ahead. Now, if I, uh…
+
+[rochak agrawal] 08:14:03
+Want to run it, for example, uh…
+
+[rochak agrawal] 08:14:08
+of parameters.
+
+[rochak agrawal] 08:14:09
+So I'll see.
+
+[rochak agrawal] 08:14:11
+Parameter, not choice parameter.
+
+[rochak agrawal] 08:14:14
+So, I will say E and B.
+
+[rochak agrawal] 08:14:20
+So ISIS means, uh, let's take Deb and Rod.
+
+[rochak agrawal] 08:14:26
+Can you see?
+
+[rochak agrawal] 08:14:27
+Parameter choice, parameter tab and probe. That's it.
+
+[rochak agrawal] 08:14:32
+So, from here, you are going to get all your inputs. So, I have a basic pipeline, which we are going to run first, and then we will just…
+
+[rochak agrawal] 08:14:45
+do some changes, and we can see how we are going to optimize that. Now, let's say…
+
+[rochak agrawal] 08:14:52
+If you go configure option.
+
+[rochak agrawal] 08:14:57
+So, this is my… another sample application.
+
+[rochak agrawal] 08:15:05
+I'll go to Jenkins file.
+
+[rochak agrawal] 08:15:07
+So, you can see here…
+
+[rochak agrawal] 08:15:09
+I have changed it to use my Maven CI server, pipeline agent any.
+
+[rochak agrawal] 08:15:15
+Now I have three stages. Check out the code.
+
+[rochak agrawal] 08:15:19
+Build?
+
+[rochak agrawal] 08:15:21
+Archive artifact and the deployment. Again, if I'm going to run this, it is going to fail. Let's see why it is going to fail. We'll discuss that also. Let me run this first.
+
+[rochak agrawal] 08:15:34
+So, I'll do both now.
+
+[rochak agrawal] 08:15:44
+It is building.
+
+[rochak agrawal] 08:15:48
+Now it is going to fail.
+
+[rochak agrawal] 08:15:55
+So, timeout option, which we discussed, it is going to use… be useful in this case. Now, it is not going to fail so easily. It will keep continue running, keep continue running, keep trying. Now, why it is failing? Because I have given.
+
+[rochak agrawal] 08:16:10
+a URL.
+
+[rochak agrawal] 08:16:15
+Which is not valid, okay? Because my URL is something different.
+
+[rochak agrawal] 08:16:20
+So, what I'm going to do, I'll just award this build. Now, in this case, timeout can be useful. So, for example, I'll say, I know my build is going to be successful in 2-3 minutes, so I'll give a timeout for, let's say, 5 minutes. So, after 5 minutes, it will be auto-awarded.
+
+[rochak agrawal] 08:16:34
+Now, if you want to award it, you will just go cancel.
+
+[rochak agrawal] 08:16:40
+Okay? Now, if you refresh this, your build is…
+
+[rochak agrawal] 08:16:46
+Abort it.
+
+[rochak agrawal] 08:16:47
+Okay, and here also, if you see…
+
+[rochak agrawal] 08:16:51
+It's a about it.
+
+[rochak agrawal] 08:16:52
+Right, so I'll go change…
+
+[rochak agrawal] 08:16:55
+I'll pick up this one.
+
+[rochak agrawal] 08:16:59
+This is my right URL.
+
+[rochak agrawal] 08:17:02
+And, uh…
+
+[rochak agrawal] 08:17:05
+Like, blank?
+
+[rochak agrawal] 08:17:23
+Okay?
+
+[rochak agrawal] 08:17:25
+This is the comment. I'll remove this also.
+
+[rochak agrawal] 08:17:34
+Here, you can see, I can give star star also, like we did manually. But here, you are seeing, we are giving the.
+
+[rochak agrawal] 08:17:43
+Actual path. The next path is app.
+
+[rochak agrawal] 08:17:46
+Okay, now this context path is the path which is… it is going to take it here. Here it is taking my app, it will take, in this case, app.
+
+[rochak agrawal] 08:17:56
+I'll just submit the changes.
+
+[rochak agrawal] 08:18:03
+Okay? Now, let me…
+
+[rochak agrawal] 08:18:07
+Do okay now.
+
+[rochak agrawal] 08:18:09
+We have not configured the GitHub hook for this repository, that's why it's not getting automatically triggered. When you set up the Git hook, webhook, it is going to be triggered for this one as well.
+
+[rochak agrawal] 08:18:21
+So you can see now it is successful. So if you see attempting to deploy one file, this, this, this, this.
+
+[rochak agrawal] 08:18:29
+And let's see.
+
+[rochak agrawal] 08:18:31
+In the manager first.
+
+[rochak agrawal] 08:18:36
+App is deployed, right? Hello World Server Late.
+
+[rochak agrawal] 08:18:41
+Currently, you can see session is none, because…
+
+[rochak agrawal] 08:18:45
+No one is accessing it, I go.
+
+[rochak agrawal] 08:18:47
+I'll use.
+
+[rochak agrawal] 08:18:51
+Lucy?
+
+[rochak agrawal] 08:18:53
+The simple application has deployed.
+
+[rochak agrawal] 08:19:00
+Right? And here, if you see, uh, if I refresh this…
+
+[rochak agrawal] 08:19:03
+You can see now the session is one.
+
+[rochak agrawal] 08:19:07
+Session administrator. So that is the session ID, that is… and you can see the creation.
+
+[rochak agrawal] 08:19:13
+And TTL?
+
+[rochak agrawal] 08:19:15
+That is more of a, for example.
+
+[rochak agrawal] 08:19:19
+computer-related thing, but you can see, now, one more thing from here is, I can stop this application from here, I can undeploy it.
+
+[rochak agrawal] 08:19:27
+Of course, when you are using the CICD, when… why would you do manually doing the things? But if you, let's say, if I stop it from here.
+
+[rochak agrawal] 08:19:34
+Okay, and if you try to…
+
+[rochak agrawal] 08:19:36
+Use this, you see? Not found.
+
+[rochak agrawal] 08:19:39
+Because you have stopped the application. You need to start it again.
+
+[rochak agrawal] 08:19:48
+You see? So, again, it's the same thing which we have done from the pipeline, which we did manually, it's just a different application.
+
+[rochak agrawal] 08:19:58
+So, you see, we are telling our pipeline, agent can be any.
+
+[rochak agrawal] 08:20:02
+Stages, check out the code. Build, same command, maven clean install this.
+
+[rochak agrawal] 08:20:08
+And archive artifact.
+
+[rochak agrawal] 08:20:11
+This is not necessary, actually. Um, if you don't do this, then also it is going to be fine. And then, the deployment. Steps, deploy adapter. This…
+
+[rochak agrawal] 08:20:22
+Now, don't worry about these syntax and everything. Basis on that, you are going to get the syntax and everything, okay? If you go to pipeline steps.
+
+[rochak agrawal] 08:20:34
+So you… it will tell you, like, how much time it took, what it does.
+
+[rochak agrawal] 08:20:39
+Right? It is basically in detail telling what your pipeline has done.
+
+[rochak agrawal] 08:20:45
+So these are the pipeline steps.
+
+[rochak agrawal] 08:20:48
+And again, if you go…
+
+[rochak agrawal] 08:20:52
+To configure.
+
+[rochak agrawal] 08:20:58
+The archive step, archive artifact step, which we did, because of that, your archive is seen here. You can see it here, java-example.org. There's no other use of that. If you do not want to see your artifact here, you can skip that step.
+
+[rochak agrawal] 08:21:15
+Okay. So this is a pipeline syntax.
+
+[rochak agrawal] 08:21:18
+So, you can see archive artifact.
+
+[rochak agrawal] 08:21:25
+Stages, parallel, if you want to run something in parallel. Sorry, I need to go to declarative generator, snippet generator.
+
+[rochak agrawal] 08:21:33
+And here you can go with the steps reference.
+
+[rochak agrawal] 08:21:37
+So you want to read file, you want to have archive artifact.
+
+[rochak agrawal] 08:21:42
+you will get all these commands from this document. So, example reference is there, online documentation is there.
+
+[rochak agrawal] 08:21:50
+So, if you go to the snippet generator.
+
+[rochak agrawal] 08:22:18
+So, you can see, deploy war ER to container. The, uh…
+
+[rochak agrawal] 08:22:24
+Option is always there. So, basis on… see, um, as we keep discussing.
+
+[rochak agrawal] 08:22:30
+Jenkins itself does nothing, okay? Uh…
+
+[rochak agrawal] 08:22:34
+It is…
+
+[rochak agrawal] 08:22:36
+Its functionality is extensible by the help of plugin. So whatever plugins you have installed means whatever Jenkins can do, those options you are going to see here in the pipeline syntax snippet generator. So for example, you are worried about how I'm going to remember all of this, right?
+
+[rochak agrawal] 08:22:54
+So then, you don't need to remember it, okay? You will just go here, you will say, I want to deploy the con… uh… so it is asking you what is the context path. So I'll say…
+
+[rochak agrawal] 08:23:04
+What is my board EAR file? My board EAR file is this.
+
+[rochak agrawal] 08:23:13
+Context path is app.
+
+[rochak agrawal] 08:23:15
+Container is Tomcat 9.x, right? Credential, I'm using this one.
+
+[rochak agrawal] 08:23:23
+My Tomcat URL is this.
+
+[rochak agrawal] 08:23:28
+Headache?
+
+[rochak agrawal] 08:23:31
+You see?
+
+[rochak agrawal] 08:23:34
+It is… it is giving you everything.
+
+[rochak agrawal] 08:23:37
+You just need to use it in your pipeline.
+
+[rochak agrawal] 08:23:43
+Can you see? It's the same thing. So if I copy this…
+
+[rochak agrawal] 08:24:00
+And you copy this
+
+[rochak agrawal] 08:24:09
+You see?
+
+[rochak agrawal] 08:24:14
+Deployer adopters, Tomcat 9, URL, credential ID.
+
+[rochak agrawal] 08:24:18
+credential ID, path URL. Of course, it might be done with the previous version, so there is some change, but if you are going to use this.
+
+[rochak agrawal] 08:24:26
+It is
+
+[rochak agrawal] 08:24:27
+Same. So URL, uh, context path. Now, we do not need all of that. That's why…
+
+[rochak agrawal] 08:24:36
+You do not need this, for example.
+
+[rochak agrawal] 08:24:40
+It is going to give you multiple options. Path also we do not need.
+
+[rochak agrawal] 08:24:46
+Right? That's the same thing. Uh, and a WAR file, context path.
+
+[rochak agrawal] 08:24:51
+URL. Consequence is a little different, but it's the same thing. URL, uh, credential… see, four things. URL, credential ID, WAR file, and context path.
+
+[rochak agrawal] 08:25:03
+That's there. So, if you see a pipeline that is looking very complicated, don't worry, it is… it is not complicated at all. You just need to figure out.
+
+[rochak agrawal] 08:25:14
+What is the step? So, even if you look at this, you might be thinking how I'm going to write it. You don't need to worry at all. You see, now, let's say you've got the syntax. Now, one is archive artifact. Files to archive.
+
+[rochak agrawal] 08:25:32
+This was my file, uh, archive.
+
+[rochak agrawal] 08:25:38
+You see?
+
+[rochak agrawal] 08:25:41
+It is generated. Now, you want to run Maven, for example.
+
+[rochak agrawal] 08:25:52
+I can run a shell script. I can run a pipeline script. Pipeline with Groovy script.
+
+[rochak agrawal] 08:25:57
+Right? Stages, step, step.
+
+[rochak agrawal] 08:26:00
+So, let's say I want to run…
+
+[rochak agrawal] 08:26:04
+MBN clean package. That is what we were doing, uh, in a manual, uh, steps.
+
+[rochak agrawal] 08:26:13
+Simple.
+
+[rochak agrawal] 08:26:15
+This is nothing and the same thing we are doing it.
+
+[rochak agrawal] 08:26:21
+Right? So…
+
+[rochak agrawal] 08:26:24
+You just need to find out, uh, what steps you need to do.
+
+[rochak agrawal] 08:26:31
+Uh, Arif, you have a question?
+
+[arif] 08:26:33
+Yep.
+
+[arif] 08:26:35
+I have a couple of questions. So, regarding this pipeline format, so I think there are some things which are fixed, and there are some things which can be customized.
+
+[rochak agrawal] 08:26:37
+Yep.
+
+[rochak agrawal] 08:26:44
+The… okay, when you say, uh, what does that mean? There is something is fixed?
+
+[arif] 08:26:49
+Fish me in the stages, the stages we have to write, right? And what are the steps? The steps can be…
+
+[rochak agrawal] 08:26:53
+Yeah, see, when you say stages, uh…
+
+[rochak agrawal] 08:26:56
+It is not necessary. See.
+
+[rochak agrawal] 08:27:00
+I do not have a visual VS Code as of now.
+
+[rochak agrawal] 08:27:04
+So your pipeline is like this. So everything goes into this pipeline block.
+
+[rochak agrawal] 08:27:09
+I'll write it here. Just give me a sec.
+
+[rochak agrawal] 08:27:26
+Okay, so your pipeline…
+
+[rochak agrawal] 08:27:31
+Everything goes under the pipeline block, right? Then, when you say stages.
+
+[rochak agrawal] 08:27:38
+Yes. Like, your pipeline will do something, correct? So…
+
+[rochak agrawal] 08:27:42
+you will have stages which will go inside the stages block. Now, stages does not mean you do… you need to have.
+
+[rochak agrawal] 08:27:51
+Multiple stages. I can have only one stage, right?
+
+[arif] 08:27:56
+Yeah, yeah.
+
+[rochak agrawal] 08:27:56
+This is my only stage, for example. Right?
+
+[rochak agrawal] 08:28:01
+Whatever I need to do, I will write it with the steps.
+
+[rochak agrawal] 08:28:05
+FH, my…
+
+[rochak agrawal] 08:28:11
+Let's say, I'm saying, eco, my only step.
+
+[rochak agrawal] 08:28:16
+My only stage. Now, this is also a complete pipeline in itself.
+
+[rochak agrawal] 08:28:20
+Okay, so stages can be multiple, and in 99% of the cases, there is multiple.
+
+[rochak agrawal] 08:28:28
+But there can be only one stage only.
+
+[rochak agrawal] 08:28:31
+That should also be fine.
+
+[arif] 08:28:34
+Yeah, yeah, got your point. So the stages, the name of the stage, we, it is dependent on like, uh, whatever we can get.
+
+[rochak agrawal] 08:28:39
+Yeah, yeah, you can, you can give any name, yeah.
+
+[arif] 08:28:41
+Okay. And the…
+
+[rochak agrawal] 08:28:43
+So I'll say builder. You can give any name. Of course, you need to give meaningful name, uh, which is relevant.
+
+[arif] 08:28:48
+Yeah, yeah.
+
+[arif] 08:28:49
+Yeah, yeah, and this, uh, like, while running at the back end, so it… it runs, uh, like, sequentially, all these stages, or how it actually…
+
+[rochak agrawal] 08:28:59
+Okay, yeah. So, by default, it runs sequentially, okay? That's the nature.
+
+[rochak agrawal] 08:29:05
+But here also we discussed if you want to run some stages in parallel, we can do that. So for example, for that also.
+
+[rochak agrawal] 08:29:16
+I'll go to pipeline syntax again.
+
+[rochak agrawal] 08:29:19
+So for example, if you see this file, I am not defining anything. So yes, in this case, my stages is going to run in a sequential manner. So for example, first the checkout code will happen, then the build will happen, then the archive artifact will happen.
+
+[rochak agrawal] 08:29:35
+And the deployment will happen.
+
+[rochak agrawal] 08:29:37
+And if any of the build is failing, any of the stage is failing, it will not go to the next stage.
+
+[rochak agrawal] 08:29:44
+Okay.
+
+[rochak agrawal] 08:29:46
+That's the default nature.
+
+[arif] 08:29:46
+Okay.
+
+[arif] 08:29:49
+Okay, and uh…
+
+[rochak agrawal] 08:29:49
+Okay.
+
+[arif] 08:29:52
+No, I got it.
+
+[rochak agrawal] 08:29:52
+If you… if you want to run it in parallel, so then, if you see here.
+
+[rochak agrawal] 08:30:01
+There was and that should be an option.
+
+[arif] 08:30:04
+We can put up a condition also, or…
+
+[rochak agrawal] 08:30:06
+We can put up a condition, there is something called a parallel also, I'll show you.
+
+[rochak agrawal] 08:30:15
+JUnit library… see, execute in parallel.
+
+[arif] 08:30:16
+Yeah, very well.
+
+[rochak agrawal] 08:30:19
+Hey, if you say execute in parallel.
+
+[rochak agrawal] 08:30:22
+So whatever stages you need to run in parallel, you will define under the parallel block.
+
+[rochak agrawal] 08:30:30
+So you need to define it if you want to run something in parallel. So let's say we will do it multiple times. So for example, let's say I am doing the code coverage analysis and I am doing the Docker image analysis. Now both of these analysis are…
+
+[rochak agrawal] 08:30:46
+independent of each other, so why… and one is taking 5 minutes, another is 5… taking 5 minutes. And this can be, um… and this is actually… some people ask, so let's say they will say, uh, in an interview, my pipeline is taking 15 minutes, um…
+
+[rochak agrawal] 08:31:01
+to complete, I want to optimize its running time. How can I do it? So you can say, I will first identify the stages which are independent of each other. When we are saying independent of each other, the output of one stage does not.
+
+[rochak agrawal] 08:31:16
+Become the input for other stage, right?
+
+[rochak agrawal] 08:31:19
+If they are independent of each other, we will try to run those stages in parallel so that we are cutting down the execution time. And that's how we are going to optimize it. Now, in this case, I cannot run these stages in parallel because till the time I'm not checking out the code.
+
+[rochak agrawal] 08:31:35
+I cannot build it, because if the code is not there, what is I'm going to build?
+
+[rochak agrawal] 08:31:40
+Correct. And if the build does not happen, then what I'm going to deploy?
+
+[rochak agrawal] 08:31:46
+Correct? So everything you cannot run in parallel, some… it should be the combination, something you will run in parallel, something you can… you have to run in sequence.
+
+[arif] 08:31:57
+Okay, got it. So we can deploy, uh, we can do a deployment at parallel, like, in two different environments.
+
+[rochak agrawal] 08:32:03
+Yeah, yeah, you can do that, absolutely. See, in the end, um, Jenkins is giving you the functionality.
+
+[arif] 08:32:04
+Right, okay.
+
+[arif] 08:32:05
+Okay.
+
+[rochak agrawal] 08:32:11
+You need to design your pipeline. How you are doing it, so let's say you say, I will deploy into test and staging environment parallelly. Go ahead.
+
+[rochak agrawal] 08:32:20
+No problem. But if you say no, uh, once the testing is successful, then only I will deploy in the staging.
+
+[rochak agrawal] 08:32:27
+Then you don't do the parallel one, right?
+
+[rochak agrawal] 08:32:30
+So, it depends on your… see, that's why I said…
+
+[rochak agrawal] 08:32:35
+Even two applications are doing exactly the same thing. But if you see the pipelines for them.
+
+[rochak agrawal] 08:32:42
+They will they can be very different from one another because my organization requirement can be very different from your organizational requirement. I'm a startup. I don't care about the processes, follows compliance and other thing. You are a bank.
+
+[rochak agrawal] 08:32:56
+you will… you need to follow all the rules, compliance, processes, right? So then…
+
+[rochak agrawal] 08:33:03
+It will… it can look very different.
+
+[rochak agrawal] 08:33:06
+Output will be the same, application, build, and deploy. But how you are reaching from point A to point B?
+
+[rochak agrawal] 08:33:13
+I can have 10 intermediary steps. So, for example, if you see, now I can add one more step, and we will do that also.
+
+[rochak agrawal] 08:33:22
+I can add a SonarQube step here, which will do the code coverage analysis and the unit testing of my code before deploying it.
+
+[rochak agrawal] 08:33:31
+Now, even if I'm not doing it, my code is deployed, but there should be some checks, right?
+
+[rochak agrawal] 08:33:37
+So, how many stages you want?
+
+[rochak agrawal] 08:33:40
+How you want to run it, it is up to us.
+
+[arif] 08:33:43
+Okay. So, Rochal, I have one request. I think this… just now you said there's SonarQube enough. So, can we add, I think, three stages? Like, one for SonarQube, one other for testing, and after the testing post-build, I need some, like, data for.
+
+[rochak agrawal] 08:33:44
+Okay?
+
+[rochak agrawal] 08:33:54
+Hmm?
+
+[arif] 08:34:00
+Pass and failure and something like that. Can we, uh, try…
+
+[rochak agrawal] 08:34:02
+Yeah, yeah, we will do… so, what we are going to do in our next session, we will do a project where we will… see, Jenkins…
+
+[rochak agrawal] 08:34:13
+Jenkins is one tool, which…
+
+[rochak agrawal] 08:34:16
+Or I would say the CI tool. Any CI tool which you are using.
+
+[rochak agrawal] 08:34:21
+I like… I'll draw it, um…
+
+[rochak agrawal] 08:34:31
+So, your CI tool, whatever is you are using.
+
+[rochak agrawal] 08:34:36
+In our case, we are using Jenkins.
+
+[rochak agrawal] 08:34:39
+Hey.
+
+[rochak agrawal] 08:34:41
+It is connected to GitHub.
+
+[rochak agrawal] 08:34:46
+It is connected with your build tool.
+
+[rochak agrawal] 08:34:50
+It is connected with your Docker.
+
+[rochak agrawal] 08:34:54
+It is connected with your Ansible.
+
+[rochak agrawal] 08:34:56
+It is connected with your cloud.
+
+[rochak agrawal] 08:35:01
+It is connected with your Kubernetes.
+
+[rochak agrawal] 08:35:05
+Late.
+
+[rochak agrawal] 08:35:07
+Soup, please.
+
+[rochak agrawal] 08:35:09
+Jenkins, your pipeline. As we move into the sessions, then we will understand Docker. So instead of directly deploying onto the Tomcat server, we will first build a Docker image and then deploy a container image.
+
+[rochak agrawal] 08:35:24
+When we will learn Ansible, so we will also introduce some more automations. So your pipeline is going to be matured over the time.
+
+[rochak agrawal] 08:35:32
+the same pipeline, okay? So currently, we are only talking about, let's say, Tomcat.
+
+[rochak agrawal] 08:35:42
+Again, so GitHub, Maven, and Tomcat, three tools we are using, correct?
+
+[rochak agrawal] 08:35:47
+Next, what we are going to introduce, Nexus.
+
+[rochak agrawal] 08:35:55
+and SonarQ.
+
+[rochak agrawal] 08:36:00
+So what we are going to do as the next pipeline, uh…
+
+[rochak agrawal] 08:36:07
+You're welcome.
+
+[rochak agrawal] 08:36:09
+Jenkins will, uh, GitHub, your source code will be in GitHub, Maven is going to build it, and then once the code is built, here you see, we are doing one step for the archive artifact. Okay.
+
+[rochak agrawal] 08:36:21
+where it is…
+
+[rochak agrawal] 08:36:24
+giving you the artifact here. Instead of getting the artifact here, we are going to use the Nexus repository where we are going to do the versioning that this is my app 1.0 which is uploaded to Nexus, app 1.1 which is uploaded onto Nexus, app 1.2 which is uploaded on Nexus.
+
+[rochak agrawal] 08:36:41
+And then once it is uploaded on the Nexus.
+
+[rochak agrawal] 08:36:45
+Then we will do our code coverage analysis and the unit testing of our code with the help of SonarQube.
+
+[rochak agrawal] 08:36:52
+Once the code is passed, the code coverage, uh, whatever the quality gate we are going to have in SonarQube, once that is passed, then only we are going to get the deployed.
+
+[rochak agrawal] 08:37:02
+And then we can have one stage at the end, which you call it as a post-build steps, where we are saying, if the build is successful, then do this. If the build is unsuccessful, do this. So we will optimize or extend our pipeline step by step.
+
+[arif] 08:37:23
+Yeah. Last question, Rajat. So, Jenkins, since, uh, we are running on an EC2 machine, I'm, like, uh, there will be a lot of computing and, uh, all those things will be happening, right? It, it… how it is, uh, costing, like, it…
+
+[rochak agrawal] 08:37:25
+Okay, last question. Yeah.
+
+[rochak agrawal] 08:37:35
+Got it.
+
+[rochak agrawal] 08:37:39
+I'm sorry, can you come again?
+
+[arif] 08:37:41
+How is this related to the posting, or how can we optimize the posting?
+
+[arif] 08:37:45
+While using Zen Premium.
+
+[rochak agrawal] 08:37:45
+Costing, you are saying? Okay. See, um…
+
+[rochak agrawal] 08:37:49
+See, when we say costing, if you…
+
+[rochak agrawal] 08:37:53
+talk about the AWS costing.
+
+[rochak agrawal] 08:37:56
+AWS, you define the machine type, correct?
+
+[rochak agrawal] 08:38:01
+So, for example, let's say I'm running a T2.medium.
+
+[rochak agrawal] 08:38:09
+Not T2.medium, let's say, hypothetically, it's a $1 per…
+
+[rochak agrawal] 08:38:14
+Amen.
+
+[rochak agrawal] 08:38:15
+Okay.
+
+[rochak agrawal] 08:38:18
+Now, AWS is asking you for this t2.medium price. It does not matter if you're running nothing on it, or if you're running something on it.
+
+[rochak agrawal] 08:38:29
+For them, if you're running T2.medium, that's a cost. You use it, you don't use it, it is up to you.
+
+[rochak agrawal] 08:38:35
+Okay, so you are running Jenkins on EC2 or not does not matter. You still have to pay for this machine. Okay, that's one aspect. Second is how can I optimize it? See, I cannot.
+
+[rochak agrawal] 08:38:51
+I… see, in AWS, instead of t2.medium, I can go and I can run a t2.4xlarge machine, for example.
+
+[rochak agrawal] 08:39:02
+Now, let's say this is costing me $10 per hour.
+
+[rochak agrawal] 08:39:07
+Okay, then I need to see whatever the Jenkins I'm running, is it really need this much?
+
+[rochak agrawal] 08:39:15
+This heavy machine. What is my CPU utilization? Just 30%, 40%.
+
+[rochak agrawal] 08:39:21
+Then I can work with the T2.large machine only, correct?
+
+[rochak agrawal] 08:39:27
+So that… see, only you need to figure out which size you want, but, like, you run Jenkins or not run Jenkins, you run one build, two build, or not.
+
+[rochak agrawal] 08:39:37
+AWS's price is different from that. AWS, once you run an instance.
+
+[rochak agrawal] 08:39:43
+Your meter is running.
+
+[rochak agrawal] 08:39:46
+Okay, so you just need to sign up.
+
+[arif] 08:39:47
+So, after creating EC2.
+
+[rochak agrawal] 08:39:49
+Uh-huh.
+
+[arif] 08:39:50
+After creating an EC2 machine, can we later on change this T2 and T3?
+
+[rochak agrawal] 08:39:54
+Yes, yes, we can. Begin.
+
+[arif] 08:39:56
+Okay. All good now.
+
+[rochak agrawal] 08:39:58
+Yeah, even, like, it's not about AWS. It is in any of the cloud once you are creating, but there will be certain limitation. It is not like you will convert. So there are, let's say, multiple sizes available.
+
+[rochak agrawal] 08:40:14
+Great.
+
+[rochak agrawal] 08:40:15
+There's 500, 600 type of variations are available, so it may happen that you will not be able to convert into A2J or A2B. There may be some limitation, but there is a flexibility that you can change the size.
+
+[rochak agrawal] 08:40:32
+Okay.
+
+[rochak agrawal] 08:40:35
+So, you can do that, basically.
+
+[arif] 08:40:36
+Yeah, thanks.
+
+[rochak agrawal] 08:40:39
+Yes, bye-bye.
+
+[vaibhav] 08:40:43
+I've not asked anything.
+
+[rochak agrawal] 08:40:47
+Uh, your hand was raised, so that's why I asked.
+
+[vaibhav] 08:40:50
+Okay, okay.
+
+[rochak agrawal] 08:40:50
+Okay.
+
+[rochak agrawal] 08:40:59
+So here also, let's say, uh, if we, uh, go…
+
+[rochak agrawal] 08:41:07
+Where is my… this build? So let me copy this.
+
+[rochak agrawal] 08:41:10
+I will add the…
+
+[rochak agrawal] 08:41:21
+So I'll… I'll modify this blend script a bit.
+
+[rochak agrawal] 08:41:27
+Add a parameter.
+
+[rochak agrawal] 08:41:32
+For, uh, environment, choice parameter for environment.
+
+[rochak agrawal] 08:41:46
+tab and port.
+
+[rochak agrawal] 08:41:56
+So I'll add this
+
+[rochak agrawal] 08:41:58
+Okay?
+
+[rochak agrawal] 08:42:07
+So yeah, you see?
+
+[rochak agrawal] 08:42:09
+Parameter choice, environment, dev and prod. Now, what I'm going to do, I am going to…
+
+[rochak agrawal] 08:42:18
+So, 1, 2…
+
+[rochak agrawal] 08:42:20
+Stage deployment. I'll save this deployment to dev.
+
+[rochak agrawal] 08:42:25
+Okay. And here, context path, I'll say dev. For example.
+
+[rochak agrawal] 08:42:30
+And here, I am going to put up a condition, uh, sorry, put up one more stage, deploy to prod.
+
+[rochak agrawal] 08:42:41
+Analysis context path is broad.
+
+[rochak agrawal] 08:42:45
+Okay. I'll copy this.
+
+[rochak agrawal] 08:42:52
+Hooked up, huh?
+
+[rochak agrawal] 08:43:03
+Deployment tool.
+
+[rochak agrawal] 08:43:11
+But ENB is .
+
+[rochak agrawal] 08:43:13
+Broad, then 2.
+
+[rochak agrawal] 08:43:26
+Okay? Parameters, and then if you go here…
+
+[rochak agrawal] 08:43:32
+Let me copy this, I'll explain.
+
+[rochak agrawal] 08:43:36
+Okay. So now you see, uh, pipeline agent, any tool, okay, parameter this, uh, stage this, build is okay.
+
+[rochak agrawal] 08:43:45
+Okay, and archive artifact. Now we are saying deploy to dev.
+
+[rochak agrawal] 08:43:51
+When you need to deploy to dev, when parameter.environment is equal to dev.
+
+[rochak agrawal] 08:43:56
+Okay.
+
+[rochak agrawal] 08:43:58
+Now, similarly, deployment to prod, then…
+
+[rochak agrawal] 08:44:02
+parameter.environment is equal to prod, okay? Now, the same thing, let's say I'll do.
+
+[rochak agrawal] 08:44:10
+I'll commit this.
+
+[rochak agrawal] 08:44:20
+Okay, now I will go to my pipeline.
+
+[rochak agrawal] 08:44:32
+Now, still you are going to see the Build Now option, so…
+
+[rochak agrawal] 08:44:38
+I'll… I'll abort this.
+
+[rochak agrawal] 08:44:40
+Uh, now you are going to see this build with parameter.
+
+[rochak agrawal] 08:44:43
+Okay, now, whenever you do any add parameter or something, it is the first bit, uh, it will go without the parameters.
+
+[rochak agrawal] 08:44:50
+So now if you see, now let me go to my Tomcat also.
+
+[rochak agrawal] 08:45:03
+Okay? I'll remove these and deploy these, uh, app and my app both. I don't need it anymore.
+
+[rochak agrawal] 08:45:11
+Okay? So I do not have any app right now.
+
+[rochak agrawal] 08:45:14
+here, what we have said, if the deployment, uh, if my environment is… see, we do not have multiple environments, that's why I have chosen a different context part. If you have a different, uh, Tomcat server, you… you will change the URL itself, right? So it will go to different, different server.
+
+[rochak agrawal] 08:45:30
+Working will remain the same. The flow will remain the same, right? So, I'm saying, uh…
+
+[rochak agrawal] 08:45:37
+If the environment is dev, it should be deployed as a dev. If the environment is prod, it should be deployed as a prod. Okay, now I am going to run this.
+
+[rochak agrawal] 08:45:47
+Build with parameter.
+
+[rochak agrawal] 08:45:49
+So you see, environment is there now. Dev and broad, we have two options. Let me deploy it onto the dev.
+
+[rochak agrawal] 08:46:00
+You see what's going to happen?
+
+[rochak agrawal] 08:46:03
+Success? Okay, no, no, this is…
+
+[rochak agrawal] 08:46:07
+Now you see, deployment to prod skipped due to VIN conditionals.
+
+[rochak agrawal] 08:46:12
+Can you see this?
+
+[rochak agrawal] 08:46:13
+Pretty easily, it is saying, because my environment you have selected was dev.
+
+[rochak agrawal] 08:46:19
+So there is no point I am running deployment to prod, right? And now, if you go here…
+
+[rochak agrawal] 08:46:28
+You can see Dev is there. If I want to access this.
+
+[rochak agrawal] 08:46:38
+You see? Working fine. Now, when I go…
+
+[rochak agrawal] 08:46:42
+Run it for prod.
+
+[rochak agrawal] 08:46:55
+It will also go fine. Now you see here, deployment to DevScript.
+
+[rochak agrawal] 08:47:00
+Due to when conditional. And now if you run it, uh…
+
+[rochak agrawal] 08:47:12
+Broad, it will also work.
+
+[rochak agrawal] 08:47:13
+Right? See?
+
+[rochak agrawal] 08:47:15
+So, we have, uh, based on the environment, I have deployed two applications on my Tomcat server.
+
+[rochak agrawal] 08:47:23
+Of course, like, the environment should be different and other things, but flow-wise, you see.
+
+[rochak agrawal] 08:47:29
+Uh, when…
+
+[rochak agrawal] 08:47:30
+How you're doing it is, um…
+
+[rochak agrawal] 08:47:35
+We can do it. Now, let's say, uh, let me read, uh, undeploy this again.
+
+[rochak agrawal] 08:47:53
+Okay, now we can do it from the pipeline also, that's not a problem. Now what we can do is…
+
+[rochak agrawal] 08:48:02
+Now, let's say I will tell Google that I want to run both deployment to dev and prod in parallel.
+
+[rochak agrawal] 08:48:20
+I want to run.
+
+[rochak agrawal] 08:48:25
+employment.
+
+[rochak agrawal] 08:48:28
+To tab and prod. In pair.
+
+[rochak agrawal] 08:48:42
+So you can see.
+
+[rochak agrawal] 08:48:54
+I will go.
+
+[rochak agrawal] 08:49:02
+Now, if they're running in parallel, so then I do not need a…
+
+[rochak agrawal] 08:49:07
+Then, wait.
+
+[rochak agrawal] 08:49:13
+So you see, there is a stage called the parallel deployment, and inside the parallel, I can run both these stages in parallel. So I do not need the parameters also for now.
+
+[rochak agrawal] 08:49:25
+Okay, now when this is going to run.
+
+[rochak agrawal] 08:49:34
+So you can see my pipeline is going to run agent any tool Maven CI server stages checkout code build archive artifact when the deployment happen will come the stages parallel deployment and in the parallel two deployment will happen one to dev and another to prod.
+
+[rochak agrawal] 08:49:51
+Simple. Now I'm going to run this again.
+
+[rochak agrawal] 08:50:05
+It will get failed because I do not have any parameter.
+
+[rochak agrawal] 08:50:09
+Now, if I Google now…
+
+[rochak agrawal] 08:50:16
+You see?
+
+[rochak agrawal] 08:50:22
+Okay, it is successful. If you go to console output.
+
+[rochak agrawal] 08:50:29
+You see, here, it is deployment to dev and prod, happening in parallel.
+
+[rochak agrawal] 08:50:36
+Okay, now I can show you more visually.
+
+[rochak agrawal] 08:50:50
+There is an… another GUI for Jenkins.
+
+[rochak agrawal] 08:51:20
+in this meeting form thing.
+
+[rochak agrawal] 08:51:24
+I'll go to Manage Plugins.
+
+[rochak agrawal] 08:51:29
+Plugins.
+
+[rochak agrawal] 08:51:31
+Available plugins…
+
+[rochak agrawal] 08:51:32
+So there is a tool called Blue Ocean.
+
+[rochak agrawal] 08:51:53
+Success? Okay.
+
+[rochak agrawal] 08:51:56
+Now, if I go to my application… So here, you will now find an option of Open Blue Ocean. So if you open Blue Ocean, it is just nothing but a good, nice interface.
+
+[rochak agrawal] 08:52:09
+So, yeah…
+
+[rochak agrawal] 08:52:10
+If you go to build number, everything is same. You are only going to see what you have run. It is just an upgraded UI user interface for Jenkins.
+
+[rochak agrawal] 08:52:22
+So here, you see?
+
+[rochak agrawal] 08:52:24
+you can very clearly see deployment to dev and deployment to prod. They are running in parallel. So you check out your code, you build it.
+
+[rochak agrawal] 08:52:33
+You archive your artifact, and then parallel deployment.
+
+[rochak agrawal] 08:52:37
+In the parallel deployment, there is two stages, deployment to dev and deployment.
+
+[rochak agrawal] 08:52:41
+Deployment to prod.
+
+[rochak agrawal] 08:52:44
+Okay, but if you go to, for example, 11.
+
+[rochak agrawal] 08:52:53
+Now here you can see so you can actually very visually you can see it from this. So here when we run it on a prod to check out code build archive artifact and deployment to dev has been skipped and deployment to.
+
+[rochak agrawal] 08:53:09
+Prod has been done. But if you go to 9.
+
+[rochak agrawal] 08:53:13
+You see? Deployment to dev and end. And from here, if you want to… See, from the console output, you will see the logs at a whole. Now, what if you want to see, uh, for example, uh…
+
+[rochak agrawal] 08:53:27
+a logs to a particular stage, so you can say build. Now, you are only going to see the build logs.
+
+[rochak agrawal] 08:53:33
+Below means whatever the stage, uh…
+
+[rochak agrawal] 08:53:36
+build logs here. So you are going to see only, uh, the logs for this particular stage. You go to deployment to dev, you're only going to see.
+
+[rochak agrawal] 08:53:47
+So you see, only this logs is there. So it will be very easy for us.
+
+[rochak agrawal] 08:53:52
+Again, it's an optional thing. It makes us, uh, very easy for us to identify.
+
+[rochak agrawal] 08:54:04
+Uh, to identify the logs…
+
+[rochak agrawal] 08:54:06
+visualize the flow, right? From this pipeline, it is… it looks very good, right? I can easily see what is my, uh…
+
+[rochak agrawal] 08:54:16
+What other stages are being skipped? Everything. Now.
+
+[rochak agrawal] 08:54:21
+I am using Blue Ocean, there might be another plugin, so if I go here, and if you want to switch to Classic UI, you can go to Classic from here, and you will go back to your previous UI.
+
+[rochak agrawal] 08:54:33
+There are other plugins also, for example, I think, um…
+
+[rochak agrawal] 08:54:39
+if you go to Plugins.
+
+[rochak agrawal] 08:54:42
+Available plugins, there is pipeline plugin should be there.
+
+[rochak agrawal] 08:54:53
+Right, so there is a pipeline, stage view plugin is there.
+
+[rochak agrawal] 08:54:57
+Okay, now install this.
+
+[rochak agrawal] 08:55:07
+Okay? Now, if you go to your pipeline.
+
+[rochak agrawal] 08:55:14
+So there is now, you can see, I can see it from here itself.
+
+[rochak agrawal] 08:55:20
+If someone, if some of you is working on Jenkins or seeing the Jenkins, you must have seen something like this in your organizations, right? So you can see like how much time here. From here also I can see the logs.
+
+[rochak agrawal] 08:55:36
+It will tell me the logs.
+
+[rochak agrawal] 08:55:40
+So then…
+
+[rochak agrawal] 08:55:41
+multiple ways of doing the things. I generally prefer Blue Ocean, but from here also, we are getting the same thing.
+
+[rochak agrawal] 08:55:49
+So if you go, for example, it is just showing you the 11 and 12 for now. If you go full stage view.
+
+[rochak agrawal] 08:55:58
+So, it is just showing you the last two builds, and how much time it is taking. So, it's a parallel deployment, 90 microseconds.
+
+[rochak agrawal] 08:56:05
+And, uh…
+
+[rochak agrawal] 08:56:08
+If you want to see the logs.
+
+[rochak agrawal] 08:56:10
+You'll see the logs.
+
+[rochak agrawal] 08:56:12
+Okay? So, see, whenever you will be working on your pipelines.
+
+[rochak agrawal] 08:56:19
+Your pipelines may not be very mature on day one, and that will be absolutely fine.
+
+[rochak agrawal] 08:56:25
+But right for us also, we keep adding the things. Like, we started with a freestyle job, then we did the same thing with the pipeline, then we add multiple environments, then we did the deployment parallelly, and then finally we added, uh, this.
+
+[rochak agrawal] 08:56:41
+UI, where we can see what are the states running. Now, let's say…
+
+[rochak agrawal] 08:56:46
+I… I… let me fail some of them.
+
+[rochak agrawal] 08:56:52
+So, if you want to run a pipeline, you can go to a replay.
+
+[rochak agrawal] 08:56:57
+And let's say…
+
+[rochak agrawal] 08:57:02
+do some mistake here, okay? MMD, some wrong command I'm giving. If you run this.
+
+[rochak agrawal] 08:57:09
+You see what's going to happen?
+
+[rochak agrawal] 08:57:11
+So from here, uh, you can see what is happening. You see?
+
+[rochak agrawal] 08:57:16
+Build has failed. And it has to be failed, because I have given the wrong command. So you can see build has failed.
+
+[rochak agrawal] 08:57:23
+Archive artifact has failed, and then the parallel deployment has failed. So you will exactly get to know where is the issue, so you'll see.
+
+[rochak agrawal] 08:57:34
+Logs.
+
+[rochak agrawal] 08:57:37
+This is not one, so whatever you have given this is not true, right? So…
+
+[rochak agrawal] 08:57:44
+Again, um, as and when needed, now, uh, there will be another plugins for the…
+
+[rochak agrawal] 08:57:59
+Available plugins, which is for the disk.
+
+[rochak agrawal] 08:58:06
+Pull some plugin.
+
+[rochak agrawal] 08:58:09
+Okay, I'm seeing an install.
+
+[rochak agrawal] 08:58:17
+So, disk users plugin, if I see…
+
+[rochak agrawal] 08:58:31
+I'm not sure where to check for it.
+
+[rochak agrawal] 08:58:35
+Disk uses blocking.
+
+[rochak agrawal] 08:58:46
+So you see, when you install this plugin, disk usage is calculated every 6 hours.
+
+[rochak agrawal] 08:58:51
+By going to where to see this.
+
+[rochak agrawal] 08:59:01
+Yeah, I can see this.
+
+[rochak agrawal] 08:59:10
+It is showing status.
+
+[rochak agrawal] 08:59:15
+I cannot see this option.
+
+[rochak agrawal] 08:59:35
+status…
+
+[rochak agrawal] 08:59:44
+maybe it is not calculating it right now. They are saying in the status, you are going to find the disk users.
+
+[rochak agrawal] 08:59:52
+Right. So, uh, the point here, uh, so every 6 hours it is counting, so it is still not have been, uh, counted.
+
+[rochak agrawal] 09:00:02
+It is not counting it for now. So the point here is, um…
+
+[rochak agrawal] 09:00:07
+Uh, in your CI engine, you might not be.
+
+[rochak agrawal] 09:00:12
+doing everything on the day one, and that will be absolutely okay. Your system is going to mature over time. If you implement everything on day one, then what is the need of DevOps engineer going forward, right? So the system keeps evolving themselves.
+
+[rochak agrawal] 09:00:27
+And, uh, um, it is absolutely okay that you start with the basic pipeline, and then you keep adding your requirements as and when needed. So, in the pipeline, uh, and…
+
+[rochak agrawal] 09:00:41
+Moreover, I… I'll tell you, um…
+
+[rochak agrawal] 09:00:45
+So, no, like…
+
+[rochak agrawal] 09:00:46
+Even though Jenkins is connected with everything, you will find.
+
+[rochak agrawal] 09:00:53
+the least question on Jenkins or any CIE engine in an interview.
+
+[rochak agrawal] 09:00:57
+The reason for that is.
+
+[rochak agrawal] 09:01:00
+See, Jenkins, what Jenkins is doing right now, also, if you see, uh, if you see our very basic, simple script.
+
+[rochak agrawal] 09:01:07
+What it is doing? It is doing checkout code, which is get.
+
+[rochak agrawal] 09:01:12
+It is building the code, which is Maven, and you are doing the deployment, which is Tomcat. Correct?
+
+[rochak agrawal] 09:01:20
+Jenkins itself does what? Nothing.
+
+[rochak agrawal] 09:01:22
+So, if there is no Maven, there is no Tomcat, Jenkins is useless, basically. So, it is like it integrates everything, but.
+
+[rochak agrawal] 09:01:32
+If you say what Jenkins does, Jenkins integrates everything. That's the only thing Jenkins does.
+
+[rochak agrawal] 09:01:38
+Okay, so…
+
+[rochak agrawal] 09:01:42
+Two general questions on the pipelines comes, like, first we discuss, like, how we are going to optimize our pipeline running time, so we will see our stages and whatever we can run in parallel, whatever we cut it down, we are going to optimize it.
+
+[rochak agrawal] 09:01:56
+And then, the second is, one very important question is, general question. So, when you say you are working on the pipelines, um, um…
+
+[rochak agrawal] 09:02:10
+I'm deploying a Java application. Let's say you would say I'm deploying a Java application on the pipeline. So then the very general question is, can you explain what are the steps your pipeline is having? How many steps?
+
+[rochak agrawal] 09:02:25
+Not how many, like what type of steps is there, what are the important steps is there, how you are going to implement it. So then you need to explain that I'm going to check out the code, then I'm building the code and then I'm doing the code coverage analysis.
+
+[rochak agrawal] 09:02:42
+Then I am doing the smoke test and then I'm building the Docker image, pushing the Docker image to Nexus repository. And then I'm with the help of Ansible, I'm deploying it to my Kubernetes cluster, for example. So that is one general question we get.
+
+[rochak agrawal] 09:02:58
+in the interviews, and then, uh, of course, we will also mature our pipeline, uh, going forward, so as we will work with Ansible, we will do… implement Ansible, so we will not do the deployments manually, we will, with the help of Ansible Playworks.
+
+[rochak agrawal] 09:03:12
+Uh, we will do the deployment, and we will call the Ansible playbooks from my Jenkins pipeline.
+
+[rochak agrawal] 09:03:17
+Okay, so that is all we are going to do, but as of now, the flow works like it. So the next, uh, what we are going to do, uh…
+
+[rochak agrawal] 09:03:26
+We will have a project, uh…
+
+[rochak agrawal] 09:03:30
+Simple application, we will install SonarQube, we will install Nexus, and then we will…
+
+[rochak agrawal] 09:03:37
+create and, uh, like, not create, uh, we are building our artifact. We will push that artifact to Nexus, and then, uh, do a code coverage analysis with the help of Sonar. Now, in the market, there are, um.
+
+[rochak agrawal] 09:03:52
+N number of the security tools are available, SonarQube, Tribi, uh, there is a tool called Snyk, um, there is a BAPT tool, there's a DES tool, there's a CES tool, Beta code is there.
+
+[rochak agrawal] 09:04:06
+Right. See, you don't…
+
+[rochak agrawal] 09:04:08
+need to know every tool. Okay? Every tool comes with a very good documentation.
+
+[rochak agrawal] 09:04:16
+Okay, uh, you just need to be aware how and where you need to use.
+
+[rochak agrawal] 09:04:22
+What? That's it. Because, see, in the market, every day there are new tools that are coming, and DevOps.
+
+[rochak agrawal] 09:04:29
+is an ever-learning journey. You are working on, um…
+
+[rochak agrawal] 09:04:34
+where a code. Now your customer is saying, no, no, I want to use Trivy, right? You cannot learn each and every tool in the market. So, even, uh, when you go to the interview, uh.
+
+[rochak agrawal] 09:04:44
+in DevOps particularly, people…
+
+[rochak agrawal] 09:04:47
+ask you the questions. So, for example, let's say, in configuration management.
+
+[rochak agrawal] 09:04:52
+Ansible is the de facto standard now.
+
+[rochak agrawal] 09:04:56
+But even if you know Chef and Puppet, then that… it should be perfectly okay, because all the three tools are particularly similar.
+
+[rochak agrawal] 09:05:04
+Okay, so you know one tool that should be fine, and uh…
+
+[rochak agrawal] 09:05:10
+they will mostly ask about the concept. Now, in Ansible, someone has asked you, what is a dynamic inventory? Okay, now dynamic inventory is same, you installing, you implementing it in Ansible, you implementing it in Puppet.
+
+[rochak agrawal] 09:05:26
+implementing it in Chef.
+
+[rochak agrawal] 09:05:29
+So don't think on those lines that there are multiple tools. I only know Jenkins, I don't know Azure Repos, I don't know GitHub Actions, I don't know GitLab CI or TeamCity or Bangalore.
+
+[rochak agrawal] 09:05:40
+Maybe till the time you learn all these tools, there is a new tool in the market.
+
+[rochak agrawal] 09:05:43
+Okay, so you just need to understand conceptually how I am going to build my pipeline. What is the thing I need for the pipeline? And tool is just the syntax like nowadays with the help of LLM syntax is not even a point of concern.
+
+[rochak agrawal] 09:05:59
+If you know the concept, you can do anything.
+
+[rochak agrawal] 09:06:02
+Right? So, uh, now we will do, uh…
+
+[rochak agrawal] 09:06:07
+I will take the questions only, I'll not, uh…
+
+[rochak agrawal] 09:06:10
+do any other, uh, topic now. Um, I'll need to wrap up a little early, but if you… if we have, uh, any question.
+
+[rochak agrawal] 09:06:17
+Yes, I just.
+
+[Rajesh Chandran] 09:06:19
+Uh, Rajak, a couple of questions. Actually, the first one is, uh, suppose if I install this Maven directly in my Linux system, okay? So, should I install Maven again through the Jenkins once again, or can we use the same thing?
+
+[rochak agrawal] 09:06:22
+Sure.
+
+[rochak agrawal] 09:06:27
+Okay?
+
+[rochak agrawal] 09:06:32
+No.
+
+[rochak agrawal] 09:06:32
+No, you can use the same.
+
+[Rajesh Chandran] 09:06:35
+For the same dictators.
+
+[rochak agrawal] 09:06:35
+See, uh, see, yeah, yeah, so I'll tell you, I'll explain you why. Uh, in the end.
+
+[rochak agrawal] 09:06:49
+This is your Jenkins box, right? And let's say this is your agent, or you are running on the same box, that does not matter, right? Now, if you are running MBN.
+
+[rochak agrawal] 09:07:01
+Compile.
+
+[rochak agrawal] 09:07:06
+In the end, it is going to my Jenkins server, and basically… so, for example, this is my Jenkins server.
+
+[rochak agrawal] 09:07:18
+Right? If I go here, connect.
+
+[rochak agrawal] 09:07:42
+So, there is a home directory.
+
+[rochak agrawal] 09:07:48
+Inside this, there's a workspace, right? Now, for every job, there will be a workspace. So, for example, I have multiple jobs. For them, there is a workspace.
+
+[rochak agrawal] 09:07:56
+Now, if I go to any workspace.
+
+[rochak agrawal] 09:08:01
+there are, uh, files is getting created. So, basically, what happens is, whatever your build steps are, basically, they are running here. So, for example, if I'm running MPN compile.
+
+[rochak agrawal] 09:08:12
+In my build job, it is running inside a workspace. So if you already have a Maven, then MBL compile is going to run, correct?
+
+[Rajesh Chandran] 09:08:21
+Yes.
+
+[rochak agrawal] 09:08:21
+But if you are running some… but if you are installing something from, uh, for example, from Jenkins, then to your pipeline, you need to explicitly give that tool.
+
+[rochak agrawal] 09:08:32
+But if something is already there, you can use that. You do not need to install it again.
+
+[Rajesh Chandran] 09:08:37
+So we have to explicitly mention whether to use the installed one, or through the Jenkins one. Okay.
+
+[rochak agrawal] 09:08:40
+Yes, yes, correct. And that is what even if you go here, for example, if you see my pipeline, I am explicitly telling this Maven to use this Maven CI server. Now why you need to do that? Because for example, if you go to tools.
+
+[rochak agrawal] 09:09:06
+So let's say I have one Maven installation, which is Maven CI server, correct? Which is 3.9.16. Now, you might have another application which is working with Maven 2.
+
+[rochak agrawal] 09:09:15
+So you can have Maven 2, for example.
+
+[rochak agrawal] 09:09:18
+Okay, and I'll say…
+
+[rochak agrawal] 09:09:21
+Let's say 2.0.
+
+[rochak agrawal] 09:09:23
+And I save this.
+
+[rochak agrawal] 09:09:26
+Now, I have 2 Mavens, correct?
+
+[Rajesh Chandran] 09:09:29
+Correct, correct.
+
+[rochak agrawal] 09:09:31
+So then I need to tell my… so you can see I have two, uh, Maven. One is 3.9.16, one is 2.0. So then, in that case, I need to tell my job which Maven, uh, you need to work with.
+
+[rochak agrawal] 09:09:42
+And that is where I need to mention it with the help of this blog.
+
+[Rajesh Chandran] 09:09:48
+Okay, so that means it is better to install through this Jenkins only, right? Instead of… yeah.
+
+[rochak agrawal] 09:09:52
+Better, yes, always. Because, see, if you are managing something from one place.
+
+[rochak agrawal] 09:09:58
+You do it everything from that place otherwise there may be conflicts.
+
+[rochak agrawal] 09:10:03
+someone… because you… yeah, it is always a good practice, um, that you… see, that's why Jenkins is giving you the tool options. You can have the multiple versions of the same tool, so it is always a good practice that you manage your tools, whatever you want to use.
+
+[Rajesh Chandran] 09:10:03
+Correct, there are some changes means it is a problem, then.
+
+[rochak agrawal] 09:10:20
+from the tool sections in Jenkins, and then you mention here in your pipeline block, or even if you're manually doing it, so give it. So that now it knows, even if I have two Maven versions, your pipeline knows I need to work with this Maven CI server.
+
+[rochak agrawal] 09:10:36
+And then if you go to Maven CI server, you will get to know that Maven CI server is 3.9.16.
+
+[Rajesh Chandran] 09:10:43
+Hmm, yeah, yeah, got it, got it.
+
+[rochak agrawal] 09:10:44
+Okay? So, it is always a good practice that you manage your tools from Jenkins.
+
+[Rajesh Chandran] 09:10:45
+Okay. Yeah, so…
+
+[Rajesh Chandran] 09:10:51
+Okay, okay. So, the second one is, uh, you told that build with the parameters, right? So, uh, if that is the case, then how that parameter value will be passed from GitHub to Jenkins, or do we need to execute it manually?
+
+[rochak agrawal] 09:11:04
+Okay, see, um…
+
+[rochak agrawal] 09:11:07
+When you're building with the parameters, uh, then…
+
+[rochak agrawal] 09:11:12
+Parameters is something which… parameters is like the user input.
+
+[Rajesh Chandran] 09:11:18
+Yeah.
+
+[rochak agrawal] 09:11:19
+Right? So that you need to pass, because I have a same pipeline, uh, like we have discussed, we have created a pipeline. Your pipeline will be in the source code, Jenkins file, correct?
+
+[Rajesh Chandran] 09:11:32
+Correct.
+
+[rochak agrawal] 09:11:33
+So, you will not have a different code for every environment. The same code is going to dev, test, prod, and so, correct?
+
+[rochak agrawal] 09:11:40
+So then, from the Jenkins, um, you will decide where you want to run that pipeline. So you will not hardcode those parameters, basically. See, if you're… if you're hardcoding those parameters, then…
+
+[Rajesh Chandran] 09:11:41
+Correct.
+
+[rochak agrawal] 09:11:52
+It will not remain the parameter.
+
+[rochak agrawal] 09:11:57
+Correct.
+
+[Rajesh Chandran] 09:11:57
+Yeah, right, right. Now, if it is a webhook trigger, even if it is automatic, somebody has to manually select that parameter from the DWA.
+
+[Rajesh Chandran] 09:12:05
+Not Jenkins UA.
+
+[rochak agrawal] 09:12:05
+So, okay, in that… yeah, yeah, yeah, I got your question. See, in that case, what happens is, uh, you can select a default value. So, for example, if I'm giving a two parameter, dev and prod, I will say…
+
+[rochak agrawal] 09:12:17
+default value is dev. So then, whenever it is automatically getting triggering, it will always go to a dev environment, until… unless I'm not manually saying go to prod.
+
+[rochak agrawal] 09:12:26
+So you can have a default value for your parameter.
+
+[Rajesh Chandran] 09:12:29
+Right, but if it is broad, then we have to select it.
+
+[rochak agrawal] 09:12:32
+Then you have to select it, yes.
+
+[rochak agrawal] 09:12:35
+Okay.
+
+[Rajesh Chandran] 09:12:35
+Okay. Okay, another one is, uh, if it is a multi-branch pipeline, uh, do we maintain one Jenkins file, or do we have a different Jenkins file?
+
+[rochak agrawal] 09:12:40
+Mm-hmm.
+
+[rochak agrawal] 09:12:44
+Yeah, Banjan gets fired. See, uh, you… no, I'll explain. So, what happens is…
+
+[rochak agrawal] 09:12:53
+Let's say I have…
+
+[rochak agrawal] 09:12:54
+I do not have a branch in this. So let's say I have a, like, forget this parallel Jenkins file. So I have a Jenkins file, correct?
+
+[rochak agrawal] 09:13:03
+So, let's say I… when I create a branch.
+
+[Rajesh Chandran] 09:13:03
+Yeah.
+
+[rochak agrawal] 09:13:10
+Let's see the branch.
+
+[rochak agrawal] 09:13:15
+And if you go to code.
+
+[rochak agrawal] 09:13:18
+If you go to the dev branch, your dev branch will also have its own Jenkins file, correct? Can you see this?
+
+[Rajesh Chandran] 09:13:24
+Got it. Yeah.
+
+[rochak agrawal] 09:13:26
+But, again, it will have its own Jenkins file, but the idea is your Jenkins file is not going to change across the branches. It is going to remain the same.
+
+[rochak agrawal] 09:13:38
+So if you are changing your Jenkins file at one branch, uh, you need to merge that to other branches also. It should be same, because why it should be same? Because, uh, in your Jenkins file, you can put up a conditions on the branches. So I'll say, when my branch is master, deploy to production, when my branch is dev.
+
+[rochak agrawal] 09:13:58
+uh, uh, push to deploy to dev environment. Okay. So then, if the same file is not available across different branches, then they can create the, uh…
+
+[rochak agrawal] 09:14:09
+inconsistency, right? So your branches will have its own Jenkins file, but the idea is it should remain the same across, uh… it should remain, uh… what you can say, I'm not…
+
+[rochak agrawal] 09:14:20
+I'm getting the right word for it. It should be consistent across the branch.
+
+[Rajesh Chandran] 09:14:25
+Okay, so that means the different logic we can handle through the conditions, the VIN condition.
+
+[rochak agrawal] 09:14:30
+Yeah, yeah, VIN is the thing. So we can have, like, environment choices, parameter choices, and even the agents. For example, let's say I want to run a particular stage on a particular agent.
+
+[rochak agrawal] 09:14:44
+I can do that.
+
+[Rajesh Chandran] 09:14:47
+Okay.
+
+[rochak agrawal] 09:14:47
+Any condition, I'll put up with the VIN.
+
+[Rajesh Chandran] 09:14:50
+Uh, because you told that build will happen only from the dev branch, and other branches the build will not happen, right? So these conditions we have to maintain through there.
+
+[rochak agrawal] 09:14:55
+Then we will put up the conditions. Yes, yes, that's why, that's what I'm saying. We will put up those conditions, uh, from the, uh, even we can put up a condition, like, when someone is pushing from the master, your bill, you can put up a pre-check kind of a thing in your pipeline.
+
+[Rajesh Chandran] 09:14:57
+Yeah, okay.
+
+[rochak agrawal] 09:15:10
+When you will say, if the branch is master, don't go further.
+
+[Rajesh Chandran] 09:15:14
+Okay, okay. Mm-hmm.
+
+[rochak agrawal] 09:15:14
+As simple as that. See, that's what I'm saying. These are not the rule of thumb. This is not science.
+
+[rochak agrawal] 09:15:26
+This is an art, okay? Now, you will not implement all of this on day one.
+
+[rochak agrawal] 09:15:32
+Okay.
+
+[Rajesh Chandran] 09:15:33
+Yeah, yeah, that it.
+
+[rochak agrawal] 09:15:34
+you will… on the day one, you will just say, my application should be deployed. That's it, right? Going further, you will say, no, it should be more secure, it should be more, uh, in my control, right? So you will keep implementing those changes.
+
+[rochak agrawal] 09:15:48
+Those things.
+
+[Rajesh Chandran] 09:15:48
+Yeah, yeah, that is fine, because I'm trying to connect the dots here, actually, so I understood many things, so… so, you see, if you can do one project, right, we have one end-to-end pipeline, no? So we can get a real-time feeling.
+
+[rochak agrawal] 09:15:51
+Hiya!
+
+[rochak agrawal] 09:15:55
+Yeah, we will do that, we will do that.
+
+[rochak agrawal] 09:15:57
+Yeah, we will not do one, uh, Rajesh, we will… not only one, we will have multiple projects for Jenkins. So first, right now, uh, as a next step, what we will do, we will do a project for Jenkins, Nexus, and SonarQube, and.
+
+[rochak agrawal] 09:16:12
+Of course, the build, uh, Tomcat and Maven will already be there.
+
+[rochak agrawal] 09:16:17
+That will be our one project, and then once we will understand Docker and Kubernetes, then we will integrate our Docker and Kubernetes also. Because, see, right now, if I implement Docker and Kubernetes, and Tribi also security-related things, so we will keep optimizing our pipeline. That is what I'm saying.
+
+[Rajesh Chandran] 09:16:25
+Yeah, so if…
+
+[Rajesh Chandran] 09:16:32
+Yeah, that is why I know it, because, see, if you do a project, we can follow that one, because without proper practice, we will not be learning anything properly, right? So that is why, yeah.
+
+[rochak agrawal] 09:16:36
+Yeah, we'll do that.
+
+[rochak agrawal] 09:16:39
+Totally agree, totally agree, we will do that.
+
+[rochak agrawal] 09:16:42
+Okay.
+
+[Rajesh Chandran] 09:16:42
+Uh, and do we have a class tomorrow?
+
+[rochak agrawal] 09:16:46
+No.
+
+[Rajesh Chandran] 09:16:47
+Okay.
+
+[Rajesh Chandran] 09:16:49
+I'll get rid of the twin. Thank you.
+
+[arif] 09:16:53
+Yeah, Roger, last thing, since we understand this Jenkins flow and everything, I think that's pretty much good, and mostly everything is covered. Can we try, uh, do a pipeline from the GitHub also?
+
+[rochak agrawal] 09:17:06
+GitHub Actions?
+
+[arif] 09:17:07
+Yeah, yeah, I think at least a short demo or something.
+
+[rochak agrawal] 09:17:13
+We will do it once we cover all the…
+
+[arif] 09:17:17
+Only a short demo, if you can provide, just, like, just to see where it… where it is.
+
+[rochak agrawal] 09:17:18
+Uh, topics which is given to me, um, that will be a little out of scope at this moment.
+
+[rochak agrawal] 09:17:27
+Okay? So we will… we are going to do, uh, with Jenkins only.
+
+[arif] 09:17:34
+Okay.
+
+[rochak agrawal] 09:17:35
+No.
+
+[rochak agrawal] 09:17:49
+Yes, question.
+
+[Kaushal] 09:17:52
+Uh, so, Chuck, so, uh, we have, uh, workspace, right, per, uh, per build, right? So, 5 builds are running, we have 5 workspace, so each… in pipeline, I have mentioned, like, Git SCM checkout, right? So, uh, entire repositories is going to be checked out on, uh, each workspace.
+
+[rochak agrawal] 09:18:07
+In the workspace. In the particular workspace.
+
+[Kaushal] 09:18:09
+Right, so can we do some… yeah, in the particular workspace. Can we do some optimizations? Because there may be possibility the workspace is… now, uh, Git repository itself is in gigs, right? So…
+
+[Kaushal] 09:18:20
+Is there any, like, uh, bad repository checkout recently?
+
+[rochak agrawal] 09:18:22
+Yeah, so what… yes, yes, we can do that. So what we can do, for example, let's say, um, we can add one step. For example, let's say once my application is deployed, okay, I'll say clear the workspace.
+
+[rochak agrawal] 09:18:37
+We can do that.
+
+[rochak agrawal] 09:18:38
+So then… so your files from the workspace will be deleted. So we can clear… we can keep clearing the workspace.
+
+[Kaushal] 09:18:48
+Okay, but all the repositories are going to be checked out, right? I mean, uh, let's say 1GB is workspace size, uh, sorry, not gate repository size, then 5 pipelines are running, uh, then, uh…
+
+[rochak agrawal] 09:18:49
+Yeah.
+
+[rochak agrawal] 09:18:57
+Hmm?
+
+[rochak agrawal] 09:19:00
+Hmm?
+
+[Kaushal] 09:19:01
+Total 5GB is going to be occupied, and every time, uh…
+
+[rochak agrawal] 09:19:05
+Got it.
+
+[Kaushal] 09:19:07
+keeps on checking out the code, right, before it moves to… so can we do some optimization in GitHub CM checkout?
+
+[rochak agrawal] 09:19:09
+Yes.
+
+[rochak agrawal] 09:19:13
+Yeah, we can do that. See, there is multiple optimizations we can do. So one is, as I said, you can clear out the workspace, okay? Once your deployment is done, you do not need the code, because next time you are going to run the code, it is again coming, right?
+
+[rochak agrawal] 09:19:29
+So yes, we can do that. In the GitHub CM also, let's say when we check out the code, it is downloading the complete repository. You don't download the complete repository. With the help of GitHub CM, we will download only the particular branch.
+
+[rochak agrawal] 09:19:44
+So those type of optimization we can do causally.
+
+[Kaushal] 09:19:48
+Okay. Can you cover that in project as well? Like, how we can optimize it?
+
+[rochak agrawal] 09:19:49
+Okay? Okay.
+
+[rochak agrawal] 09:19:54
+Uh, Kaushal, uh, see, we cannot cover each and every use case, uh, in the class. You can try it as your homework.
+
+[rochak agrawal] 09:20:01
+If you want, I can upload the steps.
+
+[Kaushal] 09:20:03
+Okay, okay. Yeah, please do so, so that, yeah.
+
+[rochak agrawal] 09:20:05
+Yeah?
+
+[rochak agrawal] 09:20:06
+Yeah, yeah, I'll, I'll do that.
+
+[rochak agrawal] 09:20:17
+Yes, I'm here.
+
+[Amiya Nanda] 09:20:24
+Ah, hi Rocha, good morning.
+
+[rochak agrawal] 09:20:26
+Hey, good morning.
+
+[Amiya Nanda] 09:20:27
+Ah, Rochak, ah, I have doubt on Webhook, why Webhook is used.
+
+[Amiya Nanda] 09:20:33
+What is the use of playbook? I don't, ah, know at all.
+
+[rochak agrawal] 09:20:36
+Amir, we have covered this in detail, uh, right? What is the confusion here?
+
+[Amiya Nanda] 09:20:44
+Wewook.
+
+[rochak agrawal] 09:20:45
+Yes, we have covered this webhook.
+
+[rochak agrawal] 09:20:49
+But you're not present in the previous classes?
+
+[Amiya Nanda] 09:20:49
+Ah 1.
+
+[Amiya Nanda] 09:20:51
+I think…
+
+[Amiya Nanda] 09:20:53
+1 or 2 class I ah.
+
+[rochak agrawal] 09:20:54
+Yeah, so then you need to go through the recording, Amir. There's a complete demo we have done on Webhook, okay?
+
+[Amiya Nanda] 09:20:56
+Okay, okay, okay.
+
+[Amiya Nanda] 09:20:59
+Ah, okay, okay, okay, okay, fine. And, ah, one more question related to this, ah, Maven setup. So, I went through your recording, I saw, ah, in one document, you have given some, after installing Java, you have given some, ah, ah.
+
+[rochak agrawal] 09:21:01
+Okay, yeah.
+
+[rochak agrawal] 09:21:07
+Hmm?
+
+[Amiya Nanda] 09:21:17
+Ah, like, code into the Maven, ah.
+
+[Amiya Nanda] 09:21:23
+something you've given in the document. The document, it is not available, so I, ah, need that document, ah, that code to install Maven.
+
+[rochak agrawal] 09:21:37
+You need the steps to, uh, install the Maven.
+
+[Amiya Nanda] 09:21:41
+Yes yes.
+
+[rochak agrawal] 09:21:43
+I mean, you can go, uh, here, uh.
+
+[rochak agrawal] 09:21:46
+You just type on the install Maven, and you will find multiple documents.
+
+[Amiya Nanda] 09:21:50
+Okay, the part already, uh, half of the part I've done, I have installed the JDK files, everything, and I have set up the, I've set up the environment variable, uh, in my system as well.
+
+[Amiya Nanda] 09:22:07
+After that, uh, something we need to give, no? That, uh, part I'm not recalling now. That part…
+
+[rochak agrawal] 09:22:12
+But how can I tell which steps you are missing?
+
+[Amiya Nanda] 09:22:13
+Uh, in the document, I saw in the document you have taken the steps.
+
+[Amiya Nanda] 09:22:18
+So the document I will put.
+
+[rochak agrawal] 09:22:19
+So, are you not following the document? Like, I'm not getting what you're trying to say.
+
+[Amiya Nanda] 09:22:24
+Ah, if you have that, ah, PPT handy, can you please open for PPT, ah, that, ah, Marvin?
+
+[rochak agrawal] 09:22:31
+Amiya, can you please raise this question in the mentorship sessions?
+
+[Amiya Nanda] 09:22:33
+Ah, okay, okay, fine.
+
+[rochak agrawal] 09:22:35
+Okay? Uh, we need to stick to the topic in the class.
+
+[Amiya Nanda] 09:22:36
+Yeah, yeah.
+
+[Amiya Nanda] 09:22:39
+Mm-hmm, okay.
+
+[rochak agrawal] 09:22:41
+Okay, sure.
+
+[rochak agrawal] 09:22:45
+Yes, Siobhan?
+
+[Shivam Malusare] 09:22:56
+Hello?
+
+[rochak agrawal] 09:22:58
+Yeah, hi Siobhan.
+
+[Shivam Malusare] 09:23:01
+Yeah, I wanted to ask that, uh, if there is any documentation or…
+
+[Shivam Malusare] 09:23:05
+Right, we can call for…
+
+[rochak agrawal] 09:23:05
+Shubhami, your voice is not audible to me.
+
+[Shivam Malusare] 09:23:10
+Is it audible now?
+
+[rochak agrawal] 09:23:11
+Yeah, yeah, it is.
+
+[Shivam Malusare] 09:23:14
+I was saying that, uh, if, uh, like, there was any document or guide for practicing what we had covered in this week, or, uh, Jenkins.
+
+[rochak agrawal] 09:23:21
+Yeah, yeah, see, uh, Shubham, uh, I think, uh, there is a materials folder is there. I am already uploading the documents there, so…
+
+[rochak agrawal] 09:23:30
+Yeah?
+
+[Shivam Malusare] 09:23:32
+But in the material folders now, there is nothing uploaded related to LinkedIn.
+
+[rochak agrawal] 09:23:37
+Yeah, so I told you there is nothing uploaded on Jenkins, because we are yet completing the Jenkins. Uh, but today we have finished the Jenkins, so I will upload accordingly, yeah?
+
+[Shivam Malusare] 09:23:49
+Um, okay.
+
+[rochak agrawal] 09:23:50
+Okay.
+
+[Amiya Nanda] 09:23:52
+Arocha Kum Arocha Kumavin document is not there, I think.
+
+[rochak agrawal] 09:23:55
+I'll check, I'll check, uh, by the way.
+
+[Amiya Nanda] 09:23:57
+Yeah, all documents, ah, is there, ah, except Marvin, yeah.
+
+[rochak agrawal] 09:23:58
+It should be there.
+
+[rochak agrawal] 09:23:59
+Okay.
+
+[rochak agrawal] 09:24:01
+Okay, cool guys, thank you.
+
