@@ -1,0 +1,2373 @@
+[rochak agrawal] 07:38:47
+Hey, good morning, everyone. Uh, see, I'm just waiting for my community cluster to come up, uh, once that is there, we'll start.
+
+[rochak agrawal] 07:43:02
+Let's start.
+
+[rochak agrawal] 07:43:07
+So, in our last class, we were talking about something called the props.
+
+[rochak agrawal] 07:43:12
+And we have discussed, so there are props is basically like a health checks. Okay. So there is three type of props.
+
+[rochak agrawal] 07:43:21
+Lightness probe.
+
+[rochak agrawal] 07:43:27
+readiness probe.
+
+[rochak agrawal] 07:43:30
+And start the flow.
+
+[rochak agrawal] 07:43:34
+Out of these three, we have discussed in detail about the liveness prop. So, liveness prop is basically…
+
+[rochak agrawal] 07:43:42
+Uh, the health check of a pod, and it tells you if the pod is…
+
+[rochak agrawal] 07:43:46
+running successfully or not, and if not, Kubernetes is going to.
+
+[rochak agrawal] 07:43:54
+at the port, right? Then the second is the readiness probe. Now, when we will define, you are not going to see any difference in defining the liveliness and readiness probe.
+
+[rochak agrawal] 07:44:05
+It is about…
+
+[rochak agrawal] 07:44:07
+What is the use case for them? So, in Kubernetes, readiness probe is a mechanism to determine.
+
+[rochak agrawal] 07:44:14
+if a container is ready to accept traffic. Running, not running is okay, but if it is ready to accept traffic or not.
+
+[rochak agrawal] 07:44:22
+If the readiness probe fails.
+
+[rochak agrawal] 07:44:25
+Kubernetes will temporarily stop sending traffic to the container.
+
+[rochak agrawal] 07:44:30
+until it is considered ready again.
+
+[rochak agrawal] 07:44:33
+This is crucial for preventing requests from being routed to a container that is not yet fully initialized or currently in an unhealthy state. Now, the difference between liveliness probe and readiness probe is.
+
+[rochak agrawal] 07:44:50
+Liveness prompt detects.
+
+[rochak agrawal] 07:45:04
+If… odd…
+
+[rochak agrawal] 07:45:06
+is alive or not.
+
+[rochak agrawal] 07:45:08
+Okay, and restart.
+
+[rochak agrawal] 07:45:13
+If…
+
+[rochak agrawal] 07:45:18
+While the readiness probe detects.
+
+[rochak agrawal] 07:45:23
+Yes.
+
+[rochak agrawal] 07:45:25
+A board?
+
+[rochak agrawal] 07:45:29
+Ready to serve the traffic.
+
+[rochak agrawal] 07:45:37
+Does not restart if it is filled.
+
+[rochak agrawal] 07:45:48
+But it stopped.
+
+[rochak agrawal] 07:45:52
+sending…
+
+[rochak agrawal] 07:45:55
+Like, what's…
+
+[rochak agrawal] 07:45:58
+Okay.
+
+[rochak agrawal] 07:46:00
+Readiness probes are commonly used to wait for the services to become.
+
+[rochak agrawal] 07:46:06
+Fully initialized before receiving the traffic, or to avoid.
+
+[rochak agrawal] 07:46:10
+sending traffic to a service that is temporarily unable to handle the request. Now, again, very similar.
+
+[rochak agrawal] 07:46:20
+How we define the readiness probe? Oh, sorry, liveness probe. Readiness probe is defined exactly the same way. You can define a HTTP probe, TCP probe, GRPC probe, or the exec probe, which we have seen in our last class, right?
+
+[rochak agrawal] 07:46:35
+Very simple, there's no difference, okay? So I'll, again.
+
+[rochak agrawal] 07:46:41
+Deep.
+
+[rochak agrawal] 07:47:15
+So you can see…
+
+[rochak agrawal] 07:47:17
+Very simple, nothing much here. Deployment, metadata…
+
+[rochak agrawal] 07:47:21
+Okay. Template. This is all the same. Now here.
+
+[rochak agrawal] 07:47:27
+Readiness flow.
+
+[rochak agrawal] 07:47:30
+Hey
+
+[rochak agrawal] 07:47:30
+HttpGet, same method we have used in the liveness prompt, similar method we are going to use in the readiness prompt altogether.
+
+[rochak agrawal] 07:47:41
+Path is this. Port is this. Same. Initial delay second, period second, timeout second, failure threshold. Initial delay second is wait five seconds after the startup for the checking. Period second is rerun the check every 10 seconds.
+
+[rochak agrawal] 07:47:55
+Timeout second fail if the response take longer than 2 seconds. And the failure threshold is 3. If your check is failing.
+
+[rochak agrawal] 07:48:06
+three consecutive times, then it is going to mark as unhealthy. Okay, so readiness probe sends, in this case, an HTTP GET request.
+
+[rochak agrawal] 07:48:19
+to your path, which you have defined on port 18, to check if NGINX server is…
+
+[rochak agrawal] 07:48:25
+ready to serve the traffic or not. After a 5-second delay, because the initial delay is 5 seconds, Kubernetes will start periodically checking the endpoint to confirm the container is ready to handle.
+
+[rochak agrawal] 07:48:40
+Incoming traffic, or no.
+
+[rochak agrawal] 07:48:42
+So we need to use a dedicated endpoint for readiness check that only signals readiness once the application is fully initialized. And you need to, uh, what initial delay second 5 you are seeing, that will define from application to application. Um, if it is a web application, it might start in.
+
+[rochak agrawal] 07:49:01
+5-10 seconds, but if it is a large database application, it might take a start in 10 minutes, right? So then, initial second, or the timeout, or the…
+
+[rochak agrawal] 07:49:12
+Period second, uh, for the services, uh, we need to, um, adjust according to our application.
+
+[rochak agrawal] 07:49:21
+But defining how you are defining is, uh, same, okay? So there is no difference there. It is just how you, uh, what is the role for this, okay? That is important.
+
+[rochak agrawal] 07:49:34
+Any question in this?
+
+[rochak agrawal] 07:49:45
+Yes, Bevo?
+
+[Vaibhav Gupta] 07:49:48
+Yeah, good morning, Roger. Uh, initial delay seconds, we can delay… we can, uh, delay it from our end, like, from 10 seconds, uh…
+
+[rochak agrawal] 07:49:48
+Good one.
+
+[rochak agrawal] 07:49:54
+Yes, yes, we can define it. Correct.
+
+[Vaibhav Gupta] 07:49:55
+Okay.
+
+[rochak agrawal] 07:49:56
+Okay? Because your application, every application will, uh… see, for example, if you compare it with a laptop.
+
+[rochak agrawal] 07:50:04
+Now I am using a Mac and that to a latest version, my Mac is going to boot up in let's say 10 seconds. But if you are using a very old Windows based laptop, II3 processor, I code processor.
+
+[rochak agrawal] 07:50:20
+Which is going to take 1-2 minutes, right? Now, both of the applications, similar to that, your application.
+
+[Vaibhav Gupta] 07:50:24
+Right.
+
+[rochak agrawal] 07:50:28
+Now, depending on the type of the application also, a web server, there is nothing much to initialize. It is going to start in 10 seconds, for example. But if you are using a Java Spring Boot-based application or a WebLogic-based application, an application server-based application.
+
+[rochak agrawal] 07:50:45
+which may require certain time. I have worked with the application which takes more than 15-20 minutes also to start, right? Now.
+
+[rochak agrawal] 07:50:55
+You did your initial delay second as 5, and your application is starting in 10 minutes. Not till the 10 minutes, this will keep marking your application as unhealthy. But in reality, your application has not been started yet, correct?
+
+[Vaibhav Gupta] 07:51:09
+Mmhm.
+
+[rochak agrawal] 07:51:09
+Now, so for those type of application, you will say your initial delay second is, let's say.
+
+[rochak agrawal] 07:51:15
+1200 seconds.
+
+[rochak agrawal] 07:51:17
+Hey, so that the Kubernetes will wait for 1200 seconds.
+
+[rochak agrawal] 07:51:23
+to make your application stable, okay, to give time to your application stabilized once 1,200 seconds passed. For example, 1,200 seconds is, like, what, 20 minutes? After that.
+
+[rochak agrawal] 07:51:38
+it is going to add period second, whatever the period second you are defining. Let's say I'm defining 60 seconds. So every minute, it is going to run a health check on it.
+
+[rochak agrawal] 07:51:50
+So all those parameters which you are seeing here, the method, uh, and the tuning parameter, like initial delay second.
+
+[rochak agrawal] 07:51:58
+Period second, timeout second, failure threshold, all those we can configure as per our requirement.
+
+[rochak agrawal] 07:52:07
+Okay?
+
+[Vaibhav Gupta] 07:52:09
+Got it, okay.
+
+[rochak agrawal] 07:52:11
+Okay.
+
+[rochak agrawal] 07:52:15
+Yes, you are.
+
+[Jeeva Koli] 07:52:17
+So, this is the, uh, feature why Kubernetes, right? And we separately also place the monitoring systems, or monitoring other services.
+
+[rochak agrawal] 07:52:26
+Yeah, yeah, yes, yes, yes. See, monitoring system, uh…
+
+[rochak agrawal] 07:52:31
+See, understand this, we are not monitoring, okay? I don't know how many requests are getting failed, or requests are getting served, what is the type of the error we are getting. It is just a check, my application is there or not, correct?
+
+[rochak agrawal] 07:52:46
+So it's a very basic monitoring, you can say.
+
+[rochak agrawal] 07:52:48
+But on top of it, you can apply tools like Prometheus and Grafana, which will give a more granular parameters monitoring. So for example, I want to know the status, how many 500 errors are there. So all those if you want to get.
+
+[rochak agrawal] 07:53:05
+You need to use monitoring tool. This is just the health check, I would say. It's not a monitoring.
+
+[Jeeva Koli] 07:53:11
+So, when we can use this, like, at the time of deploying, in what scenario?
+
+[rochak agrawal] 07:53:19
+In what scenario? In every scenario, like, Jeeva, I'm not getting the question.
+
+[Jeeva Koli] 07:53:19
+Or, whether it is…
+
+[Jeeva Koli] 07:53:25
+I mean, uh, now I'm, uh…
+
+[Jeeva Koli] 07:53:28
+Like, what you can see.
+
+[Jeeva Koli] 07:53:32
+I'm creating the pods.
+
+[rochak agrawal] 07:53:33
+Hmm?
+
+[Jeeva Koli] 07:53:33
+And that time, before… I mean, at that same time, I can run this health check, or…
+
+[rochak agrawal] 07:53:38
+Correct, yeah. See, if you see, this is part of your deployment.yaml, correct?
+
+[Jeeva Koli] 07:53:43
+Alright.
+
+[Jeeva Koli] 07:53:44
+Okay, okay, okay, okay, got it.
+
+[rochak agrawal] 07:53:45
+Right? Okay. So when you run the deployment, kubectl apply-appdeployment.yaml.
+
+[rochak agrawal] 07:53:51
+Kubernetes knows that this is a health check, this is a prop already been defined for me.
+
+[rochak agrawal] 07:53:56
+So, it is…
+
+[rochak agrawal] 07:53:59
+You do not need to define it separately.
+
+[Jeeva Koli] 07:54:01
+Okay, okay, got it, yeah.
+
+[rochak agrawal] 07:54:02
+in your deployment YAML, or let's say I'm running a single port, for example. So I can define the same thing in a port.yaml also.
+
+[Jeeva Koli] 07:54:12
+Alright, right.
+
+[rochak agrawal] 07:54:13
+Okay, so this is something which you do not need to do it separately. Uh, monitoring, if you are using, for example, then first you need to define which tool you want to use, then you need to configure that tool, what it wants to monitor, and of course, like, it is a detailed monitoring, this is just a basic health check.
+
+[rochak agrawal] 07:54:32
+Okay?
+
+[Jeeva Koli] 07:54:34
+So, all, uh, three, that probes we can mention in the, uh, same amplifier? Okay.
+
+[rochak agrawal] 07:54:39
+Yes, yes, yes, correct, yes.
+
+[rochak agrawal] 07:54:41
+See, everything, not only the three. For example, you can see your deployment.yaml can be complex also. For example, we discussed that your pod can have multiple containers. Right now, in my deployment.yaml, there is only one container.
+
+[Jeeva Koli] 07:54:42
+Got it, yeah.
+
+[rochak agrawal] 07:54:59
+If you've got another container, I can define it in a deployment.yaml.
+
+[rochak agrawal] 07:55:04
+Okay, similarly, it's very, uh…
+
+[rochak agrawal] 07:55:09
+easy. For example, let's say I want to define liveliness also.
+
+[rochak agrawal] 07:55:18
+Same thing.
+
+[rochak agrawal] 07:55:25
+It is, uh, liveness provide…
+
+[rochak agrawal] 07:55:29
+Don't know, I have a habit of calling it as a liveliness probe. And you can see it is maybe you will have a separate endpoint for checking the health if the application is running. But all other parameters are same, correct?
+
+[rochak agrawal] 07:55:45
+You can define all of those in a deployment at YAML. You do not need to define it separately, separately.
+
+[Jeeva Koli] 07:55:53
+Oh, good.
+
+[rochak agrawal] 07:55:53
+Okay.
+
+[rochak agrawal] 07:55:57
+Okay. Any other question with the, uh, likeness or the readiness probe?
+
+[rochak agrawal] 07:56:07
+Okay. Now.
+
+[rochak agrawal] 07:56:08
+The third one is…
+
+[rochak agrawal] 07:56:11
+The startup probe. The startup probe is a new addition into Kubernetes. It is, um, I think added very recently, um.
+
+[rochak agrawal] 07:56:20
+Previously, there was only two props, so liveness props and the readiness props.
+
+[rochak agrawal] 07:56:24
+Now…
+
+[rochak agrawal] 07:56:26
+startup prop, as the name is suggesting. The startup prop is used to check.
+
+[rochak agrawal] 07:56:32
+if your pod has started correctly.
+
+[rochak agrawal] 07:56:35
+Okay.
+
+[rochak agrawal] 07:56:40
+If…
+
+[rochak agrawal] 07:56:42
+odd as…
+
+[rochak agrawal] 07:56:44
+Started correctly or not.
+
+[rochak agrawal] 07:56:50
+It ensures Kubernetes doesn't prematurely kill a container that might take a long time to initialize. So, if the startup prof fails, Kubernetes will attempt to restart.
+
+[rochak agrawal] 07:57:04
+the container, or the pod, right? Now, use case where I'm going to use the startup probe, it is beneficial for an application that requires…
+
+[rochak agrawal] 07:57:14
+Extended startup time or have a very.
+
+[rochak agrawal] 07:57:21
+slow initialization process. Again, to define it, it is very same, uh, similar to how you are going to define the liveness probe or the readiness probe.
+
+[rochak agrawal] 07:57:31
+It can be an HTTP request, it can be a TCP check, or a command execution, but very importantly, it only monitors.
+
+[rochak agrawal] 07:57:44
+Bored?
+
+[rochak agrawal] 07:57:45
+During…
+
+[rochak agrawal] 07:57:50
+The startup time.
+
+[rochak agrawal] 07:57:51
+Okay, once the container is started, the role of the startup probe is done.
+
+[rochak agrawal] 07:57:59
+of the liveness or the readiness will come, okay? Like, example use case, if I talk about applications like databases or complex services that may take longer.
+
+[rochak agrawal] 07:58:11
+to load should benefit from a startup probe to avoid Kubernetes from terminating them too soon.
+
+[rochak agrawal] 07:58:19
+Now, in Kubernetes, a startup probe is used to determine if a container has started.
+
+[rochak agrawal] 07:58:26
+Successfully, it is designed to help with the container that have a long initialization time. So if the startup pro fails.
+
+[rochak agrawal] 07:58:35
+Pods will be restarted. However, unlike the Liveness Pro, which checks the health of a running container.
+
+[rochak agrawal] 07:58:42
+The startup prog only check if the container has successfully start up. If the startup prog fails, Kubernetes will attempt to restart the container.
+
+[rochak agrawal] 07:58:55
+When to use a startup probe? For application that takes a long time to initialize before they can serve that traffic, we should be using a startup probe.
+
+[rochak agrawal] 07:59:05
+to ensure Kubernetes does not prematurely consider the container as unhealthy during the startup phase.
+
+[rochak agrawal] 07:59:14
+For containers or pods that require a specific amount of time or resources to be ready before they can run correctly.
+
+[rochak agrawal] 07:59:24
+Key difference, startup probe is used now very informally.
+
+[rochak agrawal] 07:59:30
+Um, startup probe is used to monitor.
+
+[rochak agrawal] 07:59:35
+The startup phase of a container. Okay, liveliness prop checks if the container is still running after the startup, while the readiness prop checks if the container is ready to accept traffic after it has.
+
+[rochak agrawal] 07:59:50
+Starting. So you can see when you define the props. Okay.
+
+[rochak agrawal] 07:59:56
+It is exactly the same, right? There is no difference. In every type of the probe, you will define initial delay second, you will define period delay second, you will define failure threshold, right? But it is just…
+
+[rochak agrawal] 08:00:11
+They all will be used.
+
+[rochak agrawal] 08:00:14
+when in different different phases. So that is about the props.
+
+[rochak agrawal] 08:00:24
+So…
+
+[rochak agrawal] 08:00:25
+the general best practices for the startup probe is use only when necessary. For example, um…
+
+[rochak agrawal] 08:00:32
+Let's say I'm running an NGINX form. Now, NGINX is…
+
+[rochak agrawal] 08:00:38
+starting, let's say, in 10 seconds or 20 seconds. Now, in that case, it is not necessary to use the startup prompt. It was a very, um…
+
+[rochak agrawal] 08:00:47
+Small time. But if your application is taking 10 minutes, 5 minutes to start, then for those type of applications, startup probe is good. So startup probe are useful for the containers that have a very long initialization times.
+
+[rochak agrawal] 08:01:04
+If your container starts up quickly, a liveliness or the readiness probe might suffice. So this can be one of the interview questions, that in which case you might not be using.
+
+[rochak agrawal] 08:01:17
+the startup Chrome. So, keep in mind, the application, the pod, which is starting very quickly, in 5-10 seconds, you might not.
+
+[rochak agrawal] 08:01:25
+I would say you might not need this, you don't need the startup probe, okay? Because startup probe, uh, is only going to monitor the startup phase, correct? And the startup phase is 1 second, 2 second, 5 second, then it just does not make any sense to use the startup probe.
+
+[rochak agrawal] 08:01:43
+Props. Okay.
+
+[rochak agrawal] 08:01:46
+Then, um, we need to avoid very heavy commands in the startup probes. Um…
+
+[rochak agrawal] 08:01:54
+And we need to adjust.
+
+[rochak agrawal] 08:01:59
+Time delays, again, set appropriate initial delay second, failure threshold, period second to ensure any prompt does not fail prematurely, and which is true for all the three prompts.
+
+[rochak agrawal] 08:02:11
+And we use dedicated endpoint or file for the startup check to keep things simple and avoid confusion with the readiness and the lightning checks.
+
+[rochak agrawal] 08:02:22
+Okay? So.
+
+[rochak agrawal] 08:02:24
+Now, why to use PropSol?
+
+[rochak agrawal] 08:02:28
+Detect unhealthy containers, which is liveliness probe. By continuously checking the health of a container, Kubernetes can detect when something goes wrong and restart the container.
+
+[rochak agrawal] 08:02:39
+And, uh, prevent traffic to unread containers with the readiness probe. Kubernetes can ensure that only containers that are ready to handle traffic.
+
+[rochak agrawal] 08:02:50
+are included in the load balancing pool and manage the long initialization time. So starter probe ensure containers that require more time to initialize are not prematurely killed, which is particularly useful for the container.
+
+[rochak agrawal] 08:03:07
+That takes longer to set up and become operational.
+
+[rochak agrawal] 08:03:12
+Now, why to use the props? So…
+
+[rochak agrawal] 08:03:14
+Reliability. Probe ensure that your containerized applications are robust and resilient.
+
+[rochak agrawal] 08:03:20
+Automation, probe, automate container health check and management, removing the need of any additional manual intervention or any integration with the manual tools, monitoring tools.
+
+[rochak agrawal] 08:03:35
+Then efficient scaling. Kubernetes can efficiently manage container scaling, restart, and traffic routing based on the prompt result.
+
+[rochak agrawal] 08:03:46
+Okay? Um, if I talk about the key differences between, um.
+
+[rochak agrawal] 08:03:54
+Lightness probe, so it is a continuous during runtime. Readiness probe, also continuous before traffic is routed.
+
+[rochak agrawal] 08:04:03
+Startup probe is only during the startup time, right? So we need to choose.
+
+[rochak agrawal] 08:04:12
+The right pro for our containers?
+
+[rochak agrawal] 08:04:15
+We need to set the proper delays and be specific with the one.
+
+[rochak agrawal] 08:04:20
+Props. So Kubernetes props are a crucial component in managing the health and lifecycle of a container.
+
+[rochak agrawal] 08:04:29
+They ensure that containers are running properly.
+
+[rochak agrawal] 08:04:34
+are ready to accept traffic and are started correctly. By configuring them effectively, we can improve the reliability and.
+
+[rochak agrawal] 08:04:43
+scalability of our application overall
+
+[rochak agrawal] 08:04:48
+So, this is about the pros. Again, uh, defining them is, uh.
+
+[rochak agrawal] 08:04:53
+exactly the same. You can define them as a HTTP get method, as a TCP socket method, or a exit command, which we have seen in our last class also, right? So there's nothing, um, uh, in that defining, uh, how you can define it. But to understand them, where to use.
+
+[rochak agrawal] 08:05:10
+What is the use case of every prop? That is more important to us.
+
+[rochak agrawal] 08:05:16
+Any question in any of these three props?
+
+[Jeeva Koli] 08:05:22
+Uh, just one question. How frequently, uh, liveness and readiness probe run, or we need to define it?
+
+[rochak agrawal] 08:05:29
+When you say how frequently — can you elaborate a bit your question?
+
+[Jeeva Koli] 08:05:36
+Like, uh, I, um, deployed, uh, two ports, and now the port is started well in initially. Now…
+
+[rochak agrawal] 08:05:40
+Hmm?
+
+[Jeeva Koli] 08:05:46
+the, uh, I mean, liveness will run continuously, or only once?
+
+[rochak agrawal] 08:05:50
+Correct. No, liveliness will run continuously, that's what I said.
+
+[rochak agrawal] 08:05:55
+Liveliness and legacy.
+
+[Jeeva Koli] 08:05:55
+Frequently mentioned, what time gap do we need to define that, actually?
+
+[rochak agrawal] 08:05:59
+Yeah, yeah, see, that is what we define here, if you see, the period second.
+
+[Jeeva Koli] 08:06:03
+Okay, okay, okay.
+
+[rochak agrawal] 08:06:04
+So it says rerun the check every, uh, whatever the number you are defining here. So if you are defining 60 seconds, so then every 60 seconds, it is going to check the health of your, uh, pod.
+
+[rochak agrawal] 08:06:17
+Okay?
+
+[Jeeva Koli] 08:06:17
+Oh, yeah, got it, yes.
+
+[rochak agrawal] 08:06:19
+So yeah, so continuously, when you say continuously, so we can define that in which interval we want to run the check.
+
+[rochak agrawal] 08:06:28
+If it is a web server, so you will might use 5 seconds, 10 seconds.
+
+[rochak agrawal] 08:06:32
+It's depending on your application, basically.
+
+[rochak agrawal] 08:06:35
+But we can configure it. It is not something, no, every 1 minute or 2 minutes, it is… I can check it every 5 seconds, 1 second, 60 seconds, it is up to me.
+
+[rochak agrawal] 08:06:48
+Okay?
+
+[rochak agrawal] 08:06:54
+Bevo, you have a question?
+
+[Vaibhav Gupta] 08:06:58
+Yeah, uh, I'm just asking, uh, frequent, uh, you know, frequent applications that we do not need the, uh, startup probe. So, when we use the liveness probe, and, uh, we detect the probe is live, pod is live or not. So, if it is live, so after that, uh, how much they took time to, uh, use the readiness probe, like, uh.
+
+[Vaibhav Gupta] 08:07:19
+Just continuous, or just took some time?
+
+[rochak agrawal] 08:07:20
+Let's see, first thing, uh, okay, maybe, um…
+
+[rochak agrawal] 08:07:24
+Every probe is different and independent of each other.
+
+[Vaibhav Gupta] 08:07:27
+Okay.
+
+[rochak agrawal] 08:07:27
+Okay?
+
+[rochak agrawal] 08:07:28
+That's the first thing. So when you say how much time after the liveliness, your readiness is coming into the picture.
+
+[rochak agrawal] 08:07:35
+There is no relation
+
+[rochak agrawal] 08:07:37
+That's the first thing. Liveness
+
+[rochak agrawal] 08:07:41
+you understand. First, the readiness probe comes. You see?
+
+[rochak agrawal] 08:07:55
+Readiness probe, startup probe, what it does, if the pod has started correctly, your startup probe is something which is going to run only at the startup time, okay?
+
+[rochak agrawal] 08:08:07
+Now we are saying, if my application is functioning — sorry, if my application is starting very frequently, like in 5 seconds, 10 seconds, then I don't need the startup prop, correct? So see, for us, let's say for the application, this is not useful.
+
+[Vaibhav Gupta] 08:08:19
+Hmm.
+
+[rochak agrawal] 08:08:23
+Now, if you compare them in two.
+
+[rochak agrawal] 08:08:27
+Detects if a pod is alive or not, and restart if it is not alive. Readiness probe detects if the pod is ready to serve the traffic, but does not restart if it is failed.
+
+[rochak agrawal] 08:08:38
+So, readiness probe…
+
+[rochak agrawal] 08:08:40
+You see, these two are independent. I can define one probe, either liveliness or readiness, or I can define both, or I can define none.
+
+[rochak agrawal] 08:08:50
+Okay.
+
+[rochak agrawal] 08:08:51
+There is no relation.
+
+[rochak agrawal] 08:08:53
+Readiness probe will define if your application is ready to accept the traffic or not.
+
+[rochak agrawal] 08:08:59
+liveliness probe is your application is running or not. For example, like we discussed one example, um, I am… I opened my TV, I switched on my TV, now my TV is running, but.
+
+[rochak agrawal] 08:09:12
+if I will be able to watch something on Netflix or not depends on if I have the internet connection or not, correct?
+
+[Vaibhav Gupta] 08:09:18
+Mm-hmm, mm-hmm.
+
+[rochak agrawal] 08:09:20
+So my application is live, but it is not ready to accept the traffic.
+
+[rochak agrawal] 08:09:27
+Okay.
+
+[Vaibhav Gupta] 08:09:27
+Okay.
+
+[rochak agrawal] 08:09:28
+my TV is live, I can see my TV is switched on, but when I go to, for example, open Netflix, Amazon Prime Video, try to… first, the application will itself not open, because I'm not connected to the internet, correct?
+
+[Vaibhav Gupta] 08:09:44
+Mm-hmm.
+
+[rochak agrawal] 08:09:45
+So, now my application is live, but it is… it can't serve me.
+
+[rochak agrawal] 08:09:52
+Why? Because it has certain dependency on the internet. Once I connect to the internet, then I can watch the movie. So you see…
+
+[Vaibhav Gupta] 08:09:53
+Hmm.
+
+[rochak agrawal] 08:10:00
+these two are very different things. Live application and ready application. Live means your application is running, okay? But…
+
+[rochak agrawal] 08:10:08
+Is your running application is of any use or time? See, for example, now somewhere we go in a remote area.
+
+[Vaibhav Gupta] 08:10:15
+Yeah, so that's all good.
+
+[rochak agrawal] 08:10:17
+remote areas, your mobile does not have the signals or the internet connection. You see, okay, I have mobile, my mobile is in hand, but probably it's of no use, correct?
+
+[rochak agrawal] 08:10:30
+Because it has some dependencies, it is of no use. It's not ready to… so that I can go to Instagram, I can… I can go to Facebook.com, because there's no internet connection. It's not ready yet.
+
+[rochak agrawal] 08:10:41
+Right? So, liveliness probe behaves certain… different way. Readiness probe will behave different way. They are not related to each other.
+
+[rochak agrawal] 08:10:52
+They run in a different, different phases.
+
+[rochak agrawal] 08:10:55
+Okay?
+
+[Vaibhav Gupta] 08:10:55
+So, if they are, uh, not related to each other, like, they are independent. So, uh, first we need to, uh, I mean, first we have to utilize the liveness probe to, uh.
+
+[rochak agrawal] 08:10:59
+Hmm?
+
+[Vaibhav Gupta] 08:11:06
+In a better way for our application, like, we will, uh…
+
+[rochak agrawal] 08:11:08
+Correct.
+
+[rochak agrawal] 08:11:11
+Now, again, I'll give you one perspective, okay? Let's say if I am using only the Readiness Pro.
+
+[rochak agrawal] 08:11:18
+Okay.
+
+[Vaibhav Gupta] 08:11:18
+Hmm.
+
+[rochak agrawal] 08:11:19
+Do I need the liveness probe or not?
+
+[Vaibhav Gupta] 08:11:23
+No.
+
+[rochak agrawal] 08:11:24
+No, correct? See, exactly. Uh, so if you are… see, for example, if I am able to watch movie on Netflix on my TV, it automatically means my TV is already running.
+
+[Vaibhav Gupta] 08:11:26
+Hmm.
+
+[rochak agrawal] 08:11:38
+Ready?
+
+[Vaibhav Gupta] 08:11:45
+Correct.
+
+[rochak agrawal] 08:11:46
+Correct. So see depending on your application you need to choose which probe you want to use. It is not that we want to use all three. I say I'm using readiness probe. I'll not use lightness probe. But you see sometimes what happens is.
+
+[Vaibhav Gupta] 08:11:46
+Mm-hmm.
+
+[rochak agrawal] 08:12:01
+You can use both of them also because liveness probe, you see the difference. One more difference here.
+
+[rochak agrawal] 08:12:09
+If the pod is alive or not, okay, it will restart it.
+
+[rochak agrawal] 08:12:15
+But your readiness probe is not going to restart the bot, it will just stop sending the traffic.
+
+[rochak agrawal] 08:12:21
+So, you want some auto-healing facilities also, then…
+
+[rochak agrawal] 08:12:26
+apart from the readiness probe, you can use the liveness probe also, because if something goes wrong, then it will ask Kubernetes to restart the pod altogether.
+
+[rochak agrawal] 08:12:38
+Okay?
+
+[Vaibhav Gupta] 08:12:40
+Okay.
+
+[rochak agrawal] 08:12:40
+But…
+
+[rochak agrawal] 08:12:41
+Again, there is no relation between liveness and readiness and startup. You can define all three of them. You can define them in any combination. You can define none.
+
+[Vaibhav Gupta] 08:12:46
+Yeah.
+
+[rochak agrawal] 08:12:53
+It's your vision.
+
+[rochak agrawal] 08:12:55
+we have defined the deployment.yaml, uh, without any props in our previous classes, right? Then we learned the props, then we defined the deployment.yaml with the props also. So it is up to us.
+
+[rochak agrawal] 08:13:07
+what we want to use. We just need to know, uh, what is the use case for every… anything, so that we can use them effectively.
+
+[rochak agrawal] 08:13:15
+Kubernetes will not force them, force us to use any of them.
+
+[rochak agrawal] 08:13:20
+If we want the functionality, we are going to use it. If your work is okay without using them, then it's okay.
+
+[rochak agrawal] 08:13:31
+Okay?
+
+[Vaibhav Gupta] 08:13:33
+Okay.
+
+[rochak agrawal] 08:13:34
+Yeah.
+
+[rochak agrawal] 08:13:36
+Gannon, I saw you raise the hand then. Any questions?
+
+[rochak agrawal] 08:13:50
+Okay. Now, we are going to, uh…
+
+[Vaibhav Gupta] 08:13:55
+Sorry to interrupt. Once a time, you said, like, you shared some DevOps interrogations. I hope you not shared that.
+
+[rochak agrawal] 08:14:04
+Let me check. If not, I will upload it today altogether.
+
+[rochak agrawal] 08:14:07
+Okay?
+
+[Vaibhav Gupta] 08:14:08
+Sure, sure, please do. Thank you.
+
+[rochak agrawal] 08:14:10
+Now, one very interesting thing is we are going to see…
+
+[rochak agrawal] 08:14:16
+Now, let's understand a scenario. Okay, so we know that if we want to deploy the pod, multiple pod, we need to deploy in a form of deployment, correct?
+
+[rochak agrawal] 08:14:36
+Now, in the deployment, we define the, like, how many replicas we need to run.
+
+[rochak agrawal] 08:14:41
+So let's say if you say 3, 5, whatsoever number is there. Now let's say I am running with the…
+
+[rochak agrawal] 08:14:50
+What you can say is, um…
+
+[rochak agrawal] 08:14:54
+3 noteboard.
+
+[rochak agrawal] 08:14:56
+3 node cluster.
+
+[rochak agrawal] 08:15:03
+Okay.
+
+[rochak agrawal] 08:15:05
+And you have three… you created a deployment which says three replicas.
+
+[rochak agrawal] 08:15:12
+Can you tell me how these 3 ports will get placed?
+
+[rochak agrawal] 08:15:18
+on these notes.
+
+[rochak agrawal] 08:15:20
+Anyone?
+
+[Vaibhav Gupta] 08:15:24
+Can you please repeat that?
+
+[rochak agrawal] 08:15:27
+I have a…
+
+[rochak agrawal] 08:15:29
+I have a 3-node cluster, 1, 2, 3, node 1, node 2, node 3.
+
+[rochak agrawal] 08:15:34
+And then I have defined a deployment with the three…
+
+[rochak agrawal] 08:15:39
+Or let's say 4.
+
+[rochak agrawal] 08:15:41
+or say two pots, two replicas.
+
+[rochak agrawal] 08:15:45
+Can you tell how these pots are going to be placed on these nodes?
+
+[rochak agrawal] 08:15:59
+Uh, Ziva, I have your… there's a disturbance in your voice.
+
+[Jeeva Koli] 08:16:03
+Hello? Am I audible?
+
+[rochak agrawal] 08:16:05
+Yes, yes, yes, it is clear now.
+
+[Jeeva Koli] 08:16:08
+They use the round-robin, uh, process, like, uh, once it is deployed, and one on rail, second on other, and third one on…
+
+[Jeeva Koli] 08:16:17
+Unless and until we define tent and, uh, this…
+
+[rochak agrawal] 08:16:17
+Correct.
+
+[rochak agrawal] 08:16:20
+Paint and toleration, and node affinity, and node selector. Okay. Now…
+
+[rochak agrawal] 08:16:26
+Agree. Now, when you say, um…
+
+[rochak agrawal] 08:16:30
+Round robin, yes, but it will also see, for example, it's not only one deployment you would be running. There can be multiple application running in your cluster. Maybe there is already the pods running on the cluster, right?
+
+[rochak agrawal] 08:16:46
+So that you do not have the enough resources available on the… on a particular node. For example, let's say…
+
+[rochak agrawal] 08:16:56
+My Note 3 already have some.
+
+[rochak agrawal] 08:17:01
+Full ports running.
+
+[rochak agrawal] 08:17:02
+I don't know what is running, but it is running. Okay, so when you say round robin, round robin is not going to work in this case. It is going… first pod will come here.
+
+[rochak agrawal] 08:17:13
+Second port will come here. When you see… when you want to place the third port, it will go see, uh…
+
+[rochak agrawal] 08:17:21
+the Node 3 has already has multiple pods, so it will either be placed here, or be placed here.
+
+[rochak agrawal] 08:17:29
+Correct?
+
+[rochak agrawal] 08:17:31
+Agni?
+
+[Jeeva Koli] 08:17:32
+Right.
+
+[rochak agrawal] 08:17:33
+because your Node 3 has already many other, uh, uh, ports in place, so it does… it might not have the required.
+
+[rochak agrawal] 08:17:43
+Number of the physical resources to place the third one.
+
+[rochak agrawal] 08:17:47
+Okay.
+
+[rochak agrawal] 08:17:47
+So the point is…
+
+[rochak agrawal] 08:17:50
+When you create a deployment.
+
+[rochak agrawal] 08:17:52
+Okay.
+
+[rochak agrawal] 08:17:55
+There is no guarantee that your pod is going to run on every node.
+
+[rochak agrawal] 08:18:03
+Correct? It may… it may also happen that all of my 3 pods will run on node number 1.
+
+[rochak agrawal] 08:18:10
+It can absolutely possible, because if on node number 2, also there are certain ports are available, then all your ports for deployment.
+
+[rochak agrawal] 08:18:21
+A might go to node number 1.
+
+[rochak agrawal] 08:18:24
+Clear till now with me?
+
+[rochak agrawal] 08:18:26
+Any question till here?
+
+[Jeeva Koli] 08:18:33
+Yes, all good.
+
+[rochak agrawal] 08:18:34
+All good. Now let's say, um…
+
+[rochak agrawal] 08:18:37
+Let me take your scenario.
+
+[rochak agrawal] 08:18:40
+I want to deploy a monitoring agent.
+
+[rochak agrawal] 08:18:49
+I want to deploy.
+
+[rochak agrawal] 08:18:51
+monitoring agent.
+
+[rochak agrawal] 08:19:00
+which is…
+
+[rochak agrawal] 08:19:05
+going to…
+
+[rochak agrawal] 08:19:10
+Select…
+
+[rochak agrawal] 08:19:11
+mattresses
+
+[rochak agrawal] 08:19:14
+From all the notes.
+
+[rochak agrawal] 08:19:15
+Correct.
+
+[rochak agrawal] 08:19:17
+So that it will tell you, um, uh, what is the CPU utilization of the node, what is the memory available, basically monitoring of the nodes. Now, if you want to monitor something on the node.
+
+[rochak agrawal] 08:19:35
+You need to deploy the agent on every node.
+
+[rochak agrawal] 08:19:42
+Correct? This agent will monitor this node, this agent will monitor this node, this agent will monitor this node.
+
+[rochak agrawal] 08:19:51
+Derek?
+
+[rochak agrawal] 08:19:52
+Now…
+
+[rochak agrawal] 08:19:53
+Can I do this with the help of deployments?
+
+[rochak agrawal] 08:20:07
+Can I do this, uh, let's say I have done the containerization of my monitoring agent.
+
+[rochak agrawal] 08:20:13
+And I need to run multiple replicas, correct? So then how I am going to achieve this?
+
+[rochak agrawal] 08:20:21
+Can I do it with the help of deployments? Taints and toleration, node affinity…
+
+[rochak agrawal] 08:20:26
+Anyone?
+
+[rochak agrawal] 08:20:39
+Probably, at least.
+
+[rochak agrawal] 08:20:54
+Diva, Delo?
+
+[rochak agrawal] 08:21:02
+Others are in a long weekend mood today, it seems.
+
+[Vaibhav Gupta] 08:21:07
+Sorry?
+
+[rochak agrawal] 08:21:09
+I'm seeing, uh, people are not responding to the… might be in a long weekend mood.
+
+[Jeeva Koli] 08:21:10
+Actually, I'm… I'm not audible to you, uh, because of network issue.
+
+[Vaibhav Gupta] 08:21:14
+No, no, no, no, no.
+
+[rochak agrawal] 08:21:16
+No, no, I'm not talking about you two, or others also.
+
+[rochak agrawal] 08:21:20
+Okay, yeah, you got the scenario?
+
+[Vaibhav Gupta] 08:21:20
+Yeah.
+
+[Vaibhav Gupta] 08:21:27
+I'm not, uh, getting that scenario particularly, you know, that's why I'm so slightly confused in that.
+
+[rochak agrawal] 08:21:28
+Okay.
+
+[rochak agrawal] 08:21:31
+Okay, let me repeat it again.
+
+[rochak agrawal] 08:21:35
+you deploy your application as a deployment in Kubernetes.
+
+[rochak agrawal] 08:21:40
+Now, I want to deploy a monitoring application, let's say not agent, monitoring application, which is going to collect the metrics from all the nodes. Basically, I want to monitor all the nodes.
+
+[rochak agrawal] 08:21:52
+for which I want to deploy an application.
+
+[rochak agrawal] 08:21:54
+Correct?
+
+[rochak agrawal] 08:21:56
+Now, since you want to develop, you want to monitor every node in the cluster.
+
+[Vaibhav Gupta] 08:21:56
+You can.
+
+[rochak agrawal] 08:22:03
+Then your pod need to be run on every node, correct?
+
+[rochak agrawal] 08:22:08
+Agree?
+
+[Vaibhav Gupta] 08:22:10
+Agree.
+
+[rochak agrawal] 08:22:11
+So, can I do it with the help of deployment?
+
+[rochak agrawal] 08:22:23
+Any combination deployments, taints and toleration, node selector, node affinity…
+
+[Vaibhav Gupta] 08:22:24
+I think no.
+
+[rochak agrawal] 08:22:30
+How can I make this pod run on every node in the cluster?
+
+[rochak agrawal] 08:22:43
+Any thoughts?
+
+[rochak agrawal] 08:22:49
+Uh, Jeeva is saying, yes, with the deployment, it is possible. Uh, Jeeva, how it is possible with the help of deployments? Because, uh, let's say if I'm defining the number of replicas equal to 3, there is no guarantee that.
+
+[rochak agrawal] 08:23:03
+each node is going to get bumped. There might be the chances, but it may happen two replicas are going here, one is going here, so that's how you are going to monitor the node 3.
+
+[rochak agrawal] 08:23:15
+It can be done with the deployment, but there is no guarantee. We need a guaranteed solution.
+
+[rochak agrawal] 08:23:29
+Dawa, your thoughts?
+
+[Vaibhav Gupta] 08:23:32
+I think, no, we cannot, uh…
+
+[Vaibhav Gupta] 08:23:35
+Let me peek.
+
+[rochak agrawal] 08:23:36
+We cannot do with the deployments, okay.
+
+[Vaibhav Gupta] 08:23:38
+Mm-hmm.
+
+[rochak agrawal] 08:23:38
+So, um…
+
+[rochak agrawal] 08:23:40
+Now, you understood the use case that I want to run a particular application slash pod on each and every node in a cluster.
+
+[rochak agrawal] 08:23:51
+Okay, then how can you do it? And let me add one more follow-up scenario in that. So, for example, let's say, with the help of deployment, somehow you manage to do it.
+
+[rochak agrawal] 08:24:02
+Okay, so…
+
+[rochak agrawal] 08:24:06
+Let's say I define three replicas, and three replicas are running on every node in the cluster. Now, what's going to happen when you add another node?
+
+[rochak agrawal] 08:24:24
+No?
+
+[rochak agrawal] 08:24:25
+How to monitor this node? There is no agent running, no application running, correct? You only have 3 replicas.
+
+[rochak agrawal] 08:24:32
+So, first problem with that deployment is, when you define the number of the replicas equal to the number of the nodes, there is no guarantee that they will evenly go to each replica on one node. That's the first thing. It may go, but there is no guarantee.
+
+[Vaibhav Gupta] 08:24:44
+Hmm.
+
+[rochak agrawal] 08:24:47
+But, second problem is, when you add another node, then…
+
+[rochak agrawal] 08:24:52
+the agent, the application, will not go to that particular node. You need to deploy it again, right? Again, it will be a manual process. Now…
+
+[rochak agrawal] 08:25:02
+there is a very specific type of the object in Kubernetes, which is going to help you achieve it. Now, what is that?
+
+[rochak agrawal] 08:25:14
+Which is called as a daemon.
+
+[rochak agrawal] 08:25:22
+It is a form of a deployment only. It is a sort of deployment.
+
+[rochak agrawal] 08:25:28
+What it is going to do.
+
+[rochak agrawal] 08:25:30
+When you define something as a demon set, okay?
+
+[rochak agrawal] 08:25:34
+Instead of deployment, all other things are going to remain the same, exactly the kind I will change it to daemon set from the deployment, okay? Then, what it is going to do, now, whatever the number of the nodes is there.
+
+[rochak agrawal] 08:25:56
+It will place exactly one copy on each node.
+
+[rochak agrawal] 08:26:02
+And when you add another node
+
+[rochak agrawal] 08:26:08
+It's going to deploy them automatically.
+
+[rochak agrawal] 08:26:11
+Okay, now you can ask that, um, okay, but my Node 3, as we discussed, already have many pods.
+
+[rochak agrawal] 08:26:20
+Okay. Uh, then how can Daemon chat go? Uh, the pod will go to into that particular node. So pod will go to on that node only, but it might go in a pending status.
+
+[rochak agrawal] 08:26:37
+Okay? So, daemon set in Kubernetes.
+
+[rochak agrawal] 08:26:43
+the source.
+
+[rochak agrawal] 08:26:43
+That ensures a specific pod runs on every node in Kubernetes cluster.
+
+[rochak agrawal] 08:26:51
+or a set of nodes. For example, I want to run a particular agent on.
+
+[rochak agrawal] 08:26:56
+the 5 nodes. I have a 10-node cluster, but I want to run it only on the 5 nodes. So then I can define a subset of the nodes that meets the certain condition.
+
+[rochak agrawal] 08:27:05
+DaemonSet are mainly used for the background processes that must be running.
+
+[rochak agrawal] 08:27:12
+on…
+
+[rochak agrawal] 08:27:14
+each node, okay? So, when I'm connecting to my cluster.
+
+[rochak agrawal] 08:27:21
+So if you see kubectl, get DS.
+
+[rochak agrawal] 08:27:28
+This is a node resource found in a default namespace.
+
+[rochak agrawal] 08:27:32
+If you see…
+
+[rochak agrawal] 08:27:44
+Now, you can see, these all are running as a…
+
+[rochak agrawal] 08:27:50
+Demon said.
+
+[rochak agrawal] 08:27:52
+Correct? It means that…
+
+[rochak agrawal] 08:27:56
+You can see?
+
+[rochak agrawal] 08:27:58
+These are the agents, cube proxy, node manager. These are the type of the monitoring agent, not the monitoring agent, the management tools, which need to be run on every node. So you can see it here.
+
+[rochak agrawal] 08:28:15
+Desired, current, ready, up to date. 3.
+
+[rochak agrawal] 08:28:20
+And 3.
+
+[rochak agrawal] 08:28:21
+Okay.
+
+[rochak agrawal] 08:28:25
+So, you can see it here. On…
+
+[rochak agrawal] 08:28:29
+Every node, if you want to run a particular, uh…
+
+[rochak agrawal] 08:28:33
+Application, we can define it in the form of… so instead of manually.
+
+[rochak agrawal] 08:28:39
+deploying the pod on each node, Kubernetes automatically handles this for you using a daemon set. Now.
+
+[rochak agrawal] 08:28:48
+Let's imagine a hostel. Each room is like your Kubernetes node and you want one fire alarm in every room. So you do not care how many people are inside, which room is new or old. You want exactly one alarm per room.
+
+[rochak agrawal] 08:29:05
+Automatically installed when a new room is added. And daemonset does exactly this in Kubernetes. Without a daemonset, you need to manually deploy the ports. New nodes may not have the monitoring logging agent.
+
+[rochak agrawal] 08:29:22
+Node removal is going to cause inconsistency, and it is very hard to manage node-level services.
+
+[rochak agrawal] 08:29:31
+Now with the daemon set.
+
+[rochak agrawal] 08:29:34
+When a new node is added, pod, which you define as a daemon site, will start automatically. When a node is removed, pod is going to remove automatically.
+
+[rochak agrawal] 08:29:44
+Cluster remains consistent and there is a zero manual intervention.
+
+[rochak agrawal] 08:29:50
+So it is fully automated, always consistent, node-level control you are going to. So when you want to have one pod per node.
+
+[rochak agrawal] 08:30:00
+You use DaemonSet when you need node-level access. You use DaemonSet when you want to use some agent. You need some security on monitoring, you can use…
+
+[rochak agrawal] 08:30:12
+these daemon sets. So common real-world use cases are like the log collection. So every node will generate some log. So daemon set ensure a log collectors run on every node. Then your monitoring agent to collect CPU memory disk metrics.
+
+[rochak agrawal] 08:30:29
+networking and security agents. So, for example, we have seen cube proxies running as a demon set, right? Because that need to be running on, um…
+
+[rochak agrawal] 08:30:39
+every, um…
+
+[rochak agrawal] 08:30:45
+No, where was it? Uh, you want KubeProxy, uh, to be running on every node. So if…
+
+[Vaibhav Gupta] 08:30:51
+Uh, also, your voice is breaking, uh…
+
+[Vaibhav Gupta] 08:30:54
+In between, yeah, so he skips in content and, like.
+
+[rochak agrawal] 08:30:58
+Okay, let me see.
+
+[Vaibhav Gupta] 08:30:58
+what they're trying to…
+
+[rochak agrawal] 08:31:01
+Let me see, just, just…
+
+[Vaibhav Gupta] 08:31:01
+Hmm. Yeah, extremely.
+
+[Vaibhav Gupta] 08:31:03
+Mm-hmm.
+
+[rochak agrawal] 08:31:43
+So, is it better?
+
+[Vaibhav Gupta] 08:31:44
+Yeah, it's better than that.
+
+[rochak agrawal] 08:31:45
+Okay.
+
+[Vaibhav Gupta] 08:31:48
+So, like, what you are, like, explaining is… I'm not able to understand the break of 5 minutes.
+
+[rochak agrawal] 08:31:50
+Mm-hmm. No problem, I'll explain it again.
+
+[rochak agrawal] 08:31:57
+So, we were talking about, uh, the DaemonSet webinar, and we were saying that you… the real-life… real-world use cases of the DaemonSet. So, for example, log collection. So, your every, uh, whatever the notes you have.
+
+[rochak agrawal] 08:32:12
+in your Kubernetes cluster.
+
+[rochak agrawal] 08:32:14
+Every node will be generating some logs, right? So then a daemon set ensure a log collector must be running on every node. Then the monitoring agents, your system agents, like your networking agents, for example, we have seen in our cluster.
+
+[rochak agrawal] 08:32:30
+QProxy is running as a daemon set, because we want QProxy to be running on every node, which you remember, which we have seen in your…
+
+[rochak agrawal] 08:32:38
+Uh, Kubernetes architecture as well. Correct?
+
+[Vaibhav Gupta] 08:32:41
+Mm-hmm.
+
+[rochak agrawal] 08:32:42
+So, if you want something to be running.
+
+[rochak agrawal] 08:32:45
+Now, understand one thing, when I'm saying something running on every node, uh, then you are going to use the DaemonSet. Then you can use the DaemonSet.
+
+[rochak agrawal] 08:32:55
+Okay, now…
+
+[Vaibhav Gupta] 08:32:56
+Okay.
+
+[rochak agrawal] 08:32:59
+Now the question comes when not to use DaemonSet. We understood when to use DaemonSet, when not to use DaemonSet.
+
+[Vaibhav Gupta] 08:32:59
+Get people below
+
+[rochak agrawal] 08:33:09
+Now, you should not be using the daemon set when you want the replicas based on the traffic. If you say my traffic is increasing, my…
+
+[rochak agrawal] 08:33:19
+Number of the port should be increasing.
+
+[rochak agrawal] 08:33:21
+Like, for example, horizontal port autoscaler we have seen. Now, in that case, you should not be using the daemon set. Because daemon set, what it does, it deploys exactly one replica.
+
+[rochak agrawal] 08:33:34
+On each node, exactly one replica.
+
+[rochak agrawal] 08:33:38
+Okay.
+
+[rochak agrawal] 08:33:40
+When you need auto scaling, then you do not need to use the daemon set because it does not fit in the auto scaling because it is the number of the node is equal to number of the pod in a daemon set.
+
+[rochak agrawal] 08:33:53
+When you're deploying applications you want to deploy, you use with the deployments. But when you want to run some background processes which you want to run on each and every node on the cluster.
+
+[rochak agrawal] 08:34:08
+then you are going to use the daemon set. So, in the daemon set, we don't need to define the number of the replicas. Whatever the number, uh, would be there of the, uh, nodes, it will go and deploy every…
+
+[rochak agrawal] 08:34:22
+Okay.
+
+[rochak agrawal] 08:34:25
+Understood?
+
+[Vaibhav Gupta] 08:34:27
+Yeah, yeah, so you said, uh, in daemons, we do not have to, uh, justify the replica, we can, uh, with, uh, use without it. Yeah, okay.
+
+[rochak agrawal] 08:34:31
+Heading.
+
+[rochak agrawal] 08:34:34
+Got it. Now, for example, now if I go to my cluster.
+
+[rochak agrawal] 08:34:40
+Cube CTL.
+
+[rochak agrawal] 08:34:42
+get notes.
+
+[Vaibhav Gupta] 08:34:45
+Hmm.
+
+[rochak agrawal] 08:34:51
+Okay? So you can see I have two nodes are there. Three is there, but one is a system node, two is a hosted pool. Right? Now, let's say I create a daemon set.
+
+[Vaibhav Gupta] 08:34:59
+Hmm.
+
+[rochak agrawal] 08:35:20
+Now you can see?
+
+[rochak agrawal] 08:35:23
+Instead of deployment, I am saying kind is a daemon set. That's the only difference. Okay. And other things also you see let's let me remove this for now.
+
+[Vaibhav Gupta] 08:35:29
+Mm-hmm.
+
+[rochak agrawal] 08:35:34
+Keep it simple. So you can say this is very simple of your NGINX deployment file, correct?
+
+[rochak agrawal] 08:35:40
+Only two differences there. One is, I'm not defining the replicas. Correct, when you define the deployment.yaml, you define the replicas. Here, I'm not defining the replicas, and then, um…
+
+[rochak agrawal] 08:35:51
+I am just saying kind is a demon set.
+
+[rochak agrawal] 08:35:54
+Instead of your…
+
+[rochak agrawal] 08:35:58
+Um, deployment. That's it.
+
+[rochak agrawal] 08:36:00
+Got it?
+
+[rochak agrawal] 08:36:16
+Okay, now…
+
+[rochak agrawal] 08:36:19
+When you run kubectl.
+
+[rochak agrawal] 08:36:22
+Get deployment.
+
+[rochak agrawal] 08:36:31
+Okay, now I'm going to apply QCTL.
+
+[rochak agrawal] 08:37:04
+It's created. Okay?
+
+[rochak agrawal] 08:37:26
+So, I'll clear. Now, still, if you see QCTL.
+
+[rochak agrawal] 08:37:32
+get odds.
+
+[rochak agrawal] 08:37:40
+Deployment.
+
+[rochak agrawal] 08:37:48
+There's no deployment, but if you see…
+
+[rochak agrawal] 08:37:51
+D1 set?
+
+[rochak agrawal] 08:37:57
+Why does
+
+[rochak agrawal] 08:37:59
+giving only…
+
+[rochak agrawal] 08:38:01
+desired zero.
+
+[rochak agrawal] 08:38:17
+Okay, let me create another demon set, uh…
+
+[rochak agrawal] 08:38:20
+Just a second…
+
+[rochak agrawal] 08:38:23
+Uh, name is FluentD.
+
+[rochak agrawal] 08:38:40
+Levels.
+
+[rochak agrawal] 08:39:00
+container fluent fee.
+
+[rochak agrawal] 08:39:05
+Influent.
+
+[rochak agrawal] 08:39:18
+Okay?
+
+[rochak agrawal] 08:39:20
+Run this.
+
+[rochak agrawal] 08:39:22
+Fluentd is a login collection tool.
+
+[rochak agrawal] 08:39:58
+I think I got the issue, but uh… let's try this.
+
+[rochak agrawal] 08:40:23
+What does Arabia have fluent in Brussels?
+
+[rochak agrawal] 08:40:26
+So cool.
+
+[rochak agrawal] 08:40:32
+Error from when creating the…
+
+[rochak agrawal] 08:40:38
+Let's see
+
+[rochak agrawal] 08:40:45
+Today, I created another cluster, which is an automatic cluster, so I think that's the reason we are not, uh…
+
+[rochak agrawal] 08:40:58
+So, the reason we are getting the zero, because we created something called the automatic cluster, because, uh…
+
+[rochak agrawal] 08:41:06
+Like, I forgot to create the cluster before the class, so, you know, create the cluster, uh, I choose… so there is one more option in Azure.
+
+[rochak agrawal] 08:41:15
+And that is why it is not giving us that option. So if you see here, when you create a cluster… so there is two options there. Kubernetes cluster, which is our standard cluster.
+
+[rochak agrawal] 08:41:27
+So, customized setup for added control and the flexibility, which we were using till now. But today, I created something called the Automated Kubernetes Cluster.
+
+[rochak agrawal] 08:41:35
+So, in the automatic Kubernetes cluster, it is like a serverless version of your cluster, where the node also, which you are seeing, is not in our control, okay? Like, previously we discussed, there is a worker node, and then there's a control plane.
+
+[rochak agrawal] 08:41:56
+Now, in the automatic Kubernetes cluster, the worker node is also being managed by the Azure itself. That is why, since we are not controlling the node, that is why my daemon set is going into this state, desired zero, because.
+
+[rochak agrawal] 08:42:11
+B practically does not have any node which we are controlling.
+
+[rochak agrawal] 08:42:15
+Okay? So, that's the reason, um, and you can see here, only the pod which.
+
+[rochak agrawal] 08:42:23
+AKS is managing, right?
+
+[Vaibhav Gupta] 08:42:30
+So…
+
+[Vaibhav Gupta] 08:42:32
+Wait, 30 minutes, it is not working in normal cluster, right?
+
+[rochak agrawal] 08:42:35
+No, no, daemonset works in a normal cluster, this is an automatic cluster. So you can see, the pod which need to be managed by Azure, they are running, right?
+
+[rochak agrawal] 08:42:46
+Three.
+
+[rochak agrawal] 08:42:48
+But since… see, understand, what is the use case of a daemon cell?
+
+[rochak agrawal] 08:42:53
+So, you've done some background processes on the node, correct?
+
+[rochak agrawal] 08:43:00
+Right, Webhook?
+
+[rochak agrawal] 08:43:07
+When the node you are not controlling, then you do not need, basically, a daemon set, and that's why we are not able to…
+
+[Vaibhav Gupta] 08:43:12
+Yeah, right, right, uh, since…
+
+[rochak agrawal] 08:43:14
+Right? So, uh, that's the reason, okay? Uh, that is the reason we are not able… we are not able to run our, um.
+
+[rochak agrawal] 08:43:25
+Daemon said pods. We have created it, but the pod is not coming up, because we do not have any nodes where we can run it.
+
+[rochak agrawal] 08:43:34
+So that's the reason, okay? Now, similar to…
+
+[rochak agrawal] 08:43:39
+daemon set.
+
+[rochak agrawal] 08:43:41
+There is one more very interesting thing is there.
+
+[rochak agrawal] 08:43:45
+which is called the stateful sets.
+
+[rochak agrawal] 08:43:52
+Now, before I go to the stateful set.
+
+[rochak agrawal] 08:43:59
+Can anyone tell me what is the difference between stateless versus…
+
+[rochak agrawal] 08:44:05
+stateful application.
+
+[rochak agrawal] 08:44:08
+Uh, application.
+
+[rochak agrawal] 08:44:13
+Anyway
+
+[rochak agrawal] 08:44:26
+Yes, go on, sir.
+
+[Kaushal] 08:44:29
+In Stateless, you won't, uh, remember who, uh, requested previously. You just fire and forget.
+
+[rochak agrawal] 08:44:34
+Mm-hmm.
+
+[Kaushal] 08:44:37
+And in Stateful, you keep track of the context, like, I mean, who is requesting.
+
+[rochak agrawal] 08:44:44
+Correct.
+
+[Kaushal] 08:44:45
+And you're managing the session, basically.
+
+[rochak agrawal] 08:44:47
+You're managing the session. Exactly. So stateful and stateless application differ primarily in how they handle session context and data across user request. Okay. Stateful application, they remember past interaction.
+
+[rochak agrawal] 08:45:03
+And store session data or context on the server.
+
+[rochak agrawal] 08:45:08
+Uh, each request depends on the data saved from the previous interaction. If you switch the server, you often need something called the sticky session, or the session replication, so the new server can find your data. So, for example, traditional databases, file transfer sessions.
+
+[rochak agrawal] 08:45:24
+Or online shopping carts that tie items directly to a local server session.
+
+[rochak agrawal] 08:45:32
+Right? While on the stateless application, they treat every request as an independent transaction. They do not store client context on the application server.
+
+[rochak agrawal] 08:45:44
+Every request must carry all the information needed to process it, such as JWT authentication token or session reference, or fetch state extremely from a shared database or a cache.
+
+[rochak agrawal] 08:46:00
+Okay, so REST API, microservices, static web servers…
+
+[rochak agrawal] 08:46:06
+A modern platform like Twitter and Instagram, they follow the stateless applications. Now, the benefit of stateless application is extremely easy to scale horizontally, high fault tolerance, and simple failover.
+
+[rochak agrawal] 08:46:21
+Through this shift, the data retention to a warden to an external database, okay? Now, if I talk about…
+
+[Vaibhav Gupta] 08:46:32
+Also, I'm not able to understand what you're trying to say. Get it?
+
+[rochak agrawal] 08:46:36
+Okay, no problem. Um, see, um, when you go to, um…
+
+[Vaibhav Gupta] 08:46:42
+I got it, it's, uh, who remembers, like, in a simple way, who remembers the past and previous, uh, requests, so that is straightforward.
+
+[rochak agrawal] 08:46:48
+Hmm?
+
+[rochak agrawal] 08:46:50
+Stateless is, for example, for example, I go to news.google.com.
+
+[Vaibhav Gupta] 08:46:50
+And who doesn't remember that is…
+
+[Vaibhav Gupta] 08:46:56
+Mm-hmm.
+
+[rochak agrawal] 08:46:58
+Now…
+
+[rochak agrawal] 08:47:01
+Right? If you come after, uh, 15 minutes, again, you will… you might see something… a different use, right? So that is a stateless. I… I am going to BBC.com.
+
+[rochak agrawal] 08:47:18
+Correct? You are seeing some news. If you come after 15 minutes, 20 minutes, maybe tomorrow, you will see some different news, correct? So that is stateless. Your application does not depend on what you have seen last.
+
+[Vaibhav Gupta] 08:47:18
+Mm-hmm.
+
+[Vaibhav Gupta] 08:47:26
+Mmhm.
+
+[rochak agrawal] 08:47:32
+Hey!
+
+[Vaibhav Gupta] 08:47:32
+Okay.
+
+[rochak agrawal] 08:47:34
+Okay, but for example, when you go to Amazon.com.
+
+[rochak agrawal] 08:47:38
+Let's say I go to amazon.com. Sorry.
+
+[rochak agrawal] 08:47:45
+you…
+
+[rochak agrawal] 08:47:49
+So, for example, currently, I do, uh, I need to sign into my account.
+
+[rochak agrawal] 08:47:54
+So, the point here is, let's say I am browsing this application, okay? I added something into my cart.
+
+[Vaibhav Gupta] 08:48:03
+Mm-hmm.
+
+[rochak agrawal] 08:48:03
+Hey!
+
+[rochak agrawal] 08:48:04
+I forgot about it, I came after one week, I added something else into my cart, and go to checkout.
+
+[rochak agrawal] 08:48:12
+How much product you are going to see in your cart.
+
+[rochak agrawal] 08:48:15
+Cool.
+
+[Vaibhav Gupta] 08:48:16
+Zero. Yeah, okay, two.
+
+[rochak agrawal] 08:48:17
+Y02, right?
+
+[rochak agrawal] 08:48:20
+One which you added today, one which you added a week back.
+
+[rochak agrawal] 08:48:25
+Got it?
+
+[Vaibhav Gupta] 08:48:25
+Okay.
+
+[rochak agrawal] 08:48:26
+So, your Amazon application…
+
+[rochak agrawal] 08:48:29
+is remembering your previous state. Correct?
+
+[rochak agrawal] 08:48:36
+You understood?
+
+[Vaibhav Gupta] 08:48:38
+Yep.
+
+[rochak agrawal] 08:48:38
+Amazon is remembering your previous state, that's why whatever you have ordered added into the card a big bag.
+
+[rochak agrawal] 08:48:45
+It is there.
+
+[Vaibhav Gupta] 08:48:47
+Mm-hmm.
+
+[rochak agrawal] 08:48:47
+So your… whatever you are interacting with Amazon right now is based on your previous context.
+
+[rochak agrawal] 08:48:56
+Correct?
+
+[Vaibhav Gupta] 08:48:57
+Mm-hmm.
+
+[rochak agrawal] 08:48:58
+So that is called the stateful applications.
+
+[rochak agrawal] 08:49:02
+Okay.
+
+[Vaibhav Gupta] 08:49:04
+Gotcha.
+
+[rochak agrawal] 08:49:05
+Now, the very good example of a stateful application is, uh, your online games.
+
+[rochak agrawal] 08:49:13
+You play multiple games, you accumulate your points, you top the leaderboard. How it is being possible? Because your application is remembering what you have done in your next previous game.
+
+[Vaibhav Gupta] 08:49:21
+Mm-hmm.
+
+[rochak agrawal] 08:49:28
+What was the score? And then probably saving them in a database. But it is remembering everything, correct?
+
+[rochak agrawal] 08:49:36
+But simply, I go to… let's say I go, um, visit any IIT…
+
+[rochak agrawal] 08:49:41
+We'll move upstate.
+
+[rochak agrawal] 08:49:44
+I can come here tomorrow also, but…
+
+[rochak agrawal] 08:49:47
+I will see something different. Maybe some faculty will change or something. So my… this interaction is not dependent on my previous interaction.
+
+[Vaibhav Gupta] 08:49:56
+Mm-hmm.
+
+[rochak agrawal] 08:49:57
+Correct? So that is a stateless.
+
+[Vaibhav Gupta] 08:49:58
+Yep.
+
+[Vaibhav Gupta] 08:50:00
+Okay.
+
+[rochak agrawal] 08:50:01
+Okay, now if you see…
+
+[rochak agrawal] 08:50:05
+in Kubernetes.
+
+[rochak agrawal] 08:50:09
+What do you think, uh, deployments are stateful and stateless?
+
+[Vaibhav Gupta] 08:50:18
+Deployment, uh…
+
+[Vaibhav Gupta] 08:50:22
+Street is.
+
+[rochak agrawal] 08:50:24
+Deployments are stateless. Exactly. Right? So, if you want to store.
+
+[rochak agrawal] 08:50:31
+So, be clear, stateless applications are those that do not store any session or state information about the customer. Each request from a client.
+
+[rochak agrawal] 08:50:42
+is treated as an independent transaction that the server can handle without any knowledge of the previous interaction.
+
+[rochak agrawal] 08:50:50
+Right? Easy to scale, because they don't share… they don't store session data. Failure in one instance do not affect other, and we can deploy multiple instances behind a load balancer without worrying about my data.
+
+[Vaibhav Gupta] 08:50:52
+Hmm.
+
+[rochak agrawal] 08:51:05
+Each API request contains all the necessary info. Correct.
+
+[rochak agrawal] 08:51:10
+While the stateful application, on the other hand, maintains session or state information about the client, they rely on a persistent storage to store the data between the client interaction. More complex due to managing data consistency and synchronization.
+
+[Vaibhav Gupta] 08:51:10
+Mm-hmm.
+
+[rochak agrawal] 08:51:28
+Scaling is very harder, uh, due to data consistency need, and…
+
+[rochak agrawal] 08:51:34
+API maintains session info between the client interactions, right?
+
+[rochak agrawal] 08:51:39
+Now, stateless applications are inherently more scalable, because they are independent, right? So, for example, I'm running, um…
+
+[rochak agrawal] 08:51:52
+Three replicas.
+
+[rochak agrawal] 08:51:53
+horizontal autoscaler, we're going to add one more if the load is increasing, correct? Without thinking about how my data will be mapped and all other things.
+
+[rochak agrawal] 08:52:06
+But, uh, so in summary, if you say the stateless nature of these applications allows them to scale horizontally by adding more instances effortlessly.
+
+[rochak agrawal] 08:52:20
+Making them inherently more skilled, uh…
+
+[rochak agrawal] 08:52:25
+More scalable and suitable for handling varying workload and traffic pattern.
+
+[rochak agrawal] 08:52:31
+Okay, uh…
+
+[rochak agrawal] 08:52:33
+But if you talk about stateful set.
+
+[rochak agrawal] 08:52:37
+So your deployments are inherently stateless. Okay. Now if you ask I want to run some stateful application in Kubernetes, how I'm going to do this. So that is where there is something called the stateful sets are there.
+
+[rochak agrawal] 08:52:55
+Okay? Again, like, um, you deploy your stateful sets, uh, like the daemon set. So, stateful set.
+
+[rochak agrawal] 08:53:04
+runs a group of pods and maintains a sticky identity for each of these pods. This is useful for managing applications that need persistent storage or a stable, unique network identity.
+
+[rochak agrawal] 08:53:19
+What does it mean?
+
+[rochak agrawal] 08:53:21
+Like deployment, stateful set also runs a group of pod. Okay. So I will define I need four pod, three pod.
+
+[rochak agrawal] 08:53:31
+Sorry.
+
+[rochak agrawal] 08:53:33
+3 pod, 4 pod, whatever the number is. But it is going to maintain a sticky identity for each of these pods. Now, before that, let me show you one thing.
+
+[rochak agrawal] 08:53:57
+We have run this multiple times, let me run it again.
+
+[rochak agrawal] 08:54:09
+Now, if you see here, when I apply.
+
+[rochak agrawal] 08:54:15
+This is deployment, okay?
+
+[rochak agrawal] 08:54:24
+Okay? YubCTL get ports.
+
+[rochak agrawal] 08:54:30
+Okay, now you see, um…
+
+[rochak agrawal] 08:54:32
+These are going into the pending status, because I think we, uh, do not have some notes, some problem with the notes. But the point here is, you see there is a 3 application got created.
+
+[rochak agrawal] 08:54:43
+three instance of your application got created with a different, different name. GL at XS, APG, whatever, what's the number is. Now.
+
+[rochak agrawal] 08:54:53
+I said the number should be 3. Now, let's say I'll delete one board.
+
+[rochak agrawal] 08:54:59
+Cube CTL.
+
+[rochak agrawal] 08:55:02
+Delete board.
+
+[rochak agrawal] 08:55:07
+Bobby?
+
+[rochak agrawal] 08:55:09
+And taste.
+
+[rochak agrawal] 08:55:14
+Now if you get caught.
+
+[rochak agrawal] 08:55:18
+No.
+
+[rochak agrawal] 08:55:21
+You have G L at X X, G L at X S, K T H G H.
+
+[rochak agrawal] 08:55:29
+This one we have deleted, and C8V2M has also… this has deleted, and there is a new pod got created.
+
+[rochak agrawal] 08:55:37
+Okay, so when you…
+
+[rochak agrawal] 08:55:41
+When you run an application as a deployment.
+
+[rochak agrawal] 08:55:46
+it deploys the same… similar type of instances, but not the same instance. So you see, this spot got deleted.
+
+[rochak agrawal] 08:55:55
+Correct?
+
+[rochak agrawal] 08:55:56
+And instead of this port, a similar port is created.
+
+[rochak agrawal] 08:56:01
+Not the same pot. Similar pot.
+
+[rochak agrawal] 08:56:05
+Clear?
+
+[rochak agrawal] 08:56:14
+So stateful set is the workload API object used to manage stateful application.
+
+[rochak agrawal] 08:56:22
+Uh, it manages the deployment, scaling, uh, a set of pods, and provides guarantees about the ordering and uniqueness of these pods. Okay?
+
+[rochak agrawal] 08:56:33
+It is like a deployment only, but a more ordered one. Like a deployment, a stateful set manages board.
+
+[rochak agrawal] 08:56:43
+that are based on an identical container specification. But unlike a deployment, stateful set maintains a sticky identity for each of its pod.
+
+[rochak agrawal] 08:56:57
+This is very important line.
+
+[rochak agrawal] 08:57:00
+Unlike a deployment, StatefulSet maintains a sticky identity for each pod.
+
+[rochak agrawal] 08:57:06
+Now, in the deployment, we have seen there is no identity of the pod, correct?
+
+[rochak agrawal] 08:57:14
+Previously, we has this pod. Now, this pod got deleted. Another similar pod got created.
+
+[rochak agrawal] 08:57:20
+We can say the similar pod, not the same pod.
+
+[rochak agrawal] 08:57:24
+Agree? Any question, Bebo?
+
+[Vaibhav Gupta] 08:57:28
+Uh, well, what is sticky, like, you said, like, statefully sticky? Mm-hmm.
+
+[rochak agrawal] 08:57:30
+We'll come to that, yeah. Yes. We'll come to that, okay? But we are clear in the deployment. Deployment maintains the similar ports, but not the same ports.
+
+[Vaibhav Gupta] 08:57:36
+Yup.
+
+[rochak agrawal] 08:57:41
+Correct?
+
+[Vaibhav Gupta] 08:57:42
+Yep.
+
+[rochak agrawal] 08:57:43
+Okay, now when you will deploy this application as a stateful set, stateful set manages pod.
+
+[rochak agrawal] 08:57:54
+It maintains a sticky identity. So, for example, if I'm deleting this pod.
+
+[rochak agrawal] 08:58:00
+8.
+
+[rochak agrawal] 08:58:01
+Then this pod will get recreated, not the other one.
+
+[rochak agrawal] 08:58:06
+Okay.
+
+[rochak agrawal] 08:58:08
+So that is a sticky identity. These pods are created from the same specification but are not interchangeable. Each has a persistent identifier that it maintain across any rescheduling. Okay. So stateful sets are valuable for the application that requires.
+
+[rochak agrawal] 08:58:26
+Uh, stable identifiers.
+
+[rochak agrawal] 08:58:29
+stable and persistent storage, ordered scaling, ordered rolling updates, okay? So, if you want to use some of them, then we are going to use them as a stateful set.
+
+[rochak agrawal] 08:58:42
+So…
+
+[rochak agrawal] 08:58:46
+Just a second.
+
+[rochak agrawal] 08:59:03
+Now you can see?
+
+[rochak agrawal] 08:59:11
+Instead of… you can see here, I'm defining the replicas as equal to 3, okay? Same thing, NGINX container or volume claim is… you can…
+
+[rochak agrawal] 08:59:21
+Leave that for now, okay?
+
+[rochak agrawal] 08:59:24
+You can see this is your deployment file only. I am now maintaining it as a stateful set.
+
+[rochak agrawal] 08:59:31
+Correct?
+
+[rochak agrawal] 08:59:34
+Now, what's going to happen? I'll just say…
+
+[rochak agrawal] 08:59:45
+Delete the deployment.
+
+[rochak agrawal] 09:00:01
+Default admin.
+
+[rochak agrawal] 09:00:13
+Okay? Now, statefulset.yaml…
+
+[rochak agrawal] 09:00:26
+Qt CTL…
+
+[rochak agrawal] 09:00:28
+Yes.
+
+[rochak agrawal] 09:00:56
+This is the edit.
+
+[rochak agrawal] 09:01:04
+We are getting…
+
+[rochak agrawal] 09:01:33
+Okay? It says the full set created. Okay? Now, if you see…
+
+[rochak agrawal] 09:01:54
+set…
+
+[rochak agrawal] 09:01:59
+You can see, we have 3 ports. Now, if you see kubectl…
+
+[rochak agrawal] 09:02:05
+Get boards.
+
+[rochak agrawal] 09:02:11
+So you, you see it here, this is WebGero, okay? Now, what does it mean? Whenever you will delete the WebGero.
+
+[rochak agrawal] 09:02:19
+Previously, we have seen that.
+
+[rochak agrawal] 09:02:24
+Yup, CTL.
+
+[rochak agrawal] 09:02:26
+Delete board.
+
+[rochak agrawal] 09:02:29
+0.
+
+[rochak agrawal] 09:02:36
+Okay. Now, if you see.
+
+[rochak agrawal] 09:02:45
+Again, WebGero is coming.
+
+[rochak agrawal] 09:02:48
+So, what it does, it basically tied an identifier.
+
+[rochak agrawal] 09:02:54
+ties an identifier with your pod, so that if someone is referring them, they are going to remember from which pod they were interacting with, okay?
+
+[rochak agrawal] 09:03:07
+So, they maintain the state in the way. Previously, with the help of deployment, we have seen that if you're using it as a deployment, then, um, your, um…
+
+[rochak agrawal] 09:03:21
+A similar type of the pod is going to come, um, when you are, uh, recreating the pod, okay? But, uh, when you run a stateful set, you can see that, uh.
+
+[rochak agrawal] 09:03:33
+The similar pod… it's not a similar pod, it's the same pod which will come up again. So that…
+
+[rochak agrawal] 09:03:39
+All other external applications, new services, uh, your databases.
+
+[rochak agrawal] 09:03:45
+They, whatever they were interacting with Web Zero, they will keep interacting only with Web Zero and thus that's how you are going to manage the state of your applications. So anywhere we want to manage the state of our applications.
+
+[rochak agrawal] 09:04:01
+we are going to use the stateful set. So basically, a stateful set is an API object that's purpose-built to support stateful application components. It creates a set of identically configured.
+
+[rochak agrawal] 09:04:15
+pod from the specification which we are going to apply, but each pod is assigned a non-interchangeable identity. That is very important.
+
+[rochak agrawal] 09:04:26
+In deployment, each pod is not assigned an identity. Here in a stateful set, each pod is assigned a non-interchangeable identity.
+
+[rochak agrawal] 09:04:37
+Pods retain their identity if they have to reschedule, or you scale the stateful set.
+
+[rochak agrawal] 09:04:46
+StatefulSet solves the challenges of running stateful services in Kubernetes.
+
+[rochak agrawal] 09:04:52
+The persistent pod identities or permitted storage volumes to be associated.
+
+[rochak agrawal] 09:05:00
+with the specific pods inside the stateful set. They also facilitate graceful scaling operations and rolling updates where pods are added and removed in a predictable order. Now, we have seen in a deployment, uh, uh, thing.
+
+[rochak agrawal] 09:05:19
+the names are being done randomly, right? CYXYZ, or something like that. But here, you see, first Web0, Web1, Web2, Web3.
+
+[rochak agrawal] 09:05:30
+Something like this will come up. Now, the important question is when to use a stateful set.
+
+[rochak agrawal] 09:05:37
+So, now let's consider a simple example of running three replicas of MySQL database server in Kubernetes. The deployment should be configured with one pod in a primary role, handling the read/write operation and the remaining three pods as a read-only replica.
+
+[rochak agrawal] 09:05:57
+Applications connecting to the database will always need to connect.
+
+[rochak agrawal] 09:06:02
+That is in the primary role to… in order to receive the read-write access, correct?
+
+[rochak agrawal] 09:06:08
+That would not be possible if a deployment of the replica set was used as scheduling or other application changes would generate the new pod identities. The application would have no way of knowing which pod is the primary MySQL instances.
+
+[rochak agrawal] 09:06:25
+Stateful sets eliminate this problem. Each pod in a stateful set is assigned a predictable and consistent network identity in a form of, let's say, what we are saying. So, we can define something like, um…
+
+[rochak agrawal] 09:06:43
+MySQL…
+
+[rochak agrawal] 09:06:47
+0 MySQL.
+
+[rochak agrawal] 09:06:49
+one MySQL, two, for example. Now, we can assign.
+
+[Vaibhav Gupta] 09:06:51
+Call it home.
+
+[rochak agrawal] 09:06:55
+We can assign this MySQL0 your primary replica.
+
+[rochak agrawal] 09:07:01
+Right?
+
+[rochak agrawal] 09:07:02
+Primary role. So, even though this, uh, this, uh, node, this pod is going to be recreated, it is always going to be recreated with the same name, mysql0, okay? And, uh, so that.
+
+[rochak agrawal] 09:07:18
+Applications which are connecting to the primary.
+
+[rochak agrawal] 09:07:21
+They will keep connecting. Now other replicas can connect. Now other application can connect to MySQL zero to reliably interact with the MySQL primary instance because stateful sets also guarantees the ordered update.
+
+[rochak agrawal] 09:07:37
+The vital MySQL zero replicas is only terminated.
+
+[rochak agrawal] 09:07:41
+If you scale down to 0, the read-only replicas will always be removed first. So first, MySQL 2 will be removed, then MySQL 1 will be removed, then in the last, MySQL 0 will be removed.
+
+[rochak agrawal] 09:07:52
+Okay? Then the persistent storage characteristic of the stateful set mean that each pod will always have.
+
+[rochak agrawal] 09:08:00
+have its own storage volume reattached, even if after we schedule it.
+
+[rochak agrawal] 09:08:06
+Right? So, that is how we are going to use, uh.
+
+[rochak agrawal] 09:08:11
+these, um…
+
+[rochak agrawal] 09:08:13
+stateful sets.
+
+[rochak agrawal] 09:08:16
+So, each bot will have a predictable name, its own persistent volume claim from the data template altogether.
+
+[rochak agrawal] 09:08:24
+So, that is how they are different from the, uh, your Kubernetes deployment.
+
+[rochak agrawal] 09:08:31
+Clear? Any question?
+
+[Vaibhav Gupta] 09:08:40
+So, uh, you said, like, in stateful, the pod will be, uh, they create on same name, right?
+
+[rochak agrawal] 09:08:47
+Correct. Same… not the same name, uh… okay, yeah, if… if I'm deleting MySQL 0, it will recreate at a MySQL 0 only, yes.
+
+[Vaibhav Gupta] 09:08:57
+A similar one, right? Same.
+
+[rochak agrawal] 09:08:58
+Same one, yes.
+
+[rochak agrawal] 09:09:02
+Okay?
+
+[rochak agrawal] 09:09:05
+And uh… the order will be followed. See, for example, I created… when you create a deployment.
+
+[rochak agrawal] 09:09:12
+3 replicas will be created, correct?
+
+[Vaibhav Gupta] 09:09:17
+Correct.
+
+[rochak agrawal] 09:09:18
+And then, when you are scaling, let's say I say scale 3 to 1, then randomly.
+
+[rochak agrawal] 09:09:25
+Any two replicas will be deleted. Correct?
+
+[rochak agrawal] 09:09:30
+But in a stateful set, it is not going to happen like this way. So for example, I am creating these three replicas.
+
+[rochak agrawal] 09:09:38
+If I will say scale 3 to 1, first MySQL 2 will be deleted, then MySQL 1 will be deleted. MySQL 0 will be deleted at last, so it follows the order also.
+
+[rochak agrawal] 09:09:54
+Okay?
+
+[Vaibhav Gupta] 09:09:55
+Okay.
+
+[rochak agrawal] 09:09:58
+Okay, I think we should be good for today. Anyways, people are…
+
+[rochak agrawal] 09:10:04
+in a long weekend mood. Tomorrow, I think there will be a holiday. The team will…
+
+[rochak agrawal] 09:10:12
+Confirm you, I got the notification, but I'm not sure, uh, it was a little…
+
+[rochak agrawal] 09:10:18
+unclear message, so the team will inform you, but I guess tomorrow, um, there will be a Dashara holiday.
+
+[Vaibhav Gupta] 09:10:28
+Yeah, we need that.
+
+[rochak agrawal] 09:10:29
+Yeah, okay, cool.
+
+[Vaibhav Gupta] 09:10:35
+Okay.
+
