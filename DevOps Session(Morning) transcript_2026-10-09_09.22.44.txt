@@ -1,0 +1,2718 @@
+[rochak agrawal] 07:39:38
+So let's just start.
+
+[rochak agrawal] 07:39:44
+So, in the last two classes, we were discussed, uh, we have discussed about, uh.
+
+[rochak agrawal] 07:39:50
+The basics of Kubernetes, the basics of container orchestration, what is container orchestration?
+
+[rochak agrawal] 07:39:56
+Just give me a second.
+
+[rochak agrawal] 07:40:18
+Basics of container orchestration, why do we need it, Kubernetes and other thing. Now today what we are going to do, we are going to start about the objects, right? We have seen the anatomy of the object. Whenever you want to deploy an object.
+
+[rochak agrawal] 07:40:35
+So Kubernetes considers everything as an object, and whenever we want to deploy something like pods, services, namespaces, everything Kubernetes considers as an object, and you need to define an object definition file.
+
+[rochak agrawal] 07:40:49
+So that anatomy also we have seen, uh, where you will have this kind API version metadata and, uh.
+
+[rochak agrawal] 07:41:00
+specification. Now.
+
+[rochak agrawal] 07:41:02
+The first three fields are going to be the same for all the objects.
+
+[rochak agrawal] 07:41:07
+like, the kind will change, but all the field is going to be the same. But the specification, whatever the values are going to be in that specification, uh, specification for a…
+
+[rochak agrawal] 07:41:18
+Volume will be different from a pod and so on and so forth. So what we are going to do today is we are going to create a cluster. I am going to use AKS for it. You can use anyone, there is no difference. In the end, we are going to run the Kubernetes command, not the AKS commands.
+
+[rochak agrawal] 07:41:33
+Okay, so…
+
+[rochak agrawal] 07:41:36
+I already created a cluster, but I'll show you how to create a cluster, because it takes a lot of time to create a cluster. So, you go to Kubernetes service.
+
+[rochak agrawal] 07:41:45
+So you can see I have already created a cluster just now, like half an hour back.
+
+[rochak agrawal] 07:41:52
+Creating a cluster is very easy in the managed services, and that is what we are using nowadays. You will just go create a Kubernetes cluster.
+
+[rochak agrawal] 07:41:59
+Some option here and there may be different, but all the things remain the same.
+
+[rochak agrawal] 07:42:06
+Now you just, so here in the cluster there will be two things.
+
+[rochak agrawal] 07:42:12
+Whenever you are going to use any of the managed service, let's say AKS you are using.
+
+[rochak agrawal] 07:42:20
+So, as we discussed that, when you use the managed service, your control plane.
+
+[rochak agrawal] 07:42:31
+will be managed by the service provider. And then you will be going to use multiple worker groups, like…
+
+[rochak agrawal] 07:42:39
+whatever the number of the worker node you would be feeding. So that is what you are going to do here. You will just give the name, okay? Um…
+
+[rochak agrawal] 07:42:48
+Pricing tier, I'll go in free. You need to give the Kubernetes version.
+
+[rochak agrawal] 07:42:52
+So, you can always go with the default, but you can see, um, there is 1.35, 1.37 is in a preview, and if you say…
+
+[rochak agrawal] 07:43:01
+Because, see, 1.37 is in a preview, so the latest version is 1.36. I'm not talking about the minor version, major version is a 1.36. So you can say it only supports the N-2 version.
+
+[rochak agrawal] 07:43:15
+1.34.0.
+
+[rochak agrawal] 07:43:18
+you are not going to see 1.3332 or 3.1. So that is what… See, in a managed service, you always get a N-2 version, okay?
+
+[rochak agrawal] 07:43:30
+But the very important thing is, even, uh, see, for example, Kubernetes keep releasing, uh, new versions every 2 months, 3 months. When I started working on Kubernetes, I started on 1.12.
+
+[rochak agrawal] 07:43:42
+12, 1.12 version. Okay, so, because, see, let's say, whenever the 1.37 will become up.
+
+[rochak agrawal] 07:43:51
+Um, a regular version, then whatever you are running on 1.34.
+
+[rochak agrawal] 07:43:56
+will be out of support. So that is where you need to keep upgrading your Kubernetes cluster as well, okay? This is very important, okay? If you're running an isolated cluster, that's okay, but whenever…
+
+[rochak agrawal] 07:44:12
+Kubernetes will come with the 1.37, then it is going to be changed. So 1.3 will go out of support.
+
+[rochak agrawal] 07:44:19
+So that's where…
+
+[rochak agrawal] 07:44:20
+So you can see you have multiple options enabled with the patch, enabled with stable, rapid.
+
+[rochak agrawal] 07:44:26
+If you want, I can disable it as well. Okay, so you say I will do it. So update to the… Now, what are these options? So whenever, let's say, 1.3.8 you are running and the minor version is coming, then you need to upgrade.
+
+[rochak agrawal] 07:44:43
+or you need to upgrade when the 1.6 is coming. So, for that, these options are there.
+
+[rochak agrawal] 07:44:48
+And then you go to Next. This is important for us.
+
+[rochak agrawal] 07:44:52
+Okay. Note pools. So say.
+
+[rochak agrawal] 07:44:56
+There is node pool.
+
+[rochak agrawal] 07:44:59
+The node pool is the worker node, which you are going to create here.
+
+[rochak agrawal] 07:45:03
+Okay, so you can see the number of the nodes, 2 to 5. Of course, you can go change it, configure it, and everything. And here you can see maximum ports per node is 110. This is, again, an important point.
+
+[rochak agrawal] 07:45:19
+So, if you need to run, uh, more pod, you need more nodes, okay? So, 2 to 5 here, you can see, it will start with the 2 node, and as, uh…
+
+[rochak agrawal] 07:45:30
+the load is going to increase, okay? Then it is going to increase the load. And here.
+
+[rochak agrawal] 07:45:37
+not only the one type of the node pool, so I can go, I can add, uh, let's say, another node pool here.
+
+[rochak agrawal] 07:45:45
+And you give the name.
+
+[rochak agrawal] 07:45:48
+So, I'll say my custom node pool, for example.
+
+[rochak agrawal] 07:46:06
+Okay.
+
+[rochak agrawal] 07:46:09
+Now there is two mode, okay? So if you see user and system, now if you remember when we talked about the workspace.
+
+[rochak agrawal] 07:46:18
+Uh, sorry, namespace. My apologies. So, we have discussed there are certain types of the ports which is going to run, um, when you create a cluster. It is not about what is the application that you are running, it is what is the… there are certain types of the application which will run, like, cube system, cube proxy.
+
+[rochak agrawal] 07:46:36
+This type of application is so that when you run.
+
+[rochak agrawal] 07:46:41
+this as a system mode. It means that you are running.
+
+[rochak agrawal] 07:46:45
+Uh, you're creating this, uh, node. This is this, uh, node pool. So this is choose between system and the user mode. System node pool are preferred for the system board, right?
+
+[rochak agrawal] 07:46:56
+whatever the pod your Kubernetes will run, okay, while the user mode is whatever the pods we are going to create.
+
+[rochak agrawal] 07:47:07
+And here you can see, uh, you can choose to auto-scale, which is a recommended method, or you can manually adjust the number of the port, and then you can define the size of the virtual machine, uh, disk of the virtual machine. All of that we can do.
+
+[rochak agrawal] 07:47:21
+I'll just cancel this.
+
+[rochak agrawal] 07:47:26
+Okay.
+
+[rochak agrawal] 07:47:29
+Uh, and here, we discussed about the taints also, so I can apply the taints. Now, when you apply the taints, no pod will be able to.
+
+[rochak agrawal] 07:47:38
+schedule on these particular nodes. Then we have to do something called the tolerations. You'll see that differently. So you can see I can apply the labels, I can apply the teams.
+
+[rochak agrawal] 07:47:53
+So, note pool, uh…
+
+[rochak agrawal] 07:47:56
+So you can see, currently, uh, it is unavailable for me, because I already created. And then, there's other things that are platform-specific, we do not need to go into detail as of now.
+
+[rochak agrawal] 07:48:07
+Here, you can see, add the namespaces. Those, all the things we will do once we will add, we will enter into the Kubernetes, we are not going to do it from here. And you will just do the review and create, and your Kubernetes cluster is going to be created. There is nothing much.
+
+[rochak agrawal] 07:48:25
+In terms of the managed services that we need to do. Uh, it is going to take a lot of time, around 30 to 35 minutes, it will easily take. Okay, so I already have my cluster created.
+
+[rochak agrawal] 07:48:38
+This is my cluster. Now, if you see it here.
+
+[rochak agrawal] 07:48:41
+So there is something called the Kubernetes resources.
+
+[rochak agrawal] 07:48:44
+So if you click on this, so you can see the namespaces, workload, services ingress, network policies, storage, all the Kubernetes resources, you can see it from here as well. So if you click on the namespaces.
+
+[rochak agrawal] 07:49:02
+So what we discussed, like cube public, cube system, default is already there. So I created this approximately 41 minutes ago, right?
+
+[rochak agrawal] 07:49:12
+Now, if you go to…
+
+[rochak agrawal] 07:49:16
+The workloads?
+
+[rochak agrawal] 07:49:21
+So you can see if you see this there. So these are running Azure policy metric server. Metric server is for monitoring. Now these are the system ports. What do you mean by the system port? See when we discuss the Kubernetes architecture.
+
+[rochak agrawal] 07:49:37
+We said API server is talking to scheduler, scheduler is talking to controller, controller is talking to kubelet, and all of that. Now for that also, this is going to be run by certain application. So these are these applications, right? Okay, so kube system, logs, metrics, all of those things are there.
+
+[rochak agrawal] 07:49:54
+And if you want to filter it out from a namespace, so if you say…
+
+[rochak agrawal] 07:49:59
+default, so there is, in default namespace, there is no deployment, right? And then, if we want to connect.
+
+[rochak agrawal] 07:50:09
+to this cluster. Well, again.
+
+[rochak agrawal] 07:50:17
+So there is an option of connect. Okay, click on connect.
+
+[rochak agrawal] 07:50:22
+So see, you can connect to this cluster from anywhere. For example, I can connect to my cluster from my laptop as well.
+
+[rochak agrawal] 07:50:34
+Or I can connect to my cluster using the Cloud Shell, Azure CLI, or any other method as well. What you need to do is, you need to just copy this command.
+
+[rochak agrawal] 07:50:44
+Right now, I will be using, uh…
+
+[rochak agrawal] 07:50:47
+Without him.
+
+[rochak agrawal] 07:50:48
+So I'll just run this command.
+
+[rochak agrawal] 07:50:54
+So you can see, once you run this command, this is also you do not need to create. This is automatically you are getting it from here.
+
+[rochak agrawal] 07:51:02
+If you will be using EKS, if you will be using GKE, you will get a similar command. So we do not need to worry about this command. What this command basically does is, it is going to save your credential.
+
+[rochak agrawal] 07:51:14
+In a file called config. So if you go here.
+
+[rochak agrawal] 07:51:24
+Now, for us, you forget about VR on EKS. It is a Kubernetes cluster for me, okay? So I go to…
+
+[rochak agrawal] 07:51:44
+So you can see, it actually saved your credential, okay?
+
+[rochak agrawal] 07:51:52
+While this is your URL of the API server.
+
+[rochak agrawal] 07:51:58
+So you can see this is also in a object format only.
+
+[rochak agrawal] 07:52:03
+Hey.
+
+[rochak agrawal] 07:52:05
+So you can see, this is my user.
+
+[rochak agrawal] 07:52:10
+So, this basically stores your credentials.
+
+[rochak agrawal] 07:52:15
+I'll come back to my… I'll show one more thing, which I forgot.
+
+[rochak agrawal] 07:52:20
+So, when you create a cluster.
+
+[rochak agrawal] 07:52:27
+There is something called the private cluster.
+
+[rochak agrawal] 07:52:30
+Okay, now this is one of the very, very important questions which is asked in the interviews.
+
+[rochak agrawal] 07:52:38
+Okay. Uh, a private cluster uses an internal IP address to ensure that the network traffic between the API server and the node pool remain on the private network only.
+
+[rochak agrawal] 07:52:48
+Now, what does it mean? Okay. And understand this.
+
+[rochak agrawal] 07:52:54
+See, um…
+
+[rochak agrawal] 07:53:02
+Okay? Now, let's say…
+
+[rochak agrawal] 07:53:07
+you have an API, you have a control plane, and you have multiple worker nodes.
+
+[rochak agrawal] 07:53:19
+Second, the N number. Now, as we are saying, when you use the Managed Kubernetes Service, this part is managed by the CSP.
+
+[rochak agrawal] 07:53:32
+Okay.
+
+[rochak agrawal] 07:53:33
+So, how you are going to interact with the cluster? You will be given certain endpoint, because the API server is the… your…
+
+[rochak agrawal] 07:53:48
+You will be given the API server, or I should say, the cube API server.
+
+[rochak agrawal] 07:53:59
+which you will be connect, and then you will perform all the operation with a command called kubectl.
+
+[rochak agrawal] 07:54:05
+So whenever you want to run something on your Kubernetes cluster, you need this command. So I'll say kubectl get namespace, kubectl get deployment, whatsoever you need.
+
+[rochak agrawal] 07:54:17
+Everything will start with the kubectl.
+
+[rochak agrawal] 07:54:19
+So once you have the network connectivity, your kubectl will send the request to the Kube API server endpoint. And then, see, we do not interact directly with the worker nodes, right? Then the request will go to your…
+
+[rochak agrawal] 07:54:34
+Cube CTL to Cube FBI.
+
+[rochak agrawal] 07:54:39
+Kube API server, and then Kube API server with the help of Kubelet.
+
+[rochak agrawal] 07:54:45
+Right? They will be interacting to…
+
+[rochak agrawal] 07:54:49
+the worker nodes. Now, whatever. So, as a user, as an end user who wants to deploy your application in Kubernetes, you don't directly interact with the.
+
+[rochak agrawal] 07:55:03
+burger boats, right? Now, people, and this is one of the very common interview questions as well, what is the difference between the private cluster and the public cluster?
+
+[rochak agrawal] 07:55:15
+Understand this difference very carefully, okay? What people generally answer when someone asks them what is a private cluster and what is a public cluster, people will say.
+
+[rochak agrawal] 07:55:31
+The difference between the private cluster and public cluster is, on the public cluster, I am going to deploy my application, which can be accessed by the general public. General public means they are accessible over the internet. While I am on the private cluster.
+
+[rochak agrawal] 07:55:48
+I am going to deploy those applications which is accessible only within the private network.
+
+[rochak agrawal] 07:55:55
+But this is the wrong definition.
+
+[rochak agrawal] 07:55:59
+This is absolutely wrong and 90% people are going to give this definition in the interview.
+
+[rochak agrawal] 07:56:05
+Now, then what is the meaning of the, uh…
+
+[rochak agrawal] 07:56:10
+private cluster. So, we said that once you… see, for example, right now, if I run the command, if I set up the Azure CLI on my laptop, and run this command in particular, this command.
+
+[rochak agrawal] 07:56:28
+this particular command, once I set up the Azure CLI, so you can see, uh, install Azure CLI, and you will just do the login, you will do all this, right?
+
+[rochak agrawal] 07:56:38
+And so I will be able to connect to this AKS cluster, or I would say Kubernetes cluster.
+
+[rochak agrawal] 07:56:47
+From my laptop also.
+
+[rochak agrawal] 07:56:49
+Okay.
+
+[rochak agrawal] 07:56:53
+So if I have a laptop, yeah?
+
+[rochak agrawal] 07:56:56
+And I am running this command.
+
+[rochak agrawal] 07:56:58
+I will be able to connect to KubeAPI server from my laptop, and then I can issue the command. So, for example, I can write a Kubernetes YAML file on my laptop, and I will submit it with the help of kubectl command.
+
+[rochak agrawal] 07:57:13
+What does it mean? My Kube API server endpoint is public.
+
+[rochak agrawal] 07:57:27
+It means it's a public cluster.
+
+[rochak agrawal] 07:57:30
+if…
+
+[rochak agrawal] 07:57:31
+I will create a private cluster, for example.
+
+[rochak agrawal] 07:57:39
+Okay? So then, whatever, uh…
+
+[rochak agrawal] 07:58:00
+And what has happened? Let's see.
+
+[rochak agrawal] 07:58:11
+So, if…
+
+[rochak agrawal] 07:58:13
+API server?
+
+[rochak agrawal] 07:58:15
+your worker note.
+
+[rochak agrawal] 07:58:24
+They all will be deployed in a network.
+
+[rochak agrawal] 07:58:33
+But I would not work.
+
+[rochak agrawal] 07:58:41
+Okay, so if you are deploying a private cluster, then from here only.
+
+[rochak agrawal] 07:58:45
+you will be able to reach the API endpoint, not from here.
+
+[rochak agrawal] 07:58:55
+You can still run the public application here on the worker node, because that's a separate thing.
+
+[rochak agrawal] 07:59:01
+So to understand the difference between the public cluster and the private cluster, this is one of the very common interview question where you say public cluster is a cluster where the API server, queue API server endpoint is public so that I can connect.
+
+[rochak agrawal] 07:59:18
+to my cluster from anywhere. While in the private cluster, my cluster endpoint would not be public, so I need to be in the same network to access the…
+
+[rochak agrawal] 07:59:31
+Cube API endpoint and work with the cluster.
+
+[rochak agrawal] 07:59:35
+Private endpoint does not mean you cannot run the public-facing application on the cluster. It means that your API server is private.
+
+[rochak agrawal] 07:59:43
+Okay, now we have connected to the cluster.
+
+[rochak agrawal] 07:59:50
+I'll clear this.
+
+[rochak agrawal] 07:59:52
+Now, anything you want to run in Kubernetes, it starts with the kubectl command.
+
+[rochak agrawal] 07:59:58
+Okay, kubectl get.
+
+[rochak agrawal] 08:00:02
+And it's a simple word, get, set, deploy, apply. We'll see the commands.
+
+[rochak agrawal] 08:00:07
+Always the structure will be…
+
+[rochak agrawal] 08:00:11
+Uh, always the structure will be your, uh…
+
+[rochak agrawal] 08:00:16
+kubectl… it will start with the kubectl. Now, whatever you want to…
+
+[rochak agrawal] 08:00:21
+search. For example, I want to search the pods.
+
+[rochak agrawal] 08:00:24
+kubectl get pods.
+
+[rochak agrawal] 08:00:28
+When you run the command without any namespace, then it is going to show you.
+
+[rochak agrawal] 08:00:36
+Uh, the object in the default namespace. Now…
+
+[rochak agrawal] 08:00:40
+If you want to search in, let's say, cube systems.
+
+[rochak agrawal] 08:00:47
+Okay.
+
+[rochak agrawal] 08:00:48
+So then you need to specify the namespace with the hyphen n parameter.
+
+[rochak agrawal] 08:00:56
+So now, you see, in the namespace, uh, in the cubes is, um…
+
+[rochak agrawal] 08:01:01
+kube-system namespaces, there are multiple pods are running, right? But in the default namespace, there is no pod is running. And you want to see how many namespaces are there, so you'll simply say kubectl.
+
+[rochak agrawal] 08:01:15
+Get NS. You can get the NS or get the namespace also.
+
+[rochak agrawal] 08:01:20
+So you can see default gatekeeper system.
+
+[rochak agrawal] 08:01:24
+uh, cube node lease, cube public, cube system. All those are there. Now, if you want to see.
+
+[rochak agrawal] 08:01:31
+public…
+
+[rochak agrawal] 08:01:33
+Okay, no resource found in the Q public namespace. Now, one more thing I'll show you. If you want to see more details about the pod, like on which node they are running.
+
+[rochak agrawal] 08:01:46
+Order.
+
+[rochak agrawal] 08:01:49
+What is the IP? So then there is a parameter called hyphen O wide.
+
+[rochak agrawal] 08:01:53
+And you run hyphen O wide.
+
+[rochak agrawal] 08:01:55
+You can see I can see the IP of my.
+
+[rochak agrawal] 08:02:08
+IP of my…
+
+[rochak agrawal] 08:02:11
+Machine, uh, IP of my board.
+
+[rochak agrawal] 08:02:15
+and which node it is running.
+
+[rochak agrawal] 08:02:18
+Okay? So, you'll get more detail. So this is, um, and then how many nodes are there? Again, the same thing. YubCTL.
+
+[rochak agrawal] 08:02:28
+get notes.
+
+[rochak agrawal] 08:02:36
+You can see I right now have the.
+
+[rochak agrawal] 08:02:39
+Or no. Right? Agent pool, user pool. In the status, you see the ready.
+
+[rochak agrawal] 08:02:45
+Uh, ready means, um…
+
+[rochak agrawal] 08:02:46
+Whenever a pod, uh, will be… will go to scheduler, scheduler will see all the four nodes are in a reduced status, and then, um, it is going to…
+
+[rochak agrawal] 08:02:57
+Put up the pod on the particular node.
+
+[rochak agrawal] 08:03:01
+Right, uh, so for example…
+
+[rochak agrawal] 08:03:02
+If you want to cordon this node, kubectl cordon.
+
+[rochak agrawal] 08:03:16
+It says, node is cordoned. Okay, uh, then I'll go kubectl.
+
+[rochak agrawal] 08:03:24
+get notes…
+
+[rochak agrawal] 08:03:31
+Do you see?
+
+[rochak agrawal] 08:03:31
+It is ready. It is scheduling disabled.
+
+[rochak agrawal] 08:03:35
+What does it mean? It means that, um…
+
+[rochak agrawal] 08:03:41
+Scheduling disabled means, uh, now there will be no new pod will come to these nodes. Whatever running will keep running, okay?
+
+[rochak agrawal] 08:03:52
+Then I can drain this node, kubectl drain.
+
+[rochak agrawal] 08:04:05
+It's a note
+
+[rochak agrawal] 08:04:08
+So there is system ports running. That's why let me train the user node.
+
+[rochak agrawal] 08:04:14
+This is a system, uh…
+
+[rochak agrawal] 08:04:19
+DemonSet Managed Spot is running, that's why.
+
+[rochak agrawal] 08:04:33
+Okay, some system-related ports are running on these nodes.
+
+[rochak agrawal] 08:04:36
+Okay, so… but… but you understand, right?
+
+[rochak agrawal] 08:04:47
+So see, for these, both these nodes, because these are coordinate, not drained, because there are some system-related, um…
+
+[rochak agrawal] 08:04:56
+Commands, uh, system-related ports are running on these nodes.
+
+[rochak agrawal] 08:05:00
+So, but the scheduling is disabled. What does it mean? It means that there will not be.
+
+[rochak agrawal] 08:05:05
+any new pod, which will come and run on these nodes. Whatever is running, that will keep running. And if we, again, want to make them schedulable, so we'll just say kubectl.
+
+[rochak agrawal] 08:05:18
+Gordon?
+
+[rochak agrawal] 08:05:42
+Okay, now you run it, kubectl.
+
+[rochak agrawal] 08:05:47
+the notes, then again it will be in a ready status.
+
+[rochak agrawal] 08:05:51
+So…
+
+[rochak agrawal] 08:05:52
+This is about the notes, and then, um…
+
+[rochak agrawal] 08:06:00
+Then, there is something called the pods.
+
+[rochak agrawal] 08:06:03
+Now…
+
+[rochak agrawal] 08:06:05
+What is basically, uh, in a way, is a physical, or not the physical, the host.
+
+[rochak agrawal] 08:06:11
+On which your ports or the containers, port slash container, would be running.
+
+[rochak agrawal] 08:06:16
+Okay, but now what we need to understand very thoroughly.
+
+[rochak agrawal] 08:06:22
+So, what you understand are the smallest.
+
+[rochak agrawal] 08:06:26
+deployable unit of computing that we can create and manage in Kubernetes. Okay, smallest deployable unit. A pod, now very, very importantly.
+
+[rochak agrawal] 08:06:38
+This is what, uh… and this is what makes Pod different from the container.
+
+[rochak agrawal] 08:06:44
+Now, enough hold.
+
+[rochak agrawal] 08:06:52
+You can have a single container, okay? And that is where ports and containers are the same thing.
+
+[rochak agrawal] 08:07:00
+But…
+
+[rochak agrawal] 08:07:01
+In a pod.
+
+[rochak agrawal] 08:07:03
+You can run multiple containers as a single unit.
+
+[rochak agrawal] 08:07:08
+So, if you notice here…
+
+[rochak agrawal] 08:07:10
+When I'm running kubectl.
+
+[rochak agrawal] 08:07:14
+get thoughts.
+
+[rochak agrawal] 08:07:19
+Use the store.
+
+[rochak agrawal] 08:07:24
+So here you see the, uh, see this number.
+
+[rochak agrawal] 08:07:30
+3x3, 3x3, 2x2, 1x1.
+
+[rochak agrawal] 08:07:34
+Okay. Now what does it mean? It see let's let's take this number three by three.
+
+[rochak agrawal] 08:07:43
+When is the scene?
+
+[rochak agrawal] 08:07:45
+3 by 3.
+
+[rochak agrawal] 08:07:49
+So this is total number of the container in a pod.
+
+[rochak agrawal] 08:07:58
+No, sorry.
+
+[rochak agrawal] 08:08:04
+This is the total number of the pod, the second one.
+
+[rochak agrawal] 08:08:08
+total number of.
+
+[rochak agrawal] 08:08:11
+dinners.
+
+[rochak agrawal] 08:08:13
+in a pod. So if it is saying three, it means your pod is running three container.
+
+[rochak agrawal] 08:08:20
+If it is one, it is one container.
+
+[rochak agrawal] 08:08:24
+Then this number is…
+
+[rochak agrawal] 08:08:30
+How many containers are ready?
+
+[rochak agrawal] 08:08:35
+Sometime you will see the number, like…
+
+[rochak agrawal] 08:08:37
+One by three.
+
+[rochak agrawal] 08:08:42
+Or 2Y3?
+
+[rochak agrawal] 08:08:45
+What does it mean? It means your pod has three container, but out of those three container, only two are running. One maybe have some problem. So pod is a group of one or more container.
+
+[rochak agrawal] 08:08:57
+Since it's a group, it is going to share storage and the network resources and the specification for how to run the container.
+
+[rochak agrawal] 08:09:06
+Okay.
+
+[rochak agrawal] 08:09:08
+Now, what is a pod? Pod can run a single container. And most of the time, you will see one container per pod model is the most common Kubernetes use case.
+
+[rochak agrawal] 08:09:19
+In this case, you can think of a pod as a wrapper around the single container. Okay, Kubernetes manages the pod rather than managing the container directly.
+
+[rochak agrawal] 08:09:30
+Okay, then pod that can run multiple containers that need to work together. Okay, a pod can encapsulate an application composed of multiple co-located containers that are tightly coupled and need to share the resources.
+
+[rochak agrawal] 08:09:47
+And these co-located containers form a single cohesive unit.
+
+[rochak agrawal] 08:09:52
+Okay, uh, so you can see it is up to you. Uh, now there are certain patterns also, which also we are going to discuss. For example, here…
+
+[rochak agrawal] 08:10:07
+You see port lifecycle, and then, uh…
+
+[rochak agrawal] 08:10:10
+There is multiple pod patterns. Are there multi-container pod patterns? So we'll discuss that. But a pod can have one container or pod can have multiple containers. So for example, in this, if you see, pod is having two containers. One is an application container.
+
+[rochak agrawal] 08:10:26
+Now there's the log shipper container.
+
+[rochak agrawal] 08:10:29
+Container in a pod will schedule together, so…
+
+[rochak agrawal] 08:10:33
+Kubernetes schedules a pod, not the containers, okay? So if…
+
+[rochak agrawal] 08:10:38
+a pod is getting scheduled on node A, then whatever the container are inside, uh…
+
+[rochak agrawal] 08:10:45
+The pod, they will get scheduled together, they are going to share a same lifecycle, and they can talk over the localhost, because they are part of the same thing, and each can limit itself, we can define how much resources.
+
+[rochak agrawal] 08:10:59
+Fate, um…
+
+[rochak agrawal] 08:11:03
+they can consume.
+
+[rochak agrawal] 08:11:04
+So, very simply, I'll just start with a very simple pod.
+
+[rochak agrawal] 08:11:08
+Okay, we'll create a different namespace, so I'll clear.
+
+[rochak agrawal] 08:11:13
+What is that you need to create? A YAML file.
+
+[rochak agrawal] 08:11:17
+Okay, I'll start. So the API…
+
+[rochak agrawal] 08:11:22
+I'll just copy it so that I'm not making a mistake.
+
+[rochak agrawal] 08:11:41
+So we copy this.
+
+[rochak agrawal] 08:11:47
+So you see, very simple, nothing we are doing, API version V1, kind, since we want to create a pod.
+
+[rochak agrawal] 08:11:54
+Metadata.
+
+[rochak agrawal] 08:11:56
+Nginx. Name Nginx. Namespace we are not giving. It means it will go to the default namespace. Then in the specification, I'm saying…
+
+[rochak agrawal] 08:12:03
+run a container. Now, the container name is Nginx, image is Nginx 1.4.2, and port is a container port 80, means it is going to expose the port 80.
+
+[rochak agrawal] 08:12:14
+Now, simple…
+
+[rochak agrawal] 08:12:34
+Okay.
+
+[rochak agrawal] 08:12:36
+Some permission issues were there.
+
+[rochak agrawal] 08:12:42
+You can name, by the way, anything. This does not need to be pod.yaml. I can simply say rowcheck.yaml also. That doesn't going to make a difference.
+
+[rochak agrawal] 08:12:57
+Okay, now…
+
+[rochak agrawal] 08:13:01
+Okay, so I have pod.yaml is there. Now, before that, I'll show you kubectl get…
+
+[rochak agrawal] 08:13:08
+Words?
+
+[rochak agrawal] 08:13:08
+I do not have a pod in the…
+
+[rochak agrawal] 08:13:13
+um, default namespace. Now, I'll just say kubectl.
+
+[rochak agrawal] 08:13:18
+Light?
+
+[rochak agrawal] 08:13:21
+Hyphen F, and we need to give the file name.
+
+[rochak agrawal] 08:13:24
+Or, but, you know…
+
+[rochak agrawal] 08:13:26
+Okay.
+
+[rochak agrawal] 08:13:30
+You see, pod nginx has created.
+
+[rochak agrawal] 08:13:33
+Now, if you see kubectl.
+
+[rochak agrawal] 08:13:37
+Okay. Words.
+
+[rochak agrawal] 08:13:40
+So now the name is Nginx.
+
+[rochak agrawal] 08:13:43
+Ready one by one means one container is there.
+
+[rochak agrawal] 08:13:49
+And out of those one container, one is running.
+
+[rochak agrawal] 08:13:52
+The pod status is running, of course.
+
+[rochak agrawal] 08:13:55
+And then, um…
+
+[rochak agrawal] 08:13:57
+As you can see in a second.
+
+[rochak agrawal] 08:14:00
+If you want to see on which node it is running, hyphen O.
+
+[rochak agrawal] 08:14:06
+So you can see the IP of this pod is 10.244.3.123.
+
+[rochak agrawal] 08:14:15
+And it is running on this user pool 377191 VMSS0001.
+
+[rochak agrawal] 08:14:23
+If you want to see the logs, so you go kubectl get logs.
+
+[rochak agrawal] 08:14:28
+Knox.
+
+[rochak agrawal] 08:14:31
+Index.
+
+[rochak agrawal] 08:14:42
+Uh, it is not generating anything, but with the help of that, you can… we can see the logs also.
+
+[rochak agrawal] 08:14:46
+And then, um…
+
+[rochak agrawal] 08:14:50
+If you want to see the details, so there is a command called, and whatever the command we are running, kubectl get, it would be applicable on services as well, it will be applicable. Like this Docker, we can see the same pattern was there whenever you are creating a volume, whenever you are creating…
+
+[rochak agrawal] 08:15:09
+Whenever you will be creating a network, so you say docker volume ls, docker network ls, same command. Similarly here also it will be.
+
+[rochak agrawal] 08:15:18
+QCTL describe
+
+[rochak agrawal] 08:15:24
+So you can see it will give you all the information about the pod. Okay, so it's a name, Nginx, namespace default, service account default. See, we have not done anything. It will use the default labels also. It is using the default.
+
+[rochak agrawal] 08:15:40
+Okay, IP is this. Only one IP is assigned. I can assign multiple IPs to my containers or pods. And here you can see only one container is there, right?
+
+[rochak agrawal] 08:15:52
+This is the image it is using.
+
+[rochak agrawal] 08:15:56
+And you can see these are the different type of the condition. I'll talk about the condition more in the coming section. But you see pod ready to start container, initialize ready.
+
+[rochak agrawal] 08:16:10
+Uh, this is more of a related to the lifecycle, and then whatever the volume it is using, and here you can see node selector. There is none. So it can get scheduled on any of the nodes. If I define the node selector for my pod.
+
+[rochak agrawal] 08:16:24
+Then…
+
+[rochak agrawal] 08:16:31
+it will go to a particular node, and similarly, tolerations are there. If there is a taint you define on a node, so then there will be no pod going to that node, so then you need to add the toleration.
+
+[rochak agrawal] 08:16:42
+And then here, you can see.
+
+[rochak agrawal] 08:16:44
+Successfully assigned a node. So this is…
+
+[rochak agrawal] 08:16:50
+the job of a scheduler, right? You can see it here, default scheduler, and then Kubelet, um, pulling the image. Because, see, understand this thing. Scheduler schedules the pod on a particular node. Now the pod is running on a particular node.
+
+[rochak agrawal] 08:17:06
+A node at a node, which is a agent, is a kubelet. Now it's a kubelet pulling the image. Now successfully pulled the image, container created, and container started finally. So you'll get all the things, whatever is happening.
+
+[rochak agrawal] 08:17:21
+With this command.
+
+[rochak agrawal] 08:17:22
+So this is about how you are going to start a pod.
+
+[rochak agrawal] 08:17:29
+Clear any question till now.
+
+[rochak agrawal] 08:17:45
+Yes, I'm here.
+
+[Amiya Nanda] 08:17:48
+Hello Raja, good morning.
+
+[rochak agrawal] 08:17:49
+Good morning.
+
+[Amiya Nanda] 08:17:51
+Ah, so port and container are the same thing, right?
+
+[rochak agrawal] 08:17:54
+No, it is… see, you can say, uh, in a common language, you can say it is the same thing, but see, Docker manages the containers, Kubernetes manages the pod.
+
+[Amiya Nanda] 08:18:00
+Mmhm.
+
+[rochak agrawal] 08:18:05
+So, for example, where we say…
+
+[rochak agrawal] 08:18:07
+Let's see…
+
+[rochak agrawal] 08:18:09
+A contain… a pod can have a single container, correct?
+
+[Amiya Nanda] 08:18:14
+Yes!
+
+[rochak agrawal] 08:18:15
+In that sense, yes, it is the same thing. It is just a wrapper around the…
+
+[rochak agrawal] 08:18:21
+the container. But when you are running… but in a pod, you can run the multiple containers together. So then it becomes the group of the containers also.
+
+[Amiya Nanda] 08:18:32
+Okay, okay.
+
+[rochak agrawal] 08:18:33
+Okay, but at a conceptual level, if you see, yes, it's the same thing.
+
+[Amiya Nanda] 08:18:38
+Okay.
+
+[rochak agrawal] 08:18:38
+It is just since.
+
+[rochak agrawal] 08:18:41
+you understand this, uh, for example, um, it is… it is an abstraction layer over the, uh, containers, which Kubernetes understands.
+
+[Amiya Nanda] 08:18:54
+Okay.
+
+[rochak agrawal] 08:18:55
+It gives you more functionalities, I would say.
+
+[Amiya Nanda] 08:18:59
+Okay, okay.
+
+[rochak agrawal] 08:18:59
+Okay.
+
+[Amiya Nanda] 08:19:00
+So one port can have multiple containers inside that.
+
+[rochak agrawal] 08:19:03
+Correct. It can have a single container, which you would be running in most of the cases, but it can have… it will have multiple containers. It can have multiple containers also.
+
+[rochak agrawal] 08:19:14
+Okay.
+
+[Amiya Nanda] 08:19:15
+Okay.
+
+[rochak agrawal] 08:19:22
+Yes, Miguel.
+
+[Megha U] 08:19:24
+Yeah, good morning, Rashid. Uh, so this one, you ran inside the Azure, uh…
+
+[Megha U] 08:19:30
+we should have a, uh… how should we start, like, should have a free Azure account? Like, previously, we are having Institute instance.
+
+[rochak agrawal] 08:19:35
+Yeah, yeah, free as your account. Yes, yes, free as your account.
+
+[Megha U] 08:19:38
+Okay, so similarly, we should create, uh, like, uh…
+
+[Megha U] 08:19:43
+Azure Free Account, also, to start with.
+
+[rochak agrawal] 08:19:44
+Yes, like the AWS for the account, uh, you can create Azure for the account. You can do it in a EKS also. My, actually, account got suspended, uh, two days back.
+
+[rochak agrawal] 08:19:54
+That's why I was using Azure, but it's the same process. There is no difference.
+
+[Megha U] 08:20:00
+Okay.
+
+[rochak agrawal] 08:20:00
+Even when you go create the EKS cluster, it's the same process. You will just give the name, user, agent, and other things.
+
+[rochak agrawal] 08:20:07
+90% it's the same.
+
+[rochak agrawal] 08:20:09
+Of course, there will be some platform-specific options will be there, but overall, the process is the same.
+
+[rochak agrawal] 08:20:16
+And, uh, second thing, whatever the command now we are running, it has nothing to do with the AKS or EKS, it's the same commands we are going to run.
+
+[rochak agrawal] 08:20:28
+Okay?
+
+[Megha U] 08:20:31
+Okay.
+
+[rochak agrawal] 08:20:33
+Yes, question.
+
+[Kaushal] 08:20:35
+So, while creating Kubernetes cluster, uh, I've seen, like, we have 2 to 5 nodes, right? So, when here we are, uh, starting, uh, I mean, in ports.yml, I'm seeing, like, nginx is.
+
+[rochak agrawal] 08:20:42
+Got it.
+
+[Kaushal] 08:20:50
+the node that I need to create.
+
+[rochak agrawal] 08:20:50
+Hmm?
+
+[Kaushal] 08:20:52
+Right, so…
+
+[rochak agrawal] 08:20:53
+No, no, can you come again, Constant?
+
+[Kaushal] 08:20:56
+Should it create two by default, or it should create one?
+
+[rochak agrawal] 08:20:58
+No, it is… it is… it is up to us. I… you can create anything. Like, you can start with the one node also, or 100 node also.
+
+[Kaushal] 08:21:07
+Okay, okay.
+
+[rochak agrawal] 08:21:07
+Okay, I'll show you. So, for example, when you go…
+
+[rochak agrawal] 08:21:13
+Create the cluster.
+
+[rochak agrawal] 08:21:21
+So let's say if I go to Kubernetes.
+
+[rochak agrawal] 08:21:27
+Kubernetes cluster
+
+[rochak agrawal] 08:21:32
+You go to the node pool. So here, you are saying that we are seeing the 2, 5, 2 to 5, correct?
+
+[Kaushal] 08:21:39
+Right?
+
+[rochak agrawal] 08:21:40
+That's a default one, but if I go click on this, and I'll say
+
+[rochak agrawal] 08:21:49
+So now you see one one.
+
+[rochak agrawal] 08:21:51
+You can change it.
+
+[rochak agrawal] 08:21:53
+Anything.
+
+[rochak agrawal] 08:21:55
+It is up to us how many nodes, uh, we would like to run, uh, our cluster with. That is the one thing. And the second thing is, even you have… so, for example, if I go to my cluster.
+
+[rochak agrawal] 08:22:09
+Which we have already created, and here, if you go to…
+
+[rochak agrawal] 08:22:14
+There is a node pool.
+
+[rochak agrawal] 08:22:21
+Okay, so I have two node pools are there, so I'll go to the node pools.
+
+[rochak agrawal] 08:22:26
+Okay.
+
+[rochak agrawal] 08:22:29
+And here, you see, my target node is 2, correct? And 2-2 nodes are running. Now, if I go click on any of the agent pool, uh, node pool.
+
+[rochak agrawal] 08:22:41
+There I can see there is an option of scale node pool, correct?
+
+[Kaushal] 08:22:46
+Right.
+
+[rochak agrawal] 08:22:47
+Can you see? So I, at any point of time, see, there is two aspects of this question now.
+
+[rochak agrawal] 08:22:53
+Um, when you're starting your container, you can… so that 2 to 5 is the default number. Like, it's a good number to start a cluster. But you say, my application is very heavy, I need to start with a 20 node.
+
+[rochak agrawal] 08:23:05
+Can I do it? Absolutely, you can do it. That's the first thing, right? You say, I want to start with OneNote, I'm testing something. Yes, you can start with the OneNote also.
+
+[rochak agrawal] 08:23:14
+So you can start with the n number of the nodes. n is the choice which you can configure.
+
+[rochak agrawal] 08:23:19
+Second thing is, let's say you started with the N number, but later you are realizing, oh, I should have been created N plus 10. So at any point of time, you go and update, scale your node pool as well. So that is not a problem.
+
+[Kaushal] 08:23:38
+Uh, other question is, like, uh, this is the cluster, right? Inside cluster, I can create a number of namespaces, right? And namespaces may be for applications, right? I mean, I have two applications.
+
+[rochak agrawal] 08:23:44
+Okay.
+
+[rochak agrawal] 08:23:47
+Correct, yeah, of course.
+
+[rochak agrawal] 08:23:49
+Hmm. Okay.
+
+[Kaushal] 08:23:50
+So, I can, uh, give a separate namespaces, and inside that namespaces, I can deploy my applications.
+
+[rochak agrawal] 08:23:54
+Got it.
+
+[rochak agrawal] 08:23:57
+Right?
+
+[rochak agrawal] 08:24:00
+So, this is… what is the question? You want to confirm this?
+
+[Kaushal] 08:24:00
+Okay, okay.
+
+[Kaushal] 08:24:04
+Yeah, I just want to confirm, yeah, so name is…
+
+[rochak agrawal] 08:24:05
+Yeah, yeah, yeah, of course, yes. See, for example… okay, yeah, let me, let me show you that as well. So, for example…
+
+[rochak agrawal] 08:24:13
+Let's say I'll create a namespace. So first you see kubectl get namespace.
+
+[rochak agrawal] 08:24:20
+One default namespace, basically, and then there is the other…
+
+[rochak agrawal] 08:24:24
+System namespaces. So I'll go kubectl, create.
+
+[rochak agrawal] 08:24:29
+Namespace.
+
+[rochak agrawal] 08:24:31
+Let's see.
+
+[rochak agrawal] 08:24:33
+Okay, now…
+
+[rochak agrawal] 08:24:36
+You see, um…
+
+[rochak agrawal] 08:24:37
+Again, I'll run kubectl get namespace. So you have a demo namespace which is created seven second ago.
+
+[rochak agrawal] 08:24:45
+Right? Now, what I'm going to do…
+
+[rochak agrawal] 08:24:53
+I'll go and change the namespace here.
+
+[rochak agrawal] 08:25:02
+Okay.
+
+[rochak agrawal] 08:25:03
+When you don't define a namespace, it will always go to a default namespace, like, uh…
+
+[rochak agrawal] 08:25:09
+It was there.
+
+[rochak agrawal] 08:25:12
+Correct? Now, I am going to apply it again.
+
+[rochak agrawal] 08:25:19
+I have bought Yamali.
+
+[rochak agrawal] 08:25:22
+Now, if you see kubectl get bored.
+
+[rochak agrawal] 08:25:27
+Hyphen and demo.
+
+[rochak agrawal] 08:25:29
+So you can see.
+
+[rochak agrawal] 08:25:31
+The same application.
+
+[rochak agrawal] 08:25:33
+See, the namespaces you can create, for example, um…
+
+[rochak agrawal] 08:25:39
+You can create based on the applications, for example, I have multiple applications, and I'll create the namespace as per the application, application 1 namespace, application 2 namespace, and so on.
+
+[rochak agrawal] 08:25:51
+Second thing is, uh, um, I can create the namespaces as per the environment. So, for example, one, uh, application, uh, one namespace, I'll create a dev environment, one…
+
+[rochak agrawal] 08:26:02
+name space I'll create for the testing environment, one for staging environment, and then one for production environment. So that is up to us how to decide, how to design that.
+
+[rochak agrawal] 08:26:11
+But, so you can see the NGINX application, the same application, is running in two namespaces.
+
+[Kaushal] 08:26:20
+Right, right.
+
+[rochak agrawal] 08:26:21
+Okay?
+
+[Kaushal] 08:26:23
+Okay, and creating cluster at the time of, like, are we… how the Hemchart is going to be integrated in this Kubernetes cluster?
+
+[rochak agrawal] 08:26:30
+Okay, so Helm chart is, uh, Kaushal, uh, Helm charts come at a very later stage, okay? So Helm chart is nothing to do with creating the cluster.
+
+[rochak agrawal] 08:26:41
+Okay? When you deploy heavy applications on Kubernetes, which will require multiple services, uh… see, it is… you understand Helm like it.
+
+[rochak agrawal] 08:26:54
+So, when you have a folder which has a multiple.
+
+[rochak agrawal] 08:26:58
+folder, subfolder, images, and etc, etc, and I want to send it out to someone else, right? So, what is the effective way of doing the things? I will jip that folder.
+
+[rochak agrawal] 08:27:12
+And then send that zip to the destination, correct?
+
+[Kaushal] 08:27:17
+Right.
+
+[rochak agrawal] 08:27:17
+So it is like the packaging of the application, correct? It's the packaging of the folder, correct? So similarly, Helm is a packaging of your application. So when you will be deploying your heavy application, which maybe require multiple components like multiple services.
+
+[rochak agrawal] 08:27:33
+multiple deployments, multiple replica set, multiple pods, service account, et cetera, et cetera. So then.
+
+[rochak agrawal] 08:27:42
+deploying each component individually, we submit everything to Helm, and Helm is going to deploy it as a single unit. That's it. So Helm…
+
+[rochak agrawal] 08:27:52
+It's an application package manager, nothing related to Kubernetes creation.
+
+[rochak agrawal] 08:28:01
+Anderson?
+
+[Kaushal] 08:28:03
+Yes, yes.
+
+[rochak agrawal] 08:28:03
+Okay.
+
+[rochak agrawal] 08:28:05
+Okay, uh, so now, one more thing is, uh, support manifest, uh, we have seen.
+
+[rochak agrawal] 08:28:11
+the pod lifecycle. This is very important to understand, okay? What does it mean? It means that, uh, um…
+
+[rochak agrawal] 08:28:19
+See, when you create a pod.
+
+[rochak agrawal] 08:28:21
+Okay.
+
+[rochak agrawal] 08:28:24
+It is like…
+
+[rochak agrawal] 08:28:26
+Any, uh, application altogether.
+
+[rochak agrawal] 08:28:31
+When you create a pod.
+
+[rochak agrawal] 08:28:32
+The phase of a pod is a simple, high-level summary of where the pod is in its lifecycle. Okay? The phase is not intended to be comprehensive roll-up of the observation of the container of a pod state.
+
+[rochak agrawal] 08:28:46
+Now, when you see…
+
+[rochak agrawal] 08:28:51
+the life cycle of a pod, it can go into the pending state. It, of course, like, we intend it to be a running state, succeeded state, and failed state. And then there is one more, uh, which is not there in the slide, which is an unknown state.
+
+[rochak agrawal] 08:29:06
+Okay, now, what we need to understand, why we need to understand this is.
+
+[rochak agrawal] 08:29:11
+Because you need to know, you should understand that, um…
+
+[rochak agrawal] 08:29:16
+When a pod is in a pending state, what does it mean? Okay, um…
+
+[rochak agrawal] 08:29:22
+So that you can take the necessary actions, correct? Like, if I don't know what is the pending status mean.
+
+[rochak agrawal] 08:29:27
+I may be troubleshooting it somewhere else, and then, uh…
+
+[rochak agrawal] 08:29:34
+the issue is somewhere else as well, correct? So that is where we need to understand the lifecycle. Now, when we describe the pod.
+
+[rochak agrawal] 08:29:54
+Okay, so here you see the pod goes to the default scheduler first. It says successfully assigned this…
+
+[rochak agrawal] 08:30:02
+Pod to the node, and then on the node, this process happens, correct?
+
+[rochak agrawal] 08:30:09
+Right? Now, what…
+
+[rochak agrawal] 08:30:11
+We are going to do, let's say.
+
+[rochak agrawal] 08:30:17
+Let's first delete this.
+
+[rochak agrawal] 08:30:24
+Okay? Now there will be no port.
+
+[rochak agrawal] 08:30:34
+UTPN.
+
+[rochak agrawal] 08:30:36
+Yeah, in order.
+
+[rochak agrawal] 08:30:38
+Okay? Now let me cordon every note.
+
+[rochak agrawal] 08:31:19
+Order means… let's see…
+
+[rochak agrawal] 08:31:25
+It means it is ready, scheduling is disabled, means it's not… it will not accept the new port, right? Now, let…
+
+[rochak agrawal] 08:31:36
+Let's try to create a board now.
+
+[rochak agrawal] 08:31:49
+1946 itself.
+
+[rochak agrawal] 08:32:03
+Okay, now if you see…
+
+[rochak agrawal] 08:32:17
+You see?
+
+[rochak agrawal] 08:32:20
+Your pod is in a pending state.
+
+[rochak agrawal] 08:32:24
+What is the reason for that?
+
+[rochak agrawal] 08:32:27
+The reason for that is…
+
+[rochak agrawal] 08:32:29
+The pod has been, now let me describe this.
+
+[rochak agrawal] 08:32:41
+You see
+
+[rochak agrawal] 08:32:43
+Leave this
+
+[rochak agrawal] 08:32:45
+0 by 4 notes are available, 4 notes are unschedulable, no new claims to deallocate preemption. It is basically saying.
+
+[rochak agrawal] 08:32:59
+that there was no node available for this pod to schedule, so my pod is going into the pending status. So the pod has been accepted by the Kubernetes cluster, but.
+
+[rochak agrawal] 08:33:14
+There is no node where your pod can run, and that is why it is going into the pending status. Accepted, waiting for the schedule or for the images to pull, basically. So there is no resources where it can run.
+
+[rochak agrawal] 08:33:29
+The pod is going to go onto the pending status.
+
+[rochak agrawal] 08:33:34
+Okay, then, of course, running status, the pod has been bound to a node, and all of the containers have been created, at least one container is running, or in the process of starting. So that's a normal, uh, state of a container, of a pod, which is a running.
+
+[rochak agrawal] 08:33:49
+Now, succeeded. Now, there will be certain containers, for example, uh…
+
+[rochak agrawal] 08:33:56
+Application can be of two type, okay?
+
+[rochak agrawal] 08:34:10
+Application can be of two types. Long-running applications.
+
+[rochak agrawal] 08:34:16
+Like your website.
+
+[rochak agrawal] 08:34:19
+Okay, which need to be continuously running. Then…
+
+[rochak agrawal] 08:34:25
+Goals focused.
+
+[rochak agrawal] 08:34:29
+apps.
+
+[rochak agrawal] 08:34:30
+For example, I told you to, um…
+
+[rochak agrawal] 08:34:34
+compress 100 images. Now, once the 100 image is compressed, your work is over, correct? So, similarly, you can run certain application, uh, as a container, which will be doing a particular task. So, for example, processing the salary of 10,000 employees.
+
+[rochak agrawal] 08:34:49
+Now, once the salary is processed, then the task for the container is over, so that the container will exit with the success status. And that is what the success, uh…
+
+[rochak agrawal] 08:35:04
+Succeeded. All container exited with zero, typically for the jobs. Okay. Then, of course, failed. All container in the pod has been terminated, and at least one container has been terminated in failure.
+
+[rochak agrawal] 08:35:17
+That is, container either exited with a non-zero status and was terminated by the system, and is not set for the automatic restarting. Okay, so failed means your container is encountering some issue.
+
+[rochak agrawal] 08:35:31
+Okay? And, um, you're not able to restart the container. And then finally, there is something called, uh…
+
+[rochak agrawal] 08:35:41
+Unknown. So for some reason, the state of the pod could not be obtained. This phase typically occurred due to an error in communicating with the node.
+
+[rochak agrawal] 08:35:52
+where the pod should be running.
+
+[rochak agrawal] 08:35:57
+And then, um…
+
+[rochak agrawal] 08:36:01
+Dominated, also.
+
+[rochak agrawal] 08:36:05
+a container in a terminated state begin execution and then either went to completion or failed with some other reason. So the purpose of the pod lifecycle is to understand, so for example, if the pod is going into the.
+
+[rochak agrawal] 08:36:20
+pending status, for example, okay? Then what we need to understand that there may be some issue with the node on which the pod would be running, so that we can troubleshoot accordingly.
+
+[rochak agrawal] 08:36:36
+Yes, we will.
+
+[Vaibhav Gupta] 08:36:42
+Hello.
+
+[rochak agrawal] 08:36:43
+Yes, good morning, Will.
+
+[Vaibhav Gupta] 08:36:45
+Okay. So, uh, Rochak, I'm just, uh…
+
+[Vaibhav Gupta] 08:36:50
+To ask one thing, the codon and the…
+
+[rochak agrawal] 08:36:53
+Uh, Baba, your voice is not, uh, coming very clear.
+
+[Vaibhav Gupta] 08:36:56
+Yeah. So, uh, I'm just asking, like, the code on that we have used, uh, and, uh, the commands that we are using it. So, that's, uh, how we'll, uh, get the commands.
+
+[rochak agrawal] 08:37:08
+I will provide you the command. So, like, we have provided the command in Docker. The similar way, I'm going to provide you the command in, uh…
+
+[rochak agrawal] 08:37:16
+Kubernetes as well, that's the first thing. See, um…
+
+[rochak agrawal] 08:37:23
+whatever the command we are running. So, see, there is only one command, basically. So, for example, if you go…
+
+[rochak agrawal] 08:37:34
+There is only one command, which is kubectl, okay? So if you want to learn how to use it, so you can see uses kubectl flags and option, right? Now what are the things you can use with the kubectl? So you can see.
+
+[rochak agrawal] 08:37:50
+It will give you everything, right? You can see?
+
+[rochak agrawal] 08:37:55
+So, basic command, create.
+
+[rochak agrawal] 08:37:57
+Create a resource from the file on the path, expose, pick a replication controller, expose it, run a particular image on the cluster, set a specific feature on an object, explain, get, edit, delete. We use kubectl delete. We use kubectl get.
+
+[rochak agrawal] 08:38:15
+Right? Uh, so for example, now you want to know how to use the get command. So you'll simply run kubectl.
+
+[rochak agrawal] 08:38:22
+get.
+
+[rochak agrawal] 08:38:24
+This is it, you must specify the type of the resources to get.
+
+[rochak agrawal] 08:38:30
+So…
+
+[rochak agrawal] 08:38:32
+You, you run kubectl?
+
+[rochak agrawal] 08:38:35
+get…
+
+[rochak agrawal] 08:38:37
+ports.
+
+[rochak agrawal] 08:38:38
+So, you see? So, basically, here you are going to find every command, and you can see there is not many. And, uh, see, in every of the tool.
+
+[rochak agrawal] 08:38:49
+Logs we have used, right? Describe we used.
+
+[rochak agrawal] 08:38:54
+Cordon and Cordon we used. Drain also we have used, but it was not working for us. So you can see, now you see we are going to run kubectl.
+
+[rochak agrawal] 08:39:05
+Cluster info.
+
+[rochak agrawal] 08:39:10
+So you see, control plane is running at this, so this is my API server endpoint.
+
+[rochak agrawal] 08:39:17
+Core DNS is running here, metric server is running here. So if you open the metric server.
+
+[rochak agrawal] 08:39:28
+So you see, at the unauthorized, it is showing us, but you can see metric servers is running here.
+
+[rochak agrawal] 08:39:33
+So, to answer your question, Baba, we have every command listed here.
+
+[rochak agrawal] 08:39:39
+And the fluency, of course, you will get as you do the hands-on.
+
+[rochak agrawal] 08:39:44
+And apart from it, uh, this also, we will also provide, uh, the list of the common command which we are going to use as we provided in Docker.
+
+[rochak agrawal] 08:39:58
+Okay?
+
+[Vaibhav Gupta] 08:40:00
+So, uh, yeah, basically, why use the codons, like, uh…
+
+[Vaibhav Gupta] 08:40:04
+For unscheduling. So…
+
+[Vaibhav Gupta] 08:40:06
+I'm not able to understand, like…
+
+[rochak agrawal] 08:40:06
+Sorry, come again?
+
+[Vaibhav Gupta] 08:40:09
+You use the code only for unscheduling.
+
+[rochak agrawal] 08:40:10
+Hmm?
+
+[Vaibhav Gupta] 08:40:11
+Like, what is the actual, uh, meaning of, uh, like, use of one scheduling?
+
+[rochak agrawal] 08:40:13
+Okay, correct, I'll let you go. So, see, um…
+
+[rochak agrawal] 08:40:20
+Sometimes we're cheap. There is two things.
+
+[rochak agrawal] 08:40:23
+That's a good question, actually.
+
+[rochak agrawal] 08:40:29
+What is the use of cordon and uncordon? So when a pod is running on a node.
+
+[rochak agrawal] 08:40:37
+Okay.
+
+[rochak agrawal] 08:40:39
+Now.
+
+[rochak agrawal] 08:40:40
+Let's keep aside everything. The note will have two major components
+
+[rochak agrawal] 08:40:47
+One is
+
+[rochak agrawal] 08:40:48
+Operating system?
+
+[rochak agrawal] 08:40:52
+Managed Kubernetes, correct?
+
+[rochak agrawal] 08:41:02
+Right?
+
+[rochak agrawal] 08:41:04
+If you see…
+
+[rochak agrawal] 08:41:07
+kubectl get notes, for example.
+
+[Vaibhav Gupta] 08:41:08
+Right.
+
+[rochak agrawal] 08:41:12
+Right now, I can see there is a 1.35.8 version is running.
+
+[rochak agrawal] 08:41:19
+Correct?
+
+[rochak agrawal] 08:41:20
+Now, when you want to…
+
+[rochak agrawal] 08:41:23
+Upgrade it to 1.3.9, or 1.3.10.
+
+[rochak agrawal] 08:41:29
+Then, the version upgrade will take certain amount of the time, depending on the features in the version.
+
+[rochak agrawal] 08:41:34
+Okay, sometime it will take only 30 minutes, sometime it is going to take 5 hours also. Now, during those 5 hours, the node is in… is not in a…
+
+[rochak agrawal] 08:41:46
+working state, correct? It is in a maintenance state.
+
+[rochak agrawal] 08:41:51
+I will not cordon the node, the pod will start… will keep coming onto that node, and they will not run, because the node is not functioning at all. So that is why I am putting up a boundary.
+
+[rochak agrawal] 08:42:04
+Right. And saying that, please don't come here.
+
+[rochak agrawal] 08:42:08
+It is, like, very basic example, if I give you, uh, so whenever, uh, let's say when you try to use a washroom, and then, uh, someone is cleaning there, so they will put up a board, cleaning in progress, bed floor.
+
+[rochak agrawal] 08:42:22
+Right? So that you are aware that I don't need to go there.
+
+[rochak agrawal] 08:42:27
+It is… some maintenance is happening. So the maintenance can happen at the Kubernetes level when you want to do the version upgrade of the Kubernetes, because we very clearly know that it is N-2 supported only. So if you are running on 1.33.
+
+[rochak agrawal] 08:42:42
+you have a compulsion to upgrade the Kubernetes, okay? Then the second is the operating system level patches also will be there. So, for example, if you are using Ubuntu, then your security team will keep.
+
+[rochak agrawal] 08:42:54
+Sending you the security-related patches and other things, which also you need to apply to your machines.
+
+[rochak agrawal] 08:43:01
+So overall, if you ask me the use case, so whenever your machine goes into the maintenance mode, and that is where we are going to cordon the note saying that we have put up a signboard that the maintenance is in progress. Currently, we will not be able to do anything.
+
+[rochak agrawal] 08:43:19
+So, there is no new pod which will come to your node. So, that's a use case demo.
+
+[Vaibhav Gupta] 08:43:25
+Okay, okay. So, once, uh, if… we can say, like, uh, if one of… if our mode is on maintenance, so we will, uh, make cases unscheduled, or that is, create a boundary for us.
+
+[rochak agrawal] 08:43:26
+Okay?
+
+[rochak agrawal] 08:43:35
+Correct. See, maintenance can be also of two types. One is a planned maintenance, one is unplanned maintenance. For example.
+
+[rochak agrawal] 08:43:49
+One is a planned maintenance.
+
+[rochak agrawal] 08:43:54
+Okay, planned maintenance is something which we are talking about, like, for example, when we are saying I need to do the version upgrade of Kubernetes, or I need to apply some OS patches, which I will do on a particular schedule. So I'll say at every Sunday, 9am, for example, or 9pm.
+
+[rochak agrawal] 08:44:12
+I'm going to upgrade my patches, something like that, right? So that is an example of a planned maintenance. Your user will know that when your node is going to be cordoned, correct?
+
+[rochak agrawal] 08:44:23
+Second is unplanned maintenance.
+
+[rochak agrawal] 08:44:31
+Unplanned maintenance is something… I would not call it as a maintenance, you can say it as an unplanned incident also. What does it mean? So, let's say you have a node, and you have certain ports are running. Now, somehow, accidentally, someone deleted a mount point.
+
+[rochak agrawal] 08:44:49
+or your files got corrupted, and your node is not functioning properly. So then, also, you put them in a maintenance, you do the corrective actions, but while you are doing the corrective action, no new pod.
+
+[rochak agrawal] 08:45:00
+should not coming to this node, correct? So that is the basic use case of coordinating and non-coordinating. When your node is fully ready, then I'll take it back.
+
+[rochak agrawal] 08:45:15
+Understood? Clear? Bevan?
+
+[Vaibhav Gupta] 08:45:21
+Audit, audit.
+
+[rochak agrawal] 08:45:22
+Okay, cool. So…
+
+[rochak agrawal] 08:45:30
+This is okay. Now…
+
+[rochak agrawal] 08:45:32
+This is, again, a very, very important topic.
+
+[rochak agrawal] 08:45:42
+Uh, important to…
+
+[rochak agrawal] 08:45:47
+Okay.
+
+[rochak agrawal] 08:45:50
+Many question you are going to get from this.
+
+[rochak agrawal] 08:45:56
+Slide in interview.
+
+[rochak agrawal] 08:45:59
+We will take it in detail also. I think right now, see, you will understand this more if you're coming from a development background. But even if you're not from a development background, I'll try to explain.
+
+[rochak agrawal] 08:46:13
+See, someone can tell me, do you understand what is the application design pattern? What are the application design patterns are there?
+
+[rochak agrawal] 08:46:23
+If someone has an idea.
+
+[rochak agrawal] 08:46:45
+Yes, go ahead.
+
+[Kaushal] 08:46:47
+Mainly three types of design patterns are creational, behavioral, and structural.
+
+[rochak agrawal] 08:46:53
+Mm-hmm.
+
+[rochak agrawal] 08:46:54
+Okay?
+
+[Kaushal] 08:46:56
+Creationally is, like, uh, mainly you want to create an instance. Like, there are ways, like, singleton, you can create, like, one instance of your.
+
+[rochak agrawal] 08:47:03
+Mm-hmm.
+
+[Kaushal] 08:47:07
+Object can be created, then structure, then we have factory.
+
+[Kaushal] 08:47:13
+uh, are the type of creational. Uh, structural and, uh, uh, structure, I mean, there are other types of design patterns, like, uh, uh, we have adapter design pattern.
+
+[rochak agrawal] 08:47:26
+Perfect, yes.
+
+[Kaushal] 08:47:27
+Yep.
+
+[rochak agrawal] 08:47:28
+Yes, yes. So, see, when you design your application, there are, uh, multiple, uh.
+
+[rochak agrawal] 08:47:35
+Design patterns are available, and you are going to create or run your application, build your application.
+
+[rochak agrawal] 08:47:42
+as one of the patterns. You'll choose one of the patterns. And now, why you need to choose pattern? Because you know there are established templates are available in that pattern, right? Proven methodologies are there, and that's why you are going to choose a particular pattern which suits you.
+
+[rochak agrawal] 08:47:58
+Correct. Now, when, um, um, when we say, uh, there is multiple containers, which can run in a single pod, right? So then there is also something called the…
+
+[rochak agrawal] 08:48:17
+Just a second.
+
+[rochak agrawal] 08:48:22
+Something called the, um…
+
+[rochak agrawal] 08:48:25
+Multi-container patterns are there.
+
+[rochak agrawal] 08:48:29
+Okay, now, there are many, but uh…
+
+[rochak agrawal] 08:48:34
+We have these sidecar, init container, ambassador, and adapter.
+
+[rochak agrawal] 08:48:40
+Now sidecar.
+
+[rochak agrawal] 08:48:42
+is something… now you understand username. Sidecar is a helper alongside with the app.
+
+[rochak agrawal] 08:48:49
+Okay, a helper alongside with the app, log shipper, proxy certificate, refresher, starts and stops with the pod. Now, Sidecar is one of the most common pattern which is being used.
+
+[rochak agrawal] 08:49:06
+Okay, um…
+
+[rochak agrawal] 08:49:07
+So, for example, uh, sidecar containers are the secondary containers that run along with the main application container within the same pod.
+
+[rochak agrawal] 08:49:18
+So for example, now you understand this.
+
+[rochak agrawal] 08:49:23
+So, let's say this is your pod.
+
+[rochak agrawal] 08:49:28
+Okay, now you will have one main application container.
+
+[rochak agrawal] 08:49:34
+And then you have a sidecar container.
+
+[rochak agrawal] 08:49:39
+These containers are used to enhance or extend the functionality of the primary application container by providing additional services or functionality, such as logging, monitoring, security, or data synchronization.
+
+[rochak agrawal] 08:49:56
+without directly altering the primary application code. So typically, you have one application container in a pod. For example, if you have a web application that requires a local web server.
+
+[rochak agrawal] 08:50:08
+the local web server is a sidecar, and the web application itself is an application container, right? So, Kubernetes implement, uh, the sidecar containers. Now, for example, very, um…
+
+[rochak agrawal] 08:50:22
+by the use case of a sidecar container is, for example, let's say you have a logging system here. You have multiple applications which are sending the log.
+
+[rochak agrawal] 08:50:33
+you're logging. So, for example, you're using ELK or Splunk. Now your application has a container, okay?
+
+[rochak agrawal] 08:50:40
+What you can do is, you can run a logging agent as a sidecar container, which is going to read the log from here, and sending the log to your logging agent.
+
+[rochak agrawal] 08:50:49
+So anything which is a secondary responsibility.
+
+[rochak agrawal] 08:50:53
+you can run with the sidecar containers. Okay, so that is why… see, the main purpose of the multi-container is those patterns only. Otherwise, for an application, there will be one container, correct? So sidecar, you understood a helper alongside with the app.
+
+[rochak agrawal] 08:51:09
+Do you want to monitor your, um…
+
+[rochak agrawal] 08:51:14
+application, so you install, uh, you run a monitoring container. You send the logging agent, um, you want a DNS resolver, for example, so you run a DNS resolver container alongside with it. So that is called the sidecar.
+
+[rochak agrawal] 08:51:27
+So you understand the pattern now, we will do a hands-on later on, but as a concept, any question?
+
+[rochak agrawal] 08:51:43
+Yes, you may.
+
+[Jeeva Koli] 08:51:46
+So, when you create a pod, there you deploy two containers, so…
+
+[rochak agrawal] 08:51:48
+Mm-hmm.
+
+[rochak agrawal] 08:51:52
+Correct.
+
+[Jeeva Koli] 08:51:53
+On one, uh, you can deploy application on, on sidecar, as you said, that monitoring, or whatever, yeah.
+
+[rochak agrawal] 08:51:59
+Whatever, yeah.
+
+[rochak agrawal] 08:52:01
+Got it. See, uh…
+
+[rochak agrawal] 08:52:03
+Basically, if you see, these are two containers, correct? Now, two containers can be equally powerful. For example, I can run a web application and an application server in a single pod. But these are the design patterns, these are the guidelines.
+
+[Jeeva Koli] 08:52:18
+Okay.
+
+[rochak agrawal] 08:52:19
+Right? So, um, and most of the time, logging agent, um, in any of the application you're going to run.
+
+[rochak agrawal] 08:52:26
+Logging agent run as a sidecar.
+
+[rochak agrawal] 08:52:29
+Okay, and there will not be a single sidecar. There can be multiple sidecars. For example, in this example, if you see, I can run a, uh…
+
+[rochak agrawal] 08:52:38
+monitoring sidecar as well as logging sidecar. Correct. So then I'm running 3 containers.
+
+[rochak agrawal] 08:52:44
+Okay.
+
+[Jeeva Koli] 08:52:49
+Okay, got it.
+
+[rochak agrawal] 08:52:49
+Amir, any question?
+
+[Amiya Nanda] 08:52:57
+Ah, yeah, Rochak, so, ah, apart from this, ah, application container, whatever the container is available in the, ah, pod, we can call it as sidecar, right?
+
+[rochak agrawal] 08:53:07
+No, no, no, no, no. See, again, that is what I'm saying. If you see on the basic level, like, for example, we will see the init containers also.
+
+[rochak agrawal] 08:53:17
+It's a multi-container, okay?
+
+[Amiya Nanda] 08:53:22
+Okay.
+
+[rochak agrawal] 08:53:24
+Just a second
+
+[rochak agrawal] 08:53:28
+For example.
+
+[rochak agrawal] 08:53:36
+I'm…
+
+[rochak agrawal] 08:53:37
+See, in the init container also, you will run multi-container, okay?
+
+[rochak agrawal] 08:53:42
+When you will call it as a sidecar, when you will call it as a container, sync. These.
+
+[rochak agrawal] 08:53:46
+These are the design patterns, these are the guidelines, okay? There is no hard and fast rules. This is not a science, basically, okay? See?
+
+[rochak agrawal] 08:53:56
+Anything which is supporting your main application.
+
+[rochak agrawal] 08:54:11
+Okay, and it follows the same life cycle. For example, uh…
+
+[rochak agrawal] 08:54:16
+When my main container stops, my sidecar will stop. When the main container starts, sidecars, uh, supporting starts. Then, that is where I qualify as a sidecar.
+
+[rochak agrawal] 08:54:27
+In the init container, also, you see that you will… you will be having a supporting container, but the lifecycle will be different. So that is… that will be called as the init container, not the sidecar.
+
+[rochak agrawal] 08:54:39
+Okay, so in the sidecar container, you follow the lifecycle. So you see the definition. Sidecar container are the secondary containers.
+
+[rochak agrawal] 08:54:50
+that run along with the main application container within the same pod.
+
+[rochak agrawal] 08:54:56
+These containers are used to enhance the functionality of the primary container by providing the additional services.
+
+[rochak agrawal] 08:55:04
+Such as logging, monitoring, security, or data synchronization, without directly altering the primary application code.
+
+[rochak agrawal] 08:55:14
+You understood? So…
+
+[rochak agrawal] 08:55:17
+It is basically like you are doing you are running two containers now.
+
+[rochak agrawal] 08:55:23
+If you say, I am running two containers.
+
+[rochak agrawal] 08:55:26
+One is a web container, another is an app container, okay?
+
+[rochak agrawal] 08:55:30
+Can you say Bev is a main container, App is a side container?
+
+[rochak agrawal] 08:55:34
+No.
+
+[rochak agrawal] 08:55:36
+They both are equally complementing each other.
+
+[rochak agrawal] 08:55:40
+So, when you say, I have two containers, one will be primary, one will be sidecar? No.
+
+[rochak agrawal] 08:55:46
+You need to see what it is… how it is qualifying the sidecar. It is supporting the main application, and it is following the lifecycle of the main application. Then it will be called as a sidecar.
+
+[rochak agrawal] 08:55:59
+Understood?
+
+[Amiya Nanda] 08:56:00
+Yes, understood.
+
+[rochak agrawal] 08:56:05
+Yes, Velvo?
+
+[Vaibhav Gupta] 08:56:12
+So, basically, the sidecar will be helpful for the, like, extra tasks, like monitoring and something.
+
+[rochak agrawal] 08:56:18
+Correct, supporting activities, that's what the definition itself says. Supporting activities. It is not…
+
+[Vaibhav Gupta] 08:56:21
+Mm-hmm.
+
+[rochak agrawal] 08:56:24
+Impacting your main functionality and it is enhancing or extending the functionality without impacting your application itself.
+
+[rochak agrawal] 08:56:35
+Okay?
+
+[rochak agrawal] 08:56:37
+Now the second pattern is even more interesting, init containers.
+
+[rochak agrawal] 08:56:44
+Init containers are something like, for example, let's say, uh…
+
+[rochak agrawal] 08:56:51
+Um, you want to go somewhere, um, you… but your car is very dirty, uh, there is, uh, there is no patrol in it, and so you call your driver, uh, so he's going to fill the, uh.
+
+[rochak agrawal] 08:57:05
+Tank and clean the car and as you come.
+
+[rochak agrawal] 08:57:07
+You will go.
+
+[rochak agrawal] 08:57:09
+Correct? So, even before you came.
+
+[rochak agrawal] 08:57:13
+The task has been done for you.
+
+[rochak agrawal] 08:57:15
+Correct?
+
+[rochak agrawal] 08:57:17
+That is called the init container. Let's say for your application to run, you need to download some file. The init container is also a supporting container.
+
+[rochak agrawal] 08:57:28
+But it runs to completion before your application is going to start.
+
+[rochak agrawal] 08:57:33
+You see the under… you see the difference. Sidecar and the…
+
+[rochak agrawal] 08:57:39
+In a container.
+
+[rochak agrawal] 08:57:40
+Both are supporting.
+
+[rochak agrawal] 08:57:41
+Correct. But in the sidecar, your secondary container will keep running.
+
+[rochak agrawal] 08:57:47
+in parallel to your main container. But in the init container, your sidecar container, will do a task, will shut down, and then the main container will start.
+
+[rochak agrawal] 08:57:59
+So it's runs to completion.
+
+[rochak agrawal] 08:58:02
+It runs to completion before the application starts.
+
+[rochak agrawal] 08:58:05
+Wait for a dependency, run migration, fetch configuration. Once the task of the init container will…
+
+[rochak agrawal] 08:58:13
+completed, then only if the init container failed, the main container will never start.
+
+[rochak agrawal] 08:58:18
+So, your main application to run…
+
+[rochak agrawal] 08:58:22
+The init container should be run, executed successfully. So that's a pattern.
+
+[rochak agrawal] 08:58:28
+Clear, understood, two patterns, sidecar and the init container, you are going to find multiple questions on these.
+
+[rochak agrawal] 08:58:43
+I'll be good with the sidecar and internet container.
+
+[Amiya Nanda] 08:58:53
+Init container I am not able to understand properly.
+
+[rochak agrawal] 08:58:59
+Okay, see, init container is like, for example, let me think about a real life example.
+
+[Amiya Nanda] 08:59:00
+Yeah
+
+[rochak agrawal] 08:59:09
+Okay, so for example, let's say when you start your laptop, you want to do something, right? You should have an internet connectivity, correct?
+
+[rochak agrawal] 08:59:23
+Then only I can write to Gmail or something like I'm connected to this Zoom. Now let's say if your router is not switched on or your internet connectivity is not on.
+
+[rochak agrawal] 08:59:38
+Now, my primary responsibility is…
+
+[rochak agrawal] 08:59:42
+taking the session, for example, right? But if my…
+
+[rochak agrawal] 08:59:46
+prerequisite is not completed, then I would not be able to do my main task, correct?
+
+[Amiya Nanda] 08:59:52
+Correct.
+
+[rochak agrawal] 08:59:53
+So, the job of an init container is to set up the prerequisite. So, for example, let's say I'm outside. I have someone at my home, and I'll call him and say, um, boss, please check the prerequisite, see that network connectivity is working.
+
+[rochak agrawal] 09:00:08
+I have laptop at my place, uh, and then I will come at 7.30 and start the session.
+
+[rochak agrawal] 09:00:14
+So you see, before starting the session, your prerequisite has been completed, correct?
+
+[Amiya Nanda] 09:00:22
+Correct.
+
+[rochak agrawal] 09:00:23
+So, similar thing happens in the init container. Now, let's say your application, when it starts.
+
+[rochak agrawal] 09:00:29
+It need to talk to a database. For example, just use case.
+
+[rochak agrawal] 09:00:34
+it needs to talk to a database, it is fetching, uh, um… it's fetching the data from the database and displays on a web page. Now, that's the main responsibility.
+
+[rochak agrawal] 09:00:45
+Now.
+
+[rochak agrawal] 09:00:46
+Let's say if you are not able to connect to a database, your application is going to work? No, correct?
+
+[Amiya Nanda] 09:00:54
+Correct.
+
+[rochak agrawal] 09:00:55
+So what you can do is you can start, you can create a side application, which is going to do all the networking checks, all the prerequisite checks, all the permission checks, and which will say, okay, the connectivity is fine, you will be able to fetch data.
+
+[rochak agrawal] 09:01:10
+Once the init container says okay, then your main container will start, because it knows that all the prerequisites have been done.
+
+[Amiya Nanda] 09:01:19
+Okay.
+
+[rochak agrawal] 09:01:20
+Okay? So that is the role of an init container.
+
+[Amiya Nanda] 09:01:21
+Yeah. Okay.
+
+[rochak agrawal] 09:01:24
+And the difference between the sidecar and the init container is, sidecar will keep running alongside with your main container.
+
+[Amiya Nanda] 09:01:25
+Now I got it
+
+[rochak agrawal] 09:01:32
+So till the time your main container is running, your logging agent is going to keep running, correct? Then only it is going to collect the logs.
+
+[Amiya Nanda] 09:01:37
+Correct.
+
+[rochak agrawal] 09:01:41
+But, in the init container, okay, in the init container.
+
+[rochak agrawal] 09:01:49
+the prerequisite will be completed, and this container will shut down, and your main container will start. So it is like running in sequence.
+
+[Amiya Nanda] 09:02:00
+Okay, so before our main container starts, this init container will do their work.
+
+[rochak agrawal] 09:02:03
+Correct. This container should run and execute it successfully. Not only run, execute successfully.
+
+[Amiya Nanda] 09:02:10
+Okay, okay, then once.
+
+[rochak agrawal] 09:02:11
+Because if the init container is getting filled, your main container will not come up.
+
+[Amiya Nanda] 09:02:16
+Okay, okay. And after our main container starts, this init container is going to stop, shut down.
+
+[rochak agrawal] 09:02:21
+Correct.
+
+[rochak agrawal] 09:02:22
+Got it.
+
+[Amiya Nanda] 09:02:22
+Oh, okay.
+
+[rochak agrawal] 09:02:23
+Okay? Again, see, this is a design pattern. If you want to use it, not use it, it is up to us.
+
+[Amiya Nanda] 09:02:24
+Fine, yeah.
+
+[Amiya Nanda] 09:02:29
+Okay.
+
+[rochak agrawal] 09:02:30
+Understood?
+
+[Amiya Nanda] 09:02:30
+Understood. Thank you.
+
+[rochak agrawal] 09:02:32
+Now, third is the ambassador, okay?
+
+[Vaibhav Gupta] 09:02:35
+I have a question, uh, related to init container, and, like, it's not, uh, like, it's striking in my mind, like, uh, I face an interview, and the interviewer asked me, like, what are the, uh, scenarios, uh, happens when the init container fails?
+
+[rochak agrawal] 09:02:37
+Yes, ma'am.
+
+[Vaibhav Gupta] 09:02:53
+So…
+
+[rochak agrawal] 09:02:54
+What is the scenario when the init container… See, it will totally depend on your applications. For example, let's say we've taken an example of a database prerequisite application, correct? See, first we need to understand when an init container is going to.
+
+[Vaibhav Gupta] 09:02:55
+Okay.
+
+[rochak agrawal] 09:03:11
+What does it mean by failing a init container? Okay. See, failing the init container means that whatever prerequisite it was supposed to do.
+
+[rochak agrawal] 09:03:22
+It was not able to do so, correct?
+
+[Vaibhav Gupta] 09:03:24
+Mm-hmm.
+
+[rochak agrawal] 09:03:26
+Right, so it will totally depend on the application. For example, I'm setting up a database prerequisite script. Now my init container will fail if I am not able to execute the script successfully.
+
+[rochak agrawal] 09:03:41
+Now, there can be multiple reasons for that. Uh, for example, the network connectivity is not there, uh, from my host where the init container is running to the database. Second, if the network connectivity is there, um.
+
+[rochak agrawal] 09:03:54
+But, your, um…
+
+[rochak agrawal] 09:03:57
+Permissions are not there. So it will…
+
+[rochak agrawal] 09:04:03
+Depend on your application.
+
+[rochak agrawal] 09:04:06
+type of the application, correct? So, when an init container fails in the…
+
+[rochak agrawal] 09:04:13
+Kubernetes, the main application container, is never going to start.
+
+[rochak agrawal] 09:04:17
+So the common cases of the failure of the init container would be unreachable dependencies.
+
+[rochak agrawal] 09:04:24
+name resolution errors, configuration or permission, or most importantly, for example, see, in the end, your init container is also a container, correct?
+
+[rochak agrawal] 09:04:37
+It is also… would be running some images, correct? So then…
+
+[rochak agrawal] 09:04:41
+your image is not present, you are giving the wrong image name, or you do not have a permission to download the image itself. So these can be certain scenarios in which… and init container is going to fail. And one more thing I'll tell you.
+
+[rochak agrawal] 09:04:58
+Vivo is… see, there is no specific case where you say, uh, will be a difference that a normal container is not going to fail, or a init container, uh, is going to fail.
+
+[rochak agrawal] 09:05:08
+So, in whatever scenario a normal container can fail, your init container can also going to fail in the same scenarios. It is just…
+
+[rochak agrawal] 09:05:17
+See, init container is… in the end, it is also a container only, correct?
+
+[rochak agrawal] 09:05:22
+It is just
+
+[rochak agrawal] 09:05:24
+The duty of a init container is that it is running.
+
+[rochak agrawal] 09:05:27
+Before the main container, that's it.
+
+[rochak agrawal] 09:05:30
+All the functionalities and everything is going to remain the same.
+
+[Vaibhav Gupta] 09:05:35
+So, we can set some multiple reasons.
+
+[rochak agrawal] 09:05:38
+Huh, there could be multiple reasons, of course. There will not be a single reason. It will depend on the type of the application you are using, right? So that's where I see the common cases of a feeling of an inner container.
+
+[rochak agrawal] 09:05:51
+Not only the init container, any container is the unreachable dependencies. So the script waiting for a database, API, or a service, timeout for the loops because the target service is missing or the target service is down.
+
+[rochak agrawal] 09:06:05
+DNS or the name resolution errors, one of the very common issues of failing the containers. Then the permission issues, okay, you're trying to fetch some data from the database, but you do not have the permission.
+
+[rochak agrawal] 09:06:16
+And then some issues with the image itself.
+
+[rochak agrawal] 09:06:19
+So these are some of the common issues.
+
+[rochak agrawal] 09:06:25
+Okay? Now
+
+[rochak agrawal] 09:06:28
+Third is the ambassador. Now ambassador, I don't see it as a container specific pattern because ambassador pattern.
+
+[rochak agrawal] 09:06:39
+we are using in if you do not use for example the containers all together then also we are using the ambassador pattern. So to understand the ambassador pattern we need to understand the proxy.
+
+[rochak agrawal] 09:06:52
+Okay, now there is two type of proxies are there. One is forward proxy, one is a reverse proxy.
+
+[rochak agrawal] 09:06:59
+Can anyone tell me what is the difference between the forward proxy and the reverse proxy?
+
+[rochak agrawal] 09:07:16
+Yes, question.
+
+[Kaushal] 09:07:23
+Uh, forward proxy mainly sits between your, uh, user load and load balancer, and, uh, uh, reverse proxy mainly at your application side.
+
+[rochak agrawal] 09:07:34
+Not quite, so…
+
+[rochak agrawal] 09:07:36
+When you say load balancer.
+
+[rochak agrawal] 09:07:38
+Do you think load balancer is a proxy?
+
+[Kaushal] 09:07:50
+Yeah, it is.
+
+[rochak agrawal] 09:07:51
+It is, right? So, see, um, investor is nothing.
+
+[rochak agrawal] 09:08:01
+For example, when you have a backend server.
+
+[rochak agrawal] 09:08:09
+You put up a load balancer in front of here and your users talk to the load balancer and load balancer distribute the traffic to here. Now this acts as a reverse proxy.
+
+[rochak agrawal] 09:08:22
+Correct. Now, similarly, in the embedded pattern, what's going to happen, that you have a main container.
+
+[rochak agrawal] 09:08:30
+Okay? But main container is not going to talk… your users are not going to directly talk to the main container. You will deploy a proxy container, like a Nginx container.
+
+[rochak agrawal] 09:08:42
+Okay. And then nginx container is talking to your application altogether. So that is called the ambassador pattern. But this is not, I would say, used very generally because there are other more effective methods.
+
+[rochak agrawal] 09:09:00
+more effective ways of handling this traffic. So, there is something called the ingress.
+
+[rochak agrawal] 09:09:11
+In Kubernetes, Ingress, we are going to use the Ingress type of the services to handle this type of scenarios, which is more mature and more… better solution, which we are going to discuss in the services, but…
+
+[rochak agrawal] 09:09:26
+This is a less commonly used type of the.
+
+[rochak agrawal] 09:09:32
+pattern, but there is. Then, in the last, we have adapter. Now, even adapter is also more of the…
+
+[rochak agrawal] 09:09:43
+Uh, what you can say is, uh…
+
+[rochak agrawal] 09:09:45
+more of a developer-facing type of a pattern, okay? Nowadays, as an administrator, Kubernetes administrator, you will be more focused on the sidecar and the init container, okay? Adapter and ambassador. Ambassador is.
+
+[rochak agrawal] 09:10:03
+very, uh… very less frequently used, while the adapter is more of a developer-friendly, how developer is writing the code, okay? So, for example, um…
+
+[rochak agrawal] 09:10:14
+Nowadays, your application talks to multiple, um…
+
+[rochak agrawal] 09:10:20
+components, right? Now, every component will be sending the data in some other format, which may not be acceptable.
+
+[rochak agrawal] 09:10:31
+which your application might not be able to read as it is, correct? So that is where… or maybe they are sending too much data which your application does not require.
+
+[rochak agrawal] 09:10:41
+So that is where these adapter patterns came into the picture, but this is, I would say, not more of a container pattern, it is more of an application pattern. How your application is being written, and then your application is going to take only the data which is required for its uses.
+
+[rochak agrawal] 09:11:00
+Okay, so it says normalizes the output, converts the app metrics, logs into the format the monitoring system expects. Okay, so these are some of the patterns. For us, sidecar and init container, you need to understand.
+
+[rochak agrawal] 09:11:16
+More thoroughly, we will do…
+
+[rochak agrawal] 09:11:18
+a demo after we understand the deployment. Okay.
+
+[rochak agrawal] 09:11:23
+But these are important. Ambassador, uh, we will cover with the help of Ingress, which is the most.
+
+[rochak agrawal] 09:11:30
+Adopted and commonly used solution instead of using directly within a container, and adapter is mostly towards how you're writing your code.
+
+[rochak agrawal] 09:11:39
+Okay, any question with the patterns?
+
+[rochak agrawal] 09:11:48
+Okay. Now…
+
+[rochak agrawal] 09:11:51
+After the pod.
+
+[rochak agrawal] 09:11:56
+So you see, we run two ports, correct?
+
+[rochak agrawal] 09:12:08
+One by one is running. Do you know, um…
+
+[rochak agrawal] 09:12:11
+This is more or less same like the container only.
+
+[rochak agrawal] 09:12:16
+Correct, because we are not, uh…
+
+[rochak agrawal] 09:12:20
+getting much thing about it. So, for example, if I go cube CPL.
+
+[rochak agrawal] 09:12:26
+Uh, delete pod…
+
+[rochak agrawal] 09:12:28
+NGINX.
+
+[rochak agrawal] 09:12:31
+You see? Pod nginx deleted from the default namespace. Now, if you see…
+
+[rochak agrawal] 09:12:35
+get pods… there is no pod. So what we are talking about, uh, auto-healing, auto-scaling, how can I auto-scale it, how can I auto-heal it.
+
+[rochak agrawal] 09:12:49
+How? Right? So that is where, um, um, pod is just, uh, we have covered the pod to understand, uh.
+
+[rochak agrawal] 09:13:00
+like, how things work. It's the most smallest unit of the work in Kubernetes, but it is no better than the containers, okay?
+
+[rochak agrawal] 09:13:11
+Uh, because there is no, again, the same problems, no auto-healing, no auto-scaling, uh, no automated deployment, nothing like that, okay? So, it is good, it is just solving one problem that you're, um.
+
+[rochak agrawal] 09:13:26
+It is… it is going to be multi-host.
+
+[rochak agrawal] 09:13:28
+So that is where, when you deploy your application, you don't deploy in form of pods.
+
+[rochak agrawal] 09:13:36
+You need something see.
+
+[rochak agrawal] 09:13:39
+Your container is always going to run in the form of the pod, but you are not going to deploy them directly.
+
+[rochak agrawal] 09:13:46
+Okay.
+
+[rochak agrawal] 09:13:49
+So you are, you need someone, you need something which is going to manage these pods whenever you need to scale them. It is going to scale it whenever you need to take the number down, lower down.
+
+[rochak agrawal] 09:14:04
+and all of that. So, we need something, um…
+
+[rochak agrawal] 09:14:10
+To manage the ports. And that is where your… there is, uh…
+
+[rochak agrawal] 09:14:16
+Something called the deployment, okay?
+
+[rochak agrawal] 09:14:20
+So, I'll show you what is the deployment.
+
+[rochak agrawal] 09:14:32
+So I'll take the deployment YAML file. Very simple.
+
+[rochak agrawal] 09:14:52
+You see? Here, the kind of, uh…
+
+[rochak agrawal] 09:14:57
+Deployment?
+
+[rochak agrawal] 09:14:59
+Name is…
+
+[rochak agrawal] 09:15:00
+Nginx deployment levels is this.
+
+[rochak agrawal] 09:15:03
+Here, I'm seeing replicas is equal to 3, and then the container specification. Same thing. Like, if you remember, same thing we have done in the pod.
+
+[rochak agrawal] 09:15:12
+So now, instead of creating the pod.yaml, I am going to create the deployment.yaml, basically the API object deployment type.
+
+[rochak agrawal] 09:15:22
+which is going to manage the underlying pods, okay? So whenever you need to auto-scale, auto-heal, it is going to provide you all of that functionality.
+
+[rochak agrawal] 09:15:34
+So I'm going to save this kubectl. Now before that kubectl.
+
+[rochak agrawal] 09:15:39
+get…
+
+[rochak agrawal] 09:15:40
+deployments.
+
+[rochak agrawal] 09:15:43
+Okay, so now kubectl apply and now pods also I'll show you.
+
+[rochak agrawal] 09:15:50
+Okay? Cube, CTL…
+
+[rochak agrawal] 09:15:53
+Lay.
+
+[rochak agrawal] 09:15:56
+Hyphen F, deployment.yaml.
+
+[rochak agrawal] 09:16:01
+Okay? Deployment created. Now, if you see kubectl get deployments.
+
+[rochak agrawal] 09:16:10
+So you can see NGINX deployment three by three means three pods, three replicas is there. And now if you run the pods.
+
+[rochak agrawal] 09:16:21
+You can see three ports are running. Okay, now how to validate that auto healing, auto scaling is there. So this is kubectl.
+
+[rochak agrawal] 09:16:32
+delete pod. Now, previously, when we deleted the pod, it was not coming up.
+
+[rochak agrawal] 09:16:40
+Now you see, I deleted the pod. Now if you run the pods.
+
+[rochak agrawal] 09:16:47
+You can say another pod has come up automatically.
+
+[rochak agrawal] 09:16:51
+Correct?
+
+[rochak agrawal] 09:17:11
+3 seconds. And if I want to, uh, change the replica, uh, of the…
+
+[rochak agrawal] 09:17:11
+like, how many number of the instances I want, so I can edit the deployment. So you say kubectl.
+
+[rochak agrawal] 09:17:11
+Edit.
+
+[rochak agrawal] 09:17:11
+Deployment.
+
+[rochak agrawal] 09:17:13
+NGINX deployment.
+
+[rochak agrawal] 09:17:19
+hyphen hyphen replicas…
+
+[rochak agrawal] 09:17:21
+is equal to 10.
+
+[rochak agrawal] 09:17:31
+Let me correct this command.
+
+[rochak agrawal] 09:17:35
+So, you see, command and other things, we don't need to worry about, uh…
+
+[rochak agrawal] 09:17:39
+Command is invalid. It says scale deployment.
+
+[rochak agrawal] 09:17:50
+This is a kubectl scale deployment, and replica is equal to 10. Now, once you did it.
+
+[rochak agrawal] 09:17:56
+Okay, now you see.
+
+[rochak agrawal] 09:17:59
+kubectl get deployment.
+
+[rochak agrawal] 09:18:04
+10x10, and if you run the ports.
+
+[rochak agrawal] 09:18:09
+You see? Now the 10 instances of the same application is running.
+
+[rochak agrawal] 09:18:13
+So now your ports are being managed as a single unit. Now, if you want to change it at any point of time, let's say, I'll say 5.
+
+[rochak agrawal] 09:18:27
+You see? Only five.
+
+[rochak agrawal] 09:18:29
+So, the point here is, still this is a manual, uh, scaling. We can do it, um…
+
+[rochak agrawal] 09:18:39
+Automatically, also, there is another object called Horizontal Pod Autoscaler, which we will do.
+
+[rochak agrawal] 09:18:44
+Uh, again, but right now, we are manually scaling. And secondly, if you want to, let's say, uh, do some updates, so you can go kubectl.
+
+[rochak agrawal] 09:18:54
+edit…
+
+[rochak agrawal] 09:18:54
+Deployment.
+
+[rochak agrawal] 09:18:57
+Engine X.
+
+[rochak agrawal] 09:19:01
+So you can see here, I can go, for example, and uh…
+
+[rochak agrawal] 09:19:15
+Let's say you want something else.
+
+[rochak agrawal] 09:19:19
+Latest.
+
+[rochak agrawal] 09:19:20
+Okay, you want to change the image or something, or some other property, you just stick to it.
+
+[rochak agrawal] 09:19:26
+Now you see, deployment will be edited. Now, when your deployment will be edited, you… when… when you go again, kubectl…
+
+[rochak agrawal] 09:19:38
+Employment.
+
+[rochak agrawal] 09:19:42
+You can see up-to-date pipeline. So now the whole point of using the deployment is, and this is an object by the way, okay, so that you do not, now you can see I have multi-host.
+
+[rochak agrawal] 09:19:58
+So, when you run these ports.
+
+[rochak agrawal] 09:20:04
+They might… they will be running on different, different hosts. So…
+
+[rochak agrawal] 09:20:08
+Okay, they are running as of now on the same host, but when you have multiple nodes, they will be running on multiple hosts, right? And then, uh, multi-host system problem will be resolved. Second thing is, you can see auto-healing is there. If my desired state is 5.
+
+[rochak agrawal] 09:20:24
+And if I'm deleting a pod, or something like that, then my…
+
+[rochak agrawal] 09:20:31
+Pod is going to be started, restarted automatically, so auto-healing is there.
+
+[rochak agrawal] 09:20:35
+Scaling is there. At any point of time, I can scale up and scale down.
+
+[rochak agrawal] 09:20:40
+Now, only one thing is remaining, which we are not able to solve right now, is the load balancing. So, for example, now 5…
+
+[rochak agrawal] 09:20:48
+instances of an application is running. When the request is coming.
+
+[rochak agrawal] 09:20:53
+How would it decide that it will go to this one, that one, or where? So then, for that, there is a concept of the services.
+
+[rochak agrawal] 09:21:03
+Which we will see now, tomorrow. Uh, with the help of the services, there are 3 types of the services. Uh, load balancer service, cluster IP service, and the node port service. So, with the help of that, we are… we will be able to do the load balancing altogether.
+
+[rochak agrawal] 09:21:19
+So, when you will be deploying your application, you will not deploy them as the pod. You will deploy them as the deployment object, so that the lifecycle of the multiple pods.
+
+[rochak agrawal] 09:21:31
+can be managed from a single unit. That's the whole purpose. So, this is about the deployment.
+
+[rochak agrawal] 09:21:39
+Now, with that…
+
+[rochak agrawal] 09:21:41
+From the deployment itself, there is something called the.
+
+[rochak agrawal] 09:21:47
+So you can see there is a replica set, okay? Replica set is when you create a deployment, and when you define the replica, it is going to create the replica set for you.
+
+[rochak agrawal] 09:21:59
+Um, which is going to decide how many replicas you… your application is going to have.
+
+[rochak agrawal] 09:22:05
+Okay, so replica set, we don't generally work directly, we always work with the deployment, and the replica set and ports are being managed in the back.
+
+[rochak agrawal] 09:22:18
+Clear?
+
+[rochak agrawal] 09:22:24
+Load balancing will be covered by the services.
+
+[rochak agrawal] 09:22:36
+Any questions?
+
+[Amiya Nanda] 09:22:45
+Hello
+
