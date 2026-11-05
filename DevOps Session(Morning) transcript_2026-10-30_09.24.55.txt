@@ -1,0 +1,2928 @@
+[rochak agrawal] 07:40:57
+Hey, good morning, everyone. So let's just start.
+
+[rochak agrawal] 07:41:10
+Today, we are going to talk about Ansible. Um, why do we need it? What is the need of Ansible? And all of that, we are going to discuss. What is the configuration management? Why…
+
+[rochak agrawal] 07:41:21
+Ansible is very different from other configuration management tool. We are going to talk about it.
+
+[rochak agrawal] 07:41:27
+Now
+
+[rochak agrawal] 07:41:29
+Why do we need the configuration management first thing? Okay.
+
+[rochak agrawal] 07:41:36
+What is the configuration management? We discussed briefly in our IEC classes, but why do we need it? Because see, what's going to happen, whatever the servers you are going to use in your dev environment and your production environment.
+
+[rochak agrawal] 07:41:52
+There are many things which you need to configure on it. Let's say you need to install your runtime, you need to install your security software, you need to configure your DLP software, you need to configure your antiviruses, multiple things.
+
+[rochak agrawal] 07:42:07
+And when you have hundreds and thousands of the server.
+
+[rochak agrawal] 07:42:12
+this is going to become a very challenging task, right? So that is where…
+
+[rochak agrawal] 07:42:19
+you need some tool which is going to configure the servers for you. Otherwise, each server will configure slightly differently by whoever was logged in and that. Then nobody can rebuild one exactly. Then we need to.
+
+[rochak agrawal] 07:42:36
+run hundreds of the steps on the server, you might make some human errors here and there. And because of that, there is going to be the configuration drift.
+
+[rochak agrawal] 07:42:46
+Server then began identical, diverse as people make quick fixes that were never written down, right?
+
+[rochak agrawal] 07:42:54
+you created five servers, but then you are on leave, something happened, and someone does something on one of the servers. So your server is… the configuration of the server is going to be interrupted from other servers.
+
+[rochak agrawal] 07:43:07
+Then it's a slow and error-prone process. Slow because when you configure it manually and you have 1,000 servers, you will configure one server, then another server, then the third server, then the fourth server. So it is going to take a lot of time. And error-prone because…
+
+[rochak agrawal] 07:43:24
+Uh, when you do some things manually, there is always the chances that you make some mistakes in it.
+
+[rochak agrawal] 07:43:31
+Then, we have no record.
+
+[rochak agrawal] 07:43:34
+No record, as in, whatever the steps you have done, uh, or…
+
+[rochak agrawal] 07:43:39
+Let's say there's some incident came and you did something to resolve it. You're not recording it, right? You're not making a knowledge base. So knowledge is in your head. The real documentation is a person and they are on leave in the server field. So then you don't know what to do.
+
+[rochak agrawal] 07:43:55
+Correct. And it does not scale because it is, uh, slow. So that is where…
+
+[rochak agrawal] 07:44:01
+Whenever you need to see, if you are, say, I'm dealing only with the four, five servers, then it is okay. But if you have hundreds and thousands of the server, then moving those servers manually by hand is not an effective approach.
+
+[rochak agrawal] 07:44:15
+And that is where we need the configuration management tool.
+
+[rochak agrawal] 07:44:21
+Now, what is the difference between configuration and script?
+
+[rochak agrawal] 07:44:26
+and an Ansible task. An Ansible, when we want to configure something, we call it as an Ansible task. Now, if you see the same thing, you can see the same thing I can do with the Shell script also.
+
+[rochak agrawal] 07:44:39
+See, because in the end, Ansible also runs your Linux-related commands only.
+
+[rochak agrawal] 07:44:44
+Okay, so here if you see Ensemble user add deploy.
+
+[rochak agrawal] 07:44:50
+Echo, deploy all, no password, all this, this, this.
+
+[rochak agrawal] 07:44:54
+User add, user deploy already exists. So, when you run the script at two times, okay.
+
+[rochak agrawal] 07:45:03
+You see, when you run the script two times, uh, first time it is going to run, and it is going to run a user called the deploy, right? But when you run it second time.
+
+[rochak agrawal] 07:45:13
+it is going to give you an error, and it will say the user deploy already exists. So it… your… your task is failing, right?
+
+[rochak agrawal] 07:45:21
+But if you run the ensemble task.
+
+[rochak agrawal] 07:45:25
+It says first run changed, so it is what it is going to do. It is going to create a user for you.
+
+[rochak agrawal] 07:45:32
+In the second run, it is again like that we did it in a terraform. It is going to compare.
+
+[rochak agrawal] 07:45:41
+desired state versus the current state. Now, if the desired state and the current state is equal, in the second run, it will say OK. Neither it will create a user for you.
+
+[rochak agrawal] 07:45:51
+Neither it is going to.
+
+[rochak agrawal] 07:45:54
+Give you an error. So we when we run the Ansible, we call it as a playbook.
+
+[rochak agrawal] 07:46:01
+What we are going to do.
+
+[rochak agrawal] 07:46:03
+We are going to run something called the playbook in which I will write what I intend to do. So we describe the end state. This should be my end state, right? Like we did in Terraform, you write your what infrastructure you want.
+
+[rochak agrawal] 07:46:20
+Here, you will write what configuration you want in our server. So your state, what should be true, a user exists and the package is installed. Not the steps to go there. Again, it's in declarative syntax, so we do not need to…
+
+[rochak agrawal] 07:46:36
+Uh, worry about what is going to happen there.
+
+[rochak agrawal] 07:46:41
+Right? How to do that? No. What to do is what we are going to write.
+
+[rochak agrawal] 07:46:46
+Then it is idempotent, it is safe to repeat. If…
+
+[rochak agrawal] 07:46:51
+as we said, if something is not there. It is going to do that, but if something is already there, and it is written in your state, it is not going to… not going to do anything.
+
+[rochak agrawal] 07:47:03
+So, repetition becomes the harmless, and it reports what it is changing. Every task says OK or change, so a run doubles as an audit of direct.
+
+[rochak agrawal] 07:47:15
+So that is about the Ansible configuration management.
+
+[rochak agrawal] 07:47:20
+Now, there are multiple tools is there.
+
+[rochak agrawal] 07:47:24
+Ansible, Puppet, and Chef. Again, Terraform, as we discussed, also can do a little bit of configuration management with the help of…
+
+[rochak agrawal] 07:47:35
+Provis Nurse.
+
+[rochak agrawal] 07:47:37
+So in Civil, if you see YAML playbook pushed over the SSH, Puppet is again declarative language, notes pulled from the server, Chef, Ruby recipes, notes pulled from the server.
+
+[rochak agrawal] 07:47:51
+Salt stack, YAML state, a message bus, Terraform HCL. So you can see…
+
+[rochak agrawal] 07:47:56
+whenever you are going to write the configuration, in whatever language you are going to write the configuration, is YAML is a declarative language, it's Ruby, again YAML, and Terraform writes it in the…
+
+[rochak agrawal] 07:48:12
+You're the idiot.
+
+[rochak agrawal] 07:48:14
+Then, um, and so, uh, Arif, let me, uh, finish this slide, and then I'll come back, uh, to you.
+
+[rochak agrawal] 07:48:22
+Now, there is two very important thing in this slide that we need to understand. One is the agent.
+
+[rochak agrawal] 07:48:29
+So Ansible is see none. So you will figure out that Ansible is a agentless software, okay? And then Terraform is also none. So you can see Puppet, Chef, and SaltStick are the agent-based software.
+
+[rochak agrawal] 07:48:44
+Ensemble is very low learning curve, nothing to install on target, but slower at huge scale, no continuous enforcement by default.
+
+[rochak agrawal] 07:48:55
+Puppet, strong drift correction and reporting, a server and agent to run its own language. So you need to learn the declarative language of the Puppet.
+
+[rochak agrawal] 07:49:05
+While Chef is very flexible, it is completely written in Ruby, but you need to learn the Ruby language completely. So learning curve is very steeper. Source stack is fast and event-driven, but more moving parts, smaller community, so you will not get the support.
+
+[rochak agrawal] 07:49:23
+While Terraform has built the infrastructure itself, not designed to configure software inside the server. Now, if you see.
+
+[rochak agrawal] 07:49:32
+If we discuss the design.
+
+[rochak agrawal] 07:49:36
+So, there are two things which is coming.
+
+[rochak agrawal] 07:49:49
+Okay, now…
+
+[rochak agrawal] 07:49:51
+Let's say…
+
+[rochak agrawal] 07:49:54
+This is my Ansible, or let's say, for example, this is my configuration management tool.
+
+[rochak agrawal] 07:50:00
+Okay, I have n number of nodes to manage.
+
+[rochak agrawal] 07:50:10
+There could be 4, there could be 400, there could be 40, it does not matter.
+
+[rochak agrawal] 07:50:14
+When you are using a tool like Ansible, you do not need to install an agent on these four server or the N number of the server.
+
+[rochak agrawal] 07:50:26
+to do the configuration management. So that is why it is called the agentless.
+
+[rochak agrawal] 07:50:40
+Ensemble is completely on the agent list, okay? While…
+
+[rochak agrawal] 07:50:46
+If you use the tools like Chef
+
+[rochak agrawal] 07:50:49
+Okay.
+
+[rochak agrawal] 07:50:51
+All salt.
+
+[rochak agrawal] 07:50:54
+You… somewhere you will see as a salt, somewhere you will see as a salt stack, okay? Now, if you're using something like these tools.
+
+[rochak agrawal] 07:51:02
+So let's say this is your share for Puppet. Then you need to install an agent.
+
+[rochak agrawal] 07:51:10
+On these machines.
+
+[rochak agrawal] 07:51:15
+Okay? The agent will communicate with your, uh, salt puppet and chef.
+
+[rochak agrawal] 07:51:21
+And then it is going to create the…
+
+[rochak agrawal] 07:51:24
+configuration management things for you. So Ansible is the agentless, Chef and Puppet Salt is the agent-based configuration management tool.
+
+[rochak agrawal] 07:51:35
+Okay, now…
+
+[rochak agrawal] 07:51:36
+Also, this becomes a question, right? Because your agent installation is also a task, right? So, um, sometime it may happen that, um, you have 1000 server, and you need to install the agent for Chef and Puppet, so also.
+
+[rochak agrawal] 07:51:51
+That's where Ansible also wins, because agent installation is also kind of a configuration management thing.
+
+[rochak agrawal] 07:52:00
+Okay, second thing is, there is, you might have noticed, there is two terms.
+
+[rochak agrawal] 07:52:08
+Banis Bush.
+
+[rochak agrawal] 07:52:10
+Another is pull.
+
+[rochak agrawal] 07:52:12
+Okay, let's see…
+
+[rochak agrawal] 07:52:16
+This is my machine where my Ansible, Chef, and Puppet is installed.
+
+[rochak agrawal] 07:52:21
+And these are my server.
+
+[rochak agrawal] 07:52:30
+This is very, very common interview question, what are the difference between the pull and pull… push and pull architecture?
+
+[rochak agrawal] 07:52:38
+So let's say first you talk about the agent-based system. So this is my machine where my Chef, Puppet, or Salt is installed, and these are the agents.
+
+[rochak agrawal] 07:52:52
+Okay, now you write the configuration here, whatever you want.
+
+[rochak agrawal] 07:52:59
+Right? So your Chef, Puppet and Salt are the pull works on the pull based architecture. Now what is a pull based architecture? So your agent, what the agent you installed on the system.
+
+[rochak agrawal] 07:53:15
+They connected to this node.
+
+[rochak agrawal] 07:53:17
+Okay.
+
+[rochak agrawal] 07:53:25
+They connect to this node, they pull the configuration.
+
+[rochak agrawal] 07:53:34
+Or you say you… they download the configuration, what need to be done on this, and this agent is going to run those configuration here.
+
+[rochak agrawal] 07:53:47
+So that is called the pull-based architecture. If your agent is not available, your machine will not be configured as part of the group.
+
+[rochak agrawal] 07:53:58
+Okay, so your agent pulls the configuration from the central server and then run it on the destination machine.
+
+[rochak agrawal] 07:54:06
+So if the agent is not there on the destination machine, your configuration management is not going to work.
+
+[rochak agrawal] 07:54:14
+Second is a push-based architecture which Ansible supports.
+
+[rochak agrawal] 07:54:21
+In the Ansible.
+
+[rochak agrawal] 07:54:24
+Let's say this is a central machine, where…
+
+[rochak agrawal] 07:54:28
+You are running your Ansible?
+
+[rochak agrawal] 07:54:35
+Okay? And then you have your…
+
+[rochak agrawal] 07:54:44
+multiple servers where you need to do the configuration management. Now, as we discussed previously, that there is no agent which is running on those machines. So how Ansible connects with these machines over the SSC connection?
+
+[rochak agrawal] 07:55:03
+And this machine will itself connect to.
+
+[rochak agrawal] 07:55:06
+those machines.
+
+[rochak agrawal] 07:55:07
+Okay? If it is a Unix-based system.
+
+[rochak agrawal] 07:55:12
+Then SSH.
+
+[rochak agrawal] 07:55:14
+If it is a Windows, then RDP.
+
+[rochak agrawal] 07:55:19
+Okay, uh, in, uh…
+
+[rochak agrawal] 07:55:25
+Unix, sorry, in Ansible language, we call it as a BinRM.
+
+[rochak agrawal] 07:55:32
+So your central machine will connect to these machines and whatever configuration you have written here, it push that configuration to the machine it got connected to.
+
+[rochak agrawal] 07:55:44
+Okay, so that is the push-based architecture. Now, if the network connectivity is disrupted some way, then…
+
+[rochak agrawal] 07:55:53
+You will not be able to connect, and you will not be able to push those configurations to your destination machines.
+
+[rochak agrawal] 07:56:02
+So in a pull-based architecture, there's two things. You need to have the network connectivity so that the agent can connect to the central server.
+
+[rochak agrawal] 07:56:10
+And your agent should always be running, right? But in a push-based architecture, only thing is you need to have the network connectivity so that your machine can have the SS; SH or the RDP connectivity.
+
+[rochak agrawal] 07:56:25
+To the destination machine, and then it is going to push these configuration changes to your…
+
+[rochak agrawal] 07:56:31
+Different, different machines.
+
+[rochak agrawal] 07:56:34
+Okay?
+
+[rochak agrawal] 07:56:35
+Now, one very important thing to remember here is this, we call it as a…
+
+[rochak agrawal] 07:56:44
+Again, you will hear a different, different name, so we call it as a control node.
+
+[rochak agrawal] 07:56:50
+Or the master node?
+
+[rochak agrawal] 07:56:52
+While these…
+
+[rochak agrawal] 07:57:06
+These will simply be called as the nodes.
+
+[rochak agrawal] 07:57:13
+Okay? Now, very important thing to remember here is…
+
+[rochak agrawal] 07:57:21
+Your control node should always be a Linux node.
+
+[rochak agrawal] 07:57:29
+Linux or any flavor of Unix, like Fedora, ServerOS, anything.
+
+[rochak agrawal] 07:57:37
+Okay, while your node can be, again, your Linux nodes can be.
+
+[rochak agrawal] 07:57:48
+The Linux node.
+
+[rochak agrawal] 07:57:51
+Or, they can beat the Windows phone.
+
+[rochak agrawal] 07:57:55
+This is very important.
+
+[rochak agrawal] 07:57:57
+Okay, so your master node slash control node where Ansible is installed will always be the Linux-based node.
+
+[rochak agrawal] 07:58:06
+Okay?
+
+[rochak agrawal] 07:58:14
+Yes, Arif.
+
+[arif] 07:58:20
+Yeah, Richard, so the Terraform, did you cover Terraform?
+
+[rochak agrawal] 07:58:25
+Yeah, just one, one, one thing is there in Terraform, which we will cover, is state, uh, with, uh, we will cover that.
+
+[arif] 07:58:33
+One more thing in Terraform, how to use it in Git and this CACD pipeline also that is there.
+
+[rochak agrawal] 07:58:40
+That, uh, RFP will cover as part of the project.
+
+[arif] 07:58:40
+That is also
+
+[arif] 07:58:44
+Okay.
+
+[rochak agrawal] 07:58:44
+Yeah, because it's a… you need to, uh…
+
+[rochak agrawal] 07:58:48
+multiple components in this. So this is not an isolated terraform thing. This is how you're structuring it. So that will be part of the project.
+
+[arif] 07:58:56
+Okay, and the same project, we will have that genking also, how to use it in Kubernetes and everything.
+
+[rochak agrawal] 07:58:57
+Yeah.
+
+[rochak agrawal] 07:59:00
+Yes, yes, yes. Because CICD, you need to run a tool, right? So as a CICD tool, we are going to use Jenkins.
+
+[arif] 07:59:08
+Okay.
+
+[rochak agrawal] 07:59:09
+Yeah?
+
+[arif] 07:59:11
+Okay, and about the push configuration, so whatever the nodes are available, it will push the configuration to all the nodes, or…
+
+[rochak agrawal] 07:59:19
+Yeah. So I'll park your question for now. So as of now, you understand, let's say, whatever these notes are there, it is going to push. But when you will be writing your — so there is something called the inventory file.
+
+[rochak agrawal] 07:59:35
+Uh, in the inventory file, you can create the groups and subgroups, so if you want to push the configuration to only a part of the group, you can do that.
+
+[arif] 07:59:38
+Okay.
+
+[arif] 07:59:44
+Okay, and this Ansible is only for the node, right? Configuration of nodes, not the resources, like Terraform.
+
+[arif] 07:59:53
+It is not going to…
+
+[rochak agrawal] 07:59:53
+See you OK there and we will discuss that so.
+
+[rochak agrawal] 08:00:01
+Uh, like, um, Terraform, there was something called, uh, the probi- uh, sorry, providers, right? Uh, here, we will have something called modules.
+
+[rochak agrawal] 08:00:11
+Okay, uh, so if you use the AWS module with Ansible, you can…
+
+[rochak agrawal] 08:00:19
+Create the infrastructure also.
+
+[rochak agrawal] 08:00:21
+Okay, and that is what we discussed. Terraform also can do the little bit of the configuration management.
+
+[rochak agrawal] 08:00:29
+Ansible can also do the little bit of the infrastructure provisioning. Up to you what you want to choose.
+
+[rochak agrawal] 08:00:36
+So what I would suggest for the infra provisioning, go with Terraform. Once the infrastructure is provisioned and you want to configure it, then use the Ansible.
+
+[rochak agrawal] 08:00:45
+But there is an overlapping task which they can do of each other.
+
+[arif] 08:00:45
+So, with that…
+
+[arif] 08:00:51
+Okay, got it. So with the help of Ansible, like, I can, like, configure, like, suppose I created a VPC using Terraform, and inside that VPC, I need to do some configuration. So it can be done by the Ansible or only with the Terraform?
+
+[rochak agrawal] 08:00:57
+Mm-hmm.
+
+[rochak agrawal] 08:00:59
+Mm-hmm.
+
+[rochak agrawal] 08:01:05
+No, uh, not… like, like, what configuration you need to do.
+
+[arif] 08:01:10
+Uh, maybe anything I need to change or something, so…
+
+[rochak agrawal] 08:01:13
+So for those type of things, even Terraform can do that, Arif. See, understand this, what we are saying here, what are those?
+
+[arif] 08:01:13
+It'll be a busy evening.
+
+[arif] 08:01:17
+Huh-huh.
+
+[rochak agrawal] 08:01:24
+What are those?
+
+[arif] 08:01:26
+Nodes, I think, servers, so…
+
+[rochak agrawal] 08:01:28
+Correct? Servers, basically, right? Does your VPC has the servers?
+
+[arif] 08:01:30
+Beautiful.
+
+[arif] 08:01:34
+No, that's what I'm asking. Resource…
+
+[rochak agrawal] 08:01:36
+No. So that's what I'm telling you. So, Ansible is mainly for the server configuration.
+
+[arif] 08:01:42
+Server configuration. Okay, got it.
+
+[rochak agrawal] 08:01:43
+Server configuration, okay? So let's say, uh, you need to install hundreds of the software on your server, then Ansible is a tool. Now, what you are asking me is, can I configure my VPC also with Ansible? You can do that as well.
+
+[rochak agrawal] 08:01:58
+Okay, absolutely no problem. But natively, Ansible is used for the server configuration.
+
+[arif] 08:02:07
+Okay, got it.
+
+[rochak agrawal] 08:02:08
+So if you go here, I'll just show you.
+
+[rochak agrawal] 08:02:10
+AWS in civil module.
+
+[rochak agrawal] 08:02:17
+So you can see it here. This is not natively available. AWS has created a module for it, and you can see Bald, CloudFormation, CloudTrail. You can see this, all the things you can see it here.
+
+[rochak agrawal] 08:02:31
+All the EC2 related thing there.
+
+[rochak agrawal] 08:02:35
+Right? IAM-related things are there. So I can create an IAM user also with Ansible. Right? But for that purpose, I think Terraform would be a better choice.
+
+[rochak agrawal] 08:02:48
+Okay? Because, see, now you see, there's only few things are there. Now, if you need to create a Bad Rock or a SageMaker, I'm not seeing a module for that here, right?
+
+[rochak agrawal] 08:02:59
+So it might, it may support some of the common services, but not all the services.
+
+[arif] 08:03:06
+Okay, water.
+
+[rochak agrawal] 08:03:07
+So for the infra provisioning, Terraform would be a better choice.
+
+[rochak agrawal] 08:03:13
+Once the infra is provisioned, especially servers, then inside the server, if you want to configure, you want to add a user, you want to download a file from somewhere, you want to run a script, all those tasks we will do with the help of infra.
+
+[rochak agrawal] 08:03:32
+Okay?
+
+[rochak agrawal] 08:03:35
+And, um, if you compare it with other configuration management tool, uh, Chef and Puppet.
+
+[rochak agrawal] 08:03:44
+why Ansible is being used, uh…
+
+[rochak agrawal] 08:03:48
+Very popularly, because…
+
+[rochak agrawal] 08:03:50
+Ansible is very easy. If I show you an Ansible playbook, you read the playbook.
+
+[rochak agrawal] 08:03:54
+And you will be able to tell what it is doing.
+
+[rochak agrawal] 08:03:57
+Okay, so, for example, it is like a very simple English.
+
+[rochak agrawal] 08:04:12
+So you can see, if you read this.
+
+[rochak agrawal] 08:04:15
+This is a playbook, okay, which I will discuss what is a playbook and another thing. But if you read this, it is a very, um…
+
+[rochak agrawal] 08:04:23
+Plain English, if someone is reading this, it says ping host and print message, host all.
+
+[rochak agrawal] 08:04:32
+And what do you need to do? Task. You need to…
+
+[rochak agrawal] 08:04:36
+ping all the hosts and say hello world from Ansible, right?
+
+[rochak agrawal] 08:04:41
+Anyone who does not know Ansible can also make a sense what this YAML file is doing. That is where Ansible is very simple. The learning curve is very low.
+
+[rochak agrawal] 08:04:52
+If you know what are the concepts are there, that's about it in Ansible.
+
+[rochak agrawal] 08:04:58
+Um, because everything is there in the documentation, but on the other end, if I talk about the Chef and Puppet, I worked on the Chef and Puppet.
+
+[rochak agrawal] 08:05:06
+They are a hell lot of completed because Chef, you need to learn Ruby to write your Chef, and we call it as a playbook here. In Chef, we call it as a recipes.
+
+[rochak agrawal] 08:05:21
+So it's a complete kind of a kitchen setup. So you will have a knife, you will have recipes, you will have a kitchen, something like that.
+
+[rochak agrawal] 08:05:32
+But it is completely written in Ruby, so if someone does not understand the Ruby programming language, it would be very tough for them, um…
+
+[rochak agrawal] 08:05:40
+to comprehend and understand what is written. And the second thing is about, obviously, about the agents. They are the agent-based system. By Ansible, you don't need any agent. It is just…
+
+[rochak agrawal] 08:05:53
+you need to have… someone should not block this network traffic. So anything… and this is one thing you remember, when, let's say, you are working on the servers on the AWS.
+
+[rochak agrawal] 08:06:04
+See, we know by default everything is blocked. So you make sure that if it is a SSES Linux-based server, you open port 22.
+
+[rochak agrawal] 08:06:14
+And if it is a Windows-based system, you open 3389.
+
+[rochak agrawal] 08:06:22
+Okay? So…
+
+[rochak agrawal] 08:06:29
+So what makes, we discussed most of the things, so agentless, right? Human-readable YAML, this is also a point we discussed.
+
+[rochak agrawal] 08:06:38
+Push-based and orders. Push-based orders means whatever you will written in your playbook.
+
+[rochak agrawal] 08:06:44
+that will go in an orderly manner. So, for example, if I will write, uh, create a user, then give the permission.
+
+[rochak agrawal] 08:06:54
+If I write it opposite, then you might see an error. So that's where you need to maintain the order. It is not like unlike Terraform. In Terraform, you do not need to maintain an order, which we discussed also, right? You create a BPC and you create a VM.
+
+[rochak agrawal] 08:07:09
+Terraform will automatically figure out the dependencies, but here it will go in order. So task run top to bottom, bottom in the order written.
+
+[rochak agrawal] 08:07:20
+Item ported modules, also we discussed. Huge module library, okay? And that is where, um…
+
+[rochak agrawal] 08:07:30
+And Civil also wins via margin. So you are going to find the module for…
+
+[rochak agrawal] 08:07:37
+almost everything. Module, what is a module? So, module is basically a reusable piece of the code which someone has written, and I'm just going to use it. You can create your own modules also.
+
+[rochak agrawal] 08:07:48
+And you can use the modules which is already written, already published on the Ansible library, like we have seen some of the module related to AWS.
+
+[rochak agrawal] 08:08:00
+Works everywhere.
+
+[rochak agrawal] 08:08:02
+Linux, Windows, network equipment, cloud APIs, containers from a laptop or a CI pipeline. Similarly, I can run my Ansible playbook using the CI pipeline also, like Jenkins.
+
+[rochak agrawal] 08:08:14
+Very importantly, Ansible is open source, sponsored by Red Hat. The community edition is free. And then there is a Red Hat Ansible Automation Platforms, which adds a web UI, access control, and scheduling.
+
+[rochak agrawal] 08:08:30
+So, we are going to use the open source version, which is the Community Edition, which is free, which works on the command line. There is no dashboard or some… that kind of a thing, but if you use the Enterprise Edition, you will have the access control, you will have.
+
+[rochak agrawal] 08:08:45
+Some additional security feature, so…
+
+[rochak agrawal] 08:08:48
+But working wise, they both will be similar.
+
+[rochak agrawal] 08:08:56
+Now, here, this is an architecture of…
+
+[rochak agrawal] 08:08:59
+Ansible does basically no architecture, which we also discussed.
+
+[rochak agrawal] 08:09:03
+So there is a control node, then there is a managed node, control node or the master node, where you are going to install the NGINX, oh, sorry.
+
+[rochak agrawal] 08:09:14
+Why I'm saying in the name? Ansible. So Ansible and then…
+
+[rochak agrawal] 08:09:18
+There will be managed node like web one, web two, multiple nodes will be there. And it is going to connect to these nodes with the help of SSH, bin ARM, bin RM or SSH, or the APIs, right?
+
+[rochak agrawal] 08:09:34
+Also, it can connect to the network…
+
+[rochak agrawal] 08:09:37
+And that's where RF answer to your question. Can it configure the BPC? Yes, it can call the BPC API or let's say load balancer API in Azure AWS and it can configure if it is.
+
+[rochak agrawal] 08:09:53
+your Palo Alto device, it can also configure it. So yes, it can. But natively, it supports the nodes, servers.
+
+[rochak agrawal] 08:10:01
+Now, if I control… now you do not need to do anything at your node, because your control node will be pushing the changes to your nodes. You just need to have the network connectivity.
+
+[rochak agrawal] 08:10:13
+Right? While on the control node, you will have multiple things. Ansible engine is the Ansible itself, so you need to install the engine.
+
+[rochak agrawal] 08:10:22
+Ansible first, which we call it as the Ansible Engine, Ansible Core, which reads the playbook, which builds the task, which connects to the host. So this… if this… so Ansible Core is the most… it is like the heart of…
+
+[rochak agrawal] 08:10:37
+the complete Ansible ecosystem. If this is not there, nothing is going to work.
+
+[rochak agrawal] 08:10:42
+Right.
+
+[rochak agrawal] 08:10:44
+Then we have the inventory. Inventory is nothing but the list of the servers, or in this case, the list of the…
+
+[rochak agrawal] 08:10:53
+manage nodes, all the network devices or the APIs, whatever you want to configure. So…
+
+[rochak agrawal] 08:10:59
+We will discuss the inventory in detail. We'll see the structure of the inventory. But inventory is something which need to be there. And you need to… So basically, when you run your playbook or the command, Ansible looks into the inventory.
+
+[rochak agrawal] 08:11:15
+on which server it need to go and configure those things. So, inventory is the list of the nodes which is being managed by Ansible, or which you want to manage by Ansible.
+
+[rochak agrawal] 08:11:25
+Okay, then comes the ansible.cfgs. So ansible.cfg is the configuration file of ansible. So when you install an…
+
+[rochak agrawal] 08:11:39
+When you install Ansible, uh, it is, like, etc. Ansible, etc. host, something is there, we will see the path.
+
+[rochak agrawal] 08:11:46
+So this is the, like, um…
+
+[rochak agrawal] 08:11:50
+It will have all the settings related to Ansible. So for example, what is the default path of the inventory file? What is the default logging? All those things, you can see it in the Ansible. Set it up in the Ansible.cmg file.
+
+[rochak agrawal] 08:12:07
+Okay, then comes the playbook. Now, playbooks is the, um…
+
+[rochak agrawal] 08:12:13
+Is the thing… is the configuration we want to push?
+
+[rochak agrawal] 08:12:18
+To the managed node.
+
+[rochak agrawal] 08:12:19
+Okay, so playbooks is nothing but the list of the tasks.
+
+[rochak agrawal] 08:12:25
+Um, which…
+
+[rochak agrawal] 08:12:27
+You are going to use…
+
+[rochak agrawal] 08:12:30
+which you want to push to your managed nodes, basically. So the most important task with respect to Ansible you do is to write the playbooks. So there is something called the plays and the tasks.
+
+[rochak agrawal] 08:12:44
+We'll see this also in detail. Then comes the module and plugins. Module and plugins, as the name is suggesting, plugins, what is a provider is the plugin in Ansible. And modules is already someone has written some code.
+
+[rochak agrawal] 08:12:58
+which is available open source, I can use this. For example, um, if you go here.
+
+[rochak agrawal] 08:13:14
+Ensemble NGINX model.
+
+[rochak agrawal] 08:13:25
+So you can see it here.
+
+[rochak agrawal] 08:13:28
+We are using this module called APT. We are using this module called Template Services. Someone else has written the code for this.
+
+[rochak agrawal] 08:13:38
+We are just using it. Similar to that, there are different, different matrices, modules are there. And then I'm going to…
+
+[rochak agrawal] 08:13:49
+use it. So that…
+
+[rochak agrawal] 08:13:52
+With the help of module.
+
+[rochak agrawal] 08:13:54
+the reusability of the code would be there. And I can…
+
+[rochak agrawal] 08:13:59
+Say, for example.
+
+[rochak agrawal] 08:14:01
+I can use the open source module, which is already there, or I can create my own module, and uh…
+
+[rochak agrawal] 08:14:11
+see, for example, I have 10 teams in my organization, which is, uh, using Ansible for their configuration management. Now, let's say they all are using, uh, they all are configuring the Java Spring Boot application. Now, what I can do is, I can write a module and distribute to all those 10 teams.
+
+[rochak agrawal] 08:14:28
+So that they do not need to write, uh, the code separately, separately. Right? So, these are the things.
+
+[rochak agrawal] 08:14:36
+Now, very importantly, nothing runs permanently on the managed node. Ansible connects, does the work, remove what it is copied, and disconnects. Okay, so that is how Ansible is going to work.
+
+[rochak agrawal] 08:14:50
+Now, there is an, uh…
+
+[rochak agrawal] 08:14:52
+certain terms, which also we discussed, but, uh, let's, let's, uh, go through them so that we know, uh, when we will be doing the demo, or we will go to other topics. Control node, the machine where Ansible is installed and run.
+
+[rochak agrawal] 08:15:06
+Okay, Linux, macOS or WSL.
+
+[rochak agrawal] 08:15:10
+So WSL is on the Windows, you can set up the Git Bash kind of a thing, something like that. But mostly, you understand it is going to run on the Linux.
+
+[rochak agrawal] 08:15:22
+Managed node at server or the device which Ansible is going to configure.
+
+[rochak agrawal] 08:15:27
+Also you will be called it will be called as a host or the target.
+
+[rochak agrawal] 08:15:31
+We can call it as a host node, we call it as a target node. Everything is the same.
+
+[rochak agrawal] 08:15:37
+Inventory the list of the managed node.
+
+[rochak agrawal] 08:15:41
+organized with their groups. We call them, we organize them in a group, we organize them in a subgroup, multiple things, and then they might have their own variables. Okay, modules, the small program.
+
+[rochak agrawal] 08:15:56
+That does one job, like installing a package, copying a file, downloading a file, creating a user.
+
+[rochak agrawal] 08:16:03
+And…
+
+[rochak agrawal] 08:16:05
+reports the result. So, uh, whenever you are writing the playbook, you will be calling out these modules, okay? I need to install something, I'll call out, let's say, yum module, something like that.
+
+[rochak agrawal] 08:16:18
+Then task.
+
+[rochak agrawal] 08:16:20
+Task is a one called to a module with its argument and a human-readable name.
+
+[rochak agrawal] 08:16:26
+So I'll say task is create a user, and I'll call, let's say, shell module to create a user and give the arguments to it.
+
+[rochak agrawal] 08:16:36
+Then play.
+
+[rochak agrawal] 08:16:38
+Play is something which is a task, set of tasks mapped to a group of hosts. So, for example, I'll say, on a web server.
+
+[rochak agrawal] 08:16:47
+I need to download the NGINX.
+
+[rochak agrawal] 08:16:50
+Create a NGINX user.
+
+[rochak agrawal] 08:16:52
+And then install the NGINX. And the fourth is.
+
+[rochak agrawal] 08:16:57
+Now, um…
+
+[rochak agrawal] 08:16:59
+start the NGINX. So now there is four tasks. Now this four tasks, where we want to run? On the web servers, right? So this will be called as the play.
+
+[rochak agrawal] 08:17:11
+So, play is…
+
+[rochak agrawal] 08:17:13
+a set of tasks mapped to a group of hosts. Now, what is a playbook? Playbook is nothing but a collection of one or more play. So you, whenever you are creating a play, you need to create a playbook.
+
+[rochak agrawal] 08:17:25
+Right? A YAML file containing one or more plays the automation itself.
+
+[rochak agrawal] 08:17:31
+Now, there is something called the role also. Role is a reusable self-contained package of the task variable template and handlers.
+
+[rochak agrawal] 08:17:40
+So…
+
+[rochak agrawal] 08:17:42
+Module is already written, um…
+
+[rochak agrawal] 08:17:45
+Okay. So for example, if you see in this.
+
+[rochak agrawal] 08:17:50
+Example…
+
+[rochak agrawal] 08:18:04
+No.
+
+[rochak agrawal] 08:18:05
+You see the tasks? Okay, so it says package.
+
+[rochak agrawal] 08:18:10
+It says copy.
+
+[rochak agrawal] 08:18:12
+service. Now, these are the modules which is already Ensemble has written, right? Now.
+
+[rochak agrawal] 08:18:19
+you… what you want to do, uh, is, um… like, I'll give you an example of a, um…
+
+[rochak agrawal] 08:18:26
+Java Spring Boot module.
+
+[rochak agrawal] 08:18:28
+Right, your team… there are 10 teams which are managing the Spring Boot application, now you need to write a module for them. Now, in Ansible language, that module will be called as the roles.
+
+[rochak agrawal] 08:18:43
+As a rule.
+
+[rochak agrawal] 08:18:44
+So you see a reusable self-contained package of the task.
+
+[rochak agrawal] 08:18:50
+variable, template, and the handler. Right?
+
+[rochak agrawal] 08:18:54
+So, you will write a module.
+
+[rochak agrawal] 08:18:57
+which will do everything. So, in Ansible terminology, it will be called as a role. So, you are going to create a role and give that role to every of… out of these 10 teams. They're going to run it, and it is going to…
+
+[rochak agrawal] 08:19:15
+what is needed to do. Then comes the plugin and collection. So again, plugin is plugin extend Ansible itself. Collection is nothing. It bundles the module. Plugin and roles for the distribution. So for example, if you say shell is a collection.
+
+[rochak agrawal] 08:19:32
+Now, inside a shell, there will be, uh… user add is a module, there will be copy is a module, then there will be, uh…
+
+[rochak agrawal] 08:19:43
+SCP is a module, something like that. So that is called a collection.
+
+[rochak agrawal] 08:19:48
+Then…
+
+[rochak agrawal] 08:19:49
+In the last, we have something called as effects.
+
+[rochak agrawal] 08:19:53
+Facts is nothing, something which Ansible collects about.
+
+[rochak agrawal] 08:19:59
+the nodes it is managing. So information about… information Ansible gathers about each host. Like, what is the operating system, what is the IP address, um, what is the file system it is using, what is the memory, CPU utilization… not CPU utilization, memory.
+
+[rochak agrawal] 08:20:14
+And many other things, so we will see what other, uh, things Ansible is going to collect about, uh.
+
+[rochak agrawal] 08:20:21
+the managed nodes. Okay, so only these terms you need to know with respect to Ansible.
+
+[rochak agrawal] 08:20:28
+Any question? We are going to see all of this, okay? So any question about any of this component conceptually as of now?
+
+[rochak agrawal] 08:20:39
+I'll be good.
+
+[rochak agrawal] 08:20:42
+Yes, I'm here.
+
+[Amiya Nanda] 08:20:44
+Ah, hi Roger, good morning.
+
+[rochak agrawal] 08:20:47
+Goodbye.
+
+[Amiya Nanda] 08:20:48
+Uh, so, uh, can you please, uh, tell me again what is the difference between control mode and manage mode?
+
+[rochak agrawal] 08:20:56
+See, you remember Jenkins? In Jenkins, we have a control node, and then we have the agent nodes, correct?
+
+[Amiya Nanda] 08:21:06
+Uh, yes, yes, yes, I'm certainly not able to remember. Yeah, yeah, please.
+
+[rochak agrawal] 08:21:08
+Late?
+
+[rochak agrawal] 08:21:09
+Okay, no problem. So here, now let's say, see, what is the primary purpose of Ansible?
+
+[rochak agrawal] 08:21:17
+To do the configuration management of the servers, correct?
+
+[Amiya Nanda] 08:21:21
+Yes.
+
+[rochak agrawal] 08:21:23
+Now, I can have 5 servers, I can have 500 servers, I can have 50 servers, correct?
+
+[rochak agrawal] 08:21:30
+Now, whatever the server I need to manage by Ansible will be my managed node.
+
+[Amiya Nanda] 08:21:41
+Okay.
+
+[rochak agrawal] 08:21:41
+Clear this part?
+
+[rochak agrawal] 08:21:42
+I need to manage five virtual machines with the help of Ansible. That will be my managed node in the Ansible terminology, correct?
+
+[Amiya Nanda] 08:21:51
+Mm-hmm, mm-hmm.
+
+[rochak agrawal] 08:21:53
+You get this part?
+
+[Amiya Nanda] 08:21:54
+Yep.
+
+[rochak agrawal] 08:21:55
+Now, how you are going to manage it, then there will be a machine.
+
+[rochak agrawal] 08:21:59
+in which I will install Ansible, and then Ansible is going to connect to all the managed nodes.
+
+[rochak agrawal] 08:22:06
+So the control node, uh, is the node where the Ansible itself is installed.
+
+[rochak agrawal] 08:22:11
+Which is managing the other nodes.
+
+[Amiya Nanda] 08:22:14
+Okay, okay.
+
+[rochak agrawal] 08:22:15
+Okay?
+
+[rochak agrawal] 08:22:17
+See, this concept is everywhere. In Jenkins also, there was a master-slave kind of architecture. In Kubernetes also, we see there's a master node, then there is a worker node. Similar thing. Here, these are not the worker node. These are the managed node because these nodes are.
+
+[Amiya Nanda] 08:22:25
+Okay.
+
+[Amiya Nanda] 08:22:27
+Mm-hmm, mm-hmm.
+
+[Amiya Nanda] 08:22:30
+Okay.
+
+[rochak agrawal] 08:22:35
+Managed by insulin.
+
+[rochak agrawal] 08:22:37
+If NC will say, install NGINX, these nodes will install NGINX. If NC will say, create a user.
+
+[rochak agrawal] 08:22:44
+These notes will create a user.
+
+[rochak agrawal] 08:22:47
+Okay?
+
+[Amiya Nanda] 08:22:49
+Okay. Okay.
+
+[rochak agrawal] 08:22:50
+No.
+
+[rochak agrawal] 08:22:56
+Yes, you will.
+
+[rochak agrawal] 08:23:09
+Yes, ma'am.
+
+[Megha U] 08:23:12
+Yeah, hi, Roshek. So, what's the difference between play and role? Got confused there.
+
+[rochak agrawal] 08:23:18
+Play and roll, okay. So, see.
+
+[rochak agrawal] 08:23:24
+You… you understood what is a play?
+
+[Megha U] 08:23:28
+Yeah, kind of task which has been assigned to the note.
+
+[rochak agrawal] 08:23:32
+Correct. It's a group of tasks. So, for example.
+
+[rochak agrawal] 08:23:36
+Play is basically…
+
+[rochak agrawal] 08:23:49
+Now, play is basically…
+
+[rochak agrawal] 08:23:52
+Let's say, uh, download NGINX.
+
+[rochak agrawal] 08:24:00
+Create NGINX user.
+
+[rochak agrawal] 08:24:08
+Install NGINX.
+
+[rochak agrawal] 08:24:14
+And this is just an example of NGINX. You can think of anything. And then configure NGINX.
+
+[rochak agrawal] 08:24:25
+And, let's just start.
+
+[rochak agrawal] 08:24:28
+Okay, now these five.
+
+[rochak agrawal] 08:24:34
+The five tasks.
+
+[rochak agrawal] 08:24:41
+Okay.
+
+[rochak agrawal] 08:24:43
+Now, when I say where you want to run it, let's say you say, uh…
+
+[rochak agrawal] 08:24:47
+On the web server.
+
+[rochak agrawal] 08:24:56
+Okay, now whatever the web server will be there in your inventory file, these five tasks is going to run on the web servers, correct?
+
+[rochak agrawal] 08:25:05
+So this will become a play.
+
+[rochak agrawal] 08:25:12
+And where you are going to write the play? In something called the…
+
+[rochak agrawal] 08:25:26
+playbook. So in a playbook, there can be one play, there can be another play also. So for example, I can write another play for your app server, another play for your DB server. So that is about the play.
+
+[rochak agrawal] 08:25:39
+Clear?
+
+[Megha U] 08:25:41
+Yeah, yes. So this playbook is on the, uh, the masternode, right?
+
+[rochak agrawal] 08:25:42
+Yes.
+
+[rochak agrawal] 08:25:45
+Yes, everything will be on the master node, so that is what we have shown here as well.
+
+[Megha U] 08:25:46
+Okay, I got it.
+
+[rochak agrawal] 08:25:52
+Everything is on the master node, on the control node. You see playbooks.
+
+[Megha U] 08:25:54
+Okay.
+
+[rochak agrawal] 08:25:55
+There is nothing on the managed node.
+
+[rochak agrawal] 08:26:00
+Because they are the slaves, they are not doing anything. Everything is done by Ansible masternode.
+
+[rochak agrawal] 08:26:05
+Okay.
+
+[rochak agrawal] 08:26:06
+Now, if you say role.
+
+[rochak agrawal] 08:26:10
+See role you understand as the.
+
+[rochak agrawal] 08:26:17
+some packaged thing. See, for example, uh…
+
+[rochak agrawal] 08:26:24
+Do you know Python?
+
+[rochak agrawal] 08:26:27
+A bit.
+
+[Megha U] 08:26:29
+Yeah, build…
+
+[rochak agrawal] 08:26:30
+Okay, so in Python, there is something called the packages are there, correct?
+
+[rochak agrawal] 08:26:34
+Now, when you install the package, uh, then I will be able to use that functionality, correct?
+
+[Megha U] 08:26:42
+It is.
+
+[rochak agrawal] 08:26:43
+So, similarly, we have the roles in Ansible. So, roles is, um…
+
+[rochak agrawal] 08:26:49
+See, for example, I'll create a web server role, okay? Now, in the web server role, everything will be there.
+
+[rochak agrawal] 08:26:56
+So you can see role is a reusable self-contained package of the task variable template and handlers. So everything you need so that I do not need to create the custom playbooks again and again. I will just call the role.
+
+[rochak agrawal] 08:27:12
+And that's about it.
+
+[rochak agrawal] 08:27:15
+Okay, so for example…
+
+[Megha U] 08:27:17
+Okay.
+
+[rochak agrawal] 08:27:23
+Okay. Now, you understood about task play and playbook?
+
+[Megha U] 08:27:28
+Yes.
+
+[rochak agrawal] 08:27:28
+Okay. Now, let's say you need to install… Now, there are 10 teams which are, um…
+
+[rochak agrawal] 08:27:35
+managing their Ansible separately, okay? They're not…
+
+[rochak agrawal] 08:27:40
+dependent on each other. So, you have 10 different control nodes, correct?
+
+[Megha U] 08:27:47
+Yes.
+
+[rochak agrawal] 08:27:48
+Right? And now, let's say they all need to install NGINX on their server, okay? So they also need to write all these tasks in their own playbooks, correct? So it is like the…
+
+[rochak agrawal] 08:28:01
+Repeatable work which every team is doing.
+
+[rochak agrawal] 08:28:04
+Correct? Now, what I'll do now, because, see, right now, it might be looking very simple, because we have not gone inside and written actual code, correct? But your playbooks can be 100, 200 lines of the code.
+
+[rochak agrawal] 08:28:19
+And the thing is, why to write repetitive code? So what I'm… what the people will do, people is going to create a role.
+
+[rochak agrawal] 08:28:27
+Let's see.
+
+[rochak agrawal] 08:28:32
+Now, role will collect, create, contain everything.
+
+[rochak agrawal] 08:28:36
+What all the tasks?
+
+[rochak agrawal] 08:28:42
+and variables.
+
+[rochak agrawal] 08:28:44
+Okay?
+
+[rochak agrawal] 08:28:46
+What is needed?
+
+[rochak agrawal] 08:28:49
+And you package it, and let's say I created something called the…
+
+[rochak agrawal] 08:28:54
+web server role.
+
+[rochak agrawal] 08:28:58
+Okay.
+
+[rochak agrawal] 08:29:00
+All those tasks and plays you are writing in the playbook, I have written them in a role, okay? Now, what you need to do, you will distribute this role to your teams, and your teams, what…
+
+[rochak agrawal] 08:29:14
+Instead of writing so complex.
+
+[rochak agrawal] 08:29:20
+This, all this.
+
+[rochak agrawal] 08:29:22
+They are just going to go and they'll say roll.
+
+[rochak agrawal] 08:29:28
+That's it.
+
+[rochak agrawal] 08:29:30
+Host?
+
+[rochak agrawal] 08:29:36
+web servers.
+
+[rochak agrawal] 08:29:40
+That's it.
+
+[rochak agrawal] 08:29:40
+So now, all your 10 teams.
+
+[rochak agrawal] 08:29:44
+they will just use this role which you have already written. That's it. So it is like the reusable piece of code.
+
+[rochak agrawal] 08:29:51
+Nothing, nothing, uh, it is, see, it is not a technical thing, but it's, uh, how you are managing it. It is, like, just simple, you…
+
+[rochak agrawal] 08:30:02
+Python package. You install the Python package, and you use the functionality of it. So, similar thing.
+
+[Megha U] 08:30:06
+Okay.
+
+[rochak agrawal] 08:30:08
+Okay?
+
+[Megha U] 08:30:10
+So, one more thing, so in the real scenario, if you want to create a resource or a web server, we make use of Terraform, as well as, uh…
+
+[Megha U] 08:30:19
+And Sybil too.
+
+[Megha U] 08:30:21
+Is that the real case, or…
+
+[rochak agrawal] 08:30:23
+So, see, um, Megha, this is a very, um…
+
+[rochak agrawal] 08:30:27
+a subjective thing, I would say. See, for example, um…
+
+[rochak agrawal] 08:30:32
+Let's see.
+
+[rochak agrawal] 08:30:34
+You just need to install the web NGINX on the EC2 instance, for example, right? Now, this is a thing I can do with the provisioner also, and which we have done, correct?
+
+[rochak agrawal] 08:30:45
+Now…
+
+[rochak agrawal] 08:30:46
+If you're not doing other configuration management thing, like, um…
+
+[rochak agrawal] 08:30:50
+Because, see, Terraform… we discussed the problem also. See, Terraform is…
+
+[rochak agrawal] 08:30:56
+is doing the configuration management when it is provisioning the infrastructure. Correct?
+
+[Megha U] 08:31:04
+It is.
+
+[rochak agrawal] 08:31:05
+Now you see the difference when to use the Terraform and when to use the Config Management. Now let's…
+
+[rochak agrawal] 08:31:13
+I have written a terraform code.
+
+[rochak agrawal] 08:31:19
+Okay, uh…
+
+[rochak agrawal] 08:31:22
+Create EC2.
+
+[rochak agrawal] 08:31:28
+And if you remember, if I have, uh…
+
+[rochak agrawal] 08:31:33
+Old.
+
+[rochak agrawal] 08:31:36
+And this is the very, very, uh…
+
+[rochak agrawal] 08:31:39
+Huge difference.
+
+[rochak agrawal] 08:31:41
+Okay, we have deleted it. Okay, um, so if you remember.
+
+[rochak agrawal] 08:31:47
+Your provisioner goes inside the resource block, correct?
+
+[Megha U] 08:31:53
+Yes.
+
+[rochak agrawal] 08:31:55
+Right? And when, uh, so you're, uh, you write something…
+
+[rochak agrawal] 08:32:01
+AWS instance.
+
+[rochak agrawal] 08:32:08
+And, uh, your resource?
+
+[rochak agrawal] 08:32:13
+And you create your provisioner within the resource itself, correct?
+
+[Megha U] 08:32:18
+Yes.
+
+[rochak agrawal] 08:32:22
+Let's say I am installing the Nginx.
+
+[rochak agrawal] 08:32:26
+Perfect, we can do that. Now, can you tell me what is the problem with it? Anything you can think of.
+
+[Megha U] 08:32:38
+It's inside the resource, if the resource doesn't come up.
+
+[rochak agrawal] 08:32:42
+No, that's okay, because, see, that is okay with Ansible if your machine is not there, where I'm going to install the NGINX. So that, anyways, is the problem with NGINX also.
+
+[rochak agrawal] 08:32:53
+Oh, Enzo Valenzo.
+
+[rochak agrawal] 08:33:06
+What is the problem with that? What is the limitation why you need to use the configuration management?
+
+[rochak agrawal] 08:33:14
+Anyone else?
+
+[Megha U] 08:33:19
+For large number of…
+
+[Megha U] 08:33:21
+resources or servers.
+
+[rochak agrawal] 08:33:23
+No, but I am creating it inside a resource block, right?
+
+[rochak agrawal] 08:33:27
+So if my… okay, I'll explain. Let me hear from Naveen also.
+
+[rochak agrawal] 08:33:33
+Yes, Nami?
+
+[Naveen Kr Nair] 08:33:35
+I think, when you install the infrastructure that that's when the provisioner runs so like every time you run provisioner, it has to be done along with the infrastructure running the infrastructure so like every time there's a rebooting of the server. Maybe there's a.
+
+[rochak agrawal] 08:33:41
+Mm-hmm.
+
+[rochak agrawal] 08:33:53
+Exactly.
+
+[rochak agrawal] 08:33:54
+Correct. See, that's the problem, uh, with the Terraform. Uh, and that's why we say it is not a configuration management tool. If you can do some small task here and there… See, for example.
+
+[rochak agrawal] 08:34:08
+Now let's see.
+
+[rochak agrawal] 08:34:10
+I have written a Terraform code which says nginx x version.
+
+[rochak agrawal] 08:34:15
+Just an example.
+
+[rochak agrawal] 08:34:17
+Now, when you run the Terraform apply.
+
+[rochak agrawal] 08:34:20
+It is going to run the code.
+
+[rochak agrawal] 08:34:24
+Right? It is going to create the infrastructure.
+
+[rochak agrawal] 08:34:28
+And install the Nginx X version.
+
+[rochak agrawal] 08:34:39
+Correct?
+
+[rochak agrawal] 08:34:40
+Now, after 2 months, you say, okay, there is a new version of NGINX is there. I need to install the NGINX by.
+
+[rochak agrawal] 08:34:48
+Okay, you run the Terraform plan, uh, and Terraform plan will say, boss.
+
+[rochak agrawal] 08:34:55
+Your desired state…
+
+[rochak agrawal] 08:34:57
+End of current state.
+
+[rochak agrawal] 08:35:00
+is different.
+
+[rochak agrawal] 08:35:05
+Correct?
+
+[rochak agrawal] 08:35:08
+Right? So what I'm going to do, I'm going to delete this, and I'm going to create another server.
+
+[rochak agrawal] 08:35:16
+with NGINX Vite.
+
+[rochak agrawal] 08:35:22
+Correct?
+
+[rochak agrawal] 08:35:24
+Now, that's a problem.
+
+[rochak agrawal] 08:35:27
+Every time you're doing any changes in the provisioner, it is going to bombard your servers and create a new server.
+
+[rochak agrawal] 08:35:36
+No.
+
+[rochak agrawal] 08:35:37
+For NGINX perspective, it is okay, but what if there is any storage attached to my server? That will also be gone.
+
+[rochak agrawal] 08:35:47
+Right?
+
+[rochak agrawal] 08:35:52
+Clear, Megha?
+
+[Megha U] 08:35:56
+Uh, yes, Roshan, yeah.
+
+[rochak agrawal] 08:35:58
+So that is where we…
+
+[rochak agrawal] 08:36:01
+See, now you understood why Terraform is not a full-fledged configuration management tool, okay? So what I'll do…
+
+[rochak agrawal] 08:36:10
+I'll move this block from here, okay? And I will write this in an Ansible playbook.
+
+[rochak agrawal] 08:36:16
+was, uh, uh, Ansible installed the NGINX, and I'll run the Ansible playbook. Now, wherever there is a version change, I will update my playbook, I'll run the playbook again, and it will say, okay, you want the NGINX by, but.
+
+[rochak agrawal] 08:36:30
+You have the Nginx as X, so I'm going to update it. I'm not going to do anything with the server.
+
+[rochak agrawal] 08:36:37
+Correct? So that is where your server is not going to reprovision again and again.
+
+[rochak agrawal] 08:36:42
+That is what the limitation of the Terraform is as a configuration management tool. Now, if you ask me the question that in which case I'm going to use Nginx, in which case I'm going to use Ansible.
+
+[rochak agrawal] 08:36:57
+Or Terraform, right? So, see, you need to…
+
+[rochak agrawal] 08:37:01
+do a comparison on a case-to-case basis, okay? If, let's say, uh, if with the help of provisional, I am creating a file.
+
+[rochak agrawal] 08:37:11
+example, right? So then, it is okay, I… I can create the files, right? But…
+
+[rochak agrawal] 08:37:18
+If my infrastructure is not getting refreshed with the… because of the provisioners.
+
+[rochak agrawal] 08:37:23
+I can use the provisioners. But if infrastructure is getting refreshed, I don't think it is a right choice. So that is where we always maintain that strength, that Terraform can do the configuration management.
+
+[rochak agrawal] 08:37:39
+But it should not be your first choice.
+
+[rochak agrawal] 08:37:43
+If you already have the Ansible set up, then use the Ansible for that.
+
+[rochak agrawal] 08:37:48
+Okay?
+
+[Megha U] 08:37:50
+Okay.
+
+[rochak agrawal] 08:38:01
+So any question about anyone else, these terms? Because this is the term we are going to use on and on and on.
+
+[arif] 08:38:14
+Yeah, Rochelle, uh, one question on about the inventory part, so…
+
+[rochak agrawal] 08:38:17
+Mmhm.
+
+[arif] 08:38:19
+It contains the list, so it is a static, uh, information that we give in the playbook.
+
+[rochak agrawal] 08:38:24
+Okay.
+
+[arif] 08:38:26
+So, but in the infrastructure, the things are getting dynamic, like, ah, the machines calls.
+
+[rochak agrawal] 08:38:30
+Going too much.
+
+[arif] 08:38:31
+How it will discover and push the configurations?
+
+[rochak agrawal] 08:38:32
+Okay. So, so, RF, um, a very good question, actually. Uh, so, as you rightly said, uh, your IPs are going to change. Let's say you're creating a machine, right? And then, um…
+
+[rochak agrawal] 08:38:47
+the machine get, uh, destroyed itself and, uh, create a new machine, something like that. So, for example, you're using if auto-scaling grew, or, uh, right? So, your machine will automatically getting created.
+
+[arif] 08:38:54
+Yup.
+
+[rochak agrawal] 08:38:59
+how you are going to have the inventory. So that is where your inventory will be of two types.
+
+[rochak agrawal] 08:39:06
+One is a static entry. So, see, whenever we are talking about the inventory, we just give the definition as it is static, but inventory actually is of two types. One is a static inventory, where you will give the list of the IPs, okay?
+
+[rochak agrawal] 08:39:22
+list of the IPs of the server which you want to manage. Second is the type of the dynamic inventory. So there is a concept of dynamic inventory is also there in Ansible, where I will just tell Ansible, go fetch the IP list from the.
+
+[rochak agrawal] 08:39:37
+AWS. It will do it.
+
+[rochak agrawal] 08:39:39
+So we can do that. We'll see that.
+
+[rochak agrawal] 08:39:43
+So there is a concept of dynamic inventory as well. So now to answer your question at this point, so inventory will not only be static, it can be dynamic as well.
+
+[arif] 08:39:58
+Okay.
+
+[rochak agrawal] 08:39:58
+Okay?
+
+[rochak agrawal] 08:40:03
+Yes, Vago.
+
+[Vaibhav] 08:40:05
+Hey, good morning, Roger. Uh, so…
+
+[Vaibhav] 08:40:08
+One more thing, I mean, just, like, about the module. Like, there's a particular scenario that we are, uh, utilizing, right?
+
+[rochak agrawal] 08:40:14
+Mm-hmm.
+
+[rochak agrawal] 08:40:17
+I'm sorry, I did not get your question, Weber, can you come again?
+
+[Vaibhav] 08:40:17
+like, uh…
+
+[Vaibhav] 08:40:20
+What is it, like, a small program that is one job, and…
+
+[rochak agrawal] 08:40:23
+Hmm?
+
+[Vaibhav] 08:40:24
+So, that is a module, like, particular function that we are performing, right?
+
+[rochak agrawal] 08:40:29
+See, module, you see, every tool uses its own terminology, basically, Weber. So, for example, let's say if I'm running Linux, okay.
+
+[Vaibhav] 08:40:33
+Mm-hmm.
+
+[rochak agrawal] 08:40:38
+Let me, let's say, git bash.
+
+[rochak agrawal] 08:40:43
+Now, let's say if I need to create a file, I have two, three commands. I can run a touch command.
+
+[Vaibhav] 08:40:52
+Hmm.
+
+[rochak agrawal] 08:40:52
+Correct? I can run, let's say, a CAT command, or I can run a VI or the file name. Correct?
+
+[rochak agrawal] 08:40:58
+Now, what this command is doing is it is doing a specific piece of work, correct?
+
+[Vaibhav] 08:41:07
+Hmm.
+
+[rochak agrawal] 08:41:08
+For example, I cannot copy a file from a touch command. Touch is just to create the empty files.
+
+[Vaibhav] 08:41:15
+Hmm.
+
+[rochak agrawal] 08:41:15
+So you understand what is a command in, uh…
+
+[rochak agrawal] 08:41:20
+Linux is a module in Ansible. So Ansible, um, there are, so you can see, a small program that does one job. So, for example, if you see…
+
+[rochak agrawal] 08:41:33
+Here, I am using a service module. Service module, what it will do, it will start the HTTPD service.
+
+[rochak agrawal] 08:41:43
+Here I am using a copy module.
+
+[rochak agrawal] 08:41:46
+Okay, here I am using the package module. So now, of course, as you will do a demo and so on, you will understand. So what this package module is doing, it will be looking for this HTTPD package. If the package is there, that's okay.
+
+[Vaibhav] 08:41:47
+Hmm.
+
+[rochak agrawal] 08:42:01
+If the package is not there, it will install the package.
+
+[rochak agrawal] 08:42:06
+Okay, so every module is doing a particular task.
+
+[Vaibhav] 08:42:12
+Okay.
+
+[rochak agrawal] 08:42:13
+Got it?
+
+[Vaibhav] 08:42:15
+Right, right.
+
+[rochak agrawal] 08:42:16
+Yeah? So it is… it is the package. Now, if you say, ask me what is the collection, so you can see here package, copy, service.
+
+[rochak agrawal] 08:42:25
+These are the, what you can say, these are the built-in packages, built-in module within Ansible. So they are the part of the built-in collection.
+
+[rochak agrawal] 08:42:37
+So built-in is a collection, which these modules are the part of.
+
+[Vaibhav] 08:42:44
+Okay, okay.
+
+[rochak agrawal] 08:42:45
+Okay? Any other…
+
+[Vaibhav] 08:42:47
+Like a bundle modules, we can say. Built-in bundle modules.
+
+[rochak agrawal] 08:42:49
+bundled module. So when you install the Ansible, these modules will already be there. But for example, if you want to use any other collections module, then you need to install that collection first.
+
+[rochak agrawal] 08:43:02
+Built-in is anyways coming with Ansible.
+
+[rochak agrawal] 08:43:07
+Okay?
+
+[Vaibhav] 08:43:07
+All right. Mm-hmm.
+
+[rochak agrawal] 08:43:15
+Now, you see?
+
+[rochak agrawal] 08:43:18
+Yes, I mean…
+
+[Amiya Nanda] 08:43:18
+Rochak, I have a small doubt. So, with the Terraform, we can provision or create the instances from cloud provider only, right?
+
+[rochak agrawal] 08:43:20
+Mm-hmm.
+
+[rochak agrawal] 08:43:27
+Correct?
+
+[Amiya Nanda] 08:43:29
+And, uh, Ansible is not like that, right? We cannot, uh, I mean, configuration management tool is not only for, uh.
+
+[Amiya Nanda] 08:43:37
+cloud instances. We can, uh, uh, like, confu- uh, we can do it for other virtual machines also, right?
+
+[rochak agrawal] 08:43:44
+The on-premises machines also. Correct, yes, yes. But I mean, I'll correct a bit here. So when you say Terraform is only for the cloud provider is a half correct statement. You remember that we have seen the providers. There was multiple providers out there.
+
+[rochak agrawal] 08:44:00
+We majorly use it for the cloud world, but you see, I can create a GitHub repository using the Terraform. I can create something like Vault Secrets. So you need to see, again, both of the things in Terraform.
+
+[Amiya Nanda] 08:44:03
+No.
+
+[rochak agrawal] 08:44:16
+If a required provider is there, I can create the on-premises VM also. And similar is the case with Ansible. Ansible does not depend on the provider. When we give the host list, okay, in the host list, if the network connectivity is there from the controller node to the.
+
+[rochak agrawal] 08:44:34
+uh, manage node. It can do the configuration for those nodes.
+
+[Amiya Nanda] 08:44:39
+Okay, okay.
+
+[rochak agrawal] 08:44:41
+Okay.
+
+[Amiya Nanda] 08:44:41
+Okay. So, uh, Adapna, we have seen, uh, like, uh, creating, uh, cloud instances, right?
+
+[rochak agrawal] 08:44:42
+Yep.
+
+[rochak agrawal] 08:44:48
+Cloud instances, because most of the time, you will use… see, the primary work of a Terraform is to create the cloud infrastructure, okay? But…
+
+[Amiya Nanda] 08:44:48
+Yep.
+
+[Amiya Nanda] 08:44:56
+Okay.
+
+[rochak agrawal] 08:44:58
+There are more than 70 providers for there.
+
+[rochak agrawal] 08:45:01
+I can create a GitHub repo also from Terraform, but…
+
+[rochak agrawal] 08:45:06
+Like, this is not its main functionality, this is what I'm trying to say.
+
+[Amiya Nanda] 08:45:09
+Okay, okay. So, are you going to…
+
+[rochak agrawal] 08:45:10
+The USP is the cloud infrastructure.
+
+[Amiya Nanda] 08:45:14
+So…
+
+[rochak agrawal] 08:45:15
+Mm-hmm. Yeah.
+
+[Amiya Nanda] 08:45:15
+So, are you going to show that, uh, how to create this pass, uh…
+
+[rochak agrawal] 08:45:15
+Yes, muting.
+
+[Amiya Nanda] 08:45:21
+Git repository and all, as you wanted to.
+
+[rochak agrawal] 08:45:23
+No, because that's just the use case, right? We cannot cover all the 70 providers, right? It doesn't make sense.
+
+[Amiya Nanda] 08:45:26
+Okay, okay.
+
+[Amiya Nanda] 08:45:29
+Oh, okay, okay, okay.
+
+[Amiya Nanda] 08:45:31
+Okay, okay, our main focus is to create DPC instances, yeah.
+
+[rochak agrawal] 08:45:33
+On the cloud.
+
+[rochak agrawal] 08:45:35
+See, that way you can also say we created the AWS infrastructure with the help of Terraform. We have not created the Azure or GCP infrastructure, right?
+
+[rochak agrawal] 08:45:46
+It's the same thing.
+
+[Amiya Nanda] 08:45:46
+Mm-hmm, mm-hmm, got it.
+
+[Amiya Nanda] 08:45:47
+Yeah.
+
+[rochak agrawal] 08:45:48
+The concept will remain the same, and that is also with your GitHub.
+
+[rochak agrawal] 08:45:53
+You just need to use the provider, and you need to use the right resource block, which you are going to get it from the documentation.
+
+[Amiya Nanda] 08:46:00
+Got it.
+
+[rochak agrawal] 08:46:01
+Yeah? Okay.
+
+[Amiya Nanda] 08:46:02
+Got it. Thank you, thank you.
+
+[rochak agrawal] 08:46:08
+Okay, now if you see, there are, before we go install and do some of the commands, we need to see what happens when a task runs, okay?
+
+[rochak agrawal] 08:46:21
+So…
+
+[rochak agrawal] 08:46:23
+See, everything happens on the master node or the controller node. So controller node, we have the playbook also, we have the Ansible engine also, we call it as the Ansible core as well.
+
+[rochak agrawal] 08:46:33
+Uh, you have the inventory file also, right? So, it pass…
+
+[rochak agrawal] 08:46:38
+When you run the command, Ansible playbook running the command.
+
+[rochak agrawal] 08:46:45
+it is going to pass the playbook and inventory. Now, in your inventory.
+
+[rochak agrawal] 08:46:53
+There can be hundreds of the servers would be there, but let's say I want to run a, um…
+
+[rochak agrawal] 08:46:59
+task or the play.
+
+[rochak agrawal] 08:47:02
+only on 2 servers, or 5 servers, or 10 servers, whatsoever, right? So it's past the inventory, and…
+
+[rochak agrawal] 08:47:09
+Playbook, and then basis on what it has written, it chooses the host.
+
+[rochak agrawal] 08:47:15
+on which it needs to do the configuration management.
+
+[rochak agrawal] 08:47:18
+That's the first step.
+
+[rochak agrawal] 08:47:20
+Then, when your host has been chosen, then it opens an SSH connection. We are writing SSH as a blanket statement, but let's say if it is a Windows host, so there will be an RDP or an RM connection will be open. So, it says open connection to each.
+
+[rochak agrawal] 08:47:36
+host.
+
+[rochak agrawal] 08:47:37
+Once the connection is established, if the connection is not established to the host, Ansible is going to give you the error.
+
+[rochak agrawal] 08:47:45
+Okay, so open an SSH connection to each host, then send the modules and its argument to a temporary directory.
+
+[rochak agrawal] 08:47:55
+Run it with the target's own Python. Now, this is important.
+
+[rochak agrawal] 08:48:00
+So you need to have the Python installed everywhere.
+
+[rochak agrawal] 08:48:04
+Okay, then…
+
+[rochak agrawal] 08:48:08
+In the temporary directory, send the module and its argument to a temporary directory, right?
+
+[rochak agrawal] 08:48:14
+So it, basically, when we are seeing the pushes, pushing the changes, so it, that is what it means, sends the module and its argument to a temporary directory.
+
+[rochak agrawal] 08:48:24
+Then it execute with the target's own Python. The module returns JSON file.
+
+[rochak agrawal] 08:48:33
+In three stages, okay?
+
+[rochak agrawal] 08:48:35
+changed or failed.
+
+[rochak agrawal] 08:48:38
+Okay means whatever the task you have written has been run on the target and the status is okay. So you want to create a user, you want to delete a file, you want to copy a file, whatever you have written, it is done and the status is okay.
+
+[rochak agrawal] 08:48:54
+When you say changed.
+
+[rochak agrawal] 08:48:56
+Changed also means okay, but something you got changed. For example.
+
+[rochak agrawal] 08:49:04
+You want to change the owner of a file. You are running Nginx X version, but you want to deploy Nginx Y version. So in this case, something is there, but it is getting changed. So that will be in a change status.
+
+[rochak agrawal] 08:49:21
+Or the third status will be failed.
+
+[rochak agrawal] 08:49:24
+Failed means task, what you have written is not successful. There is some error and you will get a error message from your system.
+
+[rochak agrawal] 08:49:35
+Ansible Playbook report, and then once… whatever the status is, it is going to delete the temporary file and move on.
+
+[rochak agrawal] 08:49:40
+Okay, temporary file there on the host target.
+
+[rochak agrawal] 08:49:45
+Now, very important things.
+
+[rochak agrawal] 08:49:48
+modules run on the target. So if you are running a copy module, you're running a package module, they are going to run on the target module, because I need to copy the file on the target. I need to install the package on the target, right? So the work happens on the node using its own tools in the Python.
+
+[rochak agrawal] 08:50:07
+not on the control node. This is very important.
+
+[rochak agrawal] 08:50:11
+Control node just send the configuration to the node.
+
+[rochak agrawal] 08:50:16
+Okay.
+
+[rochak agrawal] 08:50:20
+Control node, just send it to the node, and it is going to run on the node.
+
+[rochak agrawal] 08:50:25
+Second, very important thing. If you have 100 servers, right, you will say, first it will go to one server, do it, then it is going to second server, then it will go to third server, fourth server, no.
+
+[rochak agrawal] 08:50:39
+It is going to run the configuration on all the 100 servers in parallel.
+
+[rochak agrawal] 08:50:45
+So that is where it, this is the hero feature of Ansible.
+
+[rochak agrawal] 08:50:52
+Your thousand server? Absolutely fine. Okay? I am going to do everything in parallel.
+
+[rochak agrawal] 08:50:59
+Ansible run each task.
+
+[rochak agrawal] 08:51:02
+across several hosts at once.
+
+[rochak agrawal] 08:51:05
+Now, of course, we can, um…
+
+[rochak agrawal] 08:51:08
+Control the setting basis on, uh, your controller capacity as well, because, see, when you are running thousand tasks together.
+
+[rochak agrawal] 08:51:18
+your node should be able to handle that load, correct? So the fork setting controls how many and where we can set this up in the ansible.cfg file, which is our main configuration file, right?
+
+[rochak agrawal] 08:51:30
+And so the default is 5. So if you have a 5 server, it will go and run your task on these 5 servers altogether. And facts come first.
+
+[rochak agrawal] 08:51:41
+A play starts with an implicit fact-gathering task so that later tasks can adopt to each host OS. So whenever you are running a play.
+
+[rochak agrawal] 08:51:53
+The first thing Ansible do is the fact gathering. So you see here, facts, the last line.
+
+[rochak agrawal] 08:52:01
+Information…
+
+[rochak agrawal] 08:52:02
+about each host, OS, IP address, memory, and more.
+
+[rochak agrawal] 08:52:08
+So facts come first whenever you are going to run. Now, the reason for that is, see, in the Linux also.
+
+[rochak agrawal] 08:52:18
+Let's say, um…
+
+[rochak agrawal] 08:52:19
+You have two hosts. One is the CentOS, another is, um…
+
+[rochak agrawal] 08:52:25
+Ubuntu. Now, package command is going to work differently, because, um, in, uh, CentOS, EM install is going to work, while in, uh.
+
+[rochak agrawal] 08:52:36
+in, uh, Ubuntu app to get installed is going to work. So that's where Ansible collects the facts first, so that it can adapt to the operating systems.
+
+[rochak agrawal] 08:52:46
+Adapt to the each host's operating system, right?
+
+[rochak agrawal] 08:52:52
+So every task completes on the every host before the next task start.
+
+[rochak agrawal] 08:52:58
+The ordering is what makes a playbook predictable. Now, this is a very important line. Every task completes on every node.
+
+[rochak agrawal] 08:53:08
+That's the key word, every task on every node. Once that is finished, then it is going to move to another task.
+
+[rochak agrawal] 08:53:16
+Okay, so that is how it is going to work. Any question with this flow.
+
+[rochak agrawal] 08:53:22
+And then we will go install the Ansible.
+
+[arif] 08:53:26
+Just one confusion. So, the facts will contain only the, uh, system-related information about the host, or…
+
+[rochak agrawal] 08:53:32
+System-related information. I'll show you… I'll show you what is the fact it is going together, but it is system-related.
+
+[arif] 08:53:33
+Not the configuration.
+
+[arif] 08:53:41
+So, how the… so, Ansible server, uh, maybe the, um, main control node, so it has that information about the existing configuration of the nodes?
+
+[rochak agrawal] 08:53:51
+No, no, no, no, no. See, you have the inventory, correct?
+
+[arif] 08:53:56
+Mmhm.
+
+[rochak agrawal] 08:53:57
+In the inventory, let's say I have two servers.
+
+[arif] 08:54:00
+Hmm
+
+[rochak agrawal] 08:54:00
+Okay? So when you run a play, or the playbook, Ansible connects to those servers.
+
+[rochak agrawal] 08:54:07
+Correct? Now, before running anything, it collects the facts. That's an inbuilt.
+
+[rochak agrawal] 08:54:14
+You see, a play starts with an implicit factor gathering.
+
+[rochak agrawal] 08:54:21
+Right? You see, I'll just draw it visually, so…
+
+[arif] 08:54:22
+Huh.
+
+[rochak agrawal] 08:54:28
+Now, let's say this is my controller node.
+
+[rochak agrawal] 08:54:32
+Okay, and this is my two-node, which I want to manage with the help of Ansible.
+
+[rochak agrawal] 08:54:40
+Okay? Now, you will have all your inventory file, because, see, these two files will be in your inventory file. Then, let's say you have your playbook.
+
+[rochak agrawal] 08:54:57
+Correct? Now, in the playbook, you will have all the play, if it is a single play or multiple play. So when you run the playbook.
+
+[rochak agrawal] 08:55:04
+What the, um…
+
+[rochak agrawal] 08:55:07
+Ansible does. Ansible connect to the host, copy the modules, and execute it, correct?
+
+[arif] 08:55:13
+Hmm.
+
+[rochak agrawal] 08:55:14
+So it connects it.
+
+[rochak agrawal] 08:55:16
+By SSA or Ben RM whatsoever.
+
+[rochak agrawal] 08:55:20
+Now, before running any of the play.
+
+[rochak agrawal] 08:55:24
+It does the fact gathering.
+
+[rochak agrawal] 08:55:31
+Once it gathers the fact, then it's going to, uh…
+
+[rochak agrawal] 08:55:39
+Then it's going to do that.
+
+[rochak agrawal] 08:55:41
+So it is when you say.
+
+[rochak agrawal] 08:55:45
+I'm sorry, what was your question, Arif?
+
+[arif] 08:55:48
+I just want to know whether how this, uh, Ansible, uh, control node, uh, knows about the existing configuration of the, uh, managed nodes.
+
+[rochak agrawal] 08:55:57
+But then that's… that's what it is doing. It is opening up the S-S-S-S-S-S-S-S-S-S-S-S-S-S-S-S-S-S-S-S-S-S-S-S-S-S-S.
+
+[rochak agrawal] 08:56:10
+So in Ansible, there is…
+
+[rochak agrawal] 08:56:13
+There is a command for fact gathering also.
+
+[rochak agrawal] 08:56:16
+Now, whenever you are going to run any play, see, it is like saying…
+
+[rochak agrawal] 08:56:21
+how Ansible is doing the copy on another machine, how Ansible is doing the installing on another machine. It is just simple factor gathering.
+
+[rochak agrawal] 08:56:30
+I just want to know, see, uh…
+
+[rochak agrawal] 08:56:35
+Let me put it up differently. Let's say…
+
+[rochak agrawal] 08:56:38
+If Ansible is… see, you agree Ansible can copy on another machine, Ansible can install the package on another machine, correct?
+
+[arif] 08:56:46
+Mmhm.
+
+[rochak agrawal] 08:56:48
+Let's say if we enable forget fact gathering.
+
+[rochak agrawal] 08:56:55
+So basically, Ansible can run the commands on another machine, correct? Agree on that?
+
+[arif] 08:57:01
+Mmhm.
+
+[rochak agrawal] 08:57:02
+Let's say if it goes and run UNAME, it will give you all the information of the operating system.
+
+[rochak agrawal] 08:57:08
+Uname is a command. So, the point, Adif, is, uh…
+
+[rochak agrawal] 08:57:12
+It is the implicit.
+
+[rochak agrawal] 08:57:14
+Before the starting of the any play, Ansible does that factor gathering. They have some built-in module for that.
+
+[arif] 08:57:22
+Huh.
+
+[rochak agrawal] 08:57:23
+And then, according to the operating system, it does the…
+
+[rochak agrawal] 08:57:27
+Again, so for example, if there is a command module called package httpd.
+
+[rochak agrawal] 08:57:36
+It is going to run differently on the CentOS, and…
+
+[rochak agrawal] 08:57:42
+So that is why fact gathering is very important.
+
+[arif] 08:57:48
+Yeah, I got your point. So, this thing, I understand. So, it gets the facts about the packages and other things, and based on that, it executes the command which is written in the playbook.
+
+[arif] 08:57:58
+My question was, like, uh, about the reporting, like, uh, after execution, how it is going to report whether something is changed or something is, uh…
+
+[arif] 08:58:10
+It keeps track of the existing things, or…
+
+[rochak agrawal] 08:58:13
+Yes, it keeps, like, see, uh, see, it, uh, it is not like Terraform, okay? Terraform maintains a state file, correct?
+
+[arif] 08:58:15
+Okay.
+
+[arif] 08:58:20
+Yeah, ma'am.
+
+[rochak agrawal] 08:58:22
+So, it is not like Terraform, okay? It does not maintain a state file. So, what happens is, I run a play, okay?
+
+[rochak agrawal] 08:58:29
+Okay and that is what we explained here Arif. Okay so.
+
+[rochak agrawal] 08:58:35
+Uh, there is no state file, first thing.
+
+[rochak agrawal] 08:58:38
+Every command you are running to Ansible with its own temporary state maintains. So it connects, it copies the modules and tasks, whatever it does it need to done, it need to execute, it report back the status.
+
+[rochak agrawal] 08:58:54
+Okay? And it clean up the temporary file. Correct?
+
+[rochak agrawal] 08:58:57
+Okay, now, let's say I run the command. Now, I'm answering to your question how it maintains the state, how it knows. So, for example, I run a play to install the NGINX.
+
+[rochak agrawal] 08:59:10
+First time, it will go to the managed node, it will copy the modules, it will execute it, and it will report me okay.
+
+[rochak agrawal] 08:59:17
+Correct?
+
+[rochak agrawal] 08:59:19
+And then it will do the cleanup.
+
+[rochak agrawal] 08:59:22
+Agree? Clear till this point?
+
+[arif] 08:59:23
+Yep.
+
+[rochak agrawal] 08:59:24
+Now, when you run the command second time.
+
+[rochak agrawal] 08:59:27
+Second time, it will go to NGINX, uh, sorry, go to the managed node.
+
+[rochak agrawal] 08:59:32
+It will see…
+
+[rochak agrawal] 08:59:36
+The, uh, the NGINX is already installed.
+
+[rochak agrawal] 08:59:39
+Got it?
+
+[arif] 08:59:40
+Mmhm.
+
+[rochak agrawal] 08:59:41
+then it will report back me the status, no need to change, okay, and come back. It will not do anything.
+
+[rochak agrawal] 08:59:52
+Clear?
+
+[arif] 08:59:52
+But it will execute, or it will not execute.
+
+[rochak agrawal] 08:59:57
+It will not execute, because if it will execute, it will say it is already done. So that is what I'm saying.
+
+[rochak agrawal] 09:00:04
+It is about anything. You are creating the user, and that is what we… That's the first…
+
+[rochak agrawal] 09:00:10
+script. It is idempotent.
+
+[rochak agrawal] 09:00:13
+If you run this script two times in the left-hand side, which is creating a user, right?
+
+[rochak agrawal] 09:00:21
+Deploy. If you run the script first time.
+
+[rochak agrawal] 09:00:24
+It says.
+
+[rochak agrawal] 09:00:26
+It will not give you an error, it will create a user. But when you run the script twice.
+
+[rochak agrawal] 09:00:31
+It will say user already exists, which is an error message, correct?
+
+[rochak agrawal] 09:00:36
+But when you run the Ansible, same thing. You say built-in user, name deploy, group should be sudo, and it says state is equal to present.
+
+[rochak agrawal] 09:00:46
+A user is not present, for example, and you run it for the first time.
+
+[rochak agrawal] 09:00:52
+First run, it says changed, it will probably create the user and web one, right? Now, when you run it second time.
+
+[rochak agrawal] 09:01:01
+It is not doing anything, it will just say OK.
+
+[rochak agrawal] 09:01:05
+Because what it's saying, it is going and say state is present. So it is checking for this deploy user to be present. If it is present, it's okay. If not present, I'll create it.
+
+[rochak agrawal] 09:01:18
+Hey.
+
+[rochak agrawal] 09:01:22
+Yes, no.
+
+[arif] 09:01:25
+No, it is, like, in this also, it, it, it has written, like, second run, so after running only, it will, uh, report the cache data, so…
+
+[rochak agrawal] 09:01:32
+But that was your question, how… yes, that was your question, right, Arev? How it is going to manage the state?
+
+[rochak agrawal] 09:01:39
+It is… when you run it second time, then it will see the user is already present, I don't need to do anything, okay.
+
+[arif] 09:01:41
+Mmhm.
+
+[rochak agrawal] 09:01:46
+Correct? It is not giving you the error.
+
+[arif] 09:01:52
+Okay, okay, okay, yeah.
+
+[rochak agrawal] 09:01:54
+Great. See, um…
+
+[rochak agrawal] 09:01:56
+It is maintaining the state.
+
+[rochak agrawal] 09:01:59
+It is not like Terraform, see? Understand the difference. Terraform maintains the state with the help of a state file, correct?
+
+[rochak agrawal] 09:02:06
+How Ansible does it? When you run the command, Ansible play command when you will be running, Ansible goes to the node.
+
+[rochak agrawal] 09:02:14
+Okay? Ansible will compare the current state versus the desired state.
+
+[rochak agrawal] 09:02:19
+If the user is present, it will not do anything. It will come back and say, okay. If the user is not present, it will create the user. As simple as that.
+
+[rochak agrawal] 09:02:29
+So every time you are going to run the Ansible playbook, it will… every time it will compare, you… let's say…
+
+[rochak agrawal] 09:02:37
+to run has happened, okay? After that, you go and deleted your user.
+
+[rochak agrawal] 09:02:45
+I'm sorry.
+
+[rochak agrawal] 09:02:50
+we discussed about the second run, correct? Now, let's say I want to do a third run also. In the third… before the third run, someone goes and deleted the user manually.
+
+[rochak agrawal] 09:03:01
+Okay.
+
+[rochak agrawal] 09:03:02
+Now, when the third run will happen.
+
+[rochak agrawal] 09:03:05
+Ansible will again check if the user is present. No, because someone has deleted it. It will create the user again.
+
+[rochak agrawal] 09:03:14
+So the main point is comparison of the desired state versus the current state.
+
+[rochak agrawal] 09:03:21
+If there is a difference between them, Ansible is going to run your command, otherwise it will come back. And that is what this property is called, the idempotent. Running it again and again changes nothing if the server already matches your configuration.
+
+[rochak agrawal] 09:03:39
+That's a property.
+
+[arif] 09:03:46
+Okay.
+
+[rochak agrawal] 09:03:46
+Okay? If… see, if I'm already… see, it is something like that. If I… if you already have your dinner, and someone is asking you, would you want to have something, you'll say, I already have my dinner.
+
+[rochak agrawal] 09:03:59
+Hey!
+
+[arif] 09:04:00
+So that's the same thing we were doing in Terraform also, right? Checking the desired state.
+
+[rochak agrawal] 09:04:02
+Correct, but tear up… see, the bay is different, correct?
+
+[arif] 09:04:05
+Yep.
+
+[rochak agrawal] 09:04:05
+Terraform?
+
+[rochak agrawal] 09:04:07
+will not go and see your actual status. Terraform will see a state file.
+
+[rochak agrawal] 09:04:14
+Correct?
+
+[arif] 09:04:15
+Okay, yeah.
+
+[rochak agrawal] 09:04:15
+Terraform, see, it's the same thing. When we are, we are, we always maintain and said that Terraform, Kubernetes, and Ansible, they both, they all are, uses the declarative sentence.
+
+[rochak agrawal] 09:04:32
+And they always compare your desired state and current state.
+
+[rochak agrawal] 09:04:36
+Terraform does it, your Kubernetes does it, your Ansible does it. It's the same thing.
+
+[rochak agrawal] 09:04:42
+How they are doing it is a different thing. Terraform does it with the state file, Kubernetes does it with the help of controllers. If I'm saying replica is equal to 10 and I delete eight replicas, then next eight replicas will be created automatically.
+
+[rochak agrawal] 09:04:56
+Why? Because there is a controller there.
+
+[rochak agrawal] 09:05:01
+Right? Ansible does it. When you run the play command, Ansible goes and check the status if the user is present. And this is just an example. It could be Nginx server, it could be a file you downloaded, it could be, it could be anything, right? If that is already there on the server.
+
+[rochak agrawal] 09:05:16
+Interval will not do anything.
+
+[rochak agrawal] 09:05:18
+If that is not there, Ansible will do the needful. As simple as that.
+
+[Amiya Nanda] 09:05:32
+And Rauchuk, for Ansible, uh, where we can mention the desired state?
+
+[rochak agrawal] 09:05:37
+No, but there is no desired state, uh… it does not maintain the state file, yeah. When you run the command, it will go to the server and check the status, and that's why it gathers the packs.
+
+[Amiya Nanda] 09:05:41
+Okay.
+
+[Amiya Nanda] 09:05:45
+Okay, okay.
+
+[rochak agrawal] 09:05:48
+Late?
+
+[Amiya Nanda] 09:05:50
+Right.
+
+[rochak agrawal] 09:05:50
+So that is how it does it.
+
+[rochak agrawal] 09:06:03
+Okay, so now let's install the interval.
+
+[rochak agrawal] 09:06:10
+So, install is very simple, there is nothing much in it. Okay, so I will just remove the…
+
+[rochak agrawal] 09:06:20
+Ubuntu server to install the Nginx, so I'll just create an Ubuntu server in AWS.
+
+[rochak agrawal] 09:06:26
+And we are going to use that tomorrow as well. So I'll go and create an EC2 instance.
+
+[rochak agrawal] 09:06:48
+So I'll call it as an NC bill.
+
+[rochak agrawal] 09:06:56
+I'll see master simply.
+
+[rochak agrawal] 09:06:59
+Okay?
+
+[rochak agrawal] 09:07:01
+I choose the one to view.
+
+[rochak agrawal] 09:07:03
+You can choose any Linux or Red Hat also.
+
+[rochak agrawal] 09:07:08
+I'll choose.
+
+[rochak agrawal] 09:07:10
+E3 dot.
+
+[rochak agrawal] 09:07:14
+T2 dot medium will also work.
+
+[rochak agrawal] 09:07:21
+Okay.
+
+[rochak agrawal] 09:07:25
+And pretty much denseness.
+
+[rochak agrawal] 09:07:50
+Okay, I'll connect.
+
+[rochak agrawal] 09:08:08
+Okay, I am on my server.
+
+[rochak agrawal] 09:08:11
+Clear?
+
+[rochak agrawal] 09:08:11
+Now I'll just take commands. I can take it from the this also.
+
+[rochak agrawal] 09:08:19
+So, sudo apt update.
+
+[rochak agrawal] 09:08:25
+This is the command which we run before installing anything.
+
+[rochak agrawal] 09:08:30
+To update the repository.
+
+[rochak agrawal] 09:08:43
+Okay, now I'll run the command.
+
+[rochak agrawal] 09:09:05
+Okay.
+
+[rochak agrawal] 09:09:07
+It's already at the newest version.
+
+[rochak agrawal] 09:09:13
+I'll add the repository.
+
+[rochak agrawal] 09:09:30
+Perfect.
+
+[rochak agrawal] 09:09:32
+Now I'm going to run just this command.
+
+[rochak agrawal] 09:09:45
+This check, installing Ansible. It will install the dependencies Ansible Core, Python 3. You can see so many Python. So Ansible is a tool completely written in Python.
+
+[Amiya Nanda] 09:10:21
+Uh, Chuck, do we need to learn Python for Ansible, or not required?
+
+[rochak agrawal] 09:10:23
+No, no, no, not required.
+
+[rochak agrawal] 09:10:31
+It is written in Python. Similarly, Jenkins was written in Java.
+
+[Amiya Nanda] 09:10:36
+Whichever, yeah.
+
+[rochak agrawal] 09:10:37
+Yeah? Uh, Kubernetes is in Go.
+
+[Amiya Nanda] 09:10:44
+Go. G-O, right? G-O.
+
+[rochak agrawal] 09:10:45
+Geo, yes.
+
+[Amiya Nanda] 09:10:50
+And this is, uh, Terraform with HashiCorp.
+
+[rochak agrawal] 09:10:53
+Terraform is also written… Terraform is written in Go, but we use the HashiCorp language to interact with Terraform.
+
+[rochak agrawal] 09:11:06
+See, like, in Ansible, we will use the YAML playbooks, right?
+
+[Amiya Nanda] 09:11:09
+Mm-hmm.
+
+[rochak agrawal] 09:11:11
+So, Kubernetes… Terraform itself is written in Go, but we use the Hasegov configuration language to do the… our work.
+
+[Amiya Nanda] 09:11:19
+Okay, okay. So, in my current project, uh…
+
+[Amiya Nanda] 09:11:25
+So, Ansible team is doing the configuration management.
+
+[Amiya Nanda] 09:11:28
+And there are some Dynatrace alerts set up for the machines. After they're done, we used to get the Dynatrace alert, like, ADM server is stopped, or HTTPD is stopped.
+
+[rochak agrawal] 09:11:33
+Mm-hmm.
+
+[Amiya Nanda] 09:11:42
+After the Paddington…
+
+[Amiya Nanda] 09:11:48
+Then we are restarting.
+
+[rochak agrawal] 09:11:48
+I'm sorry, can you come again?
+
+[Amiya Nanda] 09:11:51
+So, Ansible team is used to do their work.
+
+[rochak agrawal] 09:11:54
+Mm-hmm.
+
+[Amiya Nanda] 09:11:55
+Okay, so after the work is done, some servers is not able to… some services like STTPD or ADM server is not getting up after the Ansible patching is done.
+
+[rochak agrawal] 09:12:06
+Okay?
+
+[Amiya Nanda] 09:12:08
+So, uh, so for that, we are getting Dynatrace alerts, which is set up for that machines, like ADM server or HTTPD is shut down.
+
+[rochak agrawal] 09:12:11
+Mm-hmm.
+
+[rochak agrawal] 09:12:14
+Okay.
+
+[Amiya Nanda] 09:12:19
+Then, after this alert trigger, we are going to that particular message, and we are bringing that service up.
+
+[rochak agrawal] 09:12:28
+Okay, but…
+
+[Amiya Nanda] 09:12:28
+In my current project, we are doing that.
+
+[rochak agrawal] 09:12:29
+Mm-hmm. Yeah, yeah, see, that's a standard process, um, because we… you are going to use any alerting mechanism so that, uh, like, you are getting the alerts, because otherwise, let's say patching done, and your server is not coming up, and you're dealing with 100-200 server, you need to manually go.
+
+[Amiya Nanda] 09:12:37
+Mm-hmm.
+
+[Amiya Nanda] 09:12:45
+Mm-hmm.
+
+[rochak agrawal] 09:12:47
+And check each and every server, right?
+
+[Amiya Nanda] 09:12:49
+Right.
+
+[rochak agrawal] 09:12:51
+If you see, Ansible is installed and we have verified it with the Ansible-version command. It's a Ansible core. Ansible engine, Ansible core, we can say that. It is 2.21.5.
+
+[rochak agrawal] 09:13:07
+Okay, my config file is this, so this is a default config file. If you want to change it, we can change it, but we'll go with the default. And you can say I… Ansible Python module location is this.
+
+[rochak agrawal] 09:13:20
+Right? So this… what the inbuilt module we talked about has been installed here.
+
+[rochak agrawal] 09:13:25
+Okay. And then the collection location is this executable location is this Python version is this 3.14.4. And then Py Yaml and Jinja. These these are the templating languages like Yaml. So if you go here.
+
+[rochak agrawal] 09:13:57
+Right, there is nothing in this.
+
+[rochak agrawal] 09:13:59
+Let's see.
+
+[rochak agrawal] 09:14:06
+So you… here you can see the hosts and roles.
+
+[rochak agrawal] 09:14:10
+Hey.
+
+[rochak agrawal] 09:14:12
+It's already created for you.
+
+[rochak agrawal] 09:14:14
+So there is no configuration file settings are there.
+
+[rochak agrawal] 09:14:18
+Right now, as you run it, it will, uh, create it.
+
+[rochak agrawal] 09:14:22
+Right? And if you go to roles.
+
+[rochak agrawal] 09:14:29
+There is nothing… no roles is there currently, and if you go to hosts…
+
+[rochak agrawal] 09:14:40
+Okay, host is not.
+
+[rochak agrawal] 09:14:43
+You can see this is just an example.
+
+[rochak agrawal] 09:14:49
+So here, if you see, we'll create our own inventory, but here you see this is a default Ansible host file.
+
+[rochak agrawal] 09:14:57
+Right? It should be living in an ETC Ansible host. Uh, so you can see I can create, um…
+
+[rochak agrawal] 09:15:06
+Add the host like this with the help of IP and the collection of the host belonging to the web server group. I can create the group. So for example, this is the web servers. These all are the web servers. So whenever you want, you can run it on so or.
+
+[rochak agrawal] 09:15:20
+on the web server. I can, um, we can use a range, so, for example, DB91 to 101. Um, and then, so, see, there's multiple type of groups and subgroups. Uh, example for, if you see, multiple hosts arranged into.
+
+[rochak agrawal] 09:15:37
+the groups such as Debian and OpenSUSE, right? So, you can create your own.
+
+[rochak agrawal] 09:15:45
+Um, what you can say is, uh…
+
+[rochak agrawal] 09:15:50
+Different groups, and uh…
+
+[rochak agrawal] 09:15:57
+Subgroups, sorry.
+
+[rochak agrawal] 09:16:00
+And now you can see.
+
+[rochak agrawal] 09:16:20
+Okay? Now if you run, uh, enable all-m setup.
+
+[rochak agrawal] 09:16:29
+So, you see, provided host list is empty. Only local host is available, okay? Note that the implicit local host does not match all.
+
+[rochak agrawal] 09:16:40
+So I'll say localhost.
+
+[rochak agrawal] 09:16:49
+Now you can see so many information. So Arif, this is the answer to your question.
+
+[rochak agrawal] 09:16:59
+How does Ansible collect the information?
+
+[rochak agrawal] 09:17:01
+So you can see…
+
+[rochak agrawal] 09:17:07
+There's so much information. Here you see this is the command.
+
+[rochak agrawal] 09:17:13
+Uh, localhost is because right now I have just only one machine, okay, uh, which is my controller node, so that's why I run it, uh, and you can see it has run on the localhost.
+
+[rochak agrawal] 09:17:24
+Now, if you have, let's say, five servers in your inventory file, I'll say enable webserver-m setup. So before any command runs, this is a command which run implicitly with that and which is going to collect.
+
+[rochak agrawal] 09:17:41
+all the information about your host. So you can say IPB4 address, IPB6 address, there's so many, so much information is there. Uh, date, time, uh.
+
+[rochak agrawal] 09:17:55
+Right. Uh, default IPv4.
+
+[rochak agrawal] 09:17:58
+Default IPv6, Ansible devices, right? Network loops.
+
+[rochak agrawal] 09:18:05
+Every information about the host it is going to collect.
+
+[rochak agrawal] 09:18:09
+We have done it for our own server, but if you have, and we'll see that we'll create couple of server and we'll run this. So you can see.
+
+[rochak agrawal] 09:18:17
+Everything about your server's distribution is Ubuntu.
+
+[rochak agrawal] 09:18:22
+Correct.
+
+[rochak agrawal] 09:18:24
+File path, file variety, Debian, ETC OS release, 1226. Distribution version 26.04. You can see everything.
+
+[rochak agrawal] 09:18:35
+Every major detail, we might not understand every one of them, right? But there's so much information. Is there MAC address?
+
+[rochak agrawal] 09:18:46
+So that is how Ansible environment. Now I'll show one more thing here.
+
+[rochak agrawal] 09:18:57
+So you will see here, uh…
+
+[rochak agrawal] 09:19:00
+So, we have discussed that, uh…
+
+[rochak agrawal] 09:19:09
+OK, now you see.
+
+[rochak agrawal] 09:19:13
+We discussed that we need to run the playbooks, okay?
+
+[rochak agrawal] 09:19:17
+to do something. But apart from the playbook also, I can run something, for example, with some ad hoc commands. So this setup was an ad hoc command. Now let's say I want to create a user on this, or…
+
+[rochak agrawal] 09:19:33
+Let's say I want to create a…
+
+[rochak agrawal] 09:19:37
+File in this ETC Ensemble, okay? So, I'll just say…
+
+[rochak agrawal] 09:19:53
+So, Ansible, all… I'll do a local host, because I have only the local host.
+
+[rochak agrawal] 09:19:58
+Okay. Hyphen M is a module which I'm going to use. So I'll just take the command.
+
+[rochak agrawal] 09:20:26
+Okay, so here…
+
+[rochak agrawal] 09:20:29
+You see, I am using file folder. I'm using a module, basically, ansible.builtin.file, and I'm saying…
+
+[rochak agrawal] 09:20:38
+Create a file.
+
+[rochak agrawal] 09:20:42
+What does that mean?
+
+[rochak agrawal] 09:20:45
+Create a file, a path to the file.txt and the state is equal to touch. Now I'll give the path.
+
+[rochak agrawal] 09:20:56
+ETC…
+
+[rochak agrawal] 09:20:58
+And civil.
+
+[rochak agrawal] 09:21:00
+and say file.txt. Now, before I run this, I'll just give you the part, etc. ensemble, and here you see, uh, there is 3, uh, host, role, and ensemble.txt, 3 files are there. Now, let me run this.
+
+[rochak agrawal] 09:21:24
+Don't worry about the, um, uh, structure, uh, so I'm just telling you the structure for now, okay?
+
+[rochak agrawal] 09:21:36
+Okay? So, you see, localhost means on the machine where Ansible itself is running. You can give your web server or something, whatever the host is there in your inventory file, but since right now I do not have a second machine, I'm running everything on the localhost.
+
+[rochak agrawal] 09:21:53
+Then this is the module I'm using, file module, and I'm… again, see, these all things, we need to get it from the documentation.
+
+[rochak agrawal] 09:22:02
+Right, so if you go Ensemble File Module.
+
+[rochak agrawal] 09:22:11
+So, enable bacon file module.
+
+[rochak agrawal] 09:22:12
+So it's managed files and file properties.
+
+[rochak agrawal] 09:22:18
+So you can see there are so many things out there.
+
+[rochak agrawal] 09:22:23
+I can create the file, I can change the owner, group, mode, so you can see all of these things here.
+
+[rochak agrawal] 09:22:31
+access time, modification time, so I can actually basically, uh, I can remove the file, so you see state is equal to app sync, and it is going to delete the file, so let's see this.
+
+[rochak agrawal] 09:22:46
+Error, it says module failed, could not touch target, permission denied. Okay, it's a permission denied.
+
+[rochak agrawal] 09:22:53
+I'll just do one thing. I'll say cd wd. I'll create this in a home overview.
+
+[rochak agrawal] 09:23:01
+So you can see Ansible will tell you the errors also, what is the error you are getting.
+
+[rochak agrawal] 09:23:12
+One, two…
+
+[rochak agrawal] 09:23:14
+Okay, it says changed, right? Now changed is equal to true, destination is this. Now, let's say you run this file again, or run this command again.
+
+[rochak agrawal] 09:23:27
+Okay, we are running the catch command, so it will always change the timestamp of the file.
+
+[rochak agrawal] 09:23:34
+And now you see?
+
+[rochak agrawal] 09:23:36
+We have a file.txt.
+
+[rochak agrawal] 09:23:39
+Eight.
+
+[rochak agrawal] 09:23:40
+Now if I want to delete it, so let's say.
+
+[rochak agrawal] 09:23:44
+I insist it is equal to absent.
+
+[rochak agrawal] 09:23:48
+Okay, LSIP and LRT, go on.
+
+[rochak agrawal] 09:23:52
+Correct? So now I can run this in a playbook file, something like this, right?
+
+[rochak agrawal] 09:24:00
+or run the playbook, and… or I can do it, uh, for example, like this. This is called the ad-hoc command, where your command is going to start with Ansible.
+
+[rochak agrawal] 09:24:09
+Then the host where you want to run, and then the module, uh, which you want to run, and the arguments of the module.
+
+[rochak agrawal] 09:24:17
+Okay? So we can do all of that. Now if you run it again, it is going to create a file.
+
+[rochak agrawal] 09:24:28
+It will again create a file.
+
+[rochak agrawal] 09:24:31
+You see?
+
+[rochak agrawal] 09:24:33
+So this is about the ad hoc commands in Ansible, so you do not always need to write the playbook. If you want, let's say, one of a command, then we can do it very well with the help of…
+
+[rochak agrawal] 09:24:47
+or Adobe commands also.
+
+[rochak agrawal] 09:24:50
+Now, next, in tomorrow's class, what we will do, we'll create two more machines. And then we are going to run our configuration management
+
