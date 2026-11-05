@@ -1,0 +1,3030 @@
+[rochak agrawal] 07:53:21
+Okay.
+
+[rochak agrawal] 07:53:23
+I just…
+
+[rochak agrawal] 07:53:25
+use this.
+
+[rochak agrawal] 07:54:00
+Installation command.
+
+[rochak agrawal] 07:54:45
+I'll check if Civil is installed.
+
+[rochak agrawal] 07:54:53
+Okay, perfect. Now, the second thing we need to do is that creating the SSL, uh…
+
+[rochak agrawal] 07:54:59
+Uh, connection. So if you try to do it right now…
+
+[rochak agrawal] 07:55:16
+It's a permission denied, okay? Again, so we did what we did yesterday, SSH key gen.
+
+[rochak agrawal] 07:55:45
+With this.
+
+[rochak agrawal] 07:56:38
+Okay, now if you try to do, it should work.
+
+[rochak agrawal] 07:56:50
+See, again, the same problem.
+
+[rochak agrawal] 07:56:53
+No, but I think I'll be keeping that wrong by P.
+
+[rochak agrawal] 07:57:17
+I think we have installed, uh…
+
+[rochak agrawal] 07:57:19
+Ensemble on the the node.
+
+[rochak agrawal] 07:57:43
+It's working.
+
+[rochak agrawal] 07:57:45
+So we have installed the Ansible.
+
+[rochak agrawal] 07:57:51
+this node.
+
+[rochak agrawal] 07:57:53
+I'll call it as N7.
+
+[rochak agrawal] 07:57:56
+Control left.
+
+[rochak agrawal] 07:58:03
+This one simply has a node, right?
+
+[rochak agrawal] 07:58:08
+Now I'll go back to our slide. So you see here…
+
+[rochak agrawal] 07:58:14
+These are the some modules which you are going to do.
+
+[rochak agrawal] 07:58:21
+in your daily, day-to-day uses, okay? So, for example, Pink is a module. Now, Pink, we can use it.
+
+[rochak agrawal] 07:58:31
+Very simply, like this, for example, I go…
+
+[rochak agrawal] 07:58:37
+And civil?
+
+[rochak agrawal] 07:58:39
+All…
+
+[rochak agrawal] 07:58:41
+Thanks, ma'am.
+
+[rochak agrawal] 07:58:44
+So you say, provided host list is empty, only local host is available. Okay? So I'll create an inventory door.
+
+[rochak agrawal] 07:59:02
+Can I get this IP?
+
+[rochak agrawal] 07:59:05
+Which is 172.31.
+
+[rochak agrawal] 07:59:14
+1189.
+
+[rochak agrawal] 07:59:20
+No, I shouldn't.
+
+[rochak agrawal] 07:59:33
+You can see? So it, uh, shipping is basically, um…
+
+[rochak agrawal] 07:59:39
+Ping is, like, this command, like, 172…
+
+[rochak agrawal] 07:59:45
+dot 31.11.189. If you do the ping, so ping, um…
+
+[rochak agrawal] 07:59:51
+right now it's not working because ping will not be there on the server. So you can see, it says it is getting a response, ping pong. But if you add another server which does not exist, so let's see what's going to happen.
+
+[rochak agrawal] 08:00:07
+Let's say I add one server, 172.34.54. Some random idea I'm giving.
+
+[rochak agrawal] 08:00:14
+And now, if you run it…
+
+[rochak agrawal] 08:00:20
+You see?
+
+[rochak agrawal] 08:00:21
+This server is unreachable.
+
+[rochak agrawal] 08:00:24
+And there's another server which is working perfectly fine.
+
+[rochak agrawal] 08:00:29
+So, ping module is used to check the liveliness of your server. Okay, um…
+
+[rochak agrawal] 08:00:36
+When a connection is successful, answer will return a green status like this or ping a pong message. So ping response would be pong.
+
+[rochak agrawal] 08:00:47
+Okay, when the server is not reachable, you'll see, very clearly see. So, if you have 1,000 servers, you can just run the playbook, and uh…
+
+[rochak agrawal] 08:00:56
+just see which server is not working. So, for example, let's say… now, you see, we have to do a lot of customization. So, for example, now you have 100 servers, and you want to figure out.
+
+[rochak agrawal] 08:01:11
+which server is not reachable, right? So, very simply, you can run this command and say.
+
+[rochak agrawal] 08:01:17
+Gap.
+
+[rochak agrawal] 08:01:20
+Copy.
+
+[rochak agrawal] 08:01:25
+You see? You will get the list of the servers.
+
+[rochak agrawal] 08:01:30
+Hey! So, you… Ansible is going to give you an option, um…
+
+[rochak agrawal] 08:01:34
+to run that command, and then with the help of some customization, you… see, your command is going to be what you want as an expected output. Now, if I want to list the successful servers, so I'll say, for example, let's say…
+
+[rochak agrawal] 08:01:53
+Yeah, see?
+
+[rochak agrawal] 08:01:55
+Yes?
+
+[rochak agrawal] 08:01:56
+successful server. So, a lot of things we can do, but our command is going to.
+
+[rochak agrawal] 08:02:02
+Uh, be the one.
+
+[rochak agrawal] 08:02:04
+As per what output I want.
+
+[rochak agrawal] 08:02:06
+Right? So, this is a ping module. Then, we have the command module, run a command with no shell feature. So, if you want to run a command.
+
+[rochak agrawal] 08:02:17
+any command in… with the help of Ansible, right?
+
+[rochak agrawal] 08:02:21
+So then you can.
+
+[rochak agrawal] 08:02:23
+Run it with the command module.
+
+[rochak agrawal] 08:02:29
+So…
+
+[rochak agrawal] 08:02:31
+Let's say I want to check the…
+
+[rochak agrawal] 08:02:34
+I'll remove the server.
+
+[rochak agrawal] 08:02:40
+Okay, now let's say you want to run a server on a remote machine.
+
+[rochak agrawal] 08:02:48
+So, I'll say…
+
+[rochak agrawal] 08:02:51
+Hyphen M command.
+
+[rochak agrawal] 08:02:54
+It's an A.
+
+[rochak agrawal] 08:02:56
+Let's say any command, you name hyphen a.
+
+[rochak agrawal] 08:03:01
+You see?
+
+[rochak agrawal] 08:03:03
+Uh, this is…
+
+[rochak agrawal] 08:03:05
+the result of a unit. Now you want to find out what is the available memory on your server.
+
+[rochak agrawal] 08:03:15
+You see?
+
+[rochak agrawal] 08:03:17
+This command you're not running on your local machine. This command is being run on the…
+
+[rochak agrawal] 08:03:29
+On the node.
+
+[rochak agrawal] 08:03:32
+So, any command you want to run.
+
+[rochak agrawal] 08:03:40
+Okay? Now, there is another module called the shell module.
+
+[rochak agrawal] 08:03:46
+So, with the help of Shell also, uh…
+
+[rochak agrawal] 08:03:49
+You can run the command, but if you remember, um…
+
+[rochak agrawal] 08:03:58
+there are certain cell concepts are there, like piping is there, redirection is there, variables is there, right? So if you want to use all of this, then I cannot run it with this simple commands. Okay, so example, I want to run a process called…
+
+[rochak agrawal] 08:04:20
+You name hyphen A, let's say, grab…
+
+[rochak agrawal] 08:04:26
+Linux, for example.
+
+[rochak agrawal] 08:04:29
+You see, it got failed, because it does not understand this pipe.
+
+[rochak agrawal] 08:04:35
+Hey, so for that, what you need to do…
+
+[rochak agrawal] 08:04:39
+You need to use a shell module.
+
+[rochak agrawal] 08:04:50
+I'll check the syntax for this.
+
+[rochak agrawal] 08:05:15
+You see?
+
+[rochak agrawal] 08:05:19
+Because there is no Linux, it must be…
+
+[rochak agrawal] 08:05:24
+Linux.
+
+[rochak agrawal] 08:05:26
+Right?
+
+[rochak agrawal] 08:05:27
+So
+
+[rochak agrawal] 08:05:29
+If you want to run some typing.
+
+[rochak agrawal] 08:05:32
+Very well, awesome, uh…
+
+[rochak agrawal] 08:05:35
+What you can say is, uh, redirection, then you need to use the shell command, not the, uh…
+
+[rochak agrawal] 08:05:41
+Command module.
+
+[rochak agrawal] 08:05:43
+Okay, then…
+
+[rochak agrawal] 08:05:44
+You will see we have again copy, send a file to the target, right? So let's say I'll create…
+
+[rochak agrawal] 08:05:57
+Alyssa. Hmm?
+
+[rochak agrawal] 08:05:59
+Dutch.
+
+[rochak agrawal] 08:06:03
+Copy.phd.
+
+[rochak agrawal] 08:06:05
+Now there's a file, you want to send it to the remote server.
+
+[rochak agrawal] 08:06:10
+I will run it.
+
+[rochak agrawal] 08:06:12
+Hyphen M.
+
+[rochak agrawal] 08:06:16
+Copy.
+
+[rochak agrawal] 08:06:20
+And then…
+
+[rochak agrawal] 08:06:21
+What's an argument?
+
+[rochak agrawal] 08:06:30
+East.
+
+[rochak agrawal] 08:06:40
+Destination would be, let's say.
+
+[rochak agrawal] 08:06:45
+Warm.
+
+[rochak agrawal] 08:06:48
+Oh, boy.
+
+[rochak agrawal] 08:07:03
+Type for the syntax again.
+
+[rochak agrawal] 08:07:10
+Hyphen A. Okay, we need to move forward. Hyphen A.
+
+[rochak agrawal] 08:07:17
+Yes, here we need to give the hyphen here.
+
+[rochak agrawal] 08:07:27
+Okay, now if you go here…
+
+[rochak agrawal] 08:07:30
+Copy.txt is copied. Right. Then we already have seen.
+
+[rochak agrawal] 08:07:40
+the file modules, uh, app module, we have installed an NGINX package with the service module, where we have, uh, started, stopped the service.
+
+[rochak agrawal] 08:07:50
+Ansible user module is manage account and group membership. So if you want to create a user on this, you want to create a…
+
+[rochak agrawal] 08:08:01
+You want to change, uh, the permission, ownership, group settings, right? So…
+
+[rochak agrawal] 08:08:08
+We can do it, uh, you want to set the user ID of this, you want to…
+
+[rochak agrawal] 08:08:15
+We need to delete a user. We can do all of that things with this, uh, with the help of this user model. So there is…
+
+[rochak agrawal] 08:08:22
+Now, these are the common modules which you are going to use in your…
+
+[rochak agrawal] 08:08:26
+what you can say is in your daily day-to-day operations. Now, there is…
+
+[rochak agrawal] 08:08:33
+So, package also services this all we have seen with the help of an NGINX one. Now…
+
+[rochak agrawal] 08:08:40
+This is important.
+
+[rochak agrawal] 08:08:42
+Okay, we have seen this, but let us discuss this.
+
+[rochak agrawal] 08:08:47
+So, when you run Ansible, when you are going to run Ansible, you must have noticed that, uh.
+
+[rochak agrawal] 08:08:54
+There is this status of the engineer's task is coming.
+
+[rochak agrawal] 08:08:59
+okay, changed. For us, okay and changed and failed was coming, right? And then you can see there is…
+
+[rochak agrawal] 08:09:09
+different colors also. And these colors, we are not just writing randomly. These are the colors your status will actually come in, which we have seen. If it is failing, it will come in red.
+
+[rochak agrawal] 08:09:22
+OK means green. The host already matched the desired state. Nothing changed.
+
+[rochak agrawal] 08:09:29
+Now, nothing… what to do? Nothing, because… see, okay means… let's say I am running a playbook, which is saying, install NGINX on the remote server. Now, NGINX is already installed.
+
+[rochak agrawal] 08:09:40
+Correct.
+
+[rochak agrawal] 08:09:42
+So, if the NGINX is already installed, your desired state is matching, uh, your current state. And that is where, uh…
+
+[rochak agrawal] 08:09:50
+The host already is matching the desired state, and nothing has been changed, so it will come as the OK.
+
+[rochak agrawal] 08:10:00
+Then comes the change. So, for example, you are creating a playbook where you are saying install the NGINX, so it will go install the NGINX.
+
+[rochak agrawal] 08:10:10
+Right? And then, it will say changed. Expected on the first run, and then, like, okay, investigation on the okay on the later runs. The instance will modify something to reach their desired state.
+
+[rochak agrawal] 08:10:23
+Then comes the of course field.
+
+[rochak agrawal] 08:10:25
+Module runs and probably give you an error. You are trying to copy some file in a directory which directly does not exist, right? So then what you need to do, you need to read the error message, whatever it's coming, and accordingly you need to resolve it.
+
+[rochak agrawal] 08:10:42
+Then, unreachable, again red.
+
+[rochak agrawal] 08:10:45
+which we were getting, uh, right, uh, unsuccessful. Ansible could not connect to the host, um.
+
+[rochak agrawal] 08:10:52
+There can be multiple reasons, your permission issues could be there, your network issues could be there, so then we need to check accordingly.
+
+[rochak agrawal] 08:11:01
+Then comes the skipped. Now, skipped also, uh, is a, is a type of, uh.
+
+[rochak agrawal] 08:11:10
+The output…
+
+[rochak agrawal] 08:11:14
+See, for example…
+
+[rochak agrawal] 08:11:18
+Skipped is where the variable will come, and we will see variables in the later slides also. See, let's say you have an inventory.
+
+[rochak agrawal] 08:11:26
+Now, in your inventory, you have multiple groups. So, like, in your inventory, you can, um…
+
+[rochak agrawal] 08:11:35
+You can create multiple groups, right? Now…
+
+[rochak agrawal] 08:11:40
+What you can do is, um…
+
+[rochak agrawal] 08:11:42
+And in your playbook, there are multiple tasks. Okay, now what you want is, if you are running, let's say there are three tasks there. Create a dev user in a dev environment, create a prod user in a prod environment, create a…
+
+[rochak agrawal] 08:11:58
+Test user in a test environment. Simple. Now what you want is, when you run this playbook.
+
+[rochak agrawal] 08:12:03
+What should happen is in test user will be created in a test servers, dev user should be created in a dev server, prod user should be created in a prod server, correct? So then what you can do is you can create three tasks, for example.
+
+[rochak agrawal] 08:12:19
+And then, you can set up a condition if, let's say, the user is dead, then…
+
+[rochak agrawal] 08:12:24
+It should only run in a dev environment. So it is going to run on the dev environment, but it is going to skip on the test environment. So that is where it will be called as a skipped when condition was failed. So the task is not running at all.
+
+[rochak agrawal] 08:12:40
+Okay, usually it will be indented, like in our example we discussed. We will make it skip, uh, check if the condition is, uh.
+
+[rochak agrawal] 08:12:50
+Is getting… working as expected or not?
+
+[rochak agrawal] 08:12:55
+Then finally, um…
+
+[rochak agrawal] 08:12:58
+Ignored, ignored, a failure was handled by the rescue, or ignored by the ignored error.
+
+[rochak agrawal] 08:13:05
+Right? So, sometime what will happen is you will see some warning or something.
+
+[rochak agrawal] 08:13:11
+which is… let's say you are creating an NGINX, and uh… um…
+
+[rochak agrawal] 08:13:17
+you are trying to ping the server. Just an example. Okay, so you created an EC2 instance, and uh…
+
+[rochak agrawal] 08:13:25
+In your playbook, you're writing a server, oh, sorry, you are configuring an NGINX, and once the NGINX is installed, you are starting the NGINX, and try to hit the URL of NGINX, okay? Now…
+
+[rochak agrawal] 08:13:38
+You have written this play.
+
+[rochak agrawal] 08:13:40
+you will try to run it. Now, you know that if the Security Guru port 80 is not allowed, you can…
+
+[rochak agrawal] 08:13:48
+Install the NGINX, configure it, run it, start it. But you would not be able to reach it, correct? So then…
+
+[rochak agrawal] 08:13:55
+You will say ignore it.
+
+[rochak agrawal] 08:13:58
+Although there is a error in the fifth task, but I ignored it. So then, whenever you are seeing this rescued or the ignored type of the task, then you will see whatever the error is coming, is it…
+
+[rochak agrawal] 08:14:12
+Is it a genuine error? So, for example, in our case, we know that security group is not allowed, let's say, due to some Oracle policies, and that's why it is getting into the error.
+
+[rochak agrawal] 08:14:22
+So if any task is rescued or ignored, then we need to see in the log why it is being ignored.
+
+[rochak agrawal] 08:14:30
+We need to validate if it is being really acceptable or not.
+
+[rochak agrawal] 08:14:34
+So these are the different ensemble task result will be there which we will.
+
+[rochak agrawal] 08:14:42
+get through.
+
+[rochak agrawal] 08:14:45
+Yes, Vivo.
+
+[Vaibhav] 08:14:48
+Good morning.
+
+[Vaibhav] 08:14:50
+Maybe there's some, uh, there's skewed.
+
+[Vaibhav] 08:14:54
+Um, because I have faced some network issue at that time. So, some things are… I mean, I lost that. So, can you please repeat the ignore?
+
+[rochak agrawal] 08:14:57
+Hmm?
+
+[rochak agrawal] 08:15:01
+Okay, so ignored means, uh, Bevo, let's say.
+
+[rochak agrawal] 08:15:19
+Now, let's say, um, I am running a play, which is, um, first task is installing.
+
+[rochak agrawal] 08:15:27
+And you're next.
+
+[rochak agrawal] 08:15:30
+Second task is configuring Nginx.
+
+[rochak agrawal] 08:15:35
+Third task is, uh…
+
+[rochak agrawal] 08:15:40
+Let's just start in Linux.
+
+[rochak agrawal] 08:15:44
+Okay, and the fourth task is accessing NGINX, right?
+
+[Vaibhav] 08:15:51
+Hmm.
+
+[rochak agrawal] 08:15:54
+Now you see, let's say all this we are doing on the EC2 instance.
+
+[rochak agrawal] 08:16:01
+Okay, now…
+
+[rochak agrawal] 08:16:03
+Let's assume we are doing it for multiple server, and this one example we are doing on the EC2 instance. Now, you know that…
+
+[rochak agrawal] 08:16:11
+You cannot access the EC2 instance.
+
+[Vaibhav] 08:16:14
+Mm-hmm.
+
+[rochak agrawal] 08:16:15
+If the security rule is not allowing you, correct? In case of Amazon.
+
+[rochak agrawal] 08:16:19
+Agni?
+
+[Vaibhav] 08:16:21
+Agree.
+
+[rochak agrawal] 08:16:22
+Right? So, now, what is going to happen? That your, um…
+
+[rochak agrawal] 08:16:27
+Install NGINX is working fine, configure NGINX run, start NGINX run, but this task is going to fail.
+
+[rochak agrawal] 08:16:40
+Correct?
+
+[Vaibhav] 08:16:41
+Hmm.
+
+[rochak agrawal] 08:16:41
+Because the security group is blocking the traffic.
+
+[rochak agrawal] 08:16:48
+Agree? Now, let's hit…
+
+[rochak agrawal] 08:16:53
+you know this. This is, let's say, by mandate or something, you know, you already know this. So you know that it is expected to failure, correct?
+
+[Vaibhav] 08:17:02
+Hmm.
+
+[rochak agrawal] 08:17:03
+So then, I'm going to ignore it.
+
+[rochak agrawal] 08:17:10
+If you know something is going to fail, it is not telling you something new.
+
+[rochak agrawal] 08:17:16
+Right?
+
+[rochak agrawal] 08:17:20
+So, and again, there could be any scenario, I'm just… we are taking an example. So, the point is, if any failure, which is already known to you, what are you going to do? You are going to ignore it.
+
+[rochak agrawal] 08:17:37
+Right, that one?
+
+[rochak agrawal] 08:17:41
+Question, confusion.
+
+[Vaibhav] 08:17:43
+Like, uh, we already know that this condition… this, uh, accesses will…
+
+[Vaibhav] 08:17:50
+fail, so we'll ignore that, right?
+
+[rochak agrawal] 08:17:50
+Fifth. Hmm.
+
+[rochak agrawal] 08:17:52
+We'll ignore that, correct, right?
+
+[rochak agrawal] 08:17:57
+So the… so wherever I'll say ignore error is equal to true.
+
+[rochak agrawal] 08:18:05
+In my playbook.
+
+[rochak agrawal] 08:18:09
+And whenever this task will be failing, the task status.
+
+[rochak agrawal] 08:18:13
+Will be in a ignored or the rescued state.
+
+[rochak agrawal] 08:18:17
+It is not going to fail your playbook.
+
+[rochak agrawal] 08:18:21
+Okay?
+
+[Vaibhav] 08:18:22
+Okay, okay.
+
+[rochak agrawal] 08:18:25
+Clear?
+
+[Vaibhav] 08:18:27
+Hmm.
+
+[rochak agrawal] 08:18:31
+Okay.
+
+[rochak agrawal] 08:18:32
+Now.
+
+[rochak agrawal] 08:18:35
+Again, see, these are the things we have already actually seen this.
+
+[rochak agrawal] 08:18:41
+Now, there is something called the dry run also, okay? Syntax check, we have seen this.
+
+[rochak agrawal] 08:18:47
+Uh, there is something called the dry run.
+
+[rochak agrawal] 08:18:50
+Okay. So, for example…
+
+[rochak agrawal] 08:19:01
+Now, that's it.
+
+[rochak agrawal] 08:19:03
+This, uh…
+
+[rochak agrawal] 08:19:04
+Let me create another file.
+
+[rochak agrawal] 08:19:11
+Coffee2.txt.
+
+[rochak agrawal] 08:19:16
+Now, what this command is going to do, it is going to copy.
+
+[rochak agrawal] 08:19:23
+this, uh, copy the copy2.txt into the destination, correct? Now, I don't want to copy it, I want to see what is going to happen when I'm going to run this command. So there's something called the check.
+
+[rochak agrawal] 08:19:35
+Hyphen, hyphen, check.
+
+[rochak agrawal] 08:19:36
+So I'll just run it, hyphen, hyphen, check.
+
+[rochak agrawal] 08:19:51
+Copied it.
+
+[rochak agrawal] 08:19:54
+You see, it's not copied, right? But it tells you, okay, uh, it is going to… it will change the status. If you want the more verbose log, you can do it with the hyphen V, hyphen VV.
+
+[rochak agrawal] 08:20:05
+With that, so if you want to do a dry run of your playbook.
+
+[rochak agrawal] 08:20:09
+Then, of course, like, we are running the ad-hoc command, so we are not getting anything, but if you have a playbook, so playbook plays a task, it will show in a sequential manner. So it is going to do a dry run, and then, if you want to see the difference.
+
+[rochak agrawal] 08:20:23
+So then you can do it with the hyphen hyphen diff.
+
+[rochak agrawal] 08:20:29
+So you can see it here.
+
+[rochak agrawal] 08:20:32
+It is…
+
+[rochak agrawal] 08:20:36
+going to…
+
+[rochak agrawal] 08:20:38
+Destination is this, it is going to change this one.
+
+[rochak agrawal] 08:20:43
+Okay.
+
+[rochak agrawal] 08:20:44
+So from there, this is the source.
+
+[rochak agrawal] 08:20:48
+So if I'm going to run it…
+
+[rochak agrawal] 08:20:53
+Okay, it is copied. Now, if you see the difference…
+
+[rochak agrawal] 08:21:01
+You see? Nothing it will do, right? Because the file has already been copied, so you're not doing anything now.
+
+[rochak agrawal] 08:21:09
+So these are, uh, syntax check, source, uh, one, and diff, and this, uh…
+
+[rochak agrawal] 08:21:17
+Check, uh, is it raining?
+
+[rochak agrawal] 08:21:24
+Again, there is something called the folks.
+
+[rochak agrawal] 08:21:27
+So where is this folks example is can you see?
+
+[rochak agrawal] 08:21:48
+Now, how many, uh…
+
+[rochak agrawal] 08:21:51
+Host Ansible can run in parallel, remember?
+
+[rochak agrawal] 08:22:03
+How many hosts Ansible can run in parallel?
+
+[rochak agrawal] 08:22:22
+Norman?
+
+[rochak agrawal] 08:22:23
+Bevel, you remember?
+
+[Vaibhav] 08:22:29
+Maybe, uh…
+
+[Vaibhav] 08:22:31
+5… thing, not sure.
+
+[rochak agrawal] 08:22:32
+5, yes. So, 5 is the default number, okay? Um…
+
+[rochak agrawal] 08:22:37
+So, if you want to change it permanently, I can do it, for example, in a…
+
+[rochak agrawal] 08:22:45
+ETC and Civil.
+
+[rochak agrawal] 08:23:02
+Okay, we have nothing, but what the setting you can run is, you will simply go and…
+
+[rochak agrawal] 08:23:11
+Then, whatever the number, uh, you want to run. So you can say folks is equal to…
+
+[rochak agrawal] 08:23:17
+Then it can run whatever the playbook, whatever the command you are running on the 10 servers parallelly.
+
+[rochak agrawal] 08:23:26
+Now, you say, I do not want to make the change permanent. You keep it with the default, with the 5. But here, when you are running your command.
+
+[rochak agrawal] 08:23:34
+For example, here also you can run folks as equal to, let's say, 10. So then whatever the default setting is there, that let be it, what we are going to do, we can run this parallelly on the 10 servers.
+
+[rochak agrawal] 08:23:50
+Now, of course, it… you need to choose these folks depending on, uh…
+
+[rochak agrawal] 08:23:57
+like, what is play… what your playbook is doing, first thing, and second thing is, what is the capacity of your controller node, correct? If you're running a very heavy process, and uh…
+
+[rochak agrawal] 08:24:10
+your machine is very small. If you run the 10 processes simultaneously, um, it is…
+
+[rochak agrawal] 08:24:17
+It is going to create a lot of problem.
+
+[rochak agrawal] 08:24:22
+Basically, like, how much time it is taking. If we run it, just a copy command copy is just going to take a second. So it does not matter much, but if you are, let's say, you're running a playbook which is doing a lot of things, which is taking 20, 25 minutes, then.
+
+[rochak agrawal] 08:24:39
+If your server is not capable, even if you are doing the forks as equal to 10, then it is going to create a problem.
+
+[rochak agrawal] 08:24:56
+Now, these are some of the common issues we are going to get, in fact, some of them.
+
+[rochak agrawal] 08:25:03
+We were getting one of this yesterday.
+
+[rochak agrawal] 08:25:07
+ourselves, right? So you can get unreachable permission denied public key. This was exactly the error what we are getting. Now.
+
+[rochak agrawal] 08:25:17
+What was the likely cause? Key is not installed on the destination system. You are using a wrong user. Now, for us, the issue was key was being installed in some wrong format. That is why it was not.
+
+[rochak agrawal] 08:25:32
+accepting the key, okay? So, check, fix, user permission, copy ID, we have done all of that, right?
+
+[rochak agrawal] 08:25:40
+Exactly all of those things we did, and then finally, we identified that it is, uh…
+
+[rochak agrawal] 08:25:47
+the format issue, and we generated the key in a different format, and that's all, okay?
+
+[rochak agrawal] 08:25:56
+Then, host key verification failed, okay? So, like, some of the systems, okay? You need to do two things. Even though the public key has been installed and accepted, you will… Ensemble would not be able to make a connection because the host key verification failed.
+
+[rochak agrawal] 08:26:14
+So, there is a file in the SSE folder only called the known host. So, you need to add the server name in the known host file. So, after that, you connect once and accept, avoid a disabling check outside. So, we can do that.
+
+[rochak agrawal] 08:26:31
+Second is, let's say, now this is very important to understand.
+
+[rochak agrawal] 08:26:38
+Missing sudo password.
+
+[rochak agrawal] 08:26:41
+Okay.
+
+[rochak agrawal] 08:26:43
+So, what's going to happen? Let's say I have installed.
+
+[rochak agrawal] 08:26:49
+You understand, this is really important.
+
+[rochak agrawal] 08:27:02
+Let's say I have two servers, right?
+
+[rochak agrawal] 08:27:10
+One is my controller node.
+
+[rochak agrawal] 08:27:13
+And one is my…
+
+[rochak agrawal] 08:27:18
+Burger noodle, or…
+
+[rochak agrawal] 08:27:20
+agent node or whatsoever. I'll just say worker node.
+
+[rochak agrawal] 08:27:27
+Now, I am copying the…
+
+[rochak agrawal] 08:27:31
+Uban, like, see when you copy the key.
+
+[rochak agrawal] 08:27:36
+You see, if you go to SSH.
+
+[rochak agrawal] 08:27:46
+It says Ubuntu at the rate 172.31.7.8.21. 211, sorry. So the user is Ubuntu, correct?
+
+[rochak agrawal] 08:27:56
+So when you copy the key.
+
+[rochak agrawal] 08:28:00
+From controller to worker.
+
+[rochak agrawal] 08:28:03
+You copy it for a particular user.
+
+[rochak agrawal] 08:28:13
+Right? Ilya, agree till this point?
+
+[Vaibhav] 08:28:24
+Controller to, uh, worker node, uh…
+
+[rochak agrawal] 08:28:27
+Correct? When you copy the key, right, we copied the key, correct?
+
+[Vaibhav] 08:28:31
+Mm-hmm.
+
+[rochak agrawal] 08:28:33
+So, you copied the key for a particular user, which is Ubuntu in our case.
+
+[rochak agrawal] 08:28:40
+If… so whenever any…
+
+[rochak agrawal] 08:28:44
+Ansible command you are running on the destination.
+
+[Vaibhav] 08:28:47
+Mmhm.
+
+[rochak agrawal] 08:28:47
+Whose user permission it is using? Ubuntu user.
+
+[Vaibhav] 08:28:50
+Ubuntu.
+
+[rochak agrawal] 08:28:51
+Correct? Agree till now?
+
+[Vaibhav] 08:28:53
+Yeah.
+
+[rochak agrawal] 08:28:54
+Okay, now you see, um…
+
+[rochak agrawal] 08:28:57
+If you try…
+
+[rochak agrawal] 08:29:00
+To do something…
+
+[rochak agrawal] 08:29:02
+Which required the?
+
+[rochak agrawal] 08:29:05
+Administrator privileges.
+
+[rochak agrawal] 08:29:08
+See, for example, if you want to, um…
+
+[rochak agrawal] 08:29:12
+install something. You want to copy in a… see, if I go here, and let's say…
+
+[rochak agrawal] 08:29:19
+Instead of copying in the Home Open 2, let's try to copy it in a ETC.
+
+[rochak agrawal] 08:29:37
+Okay.
+
+[rochak agrawal] 08:29:43
+My local…
+
+[rochak agrawal] 08:29:49
+I'm in the wrong folder.
+
+[rochak agrawal] 08:29:58
+Okay, let me try it now.
+
+[rochak agrawal] 08:30:04
+You see?
+
+[rochak agrawal] 08:30:06
+you are getting an error. It says ETC not writable.
+
+[rochak agrawal] 08:30:11
+With the help of… from the Ansible user.
+
+[rochak agrawal] 08:30:13
+Correct. Now, what do you need to do? You need to elevate the Ubuntu user as the…
+
+[rochak agrawal] 08:30:23
+uh, what do you say, as the super user, right? So there is a flag, uh, is there.
+
+[rochak agrawal] 08:30:34
+It's not there.
+
+[rochak agrawal] 08:30:35
+So you, um, that way you understood the problem statement, right? There will be certain task, uh.
+
+[rochak agrawal] 08:30:44
+which requires the administrative privileges, which you cannot do with the normal user, correct? Now…
+
+[rochak agrawal] 08:30:53
+So there is something called become is equal to true.
+
+[rochak agrawal] 08:30:59
+become flag…
+
+[rochak agrawal] 08:31:03
+Hello.
+
+[rochak agrawal] 08:31:07
+Come on.
+
+[rochak agrawal] 08:31:11
+Okay, so it's just saying hyphen B.
+
+[rochak agrawal] 08:31:17
+So if you give hyphen B.
+
+[rochak agrawal] 08:31:24
+You see, now it is able to change it, correct?
+
+[rochak agrawal] 08:31:28
+With the help of hyphen B.
+
+[rochak agrawal] 08:31:31
+Whenever there is a need for your user.
+
+[rochak agrawal] 08:31:35
+To become a super user, it will become.
+
+[rochak agrawal] 08:31:39
+Ilya till now?
+
+[rochak agrawal] 08:31:45
+Yes, no, anything…
+
+[Vaibhav] 08:31:51
+Yes, it's, uh, the same.
+
+[rochak agrawal] 08:31:54
+Any confusion? Till now.
+
+[rochak agrawal] 08:32:05
+Are we good? Anyone else? Any question?
+
+[rochak agrawal] 08:32:12
+Okay.
+
+[rochak agrawal] 08:32:16
+Yes, I do.
+
+[arif] 08:32:20
+So, can… we can put minus, like, hyphen B anywhere in this command, or it's only on the last?
+
+[rochak agrawal] 08:32:27
+Again, I'm not sure if, uh, let's say…
+
+[rochak agrawal] 08:32:31
+If you try to do it, I think it is in the last, but…
+
+[rochak agrawal] 08:32:38
+That's right.
+
+[rochak agrawal] 08:32:40
+Because these are the argument.
+
+[rochak agrawal] 08:32:44
+So you see error in at the last because why at the last because.
+
+[rochak agrawal] 08:32:52
+See, this is one group.
+
+[rochak agrawal] 08:32:55
+Hyphen i inventory dot i n i.
+
+[rochak agrawal] 08:32:58
+This is Bangaroop. Module name is copy. Then these are the arguments.
+
+[rochak agrawal] 08:33:04
+Okay, so that's why you're at the last.
+
+[rochak agrawal] 08:33:08
+Now, one thing…
+
+[rochak agrawal] 08:33:11
+You got your answer, right? Any question?
+
+[arif] 08:33:14
+No, no.
+
+[rochak agrawal] 08:33:16
+Yeah. So, you see, now we have, uh, did two things. One is…
+
+[rochak agrawal] 08:33:23
+If you want to run normal task.
+
+[rochak agrawal] 08:33:36
+I can do it with the normal Ubuntu user.
+
+[rochak agrawal] 08:33:40
+Okay? But if you want to do…
+
+[rochak agrawal] 08:33:45
+that need…
+
+[rochak agrawal] 08:33:48
+Admin privileges.
+
+[rochak agrawal] 08:33:51
+Then, I will use the Ubuntu user only.
+
+[rochak agrawal] 08:33:58
+But…
+
+[rochak agrawal] 08:34:02
+I will use…
+
+[rochak agrawal] 08:34:05
+the hyphen B flag.
+
+[rochak agrawal] 08:34:11
+So that…
+
+[rochak agrawal] 08:34:13
+Ubuntu?
+
+[rochak agrawal] 08:34:15
+becomes the…
+
+[rochak agrawal] 08:34:19
+Soba Ligula.
+
+[rochak agrawal] 08:34:20
+Got it?
+
+[rochak agrawal] 08:34:21
+Ilya till this point.
+
+[rochak agrawal] 08:34:25
+But there is a problem in that. Can you tell me the problem?
+
+[rochak agrawal] 08:34:29
+Let's say I'm adding another user, running the command as another user.
+
+[rochak agrawal] 08:34:34
+What could be the problem?
+
+[rochak agrawal] 08:34:47
+Arif, Webhook, can you think of anything?
+
+[rochak agrawal] 08:35:03
+Okay, now let me ask you a different lead.
+
+[rochak agrawal] 08:35:08
+When this user will become a super user?
+
+[rochak agrawal] 08:35:15
+When this user can become a root user.
+
+[rochak agrawal] 08:35:24
+It's a simple Linux question.
+
+[Vaibhav] 08:35:29
+Hmm.
+
+[rochak agrawal] 08:35:30
+When this user can become a root user.
+
+[arif] 08:35:46
+When it needs to do some system-related…
+
+[arif] 08:35:49
+Changes, so…
+
+[rochak agrawal] 08:35:51
+No, but…
+
+[rochak agrawal] 08:35:52
+See, uh, and if you are answering.
+
+[rochak agrawal] 08:35:55
+Why it need to become the root user?
+
+[rochak agrawal] 08:35:57
+to do the some system-related changes. But let's say, um, I have two users. Let's say one is Ubuntu, one is Rojak.
+
+[arif] 08:36:05
+Hmm.
+
+[rochak agrawal] 08:36:11
+This can become root, but this cannot become root.
+
+[rochak agrawal] 08:36:16
+Now, what can be the reason for this?
+
+[rochak agrawal] 08:36:21
+Now, see, very simply, when you are working on your office laptop, you might not be able to install anything because the system says that you do not have the admin privileges, correct?
+
+[Vaibhav] 08:36:35
+Okay.
+
+[rochak agrawal] 08:36:35
+So now I want to become the admin, but I cannot.
+
+[Vaibhav] 08:36:42
+Because I'm not authorized for the particular…
+
+[rochak agrawal] 08:36:46
+How you will decide which user is authorized, which is not authorized.
+
+[rochak agrawal] 08:36:52
+We did this in Linux.
+
+[arif] 08:36:57
+So we can change the ownership but ah.
+
+[arif] 08:37:01
+Not sure what.
+
+[rochak agrawal] 08:37:03
+Uh, yes, Janet.
+
+[Gyanendra Narayan] 08:37:06
+We can give the pseudo privileges to the user.
+
+[rochak agrawal] 08:37:09
+But that is the question, what I'm asking is, Gannon, is how…
+
+[rochak agrawal] 08:37:13
+How can I make a user sudo user?
+
+[rochak agrawal] 08:37:23
+Yes, go ahead.
+
+[arif] 08:37:24
+Changing the owner will not work.
+
+[rochak agrawal] 08:37:26
+No.
+
+[rochak agrawal] 08:37:30
+Could you move?
+
+[Khushboo Rani] 08:37:30
+Yes, uh, I think users should be in an AD group, means…
+
+[rochak agrawal] 08:37:35
+No, AD is something different. AD is, uh… Banbayo can be doing things, but let's say I'm not using the AD. Currently, I'm not using AD, correct?
+
+[Khushboo Rani] 08:37:45
+Yes.
+
+[rochak agrawal] 08:37:46
+So AD is very customized solution and one way of doing the things. It's not a general answer.
+
+[rochak agrawal] 08:37:59
+Naveen?
+
+[Naveen Kr Nair] 08:38:02
+Uh, I think we may go to the Sudos group and make changes there.
+
+[rochak agrawal] 08:38:09
+Uh, kind of. So, uh, if you remember, there is a file called sudoers.
+
+[Naveen Kr Nair] 08:38:13
+Yeah.
+
+[rochak agrawal] 08:38:14
+in the ETC folder.
+
+[rochak agrawal] 08:38:16
+So if you go…
+
+[rochak agrawal] 08:38:19
+Guys, we have did this in…
+
+[rochak agrawal] 08:38:23
+If you go to CD ETC.
+
+[Khushboo Rani] 08:38:25
+Yes, yes.
+
+[Khushboo Rani] 08:38:27
+Slash it, this is slash, slash, yes.
+
+[Naveen Kr Nair] 08:38:29
+Yeah, we give a VI… VI pseudo and do it.
+
+[rochak agrawal] 08:38:30
+So there is just two excluders, right?
+
+[rochak agrawal] 08:38:35
+This file is there.
+
+[rochak agrawal] 08:38:56
+So, your users should be added into this.
+
+[rochak agrawal] 08:39:00
+Okay.
+
+[rochak agrawal] 08:39:02
+And then…
+
+[rochak agrawal] 08:39:04
+It…
+
+[rochak agrawal] 08:39:05
+Basically, we'll be able to do that things.
+
+[rochak agrawal] 08:39:08
+Now, why we are asking the question is.
+
+[rochak agrawal] 08:39:13
+We have seen that you can.
+
+[rochak agrawal] 08:39:15
+See, in Ansible, you can run a command either via normal user or via an elevated user by using the become flag, hyphen b, or in a playbook, you can say become is true. We can do that. But let's say I'm using a user which.
+
+[rochak agrawal] 08:39:32
+cannot become a root.
+
+[rochak agrawal] 08:39:34
+Ben?
+
+[rochak agrawal] 08:39:37
+Right. So then you will get errors while running the task which is having the execution root execution. And that is what the error is. It says missing pseudo password. So when you let's say you are using a user row check.
+
+[rochak agrawal] 08:39:54
+Which cannot become pseudo.
+
+[rochak agrawal] 08:39:56
+Okay, and you are running an Ansible playbook, where, uh…
+
+[rochak agrawal] 08:40:00
+you say install NGINX, or make some file changes in ETC directory, something which require the admin access, then it will ask for the sudo password, and if you do not have the sudo password, then the…
+
+[rochak agrawal] 08:40:14
+it will give you an error. So then, that is what we need to do for the user.
+
+[rochak agrawal] 08:40:22
+Right? So that can be one issue you might face in your implementation. So you need to use the user, which can become the root.
+
+[rochak agrawal] 08:40:33
+Okay, then the next error is simple, Python not found, uh, no, no suitable Python on the target. Now, you may ask the question, is that, uh, uh, I have not CB created two instances, um.
+
+[rochak agrawal] 08:40:46
+And on my destination node, I have not installed the Python, but my Ansible commands are working fine on the node, correct? So when you create an EC2 instance in Amazon, most of the EC2 instances come with default Python installed on it.
+
+[rochak agrawal] 08:41:04
+That is why we did not need to install it. But if you are managing, for example, an on-premises environment where you are provisioning the server, then you need to make sure that Python need to be installed. Otherwise, you are going to get the error.
+
+[rochak agrawal] 08:41:20
+Now you can see our case, for example, whenever you are running any command.
+
+[rochak agrawal] 08:41:42
+You see, host is using the discovered Python interpreter at user when Python 3.14. And if you go here.
+
+[rochak agrawal] 08:41:53
+And see Python hyphen hyphen version.
+
+[rochak agrawal] 08:42:01
+You see? 3.14.4. So, our server is…
+
+[rochak agrawal] 08:42:08
+coming ready-made, loaded with the Python. That is why we do not need to worry about it.
+
+[rochak agrawal] 08:42:15
+Okay, otherwise on the destination servers, like you have copied the key, you need to install the Python as a prerequisite. Otherwise you would not be able to install or run your command, your Ansible commands. So that is one.
+
+[rochak agrawal] 08:42:32
+more type of the error you are going to find. No host mesh, the pattern or the inventory is wrong. So, for example, let's say, uh, you say you want to run a playbook on the web servers, but there is nothing in, uh, in your inventory called the web server.
+
+[rochak agrawal] 08:42:48
+Right, so then…
+
+[rochak agrawal] 08:42:50
+You are going to give these, uh…
+
+[rochak agrawal] 08:42:55
+You are going to get this error. Now, when something called the list host.
+
+[rochak agrawal] 08:43:00
+If you go…
+
+[rochak agrawal] 08:43:13
+If it is providing hostless, less discipline.
+
+[rochak agrawal] 08:43:23
+Mm, okay, yeah.
+
+[rochak agrawal] 08:43:32
+Could not match supplied host pattern.
+
+[rochak agrawal] 08:44:09
+We need to give. So you can see it can list the host, whatever is there in your inventory file with the help of this argument. It's not a command, it's an argument. So whenever you want to find out, and similarly we have.
+
+[rochak agrawal] 08:44:27
+Uh, inventory graph.
+
+[rochak agrawal] 08:44:28
+Okay, so Ann Sybil.
+
+[rochak agrawal] 08:44:34
+So, Ensemble Inventory also have…
+
+[rochak agrawal] 08:44:43
+Hyphen, hyphen it off.
+
+[rochak agrawal] 08:44:47
+So you can see.
+
+[rochak agrawal] 08:44:48
+Right now, there is only, uh, there is… everything is in an all group, there is no group or something. What I can do, let's say, uh, BIE.
+
+[rochak agrawal] 08:45:02
+Give me an inventory file.
+
+[rochak agrawal] 08:45:12
+Groups and subgroups.
+
+[rochak agrawal] 08:45:17
+Okay.
+
+[rochak agrawal] 08:45:19
+Let's say I'll take this file.
+
+[rochak agrawal] 08:45:26
+P-I-E-N dot I-N-I.
+
+[rochak agrawal] 08:45:33
+Now, you can see…
+
+[rochak agrawal] 08:45:37
+Multiple…
+
+[rochak agrawal] 08:45:40
+servers. Now, if you go…
+
+[rochak agrawal] 08:45:51
+It is giving one example.com.
+
+[rochak agrawal] 08:45:56
+And if you run the graph.
+
+[rochak agrawal] 08:46:08
+You can see
+
+[rochak agrawal] 08:46:08
+the complete graph you can see. See, for example, I have under the all, I have ungrouped server, I have web servers, I have DB servers, I have staging servers, I have a production server, right? Now, inside the web server, you have a web staging, web production.
+
+[rochak agrawal] 08:46:26
+And then DB server, and that's why it is using example.com with everything.
+
+[rochak agrawal] 08:46:32
+Let me replace this with the IP.
+
+[rochak agrawal] 08:47:14
+To install, now you can see.
+
+[rochak agrawal] 08:47:17
+We have ungroup inside of a web server, we have web staging, we have web production, we have DB server, we have, right? So you can create, you can ask Ansible to create a graph for your inventory file so that you can visualize how many servers you have.
+
+[rochak agrawal] 08:47:36
+And in what groups they are heading, right? Now, for example, I go and run this command.
+
+[rochak agrawal] 08:47:48
+So, it has only given me… okay, I have given the inventory.ini.
+
+[rochak agrawal] 08:47:55
+You can see, it is giving me all the hosts it is having.
+
+[rochak agrawal] 08:48:01
+Right? So we can list out all the hosts, what is there in your inventory file, and you can create this three kind of a structure for your host, which is there in your group.
+
+[rochak agrawal] 08:48:14
+Eight.
+
+[rochak agrawal] 08:48:17
+So, sometime you may happen that you have a group called web servers, but you are trying to run the playbook on the web server.
+
+[rochak agrawal] 08:48:24
+Hey, so then there is no thing called the web server, so you might get an error there as well.
+
+[rochak agrawal] 08:48:31
+So, um…
+
+[rochak agrawal] 08:48:34
+No host match. Then connection timeout, of course, that is because of the firewall issues. Now, for example.
+
+[rochak agrawal] 08:48:43
+Let's say…
+
+[rochak agrawal] 08:48:45
+Let me do this. Let me do a demo of this.
+
+[rochak agrawal] 08:48:55
+Okay? Now, we know that.
+
+[rochak agrawal] 08:48:59
+It is working fine. For example, when I'm running some command.
+
+[rochak agrawal] 08:49:08
+disable all…
+
+[rochak agrawal] 08:49:12
+Hyphen, I, inventory dot.
+
+[rochak agrawal] 08:49:15
+By the night.
+
+[rochak agrawal] 08:49:16
+Hyphen. M. Ping.
+
+[rochak agrawal] 08:49:20
+Okay, perfect, it is working fine, right? 172.31.11.189. What I am going to do, I will go to my server.
+
+[rochak agrawal] 08:49:43
+Okay. Now, what we are going to do, we are going to security.
+
+[rochak agrawal] 08:49:54
+How? Edit the security group. Yeah, change the security group.
+
+[rochak agrawal] 08:49:58
+And I'll remove this. And I am going to add a security group.
+
+[rochak agrawal] 08:50:04
+Let's say default.
+
+[rochak agrawal] 08:50:07
+And save.
+
+[rochak agrawal] 08:50:09
+Add security group.
+
+[rochak agrawal] 08:50:11
+And save.
+
+[rochak agrawal] 08:50:12
+Okay, and in the default security group, what I'm going to do…
+
+[rochak agrawal] 08:50:19
+There is no rules to display, correct?
+
+[rochak agrawal] 08:50:22
+There is no inbound rule, there is no outbound rule.
+
+[rochak agrawal] 08:50:24
+Now if you try to run this.
+
+[rochak agrawal] 08:50:30
+You see? It's not working.
+
+[rochak agrawal] 08:50:39
+It says task failed, failed to connect to the host via SSH.
+
+[rochak agrawal] 08:50:46
+Connect to connection timeout.
+
+[rochak agrawal] 08:50:48
+Right? What we are discussing.
+
+[rochak agrawal] 08:50:50
+Connection timed out. Network firewall security group issue. We need to check port 22 and the routing from the control node.
+
+[rochak agrawal] 08:50:58
+Right? So, what we can… how can we make it work? We can go to…
+
+[rochak agrawal] 08:51:04
+the security group.
+
+[rochak agrawal] 08:51:12
+Where is the Security Bureau?
+
+[rochak agrawal] 08:51:19
+I'll again change the security group.
+
+[rochak agrawal] 08:51:54
+Why are they showing the Launch Wizard 5B hub?
+
+[rochak agrawal] 08:51:58
+Okay.
+
+[rochak agrawal] 08:52:09
+Now, if you go here…
+
+[rochak agrawal] 08:52:14
+Now if you run the command again, because the rule for 22, port number 22 is there.
+
+[rochak agrawal] 08:52:21
+It will work fine.
+
+[rochak agrawal] 08:52:24
+See?
+
+[rochak agrawal] 08:52:25
+So sometime you have everything is in place, but when you try to run your application.
+
+[rochak agrawal] 08:52:35
+commands, it is not going to work, because someone is blocking the SSRC traffic in and out of your nodes, so you need to make sure you…
+
+[rochak agrawal] 08:52:47
+Because all this communication is happening.
+
+[rochak agrawal] 08:52:51
+On port 22.
+
+[rochak agrawal] 08:52:53
+So we need to make sure that your, uh…
+
+[rochak agrawal] 08:52:58
+port 22 is always reachable between the nodes. Otherwise.
+
+[rochak agrawal] 08:53:03
+No matter whatever you have written, it is not going to work.
+
+[rochak agrawal] 08:53:13
+And then finally, we have our last error, which you can do. So, of course, like, this is, uh, if you have some problem with your Ansible installation itself, so then you are not going to get an error.
+
+[rochak agrawal] 08:53:27
+Then you're going to get this error, but this is most, uh, highly unlikely, because, uh…
+
+[rochak agrawal] 08:53:33
+Of course, you must have…
+
+[rochak agrawal] 08:53:37
+created and installed Ansible before running your command. So this is…
+
+[rochak agrawal] 08:53:43
+There are very highly…
+
+[rochak agrawal] 08:53:45
+John, uh…
+
+[rochak agrawal] 08:53:46
+less chances are there that you will probably not find this error. But host key verification, missing sudo password, no host match connection timeout are the type of the frequent errors which you are going to have in your Ansible implementation.
+
+[rochak agrawal] 08:54:03
+Any question with this?
+
+[rochak agrawal] 08:54:13
+Are we good? Any other question in this?
+
+[Vaibhav] 08:54:25
+Uh, the last one is a VIP user not found. It is…
+
+[rochak agrawal] 08:54:29
+PIP is… see, we know that Ansible is written in the Python, right? So, PIP… what's going to happen?
+
+[Vaibhav] 08:54:36
+Mm-hmm.
+
+[rochak agrawal] 08:54:42
+Like, um…
+
+[rochak agrawal] 08:54:44
+We use APT for in Ubuntu. We use YAML as in CentOS based system. So PIP is the Python.
+
+[rochak agrawal] 08:54:53
+Package manager, basically.
+
+[rochak agrawal] 08:54:56
+Okay, so… but that is… see, that's what I said. That will depend on system to system, so…
+
+[Vaibhav] 08:54:56
+Okay.
+
+[rochak agrawal] 08:55:04
+Ansible, like, you are… if you're using, uh, with the APT, like we did, so then you do not need to use this pip user install.
+
+[rochak agrawal] 08:55:11
+So it, uh, this error and resolution will depend how you are installing your Python. So this is just an example. If you are installing Ensemble with the help of PIP.
+
+[rochak agrawal] 08:55:21
+Then you need to check if the pip is there on the path or not.
+
+[Vaibhav] 08:55:25
+So, uh, like, we can say, like, PPS provide the packages, uh, which is required to us.
+
+[rochak agrawal] 08:55:33
+No, PIP is something, see, for example, I'll show you.
+
+[Vaibhav] 08:55:37
+As you said, PPS Package Manager.
+
+[rochak agrawal] 08:55:40
+package manager for Python. So, for example, let's say in Python, you need to install some package. Now, Ansible is a…
+
+[rochak agrawal] 08:55:49
+Just a second. Install Ansible with Mac.
+
+[rochak agrawal] 08:55:58
+To install it using pip, it is highly recommended to install as a Python virtual environment.
+
+[rochak agrawal] 08:56:05
+So, see.
+
+[rochak agrawal] 08:56:08
+Yeah, if you go…
+
+[rochak agrawal] 08:56:13
+Ansible activate, and then you are installing the Ansible with PIP.
+
+[rochak agrawal] 08:56:16
+So pip install ensemble, correct?
+
+[Vaibhav] 08:56:19
+Mm-hmm.
+
+[rochak agrawal] 08:56:20
+Now, this, whatever is written on the slide, it is just an example, just one scenario. When you are installing the Ensemble with the PIP.
+
+[rochak agrawal] 08:56:30
+have I used my Ansible with pip in the current scenario? No. I use the APT as my package manager. Correct? So… so that example on only particular when you are using pip as your package manager.
+
+[Vaibhav] 08:56:36
+Mm-hmm.
+
+[Vaibhav] 08:56:45
+Okay.
+
+[rochak agrawal] 08:56:45
+Okay.
+
+[rochak agrawal] 08:56:47
+So, like…
+
+[rochak agrawal] 08:56:48
+Again, there are some types of package managers out there. PIP is very common when you want to install any packages, any interfaces in Python.
+
+[rochak agrawal] 08:57:01
+Okay, so here we will be installing Ansible as the Python package, not as an apt package.
+
+[rochak agrawal] 08:57:09
+There are multiple ways of doing the things.
+
+[Vaibhav] 08:57:16
+Okay.
+
+[rochak agrawal] 08:57:17
+Okay.
+
+[rochak agrawal] 08:57:19
+So, again, once it is installed, it is all saved. So, you can see B also runs the ensemble hyphen hyphen version.
+
+[rochak agrawal] 08:57:27
+Okay, now you understand, I'll give you more, uh…
+
+[rochak agrawal] 08:57:32
+more practical or more relatable example. Have you heard about pandas and NumPy?
+
+[Vaibhav] 08:57:38
+Yes, yes, yes. That is detailed.
+
+[rochak agrawal] 08:57:39
+What, what do they do?
+
+[rochak agrawal] 08:57:41
+Yeah, so basically, they work on a time series database, uh, time series data, and then you can do your analysis and everything, correct?
+
+[rochak agrawal] 08:57:50
+Now, when you install the Python on your system.
+
+[rochak agrawal] 08:57:55
+you will not be able to use the pandas in NumPy.
+
+[rochak agrawal] 08:58:00
+Okay, what do you need to do? You need to install pip install…
+
+[rochak agrawal] 08:58:09
+on us.
+
+[rochak agrawal] 08:58:12
+Currently we are not even using the PIP. What is pandas? Pandas is a Python package, correct?
+
+[Vaibhav] 08:58:21
+Hmm.
+
+[rochak agrawal] 08:58:21
+I cannot go and say run app install Panda.
+
+[Vaibhav] 08:58:25
+Mmhm.
+
+[rochak agrawal] 08:58:26
+Will not make a sense.
+
+[rochak agrawal] 08:58:28
+Correct, because I want to use pandas as the Python package. So, similarly, Ansible… since Ansible is completely written in Python.
+
+[rochak agrawal] 08:58:38
+Ansible comes as a Python package also. If you go to the installation option or official documentation.
+
+[rochak agrawal] 08:58:51
+So, you can see here…
+
+[rochak agrawal] 08:58:54
+Installing… see, installing, uh…
+
+[rochak agrawal] 08:58:57
+Installing and upgrading Ansible with PIPX.
+
+[rochak agrawal] 08:59:01
+BitPip.
+
+[rochak agrawal] 08:59:02
+Correct?
+
+[rochak agrawal] 08:59:03
+So you can see here only we have two options are there.
+
+[rochak agrawal] 08:59:08
+Then installing GitHub PIP. So there can be multiple options out there to install something. And the example, whatever is written on our slide, is just an example when you are using PIP as your package manager, for instance. That's it.
+
+[rochak agrawal] 08:59:28
+So, PIP, you understand I'm… I'm forgetting the full form of PIP.
+
+[rochak agrawal] 08:59:32
+Is there any full form?
+
+[Vaibhav] 08:59:33
+Python installer, package manager, something.
+
+[rochak agrawal] 08:59:36
+There's something like this. Is there any full form?
+
+[Vaibhav] 08:59:37
+Mm-hmm.
+
+[rochak agrawal] 08:59:44
+In Python.
+
+[rochak agrawal] 08:59:48
+PIP installed the package, okay? PIP officially stands for PIP installs package, but again, what is PIP?
+
+[Vaibhav] 08:59:52
+Hmm.
+
+[Vaibhav] 08:59:55
+Python, Python installs package.
+
+[rochak agrawal] 08:59:57
+Python installs package or something, right? So this is… this is a recursive acronym, which means the acronym itself is used inside its definition. So the P in PIP stands for PIP.
+
+[rochak agrawal] 09:00:10
+Okay, so…
+
+[Vaibhav] 09:00:10
+So, load thing, I want to ask, like, why we have not used, uh, PIP in revenue practice, for example?
+
+[rochak agrawal] 09:00:13
+Mmhm.
+
+[rochak agrawal] 09:00:19
+No, but I am using APTC, that's what I'm saying. We are not… uh, you can, again, uh…
+
+[rochak agrawal] 09:00:26
+Let's say, on your system, you need to install Java.
+
+[Vaibhav] 09:00:29
+Mm-hmm.
+
+[rochak agrawal] 09:00:29
+Okay.
+
+[rochak agrawal] 09:00:31
+In how many ways you can install Java?
+
+[rochak agrawal] 09:00:40
+I can use it, I can install it in many ways. For example, one way I can go to, um…
+
+[rochak agrawal] 09:00:51
+Oracle's website, I'll download the Java, which will give me a nice installer, and I'll just click, click, click, click, click, and my Java will be installed, right? Second option is, I will download the GIF file of the Java.
+
+[Vaibhav] 09:00:59
+Mm-hmm.
+
+[rochak agrawal] 09:01:04
+I'll unzip at my folder, uh, wherever I want to install. Uh, unzip it, run it, and then add the path where the Java executable is there.
+
+[rochak agrawal] 09:01:14
+I'm going to add it to my path variable, correct?
+
+[Vaibhav] 09:01:18
+Hmm.
+
+[rochak agrawal] 09:01:20
+Once it is installed, they are going to behave exactly the same way. Java, hyphen version, and you will get, you have installed 1.14 or 1.21 whatsoever, correct? So the point, Vevo, is when you want to install something, and it is, it will not only true with Ansible.
+
+[rochak agrawal] 09:01:37
+Um, or Terraform or something. There can be multiple ways of using or installing a software.
+
+[rochak agrawal] 09:01:46
+Hey, now…
+
+[rochak agrawal] 09:01:47
+We don't see
+
+[rochak agrawal] 09:01:49
+Here also, if you see…
+
+[rochak agrawal] 09:01:54
+I think I've deleted this tab. But the point is, once it is installed, it's the same Ansible.
+
+[rochak agrawal] 09:02:01
+Ansible, you are going to run this command.
+
+[rochak agrawal] 09:02:04
+So.
+
+[rochak agrawal] 09:02:06
+And of course, like, it will depend on what package manager you're using. So when you say, why have not we used pip, uh, for the Ansible, right? Because…
+
+[rochak agrawal] 09:02:15
+We are using APT for all our packages, correct?
+
+[rochak agrawal] 09:02:22
+And be an…
+
+[rochak agrawal] 09:02:24
+See, you are not going to, let's say, find a Terraform package in PIP. You are not going to find, let's say, Jenkins package in PIP. Maybe, I'm not sure. There might be. But…
+
+[rochak agrawal] 09:02:34
+we are using APT as our standard package manager, and that's why we have installed Ansible with APT only.
+
+[Vaibhav] 09:02:42
+Okay.
+
+[rochak agrawal] 09:02:42
+Okay, uh, now if you… if your installation, um, see…
+
+[rochak agrawal] 09:02:47
+these installations are very standard. There is nothing, um…
+
+[rochak agrawal] 09:02:53
+technical about it. If you're using any of the package managers, for example, if I go, uh, to…
+
+[rochak agrawal] 09:02:59
+Instead of Ubuntu, if I'm using CentOS, then I will say, instead of running, so what command I run.
+
+[Vaibhav] 09:03:20
+That's it, that's it, that's it, that's it, that's it.
+
+[rochak agrawal] 09:03:24
+See, I done this, uh…
+
+[rochak agrawal] 09:03:27
+sudo apt install ensemble, correct? Now, instead of, um…
+
+[rochak agrawal] 09:03:34
+This, uh…
+
+[rochak agrawal] 09:03:35
+Ubuntu, if I would have been using the CentOS-based system, so then I would have been written the command sudo yum installincible, because apt as a package manager does not work in CentOS. In CentOS, there is a different package manager called the yum.
+
+[rochak agrawal] 09:03:52
+So, but you see the command is same, it's just the package manager name is changing, and you don't need to worry about these commands altogether. You will find these commands in the official documentation, depending on the platform and the package manager you are using.
+
+[Vaibhav] 09:04:05
+Mm-hmm.
+
+[rochak agrawal] 09:04:06
+Okay, so that's why we are following a standard approach. We are using Ubuntu-based systems, and you are using APTA as the standard package manager. And that's why, see, we do not even have the PIP installed on my system. You see? So first, we need to install.
+
+[rochak agrawal] 09:04:22
+PIP with the help of DPD.
+
+[Vaibhav] 09:04:25
+You have a chargeable environment?
+
+[rochak agrawal] 09:04:26
+Right? You can see, when I'm running the pip.
+
+[Vaibhav] 09:04:27
+Mm-hmm.
+
+[rochak agrawal] 09:04:30
+It says, if not found, but can be installed with. So, if I install dev sudo apt…
+
+[rochak agrawal] 09:04:37
+Install
+
+[rochak agrawal] 09:04:38
+Item 3.
+
+[rochak agrawal] 09:04:46
+So you can see, to install a package manager, you are using another package manager. So APT is the default package manager for Ubuntu.
+
+[Vaibhav] 09:04:53
+Okay.
+
+[rochak agrawal] 09:04:54
+Okay. PIP is a standard. PIP is a customizable. Now PIP is installed.
+
+[rochak agrawal] 09:04:59
+So you see now I can run so I can say pip install.
+
+[rochak agrawal] 09:05:05
+Pandas.
+
+[rochak agrawal] 09:05:08
+So, now you see here, now to answer your question, um…
+
+[rochak agrawal] 09:05:14
+Uh, why did not we use the PIP? So you can see, externally managed environment. You need to do a lot of additional setting to use the PIP.
+
+[rochak agrawal] 09:05:21
+So, you need to have the virtual environment for you, you can see. So, that is why we did not want it to go into that direction, and we have our standard package manager in our end, so that's why we have used it.
+
+[Vaibhav] 09:05:22
+Okay.
+
+[rochak agrawal] 09:05:36
+Okay, but if you say, I know I'm very comfortable with PIP, I have all my virtual environment set up and everything, so you use it. Once you set up your virtual environment, right.
+
+[rochak agrawal] 09:05:48
+again, um, you will find all the commands, and then once that is there, then you just need to write pip install python. If right now I will… I do…
+
+[rochak agrawal] 09:05:58
+It is not going to work.
+
+[rochak agrawal] 09:06:01
+You see?
+
+[rochak agrawal] 09:06:03
+Again, the same thing, externally managed environment. So, to make things not very complicated, we have not used them.
+
+[rochak agrawal] 09:06:13
+Okay?
+
+[Vaibhav] 09:06:14
+So, uh…
+
+[Vaibhav] 09:06:16
+just, uh, one, uh, thing I'm just asking, like, as of you have industry knowledge and, uh, no. So, uh, like, in industries, we have used, uh, mostly APTs, right?
+
+[rochak agrawal] 09:06:28
+Repeat it, yes.
+
+[rochak agrawal] 09:06:29
+No, again, when you say APT is, uh… see, um… when you are saying you… we mostly use the APT, so then we need to say we use APT with the one-two.
+
+[Vaibhav] 09:06:41
+Okay, yeah, yeah.
+
+[rochak agrawal] 09:06:42
+Because APT is the Ubuntu package manager. Now your organization is not using Ubuntu at all, then you cannot go and say, I will use APT, because APT is the Ubuntu package manager.
+
+[Vaibhav] 09:06:52
+Yeah, right.
+
+[rochak agrawal] 09:06:53
+So, if you are, let's say, using CentOS, so then we use Xeon.
+
+[rochak agrawal] 09:07:00
+Okay?
+
+[Vaibhav] 09:07:00
+Okay, okay.
+
+[rochak agrawal] 09:07:04
+Yes, Janine.
+
+[Gyanendra Narayan] 09:07:08
+Sir, today we have not used any of the playbook.
+
+[Gyanendra Narayan] 09:07:11
+So… so all the command which we ran today was a standalone.
+
+[rochak agrawal] 09:07:12
+Mm-hmm.
+
+[rochak agrawal] 09:07:16
+See, that is what we discussed yesterday also, Ganind. Anything we are running, uh, for example, um…
+
+[rochak agrawal] 09:07:23
+You have two ways, right? Either you can do it.
+
+[rochak agrawal] 09:07:28
+from the playbook, or you can do it with the help of a ad-hoc command. So, for example, any of the command you say, we can create a playbook for that.
+
+[Gyanendra Narayan] 09:07:37
+So it means that one… when we need one of the more command to be run, then we… then we need a playbook.
+
+[rochak agrawal] 09:07:39
+For example
+
+[rochak agrawal] 09:07:43
+Kylie.
+
+[rochak agrawal] 09:07:44
+Then we need the playbook, correct? If you are running only one command, then you can do it with that. See, there is two things. Um, why do you need a, um…
+
+[rochak agrawal] 09:07:54
+The playbooks versus the other commands.
+
+[rochak agrawal] 09:07:59
+Two difference, I will say majorly, is there.
+
+[rochak agrawal] 09:08:08
+One is if you are running a single command.
+
+[rochak agrawal] 09:08:16
+Versus the multi.
+
+[rochak agrawal] 09:08:20
+Okay.
+
+[rochak agrawal] 09:08:22
+Now, the second way is I can see, let's say I have a five command. I will write it in a playbook and I will run my playbook, correct? And this is going to run everything sequentially, 1, 2, 3, 4, 5. Second option I can say is.
+
+[rochak agrawal] 09:08:37
+I will run one command, then I'll run second command, then I'll run third command. I can do that as well. But when you are having multiple things to do.
+
+[rochak agrawal] 09:08:48
+Why we have not used the playbook? Because we were looking at different other options, which either I can use it for the single command or playbook, doesn't matter, okay? So, when to use the playbook? When you have multiple plays, multiple tasks, you need to complete.
+
+[rochak agrawal] 09:09:03
+Second most important thing is, uh…
+
+[rochak agrawal] 09:09:08
+When to use Flavor?
+
+[rochak agrawal] 09:09:09
+See
+
+[rochak agrawal] 09:09:13
+CPLayBox, uh, is the code correct?
+
+[rochak agrawal] 09:09:21
+Get in.
+
+[Gyanendra Narayan] 09:09:22
+Yeah, yeah, listen, sir.
+
+[rochak agrawal] 09:09:24
+Correct. So, playbook is the code, right?
+
+[Gyanendra Narayan] 09:09:26
+Hmm. Okay.
+
+[rochak agrawal] 09:09:27
+Now playbook since playbook is a code.
+
+[rochak agrawal] 09:09:31
+Where it goes?
+
+[rochak agrawal] 09:09:38
+In the version control system.
+
+[rochak agrawal] 09:09:41
+So, the second benefit of using the playbooks is…
+
+[rochak agrawal] 09:09:45
+they are auditable, because they goes into the version control system. Now, let's say, for example, I run a, uh, ad hoc command on my system. Now, I have a five-member team, no one will know what command I have run, correct?
+
+[Gyanendra Narayan] 09:09:58
+Correct.
+
+[rochak agrawal] 09:09:58
+So that is where, if you are in a multiple system team, and then also you need to run a single command, we generally don't use the ad hoc commands. We always use the playbooks only, because… see, I will download the playbook from the…
+
+[Gyanendra Narayan] 09:10:12
+So, the best practice?
+
+[rochak agrawal] 09:10:14
+Is to use the playbooks.
+
+[rochak agrawal] 09:10:17
+Okay, um, because, um…
+
+[rochak agrawal] 09:10:21
+I will download the playbook.
+
+[Gyanendra Narayan] 09:10:21
+So you can say that as a best practice, we use Playbook.
+
+[rochak agrawal] 09:10:25
+We use playbooks. See, in a multi-people team, you always… see, best practice is not, I would say, not to use the playbook. Best practice is to version control your playbook.
+
+[Gyanendra Narayan] 09:10:37
+Hmm. Okay.
+
+[rochak agrawal] 09:10:39
+So that everyone knows.
+
+[rochak agrawal] 09:10:41
+which version of playbook is being used, who are changing your playbook, what changes is being made, so that everyone knows it, correct? Now, if I run a single command on my system, um…
+
+[rochak agrawal] 09:10:54
+You will not know what command I ran, correct?
+
+[rochak agrawal] 09:10:58
+And that is also true with the playbook. I create a playbook on my system. I…
+
+[rochak agrawal] 09:11:02
+Do you know what playbook I have written? No. You might write your own playbook, and it can create a conflict. So that's where, if you are in a multi-people team, and that was a… because…
+
+[rochak agrawal] 09:11:13
+See, what's going to happen…
+
+[rochak agrawal] 09:11:17
+In Terraform, there was a state file. In Ansible, there is no state file. Now, for example, uh…
+
+[rochak agrawal] 09:11:25
+Let's see…
+
+[rochak agrawal] 09:11:26
+There are two persons.
+
+[rochak agrawal] 09:11:32
+Person 1, person 2.
+
+[rochak agrawal] 09:11:34
+If you are not version controlling your playbook.
+
+[rochak agrawal] 09:11:38
+The problem it may happen is, let's say you have written a playbook.
+
+[rochak agrawal] 09:11:46
+And this guy also have written a playbook, since they do not know each other, uh, about… right? Now you…
+
+[rochak agrawal] 09:11:53
+Run this playbook.
+
+[rochak agrawal] 09:11:55
+What this playbook will do, let's say it is installing NGINX.
+
+[rochak agrawal] 09:12:06
+3.14, okay? So, when this person runs this playbook, NGINX 3.14 will be installed on the system. Now, you have written the playbook, and you have said, okay, instead of 3.14, 3.14.
+
+[rochak agrawal] 09:12:20
+I'm going to use 3.1 pipe.
+
+[rochak agrawal] 09:12:23
+Any, any, any, uh, discrepancy, it can happen. So now, when you, when you again run the playbook.
+
+[rochak agrawal] 09:12:31
+There is a conflict, because it says 3.14 is there.
+
+[rochak agrawal] 09:12:37
+So, you said 3.15, so now my desired state is not matching the current state. It will install Ansible again. Now you will have two versions of Ansible running.
+
+[rochak agrawal] 09:12:48
+Do you want this? No?
+
+[rochak agrawal] 09:12:49
+So that is where everyone need to advise to send the playbooks to a shared repository, so that whenever I need it, I will download it first, and see what is already there.
+
+[Gyanendra Narayan] 09:12:50
+Nope.
+
+[rochak agrawal] 09:13:03
+And then, accordingly, I will make my changes. So the best practice is to version control your playbooks in a multi-people setup.
+
+[Gyanendra Narayan] 09:13:11
+So, when we say version control, it means that it should be a central repository, and the people should be aware of that.
+
+[rochak agrawal] 09:13:19
+Correct, yeah, see, it's like Git.
+
+[rochak agrawal] 09:13:21
+Right? See, instead…
+
+[rochak agrawal] 09:13:24
+we have seen the version control, right? We use Git for the version control. Now, when we were studying the Git, we said we are going to version control our application code, correct?
+
+[Gyanendra Narayan] 09:13:28
+Hmm.
+
+[Gyanendra Narayan] 09:13:34
+Correct.
+
+[rochak agrawal] 09:13:35
+Now, with the application code also, what we are going to version control, there are many other things. We are going to version control my Jenkins files.
+
+[rochak agrawal] 09:13:45
+We are going to version control our Docker files.
+
+[rochak agrawal] 09:13:47
+We are going to version control our Kubernetes artifacts.
+
+[rochak agrawal] 09:13:54
+We are going to version control our Terraform code, because Terraform, it's a code only.
+
+[Gyanendra Narayan] 09:14:00
+Correct.
+
+[rochak agrawal] 09:14:00
+And we are going to version control our Ensemble clip.
+
+[Gyanendra Narayan] 09:14:03
+It's a playbook.
+
+[rochak agrawal] 09:14:04
+Now, one thing we can do, we can use the same repo for which your application is using, or let's say we can create another repo, let's say you call it as a platform engineering repo.
+
+[rochak agrawal] 09:14:19
+We are for a particular application. So in my last project, we have created a…
+
+[rochak agrawal] 09:14:24
+A centralized repo, uh, for example, we call it as a…
+
+[rochak agrawal] 09:14:33
+Platform engineering level.
+
+[rochak agrawal] 09:14:39
+Okay, now inside that, we have created multiple branches.
+
+[rochak agrawal] 09:14:46
+For your applications. So, app, one…
+
+[rochak agrawal] 09:14:52
+F2, F3, F4, F5, F6, and then inside this, you have all this DevOps related artifacts.
+
+[rochak agrawal] 09:14:59
+Okay, so that…
+
+[rochak agrawal] 09:15:01
+Of course, like sometime we do it with the application code itself because your Docker file is needed where your application code. So there can be, the point is there can be multiple permutation combination, but any, if there is any configuration artifact is there.
+
+[rochak agrawal] 09:15:20
+That should be version control.
+
+[Gyanendra Narayan] 09:15:24
+Got it, sir. So one addition to this, so can we schedule our commands or playbook? Supposed at 9 o'clock every day, we need to ping all the notes and get the status. Is it possible in this Ansible playbook?
+
+[rochak agrawal] 09:15:25
+Okay. Hmm.
+
+[rochak agrawal] 09:15:39
+See, there is two ways of doing it, okay?
+
+[rochak agrawal] 09:15:43
+Now, one way is very generic.
+
+[rochak agrawal] 09:15:48
+So, how you can do it?
+
+[Gyanendra Narayan] 09:15:53
+So, first thing that… every day, 9 o'clock, we'll go and ping. We'll run the playbook. This is the first option. But we want to automate this.
+
+[rochak agrawal] 09:15:58
+Big. Right. So, okay. This is a very, very, uh…
+
+[rochak agrawal] 09:16:00
+Yeah, so that is very standard way of doing this.
+
+[rochak agrawal] 09:16:04
+Forget about Ansible playbook.
+
+[rochak agrawal] 09:16:08
+Okay, now let's say I have this command.
+
+[rochak agrawal] 09:16:12
+Ping.
+
+[rochak agrawal] 09:16:14
+Google.com.
+
+[rochak agrawal] 09:16:17
+Okay, it is working, right? Now you say, now my question to you is.
+
+[Gyanendra Narayan] 09:16:19
+Working, working.
+
+[rochak agrawal] 09:16:22
+I want to run this command.
+
+[rochak agrawal] 09:16:26
+Every day at 9 AM, or 9 PM, whatever your question is.
+
+[rochak agrawal] 09:16:31
+How can I run it? Nothing related to Ansible. How can I do it?
+
+[Gyanendra Narayan] 09:16:46
+No idea, sir.
+
+[rochak agrawal] 09:16:47
+No idea, okay. So, there is something called CronTab in Unix, okay.
+
+[rochak agrawal] 09:16:53
+Unix, when I'm saying, it is there across all the Unix platform, Fedora, Ubuntu, this, that, everywhere. So there is something called crontab. So if you see crontab-l.
+
+[rochak agrawal] 09:17:06
+It is going to give you all the commands which is scheduled on your system.
+
+[rochak agrawal] 09:17:12
+So it says no coronav for Ubuntu
+
+[rochak agrawal] 09:17:15
+Right? Now you say, I want to run this command every day at, uh…
+
+[rochak agrawal] 09:17:21
+That's the 9 PM. Now, it is crontab-e, you are editing the crontab and adding a new entry.
+
+[rochak agrawal] 09:17:30
+Right, so you can say to select an editor or this is this is this I'll say.
+
+[rochak agrawal] 09:17:38
+And not go into…
+
+[rochak agrawal] 09:17:41
+Okay, now you can write a schedule. Now, this is very important, okay? So Chrome tab uses a very specific schedule.
+
+[rochak agrawal] 09:18:01
+So here you can see these five field-mate users, okay?
+
+[rochak agrawal] 09:18:06
+By field, first field is a minute.
+
+[rochak agrawal] 09:18:09
+Second field is an hour.
+
+[rochak agrawal] 09:18:12
+Third field is a day of the month.
+
+[rochak agrawal] 09:18:14
+Fourth field is.
+
+[rochak agrawal] 09:18:16
+Month 1 to 12. And the fifth field is the day of the week.
+
+[rochak agrawal] 09:18:21
+You understood? So, if you see… if you want to run something every minute, you will give it like this.
+
+[rochak agrawal] 09:18:28
+Runs every single minute of every day. If you want to run it every hour. So, see?
+
+[rochak agrawal] 09:18:34
+1020, you give it 0 here, and do it. Now, daily at midnight, weekly, monthly, right? So you can run it. Now, I want to run…
+
+[rochak agrawal] 09:18:48
+Every day.
+
+[rochak agrawal] 09:18:50
+At 9 PM, for example.
+
+[rochak agrawal] 09:18:54
+You see? So it uses the 24-hour format, so it is saying 21.
+
+[rochak agrawal] 09:19:01
+Right, and the rest is a start.
+
+[rochak agrawal] 09:19:03
+Okay.
+
+[rochak agrawal] 09:19:05
+You say, I want to run every day at 9 AM.
+
+[rochak agrawal] 09:19:09
+Not every day.
+
+[rochak agrawal] 09:19:12
+But…
+
+[rochak agrawal] 09:19:13
+Monday and Friday.
+
+[rochak agrawal] 09:19:15
+Good example.
+
+[rochak agrawal] 09:19:19
+You see? Here, instead of a star, now it is a 1 or 5, because 1 is Monday, and 5 is Friday.
+
+[rochak agrawal] 09:19:26
+Okay, so what we can do is now.
+
+[rochak agrawal] 09:19:32
+The first part.
+
+[rochak agrawal] 09:19:34
+So, what we can do is, I can…
+
+[rochak agrawal] 09:19:39
+add this into the Chrome tab entry, and I will say…
+
+[rochak agrawal] 09:19:45
+Google.com.
+
+[rochak agrawal] 09:19:46
+Okay, so if I'm writing this entity into the cron tab, what it is going to do?
+
+[rochak agrawal] 09:19:51
+every Monday and every Friday at 9 PM, it is going to run this command.
+
+[Gyanendra Narayan] 09:19:52
+Every Monday, Friday.
+
+[Gyanendra Narayan] 09:19:57
+Correct.
+
+[rochak agrawal] 09:19:58
+Clear. Now you can say, I want to run an ensemble playbook.
+
+[Gyanendra Narayan] 09:19:59
+Yes, sir.
+
+[Gyanendra Narayan] 09:20:03
+So we'll give the location of our playbook.
+
+[rochak agrawal] 09:20:04
+Nothing you need to do.
+
+[rochak agrawal] 09:20:05
+Yep.
+
+[Gyanendra Narayan] 09:20:07
+Yes, yes, this is a way.
+
+[rochak agrawal] 09:20:11
+See, in the end, it's a Linux command, because you're writing on Linux.
+
+[Gyanendra Narayan] 09:20:18
+This way, anything we can run, and number of commands we can run on that particular time and day.
+
+[rochak agrawal] 09:20:22
+Correct. I can add multiple entry in my Chrome tab, not one. You say one playbook you want to run in this schedule, another playbook you want to run at another schedule so that I can make multiple entries.
+
+[rochak agrawal] 09:20:37
+And playbook.yaml.
+
+[rochak agrawal] 09:20:41
+Simple. That is one way. Okay?
+
+[rochak agrawal] 09:20:45
+Clear about this?
+
+[Gyanendra Narayan] 09:20:46
+Yeah, this one is clear, so…
+
+[rochak agrawal] 09:20:47
+So, again, I can add multiple… again, not only the playbooks, I can run an ad-hoc command also. Ansible, all…
+
+[rochak agrawal] 09:20:58
+Hyphen M ping. Simple. That's a command, right? So every Monday and Friday, Ansible will go and ping every server. And of course, you can do multiple things. You can create a custom script, which is going to give you the report also. Maybe I will do redirection.
+
+[rochak agrawal] 09:21:14
+Output.txt. Great.
+
+[rochak agrawal] 09:21:18
+So, you can do all of that. Now, this is one way. Again, in the Cron tab, I can add multiple entries, so with the hyphen L, you are going to see.
+
+[rochak agrawal] 09:21:31
+Right? And then chronotype E, so here also month, hour, day of the month.
+
+[rochak agrawal] 09:21:37
+Day of the week and month.
+
+[rochak agrawal] 09:21:39
+You can say, I want to run something in every Monday in January only. You can do a… you can make the schedule, correct?
+
+[rochak agrawal] 09:21:46
+So this is one way, this is a Unix-specific way.
+
+[rochak agrawal] 09:21:51
+And most of the time, it is okay, it is sufficient. Then you say, no, no, I don't know Chrome tab, I don't want to use it.
+
+[rochak agrawal] 09:21:57
+So then, Ansible also uses some of the features which is available in the… there is something called… see, whatever we are using right now, it is an open-source version, correct?
+
+[Gyanendra Narayan] 09:22:10
+Got it.
+
+[rochak agrawal] 09:22:11
+So then there is something called the Ensemble Tower.
+
+[rochak agrawal] 09:22:19
+So, Ansible Tower is nothing, it's a commercial enterprise management. Now, if you are using the Ansible Tower.
+
+[rochak agrawal] 09:22:28
+you will get a very good web UI from where you can manage all of these things.
+
+[rochak agrawal] 09:22:34
+But that's an enterprise version where you need to pay for it.
+
+[rochak agrawal] 09:22:42
+Okay? Most of the company, they uses the open source version of the Ansible.
+
+[Gyanendra Narayan] 09:22:43
+Yes.
+
+[rochak agrawal] 09:22:48
+I… to be very honest, I have never used Ansible Tower, because wherever I have used Ansible, um…
+
+[rochak agrawal] 09:22:55
+we did it with the open source version, and it was pretty decent enough. And similar goes with the Terraform. Terraform also has an enterprise version, but…
+
+[rochak agrawal] 09:23:06
+people generally don't use it until unless they have a very high specific requirement. I have, like, in my five last six, seven years, till when I'm using the Terraform, I just use.
+
+[rochak agrawal] 09:23:19
+Terraform Enterprise with one customer.
+
+[rochak agrawal] 09:23:21
+But I've never used Ansible Tower.
+
+[rochak agrawal] 09:23:24
+But there are these management options out there in the Ansible Tower where you can control all of these aspects as well.
+
+[rochak agrawal] 09:23:34
+And then, if you say, I do not want to use Ansible Tower, I want to use…
+
+[rochak agrawal] 09:23:42
+Something called, uh…
+
+[rochak agrawal] 09:23:45
+Enable open source version only, but I… see.
+
+[rochak agrawal] 09:23:49
+we have seen two ways. One is, you can do it with the Chrome tab, you can do it with the Ensemble tower, correct?
+
+[Gyanendra Narayan] 09:23:54
+Correct.
+
+[rochak agrawal] 09:23:56
+Now you say, I want to use the open source version, um…
+
+[rochak agrawal] 09:24:00
+But I want to use, uh, this…
+
+[rochak agrawal] 09:24:04
+scheduling facility, but I don't want to use the Chrome tab also.
+
+[rochak agrawal] 09:24:10
+Okay, so then you are going to find there are many scheduling software are also available. I'm forgetting the name, so…
+
+[rochak agrawal] 09:24:20
+There are many scheduling software also you are going to find.
+
+[rochak agrawal] 09:24:24
+I am forgetting the name. I've used it.
+
+[rochak agrawal] 09:24:39
+who run Unix jobs.
+
+[rochak agrawal] 09:24:47
+Active batch is there. So you can see, uh, run my… no, that's something I'm forgetting the name, it was…
+
+[rochak agrawal] 09:24:55
+Very good name.
+
+[rochak agrawal] 09:24:57
+spoon branch
+
+[rochak agrawal] 09:25:00
+There are multiple. What I have used is not coming, and I'm not getting the name. But you can see Airflow is also a very good tool nowadays.
+
+[rochak agrawal] 09:25:11
+which can…
+
+[rochak agrawal] 09:25:13
+Control the flow of your work.
+
+[rochak agrawal] 09:25:16
+Which is the name it's suggesting. But mostly, Airflow is used for the data pipelines. So, the point here is, you…
+
+[rochak agrawal] 09:25:24
+There can be not many ways. Either you use the, um…
+
+[rochak agrawal] 09:25:31
+your, uh, inbuilt Chrome tab mechanism, or you use your, uh…
+
+[rochak agrawal] 09:25:36
+Ensemble Tower. Third is, there are many scheduling, uh, softwares would be available. You need to check which scheduling, uh, software supports Ensemble, and you can use that as well.
+
+[Gyanendra Narayan] 09:25:48
+Yes, thank you.
+
+[rochak agrawal] 09:25:49
+Okay?
+
+[Gyanendra Narayan] 09:25:53
+Yes.
+
+[rochak agrawal] 09:25:54
+Okay.
+
+[Vaibhav] 09:25:57
+Uh, one more thing I'm just asking. Uh, we use for Chrome tab for the scheduling when we, uh, automate, uh, any command, right?
+
+[rochak agrawal] 09:26:04
+Correct. Okay. Yes.
+
+[Vaibhav] 09:26:05
+And, uh, there's a, also, one thing is uptime, right, in Ansible.
+
+[rochak agrawal] 09:26:09
+Okay? Uptime is not an ensemble. Uptime is a Unix command.
+
+[Vaibhav] 09:26:14
+Okay, so what is the actual use of uptime, you mean?
+
+[rochak agrawal] 09:26:15
+Okay.
+
+[rochak agrawal] 09:26:17
+Uptime is basically tells you… I'll run this command.
+
+[Vaibhav] 09:26:21
+Run a command automatically in an uptime area.
+
+[rochak agrawal] 09:26:23
+No, no, no. No, no, no.
+
+[rochak agrawal] 09:26:27
+I think you see what it is telling you.
+
+[rochak agrawal] 09:26:29
+It is telling you.
+
+[rochak agrawal] 09:26:32
+That…
+
+[rochak agrawal] 09:26:34
+Ben Simp.
+
+[rochak agrawal] 09:26:37
+Let's say, let's take an example of your laptop, okay?
+
+[rochak agrawal] 09:26:41
+You are working on your laptop, then you shut down your laptop, you, uh, you start it again, correct?
+
+[rochak agrawal] 09:26:48
+So similarly uptime in the Unix is tells you when you started the server if you run the time now.
+
+[rochak agrawal] 09:26:59
+It is, okay, so it is showing you the current time.
+
+[rochak agrawal] 09:27:02
+But it is telling me I have started the server.
+
+[rochak agrawal] 09:27:07
+One hour, 40 minutes back.
+
+[rochak agrawal] 09:27:10
+Okay.
+
+[Vaibhav] 09:27:10
+Okay.
+
+[rochak agrawal] 09:27:11
+Currently, one user is logged in, and this is my CPU utilization right now.
+
+[Vaibhav] 09:27:17
+Okay.
+
+[rochak agrawal] 09:27:18
+So that is what is uptime tells. I'm not sure, like, you might be referring to some other command, but it is never used for any automations.
+
+[Vaibhav] 09:27:26
+Okay, okay.
+
+[rochak agrawal] 09:27:28
+Okay.
+
+[Vaibhav] 09:27:29
+So they're basically for the performance monitoring, like, something.
+
+[rochak agrawal] 09:27:30
+Now
+
+[rochak agrawal] 09:27:32
+not perform… I would not say even the performance monitoring. It is… it is just telling you from when I… I started the server, basically.
+
+[Vaibhav] 09:27:33
+Machine.
+
+[Vaibhav] 09:27:40
+Okay.
+
+[rochak agrawal] 09:27:42
+Okay, because if you want to see the load average, I have a better command, which is a top command, which gives you more information to me.
+
+[rochak agrawal] 09:27:52
+Okay? So, that is one. So, uptime is just, basically, it will tell you.
+
+[rochak agrawal] 09:27:58
+Boss, when did you start the server? So, 1:40.
+
+[Vaibhav] 09:28:01
+Mm-hmm.
+
+[rochak agrawal] 09:28:03
+Now…
+
+[rochak agrawal] 09:28:04
+There is one, I'll take this one.
+
+[rochak agrawal] 09:28:08
+This is very important, okay?
+
+[rochak agrawal] 09:28:11
+Do you understand what this signifies?
+
+[Vaibhav] 09:28:11
+Okay.
+
+[rochak agrawal] 09:28:15
+Although it's not related to Linux and, uh, something, uh, Ansible or something, but, uh…
+
+[rochak agrawal] 09:28:20
+It is a very… one of the very favorite interview questions.
+
+[rochak agrawal] 09:28:26
+Gannon, do you have an idea?
+
+[Gyanendra Narayan] 09:28:34
+So, specifically, I don't have, but this is a load average. What is the average on the server? What is the utilization and memory utilization?
+
+[rochak agrawal] 09:28:38
+Okay, correct.
+
+[rochak agrawal] 09:28:40
+Got it. What is the utilization? So, so there is two part of it. See, first is there is three numbers, correct?
+
+[rochak agrawal] 09:28:49
+So, these are the 1-minute, 5-minute, and 15-minute average of your CPU utilization.
+
+[rochak agrawal] 09:28:56
+So, 0.05 is 1-minute utilization, 0.10 is a 5-minute utilization, and 0.09 is a 15-minute average. Okay? Clear?
+
+[rochak agrawal] 09:29:07
+Now…
+
+[rochak agrawal] 09:29:09
+If someone is asking you, my CPU utilization is… my load average is…
+
+[rochak agrawal] 09:29:14
+0.05. Or in an interview, someone will ask you, my…
+
+[rochak agrawal] 09:29:21
+Load average is 1.
+
+[rochak agrawal] 09:29:24
+Or two.
+
+[rochak agrawal] 09:29:26
+What does it mean?
+
+[rochak agrawal] 09:29:28
+How will you say my system is underutilized, overutilized, or what does it mean?
+
+[Gyanendra Narayan] 09:29:39
+So, when it is more than 100%, we'll say it is overutilized. If it is less than 100%, we'll say it is underutilized.
+
+[rochak agrawal] 09:29:42
+But… agree? But… correct. But I… see, you are seeing the load average in number, correct?
+
+[Gyanendra Narayan] 09:29:49
+Number, yes. So here, it is underutilized. We have 0.5.
+
+[rochak agrawal] 09:29:53
+No.
+
+[rochak agrawal] 09:29:54
+But forget 0.5. Now let's say your super relation is one.
+
+[Gyanendra Narayan] 09:29:54
+So…
+
+[rochak agrawal] 09:29:59
+What does it mean?
+
+[Gyanendra Narayan] 09:29:59
+It is 100% utilized.
+
+[rochak agrawal] 09:30:02
+Are you sure?
+
+[Gyanendra Narayan] 09:30:04
+Ah, yes, I think that.
+
+[rochak agrawal] 09:30:06
+Okay.
+
+[rochak agrawal] 09:30:09
+Arif, do you have a view? You have raised your hand.
+
+[arif] 09:30:16
+No, it's not 100%, I believe, it's… but we can't be sure that whether it's 100% or not, with this number.
+
+[Vaibhav] 09:30:21
+Oh, that's good.
+
+[rochak agrawal] 09:30:24
+Okay.
+
+[arif] 09:30:25
+It's only a time period, like, uh, it depends within the… within the time period, this was the CPU utilization.
+
+[rochak agrawal] 09:30:30
+Okay.
+
+[rochak agrawal] 09:30:32
+So, time period is okay, we have already discussed there is a 3 time period, 1 minute, 5 minutes, and 15 minutes. Now, let's say, uh…
+
+[arif] 09:30:37
+Okay.
+
+[rochak agrawal] 09:30:39
+Everywhere I'm getting a number one. Then…
+
+[rochak agrawal] 09:30:47
+Then can we can we conclude it is 100% utilized.
+
+[rochak agrawal] 09:30:55
+And this is exactly the question comes in the interview. What does the load average of one signifies?
+
+[rochak agrawal] 09:31:01
+So
+
+[rochak agrawal] 09:31:02
+See, both of you are, like, half correct, half wrong, Gannon and Arif. See, uh, Gannon, when you say it is 100% utilized, okay.
+
+[arif] 09:31:11
+It depends on the number of CPUs.
+
+[rochak agrawal] 09:31:13
+Exactly. It depends on the number of the CPU. For example.
+
+[rochak agrawal] 09:31:18
+Now there are two system.
+
+[rochak agrawal] 09:31:21
+Both of the system are showing you the one load average.
+
+[rochak agrawal] 09:31:27
+We need to figure out first how many codes are there.
+
+[rochak agrawal] 09:31:31
+If the CPU core is 1.
+
+[rochak agrawal] 09:31:37
+If this my system is a one core CPU.
+
+[rochak agrawal] 09:31:42
+Then number one is 100%.
+
+[Vaibhav] 09:31:47
+Hmm.
+
+[rochak agrawal] 09:31:49
+Okay, but if my system is 4-core CPU.
+
+[Vaibhav] 09:31:55
+25%.
+
+[rochak agrawal] 09:31:56
+It is only 25%.
+
+[Gyanendra Narayan] 09:31:59
+Papers.
+
+[rochak agrawal] 09:32:00
+It is only 25%. So if someone is in an interview asking, um, what does the bun signify? So then you say, by looking at the number, I would not be able to tell anything.
+
+[rochak agrawal] 09:32:13
+I need to check the CPU core, then… so, you see, this is overutilized, 100% is overutilization only, and this is underutilized.
+
+[rochak agrawal] 09:32:22
+Because the core is different. So now, if you see here, what my numbers is, we are using only the 5% of the CPU, because I'm using a one-core CPU.
+
+[rochak agrawal] 09:32:32
+One core system, 10%, 9%. So that is what load average means. It is very, very, um…
+
+[rochak agrawal] 09:32:40
+Important interview question.
+
+[Gyanendra Narayan] 09:32:47
+So here, where we can check the core?
+
+[rochak agrawal] 09:32:47
+Okay
+
+[rochak agrawal] 09:32:50
+A core, um… I think there is some command.
+
+[Gyanendra Narayan] 09:32:55
+Without knowing Kapoor, we will not be able to give the correct answer.
+
+[rochak agrawal] 09:32:56
+There is something CPU, ROC, and VOC.
+
+[rochak agrawal] 09:32:58
+Yeah, yeah, it's cool, uh…
+
+[rochak agrawal] 09:33:12
+CPU…
+
+[rochak agrawal] 09:33:18
+And broke.
+
+[rochak agrawal] 09:33:24
+This is not working. Because we… every command does not work in, uh…
+
+[rochak agrawal] 09:33:31
+Going civil bay.
+
+[rochak agrawal] 09:33:33
+Not eligible there.
+
+[rochak agrawal] 09:33:40
+But, can you see?
+
+[rochak agrawal] 09:33:43
+So basically, if you ask me the command.
+
+[rochak agrawal] 09:33:49
+Command is this one, LSCPU, which will give you multiple information, and you can see.
+
+[rochak agrawal] 09:34:01
+cores per socket.
+
+[rochak agrawal] 09:34:03
+Threads per code bar.
+
+[rochak agrawal] 09:34:07
+Okay, so like of course this is giving you CPU cores per socket. Grabbing this, so if you run this, it will give you the answer as one. And we can check this in another server as well. So you can see two CPUs are there.
+
+[rochak agrawal] 09:34:22
+We are using two GPU. If it is a 0.5, it means 2.5 percent CPU we are using.
+
+[Vaibhav] 09:34:31
+Okay.
+
+[rochak agrawal] 09:34:32
+Okay.
+
+[Vaibhav] 09:34:32
+33%, we can say.
+
+[rochak agrawal] 09:34:33
+Got it.
+
+[rochak agrawal] 09:34:37
+Okay, nice. Cool. So…
+
+[Vaibhav] 09:34:37
+Got it.
+
+[rochak agrawal] 09:34:41
+You connect in
+
