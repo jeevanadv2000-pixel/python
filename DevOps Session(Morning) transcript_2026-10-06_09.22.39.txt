@@ -1,0 +1,3051 @@
+[rochak agrawal] 07:38:56
+Hey, good morning, everyone.
+
+[rochak agrawal] 07:38:59
+Let's just start.
+
+[rochak agrawal] 07:39:06
+Okay.
+
+[rochak agrawal] 07:39:08
+So…
+
+[rochak agrawal] 07:39:09
+In our last class, we have seen how to create a Docker Swarm cluster and then we discussed some of the challenges with Docker. Now today, very importantly, what we are going to discuss is some more challenges for Docker present.
+
+[rochak agrawal] 07:39:25
+why we need the container orchestration, and most importantly, we are going to understand today, uh, the Kubernetes architecture. Now, Kubernetes architecture.
+
+[rochak agrawal] 07:39:37
+is the single most important topic.
+
+[rochak agrawal] 07:39:41
+of all this course, okay? You go to any of the interview, if you say you know Kubernetes, the first thing they are going to ask is the Kubernetes architecture. And you can talk about the Kubernetes architecture for.
+
+[rochak agrawal] 07:39:55
+Like, covers
+
+[rochak agrawal] 07:39:57
+This is going to be a little complicated, so, uh, whenever you feel you have a question, feel free, uh, to ask, uh, it. Because if we don't understand the architecture, so, um…
+
+[rochak agrawal] 07:40:11
+of Kubernetes, it would be very tough to understand the underlying working, like, how containers work, how they communicate to each other, and all of that. So the first thing we need to understand is, um…
+
+[rochak agrawal] 07:40:24
+What is Kubernetes and what is the architecture of it? Now, before going to the Kubernetes architecture, we discussed some of the problem with the…
+
+[rochak agrawal] 07:40:36
+Docker, like, uh, Docker was a single-host cluster, uh, sorry, single-host machine. I cannot run, um, my containers on multiple nodes, how they're going to communicate and all of that, right? Now, these were some… there was no auto-scaling, no auto-healing.
+
+[rochak agrawal] 07:40:51
+Now, these are some basic problems, okay? Now, apart from this also, there are certain serious problems with the Dockers. Now, while Docker revolutionized modern software development.
+
+[rochak agrawal] 07:41:05
+by standardized and packaged environment, but it also brings a distinct set of operational challenges. Now, the primary challenge is…
+
+[rochak agrawal] 07:41:23
+Security risk.
+
+[rochak agrawal] 07:41:27
+And carne asada.
+
+[rochak agrawal] 07:41:31
+Now we know that, um…
+
+[rochak agrawal] 07:41:34
+On your operating system, right, on the operating system level.
+
+[rochak agrawal] 07:41:39
+Docker does not have an operating system. Sorry, containers does not have an operating system.
+
+[rochak agrawal] 07:41:46
+they relies on the machine on which they are running, right? So the underlying host. So there, they share the operating system.
+
+[rochak agrawal] 07:41:57
+With your, uh, host. Now, because of that.
+
+[rochak agrawal] 07:42:05
+Because of that, there can be permission.
+
+[rochak agrawal] 07:42:09
+skips.
+
+[rochak agrawal] 07:42:11
+Okay? Now, what does it mean? Be no Docker run with the root privileges.
+
+[rochak agrawal] 07:42:20
+Okay.
+
+[rochak agrawal] 07:42:21
+If a container is running with the root privileges, compromised container can load multiple.
+
+[rochak agrawal] 07:42:29
+malicious kernel modules directly into the host, because they are using the host operating system.
+
+[rochak agrawal] 07:42:36
+Okay? Then.
+
+[rochak agrawal] 07:42:44
+shared socket.
+
+[rochak agrawal] 07:42:47
+Mounting the Docker socket into a container, often done for the CICD tools.
+
+[rochak agrawal] 07:42:52
+Now, it gives the container total control over the host daemon.
+
+[rochak agrawal] 07:42:59
+When we are running, even when we run NGINX, we have…
+
+[rochak agrawal] 07:43:03
+Taking complete traffic over the host, which is going into the container.
+
+[rochak agrawal] 07:43:08
+Then…
+
+[rochak agrawal] 07:43:11
+There can be multiple other security risks, but we are highlighting some of them, which is layered…
+
+[rochak agrawal] 07:43:17
+image seats.
+
+[rochak agrawal] 07:43:21
+Hard booting API keys or credential in any of the Docker file layer leaves them discoverable via the image analysis tool. Now in Docker, for example, let's say while you are building your Docker image.
+
+[rochak agrawal] 07:43:35
+You need to, at one step, at one stage, you need to connect to a database.
+
+[rochak agrawal] 07:43:40
+Right, so then you need to hardcode your username and the password into Dockerfile, and then you are going to run a command with the run directive. Right, now…
+
+[rochak agrawal] 07:43:53
+When some scanning, some vulnerability analysis will happen, any image analysis tool can go and find out about these secrets. So there is no mechanism in Docker where you can store your sensitive information.
+
+[rochak agrawal] 07:44:07
+secretly.
+
+[rochak agrawal] 07:44:09
+Okay, but these are some security risks out there.
+
+[rochak agrawal] 07:44:15
+Then there is,
+
+[rochak agrawal] 07:44:18
+Challenges about the stiphone data.
+
+[rochak agrawal] 07:44:25
+What are the challenges about the stateful data
+
+[rochak agrawal] 07:44:33
+No multi-host.
+
+[rochak agrawal] 07:44:37
+storage manager.
+
+[rochak agrawal] 07:44:44
+Now, no multi-host storage management. We have seen the Docker volume. We have seen the bind mount. They work on a single host. Obviously, we have established that Docker is a single host.
+
+[rochak agrawal] 07:44:58
+Uh, the… you cannot run Docker with the multiple hosts, and this is about the stateful data itself. Even if, let's say, you want to run your container on… on another host.
+
+[rochak agrawal] 07:45:08
+with the same data, then there are challenges, right? You cannot replicate that data. You need… there is no inmate mechanism is there. Now you need to manually copy, or you need to have some other ways of doing it.
+
+[rochak agrawal] 07:45:22
+Then…
+
+[rochak agrawal] 07:45:28
+It would be host permission mismatch.
+
+[rochak agrawal] 07:45:38
+Now, what does it mean? It means, uh, see, for example, I, uh, mounted one of my directory into the container's directory.
+
+[rochak agrawal] 07:45:46
+Okay, now container can give you the read, write, execute permission, but here, um, on the…
+
+[rochak agrawal] 07:45:56
+host, you might have only the read permissions. So mounting local directories into container frequently leads to the permission failure, because the user ID inside the container often does not match the user ID, so the owner…
+
+[rochak agrawal] 07:46:12
+inside the container can be a different user, um, owner of that particular directory outside of the container can be a different user. So sometime you are going to have a permission issues.
+
+[rochak agrawal] 07:46:25
+Okay, and then, um…
+
+[rochak agrawal] 07:46:32
+Networking complexities are there.
+
+[rochak agrawal] 07:46:41
+Networking complexity we discussed, it's a single host application, right? And then…
+
+[rochak agrawal] 07:46:52
+There is no…
+
+[rochak agrawal] 07:46:55
+Service discovery. We…
+
+[rochak agrawal] 07:46:58
+So let's say if my Docker container application container is running on one host, my database container is running on another host, we have to manually link those container by adding them to the same network, right? There is no other mechanism is there.
+
+[rochak agrawal] 07:47:15
+Then…
+
+[rochak agrawal] 07:47:16
+When we map our container port to the host container.
+
+[rochak agrawal] 07:47:22
+They bypass the firewall.
+
+[rochak agrawal] 07:47:24
+So when we expose a port using the Docker, it modifies the host IP table rules directly, and they can silently bypass standard host firewall.
+
+[rochak agrawal] 07:47:37
+Exposing database or internal services to the public internet without the developer even realizing it.
+
+[rochak agrawal] 07:47:43
+Right. And then, all those challenges, like no auto scaling.
+
+[rochak agrawal] 07:47:53
+Or do healing.
+
+[rochak agrawal] 07:47:56
+All those challenges were always there.
+
+[rochak agrawal] 07:48:02
+These are some of the challenges which makes Docker a non-compliant or you can say a no fit for the Docker.
+
+[rochak agrawal] 07:48:10
+production environment. Docker is a no-fit.
+
+[rochak agrawal] 07:48:16
+In the current…
+
+[rochak agrawal] 07:48:19
+Settings.
+
+[rochak agrawal] 07:48:23
+Ruranda.
+
+[rochak agrawal] 07:48:25
+Production.
+
+[rochak agrawal] 07:48:28
+Okay. I cannot, um…
+
+[rochak agrawal] 07:48:31
+any of the risk, if you are seeing it here, I cannot leave them, uh, what you can say, um.
+
+[rochak agrawal] 07:48:40
+expose. So, for example, if, uh, would you like your production database username and the password to be hard-coded in an image? No, right? So, there are certain challenges for which, um.
+
+[rochak agrawal] 07:48:56
+need someone.
+
+[rochak agrawal] 07:48:58
+who is doing the orchestration, okay? When I'm saying the orchestration, it means…
+
+[rochak agrawal] 07:49:04
+We need another layer on top of the containers, which is solving.
+
+[rochak agrawal] 07:49:14
+Which is solving all these problems.
+
+[rochak agrawal] 07:49:22
+Right? And that is where there is a concept of.
+
+[rochak agrawal] 07:49:28
+container.
+
+[rochak agrawal] 07:49:30
+orchestration.
+
+[rochak agrawal] 07:49:33
+comes into the picture. So now what is container orchestration? Why do we need it?
+
+[rochak agrawal] 07:49:38
+Now, container orchestration is necessary.
+
+[rochak agrawal] 07:49:41
+And whatever challenges we discuss, we run only one, two containers, Nginx, Jenkins, Tomcat.
+
+[rochak agrawal] 07:49:47
+Late.
+
+[rochak agrawal] 07:49:48
+Now, in your environment, you might be running hundreds and thousands of the containers. So it is very important.
+
+[rochak agrawal] 07:49:57
+So container orchestration is necessary because managing dozens, hundreds, or thousands of the individual software containers.
+
+[rochak agrawal] 07:50:06
+Across multiple servers.
+
+[rochak agrawal] 07:50:10
+will become manually impossible to manage.
+
+[rochak agrawal] 07:50:13
+So.
+
+[rochak agrawal] 07:50:15
+While a tool like Docker lets you run a single container on your laptop very easily. But when we say, I want to run 500 containers of my application across.
+
+[rochak agrawal] 07:50:27
+30 different nodes. We're just sharing the data, which is not having any security vulnerabilities, right?
+
+[rochak agrawal] 07:50:37
+Docker does not have an answer to it.
+
+[rochak agrawal] 07:50:40
+So…
+
+[rochak agrawal] 07:50:41
+Then…
+
+[rochak agrawal] 07:50:42
+The need of production environments requires some automated systems.
+
+[rochak agrawal] 07:50:47
+And that is where container orchestration comes into the picture.
+
+[rochak agrawal] 07:50:52
+Now, Dr. Swam.
+
+[rochak agrawal] 07:50:59
+and Kubernetes.
+
+[rochak agrawal] 07:51:02
+Both are container orchestrated.
+
+[rochak agrawal] 07:51:05
+If you have very minimal requirement that I want to run only, um…
+
+[rochak agrawal] 07:51:12
+what do you say, is very limited functionality. And we will see, once you understand Kubernetes, once we go through the architecture, we will tell you what is the difference, what is the functionality difference between Docker Swarm and Kubernetes. Right now, you understand that.
+
+[rochak agrawal] 07:51:26
+If you want to use a very lightweight, your application does not require much of the functionality.
+
+[rochak agrawal] 07:51:33
+then you can use Docker Swarm. Otherwise, Kubernetes is a go-to container orchestration tool.
+
+[rochak agrawal] 07:51:40
+Okay, so…
+
+[rochak agrawal] 07:51:42
+You can use any of them depending on the application complexity and your requirement.
+
+[rochak agrawal] 07:51:49
+But if you want to run your containers in the production settings, you need a container orchestrator to handle deployment, scaling.
+
+[rochak agrawal] 07:51:58
+and health across a cluster of machines. Now, there are certain key reasons why we need container orchestration.
+
+[rochak agrawal] 07:52:08
+First is…
+
+[rochak agrawal] 07:52:09
+Automated deployment.
+
+[rochak agrawal] 07:52:12
+That is one of the most important things.
+
+[rochak agrawal] 07:52:17
+Okay, um, so in Docker, you create the image, and when you run the image, container is created out of it.
+
+[rochak agrawal] 07:52:25
+Now.
+
+[rochak agrawal] 07:52:27
+When you're working on an application, right?
+
+[rochak agrawal] 07:52:31
+Your application will keep changing, like, we created multiple images, version 1, version 2, version 3, and so on.
+
+[rochak agrawal] 07:52:38
+Similarly, when you're working on an application.
+
+[rochak agrawal] 07:52:43
+See image. Once you create an image it is fixed right. It is logged.
+
+[rochak agrawal] 07:52:47
+Then you create a container out of it. So whatever is there in that particular image, you're going to run it.
+
+[rochak agrawal] 07:52:54
+Correct? So that is… now, when your application is changing.
+
+[rochak agrawal] 07:52:59
+Then you need to build the image again, and then you need to run a container out of a new image. And this process will be continuous, because you will be doing the changes very frequently if you are using CICD, so then whenever a developer is pushing something.
+
+[rochak agrawal] 07:53:15
+And new images need to be generated.
+
+[rochak agrawal] 07:53:17
+In Kubernetes, what is happening, we use something called a declarative.
+
+[rochak agrawal] 07:53:24
+Configuration.
+
+[rochak agrawal] 07:53:30
+Uh, we discussed about the declarative configuration. There is two types of configuration, uh, declarative and imperative, and then, um…
+
+[rochak agrawal] 07:53:41
+in most of the DevOps tools, we use the declarative configuration. So we declare how our application should look using the configuration file, and the orchestrator plays the container onto the right server automatically.
+
+[rochak agrawal] 07:53:55
+Okay, um…
+
+[rochak agrawal] 07:53:57
+So we will just declare our configuration that I want this container to be running somewhere, and that's about it. Kubernetes or…
+
+[rochak agrawal] 07:54:07
+So I'll keep referring Kubernetes again and again, but Docker Swarm also gives you some features of that. So Kubernetes will automatically going to do the deployment of your container, and very importantly, we need to remember one thing.
+
+[rochak agrawal] 07:54:22
+In Docker, we call it as a container.
+
+[rochak agrawal] 07:54:26
+In Kubernetes, we call it as a pods. It's the same thing, but keep that in mind.
+
+[rochak agrawal] 07:54:35
+Okay? So container and pod are not the different thing, they are same thing. Um, only the terminology difference. There are one minor differences that… I'll come to that. But right now, you understand that, um…
+
+[rochak agrawal] 07:54:50
+Whenever we are seeing container or the pod, it is the same thing. Container, we call it as a Docker. Pod, we call it as a…
+
+[rochak agrawal] 07:54:59
+Kubernetes.
+
+[rochak agrawal] 07:55:04
+Then…
+
+[rochak agrawal] 07:55:07
+Selfie.
+
+[rochak agrawal] 07:55:11
+It is also one of the very, very important parameter of Kubernetes.
+
+[rochak agrawal] 07:55:16
+Because we are declaratively defining everything. I will say I want 3 replicas of my Jenkins container.
+
+[rochak agrawal] 07:55:26
+Okay, so it is going to run 3 containers.
+
+[rochak agrawal] 07:55:33
+Three.
+
+[rochak agrawal] 07:55:34
+across different, different nodes. Now, let's say, due to some reason, this…
+
+[rochak agrawal] 07:55:40
+a pod goes down. Now, what is my current count? It's 2.
+
+[rochak agrawal] 07:55:44
+What my… what is my desired one is 3. So, automatically, it will start a new one.
+
+[rochak agrawal] 07:55:50
+Okay, that is called a self-healing. If a container or any entire physical server crashes, the system detects the failure and instantly restart or reschedule the healthy replacement.
+
+[rochak agrawal] 07:56:07
+Somewhere.
+
+[rochak agrawal] 07:56:08
+It could be on the same node, it could have been on the different node.
+
+[rochak agrawal] 07:56:16
+Third…
+
+[rochak agrawal] 07:56:19
+Again, very important, automatics.
+
+[rochak agrawal] 07:56:25
+it could scale up and scale down. When the traffic spike, I don't want the 3 node, uh, 3 instances, I want.
+
+[rochak agrawal] 07:56:35
+5?
+
+[rochak agrawal] 07:56:36
+notes, you can easily do so.
+
+[rochak agrawal] 07:56:38
+Okay, so when the traffic spikes, the platform adds more container instances. When the traffic drops, it scales them down to save computing resources.
+
+[rochak agrawal] 07:56:52
+We can do it manually also, but we can do it automatically also.
+
+[rochak agrawal] 07:56:57
+Then we have, uh…
+
+[rochak agrawal] 07:57:06
+load balancing.
+
+[rochak agrawal] 07:57:07
+and cell network.
+
+[rochak agrawal] 07:57:14
+It ought to… see, when you will be running 3 instances or 5 instances as the traffic is growing.
+
+[rochak agrawal] 07:57:20
+Then, when the load is coming, how it will decide that it should go to container 1, container 2, or container 5.
+
+[rochak agrawal] 07:57:26
+That is where the Kubernetes will provide the load balancing. It automatically routes traffic.
+
+[rochak agrawal] 07:57:34
+Routes incoming traffic across containers.
+
+[rochak agrawal] 07:57:39
+and establishes secure internal channels for the services to talk to each other.
+
+[rochak agrawal] 07:57:45
+Okay, we will discuss everything in detail, but Kubernetes provides that features.
+
+[rochak agrawal] 07:57:52
+Then, fifth is
+
+[rochak agrawal] 07:57:54
+Obviously, the resource optimizer.
+
+[rochak agrawal] 07:58:02
+Okay. It assigned containers onto the servers based on the available CPU and memory. Now we are running multiple nodes, right? Multiple containers across multiple nodes. So then.
+
+[rochak agrawal] 07:58:22
+Just a second.
+
+[rochak agrawal] 07:58:24
+across multiple nodes, so let's say, um, Kubernetes, uh, Kubernetes.
+
+[rochak agrawal] 07:58:30
+Optimally assigning everything. Okay. So.
+
+[rochak agrawal] 07:58:37
+Not only about just placing the servers on the…
+
+[rochak agrawal] 07:58:42
+Containers on the server. It does…
+
+[rochak agrawal] 07:58:45
+Like, the many heavy lifting, it's absolute, um, it gives you volume, um.
+
+[rochak agrawal] 07:58:51
+multi-host volumes, it gives you multi-host networking. So there are many features which you are going to find with the container orchestration.
+
+[rochak agrawal] 07:59:00
+Okay, so Kubernetes is de facto standard of the container orchestration, okay? It is an industry standard.
+
+[rochak agrawal] 07:59:11
+Open source platform designed to automate the deployment, scaling, and management of the.
+
+[rochak agrawal] 07:59:18
+Containerized application, basically.
+
+[rochak agrawal] 07:59:21
+The product is, when we talk about the Kubernetes, Kubernetes was…
+
+[rochak agrawal] 07:59:27
+Originally developed by Google.
+
+[rochak agrawal] 07:59:29
+Okay, so it's a Google product.
+
+[rochak agrawal] 07:59:32
+And they call it as a board.
+
+[rochak agrawal] 07:59:37
+They use it for their internal data center management.
+
+[rochak agrawal] 07:59:40
+But it is now maintained by an organization called the CNCF.
+
+[rochak agrawal] 07:59:48
+Which is Cloud Native Computing Foundation.
+
+[rochak agrawal] 07:59:52
+Cloud Native.
+
+[rochak agrawal] 07:59:55
+computing.
+
+[rochak agrawal] 07:59:57
+foundation.
+
+[rochak agrawal] 07:59:58
+So now, even when we do the certification, you will receive a certification from CNCF.
+
+[rochak agrawal] 08:00:06
+Okay, so it serves as the ultimate brain for orchestrating multi-container system across.
+
+[rochak agrawal] 08:00:15
+clustered environments.
+
+[rochak agrawal] 08:00:17
+Okay, so Kubernetes, you know what is the role of a Kubernetes, and sometimes we call it as a K8S as well.
+
+[rochak agrawal] 08:00:29
+K8 or K8S also, if being referred to the Kubernetes itself.
+
+[rochak agrawal] 08:00:35
+Now…
+
+[rochak agrawal] 08:00:37
+At this point, what we need to understand, we need to understand the Kubernetes architecture.
+
+[rochak agrawal] 08:00:43
+Okay.
+
+[rochak agrawal] 08:00:45
+So this is Kubernetes architecture. Now this is very, very, very important to understand.
+
+[rochak agrawal] 08:00:52
+So now here, if you see, first thing is the cluster.
+
+[rochak agrawal] 08:00:59
+Okay, so…
+
+[rochak agrawal] 08:01:02
+Kubernetes is, um…
+
+[rochak agrawal] 08:01:05
+What you can say.
+
+[rochak agrawal] 08:01:11
+Cluster of, um…
+
+[rochak agrawal] 08:01:13
+You?
+
+[rochak agrawal] 08:01:14
+Kubernetes always work as a group, okay? So.
+
+[rochak agrawal] 08:01:19
+A Kubernetes cluster.
+
+[rochak agrawal] 08:01:21
+There is two part in Kubernetes cluster.
+
+[rochak agrawal] 08:01:32
+Okay, so if you see here, uh…
+
+[rochak agrawal] 08:01:37
+There is something called.
+
+[rochak agrawal] 08:01:42
+The control plane.
+
+[rochak agrawal] 08:01:45
+And then there is something called the worker node. Okay, so we will go one by one. So first we have the cluster.
+
+[rochak agrawal] 08:01:59
+In the cluster, we will have one control plane.
+
+[rochak agrawal] 08:02:06
+And secondly, we will have worker boards.
+
+[rochak agrawal] 08:02:09
+Okay. So Kubernetes cluster consists of a control plane plus a set of worker node. You can have a one worker node or you can have 100 worker node. Okay.
+
+[rochak agrawal] 08:02:22
+which we call it as a node, uh, agent node, we call it as a slave node, but standard is a worker node, okay, or simply the node. So, currently, if you see in this architecture, we have node 1.
+
+[rochak agrawal] 08:02:36
+And Note 2.
+
+[rochak agrawal] 08:02:37
+Correct?
+
+[rochak agrawal] 08:02:39
+Node 1 and Node 2.
+
+[rochak agrawal] 08:02:42
+You can have n number of the notes. Okay.
+
+[rochak agrawal] 08:02:46
+Now, what is the role of, uh…
+
+[rochak agrawal] 08:02:51
+The worker node and what is the role of a control plane? So every cluster needs at least one worker node in order to run the containers. So your container is not going to run on the control plane. Your container is going to run on the worker node.
+
+[rochak agrawal] 08:03:08
+So you need at least one worker node for your cluster. So in a cluster, in a minuscule, um…
+
+[rochak agrawal] 08:03:15
+mini HI cluster, you will have one control plane, and you will have one worker node. Okay, so the worker node hosts the containers that are the component of the application workload.
+
+[rochak agrawal] 08:03:29
+While the control plane manages the worker node and the pods or the container in the cluster. In production environment, the control plane usually run across multiple computers.
+
+[rochak agrawal] 08:03:44
+And a cluster usually runs multiple worker nodes, providing the fault tolerance.
+
+[rochak agrawal] 08:03:50
+and high availability.
+
+[rochak agrawal] 08:03:54
+At a very high level, there will be a cluster.
+
+[rochak agrawal] 08:03:58
+And in the cluster, you will have one control plane, which will be.
+
+[rochak agrawal] 08:04:03
+Managing everything. So it will decide, um, which container, so when you will be having multiple worker node, uh, it will decide which cluster, which container will go where.
+
+[rochak agrawal] 08:04:14
+All of this auto-scaling, auto-healing feature comes from here.
+
+[rochak agrawal] 08:04:21
+Okay, and then you will have… so it is basically your control room.
+
+[rochak agrawal] 08:04:27
+Okay.
+
+[rochak agrawal] 08:04:28
+Then you have the worker node, where you will have your containers running. In your cluster, you can have.
+
+[rochak agrawal] 08:04:37
+multiple worker nodes. You can have one node, you can have 10 nodes, you can have 100 nodes.
+
+[rochak agrawal] 08:04:44
+Everything will be managed by this control plane.
+
+[rochak agrawal] 08:04:48
+Okay, so…
+
+[rochak agrawal] 08:04:51
+Now, control plane and the worker node.
+
+[rochak agrawal] 08:04:55
+will have some component inside them.
+
+[rochak agrawal] 08:05:00
+They are fixed, okay? So you can see here Kubelet, KubeProxy, Pod, CRI, and…
+
+[rochak agrawal] 08:05:06
+Your room, here as well.
+
+[rochak agrawal] 08:05:09
+kube controller manager and everything, but we will go inside them as well. But is this clear? Control plane cluster will have two things, control plane and the worker node. What is inside that? We are going to discuss it in detail.
+
+[rochak agrawal] 08:05:27
+Yes, ma'am.
+
+[Vaibhav Gupta] 08:05:32
+I'm not able to understand about control plane.
+
+[rochak agrawal] 08:05:34
+Okay? So, control plane, uh, whatever you understand is, see, for example, um.
+
+[rochak agrawal] 08:05:41
+When you go to, uh, let's say you go to a mall, for example, okay?
+
+[Vaibhav Gupta] 08:05:46
+Good one?
+
+[rochak agrawal] 08:05:47
+mall, for example, there is a control room, or let's say traffic control room, if you say, so there are CCTVs are there, and from the control room, you can see it, what is happening everywhere, correct?
+
+[rochak agrawal] 08:06:00
+So think of the control plane as the control room which will be managing the complete Kubernetes cluster.
+
+[rochak agrawal] 08:06:09
+Now, how it does it, we will see that, because there are different components there, like ETCD, Cube API server, scheduler, and everything. We will discuss each component in detail, but as of now, you understand the control plane.
+
+[rochak agrawal] 08:06:24
+As the control room, which will be managing everything.
+
+[rochak agrawal] 08:06:31
+Okay.
+
+[Vaibhav Gupta] 08:06:34
+Okay.
+
+[rochak agrawal] 08:06:38
+Here's Yuba.
+
+[Jeeva Koli] 08:06:41
+So, you know, normally in a production, uh, there would be a multi, uh, cluster, or, like, single cluster, as per the…
+
+[Jeeva Koli] 08:06:49
+Or… or we need to deploy many control planes in a one cluster.
+
+[rochak agrawal] 08:06:54
+No. So, um, Jeevan, uh, first, um, when you say, um.
+
+[rochak agrawal] 08:07:02
+In your production environment, you need one cluster or multiple cluster. See, that will totally depend on your application requirements. When I'm saying application requirement, now, in a company, if your infrastructure is being managed centrally, for example.
+
+[rochak agrawal] 08:07:17
+then you can deploy everything on the same cluster. But let's say your company has multiple subunits, they are handling their infrastructure separately, then they can have their own Kubernetes cluster separately, where they will be…
+
+[rochak agrawal] 08:07:33
+deploying their own applications. So it is a very subjective question depending on your organizational need but we can work in both ways. It depends on your org structure. Second is when you are saying control plane in one cluster it will have only one control plane.
+
+[Jeeva Koli] 08:07:54
+Okay.
+
+[rochak agrawal] 08:07:56
+Multiple worker nodes, depending on how many containers you want to run.
+
+[Jeeva Koli] 08:08:03
+Uh, so, every control node has some capacity to handle the nodes.
+
+[rochak agrawal] 08:08:06
+Yes. Correct. No, control… because, see, because control plane, uh…
+
+[rochak agrawal] 08:08:12
+is not where you are running the workload, correct? So, in Kubernetes, uh, what happens is everything is.
+
+[rochak agrawal] 08:08:21
+everything is an object, okay? So your node is an object, your deployments is an object, your containers is an object.
+
+[rochak agrawal] 08:08:28
+So, it is just managing the node, okay? Uh, of course, uh, see, when you say, uh.
+
+[rochak agrawal] 08:08:37
+The control plane does have the capacity, uh, limitation? No. But the capacity limitation is about.
+
+[rochak agrawal] 08:08:44
+See, in the end, your control pin is also running on some VM, correct?
+
+[Jeeva Koli] 08:08:51
+Okay.
+
+[rochak agrawal] 08:08:51
+Okay, now if I run my control plane on a very small VM, then it's the limitation of the host, correct?
+
+[Jeeva Koli] 08:09:00
+Right, right.
+
+[rochak agrawal] 08:09:01
+Not the control plane limitation. So you need to, for example, if I'm running only two node cluster, then I need to process very limited request, for example, correct? But if I'm running a 200 node cluster, then I will be processing many request.
+
+[rochak agrawal] 08:09:18
+Right? In both of the cases, your control plane will remain the same. There is no… nothing you need to do. It is just you need to choose the right hardware which can process these requests.
+
+[rochak agrawal] 08:09:31
+Hey!
+
+[Jeeva Koli] 08:09:31
+Okay.
+
+[rochak agrawal] 08:09:32
+Okay, so that is also one thing.
+
+[rochak agrawal] 08:09:38
+which, when you will be designing your cluster, and we will see, uh, why, uh, it is not relevant for us now, but yeah, uh, for a control plane, capacity is not a problem. Capacity, you need to, uh, decide on the node where it is running, so that it.
+
+[rochak agrawal] 08:09:54
+You need to have the appropriate resources to handle that much of processing, basically.
+
+[Jeeva Koli] 08:10:03
+Okay, just one question. Uh, like, the multi-clouds, like, uh, the AWS or Azure, they provide also the, uh, AK servers, or Kubernetes services.
+
+[rochak agrawal] 08:10:09
+Mm-hmm.
+
+[rochak agrawal] 08:10:14
+Correct.
+
+[rochak agrawal] 08:10:15
+Correct.
+
+[Jeeva Koli] 08:10:15
+So, actually, what they are providing there, actually? Either they're providing… Yeah, yeah.
+
+[rochak agrawal] 08:10:18
+I'll… I'll come to that.
+
+[rochak agrawal] 08:10:20
+I'll come to that. Okay? So, before we, uh… so, before going to that, we need to understand the architecture first, then we will see what is the difference.
+
+[rochak agrawal] 08:10:29
+Okay.
+
+[Jeeva Koli] 08:10:30
+Yeah, sure, sure.
+
+[rochak agrawal] 08:10:35
+Yes, Anthony.
+
+[Anthony Joseph] 08:10:38
+So just wanted to understand when you say cluster, is it a physical hardware?
+
+[rochak agrawal] 08:10:42
+No, no. See, it's not a physical hardware. For example, your control plane, or I would say, let's say a control node, for example, your worker node, they must be running somewhere, correct?
+
+[Anthony Joseph] 08:10:56
+Got it.
+
+[rochak agrawal] 08:10:57
+on some VM, or let's say on my laptop, or somewhere. So the grouping… see, cluster is not a physical, uh, physical, uh, thing. It's a logical thing.
+
+[Anthony Joseph] 08:11:07
+Okay.
+
+[rochak agrawal] 08:11:07
+Okay, which is binding everything together.
+
+[Anthony Joseph] 08:11:11
+Okay.
+
+[rochak agrawal] 08:11:12
+Okay?
+
+[Anthony Joseph] 08:11:13
+Because, like, I work… I mean, I've worked on some servers, like, in a Nutanix server, you have a 3-node cluster, that means within a single server, there are 3 nodes.
+
+[rochak agrawal] 08:11:20
+See, I'll let you… yeah, I got your confusion, Anthony. Anthony, cluster is a very generic word in the IT world, okay?
+
+[Anthony Joseph] 08:11:29
+Correct.
+
+[rochak agrawal] 08:11:30
+Everything… see, cluster, you understand, it's not physical, it's not virtual. See, you understand cluster as a group of resources. That's it.
+
+[Anthony Joseph] 08:11:39
+Okay.
+
+[rochak agrawal] 08:11:40
+Okay, in Nutanix also, you are grouping three servers together, that's why they are calling it as a cluster.
+
+[Anthony Joseph] 08:11:42
+You can't.
+
+[Anthony Joseph] 08:11:47
+Exactly right.
+
+[rochak agrawal] 08:11:48
+So here also, you are grouping your control node and worker node together. That's why it's a cluster.
+
+[Anthony Joseph] 08:11:55
+So it can be on a single VM also.
+
+[rochak agrawal] 08:11:57
+It can be, but then you will be defining the whole purpose of running the Kubernetes, right? I can have my control plane and the worker node on the same cluster. See why you want the container orchestration because you know Docker is a single host software.
+
+[Anthony Joseph] 08:12:12
+Mm-hmm.
+
+[rochak agrawal] 08:12:13
+There is no fault tolerance, there is no disaster recovery, correct?
+
+[Anthony Joseph] 08:12:18
+Okay.
+
+[rochak agrawal] 08:12:19
+That's why you want to use Kubernetes. If I want to have, let's say run my application on a single host only, I can run it with the Docker itself. Why I need Kubernetes? Although I will get auto healing, auto scaling and something.
+
+[rochak agrawal] 08:12:37
+But then, Kubernetes is not for that. I can use Docker Swarm for it, which will, as I said, right, um…
+
+[rochak agrawal] 08:12:47
+Kubernetes is for complex deployments, because managing Kubernetes itself is not very easy.
+
+[rochak agrawal] 08:12:52
+So you can run it, but it is not recommended, Anthony.
+
+[Anthony Joseph] 08:12:53
+Okay.
+
+[Anthony Joseph] 08:12:57
+So every cluster will have a control.
+
+[rochak agrawal] 08:12:57
+You can do it for the POC purpose.
+
+[Anthony Joseph] 08:12:59
+Okay. So every cluster will have a control plane and worker nodes, and the control plane will be monitoring the worker nodes.
+
+[rochak agrawal] 08:13:03
+Yes.
+
+[rochak agrawal] 08:13:06
+Got it.
+
+[Anthony Joseph] 08:13:07
+So, it…
+
+[rochak agrawal] 08:13:07
+How it does it, we will see that, but yes, that's the overall.
+
+[Anthony Joseph] 08:13:11
+Okay, but if you have multiple clusters, one control plane will be monitoring the worker nodes of that?
+
+[rochak agrawal] 08:13:15
+No, no, if… see, no, when you… when you itself is saying there is multiple cluster, so each cluster will have its own control plane.
+
+[Anthony Joseph] 08:13:22
+Yeah, but one cluster will not… one control plane won't be monitoring the workloads of another cluster.
+
+[rochak agrawal] 08:13:26
+No, no, no, no. No, no, no. See, when two train runs, they have their own engines, correct?
+
+[Anthony Joseph] 08:13:32
+Right, right.
+
+[rochak agrawal] 08:13:32
+You cannot run two trains by a single engine.
+
+[Anthony Joseph] 08:13:37
+Right.
+
+[rochak agrawal] 08:13:37
+Same thing.
+
+[rochak agrawal] 08:13:40
+See, this is the boundary, you see?
+
+[Anthony Joseph] 08:13:45
+Okay.
+
+[rochak agrawal] 08:13:47
+When I'm saying this is the boundary, right?
+
+[Anthony Joseph] 08:13:50
+Okay.
+
+[rochak agrawal] 08:13:51
+Now, if you have another cluster here.
+
+[rochak agrawal] 08:13:54
+It will have its own control plane, or the worker node.
+
+[rochak agrawal] 08:13:59
+You can have multiple clusters as well.
+
+[rochak agrawal] 08:14:02
+Then, we are talking about a single cluster, what is inside it, correct?
+
+[Anthony Joseph] 08:14:06
+Mmm.
+
+[rochak agrawal] 08:14:07
+I can have two laptops.
+
+[rochak agrawal] 08:14:08
+So what? My one laptop has my, uh… that… this much boundary, another laptop has this much boundary. They can interact with each other, that's a separate thing, but…
+
+[rochak agrawal] 08:14:19
+Right? One control plane is not going to manage multiple clusters.
+
+[Anthony Joseph] 08:14:20
+Mm-hmm.
+
+[Anthony Joseph] 08:14:24
+Okay.
+
+[rochak agrawal] 08:14:25
+Okay?
+
+[Anthony Joseph] 08:14:27
+Understood.
+
+[rochak agrawal] 08:14:28
+Sure.
+
+[rochak agrawal] 08:14:33
+Yeah.
+
+[rochak agrawal] 08:14:37
+Yes, Gannon.
+
+[Gyanendra Narayan] 08:14:42
+So, in a cluster, we have a host, and each host contains a number of VMs. This is a normal architect of a cluster. Like, we have a cluster, and one cluster has a number of hosts, and each host has a number of VMs. So, here.
+
+[rochak agrawal] 08:14:43
+Mm-hmm.
+
+[rochak agrawal] 08:14:51
+Hmm.
+
+[rochak agrawal] 08:14:55
+Okay.
+
+[Gyanendra Narayan] 08:14:57
+In this cluster, we make a host as a control pin. For example, I'm saying, or in a host, we make a one VM as a control pin, and this node represent a VM.
+
+[rochak agrawal] 08:15:01
+Mm-hmm.
+
+[rochak agrawal] 08:15:10
+Another VIN.
+
+[Gyanendra Narayan] 08:15:12
+Or a host. It's a VM.
+
+[rochak agrawal] 08:15:13
+No, no, see, see, Gannon, we do not need to mix this. This is what I explained to someone also about the Nutanix cluster.
+
+[rochak agrawal] 08:15:23
+Forget about the host, uh… see, cluster, in a very simple term, is a grouping. That's it, okay? Now you note when you are saying, okay? It could be your laptop also, it could be a virtual machine also.
+
+[rochak agrawal] 08:15:36
+Okay, now my laptop is a physical device, correct?
+
+[Gyanendra Narayan] 08:15:40
+Hmm?
+
+[rochak agrawal] 08:15:41
+And if I'm, let's say, I'm saying EC2 instance, that's a virtual machine, so it does not matter for me.
+
+[rochak agrawal] 08:15:47
+It is just, you need to have the connection between.
+
+[Gyanendra Narayan] 08:15:51
+So you're saying that, uh, control plane, node, all, all, all three are server only. So in a one server, control plane will be running, in another server, node will be running.
+
+[rochak agrawal] 08:15:57
+I'm gonna…
+
+[rochak agrawal] 08:16:00
+Another server, your nodes will be running, so you can have multiple nodes.
+
+[Gyanendra Narayan] 08:16:06
+And this, uh…
+
+[rochak agrawal] 08:16:07
+I have run a 60 node cluster.
+
+[Gyanendra Narayan] 08:16:11
+Umm.
+
+[Gyanendra Narayan] 08:16:13
+So, one node will make a control pane, and 59 will be worker node in this.
+
+[rochak agrawal] 08:16:16
+Correct. 59 will be your worker node, and then, uh, your containers are going to run here.
+
+[rochak agrawal] 08:16:22
+Okay, this is only for managing it.
+
+[Gyanendra Narayan] 08:16:23
+So, it can be…
+
+[Gyanendra Narayan] 08:16:26
+Okay, so it can be a VM, it can be a laptop, it can be a server, it can be anything.
+
+[rochak agrawal] 08:16:29
+Physical loss.
+
+[rochak agrawal] 08:16:32
+It could be anything.
+
+[rochak agrawal] 08:16:33
+Okay?
+
+[rochak agrawal] 08:16:35
+Understood. Now, every, uh, see, uh…
+
+[rochak agrawal] 08:16:40
+This is the high-level architecture, that you have a cluster, and inside the cluster, you will have the control plane and the worker node.
+
+[rochak agrawal] 08:16:48
+You call it as a worker node, somewhere it will be called as a slave node, agent node, different terminology, but I would prefer the worker node and the control node, or simply the node.
+
+[rochak agrawal] 08:16:58
+Okay, now you need to understand that every node and every control plane will have certain.
+
+[rochak agrawal] 08:17:08
+objects inside it, okay? There can be plus and minus, but these are the things which need to be there, okay?
+
+[rochak agrawal] 08:17:18
+So, you see here, in the… first, I will discuss the worker node, then I'll go to the control plane.
+
+[rochak agrawal] 08:17:23
+So here, if you see on the worker node, there are four things.
+
+[rochak agrawal] 08:17:26
+One is a cubelet.
+
+[rochak agrawal] 08:17:28
+One is a cube proxy, another is a pod.
+
+[rochak agrawal] 08:17:32
+And…
+
+[rochak agrawal] 08:17:33
+CRI. Okay, now these four things need to be there.
+
+[rochak agrawal] 08:17:38
+So, what are those 4 things?
+
+[rochak agrawal] 08:17:46
+Tubelet?
+
+[rochak agrawal] 08:17:51
+You proxy.
+
+[rochak agrawal] 08:17:54
+Bored?
+
+[rochak agrawal] 08:17:56
+and CAA.
+
+[rochak agrawal] 08:17:56
+Okay, so first I'll go with one by one. So pod is nothing but your containers.
+
+[rochak agrawal] 08:18:02
+In Docker we call it as containers, here we are calling them as the ports.
+
+[rochak agrawal] 08:18:10
+So, um, the whole point of creating the cluster is I want to run my container.
+
+[rochak agrawal] 08:18:16
+In the worker node, your pods are going to run, or I would say your containers would be running in the form of your pods.
+
+[rochak agrawal] 08:18:25
+Okay? So when you run a container in the Kubernetes, it will create a unit called a pod.
+
+[rochak agrawal] 08:18:34
+And then you need, so now very basic question, right?
+
+[rochak agrawal] 08:18:40
+To run containers, what do you need to have on your laptop?
+
+[rochak agrawal] 08:18:44
+I need to have doctor. So that is what…
+
+[rochak agrawal] 08:18:52
+C-R-I-S. Container from time…
+
+[rochak agrawal] 08:18:56
+Inja.
+
+[rochak agrawal] 08:18:58
+Which is Docker?
+
+[rochak agrawal] 08:19:01
+every worker node.
+
+[rochak agrawal] 08:19:03
+Docker should be installed. So, when you say, I am running my workload on Kubernetes.
+
+[rochak agrawal] 08:19:10
+does not, uh…
+
+[rochak agrawal] 08:19:15
+Just a second.
+
+[rochak agrawal] 08:19:16
+Uh, container, um…
+
+[rochak agrawal] 08:19:17
+When I'm saying I'm running my workload on Kubernetes, does not mean you have left Docker behind. Docker is always running under the hood, but you are not managing Docker now, so all those commands.
+
+[rochak agrawal] 08:19:31
+Docker volumes, Docker networking, you do not need them now, because we have an abstraction layer, which is going to manage it.
+
+[rochak agrawal] 08:19:40
+Okay, then, so these two parts are clear. You will have containers, um, which is running in the form of a pod, or simply, I would say, we call it as a pod in Kubernetes, and then we have the container runtime engine that need to be in.
+
+[rochak agrawal] 08:19:58
+On the all worker node, then only they would be able to run the containers.
+
+[rochak agrawal] 08:20:03
+Okay, now comes the cubelet.
+
+[rochak agrawal] 08:20:07
+A cubelet is…
+
+[rochak agrawal] 08:20:11
+You can see.
+
+[rochak agrawal] 08:20:16
+It's a medium of communication.
+
+[rochak agrawal] 08:20:22
+BitBean?
+
+[rochak agrawal] 08:20:24
+Barker.
+
+[rochak agrawal] 08:20:26
+Note…
+
+[rochak agrawal] 08:20:27
+And…
+
+[rochak agrawal] 08:20:29
+Masternode, or…
+
+[rochak agrawal] 08:20:33
+Okay.
+
+[rochak agrawal] 08:20:35
+So, if Kubelet is down.
+
+[rochak agrawal] 08:20:39
+On your server, on your worker node, your master cannot… and see, when I'm saying master or the control plane, it's the same thing. Your control plane would not be able to manage this node.
+
+[rochak agrawal] 08:20:51
+So, cube… so, if master, uh, need to deploy something, it sends the instruction to the cubelet. So, basically, it's the, uh, agent process you are running on your…
+
+[rochak agrawal] 08:21:04
+Uh, worker mode. So it is very similar to what we have seen, um.
+
+[rochak agrawal] 08:21:11
+In Jenkins. In Jenkins, when we set up… when we was… when we was, uh…
+
+[rochak agrawal] 08:21:19
+Setting up the slave, you remember that we downloaded the slave.jar, and with the help of that, we got connected with our main node, built-in node. Similarly here, kubelet is the process. With the help of that, your worker.
+
+[rochak agrawal] 08:21:36
+node communicate with your.
+
+[rochak agrawal] 08:21:40
+control pin. If the cubelet is not there, that communication will be.
+
+[rochak agrawal] 08:21:46
+break, and then you would not be able to do any new… So, see, if the kubelet is going to break, whatever containers are going to run, they will keep running, but then, uh…
+
+[rochak agrawal] 08:21:57
+Um, any new changes, you would not be able to do at all. So this is a bridge. Every worker node will have the kubelet process running, which, again, because every worker process needs to communicate to the control.
+
+[rochak agrawal] 08:22:09
+Okay, then comes the kube proxy, which is a fourth component. Now, kube proxy is… it's a very interesting thing. So, we are discussing…
+
+[rochak agrawal] 08:22:20
+that your, uh…
+
+[rochak agrawal] 08:22:28
+It's a…
+
+[rochak agrawal] 08:22:31
+multi-host, uh, system. So what happens is…
+
+[rochak agrawal] 08:22:35
+with the help of Kube Proxy.
+
+[rochak agrawal] 08:22:47
+QProxy deploys a, um…
+
+[rochak agrawal] 08:22:52
+internal network or Kubernetes. So, for example, with the help… once this is done, uh, so let's say if your container is running here.
+
+[rochak agrawal] 08:23:06
+Or here.
+
+[rochak agrawal] 08:23:07
+Or here.
+
+[rochak agrawal] 08:23:09
+Or here.
+
+[rochak agrawal] 08:23:11
+they are going to talk over this network, which is QProxy.
+
+[rochak agrawal] 08:23:17
+Okay, now do you need to set it up? No. Okay, Kubernetes itself, when you add, so for example, let's say I have another node.
+
+[rochak agrawal] 08:23:30
+Now when you add this node to your Kubernetes cluster, now by the way, we can add and remove the node in your cluster at any point of time. You can start with the four node, then add four more node later.
+
+[rochak agrawal] 08:23:45
+So when you add a node, the network will be extended here as well.
+
+[rochak agrawal] 08:23:52
+Automatically.
+
+[rochak agrawal] 08:23:53
+Okay, so Kube proxy is an internal network, all the communication between the containers. Now we had a problem that if the containers are running on two different hosts, how they are going to communicate to each other? The answer is in Kubernetes, they are going to communicate over the Kube.
+
+[rochak agrawal] 08:24:10
+proxy. It's an internal network. Whatever the nodes, whatever the number of the nodes you are adding as part of the Kubernetes cluster, they are going to… again, when I'm saying Kubernetes cluster, one cluster. Another cluster will have another Kubernetes network, okay?
+
+[rochak agrawal] 08:24:27
+This is for one cluster, and then they are going to talk to each other over this common network.
+
+[rochak agrawal] 08:24:34
+So, does not matter your pod is running on node number 1, 2.
+
+[rochak agrawal] 08:24:40
+3, 4, or 5, okay? It is like when it is managed by Kubernetes, it's all…
+
+[rochak agrawal] 08:24:46
+Virtually, it is like…
+
+[rochak agrawal] 08:24:51
+All big.
+
+[rochak agrawal] 08:24:52
+node, virtually, because they all are connected to each other with the help of a network called the Q Proxy.
+
+[rochak agrawal] 08:24:59
+Okay, so these are the component which is… which need to be there.
+
+[rochak agrawal] 08:25:06
+on the worker node, okay, kubelet, kube-proxy, pod, and CLI.
+
+[rochak agrawal] 08:25:12
+Any worker note you are adding.
+
+[rochak agrawal] 08:25:15
+They need to have these four components. Now, there are others also, like KubeDNS is there, planar network plugin is there, but that is the add-ons. These are the bare minimum. Kubelet, KubeProxy, Pod, and CRI.
+
+[rochak agrawal] 08:25:32
+These are the… this is what we call it as a worker node component. So, these component need to be there. If these are not there.
+
+[rochak agrawal] 08:25:44
+It is not going to function properly.
+
+[rochak agrawal] 08:25:52
+Okay, so node kubelet is basically an agent that runs on each node in the cluster. It makes sure that containers are running.
+
+[rochak agrawal] 08:26:03
+in a pod. The Kubelet takes the request, um…
+
+[rochak agrawal] 08:26:07
+from the master control plane, okay?
+
+[rochak agrawal] 08:26:14
+Then we have a queue proxy. Queue proxy is a network proxy that, again, runs on each node in your cluster. Implementing, uh…
+
+[rochak agrawal] 08:26:23
+the part of the Kubernetes services concept. So there is something called services also in Kubernetes. Kube proxy maintains the network rules on the node. These network rules allow network communication to your pod from network session inside and outside of the cluster.
+
+[rochak agrawal] 08:26:40
+QProxy uses an operating system packet filtering layer if there is once and it is available. Otherwise, QProxy forwards the traffic itself. Now, there are advanced networking plugin also if you do not want to go.
+
+[rochak agrawal] 08:26:56
+So then there is something called Calico, Flanel… these are advanced networking plugins, are there?
+
+[rochak agrawal] 08:27:02
+Then
+
+[rochak agrawal] 08:27:04
+the container runtime and the pod, a fundamental component that empowers Kubernetes.
+
+[rochak agrawal] 08:27:11
+To run containers effectively, it is responsible for managing the execution and lifecycle of containers within the Kubernetes environment.
+
+[rochak agrawal] 08:27:21
+Okay, um…
+
+[rochak agrawal] 08:27:23
+And then, as we discussed, there could be…
+
+[rochak agrawal] 08:27:28
+For example, uh…
+
+[rochak agrawal] 08:27:31
+Add-ons, okay, so DNS-related add-ons, um…
+
+[rochak agrawal] 08:27:37
+web UI, resource monitoring, logging-related add-ons could be there. But these are four important, um… I would not say important, you would say, uh, fundamental or mandatory, um…
+
+[rochak agrawal] 08:27:50
+Component that need to be there on a node, then only it is going to work.
+
+[rochak agrawal] 08:27:58
+Okay? So…
+
+[rochak agrawal] 08:28:01
+Jeeva, question?
+
+[Jeeva Koli] 08:28:04
+Uh, yes, uh, two questions. One is, uh, regarding the smallest part of the, uh, smallest part in the Kubernetes is the order, right?
+
+[rochak agrawal] 08:28:15
+Okay, yes, correct.
+
+[Jeeva Koli] 08:28:18
+But containers can be run in… multi-containers can be run into the pod.
+
+[Jeeva Koli] 08:28:22
+Am I right?
+
+[rochak agrawal] 08:28:22
+Correct. Yes.
+
+[Jeeva Koli] 08:28:25
+But at the same, if you compare with the Docker, the smallest part is a container.
+
+[rochak agrawal] 08:28:31
+Got it.
+
+[Jeeva Koli] 08:28:32
+Last.
+
+[rochak agrawal] 08:28:33
+Hmm.
+
+[Jeeva Koli] 08:28:34
+Okay. So the, the…
+
+[rochak agrawal] 08:28:35
+Yeah, see, basically, uh, Jeeva, we are going to discuss the pods in detail, but… so right now, to answer your question, uh, container is the smallest unit in Docker, pod is the smallest unit in a container. Now…
+
+[rochak agrawal] 08:28:49
+Why there's a differentiation? Pod can run a single container, but it can run multiple containers together also as a group.
+
+[Jeeva Koli] 08:28:59
+Okay.
+
+[rochak agrawal] 08:29:00
+Okay?
+
+[Jeeva Koli] 08:29:02
+And, uh, CRI, instead of CRI, is there any other competitive products out there to use?
+
+[rochak agrawal] 08:29:12
+So you're saying, uh, apart from Docker?
+
+[Jeeva Koli] 08:29:14
+Yes, yes.
+
+[rochak agrawal] 08:29:16
+Yeah, see, there are, um, other products also. Uh, there is something called ContainerD is there, then CRIO is there, then there is another one, RKT is there. But, um, the thing right now is.
+
+[rochak agrawal] 08:29:30
+So, if you say we have not written the Docker, we have written the CRI, Container Runtime Instance, or interface, I think.
+
+[rochak agrawal] 08:29:39
+I have written the engine wrongly. So it is called the container runtime interface, okay? Now, Docker is the standard container runtime interface, okay? So even though if you are using RKT or container DE.
+
+[rochak agrawal] 08:29:55
+It is working on a philosophy of Docker only, so there is not much of a difference.
+
+[Jeeva Koli] 08:30:00
+Okay, okay.
+
+[rochak agrawal] 08:30:02
+Okay?
+
+[Jeeva Koli] 08:30:03
+That is common term, right? Container…
+
+[rochak agrawal] 08:30:05
+Common term. CRI is a common term, yes.
+
+[Jeeva Koli] 08:30:07
+Okay, got it, yeah.
+
+[rochak agrawal] 08:30:11
+So this is the component about the worker node. Any question about them?
+
+[rochak agrawal] 08:30:18
+Then we go to the component of the master node or the control plane.
+
+[rochak agrawal] 08:30:24
+But any question before going to that?
+
+[rochak agrawal] 08:30:27
+Yes, Vivo?
+
+[Vaibhav Gupta] 08:30:31
+Hey, I'm still confused about group proxy.
+
+[Vaibhav Gupta] 08:30:37
+Like, uh, we can use any of the…
+
+[Vaibhav Gupta] 08:30:42
+Continue.
+
+[Vaibhav Gupta] 08:30:44
+Not understand it properly.
+
+[rochak agrawal] 08:30:46
+What is your question?
+
+[Vaibhav Gupta] 08:30:48
+Like, we, uh, utilize any node in this. So, uh, if we use… if we start from the node 4, so, like, how we can, um, do that?
+
+[rochak agrawal] 08:30:59
+See.
+
+[rochak agrawal] 08:31:06
+You know containers run inside a node, correct?
+
+[Vaibhav Gupta] 08:31:08
+Mm-hmm.
+
+[Vaibhav Gupta] 08:31:10
+Hmm.
+
+[rochak agrawal] 08:31:12
+Now, let's say this is running here.
+
+[rochak agrawal] 08:31:16
+And this is on here.
+
+[rochak agrawal] 08:31:19
+Got it?
+
+[Vaibhav Gupta] 08:31:20
+Hmm.
+
+[rochak agrawal] 08:31:21
+Now, um…
+
+[rochak agrawal] 08:31:23
+In Docker, we expose the port, and then whatever is coming on the host port, it will be redirected to your container port, correct?
+
+[rochak agrawal] 08:31:33
+Now, this is okay when you are running one or two containers. In your production environment, you would be running hundreds of the container, and maybe there will be certain container which would be listening on the same port, like Tomcat and Jenkins, they run on port 8080, correct?
+
+[rochak agrawal] 08:31:49
+Now.
+
+[Vaibhav Gupta] 08:31:49
+Hmm.
+
+[rochak agrawal] 08:31:51
+Let's say how this container is going to talk to the container on this machine, correct? See, even if it is a one container, I can manually provision a connectivity between them, correct?
+
+[rochak agrawal] 08:32:04
+But when you have hundreds and thousands of the container, every time, you are not going to manually provision the connectivity between them, correct?
+
+[Vaibhav Gupta] 08:32:17
+Yes, correct.
+
+[rochak agrawal] 08:32:18
+Correct? Now, so that is why there is a cube proxy. Now, what happens is, let's say there are 3 nodes.
+
+[rochak agrawal] 08:32:26
+Okay.
+
+[rochak agrawal] 08:32:28
+Now, what Qproxy does, Qproxy creates an internal network.
+
+[rochak agrawal] 08:32:36
+Okay.
+
+[Vaibhav Gupta] 08:32:37
+Yes.
+
+[rochak agrawal] 08:32:38
+Now, so, when this traffic need to go…
+
+[rochak agrawal] 08:32:43
+To a container which is running on another host, it goes via this network.
+
+[rochak agrawal] 08:32:51
+So that you do not need to set up any container running somewhere. The traffic goes via this queue proxy.
+
+[rochak agrawal] 08:32:59
+So it is like setting up an internal, uh, network.
+
+[rochak agrawal] 08:33:04
+Okay.
+
+[rochak agrawal] 08:33:06
+Vienne
+
+[rochak agrawal] 08:33:07
+Containers can talk to each other.
+
+[rochak agrawal] 08:33:09
+That's the whole role of the kube-proxy. And it is, when you add a node to the cluster, kube-proxy is going to extend automatically to that node as well.
+
+[rochak agrawal] 08:33:21
+Basically.
+
+[Vaibhav Gupta] 08:33:22
+Okay. Mm-hmm.
+
+[rochak agrawal] 08:33:22
+Okay?
+
+[rochak agrawal] 08:33:25
+So basically, you see, understand it in a way. When you see the train, for example, okay, now a train has multiple.
+
+[rochak agrawal] 08:33:34
+Uh, coaches, correct?
+
+[Vaibhav Gupta] 08:33:36
+Hmm.
+
+[rochak agrawal] 08:33:36
+Now let's say, let's say this is S4.
+
+[rochak agrawal] 08:33:41
+And this is S5.
+
+[rochak agrawal] 08:33:43
+If you want to go from S4 to S5, you will, uh, get down from S4, go to S5.
+
+[rochak agrawal] 08:33:52
+And get up in S5, correct?
+
+[Vaibhav Gupta] 08:33:54
+Mm-hmm.
+
+[rochak agrawal] 08:33:55
+If you, let's say, do it for once or there is one person who need to do it, this isn't recommended approach. But you see there are multiple hundreds and thousands of the people connecting, changing the coaches and different stuff.
+
+[rochak agrawal] 08:34:10
+So now, what is a better mechanism? What Railway did is they connected.
+
+[rochak agrawal] 08:34:17
+The coofs
+
+[rochak agrawal] 08:34:18
+Internally.
+
+[Vaibhav Gupta] 08:34:20
+Mm-hmm.
+
+[rochak agrawal] 08:34:20
+Correct?
+
+[rochak agrawal] 08:34:21
+So now, when you need to go to S4 to S5, you do not need to go it from here.
+
+[rochak agrawal] 08:34:28
+You go it here.
+
+[rochak agrawal] 08:34:30
+Correct?
+
+[Vaibhav Gupta] 08:34:31
+Hmm.
+
+[rochak agrawal] 08:34:32
+That is Qproxy, basically.
+
+[Vaibhav Gupta] 08:34:35
+So, connected the nodes internally, we can say.
+
+[rochak agrawal] 08:34:38
+internally, right? Any other traffic, so for example, let's say, apart from Kubernetes.
+
+[Vaibhav Gupta] 08:34:40
+Hmm.
+
+[rochak agrawal] 08:34:45
+Uh, if there is any other thing is running.
+
+[rochak agrawal] 08:34:50
+Okay, because on my laptop or on a machine, you can run multiple things.
+
+[rochak agrawal] 08:34:55
+That will not be connected that you have to do it separately altogether but whatever the containers is running as part of Kubernetes they will communicate over the kube proxy.
+
+[rochak agrawal] 08:35:09
+Okay?
+
+[Vaibhav Gupta] 08:35:10
+So, if any new node is, uh, connected here, and, uh, if…
+
+[rochak agrawal] 08:35:14
+automatically Qproxy will be extended to that, and that is what I have explained it here as well. If you see, whenever you add the Node 4, see, basically.
+
+[Vaibhav Gupta] 08:35:22
+Mm-hmm.
+
+[rochak agrawal] 08:35:24
+What do you mean by adding the node to the cluster?
+
+[rochak agrawal] 08:35:28
+Right? So, for example, when I'm… I cannot just go directly to the train. I need to have a proper ticket, correct? Then only I can go to 3rd AC or the 2nd AC, correct? I need to fulfill the prerequisite, correct?
+
+[rochak agrawal] 08:35:40
+When you are adding a node to the cluster, what is a prerequisite? You need to have the kubelet installed, because if the kubelet is not installed, it will not be able to talk to the master node, correct? You need to have a Docker installed, because if the Docker is not there, so then…
+
+[Vaibhav Gupta] 08:35:41
+Right.
+
+[rochak agrawal] 08:35:57
+you would not be able to run the pods, correct? Then, if… third thing is, it need to connect it via QProxy.
+
+[rochak agrawal] 08:36:04
+As simple as that. It's a prerequisite. If the kube, it is not connected with the kube proxy, it is not part of your cluster.
+
+[rochak agrawal] 08:36:15
+Okay?
+
+[Vaibhav Gupta] 08:36:17
+So, if, um, like, they auto-extend it, then the internal connection will be automatically created, right?
+
+[rochak agrawal] 08:36:23
+Correct, it will be automatically created.
+
+[rochak agrawal] 08:36:26
+When you add a node to the cluster, see it's an orchestrator. It is doing many things for you which you don't need to do.
+
+[Vaibhav Gupta] 08:36:36
+Mm-hmm.
+
+[rochak agrawal] 08:36:37
+Okay, uh, see, for example, when we create a virtual machine in AWS or Azure.
+
+[rochak agrawal] 08:36:45
+You do not know where this machine is running. You, of course, know the reason, but on which server it is running, how it got provisioned, you don't know that, correct?
+
+[rochak agrawal] 08:36:55
+Because that's a layer which is abstracted from us.
+
+[rochak agrawal] 08:37:00
+Connect.
+
+[rochak agrawal] 08:37:01
+Same thing happens here, when you add a node to the cluster.
+
+[Vaibhav Gupta] 08:37:02
+Correct.
+
+[rochak agrawal] 08:37:06
+Kubernetes extends the kube-proxy network to another, uh, newly created node as well, and this is now part of your whole group.
+
+[rochak agrawal] 08:37:18
+Okay?
+
+[Vaibhav Gupta] 08:37:21
+Okay.
+
+[rochak agrawal] 08:37:22
+Okay, so…
+
+[rochak agrawal] 08:37:27
+This was about the worker node. Now you're…
+
+[rochak agrawal] 08:37:33
+Master node is even more complicated, okay.
+
+[rochak agrawal] 08:37:41
+Your masternode is even more complicated.
+
+[rochak agrawal] 08:37:47
+So master node has five component. Okay. One, two, three, four, five.
+
+[rochak agrawal] 08:37:53
+We'll discuss them one by one.
+
+[Vaibhav Gupta] 08:37:57
+The Lord
+
+[rochak agrawal] 08:37:58
+Guys, if you're not speaking, uh, can you please go on mute?
+
+[rochak agrawal] 08:38:02
+So it has five components, okay? Let me write it here.
+
+[rochak agrawal] 08:38:10
+ETCD?
+
+[rochak agrawal] 08:38:12
+Cube API server.
+
+[rochak agrawal] 08:38:18
+Scheduler?
+
+[rochak agrawal] 08:38:22
+Cloud Controller Manager is… I'm leaving it for now. We'll explain it later. And we have a Controller Manager.
+
+[rochak agrawal] 08:38:37
+We need to understand each component very, very, um…
+
+[rochak agrawal] 08:38:45
+diligently, okay, because…
+
+[rochak agrawal] 08:38:48
+Many question comes.
+
+[rochak agrawal] 08:38:50
+So first, let's go to the ZoomMate.
+
+[rochak agrawal] 08:38:55
+Okay. Now, UAPI server is the entry point to your cluster. Okay. When I'm saying the entry point to your cluster.
+
+[rochak agrawal] 08:39:05
+Anything you want to do. Okay? Um…
+
+[rochak agrawal] 08:39:09
+For example, I want to deploy a new application, I want to scale my application, I want to delete my application, I want to add a node, I want to delete a node, anything, anything you want to do.
+
+[rochak agrawal] 08:39:23
+See, you don't directly… now, if you see the worker node.
+
+[rochak agrawal] 08:39:30
+Out of these four, we are never saying a user is interacting with the worker node. You have only one process, which is kubelet, and kubelet is…
+
+[rochak agrawal] 08:39:40
+connected, uh, see, connect the dots here. Kubelet takes the instructions from the worker node, uh, sorry, from the controller, uh, control plane.
+
+[rochak agrawal] 08:39:50
+So as a user, you never interact with your worker notes directly.
+
+[rochak agrawal] 08:39:58
+Because Kubernetes is managing them, okay? So, what the Kube API server does.
+
+[rochak agrawal] 08:40:06
+any request you are sending to, uh, the Fibonacci's, okay?
+
+[rochak agrawal] 08:40:11
+The request goes to the Q API server.
+
+[rochak agrawal] 08:40:13
+So, it is like your entry point. When I go to the railway station, I need to present my ticket at the entry.
+
+[rochak agrawal] 08:40:20
+that is, let's say, the Cube API server, and then they will, uh, or the better example is, let's say, you go to a movie hall, uh, you present your ticket, and they will say, okay, you go to, uh, order number 7.
+
+[rochak agrawal] 08:40:32
+They will check that if you have a valid ticket or not, and then they'll send you at the right place. Similar thing QVPI server is… does.
+
+[rochak agrawal] 08:40:41
+When you run the commands to deploy the application, run the application, it is first the request, every request, anything you are doing with Kubernetes.
+
+[rochak agrawal] 08:40:53
+Okay? Every request goes to the Kube API server. Okay? So it is like your tollgate, it is like your entry point. Then the Kube API server checks your permissions.
+
+[rochak agrawal] 08:41:07
+If you have the right permissions to deploy, to delete, to update, then Kube API server forwards your request to other components. I would not say directly to the worker node, but to other components. So the API server is a component of the Kubernetes control plane.
+
+[rochak agrawal] 08:41:24
+That exposes the Kubernetes API. The API server is the frontend for the Kubernetes control plane.
+
+[rochak agrawal] 08:41:33
+The main implementation of the Kube API server is the Kube API server is designed to scale horizontally. That is, it is scaled by deploying more instances. We can run several instances of the Kube API server, okay?
+
+[rochak agrawal] 08:41:49
+Now…
+
+[rochak agrawal] 08:41:51
+So you understand that any request you are… so when you… when you will be creating your, um…
+
+[rochak agrawal] 08:41:57
+Kubernetes cluster, you are going to get a Kube API server URL, so you are always going to make a request to the Kube API server.
+
+[rochak agrawal] 08:42:09
+Then the Cube API server will forward the request to the backend, uh, ETCD, scheduler, wheresoever.
+
+[rochak agrawal] 08:42:17
+Right? But the Cube API server is your entity.
+
+[rochak agrawal] 08:42:21
+Then this is your ETCD.
+
+[rochak agrawal] 08:42:25
+Now, EBCD is…
+
+[rochak agrawal] 08:42:35
+ETCD is a strongly consistent distributed key-value store.
+
+[rochak agrawal] 08:42:41
+that provides a reliable way to store data that need to be accessed by a distributed system or the cluster of machine, okay? So ETCD is designed.
+
+[rochak agrawal] 08:42:54
+To be running on different modes.
+
+[rochak agrawal] 08:42:58
+And the data is stored in the form of a key-value pair. So key-value pair is something like, um…
+
+[rochak agrawal] 08:43:04
+there is a key, and then there's a value. So, for example, I'll… city is equal to Delhi.
+
+[rochak agrawal] 08:43:10
+City is the key and Delhi is the value.
+
+[rochak agrawal] 08:43:15
+Now, since ETCD is designed to be running on multiple nodes, it's essential that the data which is stored on all the nodes are going to remain the same.
+
+[rochak agrawal] 08:43:25
+Now, most of the time when we hear about ATCD, it is in conjunction with the Kubernetes.
+
+[rochak agrawal] 08:43:32
+Now, the question is, why only ETCD with the Kubernetes? Why not other database? So, ETCD basically is…
+
+[rochak agrawal] 08:43:39
+Um, it's not a Kubernetes component, okay? It's a separate database tool, okay? Even if you go to etcdata, etc…
+
+[rochak agrawal] 08:43:48
+So, it's a separate database. It's an open source, strongly consistent database. So, it's a separate database, which is… Kubernetes uses it, okay?
+
+[rochak agrawal] 08:44:00
+So…
+
+[rochak agrawal] 08:44:01
+use it separately also, so it is not a native Kubernetes component. It is a component, external component, which Kubernetes uses. Okay, so the API server is a Kubernetes component that in itself does not do much, but is responsible for the communication between the.
+
+[rochak agrawal] 08:44:18
+Different component in the cluster.
+
+[rochak agrawal] 08:44:23
+Okay, the communication…
+
+[rochak agrawal] 08:44:26
+Bitumen component can happen.
+
+[rochak agrawal] 08:44:28
+Effectively, if the API server is bad.
+
+[rochak agrawal] 08:44:33
+by a database that ensure high consistency, high availability, and high performance. Okay, so generally, we have databases that store data in the form of tables, like Postgres, SQL, MySQL.
+
+[rochak agrawal] 08:44:47
+These databases have their places and some shortcomings due to which.
+
+[rochak agrawal] 08:44:52
+They cannot replace ETCD. So ETCD.
+
+[rochak agrawal] 08:44:57
+In the database.
+
+[rochak agrawal] 08:45:00
+which basically holds all your content.
+
+[rochak agrawal] 08:45:05
+Uh, cluster configuration data, like how many nodes are there, what is the configuration of node, uh, what is the ports which is running on the cluster, where they are running.
+
+[rochak agrawal] 08:45:16
+Everything is stored in ETCD, okay?
+
+[rochak agrawal] 08:45:23
+So, basically, um, if your ETCD cluster… ETCD will go down, okay?
+
+[rochak agrawal] 08:45:29
+Then…
+
+[rochak agrawal] 08:45:31
+uCluster cannot function.
+
+[rochak agrawal] 08:45:32
+That's… that's… you can say all… it is like the secret vault, which has all the, uh, sensitive information about your dog.
+
+[rochak agrawal] 08:45:44
+cluster. So, if someone says my, um… so, if someone says, what is the first thing you need to take the backup if you want your Kubernetes to be, um…
+
+[rochak agrawal] 08:45:56
+more reliable, so the answer is ETCD, because.
+
+[rochak agrawal] 08:46:01
+Other things, they…
+
+[rochak agrawal] 08:46:03
+read the data from the ETCDs. For example, when QAPIs… when the request goes to the QAPI server, and QAPI server, uh, need to check the permission of the user which is sending the request, it goes to the ETCD and checks if the user is having the permission or not.
+
+[rochak agrawal] 08:46:19
+So if the ETCD is not there, then there is no configuration, your cluster cannot function. Now, if you want to restore your Kubernetes cluster, you take the backup of your ETCD on a periodic basis.
+
+[rochak agrawal] 08:46:34
+And from the last available backup, you first restore the ETCD, and then you can restore your cluster.
+
+[rochak agrawal] 08:46:42
+So any question with these two components, ETC, and the Kube API server?
+
+[rochak agrawal] 08:46:51
+Yes, ma'am.
+
+[Megha U] 08:46:58
+Yeah, hello?
+
+[rochak agrawal] 08:46:59
+Hello? Yes, mate?
+
+[Megha U] 08:47:00
+Yeah, the… actually, yeah, I raised it for the previous one, I guess I got it. That was, like, what was the function for Kubelet? The difference between Kubelet proxy and Kubelet. Kubelet proxy, I understand that is for the network communication.
+
+[rochak agrawal] 08:47:09
+Okay.
+
+[rochak agrawal] 08:47:15
+Mm-hmm.
+
+[Megha U] 08:47:15
+So, again, when cubilant means, uh, that is, again, a medium of communication, is that the understanding?
+
+[rochak agrawal] 08:47:22
+Correct. See, it is, uh… the functioning is different. So, for example, um…
+
+[rochak agrawal] 08:47:29
+when I'm using the internet, right, I use the router as well as I use the optical fiber, correct?
+
+[rochak agrawal] 08:47:38
+So router is doing a different thing, optical fiber is a different thing. Although they both are used for the communication, kubelet is the communication for the… with the API server. So it takes the request, uh, from the master node, and then kube proxy is the internal network for the worker node.
+
+[Megha U] 08:47:57
+Okay.
+
+[rochak agrawal] 08:47:58
+Okay.
+
+[Megha U] 08:48:00
+Okay. And here, ETCDs, again, stores the cluster-related information, right? It's a…
+
+[rochak agrawal] 08:48:05
+Correct, your cluster-related information, correct. So, any deployment happens, uh, any node get added. So, basically, it is your master configuration vault, you can say that.
+
+[Megha U] 08:48:20
+Okay. And it's this…
+
+[rochak agrawal] 08:48:21
+And when you say, uh, cluster-related information, what other information you can think, uh, ETC-CD can store off?
+
+[Megha U] 08:48:32
+What about the API informations and all those?
+
+[rochak agrawal] 08:48:35
+No, but this is cluster-related only, right?
+
+[Megha U] 08:48:40
+Yeah, so, like, there can be some API configurations also, right, or endpoints.
+
+[rochak agrawal] 08:48:45
+Mm-hmm.
+
+[Megha U] 08:48:46
+So, those kind of is also, uh, stored.
+
+[rochak agrawal] 08:48:49
+No. Uh, if it is, uh, see, when you say, um, API configuration, so you mean, um, if you meet… if your meeting is, let's say you have deployed an application, uh, which is calling to a third-party API, and you want to store the configuration of that API, is that…
+
+[rochak agrawal] 08:49:07
+What do you intend for?
+
+[Megha U] 08:49:09
+Uh, yeah, kind of, like, endpoints.
+
+[rochak agrawal] 08:49:10
+No. For that we have something else which is called the config maps.
+
+[rochak agrawal] 08:49:17
+Okay, we'll see that as well. Uh, so there's something called the config map, which is holding, uh, the configuration of multiple things.
+
+[rochak agrawal] 08:49:25
+Now, you see, what you mentioned is not a cluster-specific, that is an application-specific data, correct?
+
+[Megha U] 08:49:33
+Yes.
+
+[rochak agrawal] 08:49:34
+So, no. Application-specific data ETCD will not be storing. ETCD will be storing the cluster-specific data.
+
+[Megha U] 08:49:45
+Okay. And, uh, one more thing, this, uh, Cube API server, uh, it's like an entry point pipeline. Can we connect like that, like, the first HTTP request?
+
+[rochak agrawal] 08:49:46
+Okay.
+
+[Megha U] 08:49:56
+Coming and hitting here, as you said, it's an entry point, right?
+
+[rochak agrawal] 08:49:59
+Correct, yeah, it's an entry point, yeah.
+
+[Megha U] 08:50:00
+So.
+
+[Megha U] 08:50:02
+Yeah, so, in an application, now, when you hit the pipeline, it first hits the… or, you know, it takes the HTTP request, right? So…
+
+[rochak agrawal] 08:50:10
+Mm-hmm.
+
+[Megha U] 08:50:11
+Likewise, we can compare here also, right? It's like an entry point.
+
+[rochak agrawal] 08:50:13
+Yeah, you can compare, yes, yes, you can compare. Uh, so even, uh, let's say the request comes to your HTTP, and then to load balancer, and to your backend server, correct?
+
+[rochak agrawal] 08:50:26
+So similarly here, uh, Cube API server, it is not… it is not a load balancer, but it is…
+
+[Megha U] 08:50:27
+It is.
+
+[rochak agrawal] 08:50:32
+I would say it is a gatekeeper.
+
+[rochak agrawal] 08:50:35
+Okay? It…
+
+[rochak agrawal] 08:50:38
+It blocks unauthorized request, unauthenticated request.
+
+[rochak agrawal] 08:50:44
+And then it forwards the request. So we will see the scheduler and controller manager also. We'll discuss them. So it takes the request, forward it to the other components, basically.
+
+[rochak agrawal] 08:50:56
+So it's a central point of… So let's say you are running a cluster, and after a week, you deploy… During this particular week, you deploy a certain application. They are running on different, different nodes, right?
+
+[rochak agrawal] 08:51:12
+And suddenly, after a beat, your Kube API server is down.
+
+[rochak agrawal] 08:51:17
+Now, what do you think what will happen if the Kube API server is down?
+
+[Megha U] 08:51:23
+It will not be hitting at all, it will not take any interest.
+
+[rochak agrawal] 08:51:26
+Yes. It is not going to take any new request, but whatever is running, it will keep running.
+
+[Megha U] 08:51:35
+Okay.
+
+[rochak agrawal] 08:51:35
+Okay? Because Cube API Server comes when you…
+
+[rochak agrawal] 08:51:41
+Or, let's say, uh, scheduler need to send some request to worker node, controller manager need to send some instruction to worker node.
+
+[rochak agrawal] 08:51:48
+That goes via KubeAPI server to Kubelet. But if the KubeAPI server is not there, your communication medium is gone, correct? So whatever is running will keep running like that. No changes at all. So if pod goes down, then there will not be a new pod created.
+
+[rochak agrawal] 08:52:04
+But till the time it is running, it will keep running.
+
+[Megha U] 08:52:13
+Yeah, bye.
+
+[rochak agrawal] 08:52:14
+I hope this is clear now.
+
+[Megha U] 08:52:20
+Yes, sir.
+
+[rochak agrawal] 08:52:21
+Okay.
+
+[rochak agrawal] 08:52:26
+Yes, question.
+
+[Kaushal] 08:52:27
+Yeah, then this becomes a single point of failure, right? If everything is done through KPIs, whatever.
+
+[rochak agrawal] 08:52:34
+Correct. Uh, yes. Uh, so that is where, uh, we can run our control plane also in multiple nodes. I'll come onto that, uh, Kaushal. So what happens is, uh, instead of, uh, so, uh, when you have multiple worker node.
+
+[rochak agrawal] 08:52:49
+You can have a multiple, uh, your…
+
+[rochak agrawal] 08:52:56
+multiple control node as well, okay? But at any point of time, um…
+
+[rochak agrawal] 08:53:03
+Only one node will act as a leader. So if this goes down, for example, then another will become the leader. So that is how you can introduce the high availability. But I'll come back to come to this at a later point. It will make things unnecessarily complicated at this moment. But yes, you are right.
+
+[rochak agrawal] 08:53:20
+Uh, if we are running it with a single node, it can become a single point of failure.
+
+[Kaushal] 08:53:24
+Okay.
+
+[rochak agrawal] 08:53:26
+But we can run our master node also at multiple.
+
+[rochak agrawal] 08:53:33
+instances. So that is not a challenge with Kubernetes.
+
+[rochak agrawal] 08:53:40
+Okay. Okay. Now we have another component called scheduler. Okay. So scheduler and controller very, very important.
+
+[rochak agrawal] 08:53:52
+for Kubernetes to be Kubernetes. Okay. So let's say, um.
+
+[rochak agrawal] 08:54:02
+cube scheduler, uh, now you will have, when I'm saying I have run the 60 node cluster, okay.
+
+[rochak agrawal] 08:54:11
+Then, if I'm… I want to deploy a container, container port, same thing. So, when I need to deploy a container, right, um…
+
+[rochak agrawal] 08:54:20
+Mm-hmm. Then, um…
+
+[rochak agrawal] 08:54:22
+You know, in which node the container will go.
+
+[rochak agrawal] 08:54:26
+I have, forget 60, let's say I have five nodes. Now one, node one, node two, node three, node four, node five. I want to deploy two containers. The container can go to node one, node two, node three, node four, node five. Where it will go, right?
+
+[rochak agrawal] 08:54:41
+So that decision scheduler is going to make.
+
+[rochak agrawal] 08:54:45
+So…
+
+[rochak agrawal] 08:54:47
+Control plane component that watches for the newly created pod.
+
+[rochak agrawal] 08:54:53
+With no assigned node.
+
+[rochak agrawal] 08:54:55
+and selects a node for them to run on.
+
+[rochak agrawal] 08:54:59
+Factors taken into account for scheduling decision include individual and collective resource requirement, uh, hardware, software policy constraint, affinity, node affinity, specification, data locality, uh, and multiple other things.
+
+[rochak agrawal] 08:55:13
+People from both, uh…
+
+[rochak agrawal] 08:55:16
+concept in Kubernetes, there is something called the taints and toleration, there is something called the node affinity, then we have node selector. So you will define all of that, right? So scheduler will analyze whatever the constraint you have defined, uh, then accordingly, it is going to select a right node.
+
+[rochak agrawal] 08:55:35
+for that particular workload, and it is going to deploy that workload on that particular node. Now, let's say I have a particular workload which I want to run on node number 51.
+
+[rochak agrawal] 08:55:46
+Right? So then, it is a duty of a scheduler that, um…
+
+[rochak agrawal] 08:55:50
+it should always go to node number 5. So that is what a scheduler does. It selects the right node for your workload.
+
+[rochak agrawal] 08:56:00
+Uh, of course, how it's going to select the right mode?
+
+[rochak agrawal] 08:56:03
+what are the constraints you have defined. So, for that, we will go through the taints and toleration, node affinity, and other detail. So, Kubernetes, your scheduler analyzes all of that, and then, based on that, it will select the best possible node for our workload, and it is going to place that pod onto that particular node.
+
+[rochak agrawal] 08:56:22
+Okay, uh, then comes the controller manager.
+
+[rochak agrawal] 08:56:27
+controller manager.
+
+[rochak agrawal] 08:56:30
+as the name itself is suggesting, okay? Control pill component that runs the controller processes. Now.
+
+[rochak agrawal] 08:56:38
+You see
+
+[rochak agrawal] 08:56:42
+In Kubernetes, and we have not gone into that level for now, so Kubernetes, there are multiple objects. For example, pod.
+
+[rochak agrawal] 08:56:53
+Service…
+
+[rochak agrawal] 08:57:01
+Notes, like the bucket notes, right?
+
+[rochak agrawal] 08:57:06
+blow a mint.
+
+[rochak agrawal] 08:57:11
+Service account.
+
+[rochak agrawal] 08:57:15
+I'm just giving a few examples.
+
+[rochak agrawal] 08:57:20
+There are multiple other type of the jobs. Is there one of them? And there will be others as well. Demon set is one of them.
+
+[rochak agrawal] 08:57:32
+So, the point is for every type of the Kubernetes object.
+
+[rochak agrawal] 08:57:37
+Okay, so these are called the Kubernetes object, okay? Everything, uh, it is going to consider as an object.
+
+[rochak agrawal] 08:57:45
+It will have its controller.
+
+[rochak agrawal] 08:57:58
+Okay.
+
+[rochak agrawal] 08:58:08
+Now, what is the role of a controller?
+
+[rochak agrawal] 08:58:12
+It is… so, let's say if I talk about the pod controller.
+
+[rochak agrawal] 08:58:17
+It is going to constantly monitor the cluster state.
+
+[rochak agrawal] 08:58:23
+And it will make sure that your cluster is running in a desired state. For example, I say, uh, I want to run…
+
+[rochak agrawal] 08:58:34
+instances of my application. So your five pod or slash container will be deployed. One, two, three…
+
+[rochak agrawal] 08:58:42
+4, 5, across different nodes, right?
+
+[rochak agrawal] 08:58:50
+So controller manager, inside the controller manager, your pod controller will keep watching if there are five containers are running or not.
+
+[rochak agrawal] 08:59:01
+Let's say, out of those.
+
+[rochak agrawal] 08:59:05
+3 got deleted. You go manually delete them, or something happened. Now your current count is 3?
+
+[rochak agrawal] 08:59:14
+And your desired count is 5, correct? So then it will automatically deploy to…
+
+[rochak agrawal] 08:59:22
+So the role of a controller is.
+
+[rochak agrawal] 08:59:29
+Rule of a controller is…
+
+[rochak agrawal] 08:59:33
+To make sure your cluster are always in a desired state. Now, as we say, node controller, it will be responsible for noticing and responding when the nodes goes down. Job controller watches for the job object that represent one of tasks.
+
+[rochak agrawal] 08:59:48
+So that is what it is going to happen.
+
+[rochak agrawal] 08:59:55
+So these are the different component of the Kubernetes architecture.
+
+[rochak agrawal] 09:00:01
+Clear till now. Any question?
+
+[rochak agrawal] 09:00:05
+We can add more components, right? Um, but…
+
+[rochak agrawal] 09:00:10
+Of course, those more components like logging agent, monitoring agent, those are some additional features if you don't need it, and you are going to add them whenever you need them. But these are the basic fundamental mandatory components of the Kubernetes cluster.
+
+[rochak agrawal] 09:00:28
+And…
+
+[rochak agrawal] 09:00:32
+It should be there for your cluster to function properly.
+
+[rochak agrawal] 09:00:35
+Okay? So, now before we go any other, uh, concept, we should be very clear about.
+
+[rochak agrawal] 09:00:43
+What… see, right now, what you need to understand.
+
+[rochak agrawal] 09:00:46
+what every component is doing. What is the role of every component? How it is doing, we'll see that. For example, we'll see KubeAPI server, we'll see scheduler, teams toleration, node affinity, and all of that. But right now, you need to understand what each component.
+
+[rochak agrawal] 09:01:01
+What is the role of each component, basically?
+
+[rochak agrawal] 09:01:10
+Yes, Vemma?
+
+[Vaibhav Gupta] 09:01:17
+So, um, basically…
+
+[Vaibhav Gupta] 09:01:22
+the scheduler, like…
+
+[Vaibhav Gupta] 09:01:24
+Mmm…
+
+[Vaibhav Gupta] 09:01:27
+We have to schedule for, uh, like, not…
+
+[Vaibhav Gupta] 09:01:31
+properly get the About Scheduler.
+
+[rochak agrawal] 09:01:33
+What is the question about?
+
+[Vaibhav Gupta] 09:01:36
+Like, what is the role of scheduler in it, like, control parallel?
+
+[rochak agrawal] 09:01:38
+The role of the scheduler is you have multiple nodes, right? Now, your nodes can be different. Some node will be small in size, some nodes will be larger in size. One may be Ubuntu, one may be Fedora, et cetera, right? See, you remember when we talked about the Jenkins slave agents, correct?
+
+[Vaibhav Gupta] 09:01:41
+Hmm.
+
+[Vaibhav Gupta] 09:01:50
+Okay.
+
+[Vaibhav Gupta] 09:01:55
+Mm-hmm.
+
+[rochak agrawal] 09:01:57
+Right? There can be multiple type of slaves. Right? You remember in Jenkins? So, for example, if you want to run a Mac OS build job, that is only going to run on a Mac machine, correct? Mac agent.
+
+[Vaibhav Gupta] 09:02:01
+Yeah.
+
+[rochak agrawal] 09:02:09
+Right? Similarly, here also, you can create multiple type of.
+
+[rochak agrawal] 09:02:14
+worker modes, okay? Now, let's say you want.
+
+[Vaibhav Gupta] 09:02:16
+Hmm.
+
+[rochak agrawal] 09:02:18
+a particular application to be running on a particular node.
+
+[rochak agrawal] 09:02:24
+See, if you're not defining any scheduling algorithm, by default, it will pick one of the node, and it is going to schedule your pod on that particular node, okay? But you want your customized scheduling. You say, no, I want my nginx to be running on node number 1 or 2.
+
+[Vaibhav Gupta] 09:02:24
+Okay.
+
+[rochak agrawal] 09:02:43
+Then you need to… then the scheduler roles comes, you will define a scheduling algorithm, and then while you are deploying your, uh…
+
+[rochak agrawal] 09:02:52
+application, it will see, okay, there is a scheduling algorithm defined for it. I cannot schedule it on every node which is available. I need to schedule it only on the node number 1 and 2.
+
+[rochak agrawal] 09:03:06
+So that is where scheduler comes into the picture. Scheduler takes all the configuration into the account, then selects the best node for your pod to run.
+
+[rochak agrawal] 09:03:17
+That is the role of a scheduler.
+
+[Vaibhav Gupta] 09:03:22
+Okay.
+
+[rochak agrawal] 09:03:23
+Okay.
+
+[Vaibhav Gupta] 09:03:23
+Mm-hmm.
+
+[rochak agrawal] 09:03:25
+If you are not defining any schedule, uh, for example, you have not defined any taints and toleration or something, uh… then it will pick up a default node, which is having the right resources. So, for example, now you see…
+
+[rochak agrawal] 09:03:43
+You cluster.
+
+[rochak agrawal] 09:03:45
+has multiple nodes, right? And then there are multiple ports are running, so then some cluster… some node will have 2GB space, some node will have 4GB space, some node will have 8GB space, correct?
+
+[rochak agrawal] 09:04:01
+Right, Vivo?
+
+[rochak agrawal] 09:04:07
+So then, in that case, what is going to happen? Let's say you are, uh, now…
+
+[rochak agrawal] 09:04:12
+Three nodes are available. Correct. But then when when your pod is going to deploy, it requires the six GB of space. So node one and node two is already out of the contention because they do not have the required resources available to host that board.
+
+[rochak agrawal] 09:04:27
+So that is a job of a scheduler. That is what a scheduler does. It checks the port's resource requirement, then it selects the best node according to the resource requirement.
+
+[Vaibhav Gupta] 09:04:39
+Okay.
+
+[rochak agrawal] 09:04:41
+Okay.
+
+[rochak agrawal] 09:04:48
+Years of this
+
+[avadhesh pathak] 09:04:51
+Yeah, hi, Rachel. Just wanted to understand, like, in Control Manager, we have the components known as all controllers, service controllers, or they are the roles performed by the controller manager.
+
+[rochak agrawal] 09:05:03
+Uh, Abdes, I'm sorry, your voice is not coming very clearly to me.
+
+[avadhesh pathak] 09:05:06
+Uh, just a moment, just a moment.
+
+[avadhesh pathak] 09:05:14
+Is it now audible proper to you?
+
+[rochak agrawal] 09:05:15
+Yes, yes, perfect. Yes, tell me.
+
+[avadhesh pathak] 09:05:18
+Yeah, so my question is, like, uh, the port controller, service controller, and node controller, these are all the components of the…
+
+[avadhesh pathak] 09:05:27
+The controller manager, or these are the roles performed by the controller manager?
+
+[rochak agrawal] 09:05:29
+Yeah, it's a single binary, uh, it's a single binary, uh, this, uh, so when you deploy the controller manager, it will deploy everything.
+
+[avadhesh pathak] 09:05:38
+Okay, so these are the role, right, or the components for…
+
+[rochak agrawal] 09:05:41
+Not the role, you can see the sub-processes inside the Controller Manager.
+
+[avadhesh pathak] 09:05:46
+Okay, okay, okay, okay, okay. Got it. And they have the different, different role, every process.
+
+[rochak agrawal] 09:05:51
+Kind of, see, um…
+
+[rochak agrawal] 09:05:54
+Port controller will only check for the ports, right? Job controller will check for the jobs, like that.
+
+[avadhesh pathak] 09:05:57
+Okay.
+
+[avadhesh pathak] 09:06:00
+Okay, got it.
+
+[rochak agrawal] 09:06:02
+Okay?
+
+[avadhesh pathak] 09:06:06
+Yeah, sure, sure.
+
+[rochak agrawal] 09:06:07
+Yes, you.
+
+[Jeevana D V] 09:06:11
+Yeah, hi, Rajat. Can you just…
+
+[Jeeva Koli] 09:06:12
+But
+
+[rochak agrawal] 09:06:14
+Yeah, Jigna. Go ahead.
+
+[Jeevana D V] 09:06:15
+Am I right? Yes. Um…
+
+[Jeevana D V] 09:06:17
+Yeah, can you just explain controller manager again? I lost the connectivity and I couldn't hear. Uh, I just heard till the components that you have listed.
+
+[rochak agrawal] 09:06:21
+Yep.
+
+[rochak agrawal] 09:06:24
+Sure. See? No problem.
+
+[rochak agrawal] 09:06:28
+No problem. See, basically, in the controller manager, CB will be defining our application configuration, node configuration, in a declarative fashion. And we discussed this in Jenkins also, what is the declarative syntax.
+
+[rochak agrawal] 09:06:44
+So what's going to happen is controller manager has different subcomponents like pod controller, job controller, and these are Kubernetes objects. So everything Kubernetes treats as an object, services, pods, deployment. We'll go through the definition about those in detail.
+
+[rochak agrawal] 09:07:01
+But just for example, everything is Kubernetes considered as an object. Now, let's say I'll take an example of a pod.
+
+[rochak agrawal] 09:07:09
+I deployed 5 pods, or 5 containers of an application. So now it is a pod controller responsibility that 5 containers, uh, 5 pods should be always up and running. Now, somehow, 2 pods got deleted. Then…
+
+[rochak agrawal] 09:07:23
+It is.
+
+[rochak agrawal] 09:07:27
+Control Manager will watch that my current state is now not matching with the desired state, so it will automatically deploy two more instances.
+
+[rochak agrawal] 09:07:37
+So, basically, the job of a controller manager is to.
+
+[rochak agrawal] 09:07:42
+Maintain the desired state of your cluster, which you have provided.
+
+[Jeevana D V] 09:07:48
+Okay.
+
+[rochak agrawal] 09:07:49
+Okay.
+
+[rochak agrawal] 09:07:54
+Yes, Adif.
+
+[arif] 09:08:01
+Yeah, so, Ruchak, so how this Kubernetes works on, like, a multi-cloud environment?
+
+[rochak agrawal] 09:08:06
+Yeah, that is my next, uh, point. So, this is, uh, let me explain that, Arif. So, you see, uh, there is one more component is there, Cloud Controller Manager.
+
+[rochak agrawal] 09:08:17
+Okay.
+
+[rochak agrawal] 09:08:18
+And then there's a cloud provider API. Now, so you can deploy Kubernetes in.
+
+[rochak agrawal] 09:08:28
+2 months.
+
+[rochak agrawal] 09:08:30
+Okay.
+
+[rochak agrawal] 09:08:37
+So you can deploy Kubernetes in, uh…
+
+[rochak agrawal] 09:08:41
+Two modes, one is DIY.
+
+[rochak agrawal] 09:08:44
+It means you do it yourself. I will…
+
+[rochak agrawal] 09:08:51
+install every component of the worker node on every worker node, whatever is there, or then I am going to install every component of, uh…
+
+[rochak agrawal] 09:09:00
+Your drone. No.
+
+[rochak agrawal] 09:09:03
+Master node. Okay.
+
+[rochak agrawal] 09:09:05
+Then you do it there.
+
+[rochak agrawal] 09:09:07
+Second thing is, you do it as a managed service.
+
+[rochak agrawal] 09:09:14
+Now, when you talk about the managed service, every cloud's major service is a Kubernetes service. In AWS, we have EKS.
+
+[rochak agrawal] 09:09:24
+In Azure, we have AKS. And in Google, we have GKE. Now, out of those, of course, GKE is the most powerful one. Reason being, Kubernetes itself is a Google product, was itself a Google product.
+
+[rochak agrawal] 09:09:38
+So they have some inherent inbuilt functionality, which is… they are going to give you, but…
+
+[rochak agrawal] 09:09:45
+Most of them are common, as, uh, they…
+
+[rochak agrawal] 09:09:48
+EKS Elastic Kubernetes Service, EKS Azure Kubernetes Service. Now, what is going to happen?
+
+[rochak agrawal] 09:09:55
+They say every cloud will say.
+
+[rochak agrawal] 09:10:00
+Okay, now believe me, managing Kubernetes, it's a very tough task.
+
+[rochak agrawal] 09:10:10
+Because you need to install every component separately, and then, um…
+
+[rochak agrawal] 09:10:15
+There is a hell lot of a problem with the version management.
+
+[rochak agrawal] 09:10:19
+every… so, for example, you deployed ETCD 1.32 Cube API server 1.35, and then some upgrade come in Cube API server, you upgraded Cube API, and then it is not working with, uh, ETCD, that's a hell…
+
+[rochak agrawal] 09:10:34
+A lot of problem was there. Okay. So they say okay.
+
+[rochak agrawal] 09:10:40
+We are going to manage the control plane for you.
+
+[rochak agrawal] 09:10:45
+Okay? Simply.
+
+[rochak agrawal] 09:10:48
+We are going to manage the control plane for you. Now what you do, this you think does not exist.
+
+[rochak agrawal] 09:11:05
+This, you think?
+
+[rochak agrawal] 09:11:07
+Does not exist for you.
+
+[rochak agrawal] 09:11:10
+Okay.
+
+[rochak agrawal] 09:11:13
+You don't need to manage it.
+
+[rochak agrawal] 09:11:15
+We are going to give you the Cube API server endpoint.
+
+[rochak agrawal] 09:11:20
+We will provision master node or the control plane, and we will give you the Kube API server API. You hit the API and then you provision the worker node.
+
+[rochak agrawal] 09:11:32
+And on the worker node also, they will install all these, uh, component, uh, what is needed. Uh, they will connect it to…
+
+[rochak agrawal] 09:11:40
+version, upgrade, everything, which they are going to take care. So then, in that case, if you want to use the managed services of the Kubernetes, you will be given the KubeAPI server endpoint, which you will be hitting. So all those scheduler.
+
+[rochak agrawal] 09:11:55
+Controller Manager, ETCD.
+
+[rochak agrawal] 09:11:59
+Will be the responsibility.
+
+[rochak agrawal] 09:12:00
+when I'm saying the responsibility of the cloud service provider, responsibility of installing and managing them. But if you, let's say.
+
+[rochak agrawal] 09:12:11
+Want to define a scheduling algorithm.
+
+[rochak agrawal] 09:12:13
+See, every request goes via the QAPI server only, correct? So you define your configuration and you submit it.
+
+[rochak agrawal] 09:12:19
+So that configuration you will manage, but the infra layer, the installing of this component, managing of this component, version updating of this component.
+
+[rochak agrawal] 09:12:32
+will be done by the cloud service provider. So that is how it is going to work in a cloud environment. And regarding this worker node, also.
+
+[rochak agrawal] 09:12:41
+Let's say they are running on 1.36, for example.
+
+[rochak agrawal] 09:12:45
+you will just go and tell the cloud service provider, okay, they are on 1.36, now upgraded to 1.37. It's a single-click update as of now. It will take some time, but it's a single-click Kubernetes update as of now.
+
+[rochak agrawal] 09:13:00
+I'm telling you, it was one of…
+
+[rochak agrawal] 09:13:04
+the most, most tedious task when it is upgraded. I remember, um…
+
+[rochak agrawal] 09:13:09
+In 2019, I was managing 3 clusters, and every…
+
+[rochak agrawal] 09:13:14
+quarter, we are spending 3 weeks just to upgrading the clusters. You will still do if you are managing a DIY. And the reason why you need to upgrade it so frequently is.
+
+[rochak agrawal] 09:13:27
+Kubernetes only supports N-2 version, where N is the latest release, okay? So if currently 1.35 is running.
+
+[rochak agrawal] 09:13:41
+then only 1.33 is supported. If you are on 1.32 or 1.31, then you are on your own. If some issues come, some bugs come.
+
+[rochak agrawal] 09:13:53
+no one is going to support you. So, Kubernetes upgrades are the very, very, very important part of any of the Kubernetes cluster, and that is why.
+
+[rochak agrawal] 09:14:04
+70-80%, I would say 80-85% clusters, you would see, nowadays, they are the cloud clusters.
+
+[rochak agrawal] 09:14:14
+either on GKE, AKS, or EKS, because managing Kubernetes cluster in itself is a…
+
+[rochak agrawal] 09:14:21
+It's a big thing.
+
+[rochak agrawal] 09:14:22
+So that is how they run on a cloud environment.
+
+[rochak agrawal] 09:14:44
+Yeziva
+
+[Jeeva Koli] 09:14:47
+Uh, like, in a Docker file, we write for the, like, creating and all, like, declarative way. So, in a Kubernetes, what file we write?
+
+[rochak agrawal] 09:14:51
+Hmm.
+
+[rochak agrawal] 09:14:55
+Okay, so here, there are two things, uh…
+
+[rochak agrawal] 09:15:10
+You see?
+
+[rochak agrawal] 09:15:12
+Let's see, this is…
+
+[rochak agrawal] 09:15:16
+Abort.
+
+[rochak agrawal] 09:15:20
+Now, inside a pod, what is going to run?
+
+[Jeeva Koli] 09:15:25
+Continuous.
+
+[rochak agrawal] 09:15:32
+How container runs?
+
+[rochak agrawal] 09:15:40
+From the image.
+
+[rochak agrawal] 09:15:42
+Connect?
+
+[Jeeva Koli] 09:15:44
+Right.
+
+[rochak agrawal] 09:15:44
+How image you are going to create?
+
+[rochak agrawal] 09:15:47
+From the docker file.
+
+[rochak agrawal] 09:15:53
+Correct?
+
+[Jeeva Koli] 09:15:55
+Okay.
+
+[rochak agrawal] 09:15:56
+So, you are still going to write the Dockerfile for creating the image.
+
+[rochak agrawal] 09:16:02
+Okay.
+
+[rochak agrawal] 09:16:03
+But instead of running it as a container, I will, so there is Kubernetes spec file is written, which is called the pod.yaml.
+
+[rochak agrawal] 09:16:13
+You can give any name, it is…
+
+[rochak agrawal] 09:16:17
+bot.yaml.
+
+[rochak agrawal] 09:16:18
+where I will be referencing this image, basically.
+
+[rochak agrawal] 09:16:23
+Okay, so we will see how to write this pod.yaml, very easy to write, but instead of running it as a container, since I'm running it as a pod.
+
+[rochak agrawal] 09:16:32
+I will reference the image, but for creating the image, you will still write the Docker file.
+
+[rochak agrawal] 09:16:37
+Image is going to create the same way. It is just you are running… you're not running them as a container, you're… now you're running it as a pod, so that we are going to run it as a pod.yaml, write it as a pod.yaml. Everything, so in Kubernetes, you want to write a service, you want to write a deployment, you want to write a config map.
+
+[rochak agrawal] 09:16:57
+Everything, it's a YAML file. And it is very easy, very fixed indexes there. We'll see that. So you see, to answer your question, images are still being maintained, built by the Dockerfile.
+
+[rochak agrawal] 09:17:11
+But that image will be referenced in your pod.yaml file to run it as a pod.
+
+[Jeeva Koli] 09:17:19
+Okay, I have to write two files, right? Like, uh…
+
+[rochak agrawal] 09:17:22
+Yes, yes, yes. One is for creating the image. See, when you were…
+
+[rochak agrawal] 09:17:30
+Running a container, you might be running the command, for example.
+
+[rochak agrawal] 09:17:39
+Talk and run.
+
+[rochak agrawal] 09:17:41
+Hyphen, hyphen, name.
+
+[rochak agrawal] 09:17:43
+And genetics.
+
+[rochak agrawal] 09:17:44
+And you get the image in NGINX, for example.
+
+[rochak agrawal] 09:17:49
+Correct, or…
+
+[rochak agrawal] 09:17:51
+1.0.
+
+[rochak agrawal] 09:17:53
+Something like that, right? We have given it. So this is an image, correct? Nginx 1.10.
+
+[rochak agrawal] 09:18:00
+You… this image you have written, uh, created using a Dockerfile, correct?
+
+[Jeeva Koli] 09:18:06
+Got it.
+
+[rochak agrawal] 09:18:06
+The same thing you are going to do here, it is just now this NGINX 1.10, you will reference it in a pod.yaml.
+
+[rochak agrawal] 09:18:16
+That's it. So, yes, you need to write two files. One is Docker file, which is same as before.
+
+[rochak agrawal] 09:18:20
+You need to write one additional file, which is a pod.yaml.
+
+[rochak agrawal] 09:18:25
+Or I would say the YAML file, because we can write it as a deployment.yaml also.
+
+[rochak agrawal] 09:18:30
+So Kubernetes is a specific file you need to write, which is going to reference that image.
+
+[rochak agrawal] 09:18:37
+We'll see all of that, don't worry about it.
+
+[Jeeva Koli] 09:18:37
+Okay.
+
+[Jeeva Koli] 09:18:41
+Uh, just for overview, if I write two files, how the communication happens, the workflow in the process, like, who handles which requests? Can you just, you know, overview, like, in a broader way? Or, using the diagram, can we understand that?
+
+[rochak agrawal] 09:18:52
+Okay.
+
+[Jeeva Koli] 09:18:57
+connect the points, the component, like, it comes to the control manager, or… I'm not sure, actually, but…
+
+[rochak agrawal] 09:19:03
+That is what we… that is what we are explaining from here. So, any request is coming, uh…
+
+[Jeeva Koli] 09:19:11
+Like, if I write both the files, what happens? Like, this… you do… yeah.
+
+[rochak agrawal] 09:19:15
+See, you don't need to mix two things, okay?
+
+[rochak agrawal] 09:19:20
+In…
+
+[rochak agrawal] 09:19:22
+you are doing image creation separately, you are running Kubernetes separately, correct?
+
+[rochak agrawal] 09:19:28
+Here, it is… it is a runtime platform.
+
+[rochak agrawal] 09:19:30
+When you go watch a movie, do you… do you…
+
+[Jeeva Koli] 09:19:31
+Right.
+
+[rochak agrawal] 09:19:35
+ask how this movie is created, where you have done the shooting, you watch the movie, it's a runtime media.
+
+[Jeeva Koli] 09:19:41
+Right.
+
+[rochak agrawal] 09:19:42
+Okay.
+
+[Jeeva Koli] 09:19:43
+Yes.
+
+[rochak agrawal] 09:19:45
+When I say kubectl run deployment, kubectl run pod, I have already created my Docker image.
+
+[rochak agrawal] 09:19:54
+Correct.
+
+[Jeeva Koli] 09:19:56
+Yes.
+
+[rochak agrawal] 09:19:57
+that image, I referenced it in my .yaml file, so whenever I'm passing that YAML file, the request goes to the Kube API server.
+
+[rochak agrawal] 09:20:08
+QM API server will validate the credentials of the user who have sent the request.
+
+[rochak agrawal] 09:20:13
+If it is a valid request, then it will go, pass it to the scheduler, and scheduler is going to schedule the ports on the required nodes. And then, once it is deployed, then Controller Manager will keep.
+
+[rochak agrawal] 09:20:29
+Watching if it is running in a desired state or not.
+
+[rochak agrawal] 09:20:32
+So that is the high level flow.
+
+[rochak agrawal] 09:20:39
+So, any request will go to the KubeAPI server, then it goes to the scheduler, and then, once it is deployed, then your controller manager will watch it.
+
+[Jeeva Koli] 09:20:40
+Okay.
+
+[rochak agrawal] 09:20:52
+Okay?
+
+[rochak agrawal] 09:20:55
+So that is about the Kubernetes architecture. This is one of the most, most common interview question.
+
+[Jeeva Koli] 09:20:55
+Yeah, good.
+
+[rochak agrawal] 09:21:04
+Because if you are able to explain Kubernetes architecture, someone say, I'm working on Kubernetes, and they… if they are not able to answer, uh, not able to explain Kubernetes architecture.
+
+[rochak agrawal] 09:21:17
+this is… people will think that it's of no use, right? So that is where understanding the architecture is very, very important, and if you want to read more, uh… and…
+
+[rochak agrawal] 09:21:29
+you can go to this… I have taken this image from the reference official…
+
+[rochak agrawal] 09:21:35
+documentation itself. So you can read more about it here as well.
+
+[rochak agrawal] 09:21:40
+So we have ETCD. And if you want to know about ETCD mode.
+
+[rochak agrawal] 09:21:45
+ETC itself is a separate database. Okay. So.
+
+[rochak agrawal] 09:21:51
+It's a best place to read about Kubernetes. You do not need to go about anywhere. You can go to the Kubernetes documentation, okay, and buy Kubernetes, components of the Kubernetes, which we discussed.
+
+[rochak agrawal] 09:22:06
+So, cloud provider API, control plane, ETCD.
+
+[rochak agrawal] 09:22:11
+There's a multiple worker nodes are there. So API server, cloud controller manager again is optional. If you're using the AKS, EKS, then the controller manager, ETCD, kubelet, kube proxy, scheduler, all those things which we have discussed, right?
+
+[rochak agrawal] 09:22:28
+So it's a good place to read about the Kubernetes, so if someone wants, you can go to the official documentation, and then…
+
+[rochak agrawal] 09:22:37
+You read about it more in detail.
+
