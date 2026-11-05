@@ -1,0 +1,3135 @@
+[rochak agrawal] 07:40:43
+So, pod is basically the smallest deployable unit in Kubernetes, uh, right? Uh, so, for example, uh, it… you can run a pod in a, uh, say.
+
+[rochak agrawal] 07:40:44
+You can run a single container in a pod, or you can run multiple containers in a pod altogether. Right? So, now, what's going to happen? Uh, we are going to see another object in Kubernetes, which we will call it as a services.
+
+[rochak agrawal] 07:41:01
+Now…
+
+[rochak agrawal] 07:41:03
+Just give me a second
+
+[rochak agrawal] 07:41:33
+Okay.
+
+[rochak agrawal] 07:41:35
+So now we are going to discuss about the services.
+
+[rochak agrawal] 07:41:40
+And the… see, the thing is, why do we need services, right? So, in our last class also, we have seen that when you…
+
+[rochak agrawal] 07:41:47
+So when you create a pod.
+
+[rochak agrawal] 07:41:49
+it is going to get an IP, okay? When you delete that port.
+
+[rochak agrawal] 07:41:56
+or the pod is getting restarted itself, the IPs are going to change, right? So this is the IPs are ephemeral.
+
+[rochak agrawal] 07:42:05
+Every restart can produce a new IP address, right? So if we go in a little detail, so the Kubernetes network model is built out of several pieces. Now, each pod in a cluster.
+
+[rochak agrawal] 07:42:21
+Gets its unique.
+
+[rochak agrawal] 07:42:24
+cluster-wide IP address. So a pod has its own private network namespace, which is shared by all of the containers in a pod.
+
+[rochak agrawal] 07:42:32
+Process running in a different container in the same pod can communicate with each other.
+
+[rochak agrawal] 07:42:38
+The port network handles communication between the ports, so all ports can communicate with all other ports, whether they are on the same node or a different node, so that we discuss that with the help of Q proxy, this is possible.
+
+[rochak agrawal] 07:42:54
+Agent on the node can communicate with all the ports on that particular node.
+
+[rochak agrawal] 07:43:00
+Hey, so now…
+
+[rochak agrawal] 07:43:05
+Service API, um…
+
+[rochak agrawal] 07:43:08
+will provide you a long-lived IP address or the hostname for the service, implemented by one or more backend pods, where the individual pods making up the services can change over the time.
+
+[rochak agrawal] 07:43:23
+Okay, now…
+
+[rochak agrawal] 07:43:32
+How a service? So what is a service?
+
+[rochak agrawal] 07:43:37
+Services expose an application running in your cluster behind a single outward-facing endpoint, even when the workload is split across multiple backends.
+
+[rochak agrawal] 07:43:51
+Understand it. So, for example.
+
+[rochak agrawal] 07:43:59
+Your cluster is going to be having multiple nodes.
+
+[rochak agrawal] 07:44:06
+Correct? Now, when you run your deployment, right, application as a deployment, and I'm seeing 4 replicas.
+
+[rochak agrawal] 07:44:12
+So then, let's say one replica is sitting here, one is sitting here, one is sitting here, one is sitting here, correct? So, now…
+
+[rochak agrawal] 07:44:24
+when Kubernetes pod is going to get an IP, the IP is going to be the internal IP, so that pods can communicate with each other. But how an external user is going to access your application, and that is where.
+
+[rochak agrawal] 07:44:40
+Your services come into the picture. Services sits here.
+
+[rochak agrawal] 07:44:44
+for example. Okay, again, it's a logical construct. It does not need to be on a particular node.
+
+[rochak agrawal] 07:44:52
+So, service get a fixed IP.
+
+[rochak agrawal] 07:44:59
+So this resolved the first problem, um, that your IP keep changing, right? So when the service get the fixed IP, you do not need to worry about if, let's say, this pod got deleted.
+
+[rochak agrawal] 07:45:14
+And there is another pod get created. So then you do not need to worry because your end user are reaching here.
+
+[rochak agrawal] 07:45:24
+Correct. And then, um…
+
+[rochak agrawal] 07:45:28
+Service will automatically distribute the traffic.
+
+[rochak agrawal] 07:45:32
+to your backend ports. So, it acts as the load balancer altogether. So, it exposes an application. Now, IP…
+
+[rochak agrawal] 07:45:42
+It can be public IP.
+
+[rochak agrawal] 07:45:47
+So that your end users are going to.
+
+[rochak agrawal] 07:45:56
+Your end user will be able to access, uh…
+
+[rochak agrawal] 07:46:01
+the application. So service expose an application running in your cluster behind a single outward-facing endpoint. So this is…
+
+[rochak agrawal] 07:46:11
+Board facing endpoint.
+
+[rochak agrawal] 07:46:14
+Even when the workload is split across multiple backends.
+
+[rochak agrawal] 07:46:19
+So in Kubernetes, a service is a method for exposing a network application that is running as one or more pods in your cluster.
+
+[rochak agrawal] 07:46:31
+So the key aim of the services in Kubernetes is that you do not need to modify your existing application to use an unfamiliar service discovery mechanism. We can run the code in the ports, whether this is the code designed for the cloud-native world or an older app you containerize.
+
+[rochak agrawal] 07:46:50
+We can use the service to make that set of pods available.
+
+[rochak agrawal] 07:46:54
+on the network so that client can interact with it.
+
+[rochak agrawal] 07:47:01
+Now, when you use a deployment to run our application, that the deployment can create and destroy pods dynamically. From one moment to the next, we do not know how many of these pods are working and healthy, so we might not even know what those healthy pods are named.
+
+[rochak agrawal] 07:47:16
+So Kubernetes pods are created and destroyed to match the desired state of the cluster. Each pod will get its own IP address. So for a given deployment in your cluster, the set of pod.
+
+[rochak agrawal] 07:47:29
+Running in one moment in a time could be different from the set of code running that application.
+
+[rochak agrawal] 07:47:37
+moments later. And that's exactly where the services comes into the picture. The service API part of the Kubernetes is an abstraction to help you.
+
+[rochak agrawal] 07:47:48
+Expose group of pods over a network.
+
+[rochak agrawal] 07:47:53
+Each service object define a logical set of endpoint along with a policy about how to make these pods accessible. So for example, consider a stateless image processing backend, which is running with three replicas.
+
+[rochak agrawal] 07:48:08
+Those replicas are fungible. Frontend do not care which backend they use, while the actual port that composes the backend, uh…
+
+[rochak agrawal] 07:48:18
+may change. The front-end client should not need to be aware of that, nor should they need to keep track the set of the backend themselves.
+
+[rochak agrawal] 07:48:27
+And the service abstraction enables this decoupling, right? So there is multiple type of the services is there. We are going to discuss that, but service is an object.
+
+[rochak agrawal] 07:48:38
+Same way your pod and deployment work, we can create, view, or modify the services definition using the Kubernetes API.
+
+[rochak agrawal] 07:48:49
+Right? And then we are going to create the services.yaml, and then we are going to apply those services.yaml, which in terms going to create the services for you.
+
+[rochak agrawal] 07:49:03
+Now…
+
+[rochak agrawal] 07:49:08
+In the services, very importantly, we need to define the ports.
+
+[rochak agrawal] 07:49:14
+Now, before I go, um…
+
+[rochak agrawal] 07:49:18
+Let me create some demo services.
+
+[rochak agrawal] 07:49:48
+Okay.
+
+[rochak agrawal] 07:50:00
+Let me take the YAML file.
+
+[rochak agrawal] 07:50:27
+Now you can see it, yeah.
+
+[rochak agrawal] 07:50:30
+So, we are running the pod like this, correct? API version, V1 type, metadata, name, NGINX, level, uh…
+
+[rochak agrawal] 07:50:40
+And then, specification of a container, name NGINX, image NGINX table.
+
+[rochak agrawal] 07:50:46
+Uh, port, container port, 80 HTTP.
+
+[rochak agrawal] 07:50:48
+See, so if I'm going to create.
+
+[rochak agrawal] 07:50:53
+Now, similarly, we can write…
+
+[rochak agrawal] 07:50:56
+the services. The kind is services, metadata is this, selector is this, port, name of the service port, protocol TCP, port 80, target port is HTTP web SBC.
+
+[rochak agrawal] 07:51:08
+Okay. Now here you see.
+
+[rochak agrawal] 07:51:12
+There is two very important concept out there. One is the ports.
+
+[rochak agrawal] 07:51:17
+Okay, uh, and then banish selector.
+
+[rochak agrawal] 07:51:22
+Okay, now you see how… see, for example.
+
+[rochak agrawal] 07:51:34
+Let's say I have this nginx ports running.
+
+[rochak agrawal] 07:51:43
+Okay, and here I have Jenkins Sport running.
+
+[rochak agrawal] 07:51:52
+Okay, I created two services.
+
+[rochak agrawal] 07:51:57
+Manage Nginx service. Manage Jenkins service.
+
+[rochak agrawal] 07:52:02
+Now, how my service will know that.
+
+[rochak agrawal] 07:52:06
+This need to send the traffic to this port.
+
+[rochak agrawal] 07:52:09
+And this need to send the traffic to this port.
+
+[rochak agrawal] 07:52:13
+Correct. If the Jenkins service will send the traffic to NGINX pod, it doesn't make sense. Right? And that is where, uh, the concept of, uh…
+
+[rochak agrawal] 07:52:23
+labels and selectors comes into the picture. So what is going to happen? I am going to assign a label to these bots.
+
+[rochak agrawal] 07:52:30
+Let's say Nginx.
+
+[rochak agrawal] 07:52:38
+Or…
+
+[rochak agrawal] 07:52:46
+Jenkins, right? And then…
+
+[rochak agrawal] 07:52:49
+I am going to tell this service as a form of a selector.
+
+[rochak agrawal] 07:52:56
+Select only Nginx Pod.
+
+[rochak agrawal] 07:53:02
+Here we can say select only Jenkins Bond.
+
+[rochak agrawal] 07:53:06
+So that is how we are going to bind our services and the application. Application could be in a form of a pod or in a form of a deployment. And that's exactly what we are going to do here. So here you can say I'm assigning a level.
+
+[rochak agrawal] 07:53:23
+Great.
+
+[rochak agrawal] 07:53:25
+apps.kubernetes. I can give any level here. So for example, I can say name is equal to nginx.
+
+[rochak agrawal] 07:53:35
+Okay, and here I will say selector may select in selector also name is equal to.
+
+[rochak agrawal] 07:53:43
+NGINX. What does it mean? It says it needs to send the traffic to the application, which is having the selector, which is having the name labeled as a name NGINX. It is going to select only those ports.
+
+[rochak agrawal] 07:53:57
+That's the one thing. So label and selector is not only applicable for services, it is going to be applicable across a wide variety of use cases when we will see about the volume, so config map, et cetera, et cetera. And that is where also it is going to come very handy.
+
+[rochak agrawal] 07:54:16
+Right? And then the second thing is the port.
+
+[rochak agrawal] 07:54:21
+port and target port, two of the field we are going to define. Now, it is very similar to, um, when we were running your, uh.
+
+[rochak agrawal] 07:54:29
+Let's say when we used to run containers.
+
+[rochak agrawal] 07:54:35
+Let's say this is my container running. So we used to do the mapping between the…
+
+[rochak agrawal] 07:54:47
+Ostford?
+
+[rochak agrawal] 07:54:51
+And container board.
+
+[rochak agrawal] 07:54:55
+Correct? So, this is exactly the same. Here.
+
+[rochak agrawal] 07:55:00
+on the cluster which port it should be, and then where your container is running. So container is running on this HTTP SBC, which is your AT port. So target port is where your container is running.
+
+[rochak agrawal] 07:55:16
+And the port where your service is going to listen to your…
+
+[rochak agrawal] 07:55:27
+Uh, service is where, uh, a port is where your service is going to listen to.
+
+[rochak agrawal] 07:55:32
+Okay?
+
+[rochak agrawal] 07:55:35
+Killier till now?
+
+[rochak agrawal] 07:55:36
+Any question?
+
+[rochak agrawal] 07:55:47
+Yes, we will.
+
+[Vaibhav Gupta] 07:55:49
+Uh, if we took a same name of a selector and label, that, um, did that create an, uh, issue?
+
+[rochak agrawal] 07:55:53
+Hmm?
+
+[rochak agrawal] 07:55:57
+See, it is not going to create an issue.
+
+[rochak agrawal] 07:56:01
+Just, uh, so let's say…
+
+[rochak agrawal] 07:56:06
+See, when you are saying when I'm going to give the same name, so instead of Jenkins, you are going to give NGINX here as well, correct?
+
+[Vaibhav Gupta] 07:56:13
+Mm-hmm.
+
+[rochak agrawal] 07:56:14
+That is what you are seeing, correct?
+
+[Vaibhav Gupta] 07:56:16
+Wait.
+
+[rochak agrawal] 07:56:17
+Right? And here I have selected the NGINX, right? Uh, then this service, instead of sending the traffic to 3, it is going to start sending to these 6, correct?
+
+[Vaibhav Gupta] 07:56:20
+Hmm.
+
+[Vaibhav Gupta] 07:56:28
+Hmm.
+
+[rochak agrawal] 07:56:28
+But the problem is now you define the port also, you have defined this something called the target port, correct?
+
+[Vaibhav Gupta] 07:56:38
+Okay, okay.
+
+[rochak agrawal] 07:56:38
+Which is port 80, correct?
+
+[Vaibhav Gupta] 07:56:40
+Hmm.
+
+[rochak agrawal] 07:56:41
+Now, Jenkins don't listen on port 80, it listens on port 800, for example.
+
+[rochak agrawal] 07:56:47
+Correct. Now, when this service will send the traffic here and try to listen on port 80, will it work?
+
+[rochak agrawal] 07:56:55
+No, because on port 80 there is nothing running.
+
+[rochak agrawal] 07:57:00
+Right? See, first, it is unwarranted, because I do not want my NGINX traffic to send to Jenkins port, correct?
+
+[Vaibhav Gupta] 07:57:05
+Mm-hmm.
+
+[rochak agrawal] 07:57:06
+Second thing…
+
+[rochak agrawal] 07:57:08
+Even though if you're sending the traffic, there is nothing running on it.
+
+[rochak agrawal] 07:57:12
+Right.
+
+[rochak agrawal] 07:57:12
+So, then what it is going to do, it is going to mark these instances unhealthy, and then it is keep sending the traffic to these healthy instances. That's the first thing.
+
+[rochak agrawal] 07:57:24
+Now, let's say instead of NGINX, you are running some application on port 80.
+
+[rochak agrawal] 07:57:29
+then, see, um, there is no issue as such. Let's say if there is another application is running, or another web server is running on port 80, then it is going to serve the traffic from here as well.
+
+[rochak agrawal] 07:57:41
+But, do you really want that? It is going to, uh…
+
+[rochak agrawal] 07:57:45
+It is going to create a conflict for you, correct? So…
+
+[rochak agrawal] 07:57:50
+depend on that, what type of application you are running, you can get the same… and see, that is where you need to… and that's the whole purpose of defining those YAML files.
+
+[rochak agrawal] 07:58:02
+So that you can define the right configuration.
+
+[Vaibhav Gupta] 07:58:06
+Wait.
+
+[rochak agrawal] 07:58:06
+Right? You can do that, but then, of course, it is not going to, uh, yield the right functionality which you want.
+
+[rochak agrawal] 07:58:15
+Eddie?
+
+[rochak agrawal] 07:58:23
+Okay, anyone else?
+
+[rochak agrawal] 07:58:31
+Okay, uh, now…
+
+[rochak agrawal] 07:58:35
+Okay.
+
+[rochak agrawal] 07:58:40
+Now, we have seen the basic definition of a service. What is a service? Service is an abstraction over the top of your application. Either it could be a pod.
+
+[rochak agrawal] 07:58:51
+Or it could be a, um…
+
+[rochak agrawal] 07:58:55
+Your deployment, right? Um…
+
+[rochak agrawal] 07:58:58
+And then it gives you a fixed IP so that you can access your application.
+
+[rochak agrawal] 07:59:03
+And then it is going to do the load distribution altogether. Now, very importantly.
+
+[rochak agrawal] 07:59:11
+There are three types of services.
+
+[rochak agrawal] 07:59:18
+Okay, so service we discuss.
+
+[rochak agrawal] 07:59:20
+So selector, uh, decides the membership readiness. Readiness, we'll come back later on, and membership is continuous. Now…
+
+[rochak agrawal] 07:59:30
+This is also be discussed now. Service type.
+
+[rochak agrawal] 07:59:34
+Service, there is three type of the services, very important.
+
+[rochak agrawal] 07:59:39
+This is, again, one of the very common questions. Just simply, what is the type of the services you…
+
+[rochak agrawal] 07:59:49
+have in your Kubernetes cluster.
+
+[rochak agrawal] 07:59:52
+Understand this. Any questions?
+
+[rochak agrawal] 07:59:55
+Okay? Now, there is three type of service. One is a cluster IP.
+
+[rochak agrawal] 08:00:01
+Cluster IP is the default type of the service, okay? So, when you do not define the type of the service, it is going to be created as a cluster IP service. So, for example, here.
+
+[rochak agrawal] 08:00:15
+in this service definition, I have not defined the type of the service, okay? Correct? Can you see that? So…
+
+[rochak agrawal] 08:00:23
+When I'm going to create the service, so let me just create the service.
+
+[rochak agrawal] 08:00:43
+Okay, so give CPL…
+
+[rochak agrawal] 08:00:45
+Get SBC.
+
+[rochak agrawal] 08:00:49
+So, currently, there is only one services there, okay? Now, if I'm going to run KTL…
+
+[rochak agrawal] 08:00:56
+Lie.
+
+[rochak agrawal] 08:01:22
+Okay? Now, if you run…
+
+[rochak agrawal] 08:01:31
+So you can see you have two service, Nginx service, and this is a cluster IP type of a service got created. Can you see that?
+
+[rochak agrawal] 08:01:41
+And if you see, uh, the IP has been assigned, and it says external IP is none.
+
+[rochak agrawal] 08:01:49
+Okay, now what is the reason for that is, um…
+
+[rochak agrawal] 08:01:55
+By default, when you create a service, it is going to be a cluster IP type of a service, okay?
+
+[rochak agrawal] 08:02:03
+Create, uh…
+
+[rochak agrawal] 08:02:05
+Other type of the services, uh…
+
+[rochak agrawal] 08:02:15
+Right? So, cluster IP means it is…
+
+[rochak agrawal] 08:02:19
+The default, we have seen that. Internal only service to service traffic inside the cluster.
+
+[rochak agrawal] 08:02:26
+Now understand, read others
+
+[rochak agrawal] 08:02:29
+Internal. Means any traffic happening within the internet, oh, sorry, within the cluster.
+
+[rochak agrawal] 08:02:36
+So service to service traffic inside the cluster, very, very important. Now let's say.
+
+[rochak agrawal] 08:02:43
+when you are going to use the cluster IP.
+
+[rochak agrawal] 08:02:51
+Let's say I have…
+
+[rochak agrawal] 08:02:53
+5 for…
+
+[rochak agrawal] 08:02:58
+Running for web server.
+
+[rochak agrawal] 08:03:03
+Okay.
+
+[rochak agrawal] 08:03:05
+Now they can run across the note, forget the notes for a moment.
+
+[rochak agrawal] 08:03:09
+Now this is my web layer.
+
+[rochak agrawal] 08:03:18
+And similarly, there are, uh…
+
+[rochak agrawal] 08:03:30
+5 port running for App Server.
+
+[rochak agrawal] 08:03:34
+Number could be anything.
+
+[rochak agrawal] 08:03:40
+Now we know that this all is inside a cluster, correct?
+
+[rochak agrawal] 08:03:45
+Now when these web servers, web pods need to talk to the application pod, again the same problem, your pod is going to change your IP, there is no one single abstraction there, blah, blah, blah. So then what you're going to do, you are going to create a service.
+
+[rochak agrawal] 08:04:06
+Your application pod, or sorry, web pod, is talking to the service, and then the service will send the communication to the application pod.
+
+[rochak agrawal] 08:04:19
+Now you see this traffic
+
+[rochak agrawal] 08:04:24
+is within the cluster, right? Within its internal, it's a service to service communication. So for those type of communication, you are going to use a service type called cluster.
+
+[rochak agrawal] 08:04:41
+Okay. So cluster IP expose the services on the cluster internal IP.
+
+[rochak agrawal] 08:04:49
+Choosing this value makes a service only reachable within the cluster. This is the default that is used if you do not explicitly specify a type of the service.
+
+[rochak agrawal] 08:05:04
+Okay? Second service is a notebook service.
+
+[rochak agrawal] 08:05:10
+A cluster IP plus a static port on every node reachable from the outside via the node IP.
+
+[rochak agrawal] 08:05:21
+Read this line. Now, let's say…
+
+[rochak agrawal] 08:05:24
+You clear about the cluster IP? Any question?
+
+[Vaibhav Gupta] 08:05:31
+Protect your voice is breaking in between.
+
+[rochak agrawal] 08:05:36
+Okay, but I'm not sure, uh…
+
+[rochak agrawal] 08:05:40
+I'm using the same…
+
+[rochak agrawal] 08:05:47
+Check my headphone response.
+
+[rochak agrawal] 08:05:59
+Okay, on.
+
+[rochak agrawal] 08:06:00
+Better now? A little bit?
+
+[Vaibhav Gupta] 08:06:04
+Yeah, it's a little bit better.
+
+[rochak agrawal] 08:06:04
+Yeah, okay. So, I was explaining this cluster IP, but any question with the cluster IP?
+
+[Vaibhav Gupta] 08:06:13
+No, no, got it.
+
+[rochak agrawal] 08:06:14
+No, okay. Now, the second type of the service is a node port. Node port, as we are seeing, a cluster IP, same, okay.
+
+[rochak agrawal] 08:06:23
+Plus a static port.
+
+[rochak agrawal] 08:06:26
+On every note now what does it mean now when you define?
+
+[rochak agrawal] 08:06:30
+the node port. Here, uh, instead of defining… so in the cluster type, you define two ports, port 80 and the target port, which is your, uh, the port which is running on the container.
+
+[rochak agrawal] 08:06:43
+In the node port, you define one more port, which is called the node port.
+
+[rochak agrawal] 08:06:47
+Now, understand this. Notebook is very important to understand conceptually.
+
+[rochak agrawal] 08:06:56
+You're not going to use Notebook very frequently in your application, but…
+
+[rochak agrawal] 08:07:01
+How difficult would it be to work?
+
+[rochak agrawal] 08:07:03
+So, what is going to happen in the note port?
+
+[rochak agrawal] 08:07:10
+See.
+
+[rochak agrawal] 08:07:12
+You will have certain notes.
+
+[rochak agrawal] 08:07:21
+Correct? And here your ports would be run.
+
+[rochak agrawal] 08:07:27
+you define a cluster IP, uh, probably you will define a cluster IP, and you see the service is in logical construct, which is going to send the traffic to this.
+
+[rochak agrawal] 08:07:39
+ports. Again, cluster IP for the internal communication. Now, the second thing is you can define a node port also. When you define the node port, for example, this is the pod.
+
+[rochak agrawal] 08:07:51
+Now this node is going to have some IP, 10.0.0.5.
+
+[rochak agrawal] 08:07:59
+Correct. Now.
+
+[rochak agrawal] 08:08:02
+When you define the node port type of the service, like this.
+
+[rochak agrawal] 08:08:09
+So, for example, I define node port 3, uh, 30,080. So then, with the help of your node IP.
+
+[rochak agrawal] 08:08:18
+Plus port whatever you had defined.
+
+[rochak agrawal] 08:08:25
+You can reach out to that particular pod.
+
+[rochak agrawal] 08:08:30
+Okay, not the pod, but again, it's a service, so then it will redirect the, um…
+
+[rochak agrawal] 08:08:38
+Request to the backend pods. Okay.
+
+[rochak agrawal] 08:08:42
+Clear till now?
+
+[Vaibhav Gupta] 08:08:50
+Not able to clear, can you please…
+
+[rochak agrawal] 08:08:51
+Okay, sure.
+
+[rochak agrawal] 08:08:56
+Let me explain it once. So you, uh, remember, Pawel, um, when you…
+
+[rochak agrawal] 08:09:02
+Before I go to Noteport.
+
+[rochak agrawal] 08:09:08
+Let's see, when you run the containers.
+
+[rochak agrawal] 08:09:14
+How we expose the container? Using the host port, correct?
+
+[rochak agrawal] 08:09:18
+So, for example, I define a mapping like this.
+
+[rochak agrawal] 08:09:24
+Correct?
+
+[Vaibhav Gupta] 08:09:24
+Mm-hmm.
+
+[rochak agrawal] 08:09:26
+Right? This is your host port.
+
+[Vaibhav Gupta] 08:09:30
+Hmm.
+
+[Vaibhav Gupta] 08:09:31
+This is container port.
+
+[rochak agrawal] 08:09:32
+And this is your container port.
+
+[Vaibhav Gupta] 08:09:35
+And…
+
+[rochak agrawal] 08:09:40
+So what we are essentially doing, we are saying whatever… since, uh, container does not have a physical network interface, um, whatever traffic is coming on host port 80.
+
+[rochak agrawal] 08:09:52
+It should be redirected to the container port 80, correct?
+
+[Vaibhav Gupta] 08:09:56
+Hmm.
+
+[rochak agrawal] 08:09:57
+That's exactly what we are doing here.
+
+[rochak agrawal] 08:10:00
+So.
+
+[rochak agrawal] 08:10:02
+Whatever the node you have.
+
+[rochak agrawal] 08:10:04
+They will have a IP.
+
+[Vaibhav Gupta] 08:10:06
+Right.
+
+[rochak agrawal] 08:10:07
+Here, instead of the host port, we are saying the node port.
+
+[Vaibhav Gupta] 08:10:13
+We are seeing the…
+
+[rochak agrawal] 08:10:14
+Noteboard.
+
+[Vaibhav Gupta] 08:10:15
+Okay, okay.
+
+[rochak agrawal] 08:10:17
+So, in our example, we have exposed the port 3080. So, it is, like, basically exposing.
+
+[rochak agrawal] 08:10:30
+Simple.
+
+[rochak agrawal] 08:10:31
+So it's saying whatever the coming, whatever the traffic coming on the node port 3008, 30,080 should go to.
+
+[rochak agrawal] 08:10:41
+the Pod Port 80.
+
+[rochak agrawal] 08:10:44
+Okay.
+
+[rochak agrawal] 08:10:46
+Clear.
+
+[Vaibhav Gupta] 08:10:48
+Right, right.
+
+[rochak agrawal] 08:10:49
+Now, instead of going to the pod, it goes to the service, and service will send the traffic to the…
+
+[rochak agrawal] 08:10:57
+Back and forth.
+
+[rochak agrawal] 08:10:59
+Now clear?
+
+[Vaibhav Gupta] 08:11:00
+Yep.
+
+[rochak agrawal] 08:11:02
+There is one more caveat in this, okay?
+
+[rochak agrawal] 08:11:08
+This is clear, right?
+
+[rochak agrawal] 08:11:09
+Now, in an interview.
+
+[rochak agrawal] 08:11:13
+There is one question very generally being asked.
+
+[rochak agrawal] 08:11:28
+Okay, now…
+
+[rochak agrawal] 08:11:31
+You have 3 node, 3 pod is running.
+
+[rochak agrawal] 08:11:34
+And let's forget the three part. Let's see.
+
+[rochak agrawal] 08:11:39
+Only one board is running on node number 3. Hypothetical situation?
+
+[rochak agrawal] 08:11:43
+Okay, now you see one.
+
+[rochak agrawal] 08:11:50
+Two, three.
+
+[rochak agrawal] 08:11:51
+Every node will have an IP.
+
+[rochak agrawal] 08:11:56
+10.0.0.1.
+
+[rochak agrawal] 08:11:59
+10.0.0.2 and 10.0.0.
+
+[rochak agrawal] 08:12:05
+3. Correct?
+
+[rochak agrawal] 08:12:09
+So then if I define the node port, let's say my application is running on port 80, and I define a node port 30,080, for example.
+
+[rochak agrawal] 08:12:19
+Now…
+
+[rochak agrawal] 08:12:21
+Since my pod is running on port 80, correct?
+
+[rochak agrawal] 08:12:26
+I will give a URL.
+
+[rochak agrawal] 08:12:34
+HTTP.
+
+[rochak agrawal] 08:12:38
+10 dot…
+
+[rochak agrawal] 08:12:41
+0.0.3.
+
+[rochak agrawal] 08:12:45
+Colon, 30,080.
+
+[rochak agrawal] 08:12:49
+And it is going to reach to my application.
+
+[rochak agrawal] 08:12:57
+Yes, no, aligned on this.
+
+[rochak agrawal] 08:13:09
+Clear, Weber? And, uh, everyone?
+
+[Vaibhav Gupta] 08:13:11
+Yep.
+
+[rochak agrawal] 08:13:12
+Eric?
+
+[rochak agrawal] 08:13:14
+Now, tell me one thing. What is going to happen when I am going to hit…
+
+[rochak agrawal] 08:13:25
+Cool.
+
+[rochak agrawal] 08:13:31
+Any guess what is going to happen?
+
+[rochak agrawal] 08:13:37
+Or, let's say…
+
+[rochak agrawal] 08:13:47
+this.
+
+[rochak agrawal] 08:13:49
+What is going to happen?
+
+[rochak agrawal] 08:13:58
+Yes, Anthony?
+
+[Anthony Joseph] 08:14:00
+It will say service not reachable.
+
+[rochak agrawal] 08:14:03
+Service not reachable, okay?
+
+[rochak agrawal] 08:14:06
+Anyone else want to give a try?
+
+[rochak agrawal] 08:14:13
+And why you say, uh, service not reachable, Anthony?
+
+[Anthony Joseph] 08:14:17
+Because that IP, this, uh…
+
+[rochak agrawal] 08:14:19
+Mm-hmm.
+
+[Anthony Joseph] 08:14:21
+It is being run in this particular IP, you know, 10.0.0.3, and there is nothing, no ports running in… I mean, there is no service running in 2 and 1.
+
+[rochak agrawal] 08:14:24
+Okay.
+
+[rochak agrawal] 08:14:29
+Correct. Okay. Makes sense. So, and then he's saying that service, uh, if we hit these IPs, uh, we are going to get, uh…
+
+[rochak agrawal] 08:14:39
+Not reachable, because, uh, effectively.
+
+[rochak agrawal] 08:14:47
+No pod, no service is running on those particular IPs.
+
+[rochak agrawal] 08:14:52
+Good argument. Yes. Makes sense.
+
+[rochak agrawal] 08:14:55
+Anyone else want to give it a try?
+
+[Vaibhav Gupta] 08:15:00
+Service not found, we can say.
+
+[rochak agrawal] 08:15:01
+It's the same thing, not reachable, not found.
+
+[Vaibhav Gupta] 08:15:04
+Okay, okay.
+
+[rochak agrawal] 08:15:07
+Uh, Jiba?
+
+[Jeeva Koli] 08:15:10
+Uh, it will still reach out the, uh, required, uh, node, actually, because services will do the load balancing, right? Whatever request you get.
+
+[rochak agrawal] 08:15:17
+Mm-hmm.
+
+[Jeeva Koli] 08:15:18
+It will send to… it will check the first, uh, node 2 and node 1. There is no application available, and it will, uh, identify that it is available on 3. So it will directly send to this one, 31.
+
+[rochak agrawal] 08:15:19
+Hmm?
+
+[rochak agrawal] 08:15:24
+Mm-hmm.
+
+[rochak agrawal] 08:15:29
+Mm-hmm.
+
+[rochak agrawal] 08:15:32
+Okay.
+
+[rochak agrawal] 08:15:33
+Okay, yeah. Uh, then there was one more thing. Megha?
+
+[rochak agrawal] 08:15:39
+You want to talk?
+
+[Megha U] 08:15:49
+I feel like it will not be available, because service is not defined for this, it's mapped with…
+
+[Megha U] 08:15:55
+The first one, which I had never seen.
+
+[rochak agrawal] 08:15:55
+Okay.
+
+[rochak agrawal] 08:15:56
+Okay.
+
+[rochak agrawal] 08:15:58
+Yeah. Okay. Let me explain this. Okay. So most of you are saying we are going to get, uh, not reachable, not found type of the thing. But what Jeeva said is correct. Okay. Now why? What is the reason behind it? Okay.
+
+[rochak agrawal] 08:16:13
+So, you see…
+
+[rochak agrawal] 08:16:18
+Your pod is running on the node number 3, correct? And that is why…
+
+[rochak agrawal] 08:16:23
+Generally, when you define the node port type, you can take the IP of that particular node and try to hit it. But…
+
+[rochak agrawal] 08:16:32
+Keep that in mind.
+
+[rochak agrawal] 08:16:35
+What we are defining?
+
+[rochak agrawal] 08:16:42
+Service. We are not directly hitting the pod, correct?
+
+[rochak agrawal] 08:16:48
+Service is like this.
+
+[rochak agrawal] 08:16:51
+Okay, so when you come via 10.0.3.
+
+[rochak agrawal] 08:16:56
+then also it will send the traffic here. If you come via here.
+
+[rochak agrawal] 08:17:01
+Then also, it will send the traffic to here.
+
+[rochak agrawal] 08:17:04
+You come by a hair?
+
+[rochak agrawal] 08:17:06
+then also use it. See, pod is running as the back end of the service, correct?
+
+[rochak agrawal] 08:17:13
+Your pod is running on node number 3, your service is not running on node number 3.
+
+[rochak agrawal] 08:17:18
+You got the point.
+
+[rochak agrawal] 08:17:20
+service is… service don't run on any node. Your pod runs on any node. And we are not hitting… if we hit the container directly, then only with the node number 3's IP, we will be able to hit it.
+
+[rochak agrawal] 08:17:34
+Correct. Now, if you see previous example, any example which we discussed, uh, we say.
+
+[rochak agrawal] 08:17:41
+For example, here.
+
+[rochak agrawal] 08:17:43
+your node, your pod can be across different nodes, correct? Your service is going to send the traffic here, here, here. Same is the case here.
+
+[rochak agrawal] 08:17:54
+So it does not matter on which node your pod is running.
+
+[rochak agrawal] 08:18:00
+When you expose the note port, okay.
+
+[rochak agrawal] 08:18:04
+It is just it x your.
+
+[rochak agrawal] 08:18:07
+This port…
+
+[rochak agrawal] 08:18:10
+is exposing on all the nodes.
+
+[rochak agrawal] 08:18:14
+Because you are exposing a service, not the pod.
+
+[rochak agrawal] 08:18:20
+Okay?
+
+[rochak agrawal] 08:18:25
+Yes, you may.
+
+[Jeevana D V] 08:18:28
+Uh, yeah, hi Rajiv. What if the port number of the pod will be same for other services also?
+
+[rochak agrawal] 08:18:37
+No, but that is what we need to define, right?
+
+[rochak agrawal] 08:18:40
+That is… that is a similar type of the question which Weber asked. When you… when… when I will give the same, uh, uh, selector or the labels to two different applications, correct? But why would I do so? Because I know I need to run two applications. So, for example, one application I will expose on three…
+
+[Jeevana D V] 08:18:52
+Hmm.
+
+[rochak agrawal] 08:18:58
+080, another application I will define on 3081, correct?
+
+[Jeevana D V] 08:19:04
+Hmm.
+
+[rochak agrawal] 08:19:05
+So that is up to us, that configuration. Now, as a Kubernetes admin, as a person who is deploying our application on Kubernetes, I need to define. So for example, if you try to deploy another application, another service with the same.
+
+[rochak agrawal] 08:19:21
+Uh, uh, port, you will get an error, an error that the port is already in use.
+
+[Jeevana D V] 08:19:25
+Okay, even if it's a different notes, also, we'll not be able to define the same.
+
+[rochak agrawal] 08:19:29
+Because, see, that is what… see…
+
+[rochak agrawal] 08:19:33
+What you are defining, you are defining a service, correct?
+
+[Jeevana D V] 08:19:36
+Hmm?
+
+[rochak agrawal] 08:19:38
+Service… does service run on any node?
+
+[rochak agrawal] 08:19:42
+No.
+
+[rochak agrawal] 08:19:42
+Correct? Service is a cluster-wide object.
+
+[Jeevana D V] 08:19:46
+Hmm.
+
+[rochak agrawal] 08:19:47
+Did it?
+
+[Jeevana D V] 08:19:48
+Yeah.
+
+[rochak agrawal] 08:19:48
+So that is… when you're defining a service, there is no node coming into the picture.
+
+[rochak agrawal] 08:19:55
+That is what I'm trying to explain, right? So when you define a node port, even if you see the definition here.
+
+[rochak agrawal] 08:20:08
+You see the definition here.
+
+[rochak agrawal] 08:20:13
+You define 3 things. Port, target port, and node port, correct?
+
+[Jeevana D V] 08:20:17
+Yes.
+
+[rochak agrawal] 08:20:19
+Where I am saying it is the node number 1, node number 2, or node number 3. Nothing. Never.
+
+[rochak agrawal] 08:20:26
+Hey!
+
+[rochak agrawal] 08:20:28
+And if you see here, notebook in the practice.
+
+[rochak agrawal] 08:20:34
+Range, very importantly, the range is 30,000 to 30,000, 32,767. So you cannot… you… whenever you're defining a node port.
+
+[rochak agrawal] 08:20:43
+Okay, um…
+
+[Jeevana D V] 08:20:44
+Mm-hmm.
+
+[rochak agrawal] 08:20:45
+This is a value.
+
+[rochak agrawal] 08:20:47
+inside which you have to choose. So, you can see you have a wide range of 2,767 ports, correct?
+
+[rochak agrawal] 08:20:57
+So why would you want to run two applications on the same port?
+
+[rochak agrawal] 08:21:03
+Correct?
+
+[Jeevana D V] 08:21:04
+Yeah, as it was in a different notes, right? I just wanted to know…
+
+[rochak agrawal] 08:21:04
+Then
+
+[rochak agrawal] 08:21:08
+No, because there is no node altogether, because service is a logical construct, right?
+
+[Jeevana D V] 08:21:14
+Yep.
+
+[rochak agrawal] 08:21:15
+And service you define across the cluster. It is not… you are not defining service on the node.
+
+[Jeevana D V] 08:21:22
+Okay.
+
+[rochak agrawal] 08:21:23
+Then you see every node listens because even nodes running no matching pod, Kube proxy forward the traffic to the pod where it is running.
+
+[rochak agrawal] 08:21:36
+Again, as I said in the starting, NotePort is not one of the, uh…
+
+[rochak agrawal] 08:21:43
+very frequently used port. We are going to use it for the development demo purpose.
+
+[Jeevana D V] 08:21:44
+Hmm.
+
+[rochak agrawal] 08:21:50
+For dev and test environment only, for the production environment, we generally don't use the node port, because, again, you directly don't expose your application to the…
+
+[rochak agrawal] 08:22:01
+Uh, north…
+
+[rochak agrawal] 08:22:02
+For the security reasons. And that is where we have our third service.
+
+[rochak agrawal] 08:22:09
+Which is the load balancer, okay? Now, this is…
+
+[rochak agrawal] 08:22:14
+We discussed two types. One is a cluster IP, which is for the internal communication. Then we define the node port, which is, again, is an enhanced version of the cluster IP, where you expose the services on…
+
+[rochak agrawal] 08:22:30
+each node's IP at a static port, right? The node port, to make the node port available, um, Kubernetes sets up the cluster IP address the same as if you have requested.
+
+[rochak agrawal] 08:22:42
+The cluster IP service. Now, when we say I want to expose my application to the end user.
+
+[rochak agrawal] 08:22:51
+Then there is a third type of the service, which is a load balancer. Now, load balancer is the type of the service.
+
+[rochak agrawal] 08:23:00
+which we are going to use.
+
+[rochak agrawal] 08:23:03
+If we want to externally expose my application, it exposes the services externally.
+
+[Megha U] 08:23:09
+Their lives
+
+[rochak agrawal] 08:23:14
+Using?
+
+[rochak agrawal] 08:23:16
+an external load balancer.
+
+[rochak agrawal] 08:23:18
+For example, when I'm saying the external load balancer, uh, if you are using Azure, so for example, right now we are using AKS, then I will be creating a load balancer type of the service.
+
+[rochak agrawal] 08:23:31
+I will be, uh, so when I will be defining the type load balancer, okay, and port 80, target port 80, 80, whatsoever.
+
+[rochak agrawal] 08:23:41
+it is going to create an Azure load balancer in the backend. If you use EKS, it will create an AWS load balancer in the backend, and same with the Google Cloud.
+
+[rochak agrawal] 08:23:51
+So, it uses the external load balancer. Kubernetes does not directly offer a load balancing component. We must provide one.
+
+[rochak agrawal] 08:24:02
+Or you can integrate your Kubernetes cluster with the cloud provider, like we are doing.
+
+[rochak agrawal] 08:24:06
+Okay, so…
+
+[rochak agrawal] 08:24:13
+On cloud provider, which supports the external load balancer, when we set the type field of the load balancer, it provisions the load balancers for our service.
+
+[rochak agrawal] 08:24:23
+Okay? So…
+
+[rochak agrawal] 08:24:29
+Now, traffic from the external load balancer is directed at the backend port. The cloud provider decide how it is load balanced. Now, to implement a service of the load balancer type, typically, Kubernetes start off by making the change.
+
+[rochak agrawal] 08:24:44
+that are equivalent to you by requesting a service type node code. Then the cube controller manager component then configures the external load balancer.
+
+[rochak agrawal] 08:24:54
+to forward that traffic to assign the port. Okay, so we have…
+
+[rochak agrawal] 08:25:01
+Three type of the services. Any question with any type of the service.
+
+[rochak agrawal] 08:25:11
+So you can see, when you define the load balancer, your load balancer.
+
+[rochak agrawal] 08:25:18
+You see, some of the time, you will see the external IP is the pending, because when you create Azure Load Balancer, or Google Load Balancer, or AWS Load Balancer, it takes 5-7 minutes for the Load Balancer to get created. For that time.
+
+[rochak agrawal] 08:25:33
+You can see the services going into the pending status.
+
+[rochak agrawal] 08:25:41
+It needs a cloud controller, so it is, um, used as a managed service. One balancer per service. Now, this is very important.
+
+[rochak agrawal] 08:25:50
+When you have multiple services, okay, and every service you are defining as a type load balancer, then every service is going to create a new load balancer, and that costs money. And that's where we have another…
+
+[rochak agrawal] 08:26:11
+alternative to it, okay? But load balancer can be used, and annotations is like the selectors and other things, okay? So what type of load balancer you want, NLB, ALB, we can define it in the labels.
+
+[rochak agrawal] 08:26:25
+So that, accordingly, when you apply it, your Queue Control Manager sees your labels, and accordingly, it is going to create your load balancer.
+
+[rochak agrawal] 08:26:41
+Okay.
+
+[Megha U] 08:26:41
+Yeah, hi, Roshak, I have a question here.
+
+[rochak agrawal] 08:26:43
+Yeah.
+
+[Megha U] 08:26:46
+So, in this architecture, we do have a service which is acting as a load balancer, and again, on top of it, this external load balancer, right?
+
+[rochak agrawal] 08:26:55
+Yes. So what is going to happen when, say, for example.
+
+[rochak agrawal] 08:27:03
+Here, you see, I have a service, NGINX service, which is a type of the cluster IP, correct?
+
+[Megha U] 08:27:12
+Yes.
+
+[rochak agrawal] 08:27:13
+Right? So when you define the load balancer service, it is going to create a Kubernetes service with the type load balancer, as well as it is going to define an Azure load balancer altogether.
+
+[rochak agrawal] 08:27:30
+Okay?
+
+[rochak agrawal] 08:27:32
+See, Kubernetes, if you see, is a…
+
+[Megha U] 08:27:32
+Okay.
+
+[rochak agrawal] 08:27:35
+is a… is a set of plugins, like BCA and a Jenkins. So, Kubernetes does not offer any, um…
+
+[rochak agrawal] 08:27:43
+Uh, what you can see is, uh…
+
+[rochak agrawal] 08:27:49
+does not provide any load balancing solutions. So for defining a load balancer, it relies on the cloud provider.
+
+[rochak agrawal] 08:27:59
+Okay? So you will have a Kubernetes service, as well as an external load balancer.
+
+[rochak agrawal] 08:28:05
+And when I'm seeing the external load balancer, depending, since we are doing it on our EKS, uh, it will be an Azure load balancer.
+
+[Megha U] 08:28:15
+Okay, so the load balancer will redirect traffic to the service, and from service to port, is that the understanding, or directly to the port?
+
+[rochak agrawal] 08:28:21
+Yeah, you can say that, you can say that, or, um, um, not to complicate it further, you can say, uh, load balancer itself is a service.
+
+[rochak agrawal] 08:28:35
+Okay.
+
+[rochak agrawal] 08:28:36
+So, for example.
+
+[rochak agrawal] 08:28:43
+See, when you're defining a service.
+
+[rochak agrawal] 08:28:48
+Here, if you define a load balancer type, it is going to create… see…
+
+[rochak agrawal] 08:28:54
+Service is a Kubernetes object. On top of it, it is going to define a load balancer.
+
+[rochak agrawal] 08:29:00
+Which is an external load balancer.
+
+[rochak agrawal] 08:29:04
+Now, traffic is coming to load balancer, which is essentially, it means it is coming to your service. And the service will send the… The service has done the load balancing internally, you know. So for external, you can say that what you're seeing is correct.
+
+[rochak agrawal] 08:29:19
+So, external traffic come to the external load balancer, which will send to your service, and service will internally distribute to your ports.
+
+[rochak agrawal] 08:29:31
+Okay?
+
+[Megha U] 08:29:35
+Uh, okay, okay. So, yeah, that's what… so always it is like that, right? From the load balancer to the service.
+
+[rochak agrawal] 08:29:38
+Yeah.
+
+[rochak agrawal] 08:29:40
+Always it is like that, yeah.
+
+[rochak agrawal] 08:29:41
+Yes.
+
+[rochak agrawal] 08:29:43
+So, a load balancer will be for the external facing, okay? And then, uh…
+
+[rochak agrawal] 08:29:50
+it comes to your service, and service will send the traffic to your ports, which, anyways, if it is a cluster IP or, uh, node port, similar to that.
+
+[rochak agrawal] 08:30:02
+Clear?
+
+[Megha U] 08:30:02
+Okay.
+
+[Megha U] 08:30:04
+Yeah.
+
+[rochak agrawal] 08:30:07
+Uh, yesterday…
+
+[arif] 08:30:10
+Yeah, so can you just, like.
+
+[arif] 08:30:12
+Tell me the use case of all these three, uh, services, like, when do you, uh…
+
+[rochak agrawal] 08:30:16
+Correct.
+
+[rochak agrawal] 08:30:18
+See, yes, yes, yes. Let me explain. See, Notebook, as we discussed that we don't use it in a production environment. So Notebook type of a service we use, let's say a developer, you are writing your code and you want to test your code.
+
+[rochak agrawal] 08:30:33
+if it is working fine or not, or not. So in your dev environment, you'll develop a type of the node port type of the service, and you quickly check your application. Okay, so node port type of the services, we generally use it for our, uh…
+
+[rochak agrawal] 08:30:49
+POC kind of a purpose. We don't use it, um, in a production type of the environment.
+
+[rochak agrawal] 08:30:53
+Okay, now, keep aside the node port, we have two types of the service. One is a cluster IP, and one is a load balancer. Now, the distinction is very clear. If you want to have an internal communication, you are going to use the cluster IP. So, for example.
+
+[rochak agrawal] 08:31:09
+you deploy a database pod, an application pod, and a web pod. Now, these pods want to communicate with each other within the cluster, so then there is no need for the cluster IP.
+
+[rochak agrawal] 08:31:22
+Correct? Uh, sorry, there is no need for the load balancer, public access, or external access. So I am going to use the cluster IP type of the service.
+
+[rochak agrawal] 08:31:30
+any traffic which is coming from outside of the cluster.
+
+[rochak agrawal] 08:31:34
+You need the load balancer type of the service. Simple.
+
+[arif] 08:31:41
+So we can have multiple services also, right? We can have, uh, uh, extra IP as well as load balancer. Okay.
+
+[rochak agrawal] 08:31:44
+Yeah, yeah, yeah, yes, yes, yes, as many as you can.
+
+[rochak agrawal] 08:31:47
+correct, as many as you want. See, it can totally depend on the type of your application. For example, let's take a very simple example.
+
+[rochak agrawal] 08:31:57
+So…
+
+[rochak agrawal] 08:32:04
+Now, let's see…
+
+[rochak agrawal] 08:32:05
+You have a cluster.
+
+[rochak agrawal] 08:32:08
+Okay. Now, in the cluster, you will have multiple nodes.
+
+[arif] 08:32:14
+Mmhm.
+
+[rochak agrawal] 08:32:18
+Now, multiple nodes when we are seeing. Now, let's say I want to deploy a three-tier architecture. Now, what is a three-tier architecture? You will have a web tier.
+
+[rochak agrawal] 08:32:29
+Then app tier.
+
+[rochak agrawal] 08:32:31
+Then DVTL, correct?
+
+[rochak agrawal] 08:32:35
+Great!
+
+[rochak agrawal] 08:32:36
+Now when when you talk about in a Kubernetes perspective your.
+
+[rochak agrawal] 08:32:42
+Uh, web tier also goes across multiple nodes.
+
+[rochak agrawal] 08:32:46
+your app tier also go through multiple nodes, correct? I'm just…
+
+[rochak agrawal] 08:32:52
+distributed evenly for the sake of understanding. It may happen your… because you might run on different number of the ports, they can go on a different node, but just for the sake of explaining, I'm evenly distributing them.
+
+[rochak agrawal] 08:33:06
+Connect.
+
+[rochak agrawal] 08:33:07
+Your web app DB, three type of the ports is there, which now they want to talk to each other, correct?
+
+[rochak agrawal] 08:33:17
+So, what you can do is, you can define two types of a cluster IP service.
+
+[rochak agrawal] 08:33:23
+Bonus App Service.
+
+[rochak agrawal] 08:33:29
+So, whenever app want to talk to, uh…
+
+[rochak agrawal] 08:33:33
+Bab want to talk to app, it goes through via this IP service. Then you define another cluster IP service, DB service.
+
+[rochak agrawal] 08:33:43
+So when app want to talk to DB, it again goes through this cluster IP. So you can have a two cluster IP service.
+
+[rochak agrawal] 08:33:49
+And then you can define one load balancer service, because your load, uh…
+
+[rochak agrawal] 08:33:55
+Your web will accept the external traffic, correct?
+
+[rochak agrawal] 08:33:58
+So then, like this.
+
+[rochak agrawal] 08:34:03
+So, when you say, can I have multiple services in my cluster?
+
+[rochak agrawal] 08:34:09
+It is up to us. See, if my app and DV is not talking, I don't need a service in between.
+
+[rochak agrawal] 08:34:15
+So wherever you want to have a communication.
+
+[rochak agrawal] 08:34:19
+First, you need to decide whether it's an internal communication or whether it's an external communication, okay? If it is an internal communication, you are going to use.
+
+[rochak agrawal] 08:34:30
+and cluster IP type of the service if you are going to have an external communication.
+
+[rochak agrawal] 08:34:37
+See, uh, understand this one thing also, let me clarify. Here, we are not talking about the internet traffic, or public or private traffic.
+
+[rochak agrawal] 08:34:45
+We are saying internal to Kubernetes, external to Kubernetes. Cluster, your cluster. You might have two clusters within the same Azure network, they also want to talk to each other. That's still a private traffic, but that's an external traffic for Kubernetes, correct?
+
+[rochak agrawal] 08:35:02
+Whenever anything coming outside of the Kubernetes.
+
+[rochak agrawal] 08:35:08
+You use the load balancer type of the service.
+
+[rochak agrawal] 08:35:12
+Clear?
+
+[arif] 08:35:14
+Okay, so you mean to say, like, if I have two clusters, and so both clusters have multiple ports.
+
+[arif] 08:35:21
+So, the pod in one cluster can talk to other cluster if I configure a load balancer service.
+
+[rochak agrawal] 08:35:21
+Hmm.
+
+[rochak agrawal] 08:35:26
+You can, yes, of course. See, it's an external application. It could be port, it could be my application running on a VM.
+
+[arif] 08:35:31
+Okay.
+
+[rochak agrawal] 08:35:35
+But they are in the same Azure network, but still it's an external traffic to the cluster.
+
+[arif] 08:35:42
+And one more thing, I'm… I was not… yeah, yeah, I got it. Yeah, got it. That is clear.
+
+[rochak agrawal] 08:35:43
+Agreed.
+
+[rochak agrawal] 08:35:47
+Yes, go ahead.
+
+[arif] 08:35:49
+So, the first thing that we started, uh, this service without service, we were facing some problem because of the IP got changed, either the port is deleted or something.
+
+[rochak agrawal] 08:35:57
+Got it.
+
+[arif] 08:35:58
+So…
+
+[arif] 08:35:59
+I'm not getting into how services…
+
+[arif] 08:36:04
+Uh, keeping track of these IP addresses and what exactly we are solving here.
+
+[rochak agrawal] 08:36:06
+Okay? Okay. So, see, what is going to happen…
+
+[rochak agrawal] 08:36:12
+Let's say, let's forget about it.
+
+[rochak agrawal] 08:36:16
+Define that.
+
+[rochak agrawal] 08:36:18
+web application.
+
+[rochak agrawal] 08:36:20
+And you say, I want to run 5 replicas.
+
+[rochak agrawal] 08:36:23
+Correct?
+
+[rochak agrawal] 08:36:26
+You understood the replica because I want to run multiple instances of my application, correct? Now there is one.
+
+[arif] 08:36:30
+Yeah, yeah, yeah
+
+[arif] 08:36:31
+Hmm.
+
+[rochak agrawal] 08:36:39
+Fight.
+
+[rochak agrawal] 08:36:40
+Correct? It can go to 10, it can go to 2. We have seen this, uh, from the deployments. Now, every pod will have an IP.
+
+[arif] 08:36:49
+Mmhm.
+
+[rochak agrawal] 08:36:49
+Correct?
+
+[arif] 08:36:50
+Hmmm.
+
+[rochak agrawal] 08:36:52
+See the first question. If a user is coming.
+
+[rochak agrawal] 08:36:56
+Where it will go? Will it go to 1? Will it go to 2? Will it go to 3? Will it go to 4? Will it go to 5?
+
+[rochak agrawal] 08:37:04
+How it is going to be decided? Let's say I'm going to one.
+
+[rochak agrawal] 08:37:08
+Then all the requests coming on one.
+
+[rochak agrawal] 08:37:11
+Correct? Then all other instances of my application is remain underutilized, while the pod number 1 is being overutilized. Correct?
+
+[rochak agrawal] 08:37:26
+Great!
+
+[rochak agrawal] 08:37:28
+See, that's a problem, right? How will I decide I'll go to port number 1, port number 2, port number 3, port number 4, and port number…
+
+[arif] 08:37:33
+If, if I…
+
+[arif] 08:37:35
+Yeah, if I know the IP address, I can go to port 1, right? Port 2, port whatever I want.
+
+[rochak agrawal] 08:37:38
+Correct, if you know the IP address, but again, the question, Arif, is…
+
+[rochak agrawal] 08:37:42
+See, why do you use the load balancer?
+
+[rochak agrawal] 08:37:50
+Let's say if there is 100 — see, your application is running on both the — sorry, on five ports, correct?
+
+[rochak agrawal] 08:38:00
+So how you are going to decide, let's say a user is coming, how you will decide you are going to give them this IP, this IP, this IP, this IP, or this IP? How you are going to decide that?
+
+[rochak agrawal] 08:38:13
+If you have the IP, you can reach to pod number 1, pod number 2, 3, or 4, or 5, whatsoever.
+
+[rochak agrawal] 08:38:19
+But how you are going to provide that IP, or how you will decide that you will give the pod number 1 IP or pod number 4 IP.
+
+[rochak agrawal] 08:38:30
+Why? How? Correct? That's a problem, right? See, the whole…
+
+[rochak agrawal] 08:38:36
+Problem, a whole funda about the load balancer is, why do — see, simply you understand. What is the definition of a load balancer? It balances the load, correct?
+
+[rochak agrawal] 08:38:49
+If you are running, let's say if instead of that, if I'm running only one part of my application.
+
+[rochak agrawal] 08:38:57
+It has the IP?
+
+[rochak agrawal] 08:39:00
+I give this IP to my 100 of the user, they all come here.
+
+[rochak agrawal] 08:39:06
+Correct? No problem.
+
+[rochak agrawal] 08:39:07
+Absolutely fine. But when I have two, three instances, then which IP I'm going to give?
+
+[rochak agrawal] 08:39:15
+So that is one problem. You understood one problem. Second problem.
+
+[arif] 08:39:19
+Yeah, yeah, got it.
+
+[rochak agrawal] 08:39:21
+Second problem. Let's say, forget about, uh, 4 or 5 instances.
+
+[rochak agrawal] 08:39:26
+I have this one instance.
+
+[rochak agrawal] 08:39:30
+Okay, now this will have some IP.
+
+[rochak agrawal] 08:39:34
+10.0.0.5.
+
+[rochak agrawal] 08:39:39
+Something.
+
+[rochak agrawal] 08:39:40
+Now, um…
+
+[rochak agrawal] 08:39:42
+Let's say, uh, you give this IP to your user, your users are coming, everything is working fine.
+
+[rochak agrawal] 08:39:50
+No problem at all. But…
+
+[rochak agrawal] 08:39:52
+let's say this pod got deleted, somehow. Manually, you deleted it, then the node on which it is running is going into the maintenance, so you drain the node, and the pod gets rescheduled on another node.
+
+[rochak agrawal] 08:40:07
+Now, the problem with that is, when you delete and recreate the pod.
+
+[rochak agrawal] 08:40:13
+The IP is going to change.
+
+[rochak agrawal] 08:40:17
+99.99%.
+
+[rochak agrawal] 08:40:19
+It may be this, or it may be this, or it may be this, correct?
+
+[rochak agrawal] 08:40:25
+Now, your users has this IP.
+
+[rochak agrawal] 08:40:30
+Correct?
+
+[rochak agrawal] 08:40:30
+your IP got changed, then…
+
+[rochak agrawal] 08:40:35
+Even if you're running with a single instance.
+
+[rochak agrawal] 08:40:38
+Not using the services, not using the services is a problem.
+
+[rochak agrawal] 08:40:43
+Got it.
+
+[rochak agrawal] 08:40:45
+Two major problem, one is the ephemeral IPs of the pod. Whenever you give IP or end user and your pod is going to be restarted.
+
+[rochak agrawal] 08:40:57
+your pod is going to be restarted. Um…
+
+[rochak agrawal] 08:41:02
+Ben?
+
+[rochak agrawal] 08:41:04
+Your IP can change and your user will face a downtime because they were actually coming to an old IP, correct?
+
+[rochak agrawal] 08:41:13
+Secondly, when you have multiple instances of an application, then you need to decide. There is no way to decide, right? You cannot effectively distribute the load. So then, to cover both of the cases.
+
+[rochak agrawal] 08:41:25
+What we are going to do…
+
+[rochak agrawal] 08:41:26
+When we have multiple instances, so let's say 3 instances I have, or 4 instances or 5 instances we have.
+
+[rochak agrawal] 08:41:34
+So, I define a service here.
+
+[rochak agrawal] 08:41:38
+Now, when you define a service.
+
+[rochak agrawal] 08:41:43
+Service is going to have a fixed IP.
+
+[rochak agrawal] 08:41:49
+Okay.
+
+[rochak agrawal] 08:41:50
+It is not going to change, so your users are coming here.
+
+[rochak agrawal] 08:41:59
+They are not going to the pod. So even this pod got deleted, another one got created, the IP got changed, I don't have a issue. Correct? Because my end user is coming to?
+
+[rochak agrawal] 08:42:10
+This IP.
+
+[rochak agrawal] 08:42:12
+Correct?
+
+[rochak agrawal] 08:42:14
+And then service distribute the…
+
+[rochak agrawal] 08:42:17
+load to the healthy pods. So your both problem is getting resolved. One is a thermal IP, and second is a load balancing.
+
+[rochak agrawal] 08:42:29
+Clear now?
+
+[arif] 08:42:31
+Okay.
+
+[rochak agrawal] 08:42:32
+Mm-hmm.
+
+[arif] 08:42:33
+But the thing is, I'm just wondering that from the user perspective, it's fine.
+
+[rochak agrawal] 08:42:37
+Mm-hmm.
+
+[arif] 08:42:39
+But, uh, how service is, uh, like, the IP is getting changed, how service will know that the IP is changed?
+
+[rochak agrawal] 08:42:45
+Because service is not talking… see, that is where… and that is where we are using these labels and selectors. Can you see here?
+
+[rochak agrawal] 08:42:52
+I'm seeing…
+
+[rochak agrawal] 08:42:56
+You see, I have defined a label, correct?
+
+[rochak agrawal] 08:42:59
+So, when the pod is recreated, it will also have the same level?
+
+[arif] 08:43:05
+Okay, so labels are not changing, so with the help of… okay.
+
+[rochak agrawal] 08:43:08
+Labels are not changing. With the help of labels and selector, and here the service is selecting all the application, all the pod which has this label.
+
+[rochak agrawal] 08:43:19
+Okay, and labels and selector, you, um, uh, just, it is not being used in the services. When we see the volumes, um, and other stuff, also config map and other things, labels and selector is like the mapping.
+
+[rochak agrawal] 08:43:34
+Right? You got a roll number, and when you go to an exam, you got a roll number, and then there is an index, and you will get to know which room you need to go.
+
+[arif] 08:43:35
+Mmhm.
+
+[rochak agrawal] 08:43:45
+Got it. So it's a mapping.
+
+[rochak agrawal] 08:43:47
+You see, whatever the service is coming, whatever the traffic is coming to this service, it need to go to the ports which is having this level.
+
+[rochak agrawal] 08:43:57
+Simple.
+
+[rochak agrawal] 08:43:59
+Okay.
+
+[arif] 08:44:00
+Okay, so there is no way to, like, keep the same IP?
+
+[rochak agrawal] 08:44:04
+In the pod
+
+[arif] 08:44:05
+Uh, like, in the board.
+
+[rochak agrawal] 08:44:05
+But why do you want to keep the same IP?
+
+[arif] 08:44:09
+I… I don't know what to…
+
+[rochak agrawal] 08:44:09
+Is there any particular reason for that?
+
+[arif] 08:44:12
+No, not a reason, but for, ah, testing purposes, because, ah.
+
+[rochak agrawal] 08:44:15
+You can do C, you can do that, okay? But when, um, there are multiple networking plugins are available nowadays, uh, we have to see the correct option, but we can do that, okay?
+
+[arif] 08:44:24
+Mmhm.
+
+[rochak agrawal] 08:44:29
+But I don't see a particular use case in which you would want to do that. Can you tell me a use case where you want to reserve that?
+
+[arif] 08:44:38
+Uh, I'm just, uh, I was, yeah, I was just wondering about the, the AWS, we have that elastic IPs, so…
+
+[rochak agrawal] 08:44:44
+Hmm?
+
+[arif] 08:44:46
+What is that, like, it is relevant to this, or…
+
+[rochak agrawal] 08:44:49
+No, no, it is not relevant to this. First, uh, Elastic IP is the public IPs.
+
+[arif] 08:44:51
+Okay.
+
+[rochak agrawal] 08:44:54
+But these IPs are private IPs. It's internal private cluster. Not the private cluster, it is internal communication to the Kubernetes cluster. Service and pod.
+
+[arif] 08:45:00
+Okay.
+
+[rochak agrawal] 08:45:09
+Both are the part of the same cluster, correct?
+
+[rochak agrawal] 08:45:12
+Correct. So, see, um, it is like, um…
+
+[rochak agrawal] 08:45:18
+As you say, can I have the same IP of the pod? Can I assign the static IP of the pod? See, you can do that. We need to see for the correct configuration option in Kubernetes. You will find something, I'm sure.
+
+[rochak agrawal] 08:45:33
+you can do it, basically. But then, the second follow-up question is, why do you want to do it? I don't see a particular use case where you would like that, because.
+
+[rochak agrawal] 08:45:44
+See, uh…
+
+[rochak agrawal] 08:45:48
+Now you say, I want to do it for the testing purpose, for example, okay? See, then, um…
+
+[rochak agrawal] 08:45:54
+We would like…
+
+[rochak agrawal] 08:45:59
+Uh, how do I put it up? See, for example.
+
+[rochak agrawal] 08:46:03
+We, in DevOps, we use a principle called the DRY principle.
+
+[rochak agrawal] 08:46:10
+Is it dry or?
+
+[rochak agrawal] 08:46:12
+I'm forgetting the full form of dry.
+
+[rochak agrawal] 08:46:16
+Dry used in the material…
+
+[rochak agrawal] 08:46:35
+Don't… oh, no, this is something else. Okay. Let me put it up manually. See, when you say, um…
+
+[rochak agrawal] 08:46:42
+Temporary thing is what we do is deploy with the help of IAC infrastructure as a code. Terraform, ARM templates, Bicep or any other tool you are using.
+
+[rochak agrawal] 08:46:54
+So you want to keep up the same infra which you are using in a dev environment to the production environment, for example. Okay, dev to test, test to staging, staging to production.
+
+[rochak agrawal] 08:47:06
+So, you want to implement the best practices from the lower environments altogether.
+
+[rochak agrawal] 08:47:12
+Okay. Now.
+
+[rochak agrawal] 08:47:14
+In your production environment.
+
+[rochak agrawal] 08:47:17
+Are you going to run your application only with a single instance?
+
+[rochak agrawal] 08:47:22
+Never.
+
+[rochak agrawal] 08:47:23
+Correct?
+
+[rochak agrawal] 08:47:26
+So then, when you're going to run your application with multiple instances, for load balancing, you always need the services with respect to Kubernetes.
+
+[rochak agrawal] 08:47:37
+So then, I'm going to start implementing the services from my lower environment, so that I have the same environment, same type of the infrastructure, across multiple.
+
+[rochak agrawal] 08:47:49
+environment. Now, it may happen that in my dev environment, I'm running, uh, let's say two instances.
+
+[rochak agrawal] 08:47:56
+But in, uh, test, I'm running 4 instances, and then, uh, in the test, uh, in the production, I'm running 10 instances, for example. But the architectural principle, the traffic, how it is flowing.
+
+[rochak agrawal] 08:48:09
+It should be the same.
+
+[rochak agrawal] 08:48:11
+Okay, so for that purpose, I am saying in your enterprise type of the application.
+
+[rochak agrawal] 08:48:20
+You would not need a scenario where you want to give a fixed IP to your port.
+
+[arif] 08:48:28
+Okay.
+
+[rochak agrawal] 08:48:29
+Okay, because, see, that's the whole point behind the…
+
+[rochak agrawal] 08:48:34
+You can give it, but then it will be a single instance application. And then…
+
+[rochak agrawal] 08:48:42
+your application will not be highly available, highly scalable, because as you have a fixed IP, as you add another instance, then how you are going to do the load balancing?
+
+[rochak agrawal] 08:48:55
+Got it?
+
+[rochak agrawal] 08:48:58
+So, that is where I would not recommend… uh, see, uh, forget about the recommendation. I don't see a use case where I would like to give.
+
+[rochak agrawal] 08:49:09
+a pod as static IP.
+
+[arif] 08:49:14
+Okay.
+
+[rochak agrawal] 08:49:14
+Okay.
+
+[arif] 08:49:16
+My last question is, when we were creating a Kubernetes cluster, whether it's private or public.
+
+[rochak agrawal] 08:49:17
+Mm-hmm.
+
+[rochak agrawal] 08:49:22
+Mmhm.
+
+[arif] 08:49:22
+If it is private, then I think these services, uh, some of the services may not be applicable or something.
+
+[rochak agrawal] 08:49:29
+No. See, understand, uh, this is… this is a good question, and we need to get it clarified, okay? Um, and this is one of the common traps in the interviews also.
+
+[rochak agrawal] 08:49:42
+Now repeat the question.
+
+[rochak agrawal] 08:49:48
+Can you, can you repeat your question once?
+
+[arif] 08:49:50
+Yeah, so if I create a private cluster.
+
+[rochak agrawal] 08:49:52
+Okay.
+
+[arif] 08:49:54
+private Kubernetes cluster, so… can I configure all these services? Uh… or… only…
+
+[rochak agrawal] 08:49:55
+Mmhm.
+
+[rochak agrawal] 08:49:57
+Okay.
+
+[rochak agrawal] 08:49:59
+Now, understood. Now, what is a private cluster? What is your understanding of the private cluster?
+
+[arif] 08:50:07
+the node or the host within the Kubernetes cluster can access the airports internally or.
+
+[rochak agrawal] 08:50:14
+But that is… that is in a public cluster also… in public cluster… in public cluster, can a node would not be able to access the ports and services?
+
+[arif] 08:50:29
+Uh, node, like, if it is a laptop.
+
+[rochak agrawal] 08:50:30
+Mm-hmm.
+
+[rochak agrawal] 08:50:31
+Okay, you are saying from your laptop? See, yes, correct.
+
+[arif] 08:50:32
+We cannot do it in private.
+
+[rochak agrawal] 08:50:36
+Okay, sorted. Now, why do you use these services which we are discussing? Load balancer, note port.
+
+[rochak agrawal] 08:50:44
+And.
+
+[rochak agrawal] 08:50:46
+cluster IP. What is the use of these services?
+
+[arif] 08:50:55
+So users should be, like, can access these services, like, without any…
+
+[rochak agrawal] 08:51:00
+Users can access the application which you are deploying over the Kubernetes, correct?
+
+[arif] 08:51:05
+Yeah.
+
+[rochak agrawal] 08:51:05
+Correct? Now, there are two things, Arif. Accessing the Kubernetes.
+
+[rochak agrawal] 08:51:11
+and accessing the application which is deployed on Kubernetes.
+
+[rochak agrawal] 08:51:16
+Okay. So, for example.
+
+[rochak agrawal] 08:51:23
+There are two things.
+
+[rochak agrawal] 08:51:33
+Accessing the Kubernetes.
+
+[rochak agrawal] 08:51:40
+Accessing…
+
+[rochak agrawal] 08:51:42
+the application.
+
+[rochak agrawal] 08:51:44
+Running on.
+
+[rochak agrawal] 08:51:47
+Humans.
+
+[rochak agrawal] 08:51:48
+Okay, how do you access the Kubernetes?
+
+[rochak agrawal] 08:51:56
+Kube API server, correct? We have connected our Kubernetes cluster AKS. How do you access the application running on the Kubernetes? With the help of services.
+
+[rochak agrawal] 08:52:09
+Right? If it is an external load balancer.
+
+[rochak agrawal] 08:52:16
+Internal, then cluster, right?
+
+[rochak agrawal] 08:52:19
+Correct? Clear till now?
+
+[arif] 08:52:21
+Mmhm.
+
+[rochak agrawal] 08:52:22
+When we talk about the private cluster.
+
+[rochak agrawal] 08:52:28
+This.
+
+[rochak agrawal] 08:52:36
+is… will not be accessible from outside the network. There is no problem in accessing this.
+
+[rochak agrawal] 08:52:43
+Okay? So, a private cluster means…
+
+[rochak agrawal] 08:52:47
+you cannot access the Cube API server from a public endpoint. It should be in the same network.
+
+[rochak agrawal] 08:52:54
+does not mean your application cannot have a public endpoint. Your applications are separate.
+
+[rochak agrawal] 08:53:00
+This is very valid confusion happens across. Keep that clarity in mind.
+
+[arif] 08:53:00
+Okay.
+
+[rochak agrawal] 08:53:09
+Private cluster means your cluster is private. I cannot access my cluster.
+
+[rochak agrawal] 08:53:14
+Now, what I am deploying on the cluster is a separate thing.
+
+[rochak agrawal] 08:53:19
+If I'm using a load balancer type of the service, I can access it publicly.
+
+[rochak agrawal] 08:53:24
+Although you cannot access your cluster. So, you see, um…
+
+[rochak agrawal] 08:53:28
+It is like…
+
+[rochak agrawal] 08:53:32
+from the public internet, you will not be able to make any changes to your cluster. You would not be able to see anything on the cluster. But whatever the application is running, if you choose to deploy them publicly, okay, externally.
+
+[rochak agrawal] 08:53:46
+You can access them, does not matter if it's a public cluster or a private cluster.
+
+[rochak agrawal] 08:53:53
+Clear?
+
+[arif] 08:53:53
+Okay, okay, got it. Yeah, thanks.
+
+[Vaibhav Gupta] 08:53:57
+Project, I'm not able to understand the last one, the right thing.
+
+[rochak agrawal] 08:53:57
+This is…
+
+[rochak agrawal] 08:54:00
+Okay?
+
+[Vaibhav Gupta] 08:54:01
+Mmhm.
+
+[rochak agrawal] 08:54:03
+So, any particular question in that? What's the confusion?
+
+[Vaibhav Gupta] 08:54:04
+Like, uh, the private cluster, we can… in private, we cannot access the private cluster.
+
+[rochak agrawal] 08:54:10
+Okay.
+
+[Vaibhav Gupta] 08:54:10
+But in public, uh…
+
+[Vaibhav Gupta] 08:54:13
+Again, accessing the cluster and the last on the road parents network.
+
+[rochak agrawal] 08:54:18
+Okay, so how do you access our cluster?
+
+[rochak agrawal] 08:54:24
+Using the Kube API server, correct?
+
+[Vaibhav Gupta] 08:54:26
+Mm-hmm.
+
+[rochak agrawal] 08:54:28
+Right? So, see.
+
+[rochak agrawal] 08:54:32
+When you deploy your cluster.
+
+[rochak agrawal] 08:54:35
+Your notes…
+
+[rochak agrawal] 08:54:37
+Is part of our network.
+
+[rochak agrawal] 08:54:39
+Got it?
+
+[Vaibhav Gupta] 08:54:40
+Mm-hmm.
+
+[rochak agrawal] 08:54:45
+Right?
+
+[Vaibhav Gupta] 08:54:47
+Hmm. Okay.
+
+[rochak agrawal] 08:54:47
+When I'm deploying a public cluster, let's say I'm not defining… So by default, your cluster is going to be public, okay? Then from my laptop or from Cloud Shell, I can connect to the Kube API server.
+
+[rochak agrawal] 08:55:04
+Right? And access all the things, I can deploy the application, I can see the application.
+
+[rochak agrawal] 08:55:09
+Correct? Clear till now?
+
+[Vaibhav Gupta] 08:55:11
+Hmm. Okay.
+
+[rochak agrawal] 08:55:12
+When I say my cluster is private.
+
+[rochak agrawal] 08:55:16
+Then this communication is not possible.
+
+[rochak agrawal] 08:55:20
+only from a machine within the same network, you can reach out to the QAPI server.
+
+[rochak agrawal] 08:55:28
+Okay?
+
+[rochak agrawal] 08:55:30
+That is called the private cluster. It does not matter about your application. It is, uh…
+
+[Vaibhav Gupta] 08:55:30
+Hmm.
+
+[rochak agrawal] 08:55:41
+Your application can still be public or private depending on how you are configuring them. Private cluster only talks about how you can access your cluster altogether. That's it.
+
+[rochak agrawal] 08:55:54
+Okay?
+
+[Vaibhav Gupta] 08:55:55
+Okay.
+
+[Vaibhav Gupta] 08:55:55
+Mm-hmm.
+
+[Megha U] 08:56:00
+So, Roshak, is there any advantage of that, because your application's still getting access from outside?
+
+[rochak agrawal] 08:56:05
+Correct, yeah, there is advantage, because now, uh, uh, see?
+
+[Megha U] 08:56:09
+No, but then, why do you make it private, the cluster? So…
+
+[rochak agrawal] 08:56:11
+Because then I do not want anyone from the public internet making changes to my cluster, right?
+
+[rochak agrawal] 08:56:18
+Your Google website is still public, correct?
+
+[rochak agrawal] 08:56:20
+But can you access the server where the Google is running?
+
+[rochak agrawal] 08:56:25
+No.
+
+[rochak agrawal] 08:56:26
+Right? So, I am limiting the administrative responsibility from an unverified network.
+
+[rochak agrawal] 08:56:36
+Yeah, understood.
+
+[Megha U] 08:56:37
+Okay, got it then.
+
+[Vaibhav Gupta] 08:56:43
+So, uh, during private, um, if a same network connects with, like, a cluster, so it makes it, uh, fast, you know? Performance, like…
+
+[rochak agrawal] 08:56:53
+No, that's a separate thing, Weber, that is, uh, depend on different other things, like network bandwidth and other things. So it is nothing related to the performance, it is about the security.
+
+[Vaibhav Gupta] 08:57:00
+Mmhm.
+
+[Vaibhav Gupta] 08:57:03
+No, no, just, like, a feasibility for us, just…
+
+[rochak agrawal] 08:57:05
+Yeah, of course, like, if it is in the same network, you are doing operations, so yes, there will be a certain… there could be, right? But this is… what I'm trying to say is, performance is not the parameter on which you want to go to public or private.
+
+[rochak agrawal] 08:57:22
+Security is a parameter.
+
+[Vaibhav Gupta] 08:57:23
+Okay.
+
+[rochak agrawal] 08:57:25
+You might get performance as a side product.
+
+[rochak agrawal] 08:57:27
+Okay? But that's not a criteria on which you will decide, I want to go to public or private.
+
+[rochak agrawal] 08:57:34
+Okay?
+
+[Vaibhav Gupta] 08:57:34
+Mmhm.
+
+[arif] 08:57:41
+So, Roger, this QM API server, so whatever we have created in this Azure.
+
+[rochak agrawal] 08:57:46
+Huh?
+
+[arif] 08:57:46
+What is that IP address? This is the public IP address?
+
+[rochak agrawal] 08:57:50
+This is public as of now, yes.
+
+[rochak agrawal] 08:57:52
+you… you… you…
+
+[arif] 08:57:52
+So, like, it can be private also in any scenario?
+
+[rochak agrawal] 08:57:55
+It can be private also, so when you connect, when you create the cluster, I've shown you an option, you just click on that and your cluster will be private.
+
+[Jeeva Koli] 08:58:08
+Uh, just one question.
+
+[arif] 08:58:08
+So, private cluster will have private IPs, right?
+
+[rochak agrawal] 08:58:11
+No, no, you, you…
+
+[arif] 08:58:13
+That's…
+
+[rochak agrawal] 08:58:14
+Private cluster will have the private IP address.
+
+[arif] 08:58:17
+Yeah, yeah, so private IP, if I know the IP, I can connect my laptop, right? If I… if I'm in…
+
+[rochak agrawal] 08:58:21
+But how can you connect your laptop with a private IPRF?
+
+[arif] 08:58:25
+If I'm… yeah, yeah, the physical access is not there, okay.
+
+[rochak agrawal] 08:58:29
+Correct.
+
+[arif] 08:58:30
+If it is on-premises, we can do, right?
+
+[rochak agrawal] 08:58:32
+Yes, you can do it
+
+[arif] 08:58:33
+Okay, okay.
+
+[rochak agrawal] 08:58:36
+Okay, so the next thing is… Jeeva, you have a question?
+
+[Jeeva Koli] 08:58:39
+Yeah.
+
+[Jeeva Koli] 08:58:40
+Anything else?
+
+[Jeeva Koli] 08:58:42
+Ah, yes, yes.
+
+[rochak agrawal] 08:58:43
+Yes, yes, tell me
+
+[Jeeva Koli] 08:58:46
+Uh, if the services is having, uh, like, all the IPs.
+
+[rochak agrawal] 08:58:50
+Mm-hmm.
+
+[Jeeva Koli] 08:58:52
+Then… and it is holding the all, uh, fixed IP addresses. Does the services act as a DLS server?
+
+[rochak agrawal] 08:58:55
+Mm-hmm.
+
+[Jeeva Koli] 08:59:00
+And another thing, Vini
+
+[rochak agrawal] 08:59:00
+No.
+
+[rochak agrawal] 08:59:01
+Okay, I'll come to the first question. You go ahead.
+
+[Jeeva Koli] 08:59:06
+Okay.
+
+[Jeeva Koli] 08:59:08
+Uh, the, uh, cube proxy is…
+
+[rochak agrawal] 08:59:10
+Hmm?
+
+[Jeeva Koli] 08:59:12
+It will work in the
+
+[Jeeva Koli] 08:59:14
+Inside the pod level, as, uh, like, if there are… inside the pod, multiple containers are there.
+
+[rochak agrawal] 08:59:19
+Mm-hmm.
+
+[Jeeva Koli] 08:59:23
+For containers, uh, does I… I mean, do we provide the IP address there, or how it works, actually, inside?
+
+[rochak agrawal] 08:59:29
+No, see, when you are… okay. See, when you are talking about Kubernetes, there is no containers, there is ports, first thing.
+
+[rochak agrawal] 08:59:36
+Okay? So you do not give, uh…
+
+[rochak agrawal] 08:59:41
+See, let's say, uh, on your laptop, you are running two applications. They want to talk to each other. How will they talk?
+
+[Jeeva Koli] 08:59:51
+Uh, with the wired network, or…
+
+[rochak agrawal] 08:59:54
+On your laptop itself.
+
+[rochak agrawal] 08:59:57
+Local host, right?
+
+[Jeeva Koli] 08:59:58
+Yes.
+
+[rochak agrawal] 08:59:59
+Correct? So, when you are saying, if there is…
+
+[rochak agrawal] 09:00:03
+Multiple container in a pod, how they are going to talk to each other on a local host.
+
+[rochak agrawal] 09:00:08
+So there is no
+
+[rochak agrawal] 09:00:10
+Different network connectivity is needed for them.
+
+[rochak agrawal] 09:00:13
+IPs are assigned on a pod level, not on the container level in Kubernetes.
+
+[rochak agrawal] 09:00:19
+Okay.
+
+[rochak agrawal] 09:00:22
+Now comes the first part of your question. Since the node is having the, uh, services are having the fixed IP, uh, can you call them as a DNS? Like, that is what your question is?
+
+[Jeeva Koli] 09:00:35
+Right, right.
+
+[rochak agrawal] 09:00:36
+See, what is the DNS?
+
+[Jeeva Koli] 09:00:40
+Uh, it will hold IP address, and it's, uh, the, uh…
+
+[Jeeva Koli] 09:00:46
+Name of the, uh, that server, respective server.
+
+[rochak agrawal] 09:00:48
+Correct? Name of the server.
+
+[Jeeva Koli] 09:00:49
+Yes.
+
+[rochak agrawal] 09:00:51
+It basically translates IP server name into the IP or IP to the server name, correct?
+
+[rochak agrawal] 09:01:01
+Hey, so
+
+[rochak agrawal] 09:01:02
+In a way, um, see, we are not using any explicit DNS here.
+
+[rochak agrawal] 09:01:08
+But, uh, for example, if you have two services in the same cluster.
+
+[rochak agrawal] 09:01:13
+They can talk to each other by a name.
+
+[rochak agrawal] 09:01:17
+Okay, so I'll say kubectl ping web from the DB port. It is going to work.
+
+[rochak agrawal] 09:01:24
+So, DNS is an inbuilt mechanism in… DNS is inbuilt in Kubernetes. We are not doing anything.
+
+[Jeeva Koli] 09:01:32
+Okay.
+
+[rochak agrawal] 09:01:33
+Okay, but…
+
+[Jeeva Koli] 09:01:34
+There is a separate, uh…
+
+[Jeeva Koli] 09:01:36
+There is separate, completely separate, uh, uh, provided, uh, that…
+
+[rochak agrawal] 09:01:37
+Sorry?
+
+[Jeeva Koli] 09:01:41
+some context provided in the Kubernetes, right?
+
+[rochak agrawal] 09:01:43
+In Kubernetes, whatever object you are defining in Kubernetes, Kubernetes will provide the DNS resolution for them by default. We do not need to do anything.
+
+[rochak agrawal] 09:01:53
+Okay?
+
+[rochak agrawal] 09:01:55
+Okay.
+
+[rochak agrawal] 09:01:58
+Now, there is one more very interesting thing in services, okay? So whenever someone asks me how many services are there in Kubernetes?
+
+[rochak agrawal] 09:02:11
+I generally say four types of services, okay.
+
+[rochak agrawal] 09:02:15
+By default, there is a three type of services, but there is one more very, very, very important type of the services, which we call it as a…
+
+[rochak agrawal] 09:02:31
+Ingres.
+
+[rochak agrawal] 09:02:33
+Okay, now what does ingress means?
+
+[rochak agrawal] 09:02:39
+Have you… have anyone heard about Ingress? Ingress or Egress?
+
+[rochak agrawal] 09:02:45
+These are some general terms out there.
+
+[rochak agrawal] 09:02:52
+Yes, Anthony?
+
+[Anthony Joseph] 09:02:56
+Traffic that goes in and out.
+
+[rochak agrawal] 09:02:58
+Goes in and out, right?
+
+[rochak agrawal] 09:03:01
+Okay. So…
+
+[rochak agrawal] 09:03:08
+Ingrace is,
+
+[rochak agrawal] 09:03:12
+You can see the difference, like, if you ask general… in general sense, the difference between, uh…
+
+[rochak agrawal] 09:03:21
+load balancer service and the ingress service is that… the difference between the application load balancer and the network load balancer. Now, we have seen that if I want my application to be externally accessible, I can use a type of the service called the load balancer, which will take.
+
+[rochak agrawal] 09:03:41
+Uh, take the traffic.
+
+[rochak agrawal] 09:03:45
+And come to the service, and the service will send the traffic over the…
+
+[rochak agrawal] 09:03:50
+Back in ports.
+
+[rochak agrawal] 09:03:55
+It's a simple load distribution.
+
+[rochak agrawal] 09:03:58
+Nothing else, okay? But when you want to distribute the traffic.
+
+[rochak agrawal] 09:04:05
+Based on certain rules.
+
+[rochak agrawal] 09:04:08
+Okay? You say if the traffic, um…
+
+[rochak agrawal] 09:04:13
+based on certain rule, like, for example, uh, HTTP.
+
+[rochak agrawal] 09:04:19
+myapp.com slash images.
+
+[rochak agrawal] 09:04:24
+If the traffic is coming like this, HTTP, my app.
+
+[rochak agrawal] 09:04:29
+dot com slash.
+
+[rochak agrawal] 09:04:31
+Videos, for example, right?
+
+[rochak agrawal] 09:04:34
+Then this should go to application number one.
+
+[rochak agrawal] 09:04:39
+If the request is coming.
+
+[rochak agrawal] 09:04:42
+Slash videos, it should go to application number 2.
+
+[rochak agrawal] 09:04:46
+Or, let's say, host-based routing.
+
+[rochak agrawal] 09:04:49
+Where you say, if it is HTTP.
+
+[rochak agrawal] 09:04:55
+Abundant.
+
+[rochak agrawal] 09:04:58
+dot my app dot com.
+
+[rochak agrawal] 09:05:03
+Or HTTP.
+
+[rochak agrawal] 09:05:05
+app to…
+
+[rochak agrawal] 09:05:07
+dot my app.
+
+[rochak agrawal] 09:05:08
+dot com.
+
+[rochak agrawal] 09:05:10
+Right? So if you have these type of situations, then load balancer service does not help you there.
+
+[rochak agrawal] 09:05:17
+Okay? When I'm saying this does not help you there
+
+[rochak agrawal] 09:05:23
+Because load balancer, the service, the traffic comes, and it is going to distribute
+
+[rochak agrawal] 09:05:29
+whatever the backend server is, it is going to distribute equally to the backend servers, okay? While in terms of the ingress, ingress exposes.
+
+[rochak agrawal] 09:05:39
+HTTP and HTTP routes.
+
+[rochak agrawal] 09:05:43
+from outside the cluster to the services within the cluster. So your, uh, will look something like, uh.
+
+[rochak agrawal] 09:05:56
+So, for example.
+
+[rochak agrawal] 09:06:02
+Now you have these clients.
+
+[rochak agrawal] 09:06:08
+Which will be sending the traffic to?
+
+[rochak agrawal] 09:06:12
+Ingress?
+
+[rochak agrawal] 09:06:16
+Now, this will be called as an ingress managed load balancer.
+
+[rochak agrawal] 09:06:26
+From here, the traffic will come to…
+
+[rochak agrawal] 09:06:30
+You're in Greece?
+
+[rochak agrawal] 09:06:40
+Okay. Now, in Grace, you will have, uh, multiple routing rule.
+
+[rochak agrawal] 09:06:47
+And the…
+
+[rochak agrawal] 09:06:52
+Based on the routing rule.
+
+[rochak agrawal] 09:06:55
+Based on the routing rule, it will go to, let's say, a particular.
+
+[rochak agrawal] 09:07:00
+Services?
+
+[rochak agrawal] 09:07:03
+And the service will send the traffic to your…
+
+[rochak agrawal] 09:07:10
+Back and forth.
+
+[rochak agrawal] 09:07:23
+Okay, so for example, let's say, Ingress, you have defined a rule, like, if the request is coming for BDOs.
+
+[rochak agrawal] 09:07:33
+It should go to video service.
+
+[rochak agrawal] 09:07:38
+And then video service can be a cluster IP or, again, a load balancer, and then it will distribute the traffic to the backend server. If it is slash images.
+
+[rochak agrawal] 09:08:01
+Okay, so ingress exposes HTTP and HTTP routes.
+
+[rochak agrawal] 09:08:07
+from outside the cluster to services within the cluster.
+
+[rochak agrawal] 09:08:12
+Traffic routing is controlled by the rules defined on this ingress resource. So, ingress, you can understand, in some of the clusters, we will be…
+
+[rochak agrawal] 09:08:28
+uh… deploying something called the Ingress Gateway.
+
+[rochak agrawal] 09:08:36
+Okay.
+
+[rochak agrawal] 09:08:37
+any traffic which is coming to the cluster from outside.
+
+[rochak agrawal] 09:08:43
+will have to pass through this ingress and then go inside the cluster.
+
+[rochak agrawal] 09:08:47
+Okay, so Ingress may be configured to give services externally reachable URL, load balancer traffic, uh, security SSL TLS, and name also offer name-based virtual hosting.
+
+[rochak agrawal] 09:09:04
+An ingress controller is responsible for fulfilling the ingress, usually with a load balancer. So an ingress does not expose arbitrary port or protocol, exposing service other than HTTP and HTTPS to the internal internet traffic.
+
+[rochak agrawal] 09:09:19
+Typically, we can use a service type of a load balancer. Okay, so ingress rule…
+
+[rochak agrawal] 09:09:26
+you can define in the backend. Now, very importantly, to create an ingress, okay?
+
+[rochak agrawal] 09:09:35
+How to put it up. So, services are the… and that's why there is only 3 types of the services. We can say there is the 4 types of services, including ingress, but ingress is not a…
+
+[rochak agrawal] 09:09:47
+inbuilt Kubernetes object.
+
+[rochak agrawal] 09:09:49
+Okay.
+
+[rochak agrawal] 09:09:52
+To run an ingress, you need something called the ingress controller.
+
+[rochak agrawal] 09:10:06
+you need something called an ingress controller, okay? So in order for an ingress to work in the cluster, there must be an ingress controller running.
+
+[rochak agrawal] 09:10:16
+If the ingress controller is not running, you cannot run an ingress. As simple as that.
+
+[rochak agrawal] 09:10:23
+Okay, so for example, when we say, um, I will just go and directly deploy my, um.
+
+[rochak agrawal] 09:10:31
+load balancer service, you can do so. You want to deploy a cluster IP service, you can do so as well. But ingress, to run an ingress, first you need to have an ingress controller running.
+
+[rochak agrawal] 09:10:48
+you need to select at least one ingress controller, and make sure it is set up in your cluster. Okay, now there is multiple type of the clusters is available. If I talk about AKS.
+
+[rochak agrawal] 09:11:04
+Which we are currently using, so which uses the…
+
+[rochak agrawal] 09:11:08
+AKS application.
+
+[rochak agrawal] 09:11:10
+Gateway?
+
+[rochak agrawal] 09:11:12
+In Guinness Controller.
+
+[rochak agrawal] 09:11:16
+But there are…
+
+[rochak agrawal] 09:11:18
+multiple. So, for example, AWS will have its own ingress controller, etc, etc, but apart from this, also, we have a Kong Gateway, which I'm talking about open source, which you can set up any… anywhere. Then we have NGINX ingress controller is there, which is…
+
+[rochak agrawal] 09:11:36
+most commonly used.
+
+[rochak agrawal] 09:11:40
+Then, we have…
+
+[rochak agrawal] 09:11:42
+N Group Operator.
+
+[rochak agrawal] 09:11:46
+Which is developed by Twitter.
+
+[rochak agrawal] 09:11:51
+Then, um…
+
+[rochak agrawal] 09:11:56
+Traffic is also one of the most common one. Traffic, Kubernetes, Ingress, and then Voyager.
+
+[rochak agrawal] 09:12:05
+is there. So, there are multiple ingress controllers are there. You can choose as per your requirement. Most of the time, if you are working within a cloud, so the cloud provider ingress controller is sufficient, but then you can choose as per your requirement. So, for example, if you're migrating your cluster.
+
+[rochak agrawal] 09:12:25
+Uh, from on-prem to your, um…
+
+[rochak agrawal] 09:12:29
+Cloud. So then you can choose, um, uh, whatever the cluster you… whatever the ingress controller you are already running, uh, in your on-premises environment, you can migrate that, because then…
+
+[rochak agrawal] 09:12:39
+you do not need to write the routing rules again, right? So, but ingress controller is very, very necessary. Um…
+
+[rochak agrawal] 09:12:53
+So there's multiple ingress controllers are there, right? And now the difference between ingress controller.
+
+[rochak agrawal] 09:13:04
+and the load balancer IP with respect to Azure, if you see by default, if you define a type of the load balancer service, it is going to create an Azure load balancer.
+
+[rochak agrawal] 09:13:21
+Which is an NLB.
+
+[rochak agrawal] 09:13:24
+And Ingress will give you an Azure Application Gateway.
+
+[rochak agrawal] 09:13:33
+Which is an ALD.
+
+[rochak agrawal] 09:13:37
+So basically, a load balancer type of the service, if you want to define in a very simple things, so an Azure load balancer type of the service in Azure is going to define Azure load balancer.
+
+[rochak agrawal] 09:13:53
+which is a network load balancer, so it does a network load balancing, okay? It does the load balancing on the network… oh, sorry, on the transport layer, while if we talk about the ingress, it does the load balancing on the application there. We can define the routing rules, we can define…
+
+[rochak agrawal] 09:14:09
+Uh, the host-based routing and other things. So that is a difference between the ingress and the, uh…
+
+[rochak agrawal] 09:14:17
+load balancer type of the service. So, most of the time, you will use an ingress gateway, so that you can completely control, uh, what is the traffic.
+
+[rochak agrawal] 09:14:28
+coming into your Kubernetes cluster from outside of the world, and it is going to become your single point of entry point into.
+
+[rochak agrawal] 09:14:39
+your Kubernetes cluster.
+
+[rochak agrawal] 09:14:46
+Yes, Anthony?
+
+[Anthony Joseph] 09:14:55
+Sorry, Richard, nothing from my end. My end was reset.
+
+[rochak agrawal] 09:14:57
+Okay, okay, good.
+
+[rochak agrawal] 09:15:00
+Adith, Bevo, you have a question?
+
+[Vaibhav Gupta] 09:15:05
+So, uh, the thing is that, um, the first traffic came to our ingress load balancer, then to another ingress, then it divides through particular sections, like an image and video, that way, right?
+
+[rochak agrawal] 09:15:10
+Mm-hmm.
+
+[rochak agrawal] 09:15:17
+Correct, yeah.
+
+[rochak agrawal] 09:15:18
+Mm-hmm.
+
+[Vaibhav Gupta] 09:15:19
+So, um…
+
+[Vaibhav Gupta] 09:15:27
+Like, what is the exact use of the controller in that? Like, I don't…
+
+[Vaibhav Gupta] 09:15:31
+Understood.
+
+[rochak agrawal] 09:15:32
+See, the exact use of the controller is, if there is no controller, it is like, um, the…
+
+[rochak agrawal] 09:15:38
+Ingress you can use when you're using a controller.
+
+[Vaibhav Gupta] 09:15:41
+Mm-hmm.
+
+[rochak agrawal] 09:15:42
+To use the ingress, you need to set up the controller, basically.
+
+[Vaibhav Gupta] 09:15:47
+Why?
+
+[rochak agrawal] 09:15:48
+That's how it is. See, for example, now you can say, to use the pod, you need to install Kubernetes.
+
+[Vaibhav Gupta] 09:15:56
+Mm-hmm.
+
+[rochak agrawal] 09:15:57
+Right? Because that's the platform which is giving you the capability.
+
+[rochak agrawal] 09:16:01
+Late.
+
+[Vaibhav Gupta] 09:16:03
+Hmm.
+
+[rochak agrawal] 09:16:04
+So, ingress controller, because, see, ingress, uh…
+
+[rochak agrawal] 09:16:09
+Ingress is not a built-in Kubernetes object, correct? Service is a built-in Kubernetes object. So if you need to use Ingress, you need something to control it.
+
+[rochak agrawal] 09:16:19
+Correct?
+
+[Vaibhav Gupta] 09:16:20
+Okay.
+
+[rochak agrawal] 09:16:21
+And that is where Ingress Controller is if you are using, for example, if you want Nginx Azure Ingress, uh, Ingress, so then you need to use Ingress Controller, uh, Nginx Controller, Nginx Ingress.
+
+[rochak agrawal] 09:16:33
+See, who is going to give you the capability to route?
+
+[rochak agrawal] 09:16:38
+To run.
+
+[rochak agrawal] 09:16:39
+And that is where we need the controller.
+
+[rochak agrawal] 09:16:47
+Understood.
+
+[Vaibhav Gupta] 09:16:49
+Mm-hmm.
+
+[arif] 09:16:53
+So, Rochak, in real time, like, there will be multiple, uh, controllers, or only single controller?
+
+[rochak agrawal] 09:17:00
+You can have multiple controllers, but generally, as I said, we will have one engine…
+
+[rochak agrawal] 09:17:08
+ingress controller, okay, uh, which we call it as the ingress gateway as well.
+
+[rochak agrawal] 09:17:19
+It is going to act as an entry point to your Kubernetes cluster. So whatever traffic is coming into your Kubernetes cluster, B, it is going to come via the ingress, and then later on, it is distributed to the particular services.
+
+[rochak agrawal] 09:17:36
+So that's generally we follow. But you can have multiple cluster if you, let's say, if your application is completely deploying unrelated applications. So then you can have multiple ingress controllers as well. There's absolutely no problem.
+
+[arif] 09:17:55
+Hmm.
+
+[arif] 09:17:56
+Can we talk about the problems normally we face and how to troubleshoot those things in this?
+
+[rochak agrawal] 09:18:01
+So yeah, when we will do the demo, then we will show you where you are going to face. See, once we understand all the concept like config map volume, we will do a complete demo of all the objects in Kubernetes.
+
+[rochak agrawal] 09:18:18
+And then we are going to talk about the problems as well.
+
+[arif] 09:18:23
+Okay.
+
+[rochak agrawal] 09:18:23
+Okay.
+
+[rochak agrawal] 09:18:26
+Because in Kubernetes, for example, if you understand services, every object is connected with one another and they work holistically.
+
+[Vaibhav Gupta] 09:18:47
+I have a, like, short question. Like, what's the difference between a Kubernetes and Ingress and a Kubernetes service? Like, when we choose one of the, like.
+
+[rochak agrawal] 09:18:50
+Yep.
+
+[rochak agrawal] 09:19:04
+What do you mean by Kubernetes service? Like, the load balancer, cluster, IP, and.
+
+[Vaibhav Gupta] 09:19:08
+No, no, but it's, like, a difference in, uh, that ingress and, uh, ingress Kubernetes and, uh, normal Kubernetes, like, normal K.
+
+[rochak agrawal] 09:19:17
+What do you mean by normal Kubernetes services?
+
+[Vaibhav Gupta] 09:19:20
+I mean, uh, like, um…
+
+[Vaibhav Gupta] 09:19:25
+if someone, like, asks a question, like, uh, Kubernetes and a Kubernetes service.
+
+[rochak agrawal] 09:19:29
+Okay? So, yeah. So, see, that is what we were discussing before. Uh, Kubernetes… see, ingress service gives you, um…
+
+[Vaibhav Gupta] 09:19:30
+Like, uh…
+
+[rochak agrawal] 09:19:39
+gives you the flexibility to route the traffic based on the HTTP and HTTPS rule.
+
+[rochak agrawal] 09:19:46
+Uh, it is the same difference. See, you know, first we have three Kubernetes services. NodePort.
+
+[rochak agrawal] 09:19:52
+cluster IP and the load balancer. We are clear on that, right? Now, if anything coming from the external world, we use the load balancer. Now, if you ask me what is equivalent to load balance in Graystar.
+
+[Vaibhav Gupta] 09:19:55
+Mm-hmm.
+
+[rochak agrawal] 09:20:08
+See, ingress is for the external traffic. Ingress is not for internal traffic. That's the first thing. There is no competition between ingress and the cluster IP. It is more equivalent to a load balancer service. Now, if you ask me what is the difference between the load balancer service?
+
+[rochak agrawal] 09:20:25
+and the ingress. See, ingress works on the application layer. It gives you the application layer level load balancing. Like, you can define the path-based routing, you can define the rule-based routing, virtual host routing. While your load balancer service only does the transport layer.
+
+[rochak agrawal] 09:20:44
+Load balancing. Traffic comes, it distribute across multiple backend, that's it.
+
+[rochak agrawal] 09:20:49
+So that is a difference.
+
+[rochak agrawal] 09:20:59
+Okay?
+
+[Vaibhav Gupta] 09:21:02
+Mm-hmm.
+
+[rochak agrawal] 09:21:08
+Okay, so now, next, we are going to cover the config map, secret, and the volumes.
+
+[rochak agrawal] 09:21:18
+ConfigMap and Secrets are more or less the same thing. It is just ConfigMap we are going to use when we want to store some configuration.
+
+[rochak agrawal] 09:21:29
+So, for example, your, uh, some properties, some database connections, or whatsoever.
+
+[rochak agrawal] 09:21:35
+Then comes the secrets. The difference… only difference between the config map and the secrets is…
+
+[rochak agrawal] 09:21:42
+With the secrets, we are going to store the sensitive information, like your passwords, like your API keys.
+
+[rochak agrawal] 09:21:48
+Apart from it, they both are the same thing, so we'll see how we are going to define them first, and secondly, how we are going to use them with our applications.
+
+[rochak agrawal] 09:21:58
+Then we will talk about the volumes. We have seen the volumes in Docker, but if you are using Kubernetes, you are not going to use the Docker volume. You are going to use something called the persistent volume here. So and here interestingly.
+
+[rochak agrawal] 09:22:15
+It is very different, uh…
+
+[rochak agrawal] 09:22:21
+It is very different, um, from, uh…
+
+[rochak agrawal] 09:22:26
+Docker, here, uh, there is…
+
+[rochak agrawal] 09:22:29
+very, very interesting concept is there about the persistent volume and the persistent volume claim. So once you create the volume, an application or a pod need to claim it.
+
+[rochak agrawal] 09:22:39
+And then it is going to use the shared storage. So we are going to cover that as well.
+
