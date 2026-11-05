@@ -1,0 +1,2904 @@
+[rochak agrawal] 07:37:37
+Hey, good morning, everyone. So, let's start.
+
+[rochak agrawal] 07:37:47
+Show my screen.
+
+[rochak agrawal] 07:37:49
+So today, we are going to start about Azure, uh, which is another private cloud. So we have, um…
+
+[rochak agrawal] 07:37:54
+three private cloud, uh, right? AWS, Azure, and GCP.
+
+[rochak agrawal] 07:37:59
+And if you compare all these three cloud, okay, they are…
+
+[rochak agrawal] 07:38:05
+I would not say very similar in nature. They're exactly same. Some terminology here and there may be different, but most of the things are similar in nature. So we are going to understand how the cloud is constructed.
+
+[rochak agrawal] 07:38:21
+And then we see Azure-related things. So when you talk about any of the cloud, there are regions in that particular cloud.
+
+[rochak agrawal] 07:38:29
+Legions means?
+
+[rochak agrawal] 07:38:31
+physical regions of geographical regions. So Azure.
+
+[rochak agrawal] 07:38:36
+is going to offer.
+
+[rochak agrawal] 07:38:40
+More, like, there are many regions are available, and the good thing about any of the public cloud is.
+
+[rochak agrawal] 07:38:48
+Doesn't matter.
+
+[rochak agrawal] 07:38:50
+wherever you are sitting in the world, you can deploy your resources in any of the region, right? So region is nothing, but it is a collection of one or more data center in the close proximity. So for example, when I'm saying I want to deploy my resources in.
+
+[rochak agrawal] 07:39:07
+Mumbai region.
+
+[rochak agrawal] 07:39:09
+So then, I don't know how many data centers are there. Azure will just say that.
+
+[rochak agrawal] 07:39:15
+In Mumbai, there will be one or more data centers would be there.
+
+[rochak agrawal] 07:39:20
+Right? So provide flexibility and scale to reduce customer latency. So it makes sense wherever your customers are located. So for example, if you're developing an application, an Indian company is developing an application for its US customers.
+
+[rochak agrawal] 07:39:34
+So it makes sense when you deploy your resources, your services, into the…
+
+[rochak agrawal] 07:39:41
+U.S. region. And, of course, preserve data residency. So, for example, there is a mandate from RBI for the Indian financial institutions that, uh…
+
+[rochak agrawal] 07:39:51
+they cannot send the customers of Indian data outside of the India region. Or there is a similar data residency rules are there in EU, which is…
+
+[rochak agrawal] 07:40:03
+The customer's data should not leave the EU's physical boundary. Then if you have such guidelines, then you need to deploy your application according to the compliances. Now reason is if you go to Azure Global Infrastructure.
+
+[rochak agrawal] 07:40:31
+Do you have, uh…
+
+[rochak agrawal] 07:40:33
+If you go to Table.
+
+[rochak agrawal] 07:40:36
+So you have multiple regions out there.
+
+[rochak agrawal] 07:40:39
+Edinburgh, New South Wales, Victoria, and those regions you will… whenever you will be deploying any resource, you will get an option of choose your region.
+
+[rochak agrawal] 07:40:49
+Right. So we have three construct here.
+
+[rochak agrawal] 07:40:53
+In the end, your resources.
+
+[rochak agrawal] 07:40:56
+Will get deployed into something called the.
+
+[rochak agrawal] 07:41:02
+data centers.
+
+[rochak agrawal] 07:41:07
+Now, in a particular region, Azure says.
+
+[rochak agrawal] 07:41:11
+you will have one or more data centers. Like, how many is there? That information is not public. It may be 1, 2, 4, 6, 8, 10, I don't know.
+
+[rochak agrawal] 07:41:21
+Now, data center collected together and create something called the.
+
+[rochak agrawal] 07:41:35
+I believe it is on.
+
+[rochak agrawal] 07:41:37
+Okay, and then this becomes the Legion.
+
+[rochak agrawal] 07:41:46
+So inside a Reason, you will have Availability Zones, and similar concept is there in AWS also. Inside the Reason, you have your Availability Zone, and inside Availability Zones, you have your…
+
+[rochak agrawal] 07:41:59
+Okay, now that's a construct. Now you can deploy a service.
+
+[rochak agrawal] 07:42:04
+If you go to the next slide.
+
+[rochak agrawal] 07:42:07
+if you… for example, I want to deploy a virtual machine. I can deploy my virtual machine without any availability zones also. So I can deploy as a single virtual machine. Then, in that case.
+
+[rochak agrawal] 07:42:22
+My SLA would be 99.9%.
+
+[rochak agrawal] 07:42:26
+99.9%, and then if you want to, uh, deploy it in a…
+
+[rochak agrawal] 07:42:33
+High availability zone.
+
+[rochak agrawal] 07:42:36
+then it will achieve the SLA of 99.9.
+
+[rochak agrawal] 07:42:41
+Then you have a multi-disaster, a multi-region disaster recovery. Now, the difference between.
+
+[rochak agrawal] 07:42:46
+single availability zone and multiple availability zone is. So, for example.
+
+[rochak agrawal] 07:42:52
+Let's say my virtual machine is running here.
+
+[rochak agrawal] 07:42:56
+Okay.
+
+[rochak agrawal] 07:42:59
+Now, if there is a data center failure.
+
+[rochak agrawal] 07:43:05
+If there is a data center failure, then…
+
+[rochak agrawal] 07:43:13
+Your virtual machine will not be available, it will also go down.
+
+[rochak agrawal] 07:43:16
+Because in the end, it is running in a data center. Now, 99.9% SLA means.
+
+[rochak agrawal] 07:43:26
+Your virtual machine, because of the data center failure, can be down.
+
+[rochak agrawal] 07:43:34
+8 hour 46 minute.
+
+[rochak agrawal] 07:43:41
+In a year. In a year.
+
+[rochak agrawal] 07:43:45
+In a month, it is, uh…
+
+[rochak agrawal] 07:43:52
+Okay? So that is what 99.9% SLA. But you say, no, I cannot afford my machines to go down, let's say, 8 hours, 46 minutes in a year. So then you need to deploy your machine into…
+
+[rochak agrawal] 07:44:08
+Uh, in a high availability, so what is going to happen is, if your machine is, uh…
+
+[rochak agrawal] 07:44:16
+If the data center is not available, then Azure itself will.
+
+[rochak agrawal] 07:44:22
+Transfer your virtual machine.
+
+[rochak agrawal] 07:44:25
+to another data center in the same availability zone. And this way, you are going to achieve 99.9% SLA.
+
+[rochak agrawal] 07:44:33
+which is approximately $30,000.
+
+[rochak agrawal] 07:44:38
+I think, um, 8 minutes or something.
+
+[rochak agrawal] 07:44:41
+So if you want to achieve higher availability, then you need to deploy it in an availability zones.
+
+[rochak agrawal] 07:44:49
+So, we have a region, we have an availability zone, and inside the availability zone, you are going to have the data center. So, availability zone, if seen, provide.
+
+[rochak agrawal] 07:45:00
+protection against.
+
+[rochak agrawal] 07:45:02
+downtime due to the data center failure. So if the data center is getting failed, then your resources in the same availability zone are going to shift to another data center. And now you don't need to have… you don't need to do anything.
+
+[rochak agrawal] 07:45:17
+You just, while creating the resource, you will…
+
+[rochak agrawal] 07:45:21
+say that you want to deploy it in a high availability mode or not. So, for example, when I be creating the virtual machine, when I will be creating a database, at that time, you will have an option if you want a single availability zone or multiple availability zone altogether.
+
+[rochak agrawal] 07:45:37
+In an availability zone, physical separate data center within the same region, and each data center is equipped with the independent power, cooling, and networking, and they are connected with each other through the private fiber optic networks.
+
+[rochak agrawal] 07:45:52
+Now…
+
+[rochak agrawal] 07:45:53
+So, and very same things is there in AWS also. Now, in Azure.
+
+[rochak agrawal] 07:45:59
+Every service you are going to create, we call it as a resource. For example, you are creating a virtual machine.
+
+[rochak agrawal] 07:46:06
+it would be called a resource. When you create a storage account, it would be called a resource. So basically, every service, every instance of a service you are creating, you are basically creating a resource.
+
+[rochak agrawal] 07:46:19
+So…
+
+[rochak agrawal] 07:46:20
+Anything, virtual machine, your load balancer, um…
+
+[rochak agrawal] 07:46:27
+Your Azure data factory or data related, anything you are creating in Azure will be called as the Azure resource. Now why we call it as a resource? Because there is a concept of resource manager in Azure.
+
+[rochak agrawal] 07:46:42
+So, uh, resource group and resource manager. Now, this thing was not there in AWS and still not there.
+
+[rochak agrawal] 07:46:49
+In Azure, so your resources sit inside a resource group.
+
+[rochak agrawal] 07:46:55
+Now, resource group in itself does nothing, okay? So it is like when you have multiple people, you create a group of them. That's it, okay? So resource group is a group to manage an aggregated resources in a single unit.
+
+[rochak agrawal] 07:47:09
+Now, for example, you have an application, you will need a web server for it, app server for it, database, load balancer, multiple other servers, so you deploy everything.
+
+[rochak agrawal] 07:47:20
+in a single resource group, okay? So that whenever you want to apply some policy, whenever you want to give some permission to someone, you can do it on a resource group level, and that will be applicable to every resource in that particular resource group.
+
+[rochak agrawal] 07:47:38
+Now, very important, resource can exist only in.
+
+[rochak agrawal] 07:47:43
+one resource group. So if you are creating a resource, it will belong to one resource group, okay? I cannot make that a resource.
+
+[rochak agrawal] 07:47:52
+the part of multiple resource groups, okay? Resources can exist in a different region, so when you are creating the resource group.
+
+[rochak agrawal] 07:48:02
+uh, inside that resource group, there can be resources that can reside in the multiple region, okay? Now, uh, when you will be creating a resource group, okay, uh, you need to select a reason.
+
+[rochak agrawal] 07:48:14
+So, now I'll just park it for a moment, I'll go to console.
+
+[rochak agrawal] 07:48:19
+So very simply, you can create your Azure Free Tier account as well.
+
+[rochak agrawal] 07:48:26
+So I'll
+
+[rochak agrawal] 07:48:27
+Azure sign up if you see.
+
+[rochak agrawal] 07:48:38
+So, Raya, you're for free.
+
+[rochak agrawal] 07:48:54
+So it is asking me to sign, uh, in your account. If you don't have an account, you can create one.
+
+[rochak agrawal] 07:49:00
+And you need to give your… some basic detail and credit card information, and then you will be able to access the Azure services. I am using a pay-as-you-go account, because I need it for some other purposes as well.
+
+[rochak agrawal] 07:49:14
+Okay, so, but you can simply create your Azure account, and then you are going to get the $200 of retail rate.
+
+[rochak agrawal] 07:49:20
+Now, if I go to my account.
+
+[rochak agrawal] 07:49:35
+So, you can see, uh, there is… the first thing is… so, the design is also, if I explain, of the console.
+
+[rochak agrawal] 07:49:42
+He had, um…
+
+[rochak agrawal] 07:49:45
+You have your account-related information, okay? Then, uh…
+
+[rochak agrawal] 07:49:50
+From here, you can see what other products are there. Azure is only one product, so Azure has DevOps, InterID, Fabric, GitHub, Intune, VS Code, multiple other products of Microsoft is listed there.
+
+[rochak agrawal] 07:50:05
+here, you can see the, uh, Azure services, okay? So you can see, if you want to see all services, so then those services will be listed.
+
+[rochak agrawal] 07:50:15
+From the category wise. So you can see all the services.
+
+[rochak agrawal] 07:50:19
+There's multiple services. AI and machine learning, there's 20 services. So you can see so many services are there.
+
+[rochak agrawal] 07:50:27
+Right? Then, uh, if you go here, um, you come to your home.
+
+[rochak agrawal] 07:50:33
+To the services, uh, which you are frequently be using.
+
+[rochak agrawal] 07:50:37
+Those we'll be seeing here. And then, uh, here you can see it says create a resource. So when you click on create a resource, then it will ask, like, which service you want to use, right? So…
+
+[rochak agrawal] 07:50:51
+virtual machine, Windows Server, anything you are creating, uh, using, it is basically a resource, right? That's what we discussed.
+
+[rochak agrawal] 07:50:59
+And then, uh, right now we are talking about… and then, uh, before we go to the resource group.
+
+[rochak agrawal] 07:51:06
+So.
+
+[rochak agrawal] 07:51:07
+You can now chat with the co-pilot, so whenever you are…
+
+[rochak agrawal] 07:51:12
+facing any issues, any insight you want, you say, some pre-read prompts are there, what percentage of my cost are virtual machine related?
+
+[rochak agrawal] 07:51:21
+Automatically, so you can see, help me create a new Azure OpenAI application.
+
+[rochak agrawal] 07:51:27
+Things you can do. And then, uh…
+
+[rochak agrawal] 07:51:30
+This is Cloud Shell. So when you… we'll see the Cloud Shell separately as well, but this is the Cloud Shell where you are going to run Azure CLI and the PowerShell commands.
+
+[rochak agrawal] 07:51:45
+So, it is connecting to the terminal.
+
+[rochak agrawal] 07:52:05
+So, you can see, uh, Azure in the command line gives you two options, Azure CLI and the PowerShell. We'll see them separately, uh, but just the basic, uh.
+
+[rochak agrawal] 07:52:19
+touch base is, if you're coming from a Linux background, you are going to prefer the Azure CLI, like I prefer Azure CLI, but if someone is coming from a Windows-based background, then you can use the Azure PowerShell. It's your choice, it is the same, basically.
+
+[rochak agrawal] 07:52:35
+Then, uh, this is the notification button, so you are creating any resources which is taking a lot of time, so you will get notified about it. And there's some settings, directories, and subscription-related details are there.
+
+[rochak agrawal] 07:52:48
+So currently you can see I have three directories are there. Default directory is this one.
+
+[rochak agrawal] 07:52:56
+Okay? So…
+
+[rochak agrawal] 07:53:00
+Now, I will go to the resource group.
+
+[rochak agrawal] 07:53:03
+And you can create a resource group.
+
+[rochak agrawal] 07:53:10
+Forget the subscription about it for a moment. Resource group name, you can…
+
+[rochak agrawal] 07:53:15
+Give a demo RG. It could be any name, but right now I'm giving a demo RG and region you have to select. Okay. So you can see there are whatever the regions are there. You can select the regions from this list.
+
+[rochak agrawal] 07:53:31
+So, I'll select East US, and you review and create.
+
+[rochak agrawal] 07:53:39
+Okay, now the source group is…
+
+[rochak agrawal] 07:53:43
+There is no cost associated with the resource group, okay?
+
+[rochak agrawal] 07:53:48
+So my demo RG is created, Azure Subscription 1 East US.
+
+[rochak agrawal] 07:53:53
+So, you see here that, um…
+
+[rochak agrawal] 07:53:56
+there is no cost associated with the resource group, because the resource group is not consuming any service. Now, inside a resource group, so for example.
+
+[rochak agrawal] 07:54:07
+When you create any resources, so I'll go create a virtual machine, try to create a virtual machine.
+
+[rochak agrawal] 07:54:13
+And let's say create a virtual machine.
+
+[rochak agrawal] 07:54:16
+So, whenever you see there is an option of resource group.
+
+[rochak agrawal] 07:54:21
+At the time of the creating resource, you can create a new resource group, okay, or you can select from your resource group. So, for example, I'll select the demo RG.
+
+[rochak agrawal] 07:54:31
+Okay, so any… and it's not about the virtual machine. Any resource you are creating.
+
+[rochak agrawal] 07:54:39
+It need to be part of a resource group.
+
+[rochak agrawal] 07:54:42
+You can select from an existing resource group, or you can create a new resource group.
+
+[rochak agrawal] 07:54:49
+Okay, now there is a question.
+
+[rochak agrawal] 07:54:53
+There comes a question that.
+
+[rochak agrawal] 07:55:01
+You see the point, uh, resources can exist in a different regions. Now, what does it mean? It means, for example, my resource group.
+
+[rochak agrawal] 07:55:11
+is there, I can create two virtual machines in that resource group. One virtual machine can belong to the US region, another virtual machine can belong to the Australia region.
+
+[rochak agrawal] 07:55:23
+Correct.
+
+[rochak agrawal] 07:55:25
+But, when you create a resource group, you also select the region for the resource group.
+
+[rochak agrawal] 07:55:30
+to contain the metadata about the resources, okay? But your resources can be… can reside in the different regions.
+
+[rochak agrawal] 07:55:40
+Now, once you create the resources in a resource group, resources can be moved.
+
+[rochak agrawal] 07:55:47
+So you say you started your application with one resource group, but as with the time, your application is getting heavier and heavier.
+
+[rochak agrawal] 07:56:01
+There are multiple resources, so you can create another resource group and move some of the resources from that particular resource group.
+
+[rochak agrawal] 07:56:09
+Okay, so an application can have multiple resource groups altogether, that's absolutely okay.
+
+[rochak agrawal] 07:56:16
+Now, how you want to create the resource group is up to you. Uh, like, sometime I create the resource group based on the location, so I know that my Europe resource is in the same group, Australia resource is in the same group, et cetera, et cetera. Sometime you can create the resource group based on your application functionality.
+
+[rochak agrawal] 07:56:33
+based on business units, based on environment also, you can create a different resource group for dev, test, and production. So there is… there can be multiple things.
+
+[rochak agrawal] 07:56:44
+Then, we have something called the Resource Manager.
+
+[rochak agrawal] 07:56:47
+Okay.
+
+[rochak agrawal] 07:56:50
+Now…
+
+[rochak agrawal] 07:56:52
+See, are you the source manager, or…
+
+[rochak agrawal] 07:56:57
+Azure API also you can say. So, for example, you want to do anything. Let's say I want to create a virtual machine, I want to create a load balancer.
+
+[rochak agrawal] 07:57:07
+anything, the call goes to the Azure Resource Manager, okay? It authenticates and authorizes your request, and then if, see, you have the right set of credentials, right set of the permission, then it will allow you.
+
+[rochak agrawal] 07:57:22
+to create the resources, okay? So, ARM provides a management layer that enables you to create, update, and delete resources in your Azure subscription. Now, the good thing is, this…
+
+[rochak agrawal] 07:57:38
+uh, layer which we are talking about, Azure Resource Manager, is…
+
+[rochak agrawal] 07:57:44
+not visible to us, okay? We will just use these Azure portal, which we are using right now. So this is called the Azure portal. Uh, graphically, we can do anything. It's a GUI, right? Then we have other mediums also.
+
+[rochak agrawal] 07:58:00
+PowerShell, CLI, REST clients, SDKs.
+
+[rochak agrawal] 07:58:04
+By which we can actually create the resources. For example, I can create a virtual machine from the CLI, from the PowerShell.
+
+[rochak agrawal] 07:58:14
+Okay, and then, um…
+
+[rochak agrawal] 07:58:17
+no matter any medium you're using, the request first goes to the ARM, and then it validates and passes the request to the backend services. Luckily for us, ARM is not visible if we have the credential. So, for example, I logged in into my account.
+
+[rochak agrawal] 07:58:33
+Whenever I want to create a resource, the request goes to the ARM, but it is not visible to us.
+
+[rochak agrawal] 07:58:38
+Okay. Now, after the resource group, we have the.
+
+[rochak agrawal] 07:58:45
+something called a subscription, again, like a resource group.
+
+[rochak agrawal] 07:58:50
+We said that…
+
+[rochak agrawal] 07:58:53
+Whenever you are creating a resource.
+
+[rochak agrawal] 07:58:57
+There need to be a resource group, okay? Your resource cannot sit outside a resource group.
+
+[rochak agrawal] 07:59:01
+Similarly, your resource, and if you've noticed that.
+
+[rochak agrawal] 07:59:05
+When you go create a virtual machine.
+
+[rochak agrawal] 07:59:11
+Okay.
+
+[rochak agrawal] 07:59:13
+Even before the resource group.
+
+[rochak agrawal] 07:59:14
+There is a subscription. Right now, I have only one, right? But you can have multiple subscriptions.
+
+[rochak agrawal] 07:59:23
+Okay? So, understand it, like, uh…
+
+[rochak agrawal] 07:59:29
+So, if you are using Netflix, right, uh, although we have the one subscription, but you can create multiple profiles.
+
+[rochak agrawal] 07:59:39
+Right? And, like, in the each profile, let's say I create one for myself, one for my wife, one for kids, right? So then, whatever they are watching, whatever they are doing, um…
+
+[rochak agrawal] 07:59:52
+Netflix will give you the recommendation on those front, right? So…
+
+[rochak agrawal] 07:59:57
+Whenever you are creating any resource, even when we created a resource group.
+
+[rochak agrawal] 08:00:09
+Right? There, also, you need to have the subscription.
+
+[rochak agrawal] 08:00:14
+Any resource you are creating, it need to go…
+
+[rochak agrawal] 08:00:18
+In a subscription. Okay.
+
+[rochak agrawal] 08:00:21
+Subscription, what does it do?
+
+[rochak agrawal] 08:00:24
+It does two things. One is a billing boundary, another is an access control boundary.
+
+[rochak agrawal] 08:00:30
+Access control means, now, access, I can give it on a resource group also, but let's say you have multiple resource groups, and you want to manage the access together, then keep them in a single subscription, and give the access to the subscription.
+
+[rochak agrawal] 08:00:44
+Okay, so it can manage and control access to the resources that users can provision with that specific subscription.
+
+[rochak agrawal] 08:00:54
+Most importantly, subscription is used for the billing boundary.
+
+[rochak agrawal] 08:01:00
+So you are going to get a bill from Azure.
+
+[rochak agrawal] 08:01:05
+File subscription.
+
+[rochak agrawal] 08:01:06
+Okay, this is very important. So, an Azure subscription provides you with authenticated and authorized access to the Azure account, right? So, if I go to my account.
+
+[rochak agrawal] 08:01:18
+And look for the subscription.
+
+[rochak agrawal] 08:01:26
+So you can see, currently, I have one subscription, and if you click on the subscription.
+
+[rochak agrawal] 08:01:33
+So you can see, uh, the subscription ID. Directly, we'll cover separately. Status is active. And, uh, you are going to post…
+
+[rochak agrawal] 08:01:44
+here, right? I can cancel the subscription, and you can see one workspace.
+
+[rochak agrawal] 08:01:52
+Network Watcher, I have these resources is there, and uh…
+
+[rochak agrawal] 08:01:57
+It can do… you can do a complete cost management. If you go to billing, uh, invoices.
+
+[rochak agrawal] 08:02:08
+permissions, resource provider, we can do multiple things here. Access control, I can give access to.
+
+[rochak agrawal] 08:02:14
+Someone. In-depth subscription. And then, after that.
+
+[rochak agrawal] 08:02:18
+Let's say I block you.
+
+[rochak agrawal] 08:02:21
+Then, no matter if you have access to your resources or something, they would not be able to.
+
+[rochak agrawal] 08:02:27
+access the resources. Now if you click on view my access.
+
+[rochak agrawal] 08:02:33
+Just say, I'm the owner.
+
+[rochak agrawal] 08:02:35
+So it's a grant full access to all resources, to manage all resources, including the ability to assign role in…
+
+[rochak agrawal] 08:02:45
+What is this? Assign role in Azure RBAC.
+
+[rochak agrawal] 08:02:50
+RVAC is a role-based access control, which, again, we will see separately. So…
+
+[rochak agrawal] 08:02:56
+Subscription is very important. Uh, the point is, if you will not have the subscription, you…
+
+[rochak agrawal] 08:03:03
+But not be able to do anything.
+
+[rochak agrawal] 08:03:04
+Okay? Because Azure need to know that you have the right subscription. Although, like, you will be using the free tier subscription, that is absolutely okay, because in the free tier, also, there is $200 of credit is there.
+
+[rochak agrawal] 08:03:19
+Hey, so…
+
+[rochak agrawal] 08:03:21
+That's about it, but you need to have the subscription. Without the subscription, you will not be able to create any of the resources in Azure.
+
+[rochak agrawal] 08:03:32
+Okay?
+
+[rochak agrawal] 08:03:39
+Yes, Mac.
+
+[Mahak Alvi] 08:03:46
+Yeah, hi Rachel, good morning.
+
+[rochak agrawal] 08:03:47
+Good morning
+
+[Mahak Alvi] 08:03:48
+Uh, like, later, like, I have some questions, like, general questions related to the Azure, but, like, I missed a few of the classes from the DevOps, like, Kubernetes and some other calls due to some health issues. I just want to know, like, we switched from Kubernetes to Azure directly, am I right?
+
+[rochak agrawal] 08:03:53
+Mm-hmm.
+
+[Mahak Alvi] 08:04:04
+Like, would you like… mhm.
+
+[rochak agrawal] 08:04:05
+No, we… we did not. We have covered, uh…
+
+[rochak agrawal] 08:04:10
+Ensemble Terraform as well.
+
+[Mahak Alvi] 08:04:12
+Mm-hmm, okay. Related to the DevOps only, and we didn't learn about AWS, just want to confirm this thing.
+
+[rochak agrawal] 08:04:14
+Yes, yes.
+
+[rochak agrawal] 08:04:18
+See, uh, this is, uh, to everyone. If you have any question related to the schedule or, uh, the content, you can talk to the ops team. They will, uh, be able to guide you better.
+
+[Mahak Alvi] 08:04:20
+Uh-huh.
+
+[Mahak Alvi] 08:04:29
+Sure, sure. Okay, I want to confirm one more thing. Uh, did we complete, uh, the project, the major project, or we are…
+
+[rochak agrawal] 08:04:36
+No, in DevOps project, we have not covered that.
+
+[Mahak Alvi] 08:04:37
+Okay, we will cover it after this zone.
+
+[rochak agrawal] 08:04:39
+We'll cover it. Yes, yes, yes. We'll cover it.
+
+[Mahak Alvi] 08:04:41
+And one more question, sorry about that. Yeah, I just want to confirm, like, is Azure dependent on the DevOps classes? Like, if we didn't talk about Dev… okay.
+
+[rochak agrawal] 08:04:43
+No problem, no problem.
+
+[rochak agrawal] 08:04:50
+No.
+
+[rochak agrawal] 08:04:51
+No, no.
+
+[Mahak Alvi] 08:04:52
+So we can start from here and complete the Azure, and in the backend, we can learn about DevOps. Okay, and one more, and that will be the last one. Uh, like, what we are going to cover in Azure, like, some basic topics, and uh, like, I just want to know, like, how lengthy it will be, like, for.
+
+[rochak agrawal] 08:04:53
+You can start as well.
+
+[rochak agrawal] 08:04:56
+Yep.
+
+[rochak agrawal] 08:04:58
+Got it.
+
+[Mahak Alvi] 08:05:09
+30 classes, 15 or 20, just…
+
+[rochak agrawal] 08:05:10
+It will be around 15, uh, 17, 18 classes ahead, and we are going to focus on the Azure administration course.
+
+[Mahak Alvi] 08:05:19
+Course, okay. And we will just learn about the Azure portal and other, like, main parts of VMs and other things.
+
+[rochak agrawal] 08:05:26
+Yes, VMs. So, you see, in Azure, there is a…
+
+[Mahak Alvi] 08:05:27
+Yes.
+
+[rochak agrawal] 08:05:33
+I think more than 300 plus services is there, if you go to all services.
+
+[Mahak Alvi] 08:05:37
+Yeah, yeah.
+
+[rochak agrawal] 08:05:39
+Okay, so…
+
+[rochak agrawal] 08:05:42
+There is DevOps buys 22 services is there, databases is there, right? So there is multi…
+
+[Mahak Alvi] 08:05:46
+Mm-hmm. Mm-hmm.
+
+[rochak agrawal] 08:05:50
+in any particular cloud. Now, when you go to an interview and you say, I am an Azure admin or AWS admin, right, or Azure architect, they…
+
+[Mahak Alvi] 08:05:56
+Mm-hmm.
+
+[Mahak Alvi] 08:05:59
+Yeah.
+
+[rochak agrawal] 08:06:02
+Your interview or the discussion will be focused on the closing.
+
+[rochak agrawal] 08:06:05
+Now, core services, when we are saying the core services, uh, so compute.
+
+[rochak agrawal] 08:06:13
+Networking?
+
+[rochak agrawal] 08:06:15
+Storage.
+
+[rochak agrawal] 08:06:17
+Security.
+
+[Mahak Alvi] 08:06:18
+Okay.
+
+[rochak agrawal] 08:06:19
+and operations.
+
+[Mahak Alvi] 08:06:21
+Operations. Okay.
+
+[rochak agrawal] 08:06:22
+Okay, so these are the, uh, and the storage, uh, also, let's say, uh, databases, slash databases, right? So…
+
+[rochak agrawal] 08:06:32
+Like, no one in your interview is going to ask you that, hey, are you working on the Azure AI Video Indexer or Azure Machine Learning or the Bot Service? Because, see, until and unless you are not a machine learning engineer.
+
+[Mahak Alvi] 08:06:41
+As always.
+
+[Mahak Alvi] 08:06:42
+Mm-hmm.
+
+[rochak agrawal] 08:06:48
+you may not need to work on these services, right? Similar to the analytic services, unless I'm not a data engineer, then I would not be working on a database. You might need to… so, for example, let's say you are an Azure architect.
+
+[Mahak Alvi] 08:06:50
+Got it.
+
+[rochak agrawal] 08:07:03
+Now, someone is, uh…
+
+[Mahak Alvi] 08:07:03
+Mm-hmm.
+
+[rochak agrawal] 08:07:06
+Someone from other team.
+
+[rochak agrawal] 08:07:10
+they may ask you, let's say, I want to set up the Azure Databricks, can you help me? Of course, we can help. But… but you might… let's say I have worked with the, uh, Microsoft Foundry, but I have never worked with the immersive readers, right? So these are services… these services…
+
+[Mahak Alvi] 08:07:14
+Definitely.
+
+[Mahak Alvi] 08:07:22
+Mm-hmm.
+
+[rochak agrawal] 08:07:26
+you can learn as a need basis. Because, see, from the compute, from the networking, from the storage side, they depend on the core services only.
+
+[Mahak Alvi] 08:07:30
+Got it.
+
+[Mahak Alvi] 08:07:38
+Mm-hmm, got it.
+
+[rochak agrawal] 08:07:40
+Okay? So, for example, if I want to give someone access, okay, it does not matter it is Azure OpenAI or any skill cloud. I will give the access in a similar way.
+
+[Mahak Alvi] 08:07:50
+Okay.
+
+[rochak agrawal] 08:07:51
+Or I'll connect to my network, or something in a similar way. Correct. That is where…
+
+[Mahak Alvi] 08:07:55
+Mm-hmm.
+
+[rochak agrawal] 08:07:59
+This is important.
+
+[Mahak Alvi] 08:08:01
+Okay.
+
+[rochak agrawal] 08:08:02
+Okay, and again, as I said, when you go to an interview, your interview…
+
+[rochak agrawal] 08:08:07
+The purpose of an architect is to design the highly available, scalable.
+
+[rochak agrawal] 08:08:15
+efficient and cost-effective architectures on a particular cloud.
+
+[Mahak Alvi] 08:08:19
+Mm-hmm.
+
+[rochak agrawal] 08:08:20
+And that is possible when you know the code services.
+
+[Mahak Alvi] 08:08:24
+Understood.
+
+[rochak agrawal] 08:08:25
+Okay? So there are multiple services, but our focus would be on the core services.
+
+[rochak agrawal] 08:08:31
+Which is also, like, the content of the AJ104 exam.
+
+[rochak agrawal] 08:08:41
+Or we call it as an Azure Administrator.
+
+[Mahak Alvi] 08:08:46
+Got it.
+
+[Mahak Alvi] 08:08:48
+Yeah, yeah.
+
+[rochak agrawal] 08:08:49
+Okay.
+
+[Mahak Alvi] 08:08:50
+Thank you.
+
+[rochak agrawal] 08:08:53
+Yes, we will.
+
+[Vaibhav] 08:08:57
+Good morning. I just want to ask one thing. Like, uh, in region, uh, when resource… when we're creating a resource, so when we're trying to create a resource group, we can, um, like, do it in a subscription basis, right? As you tell, uh, like, explain.
+
+[rochak agrawal] 08:09:03
+Mm-hmm.
+
+[Vaibhav] 08:09:11
+So, in subscription, we have provided the permissions, like an IAM policy, right?
+
+[rochak agrawal] 08:09:16
+Yes, it's IA policy, but keep that question. We are going to cover RBI in detail.
+
+[Vaibhav] 08:09:21
+I'll go click again.
+
+[rochak agrawal] 08:09:22
+Okay, uh, see, this is just a walkthrough of the portal.
+
+[Vaibhav] 08:09:27
+Okay, okay.
+
+[rochak agrawal] 08:09:28
+Okay, so you understand right now, you need to have a subscription, uh, which is basically, I can assign the permissions also, but mostly we use the subscription as our billing boundary. So one subscription, one bill you are going to get.
+
+[Vaibhav] 08:09:32
+Mm-hmm.
+
+[rochak agrawal] 08:09:43
+Now, it does not matter if I'm creating 1 resource, 10 resource, 100 resource. If I'm creating 100 resources, I am going to get a bill of those 100 resources.
+
+[Vaibhav] 08:09:53
+Oh.
+
+[rochak agrawal] 08:09:54
+See, subscription, uh, now… and that is where AWS is a little different, uh, from, uh, Azure, okay?
+
+[rochak agrawal] 08:10:04
+AWS account.
+
+[rochak agrawal] 08:10:05
+And Azure account is not similar.
+
+[rochak agrawal] 08:10:08
+Okay. In AWS, you create an account, and then you start using the account, correct?
+
+[Vaibhav] 08:10:16
+Yes, yes.
+
+[rochak agrawal] 08:10:17
+In Azure, you create the account.
+
+[rochak agrawal] 08:10:20
+But until and unless you don't have the subscription, your account is of no use.
+
+[Vaibhav] 08:10:22
+Hmm.
+
+[Vaibhav] 08:10:26
+Okay.
+
+[rochak agrawal] 08:10:26
+So basically, so in AWS, you get a bill of account, correct?
+
+[Vaibhav] 08:10:32
+Hmm.
+
+[rochak agrawal] 08:10:32
+In Azure, you get a bill of a subscription, and in an account, you can have multiple subscriptions.
+
+[rochak agrawal] 08:10:40
+Okay?
+
+[Vaibhav] 08:10:41
+Okay.
+
+[Vaibhav] 08:10:43
+Okay.
+
+[rochak agrawal] 08:10:50
+Uh, Sumit is asking what is the directory. Uh, Sumit, I'll come to the directory.
+
+[rochak agrawal] 08:10:58
+Now there is another question based on what we should pick the region. Okay, so see, uh, Swati, uh, there are certain factors, uh, on which you are going to have, uh, the regions, uh, choose the region. First is…
+
+[rochak agrawal] 08:11:14
+Your user.
+
+[rochak agrawal] 08:11:16
+So let's say I am deploying my users on the, my users is in US, then I will deploy my application in a US only. I'm not going to deploy my application in any other region, right? So user risk is a one thing.
+
+[rochak agrawal] 08:11:31
+Second thing is the cost.
+
+[rochak agrawal] 08:11:36
+There may be chances that cost for a particular resources is different in India.
+
+[rochak agrawal] 08:11:44
+From U.S.
+
+[rochak agrawal] 08:11:46
+Right? It can happen. There will not be a very big difference, but some 5-10% differences can be there. And when I'm saying can be there means it can be, it is not necessary that difference will be there.
+
+[rochak agrawal] 08:12:01
+It can be. So if you… if for you, all the factor remains the same, then you would like to choose a reason which is, let's say, a little less costly for you.
+
+[rochak agrawal] 08:12:12
+OK, then comes the.
+
+[rochak agrawal] 08:12:15
+And that is the most important one.
+
+[rochak agrawal] 08:12:17
+Compliance, when we are saying…
+
+[rochak agrawal] 08:12:20
+we discussed two examples, let's say, uh, so there is a mandate from the RBI that if you are an Indian financial institution, you cannot send the data of the Indian customer outside of India.
+
+[rochak agrawal] 08:12:32
+So, then you do not have an option. You have, uh… you need to deploy in a region which is based out of India. So, if you are working in a sector which has some compliance rules, so then you need to follow that. So, and then there can be other factors also, like service availability, or…
+
+[rochak agrawal] 08:12:50
+Your team's locations, although that does not matter much, but…
+
+[rochak agrawal] 08:12:55
+These are the main important factor on which you are going to decide that your…
+
+[rochak agrawal] 08:13:04
+Which reason you need to choose.
+
+[rochak agrawal] 08:13:11
+Yes, ma'am.
+
+[Megha U] 08:13:14
+Yeah, the product ownership. So, uh, when we select, uh, when we create a resource, uh, we select the subscription. So when we select, uh, the source group, we need to select the subscription.
+
+[rochak agrawal] 08:13:19
+Mm-hmm.
+
+[rochak agrawal] 08:13:21
+Got it.
+
+[rochak agrawal] 08:13:25
+Hmm?
+
+[Megha U] 08:13:28
+Uh, if yes, should both of them be the same?
+
+[rochak agrawal] 08:13:30
+Both of them should be the same. So, for example.
+
+[rochak agrawal] 08:13:33
+Let's say you created your resource group in subscription A.
+
+[rochak agrawal] 08:13:37
+Okay? Then, uh, when you go create a resource and you're selecting subscription B, then your resource group will not come into the drop-down at all.
+
+[rochak agrawal] 08:13:49
+You, you got it?
+
+[Megha U] 08:13:50
+Okay.
+
+[rochak agrawal] 08:13:53
+See.
+
+[rochak agrawal] 08:13:53
+Okay, let me explain.
+
+[rochak agrawal] 08:13:57
+This is a resource group?
+
+[rochak agrawal] 08:14:00
+You created in a subscription one.
+
+[rochak agrawal] 08:14:03
+Correct?
+
+[rochak agrawal] 08:14:04
+Now, let's say I have another subscription, uh, subscription 2.
+
+[rochak agrawal] 08:14:08
+When I'm going to create…
+
+[rochak agrawal] 08:14:12
+Other source, let's say virtual machine.
+
+[rochak agrawal] 08:14:18
+So, see, right now I have only one subscription, that's why it is auto-populate… being populated.
+
+[rochak agrawal] 08:14:24
+My point is, if you're selecting the subscription one, then whatever the resource group in the subscription one is coming here, correct?
+
+[Megha U] 08:14:34
+Oh.
+
+[rochak agrawal] 08:14:35
+If you select another subscription.
+
+[rochak agrawal] 08:14:38
+Then those resource group which part of that subscription will come here.
+
+[Megha U] 08:14:43
+Oh, okay. Interesting. Subjects.
+
+[rochak agrawal] 08:14:43
+Okay, so the hierarchy is…
+
+[rochak agrawal] 08:14:50
+You have the subscription?
+
+[rochak agrawal] 08:14:54
+Inside the subscription, you have the resource group.
+
+[rochak agrawal] 08:14:57
+And inside the resource group, you're creating the resources.
+
+[rochak agrawal] 08:15:03
+Okay? Now, there is one more thing. Okay?
+
+[rochak agrawal] 08:15:19
+Which is called the management group.
+
+[rochak agrawal] 08:15:24
+Because your organization, um, and if someone is coming from the AWS background, management group is like the AWS orgs.
+
+[rochak agrawal] 08:15:42
+In your organization, there will be hundreds of teams which will be working on their own subscriptions, right? Now, let's say you want to manage.
+
+[rochak agrawal] 08:15:54
+Some policies at
+
+[rochak agrawal] 08:15:57
+not at the subscription level, but at the organization level. So that is where you need some common interface which can manage all your subscription, and that interface is the management group.
+
+[rochak agrawal] 08:16:10
+Okay, so management can include multiple Azure subscriptions.
+
+[rochak agrawal] 08:16:18
+Subscription inherit conditions applied to the management group.
+
+[rochak agrawal] 08:16:21
+Okay, and then, um, this can be multiple management group can be supported in a single directly, and the management group 3 can support up to 6 level of them.
+
+[rochak agrawal] 08:16:34
+So, subscription, uh, resource group, resources. Now, you can say, okay, uh…
+
+[rochak agrawal] 08:16:41
+Uh, there is only 4 levels of depth, and you are saying the 6th level of depth, right? So…
+
+[rochak agrawal] 08:16:47
+You can have a management group inside a management group.
+
+[rochak agrawal] 08:16:50
+Now what does it mean? It mean.
+
+[rochak agrawal] 08:16:54
+Let's say I have a management group.
+
+[rochak agrawal] 08:16:59
+Called my org.
+
+[rochak agrawal] 08:17:02
+Now, inside this management group, I can have, let's say.
+
+[rochak agrawal] 08:17:07
+Three different management groups.
+
+[rochak agrawal] 08:17:15
+It says, as per the department, for example.
+
+[rochak agrawal] 08:17:21
+Hey, John.
+
+[rochak agrawal] 08:17:26
+admin…
+
+[rochak agrawal] 08:17:30
+and engineering.
+
+[rochak agrawal] 08:17:34
+Okay, now…
+
+[rochak agrawal] 08:17:38
+And down, you can have now multiple subscription.
+
+[rochak agrawal] 08:17:49
+Then you will have the resource groups.
+
+[rochak agrawal] 08:17:54
+Then, find the needed resources.
+
+[rochak agrawal] 08:17:57
+So now you see the depth 1, 2, 3, 4, 5.
+
+[rochak agrawal] 08:18:02
+So, that is what, uh, it is being written. It can support up to 6 levels of the…
+
+[rochak agrawal] 08:18:09
+Okay, so management group, you only need to do when you have multiple subscriptions which you want to manage together. So if you go…
+
+[rochak agrawal] 08:18:20
+You see management groups?
+
+[rochak agrawal] 08:18:23
+So you can see, I have…
+
+[rochak agrawal] 08:18:28
+Uh, I'll do this.
+
+[rochak agrawal] 08:18:36
+Okay, so you see, I have a root group, which is by default created, and inside that, I have a subscription. Now, I can create another management group. So, when you will be creating your account, you will always have a root group, okay?
+
+[rochak agrawal] 08:18:51
+then you can create another, uh, organizational, uh, management group which you want, and you can… for example, I can move the… I can create, uh, a route.
+
+[rochak agrawal] 08:19:03
+a management group called, uh, let's say HR, and I can move my subscription to that HR group. So you can see, currently I do not have any, but you can move your subscription across the…
+
+[rochak agrawal] 08:19:15
+Nothing, but, uh…
+
+[rochak agrawal] 08:19:18
+To manage…
+
+[rochak agrawal] 08:19:20
+some organization-wide initiatives or policy, right, that you want to apply, then you can apply for the Management Group altogether.
+
+[rochak agrawal] 08:19:30
+So we have three levels now.
+
+[rochak agrawal] 08:19:40
+You will be playing around with the resources. That is what we need to learn. Your virtual machine, your databases, your load balancer, everything is a resource.
+
+[rochak agrawal] 08:19:51
+Then, every resource need to be…
+
+[rochak agrawal] 08:19:55
+In a resource group, you can have n number of the resource group. Resource group will not cost you anything. Uh, resources inside the resource group is going to cost… it is just…
+
+[rochak agrawal] 08:20:07
+If I have 100 resources, and I want to delete them all, one way is I… I will go individually, go delete every resource. And this is one feature I like very much, which is not there in AWS.
+
+[rochak agrawal] 08:20:19
+If I need to delete 100 resource, in AWS, what you need to do, you need to delete every resource individually, correct? In Azure, what do you go? You just go delete the resource group, that's it. Everything inside the resource group will be deleted automatically.
+
+[rochak agrawal] 08:20:37
+Then, on top of the resource group, you will have the subscription. Subscription is mostly used for the billing purpose. You are going to get a bill for a subscription.
+
+[rochak agrawal] 08:20:49
+Whatever the resources you are going to have, whatever the resource group you are going to have, it is going to have the bill as per the subscription. Then on top of the subscription, there is something called the management group. Management group is again for the.
+
+[rochak agrawal] 08:21:07
+If you want to…
+
+[rochak agrawal] 08:21:08
+Your organization is definitely going to have multiple subscriptions, because every team wants to run some different workload, they don't want to share the cost with others.
+
+[rochak agrawal] 08:21:17
+Multiple factors, and then, if you want to…
+
+[rochak agrawal] 08:21:23
+If you want to, uh, for example, uh…
+
+[rochak agrawal] 08:21:31
+apply some organizational-wide policy. For example, let's say I… see, by default.
+
+[rochak agrawal] 08:21:38
+I can go, I can create the resources in any region. For example, I go create a virtual machine.
+
+[rochak agrawal] 08:21:47
+And here, I'm going to select a region. So you can see multiple regions are available to me. Correct. Now you say, I want to apply a policy in my organization that…
+
+[rochak agrawal] 08:22:00
+Everyone should be able to create the resources in the India only.
+
+[rochak agrawal] 08:22:05
+Okay, now this is a type of the policy. So, if you want to apply some all…
+
+[rochak agrawal] 08:22:11
+Wide mandates, we can do it on a management company level.
+
+[rochak agrawal] 08:22:16
+Okay?
+
+[rochak agrawal] 08:22:27
+Yes, buddy, ma'am.
+
+[PARIMAL BISWAS] 08:22:32
+Hello, good morning.
+
+[rochak agrawal] 08:22:33
+Yes, believe me.
+
+[PARIMAL BISWAS] 08:22:35
+Yeah, actually, I took admission for that AWS course itself. Will it continue that as easy as your, like…
+
+[rochak agrawal] 08:22:44
+Uh, see, uh, Parimal, as I said, uh, if you have any course, uh, program-related problem, I… I don't think I'm the right person to answer that, okay? So you… you talk to the support or the ops team, they will be able to better tell you.
+
+[PARIMAL BISWAS] 08:22:58
+Okay, okay, you will be continuing the Azure part only, right?
+
+[rochak agrawal] 08:23:00
+B, we are going to continue with Azure now.
+
+[PARIMAL BISWAS] 08:23:02
+Okay, fine, fine, thank you.
+
+[rochak agrawal] 08:23:06
+Yes, Omiya?
+
+[rochak agrawal] 08:23:22
+Pooja is asking, what does it mean when you say, in AWS, we get bill of account, and in Azure, we get the bill for the subscription? Isn't both things the same? See, that is what I explained, Pooja. The terminology is different. What is the AWS account?
+
+[rochak agrawal] 08:23:37
+Big quality is here, Azure subscription. Azure account, you are not going to get the bill. You are going to get the bill on a subscription, so the terminology is a little different.
+
+[rochak agrawal] 08:23:57
+Here's how to…
+
+[arif] 08:24:01
+Yeah, Rajat. So, uh, I raised my hand in the beginning, but I don't know why it was not seen.
+
+[arif] 08:24:08
+So, management group… so, inside the management group, also, we can, like, uh, make some permissions thing regarding the subscription also.
+
+[rochak agrawal] 08:24:16
+Correct, we can do.
+
+[arif] 08:24:17
+Okay.
+
+[rochak agrawal] 08:24:17
+we can do. So there is two things here, Arif. One is the permission, and another is policy.
+
+[arif] 08:24:17
+Okay.
+
+[rochak agrawal] 08:24:24
+Okay, so for example, you have an access to create… you have the permission to create the virtual machine, okay? But I might apply a policy.
+
+[rochak agrawal] 08:24:37
+which says you can only create a virtual machine in India.
+
+[rochak agrawal] 08:24:42
+So even though you have a permission to create, but you will not be able to create a virtual machine in Australia.
+
+[arif] 08:24:48
+So, actually, the region will be grayed out, like, if you apply some…
+
+[rochak agrawal] 08:24:51
+I'm just giving an example of a permission. It could be anything. For example, I can say you can only deploy a virtual machine with 2GB of the size.
+
+[arif] 08:24:53
+Okay.
+
+[rochak agrawal] 08:25:01
+This is called the policy.
+
+[arif] 08:25:06
+Okay. And regarding this, uh… the last DevOps session, I know suddenly it was…
+
+[rochak agrawal] 08:25:06
+Okay.
+
+[arif] 08:25:15
+What about this Grafana and Prometheus?
+
+[rochak agrawal] 08:25:16
+Number…
+
+[rochak agrawal] 08:25:19
+So Grafana, again, as I said, if you have any question regarding the schedule, the Ops team would be able to help you better. But just Grafana and Prometheus is not covered in DevOps.
+
+[arif] 08:25:31
+Yeah, but that's a problem, Rajag. I talked with them for regarding AWS also. You may also know, right, that about the topic that was not covered, but I'm not getting a proper response. They are…
+
+[rochak agrawal] 08:25:38
+Mm-hmm.
+
+[arif] 08:25:42
+talking to you, and you are saying that you have to talk to them. So we are in the middle, not getting any proper response, and the things are going very fast. We are not able to practice at all.
+
+[rochak agrawal] 08:25:46
+Mm-hmm.
+
+[arif] 08:25:52
+I don't know where to… But don't you think, on the technical side, don't you think the Grafana and Prometheus should be covered at the DevOps?
+
+[rochak agrawal] 08:25:53
+See, I can… no, see, I thought I can…
+
+[rochak agrawal] 08:26:00
+See, there are many other things as well. I think, see, I follow whatever the curriculum is given to me.
+
+[rochak agrawal] 08:26:08
+Okay.
+
+[arif] 08:26:09
+Okay.
+
+[arif] 08:26:10
+So they are providing the curriculum, right? And they are… but they are saying we are… they are going to check with you. I don't know what is the…
+
+[rochak agrawal] 08:26:11
+So…
+
+[rochak agrawal] 08:26:12
+Yeah, they are providing the curriculum.
+
+[rochak agrawal] 08:26:15
+No, no, see, what I can do, Arif, if you are having this confusion, I can give you my email to you, okay? And you can write an email copying me, copying them, and then everyone will be on the same page.
+
+[arif] 08:26:28
+Okay, let me do that.
+
+[rochak agrawal] 08:26:29
+Yeah? Yeah.
+
+[rochak agrawal] 08:26:33
+Okay, so…
+
+[rochak agrawal] 08:26:36
+Now, we were talking, so these are the four management layers are there. We are not going to touch down the management groups for now because we are using like a learning account. We do not have an organization.
+
+[rochak agrawal] 08:26:50
+So that we are not managing multiple subscriptions. Now, apart from this, uh, there are…
+
+[rochak agrawal] 08:26:59
+You can see, um…
+
+[rochak agrawal] 08:27:06
+this.
+
+[rochak agrawal] 08:27:06
+So there are, you can see, management tools available in Azure. What does it mean? It means, like, in how many ways you can manage your resources, okay? Now, for our class, we are going to use something called the Azure Portal.
+
+[rochak agrawal] 08:27:24
+Okay? Azure Portal, uh…
+
+[rochak agrawal] 08:27:31
+What we are using right now, it's a graphical user interface, and you can create your resources, you can update your resources, you can delete your resources using the Azure portal.
+
+[rochak agrawal] 08:27:42
+Okay.
+
+[rochak agrawal] 08:27:44
+Which we will continue using.
+
+[rochak agrawal] 08:27:47
+throughout our class.
+
+[rochak agrawal] 08:27:48
+But there are other mediums also. We have Azure Cloud Shell, and again, in the Azure Cloud Shell, you can implement Azure PowerShell or the CLI. Then we, Azure, have a mobile application also.
+
+[rochak agrawal] 08:28:03
+So from the mobile, you open your Azure application, and then you can start your virtual machine, delete your virtual machine, stop your virtual machine. You can do many things from the mobile app, but not all the things.
+
+[rochak agrawal] 08:28:18
+It will give you limited functionality, but yes, it has a proper mobile application, is there?
+
+[rochak agrawal] 08:28:25
+And, uh…
+
+[rochak agrawal] 08:28:27
+We can use this mobile app to control some of the aspect of our applications.
+
+[rochak agrawal] 08:28:33
+Then there is something called the REST API.
+
+[rochak agrawal] 08:28:38
+In Azure, there are SDKs available. So for example, you say, no, no, I want to use Azure programmatically. So I'm creating an application. That application should be able to upload the objects in Azure storage.
+
+[rochak agrawal] 08:28:54
+Uh, read the objects from the Azure storage, and so and so forth. So, for those purposes, there is something called the Azure REST API is available. You can integrate and call those APIs in your code. Now, if you go.
+
+[rochak agrawal] 08:29:14
+So, Azure SDKs are there. This is a software development kit. Now…
+
+[rochak agrawal] 08:29:19
+You can see it is available for Java.
+
+[rochak agrawal] 08:29:23
+and .NET. So, uh, it is available for JavaScript.NET, Python, just a couple of more languages is there. So if you're…
+
+[rochak agrawal] 08:29:33
+If you want to use Azure programmatically, then you need to write the code. We can do that as well. Now the thing is, any method you are using does not matter. They will exactly do the same thing.
+
+[rochak agrawal] 08:29:48
+And in the end, they all are going to call the Azure Resource Manager, okay? Now, for our purpose in this class, we are going to use the Azure portal because that is where we are going to visualize the things, right?
+
+[rochak agrawal] 08:30:04
+So that we will see, for example.
+
+[rochak agrawal] 08:30:08
+Otherwise, in the PowerShell or CLI, what is going to happen? I will just run the command, and everything will happen in the backend, so that we will not be able to see what is the things we needed. So, for example, if, uh…
+
+[rochak agrawal] 08:30:21
+We go right now, and let's say I want to create a VNet.
+
+[rochak agrawal] 08:30:28
+Now, if you are doing it from the portal, you will see what are the options it needs, right? Everything. So in the security, what things are needed. Everything is we need to select, and then we will finally go review and create.
+
+[rochak agrawal] 08:30:44
+But if you are doing it with the command line, you will just give the option. So, point is, from a learning purpose, uh…
+
+[rochak agrawal] 08:30:53
+This portal is the best thing, because we will be able to see the things, but um…
+
+[rochak agrawal] 08:30:58
+if you are doing… so let's say if you… if you want to create hundreds of the virtual machine, uh, then probably we might not do with the portal, we will do with some other automation mechanism. But…
+
+[rochak agrawal] 08:31:10
+You are doing it from any of the mechanism. In the end, every call goes to the Azure Resource Manager.
+
+[rochak agrawal] 08:31:16
+Okay, now…
+
+[rochak agrawal] 08:31:17
+For example, you say, okay, I want to use the Azure CLI, and what's the difference between Azure CLI and Azure PowerShell?
+
+[rochak agrawal] 08:31:28
+Okay.
+
+[rochak agrawal] 08:31:29
+Now, there's two things. Azure CLI is the shell.
+
+[rochak agrawal] 08:31:43
+Azure CLA is…
+
+[rochak agrawal] 08:31:46
+Shell?
+
+[rochak agrawal] 08:31:47
+And Azure PowerShell is…
+
+[rochak agrawal] 08:31:59
+As the name is suggesting, it's a power chill.
+
+[rochak agrawal] 08:32:02
+So if someone is coming from a Linux background, they are going to prefer this.
+
+[rochak agrawal] 08:32:14
+Someone from a Windows background, you are going to…
+
+[rochak agrawal] 08:32:19
+Use the PowerShell. I don't know PowerShell. I always worked from Azure CLI, but there is no right and wrong on this. Whatever you are comfortable, you can choose as per your own convenience. There is no right and wrong thing in this.
+
+[rochak agrawal] 08:32:35
+Okay, now there comes another point. You can run it.
+
+[rochak agrawal] 08:32:41
+From the cloud shell.
+
+[rochak agrawal] 08:32:47
+All from your locals.
+
+[rochak agrawal] 08:32:51
+Okay, now from the Cloud Shell, you will just go, click on the Cloud Shell.
+
+[rochak agrawal] 08:32:59
+And the Azure CLI or the Azure PowerShell environment is provisioned for users requesting a cloud shell.
+
+[rochak agrawal] 08:33:13
+Okay? Now, here, you can see there is an option of switch to PowerShell. So, if you want to switch to PowerShell.
+
+[rochak agrawal] 08:33:22
+Confirm.
+
+[rochak agrawal] 08:33:31
+Oh, guys, give me a couple of minutes. I'll be back.
+
+[rochak agrawal] 08:35:28
+Okay, so this way, we, uh…
+
+[rochak agrawal] 08:35:31
+can connect we have connected to the.
+
+[rochak agrawal] 08:35:34
+PowerShell. Now, since I've already logged in into this account, I can… I can… So, as I said, I generally use the Azure CLI.
+
+[rochak agrawal] 08:35:43
+So, I can run the commands here, and every command is going to start with AJ. So, AJ, and then, uh…
+
+[rochak agrawal] 08:35:51
+VM, and you are going to see the options.
+
+[rochak agrawal] 08:35:54
+Right? So, the following arguments are required. Now, if you want to run it locally, okay, then you need to install Azure CLI at your own system.
+
+[rochak agrawal] 08:36:10
+Did you see your CLI installed?
+
+[rochak agrawal] 08:36:21
+So this is install the Azure CLI on Windows.
+
+[rochak agrawal] 08:36:25
+So
+
+[rochak agrawal] 08:36:29
+You will download the package.
+
+[rochak agrawal] 08:37:00
+Okay, it has been, uh, downloaded.
+
+[rochak agrawal] 08:37:08
+And
+
+[rochak agrawal] 08:37:36
+So, I accept the term, install.
+
+[rochak agrawal] 08:37:50
+So it will take a lot of time.
+
+[rochak agrawal] 08:37:53
+So I can go here and run the command. So exactly the same thing you need to do. It is just when you will be running from your local system, you need to run the first command as an agent login.
+
+[rochak agrawal] 08:38:05
+So that you… you will log in into your Azure account, so once you run the AZA login, so it says…
+
+[rochak agrawal] 08:38:11
+CloudShell is automatically authenticated under the initial account.
+
+[rochak agrawal] 08:38:15
+Run AJ login only if you need to use a different account to sign in, right? And if you run the AJ login from your, um…
+
+[rochak agrawal] 08:38:24
+this screen, then…
+
+[rochak agrawal] 08:38:27
+It will take you to this page, and you need to use this code to authenticate. Once you authenticate it, you will be logged in into your…
+
+[rochak agrawal] 08:38:36
+Azure account. Okay. Now…
+
+[rochak agrawal] 08:38:39
+The command structure is very…
+
+[rochak agrawal] 08:38:41
+simple for Azure CLI. Every command is going to start with AG, okay? Then.
+
+[rochak agrawal] 08:38:48
+Whatever the service you need to work with.
+
+[rochak agrawal] 08:38:51
+Right? So, for example, you need to work with, uh, if a resource group, so I'll say AJ Group.
+
+[rochak agrawal] 08:38:58
+List.
+
+[rochak agrawal] 08:39:00
+So you can see, uh, it is giving me…
+
+[rochak agrawal] 08:39:05
+the three resource groups. Default resource group, network watcher RG, and demo RG, correct? Which we created.
+
+[rochak agrawal] 08:39:13
+So there is, if you want to see.
+
+[rochak agrawal] 08:39:17
+Output.
+
+[rochak agrawal] 08:39:21
+You can see, it is giving me…
+
+[rochak agrawal] 08:39:30
+the output in a tabular format, right? So, the command structure is…
+
+[rochak agrawal] 08:39:37
+It is going to start with AJ, then it is the service.
+
+[rochak agrawal] 08:39:42
+Which you want to work with.
+
+[rochak agrawal] 08:39:48
+And then?
+
+[rochak agrawal] 08:39:50
+Action!
+
+[rochak agrawal] 08:39:54
+What action you want to do. And then finally, if you have another argument or something, you can do that. Now you say I have 300 plus services is there, then every service will have a different action. How I'm going to remember all of this?
+
+[rochak agrawal] 08:40:09
+So again, you don't need to remember any of these things, okay? You just need to understand how your command is being constructed. And if you go…
+
+[rochak agrawal] 08:40:20
+Why is your CLA different?
+
+[rochak agrawal] 08:40:27
+So here, also, you will get, uh, help, uh, so it's a AJ group.
+
+[rochak agrawal] 08:40:32
+Let's say I'm working with the source group as of now.
+
+[rochak agrawal] 08:40:43
+Do you hear? You see?
+
+[rochak agrawal] 08:40:45
+the CLA difference.
+
+[rochak agrawal] 08:40:50
+And you will get everything here.
+
+[rochak agrawal] 08:40:54
+Tile chair, front door, what other services are there?
+
+[rochak agrawal] 08:40:58
+So I'll say group.
+
+[rochak agrawal] 08:41:19
+Souls Group.
+
+[rochak agrawal] 08:41:28
+You see, there are different commands are there, AJ deployment, AJ log.
+
+[rochak agrawal] 08:41:35
+Asia resource.
+
+[rochak agrawal] 08:41:36
+Eight.
+
+[rochak agrawal] 08:41:38
+AJ tag, if you want to do a tag management on a resource.
+
+[rochak agrawal] 08:41:42
+So that is different. This is the group.
+
+[rochak agrawal] 08:41:46
+Right? So you can see for the group, there are so many commands out there. AJ Group Create, AJ…
+
+[rochak agrawal] 08:41:54
+Group delete AJ group exists. So if I'm going to run the command AJ group.
+
+[rochak agrawal] 08:42:01
+Exist.
+
+[rochak agrawal] 08:42:02
+my RG. It is going to tell you.
+
+[rochak agrawal] 08:42:08
+Hyphen N.
+
+[rochak agrawal] 08:42:12
+You see? False. If I give MORG.
+
+[rochak agrawal] 08:42:20
+It's just true, because my demo RG is present in my system, correct?
+
+[rochak agrawal] 08:42:25
+So here you can see there are, I can log a group, create a resource group log.
+
+[rochak agrawal] 08:42:31
+So you can see so many things are there. And again, when you want to create a resource group.
+
+[rochak agrawal] 08:42:38
+These options you can give, AZ Group, Create, Location, Name, and then…
+
+[rochak agrawal] 08:42:43
+bags also. So…
+
+[rochak agrawal] 08:42:46
+Let's, let's create a resource group. AJ?
+
+[rochak agrawal] 08:42:50
+Guru.
+
+[rochak agrawal] 08:42:52
+88. Again?
+
+[rochak agrawal] 08:42:54
+It all starts with AJ, then the service which you want to work, then what is the action you want to do, and then finally the argument.
+
+[rochak agrawal] 08:43:05
+What are the argument?
+
+[rochak agrawal] 08:43:11
+Hyphen hyphen location.
+
+[rochak agrawal] 08:43:18
+East US?
+
+[rochak agrawal] 08:43:25
+My
+
+[rochak agrawal] 08:43:26
+Okay
+
+[rochak agrawal] 08:43:31
+So it says…
+
+[rochak agrawal] 08:43:33
+It gave me an ID of the resource. Location is East US, managed by Null.
+
+[rochak agrawal] 08:43:42
+Uh, name is Mayaji, properties is succeeded. And we have not used any text, so text also null. And the type is Microsoft Resources Resource Group.
+
+[rochak agrawal] 08:43:51
+If you go here.
+
+[rochak agrawal] 08:43:52
+Into the resource group.
+
+[rochak agrawal] 08:43:57
+You see?
+
+[rochak agrawal] 08:44:00
+It's great.
+
+[rochak agrawal] 08:44:01
+Same thing I can do, I can delete also, if you go and uh…
+
+[rochak agrawal] 08:44:09
+delete. So I just need to give the AJ group delete hyphen hyphen hyphen name or hyphen N whatsoever, and it will be deleted.
+
+[rochak agrawal] 08:44:21
+So I just go, AJ.
+
+[rochak agrawal] 08:44:24
+Group.
+
+[rochak agrawal] 08:44:26
+Delete.
+
+[rochak agrawal] 08:44:28
+Funny name.
+
+[rochak agrawal] 08:44:30
+my budget.
+
+[rochak agrawal] 08:44:32
+Say, are you sure you want to perform this operation? Yes.
+
+[rochak agrawal] 08:44:58
+Okay, now if you go here…
+
+[rochak agrawal] 08:45:04
+My RG has been deleted. So the point is…
+
+[rochak agrawal] 08:45:08
+Whatever you are doing from the portal.
+
+[rochak agrawal] 08:45:12
+from a graphical user interface, you can do everything from the command line also. You just need to construct the right command, you can change the properties, you can update the properties, anything. And not only with the CLI, you can do it with your.
+
+[rochak agrawal] 08:45:28
+PowerShell also. So, let me show you with PowerShell as well.
+
+[rochak agrawal] 08:45:36
+So I'll go again to the CLI.
+
+[rochak agrawal] 08:45:43
+I'll switch to PowerShell.
+
+[rochak agrawal] 08:45:54
+So you can see it might have been installed by now.
+
+[rochak agrawal] 08:46:02
+Wait, it's not coming.
+
+[rochak agrawal] 08:46:27
+Let it be. So, in, uh…
+
+[rochak agrawal] 08:46:30
+Yes, we run the URL.
+
+[rochak agrawal] 08:46:34
+PowerShell commands are a little complicated than the Azure CLI commands.
+
+[rochak agrawal] 08:46:39
+Um, here it is going to run the connect.
+
+[rochak agrawal] 08:46:41
+the first command. See, right now, we don't need to run the AJ login type of the command, but if you're running the Azure PowerShell from your local, the first command you're going to run is…
+
+[rochak agrawal] 08:46:54
+Connect. You can see there are so many commands are coming.
+
+[rochak agrawal] 08:46:58
+Connect.
+
+[rochak agrawal] 08:47:01
+You can see, connect.
+
+[rochak agrawal] 08:47:03
+There's…
+
+[rochak agrawal] 08:47:05
+Many commands are there related to connect, and I'll say connect AJ account.
+
+[rochak agrawal] 08:47:17
+Is it…
+
+[rochak agrawal] 08:47:18
+Interactive authentication is not supported in this session, because we are already authenticated. So, then, you can see, if you run GET.
+
+[rochak agrawal] 08:47:51
+You can see, get AJ subscription, subscription deployment.
+
+[rochak agrawal] 08:47:57
+You can get the details of the subscription.
+
+[rochak agrawal] 08:48:01
+status is enabled. Now, if you want to create the resource group like we did from Azure CLI, we need to run a command like this, new.
+
+[rochak agrawal] 08:48:56
+You see? New Asia Resource, New Asia Resource Group.
+
+[rochak agrawal] 08:49:01
+Multiple.
+
+[rochak agrawal] 08:49:02
+So that's the New Asia Resource Group.
+
+[rochak agrawal] 08:49:10
+Okay? And, uh…
+
+[rochak agrawal] 08:49:14
+Click for name.
+
+[rochak agrawal] 08:49:16
+My RG.
+
+[rochak agrawal] 08:49:18
+And, uh…
+
+[rochak agrawal] 08:49:22
+Location.
+
+[rochak agrawal] 08:49:25
+East U.S.
+
+[rochak agrawal] 08:49:31
+You see? Succeeded. Now, also, if I go…
+
+[rochak agrawal] 08:49:45
+My RG has been created.
+
+[rochak agrawal] 08:49:50
+So…
+
+[rochak agrawal] 08:49:55
+Again, similar to this, you will have a PowerShell reference also.
+
+[rochak agrawal] 08:50:02
+Where you can look for the commands.
+
+[rochak agrawal] 08:50:11
+See, here, uh, in the PowerShell, we call it the CMD lid.
+
+[rochak agrawal] 08:50:19
+So he has, uh…
+
+[rochak agrawal] 08:50:21
+Azure PowerShell.
+
+[rochak agrawal] 08:50:27
+And you can see, there's so many commands out there.
+
+[rochak agrawal] 08:50:39
+Search.
+
+[rochak agrawal] 08:50:41
+AG Resource Group.
+
+[rochak agrawal] 08:50:51
+The new AG resource group
+
+[rochak agrawal] 08:50:56
+So, yeah, um…
+
+[rochak agrawal] 08:50:58
+You can see this is with the new tag. So you can give so many options, name, location, tag, force.
+
+[rochak agrawal] 08:51:09
+So it creates an empty resource group, as you can see.
+
+[rochak agrawal] 08:51:19
+Then we have a remove commands also.
+
+[rochak agrawal] 08:51:22
+Right? So let me run a remove command as well to delete the powers, uh, delete the resource group.
+
+[rochak agrawal] 08:52:09
+to move AG.
+
+[rochak agrawal] 08:52:13
+resource group.
+
+[rochak agrawal] 08:52:26
+See? Are you sure you want to remove the resource group? I'll say yes.
+
+[rochak agrawal] 08:52:46
+So it will get deleted. Now, see, you use Azure PowerShell, you use Azure CLI, don't make a difference. If you're comfortable with Azure PowerShell, you can use Azure PowerShell. If you're comfortable with Azure CLI.
+
+[rochak agrawal] 08:53:01
+You can use Azure CLI, both references are available. Uh, someone coming from a Windows background, they might find PowerShell a very easy tool.
+
+[rochak agrawal] 08:53:11
+Uh, like, for me, if you ask me, I'm… I'm coming from a Linux background, so…
+
+[rochak agrawal] 08:53:17
+I generally prefer the Azure CLI.
+
+[rochak agrawal] 08:53:23
+Now, if you see, if I open my command prompt, I can do everything locally as well.
+
+[rochak agrawal] 08:53:37
+So you see, so many commands are there with AG, if you've done just AG.
+
+[rochak agrawal] 08:53:42
+So the first thing we need to do is…
+
+[rochak agrawal] 08:53:46
+Sis, welcome to…
+
+[rochak agrawal] 08:53:49
+Are you a CLA?
+
+[rochak agrawal] 08:53:51
+And the first thing we need to do, AJ, login.
+
+[rochak agrawal] 08:53:58
+Okay, so you have to ask me.
+
+[rochak agrawal] 08:54:05
+to log in.
+
+[rochak agrawal] 08:54:31
+It is showing the default directly, but it is failed. Authentication failed against tenant. Okay, yeah.
+
+[rochak agrawal] 08:54:51
+Let me log in.
+
+[rochak agrawal] 08:55:18
+What it is saying?
+
+[rochak agrawal] 08:55:21
+Tenant, tenant ID, if you need to access upstairs.
+
+[rochak agrawal] 08:55:36
+AJ Login.
+
+[rochak agrawal] 08:56:01
+Juan?
+
+[rochak agrawal] 08:56:03
+Okay?
+
+[rochak agrawal] 08:56:06
+The login output has been updated. Ah, okay. Great. So, now I can run all the CLI commands from my system all over. This is tenant, and the subscription has been set.
+
+[rochak agrawal] 08:56:17
+Right? Uh, now if I go… what was the command I ran here?
+
+[rochak agrawal] 08:56:43
+No, I've played on it before.
+
+[rochak agrawal] 08:56:45
+why it's not copying.
+
+[rochak agrawal] 08:56:58
+I see.
+
+[rochak agrawal] 08:56:59
+Succeeded.
+
+[rochak agrawal] 08:57:02
+I'll see my RG.
+
+[rochak agrawal] 08:57:05
+Local.
+
+[rochak agrawal] 08:57:14
+Okay, now if you both have…
+
+[rochak agrawal] 08:57:24
+Go to the resource groups.
+
+[rochak agrawal] 08:57:33
+You can see my RG again, and my RG from local VM.
+
+[rochak agrawal] 08:57:41
+I can delete it.
+
+[rochak agrawal] 08:57:44
+AJ Group.
+
+[rochak agrawal] 08:58:09
+Group.
+
+[rochak agrawal] 08:58:17
+Yes?
+
+[rochak agrawal] 08:58:39
+Now, again, if you book your, uh, MyRG.
+
+[rochak agrawal] 08:58:42
+will be deleted.
+
+[rochak agrawal] 08:58:44
+So the point is, now, even to manage your Azure infrastructure, you don't even need to log into this portal, right? You already logged in from your command line, and you can run all your commands directly from there.
+
+[rochak agrawal] 08:59:00
+Okay.
+
+[rochak agrawal] 08:59:10
+While creating RG… Pooja is asking, while creating RG through CLI, you did not mention subscription in the command. That is right, Pooja, because I already have one subscription, and that is what it is taking by default. So you… when we did the login, it is, uh…
+
+[rochak agrawal] 08:59:26
+from the local, if you remember, we have selected the subscription, and that's why it is creating only one subscription that we have. When you have multiple subscriptions, you can give those things.
+
+[arif] 08:59:43
+So, Roger, this, uh…
+
+[arif] 08:59:45
+So, like, uh, find anything which cannot be done from the UI, it can only be done from the CLI side.
+
+[rochak agrawal] 08:59:53
+No, see, I'll…
+
+[rochak agrawal] 08:59:55
+I'll rephrase it a little differently.
+
+[rochak agrawal] 08:59:57
+When you say anything can be done from the UI, can you give me an example?
+
+[arif] 09:00:05
+Anything from the UI, whatever you are doing, we should be able to do the same from the CLI.
+
+[rochak agrawal] 09:00:07
+Cool. Mm-hmm.
+
+[rochak agrawal] 09:00:11
+See, that is the point, vice versa, yes. See, these are just the tool to do something, correct?
+
+[arif] 09:00:12
+And vice versa.
+
+[rochak agrawal] 09:00:19
+Azure Portal is one tool, Azure PowerShell is one tool, some command line is one tool. So, anything you are… you are able to do with the portal, you can do with the CLI, and vice versa. CLI PowerShell.
+
+[rochak agrawal] 09:00:32
+Mobile app will have some limitations, okay? Um, if you open your mobile app, then there may be.
+
+[rochak agrawal] 09:00:39
+Not maybe, there are lesser options available. But when you compare Azure Portal, PowerShell, and the CLI, they all are same.
+
+[rochak agrawal] 09:00:48
+It is just you need to figure out, create the right command. That's it.
+
+[rochak agrawal] 09:00:52
+See, when you go to the portal.
+
+[rochak agrawal] 09:00:56
+Even when, see for example.
+
+[rochak agrawal] 09:00:58
+Let's say I'm creating the resource manager, correct?
+
+[rochak agrawal] 09:01:02
+Uh, this was good study.
+
+[rochak agrawal] 09:01:04
+Here, also, I have multiple options, and you see subscription is auto-populated for me. Reason is auto-populated, that's a default for me, right? I am giving the resource group name, and tags and other things, I kept it blank, correct?
+
+[rochak agrawal] 09:01:18
+Even on the portal, um…
+
+[rochak agrawal] 09:01:23
+all the options are visible to me, but I'm not using all the options, correct?
+
+[rochak agrawal] 09:01:30
+Right? See, for example, I have not populated the tags, but the tag option is visible to me.
+
+[rochak agrawal] 09:01:37
+Headache.
+
+[rochak agrawal] 09:01:39
+When you run the command, for example, I run the command.
+
+[rochak agrawal] 09:01:44
+You will just create the specific… I can add a tag also, for example, here.
+
+[rochak agrawal] 09:01:49
+So, yes, anything you can do from the portal, you can do it from the CLI, and vice versa.
+
+[rochak agrawal] 09:01:56
+Of course, the benefit of the CLI would be, uh, see, um…
+
+[rochak agrawal] 09:02:01
+Let's say I need to create 100 virtual machine, for example, or just 100 resources, for example.
+
+[rochak agrawal] 09:02:08
+Then you have to manually create it. For example, I'll go click on one machine, create it, then second machine, then create it, third machine, create it, et cetera, et cetera, right?
+
+[rochak agrawal] 09:02:19
+the benefit of the CLI is I can write a script, uh, which probably use a while loop or a for loop, and it will run in the background.
+
+[arif] 09:02:30
+Hmm.
+
+[rochak agrawal] 09:02:30
+So, if you want to do some automations, you can do with the help of CLI or PowerShell, but not with the portal.
+
+[rochak agrawal] 09:02:38
+Again, that you need to go with the Terraform way or something, but again, that is not also portal, correct? These are the native solutions available. Terraform is a third-party solution.
+
+[arif] 09:02:50
+Yeah, that… because, uh, in AWS, I, like, I was… I created, uh, IAM user, and, uh, again, when I were to change the username, I was not able to do it from the UI.
+
+[arif] 09:03:01
+It asked me to do login with the console CLI and run the command.
+
+[rochak agrawal] 09:03:06
+There may be some things, Arif, but…
+
+[rochak agrawal] 09:03:09
+Generally, it is applicable, okay? There might be some of the examples in Azure also, but it is only one of… you can take it as an exception only.
+
+[arif] 09:03:16
+Mm-hmm. Okay.
+
+[arif] 09:03:19
+Okay, got it.
+
+[rochak agrawal] 09:03:21
+Okay, but most of the things you can do from the both of them.
+
+[arif] 09:03:25
+Okay, and what I have seen right now in the PowerShell output and the output of CLI, when you delete a resource, in CLI, it is asking only yes and no.
+
+[rochak agrawal] 09:03:31
+Mm-hmm.
+
+[rochak agrawal] 09:03:36
+Mm-hmm.
+
+[arif] 09:03:36
+But in PowerShell, it is asking for the suspend. What is the suspended?
+
+[rochak agrawal] 09:03:42
+Let me run it again.
+
+[rochak agrawal] 09:04:03
+What is the name?
+
+[rochak agrawal] 09:04:29
+Okay, this you are asking.
+
+[arif] 09:04:31
+Yeah, just…
+
+[rochak agrawal] 09:04:32
+I need to check on that, um…
+
+[Vaibhav] 09:04:34
+I think, uh, they suspend the service for a few, like, we cannot continue right now.
+
+[rochak agrawal] 09:04:40
+But no option will also do the same.
+
+[Vaibhav] 09:04:41
+deletion is a…
+
+[Vaibhav] 09:04:44
+Delicious or permanent, right?
+
+[Vaibhav] 09:04:46
+And, uh, subscription, like, cancel for it.
+
+[rochak agrawal] 09:04:47
+No, but…
+
+[rochak agrawal] 09:04:50
+I'll check on this, RFI, not too sure at this moment.
+
+[Vaibhav] 09:04:50
+Maybe…
+
+[arif] 09:04:53
+Okay.
+
+[rochak agrawal] 09:04:55
+Because…
+
+[arif] 09:04:56
+Yeah.
+
+[rochak agrawal] 09:04:58
+Because, see, in what you are saying, I think, Bebo, you mentioned, services suspension would be applicable in case of, let's say, virtual machine, where you're stopping the virtual machine.
+
+[rochak agrawal] 09:05:10
+Yes.
+
+[arif] 09:05:12
+Okay.
+
+[rochak agrawal] 09:05:14
+Yeah, but let me double check on it. I don't want to give a vague answer.
+
+[arif] 09:05:19
+Okay, and regarding this resource group, so the resource group, I'm not sure whether it's a global in nature, or it's a region-specific.
+
+[rochak agrawal] 09:05:25
+No, it's not… see, uh, two things, okay? Um…
+
+[rochak agrawal] 09:05:31
+Regarding this…
+
+[rochak agrawal] 09:05:33
+So, when you create a resource group, it asks you for a reason, correct?
+
+[arif] 09:05:37
+Yep.
+
+[rochak agrawal] 09:05:39
+So, it is not a, uh…
+
+[rochak agrawal] 09:05:41
+global thing. That's the first thing. You can very clearly see it is asking me for a reason when I'm creating it.
+
+[rochak agrawal] 09:05:47
+Hit it.
+
+[arif] 09:05:47
+Okay.
+
+[rochak agrawal] 09:05:48
+you do it from the CLI if you are not… see, what happens when you are doing with the command line? A default region is set for you, and so if you are not giving the region also, it will go create in your default region, for example.
+
+[rochak agrawal] 09:06:00
+But it… it creates any resource group you are seeing right now. They are in, let's say, for example, East US, correct? So it is not a regional, uh… it is not a global resource, one thing.
+
+[rochak agrawal] 09:06:11
+Now, there was one point where we said that, um.
+
+[rochak agrawal] 09:06:16
+When you are creating a virtual machine in, let's say, East, uh, or what, uh…
+
+[rochak agrawal] 09:06:21
+in any other region, I can create that, uh, virtual machine in this particular resource group, okay? So… so the thing is, uh…
+
+[rochak agrawal] 09:06:33
+Let's say you created a resource group.
+
+[rochak agrawal] 09:06:39
+Okay.
+
+[rochak agrawal] 09:06:41
+In the East US.
+
+[rochak agrawal] 09:06:49
+And then, um…
+
+[rochak agrawal] 09:06:51
+You create two virtual machines in this.
+
+[rochak agrawal] 09:06:55
+The virtual machine can be… one is in East US.
+
+[rochak agrawal] 09:07:01
+Another?
+
+[rochak agrawal] 09:07:03
+NB?
+
+[rochak agrawal] 09:07:04
+In a West US.
+
+[rochak agrawal] 09:07:07
+Okay, so…
+
+[rochak agrawal] 09:07:10
+The resource group, if you see from that perspective, then yes, resource group is, um…
+
+[rochak agrawal] 09:07:18
+Global, right? But why do you need the region, the resource group region?
+
+[rochak agrawal] 09:07:26
+Because in the end, your resource group is also a kind of a resource only, correct?
+
+[rochak agrawal] 09:07:32
+So to contain the information about its metadata, where it is, how many tags it is having, how many resources it have, that information will be stored in this particular feature.
+
+[rochak agrawal] 09:07:42
+So the metadata about the Resource Bureau will be stored in this region.
+
+[arif] 09:07:47
+Okay, okay.
+
+[rochak agrawal] 09:07:48
+But the resources, they can be in a different, different regions altogether.
+
+[arif] 09:07:54
+Okay.
+
+[rochak agrawal] 09:07:55
+Okay.
+
+[Vaibhav] 09:08:00
+So, we cannot shift one resource to another reason, right?
+
+[rochak agrawal] 09:08:06
+Can or we cannot, Bevo. Okay, so there will be…
+
+[rochak agrawal] 09:08:13
+Like, that will be case-to-case basis.
+
+[Vaibhav] 09:08:14
+To support.
+
+[Vaibhav] 09:08:15
+There's both of conflicts, like, I'm not able, like, we can or we cannot, like…
+
+[rochak agrawal] 09:08:20
+So, that's what I'm explaining. See, when you say, can we ship the resources.
+
+[Vaibhav] 09:08:21
+Mm-hmm.
+
+[rochak agrawal] 09:08:27
+From one reason to another.
+
+[rochak agrawal] 09:08:30
+Uh, see, resources, here we are talking about 300 services, correct?
+
+[Vaibhav] 09:08:34
+Mm-hmm.
+
+[rochak agrawal] 09:08:35
+Some services, you would be able to. Some services, you would not be able to.
+
+[rochak agrawal] 09:08:40
+And that you need to see on a case-to-case basis. So, for example, let's say… now, why you cannot do, okay? And when I'm saying you can or cannot, let's say…
+
+[rochak agrawal] 09:08:52
+You created a load balancer.
+
+[rochak agrawal] 09:08:56
+Okay, now you set up two virtual machines.
+
+[rochak agrawal] 09:09:03
+as a backend.
+
+[rochak agrawal] 09:09:08
+Now, by design, this load balancer and the virtual machine should be in the same region, correct?
+
+[Vaibhav] 09:09:15
+Hmm.
+
+[rochak agrawal] 09:09:16
+So, let's say your virtual machine is in a East US region.
+
+[rochak agrawal] 09:09:23
+Your load balancer is in an East US region.
+
+[rochak agrawal] 09:09:28
+Okay, and then, um, all the virtual machines. Now, if you ask me, can I move this virtual machine to West US? No.
+
+[rochak agrawal] 09:09:37
+If you move this virtual machine, your load balancer is going to fall.
+
+[rochak agrawal] 09:09:40
+Correct?
+
+[Vaibhav] 09:09:42
+Hmm.
+
+[rochak agrawal] 09:09:43
+So, uh, see, we can move the resources, one thing, but, uh, generally, uh, it is not recommended, uh, to move the resources, uh, okay? Uh, we can move it through…
+
+[rochak agrawal] 09:09:57
+the resource group through the subscription. But moving the resources to another region is not a good idea. But… and you need to see on a case-to-case basis.
+
+[rochak agrawal] 09:10:11
+Okay?
+
+[rochak agrawal] 09:10:18
+Yes, I'm here.
+
+[Amiya Nanda] 09:10:22
+Hi Roger, good morning.
+
+[Amiya Nanda] 09:10:25
+Arochak, ah, what is the use of Cloud CLI?
+
+[Amiya Nanda] 09:10:27
+Sorry, Azure CLI we created, this is same as PowerShell, right.
+
+[rochak agrawal] 09:10:33
+It is same as PowerShell, exactly. That's what I said, Amiya. Let's say coming from a Windows background.
+
+[rochak agrawal] 09:10:41
+or you are coming from a Linux background. So you can choose your…
+
+[rochak agrawal] 09:10:46
+preference. If you are good with the PowerShell scripting, you can choose the Azure PowerShell. If you're good with the Shell scripting, you can choose the Azure CLI.
+
+[rochak agrawal] 09:10:55
+So there is no good or bad in that.
+
+[Amiya Nanda] 09:10:56
+Okay
+
+[Amiya Nanda] 09:10:58
+And, uh, in Azure portal, there is, I can see, for me, it is CloudShell, so that is, uh, Linux background, right?
+
+[rochak agrawal] 09:11:06
+No, no, see, I mean, but you're not in the class. Be explain both.
+
+[rochak agrawal] 09:11:12
+You see? In the Cloud Shell, I can switch to PowerShell as well as switch to CLI, and we can run it locally also.
+
+[Amiya Nanda] 09:11:13
+Switch to bus.
+
+[Amiya Nanda] 09:11:16
+Ha ha ha, okay.
+
+[Amiya Nanda] 09:11:18
+And this is CloudShell is belongs to Linux.
+
+[rochak agrawal] 09:11:23
+No. You can see there is an option of switch to PowerShell.
+
+[Amiya Nanda] 09:11:27
+Power cell yes.
+
+[rochak agrawal] 09:11:28
+Both options are there.
+
+[rochak agrawal] 09:11:31
+You can see.
+
+[Amiya Nanda] 09:11:31
+Ah, I mean, CloudShell is something related to Windows, right? And PowerShell is something related to Linux.
+
+[rochak agrawal] 09:11:38
+No, again, Cloud Shell is giving you both the option. Azure CLI belong to Linux, Azure PowerShell belong to Windows.
+
+[Amiya Nanda] 09:11:41
+Okay…
+
+[Amiya Nanda] 09:11:44
+Okay, okay.
+
+[Amiya Nanda] 09:11:46
+Okay, okay, okay.
+
+[rochak agrawal] 09:11:47
+Okay? So you see, there are both the options are there in the PowerShell as well as the Bash.
+
+[Amiya Nanda] 09:11:48
+Yeah, I know.
+
+[rochak agrawal] 09:11:56
+Correct?
+
+[rochak agrawal] 09:11:56
+So that's why.
+
+[Amiya Nanda] 09:11:56
+Yes, yes.
+
+[rochak agrawal] 09:11:57
+And you see there are other options are also there.
+
+[rochak agrawal] 09:12:01
+So, you can see I can open directly the code editor here.
+
+[rochak agrawal] 09:12:05
+So it will…
+
+[rochak agrawal] 09:12:06
+I don't even need to install it locally, I'll…
+
+[rochak agrawal] 09:12:10
+put up all the commands and everything, so you can see it will open a VS Code editor for me.
+
+[rochak agrawal] 09:12:19
+Hey, I can
+
+[rochak agrawal] 09:12:23
+Oh
+
+[rochak agrawal] 09:12:24
+uh, upload and download the file. So, for example, let's say I write, uh, written a file, a script file, um, on my local system, and I want to upload it. So, I'll just copy, upload this.
+
+[rochak agrawal] 09:12:35
+So all those things also we can do with the Cloud Shell.
+
+[rochak agrawal] 09:12:38
+Again, both are flavors
+
+[Amiya Nanda] 09:12:39
+Okay, okay, okay.
+
+[rochak agrawal] 09:12:41
+Okay?
+
+[Amiya Nanda] 09:12:42
+And one more question, uh, is it recommended, like, uh, we can create the resource group and the resources in the same region, right?
+
+[rochak agrawal] 09:12:51
+No, it is not recommended. You can… in a resource… in a resource group, resources can belong to a different region, so…
+
+[rochak agrawal] 09:12:59
+Up to you, your requirements.
+
+[Amiya Nanda] 09:13:00
+Okay.
+
+[rochak agrawal] 09:13:04
+Okay.
+
+[Amiya Nanda] 09:13:05
+Okay.
+
+[rochak agrawal] 09:13:11
+Yes, Sonia?
+
+[Soniya yadav] 09:13:17
+Hello. Yeah, I'm trying from the starting of the class to… I have raised my hand also, but…
+
+[rochak agrawal] 09:13:25
+Yeah, please ask your question.
+
+[Soniya yadav] 09:13:27
+Yeah, actually, I have taken the training in the A… for the AWS Cloud, but here you are training us the…
+
+[rochak agrawal] 09:13:34
+But Suryan, that is… this is the thing we already addressed, uh, okay? Uh, I…
+
+[rochak agrawal] 09:13:39
+will not be the right person to give you an answer to this. Uh, you need to talk to the ops team regarding this. Uh, I have highlighted this to them. They said, uh, they have talked to the student.
+
+[rochak agrawal] 09:13:51
+Uh, I have been assigned the Azure module, and uh, what they told me is, the persons who have taken the AWS, uh, the Azure is complimentary for them, so first we'll do the AWS, uh, sorry, Azure, and then AWS.
+
+[Soniya yadav] 09:14:05
+Apart from that, one more thing I just want to confirm. In the course content that they have, uh, shared us, in that, uh, Grafana and Prometheus is, uh, like, mentioned there, that we are, like, that, uh, the module of Grafana is also there.
+
+[Soniya yadav] 09:14:19
+So, as you can able to see in the training module, what they have shared, but it is not… you are saying that we are not going to learn that?
+
+[rochak agrawal] 09:14:21
+Mm-hmm.
+
+[rochak agrawal] 09:14:28
+I can check on that. Then, in that case, if it is given to you, Sonia?
+
+[Soniya yadav] 09:14:33
+In the course content module number, let me check, then I will tell you the correct module number in which they have mentioned, that in the course content, it will be there.
+
+[Soniya yadav] 09:14:43
+Okay.
+
+[rochak agrawal] 09:14:44
+Sure, then I can check with them.
+
+[Soniya yadav] 09:14:47
+Apart from that, like, uh, it will be happen that we are going to unmute only, and when we, uh, raise our hand, then we are going to unmute ourselves.
+
+[rochak agrawal] 09:14:56
+Correct, yeah, that is going to be the same, and what we generally follow…
+
+[Soniya yadav] 09:14:59
+If you have any question, back-to-back question, then every time we need to raise the hand.
+
+[rochak agrawal] 09:15:03
+Correct. See, we work…
+
+[Soniya yadav] 09:15:04
+Words like that, we can unmute and ask our doubts at the time, like, we are…
+
+[rochak agrawal] 09:15:07
+No, but then, Sonia, then if multiple people will start at the same time, it would be very hard to manage that. So what we generally follow is we take a topic for 20-25 minutes, then we will have a 5-10 minute question session, and then we move to another topic.
+
+[rochak agrawal] 09:15:26
+Okay, yeah.
+
+[Soniya yadav] 09:15:26
+Okay.
+
+[Soniya yadav] 09:15:28
+And about that AWS, and I will confirm with the team to this, as well as you can also confirm once…
+
+[rochak agrawal] 09:15:31
+Yes, yes.
+
+[rochak agrawal] 09:15:33
+Yeah, I'll also talk to them. I talked to them, uh, when we had last class.
+
+[Soniya yadav] 09:15:36
+Yeah, under the Module 11, what they have shared, in which it is mentioned, continuous monitoring using Paramanthas and Grafana. It will be there.
+
+[rochak agrawal] 09:15:44
+Sure.
+
+[rochak agrawal] 09:15:47
+We'll check on that. Okay?
+
+[Soniya yadav] 09:15:47
+Okay, you can check and let me know tomorrow, okay?
+
+[rochak agrawal] 09:15:50
+Sure, sure, Sonia.
+
+[Soniya yadav] 09:15:51
+Yeah, thank you.
+
+[rochak agrawal] 09:15:53
+Okay.
+
+[rochak agrawal] 09:16:03
+Yes, Mike?
+
+[Mayank Saxena] 09:16:07
+Hey, good morning. So, I would just want to ask, uh, what is the best practice followed in industry for segregating production and test, uh.
+
+[Mayank Saxena] 09:16:18
+Resources? Is it like you create multiple subscriptions?
+
+[Mayank Saxena] 09:16:21
+And then you create.
+
+[rochak agrawal] 09:16:22
+Okay. Mm-hmm.
+
+[Mayank Saxena] 09:16:23
+And normally, what is the general practice when you configure landing zone? What all IAM and all that you you provide to customers?
+
+[rochak agrawal] 09:16:32
+Okay, so my landing zone, let's keep it separate for now, because in landing zone, there is a lot of networking and IAM-related things we need to set it up, which we have not covered as of now.
+
+[rochak agrawal] 09:16:45
+Okay, that's one. Second thing is, when we say what are the industry best practices, so yes, so you see, the industry best practices.
+
+[rochak agrawal] 09:16:57
+We can segregate our resources based on.
+
+[rochak agrawal] 09:17:00
+multiple parameters. So, for example, I can…
+
+[rochak agrawal] 09:17:08
+based… see, first, let's say if you, uh, if you have a centralized Azure account, and there is a multiple fields.
+
+[rochak agrawal] 09:17:17
+accessing that account, right? And multiple applications are being deployed. So what we can do is, first, we can…
+
+[rochak agrawal] 09:17:26
+Create the subscription.
+
+[rochak agrawal] 09:17:34
+As per applications.
+
+[rochak agrawal] 09:17:36
+Okay, so that the business will know what is the infrastructure per application. Then we can create, uh, so for example.
+
+[rochak agrawal] 09:17:47
+Subscription as per the production. Uh, one is, let's say, broad…
+
+[rochak agrawal] 09:17:53
+Some for an application, and one is a non-broad.
+
+[rochak agrawal] 09:18:00
+That is, we generally do. You might have five environments in the non-production, but generally what we do is we create one subscription for a production environment. One is a non-production environment. And then in the non-production environment, you can create, let's say, resource group.
+
+[rochak agrawal] 09:18:16
+One is your test resource group, one is your dev resource group, one is your staging resource group.
+
+[rochak agrawal] 09:18:23
+where you will be deploying your testing resources, where you will be deploying your development resources, and where you will be deploying your staging resources. While your production subscription.
+
+[rochak agrawal] 09:18:35
+You will have only one product resource group where you will be deploying your production resources.
+
+[rochak agrawal] 09:18:40
+That is basis on the environment and the application. Sometime, um, let's say, uh, you have, um…
+
+[rochak agrawal] 09:18:49
+Different, different sub-organizations also. For example, let's say I'm working with an, um…
+
+[rochak agrawal] 09:18:56
+Banking customer. Now…
+
+[rochak agrawal] 09:18:59
+in the bank.
+
+[rochak agrawal] 09:19:00
+You will have applications related to mobile banking.
+
+[rochak agrawal] 09:19:08
+You will have applications related to net banking.
+
+[rochak agrawal] 09:19:13
+There can be different, different unit of credit cards.
+
+[rochak agrawal] 09:19:18
+And, uh, let's say corporate banking.
+
+[rochak agrawal] 09:19:23
+So I can create, uh…
+
+[rochak agrawal] 09:19:26
+Each… for each, we are going to create one management group
+
+[rochak agrawal] 09:19:33
+Because they might be using different, different policy for every business line, correct?
+
+[rochak agrawal] 09:19:42
+So, and then inside this management group, we are going to create different, different subscription as per whatever the application you are dealing. And then you can create two subscription per application. One is production subscription, another is a non-production subscription.
+
+[rochak agrawal] 09:19:57
+And then accordingly, you can create the resource group in those subscriptions.
+
+[rochak agrawal] 09:20:02
+again, um, see, these are just the guidelines, these are just the best practices. You can… you will say, I want to do it in everything in a one management… it is up to you, okay? So.
+
+[rochak agrawal] 09:20:13
+This is the best practice so that…
+
+[rochak agrawal] 09:20:16
+And.
+
+[rochak agrawal] 09:20:17
+You understand the rule of thumb, okay? When you want to create multiple resource… multiple management group.
+
+[rochak agrawal] 09:20:24
+When you…
+
+[rochak agrawal] 09:20:26
+want to apply different policies on different things. If all the policy apply… being applied on the… everything, then doesn't make, uh… why we are going to create the multiple management groups. So, that is one. Then, if we want to keep the billing separate.
+
+[rochak agrawal] 09:20:40
+Then you are going to keep the subscription separate, and for the resource group.
+
+[rochak agrawal] 09:20:47
+whatever the resource I want to manage as a single unit, I will put them in a single resource group, as simple as that. Now, what…
+
+[rochak agrawal] 09:20:54
+According to these guidelines, whatever works for you, you can create your own hierarchy.
+
+[Mayank Saxena] 09:21:02
+But, uh, there has to be one management group.
+
+[Mayank Saxena] 09:21:06
+It could be difficult.
+
+[rochak agrawal] 09:21:07
+No, the Beacon Multiple Management Group.
+
+[Mayank Saxena] 09:21:08
+No, no, I'm saying minimum, it has to be one management group by default.
+
+[rochak agrawal] 09:21:12
+See, this is by default, when you will be setting up your account, this root management group will already be created for you.
+
+[Mayank Saxena] 09:21:21
+Okay, thank you.
+
+[Soniya yadav] 09:21:27
+So, uh, Rochak, like, we are getting this, like, uh, access for all the resources, like, for AWS and Azure, when we are…
+
+[Soniya yadav] 09:21:37
+Going to learn the hands-on.
+
+[rochak agrawal] 09:21:37
+Yes, it's…
+
+[rochak agrawal] 09:21:39
+Yes? Nick, what do you mean by having the access on all the resources?
+
+[Soniya yadav] 09:21:45
+Like, for example, like, uh, that AWS Azure and all, like, we are not able to create anything, and, like, we don't have all the access of doing anything.
+
+[rochak agrawal] 09:21:55
+No, here, uh, in Azure, uh, there are only few services, uh, uh, uh, which we might not be using, because they are going to cost you a bit, but otherwise, 90-95% services we are going to access.
+
+[Soniya yadav] 09:22:10
+Okay, that are free only, no?
+
+[rochak agrawal] 09:22:12
+Yeah, free only. One service which we are going to cover, uh, theoretically, is the, uh, site-to-site connectivity. So, for example, when we will…
+
+[rochak agrawal] 09:22:21
+class of the networking. Uh, so then there is a concept of, uh, site-to-site connectivity.
+
+[rochak agrawal] 09:22:28
+Or, there is a concept of ExpressRoute connectivity. ExpressRoute, anyways, we can't use ExpressRoute. To set up the ExpressRoute, it just takes 6 to 8 months.
+
+[rochak agrawal] 09:22:38
+Uh, to set it up, okay? So, and it is, uh, like, express route.
+
+[rochak agrawal] 09:22:44
+is one of the services which you might not work in your lifetime also, because this is, uh, being set up when your organizations are having, uh, agreements signed with the Microsoft. So most of the time, if you go.
+
+[rochak agrawal] 09:22:58
+Uh, and start working on the Azure Express router has already been set up. So, a couple of services, like VPN Gateway, you need to have an on-premises environment to set up the site-to-site connectivity. But apart from it, uh, most of the services, we… what we are going to cover.
+
+[rochak agrawal] 09:23:14
+Uh, everything will be there.
+
+[Soniya yadav] 09:23:15
+And in the case of AWS also, it works same.
+
+[rochak agrawal] 09:23:18
+It's the same thing, see, AWS, Azure, GCP, they all work in a very same manner, right?
+
+[rochak agrawal] 09:23:26
+It is, like, the exact copy-paste. Exact, I would not say, but 90% copy-paste. So, when we are seeing ExpressRoute here, there is something called Direct Connect in AWS.
+
+[rochak agrawal] 09:23:37
+Okay? I was working with a customer who was setting the Direct Connect. It took 1 year, 3 months to set up the Direct Connect.
+
+[rochak agrawal] 09:23:46
+Because it's a dedicated physical line between the AWS data center and the customer data center.
+
+[Soniya yadav] 09:23:53
+Okay.
+
+[rochak agrawal] 09:23:54
+Okay, so these type of the services, of course, we cannot create or see about it, right?
+
+[rochak agrawal] 09:24:03
+But most of the services will be there in a free tier account.
+
+[Soniya yadav] 09:24:09
+Okay.
+
+[rochak agrawal] 09:24:10
+Okay.
+
+[rochak agrawal] 09:24:11
+So, okay, uh, we'll connect tomorrow.
+
+[rochak agrawal] 09:24:14
+Thank you.
+
