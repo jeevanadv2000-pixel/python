@@ -1,0 +1,2508 @@
+[rochak agrawal] 07:46:04
+Good morning, everyone. So let's just start.
+
+[rochak agrawal] 07:46:06
+I'll log in into my machine.
+
+[rochak agrawal] 07:46:32
+Since which we created yesterday.
+
+[rochak agrawal] 07:47:16
+Okay? So let's see. So we'll…
+
+[rochak agrawal] 07:47:22
+Same server.
+
+[rochak agrawal] 07:47:24
+Now, yesterday, what we ran…
+
+[rochak agrawal] 07:47:31
+Right? So we ran this type of a command. So this is called the… what you can say is the…
+
+[rochak agrawal] 07:47:39
+ad hoc command, so I can… and here I can get the servers.
+
+[rochak agrawal] 07:47:43
+And here I can give the command and it is this is related the argument. Now I can run the same command using something called the playbooks also. Now if you want to run this with the playbook, So what you need to do is you need to create an inventory file.
+
+[rochak agrawal] 07:47:58
+So, I will just create an inventory file here.
+
+[rochak agrawal] 07:48:07
+Right now, I'll do this, the local host only, then after that, we'll create a server, and do the config management of that server from this machine.
+
+[rochak agrawal] 07:48:20
+Okay, so I'll just use local host.
+
+[rochak agrawal] 07:48:29
+and civil…
+
+[rochak agrawal] 07:48:31
+Underscore connection is…
+
+[rochak agrawal] 07:48:35
+Call 2.
+
+[rochak agrawal] 07:48:37
+Okay.
+
+[rochak agrawal] 07:48:38
+Okay. Now, save this.
+
+[rochak agrawal] 07:48:42
+I…
+
+[rochak agrawal] 07:48:46
+Let me ask…
+
+[rochak agrawal] 07:48:48
+Creator.
+
+[rochak agrawal] 07:48:50
+My file is there.
+
+[rochak agrawal] 07:48:52
+And just…
+
+[rochak agrawal] 07:48:53
+Run this command, put in it.
+
+[rochak agrawal] 07:48:56
+Like we did yesterday.
+
+[rochak agrawal] 07:49:31
+So you can see?
+
+[rochak agrawal] 07:49:33
+It's a very simple playbook. Here, it is the… so you…
+
+[rochak agrawal] 07:49:38
+This is called a play, and you can have multiple plays in your playbook. Then inside the play, these are the tasks, right? And then again, in a play, you can have multiple tasks. So what we are seeing here, name, this is the name of the play.
+
+[rochak agrawal] 07:49:54
+where it need to run on the host, so whatever host is there in your inventory file, it is going to run on that. Connection is local for now, because I'm running on local host. Now, what are the tasks?
+
+[rochak agrawal] 07:50:05
+Again, the name of the task, and then same module we were calling, like Adobe command, I'm just using it as a…
+
+[rochak agrawal] 07:50:16
+playbook, nothing else. Okay, so once your playbook is created.
+
+[rochak agrawal] 07:50:21
+You just need to run a command.
+
+[rochak agrawal] 07:50:25
+So, I have a playbook file.
+
+[rochak agrawal] 07:50:28
+And, uh, inventory file. Okay, so what you need to do, you need to run Ansible.
+
+[rochak agrawal] 07:50:36
+Playbook.
+
+[rochak agrawal] 07:50:37
+And you can have multiple inventory file. What you need to do, you need to pass your inventory file.
+
+[rochak agrawal] 07:50:47
+Okay? And then you will just give your playbook file. So this is the way.
+
+[rochak agrawal] 07:50:55
+Let me run it again in earlier screen.
+
+[rochak agrawal] 07:51:03
+So you can see.
+
+[rochak agrawal] 07:51:06
+And you run playbook?
+
+[rochak agrawal] 07:51:08
+it says there is one play local files. So you, as we discussed yesterday also.
+
+[rochak agrawal] 07:51:14
+It is the first thing it uses to gather fetch.
+
+[rochak agrawal] 07:51:18
+Any play you are going to run.
+
+[rochak agrawal] 07:51:21
+So, the local host is using the discovered Python. This, uh…
+
+[rochak agrawal] 07:51:24
+Something and then ensure file exists touch.
+
+[rochak agrawal] 07:51:29
+Changed. And play recap localhost OK is equal to 2. Changed is equal to 1.
+
+[rochak agrawal] 07:51:35
+That's it. Now, ask me why two, because there is two task. One is your task.
+
+[rochak agrawal] 07:51:43
+and one is a gathering fact. So that's why it says okay is equal to two, but you have written only one task, right? So it says okay is equal to two, and that is how we can do it.
+
+[rochak agrawal] 07:51:54
+So, very simply.
+
+[rochak agrawal] 07:51:56
+And if you run it again, since the file is already presented.
+
+[rochak agrawal] 07:52:03
+You see? Nothing happened.
+
+[rochak agrawal] 07:52:07
+It happened because, again, the same thing, it is a touch command, so it is going to change the timestamp of a file. But otherwise, if you run it again, that's nothing going to happen. So how you need to run it, this is the command, Ansible playbook.
+
+[rochak agrawal] 07:52:23
+You need to give the inventory file wherever your inventory is, and then finally, playbook file. Your inventory can be in a different folder, your file can be in a… playbook can be in a different folder. Does not matter, you can give the full path.
+
+[rochak agrawal] 07:52:37
+Right? So…
+
+[rochak agrawal] 07:52:39
+This is how you are going to run either the ad hoc command for Ansible, or you can run it with the help of a playbook. If you want to run a one-off command, you can do it with the ad hoc command, but when you want to do multiple things on multiple servers, it is always better to use the.
+
+[rochak agrawal] 07:52:56
+playbook approach.
+
+[rochak agrawal] 07:52:58
+Clear?
+
+[rochak agrawal] 07:53:00
+Hello?
+
+[rochak agrawal] 07:53:10
+Are we good?
+
+[rochak agrawal] 07:53:17
+Okay.
+
+[rochak agrawal] 07:53:20
+Yes, my mom.
+
+[Vaibhav] 07:53:23
+Yeah, good morning, Yusuf. Uh, I'm not able to understand that inventory.ini, um, playbook, or, like, uh…
+
+[rochak agrawal] 07:53:32
+What you… see, when you are asking the question, you ask the question. Passing those generic statement won't… won't… is not going…
+
+[Vaibhav] 07:53:38
+No, I'm not, uh, able to, uh, understand that concept that you, uh…
+
+[rochak agrawal] 07:53:42
+That is what we discuss in detail. Inventory file is where you are going to have your server list, which you want Ansible to manage. And playbook file is the file where we are writing what is that you need to manage.
+
+[Vaibhav] 07:53:47
+Mm-hmm.
+
+[Vaibhav] 07:53:57
+Yeah, I understand there's a YAML file, and uh…
+
+[Vaibhav] 07:54:00
+Um, but that inventory route, any… in which the, uh, our inventory is, uh, available, or, uh, like…
+
+[Vaibhav] 07:54:08
+Not getting that fast.
+
+[rochak agrawal] 07:54:08
+What do you mean by it is available or not?
+
+[Vaibhav] 07:54:11
+I'm not getting that, uh, that command that you used here, I'm not getting that command. Like, what's it…
+
+[rochak agrawal] 07:54:15
+So, what is not your getting, Bevo? That is what I'm asking. It's a very simple command.
+
+[Vaibhav] 07:54:18
+The exact particular use of this command, again. Not yet.
+
+[rochak agrawal] 07:54:21
+So this command, see, what is the… there are three concepts in this, okay? This is a command.
+
+[Vaibhav] 07:54:24
+Mm-hmm.
+
+[rochak agrawal] 07:54:27
+This is the inventory file.
+
+[rochak agrawal] 07:54:29
+This is a playbook file, correct?
+
+[Vaibhav] 07:54:32
+Mmm.
+
+[rochak agrawal] 07:54:33
+Now you see.
+
+[rochak agrawal] 07:54:35
+Both of the files will be created here.
+
+[rochak agrawal] 07:54:38
+Correct?
+
+[rochak agrawal] 07:54:42
+Yes, no.
+
+[rochak agrawal] 07:54:48
+So then, what is the conclusion?
+
+[Vaibhav] 07:54:49
+Okay, next.
+
+[Vaibhav] 07:54:50
+Okay, okay, okay. Actually, I was confused. Therefore, click Ansible Playbook. Uh, like, slash I.
+
+[rochak agrawal] 07:54:56
+I is the… is for this. You need to pass your inventory file. My inventory file can be… see, um…
+
+[Vaibhav] 07:55:01
+Okay.
+
+[rochak agrawal] 07:55:04
+Yesterday, we discussed if we run this command like this, for example, without giving the I.
+
+[Vaibhav] 07:55:12
+Okay.
+
+[rochak agrawal] 07:55:13
+Okay, so it says, uh, provided local host file list is empty, only local host is available. Now, why it's saying host file list is empty?
+
+[rochak agrawal] 07:55:24
+Can you tell me
+
+[Vaibhav] 07:55:30
+Because no, um…
+
+[rochak agrawal] 07:55:34
+Because our default inventory file is…
+
+[rochak agrawal] 07:55:44
+Right? This is my default inventory file.
+
+[Vaibhav] 07:55:47
+Hello?
+
+[rochak agrawal] 07:55:49
+Correct?
+
+[rochak agrawal] 07:55:51
+So, for example, if I say host…
+
+[rochak agrawal] 07:55:57
+And let's say I'll uncomment one of them.
+
+[rochak agrawal] 07:56:12
+Okay, I have one server in my inventory file.
+
+[rochak agrawal] 07:56:32
+Okay.
+
+[rochak agrawal] 07:56:34
+Now, if you run this…
+
+[rochak agrawal] 07:56:42
+We'll be adding a different folder.
+
+[rochak agrawal] 07:56:49
+You see?
+
+[rochak agrawal] 07:56:54
+It is, again, running on the localhost only. Right? So…
+
+[rochak agrawal] 07:56:59
+You can see here, um, if we want to give our inventory.
+
+[rochak agrawal] 07:57:05
+this… it is not going to run anywhere, correct? So, let's say if you have a list of 10 servers, so that is where we need to pass our inventory files. So, for example.
+
+[rochak agrawal] 07:57:15
+If I go and create, uh.
+
+[rochak agrawal] 07:57:18
+another entry in this and say just some random number ID.
+
+[rochak agrawal] 07:57:24
+Okay.
+
+[rochak agrawal] 07:57:26
+And now, I'll say…
+
+[rochak agrawal] 07:57:46
+Still running on the inventory, but anyway…
+
+[rochak agrawal] 07:58:38
+It is running on localhost, because here we have given the localhost.
+
+[rochak agrawal] 07:58:42
+If you say host all.
+
+[rochak agrawal] 07:58:47
+Okay.
+
+[rochak agrawal] 07:58:48
+Now, if you run this…
+
+[rochak agrawal] 07:58:53
+You see? It first runs on 10.0.0.1.
+
+[Vaibhav] 07:58:58
+Hmm.
+
+[rochak agrawal] 07:58:59
+It runs on localhost. Means…
+
+[rochak agrawal] 07:59:03
+in this, in your inventory file, there were two servers, okay? Not N.0.0.1, incidentally, is the IP of one of my servers, that's why it is running, okay? But you see that.
+
+[rochak agrawal] 07:59:16
+If you don't give your IP, now if I run this command using, let's say, without…
+
+[rochak agrawal] 07:59:23
+Inventory dot INI.
+
+[rochak agrawal] 07:59:28
+You see? It runs on this server.
+
+[rochak agrawal] 07:59:31
+Correct?
+
+[Vaibhav] 07:59:34
+Hmm.
+
+[rochak agrawal] 07:59:35
+Why? Because the server entity is there in the…
+
+[rochak agrawal] 07:59:47
+Yes. Right?
+
+[rochak agrawal] 07:59:50
+Be uncommented, right? So if you run…
+
+[rochak agrawal] 07:59:54
+your Ansible playbook command without giving any inventory file, it is… it will go and look for the inventory in the ETC Ansible host file.
+
+[rochak agrawal] 08:00:06
+That's a default inventory file.
+
+[rochak agrawal] 08:00:09
+Okay, but you have, if you have created your own inventory file like we did, right? So then.
+
+[rochak agrawal] 08:00:18
+Okay? So if you run your command like this…
+
+[rochak agrawal] 08:00:22
+Right? So it will go where to look for the servers? In the ETC Ansible host. Clear?
+
+[Vaibhav] 08:00:28
+Hmm.
+
+[rochak agrawal] 08:00:29
+Now, if you have your inventory file, so what you need to do, you need to tell Ansible, don't use the default, uh…
+
+[rochak agrawal] 08:00:44
+Okay, that's why. Okay, so if you want to use a different set of file, so you will just tell Ansible with the help of hyphen I, don't use the default inventory, use this inventory.
+
+[Vaibhav] 08:01:00
+Hmm.
+
+[rochak agrawal] 08:01:01
+That is the purpose of this command. So ensemble playbook is the command itself. Then with the hyphen I you provide your inventory file wherever your entry is. And then finally playbook dot YAML is where you are going to write everything.
+
+[rochak agrawal] 08:01:17
+What do you want to do?
+
+[rochak agrawal] 08:01:18
+So, inventory.ini, where you want to do, playbook.yaml, what you want to do.
+
+[Vaibhav] 08:01:26
+Okay.
+
+[rochak agrawal] 08:01:28
+I hope it is clear now.
+
+[Vaibhav] 08:01:30
+Yep.
+
+[rochak agrawal] 08:01:35
+Yes, Gannon.
+
+[Gyanendra Narayan] 08:01:39
+Sir, what was the use of inventory when we have the default inventory list that is host?
+
+[rochak agrawal] 08:01:44
+Because, see, sometime, Gannon, what is going to happen, you want to manage… see, let's say you have…
+
+[rochak agrawal] 08:01:53
+Uh, first thing is, uh, if you see, uh, if I go…
+
+[rochak agrawal] 08:02:02
+If you go to Seed in Civil.
+
+[rochak agrawal] 08:02:05
+right if you see host file.
+
+[rochak agrawal] 08:02:08
+Since it's in an ETC directory, it is owned by Groot.
+
+[rochak agrawal] 08:02:13
+Okay, so…
+
+[rochak agrawal] 08:02:15
+Until, unless you are not a super user, you will not be able to make any changes into host file, correct? That's one problem.
+
+[rochak agrawal] 08:02:23
+So, if you want someone to change file, you need to make them the admin, correct? That is one problem. Second is, see, um…
+
+[rochak agrawal] 08:02:33
+In your organization, you might have different, different units, different, different organization, where you want to man…
+
+[rochak agrawal] 08:02:40
+let's say you have 10 servers, uh, where I want to install Java, you have 20 other servers where you want to install, let's say, Python.
+
+[rochak agrawal] 08:02:51
+Just a very simple example. Now, if everything is in a host file, uh, how you're going to segregate? So that's where, let's say, I'll create one inventory file, I'll say Java inventory, uh, and then I'll create a second inventory file, say Python inventory.
+
+[rochak agrawal] 08:03:07
+And when I want to run install Java, so I'll just run the Ansible Playbook command with the Java inventory, and when I want to install Python, I will… I will run the Ansible Playbook command with the Python inventory. So that…
+
+[rochak agrawal] 08:03:19
+Because, see, in your organization, every server, uh…
+
+[rochak agrawal] 08:03:25
+Would not be having the same configuration, correct?
+
+[Gyanendra Narayan] 08:03:29
+Correct.
+
+[rochak agrawal] 08:03:29
+So that is where you can have different inventory files. Uh, I can do it within the inventory also, say, for example, I can create the groups and subgroups, right? We'll see that. But…
+
+[rochak agrawal] 08:03:41
+When you have hundreds and thousands of the server, every team would like to manage their own inventory file, so that they can change at their own convenience, and that's why we don't rely on the default inventory.
+
+[Gyanendra Narayan] 08:03:54
+Okay, so apart from these two, can we create any third inventory also with .in9?
+
+[rochak agrawal] 08:03:59
+Yeah, of course. Yes, see, that is what I'm saying.
+
+[rochak agrawal] 08:04:03
+See.
+
+[rochak agrawal] 08:04:05
+This command, if you are seeing…
+
+[rochak agrawal] 08:04:13
+this command, hyphen i flag, see, that's… see, again, when I'm saying every team want to manage their own inventory, correct? What does it mean?
+
+[Gyanendra Narayan] 08:04:22
+Hmm. Okay.
+
+[rochak agrawal] 08:04:22
+You can create multiple inventories.
+
+[Gyanendra Narayan] 08:04:24
+Okay, so…
+
+[rochak agrawal] 08:04:26
+You just need to tell when you are running the Ansible Playbook which inventory to use, that's it.
+
+[Gyanendra Narayan] 08:04:33
+No, no, I'm asking that inventory.ini will be a standard template for creating inventory, or we can keep any name.
+
+[rochak agrawal] 08:04:37
+No, no, no, no, no. You, you, you, you can give any name. You can give any name.
+
+[Gyanendra Narayan] 08:04:41
+But only the… only the extension will be INI.
+
+[rochak agrawal] 08:04:45
+Because it's a format. It is same thing. If you want to create a Java file, you need to save it with root.java.
+
+[Gyanendra Narayan] 08:04:46
+Okay.
+
+[rochak agrawal] 08:04:52
+If you are creating the Terraform file, you need to create it with the .tf file.
+
+[Gyanendra Narayan] 08:04:52
+Yes, and…
+
+[Gyanendra Narayan] 08:04:56
+Okay, okay. And we can keep this inventory file?
+
+[rochak agrawal] 08:04:59
+Python itself.py.
+
+[Gyanendra Narayan] 08:05:01
+Anywhere, just we have to give the correct location where our inventory is.
+
+[rochak agrawal] 08:05:03
+You give… say, for example, if my, uh…
+
+[rochak agrawal] 08:05:07
+Directory is somewhere, let's say, home…
+
+[rochak agrawal] 08:05:10
+Bro check something. Hey, you just need to get the full part if see.
+
+[rochak agrawal] 08:05:15
+If you are running the enable playbook command and your inventory is there in the same folder, then you do not need to give the full path. But if your inventory file is in some other folder, then you need to give the full path and the name could be anything.
+
+[Gyanendra Narayan] 08:05:24
+Got it.
+
+[rochak agrawal] 08:05:33
+It could be…
+
+[rochak agrawal] 08:05:34
+My…
+
+[rochak agrawal] 08:05:36
+Inventory. Something like that. Anything.
+
+[Gyanendra Narayan] 08:05:38
+Yeah, yeah. Yeah, I got it, sir.
+
+[rochak agrawal] 08:05:40
+Okay?
+
+[Gyanendra Narayan] 08:05:41
+So, same we can give for the host also.
+
+[rochak agrawal] 08:05:43
+Mm-hmm.
+
+[Gyanendra Narayan] 08:05:44
+Host inventory, we can give the correct, correct full, correct location, and it will take from here.
+
+[rochak agrawal] 08:05:49
+Kidding.
+
+[Gyanendra Narayan] 08:05:51
+Okay, sir. Thank you.
+
+[rochak agrawal] 08:05:51
+No, no, for host, you do not need to give the… see, when you are running this without any inventory file, it is automatically going to pick up.
+
+[Gyanendra Narayan] 08:05:58
+By default, we go for host.
+
+[rochak agrawal] 08:06:00
+It will automatically pick up the host file, because that's the default one.
+
+[rochak agrawal] 08:06:06
+Okay?
+
+[Gyanendra Narayan] 08:06:06
+Okay, sir.
+
+[rochak agrawal] 08:06:11
+Yes, I do.
+
+[arif] 08:06:14
+Yeah, Ruchik. So, Ruchik, can you please open that playbook YAML file?
+
+[rochak agrawal] 08:06:18
+Yep.
+
+[rochak agrawal] 08:06:29
+Yeah.
+
+[arif] 08:06:31
+So, uh, the… what is the task here is, uh, we are checking the touches…
+
+[rochak agrawal] 08:06:35
+So, task is this ensemble bulletin file.
+
+[arif] 08:06:38
+Yeah, yeah, so we are checking the file exit, or…
+
+[rochak agrawal] 08:06:38
+Okay, see, if you… just, just, I'll do one thing, I'll compare it with your ad-hoc command. We discussed the ad-hoc command yesterday, right?
+
+[arif] 08:06:47
+Yeah, yeah.
+
+[rochak agrawal] 08:06:51
+So you see…
+
+[rochak agrawal] 08:06:53
+Now, here, what was the module we were using? Ensemble built-in file, correct?
+
+[rochak agrawal] 08:07:00
+Same thing here.
+
+[rochak agrawal] 08:07:03
+Same argument here.
+
+[rochak agrawal] 08:07:07
+Right? So, you understand in this whole part, this part.
+
+[rochak agrawal] 08:07:12
+It will be called as a play.
+
+[rochak agrawal] 08:07:15
+Okay? So, in your playbook, you can have more than one place. So, my play right now is a managed local file.
+
+[rochak agrawal] 08:07:22
+Okay.
+
+[rochak agrawal] 08:07:25
+Here, I can define on which host I want to run. So, let's say you are giving an inventory file. Now, in your inventory, there may be hundreds and thousands of the server.
+
+[rochak agrawal] 08:07:35
+Now, your inventory file is containing, uh, web servers also, DB servers also, uh…
+
+[rochak agrawal] 08:07:42
+your database servers also. But let's say I want to run only this on the, uh…
+
+[rochak agrawal] 08:07:48
+DB server, something like that. So then, that I will define here. So, for example, previously, it was their host localhost, so it was only running on the localhost, it was not running on the other server.
+
+[rochak agrawal] 08:07:59
+But it.
+
+[rochak agrawal] 08:08:00
+Connection is OK. Connection generally we don't define here. I'll come to the connection. Connection we define in the inventory file itself. So leave the connection for now.
+
+[rochak agrawal] 08:08:14
+And then there are the tasks.
+
+[rochak agrawal] 08:08:16
+In a play, so inside the playbook, you can have multiple play, and inside a play, you can have multiple tasks.
+
+[rochak agrawal] 08:08:24
+Now, my first task is ensure file exist. Now, let's say I can add another task to my task.
+
+[rochak agrawal] 08:08:33
+See, add another task.
+
+[rochak agrawal] 08:08:36
+To change the owner.
+
+[rochak agrawal] 08:08:41
+Oven, for example.
+
+[rochak agrawal] 08:08:46
+Okay, so now you can see.
+
+[rochak agrawal] 08:09:00
+Okay, so now you can see I'm using… still using the same module, but…
+
+[rochak agrawal] 08:09:17
+Okay, so I'm still using the same module, which is a file module, but I'm using two tasks now. One task is ensure file exists, and one task is changing the file ownership to Ubuntu. Okay, now you can see, again, within a file, so you need to have, again, rely on the documentation to.
+
+[rochak agrawal] 08:09:37
+or make these arguments and other things.
+
+[rochak agrawal] 08:09:40
+One thing is very important in Ansible, which was not so important in the Terraform is… see, Terraform creates the implicit dependency by itself, right? So you create a virtual machine, you create a VPC or VPN.
+
+[rochak agrawal] 08:09:55
+Uh, right? And you want to put up your virtual machine in this VPC. So what you need to do is, you don't need to do anything, basically. You will define all it. Whenever Terraform will run, it is going to create a dependency map that.
+
+[rochak agrawal] 08:10:08
+First, I need to create a…
+
+[rochak agrawal] 08:10:12
+the VPC, then my virtual machine will go into it, correct? You do not need to define the implicit dependency in Terraform. But here, if you see, Terraform runs in an order definition. Now, if you say I…
+
+[rochak agrawal] 08:10:27
+Did I take this up?
+
+[rochak agrawal] 08:10:28
+Now, if your file does not exist, how it is going to change the file ownership? So in Ansible, you need to take care of this thing very seriously, that when you are defining multiple tasks and plays, you maintain the sequence. So for example, you cannot do something.
+
+[rochak agrawal] 08:10:46
+Like, um…
+
+[rochak agrawal] 08:10:49
+Like starting the NGINX after, like for example, you cannot run a task saying start the NGINX before installing it, right? So that sequence we need to manage.
+
+[rochak agrawal] 08:11:04
+Now if I'm going to run this.
+
+[rochak agrawal] 08:11:16
+Okay?
+
+[rochak agrawal] 08:11:21
+Now you see it is running two tasks. Okay, I'll exist.
+
+[rochak agrawal] 08:11:27
+and change the file ownership to 12. And if you do L-LRT, you see, 1212. You want to change it to something, something. So, the point here is.
+
+[rochak agrawal] 08:11:41
+I…
+
+[rochak agrawal] 08:11:45
+have multiple plays. Now, let's say if you say, I want to add another play.
+
+[rochak agrawal] 08:12:02
+Okay, now here you see…
+
+[rochak agrawal] 08:12:15
+Okay, now I have two plays. One play is manage file creation and ownership. Another play is manage directory creation. Okay, now here also we are still using the same module, file module.
+
+[rochak agrawal] 08:12:30
+And then path is home Ubuntu new project, state is directory.
+
+[rochak agrawal] 08:12:34
+Owner is 1212, and mode is basically the permission is 0755. Okay, now you are going to run this.
+
+[rochak agrawal] 08:12:50
+See?
+
+[rochak agrawal] 08:12:52
+Task, two tasks is going to run.
+
+[rochak agrawal] 08:12:56
+Which is, they manage local files.
+
+[rochak agrawal] 08:12:59
+Right? Then there is another play. Manage local directories is going to run. Task is gathering the fact.
+
+[rochak agrawal] 08:13:05
+And create a new directory. That's it.
+
+[rochak agrawal] 08:13:08
+And if you run this.
+
+[rochak agrawal] 08:13:12
+You see? File, uh, directly has been created for you.
+
+[rochak agrawal] 08:13:16
+So you can have multiple plays in your playbook. Then inside a play, you can have multiple tasks.
+
+[rochak agrawal] 08:13:25
+Clear? Adam?
+
+[arif] 08:13:26
+So, yeah, yeah, that is clear, but I'm worrying about the syntax thing, uh, so… some part is mandatory, or something, or which can be added…
+
+[rochak agrawal] 08:13:34
+No, see, see, again, that's very simple syntax, okay? You don't need to worry about. First is the name of the play. Any question in that? No, right?
+
+[rochak agrawal] 08:13:43
+Then the host. Host is also very simple, right? Host, also, if you want, you want to keep in a playbook, that is okay. If you want to…
+
+[rochak agrawal] 08:13:56
+define the host while running the playbook, that is also okay. Connection, as I discussed, like.
+
+[rochak agrawal] 08:14:00
+you don't need to worry about it, we'll leave it. We will discuss it in an inventory. Then comes the task. Fourth thing. Now, under the task also, name is okay, there is nothing much. This part which you are seeing, okay, this part. Now here, for the.
+
+[rochak agrawal] 08:14:16
+all the three, this is different, right? So, first thing is, you need to know which module to use, and the second is, you don't need to worry about much on this. See, Ensemble…
+
+[rochak agrawal] 08:14:29
+File module, if you go.
+
+[rochak agrawal] 08:14:35
+Enable built-in file module, manage file and file properties.
+
+[rochak agrawal] 08:14:48
+So, see, if you go down…
+
+[rochak agrawal] 08:14:52
+These are the examples.
+
+[rochak agrawal] 08:14:54
+Owner group mode. See this exactly we used directly one. So.
+
+[rochak agrawal] 08:15:00
+It can create a symbolic link. It is… you are going to get it from the documentation only. So, mode, we are using it. I can change the mode permission.
+
+[rochak agrawal] 08:15:10
+So this is… you are going to see from the documentation. Now, there is another module, for example. Let's say I want to run a shell script, right? So there is a module…
+
+[rochak agrawal] 08:15:23
+Shell module is there.
+
+[rochak agrawal] 08:15:26
+So shell module executes the shell command on the remote target. Of course, target can be anything. Unlike the standard command module, it routes your command through a shell interpreter.
+
+[rochak agrawal] 08:15:36
+Okay, so we have the shell module also.
+
+[rochak agrawal] 08:15:41
+But let's say, uh…
+
+[rochak agrawal] 08:15:46
+Add a shell module.
+
+[rochak agrawal] 08:16:00
+Okay, so let's say I'm running this.
+
+[rochak agrawal] 08:16:39
+Now you can see here, um…
+
+[rochak agrawal] 08:16:43
+I am now executing a shell command, so I'm using this Ensemble Bulletin shell module. Now, again, if you go to shell module, and you see here, you will get an example.
+
+[rochak agrawal] 08:16:56
+So you can see?
+
+[rochak agrawal] 08:16:59
+This way you can run it. If you want to give some argument, then you can give these arguments.
+
+[rochak agrawal] 08:17:07
+Okay.
+
+[rochak agrawal] 08:17:08
+So, this syntax will come from the documentation. Now, there's one more thing which I want to highlight here is…
+
+[rochak agrawal] 08:17:15
+But see.
+
+[rochak agrawal] 08:17:16
+Now, what this shell command is doing?
+
+[rochak agrawal] 08:17:19
+It is creating a file, correct?
+
+[rochak agrawal] 08:17:24
+Right, Alice?
+
+[arif] 08:17:25
+dial.
+
+[rochak agrawal] 08:17:27
+So, you can say, I can do it with the file module only. Yes, of course, see, uh, as you will see, there will…
+
+[rochak agrawal] 08:17:34
+is everywhere, like, when you design an infrastructure in cloud, there are multiple services, you can choose any one, correct? So, similarly, right, uh, with this, I can, uh, I could have used the file module here also, for this one as well. So, it is up to you what we want to do.
+
+[arif] 08:17:51
+Yeah, yeah, I got it.
+
+[rochak agrawal] 08:17:51
+Okay, no.
+
+[rochak agrawal] 08:17:53
+Uh, I will again run the playbook.yaml.
+
+[rochak agrawal] 08:18:01
+Okay? Now, if you go…
+
+[rochak agrawal] 08:18:09
+See output.txt has been created.
+
+[rochak agrawal] 08:18:13
+And second thing, Arif, what I believe right now is no one need to worry about the syntax anymore. We have passed that thing. You just need to have a understanding what module to use.
+
+[rochak agrawal] 08:18:31
+Right? Uh, and then, syntactical and other things, like, nowadays, even in the, uh, if you're using, for example, uh…
+
+[rochak agrawal] 08:18:41
+VS Code also. It will have a co-pilot which is going to, um…
+
+[rochak agrawal] 08:18:47
+Complete the syntax for you.
+
+[arif] 08:18:51
+Okay, so, uh, two, three questions also. So, syntax thing, so, is there anything we can validate the syntax, like, with Terraform?
+
+[rochak agrawal] 08:18:52
+Great.
+
+[rochak agrawal] 08:18:54
+Yep.
+
+[rochak agrawal] 08:19:03
+My, uh, syntax validate. See, uh…
+
+[rochak agrawal] 08:19:07
+I'm not sure I need to check on this.
+
+[rochak agrawal] 08:19:12
+I have not used something. I can tell you one thing.
+
+[rochak agrawal] 08:19:21
+Text check is the command.
+
+[arif] 08:19:26
+Okay, we can check the syntax.
+
+[rochak agrawal] 08:19:28
+We can check, yeah.
+
+[arif] 08:19:29
+Okay.
+
+[rochak agrawal] 08:19:30
+See, there is one problem in Civil is…
+
+[rochak agrawal] 08:19:36
+A playbook.yaml. Okay. Yaml.
+
+[rochak agrawal] 08:19:43
+Oh, I am inside a new project.
+
+[rochak agrawal] 08:19:47
+So, it is… okay. Now, let's say…
+
+[rochak agrawal] 08:19:50
+I'll try to…
+
+[rochak agrawal] 08:19:52
+Now, the problem with Ensemble is…
+
+[rochak agrawal] 08:19:56
+Not ensemble, actually.
+
+[rochak agrawal] 08:19:58
+Problem with YAML is…
+
+[rochak agrawal] 08:20:02
+You can see. I just did a space here and there, and uh…
+
+[rochak agrawal] 08:20:09
+You see?
+
+[arif] 08:20:11
+Okay.
+
+[rochak agrawal] 08:20:11
+Okay, now in Ansible, indentation. You understand what is indentation?
+
+[arif] 08:20:19
+Yeah, I think that, uh, spacing and colon are not good.
+
+[rochak agrawal] 08:20:21
+spacing and everything. So, this is not a problem of Ansible, this is a problem of YAML. So, you can see the task, all the tasks should be at a level. I just pressed the backspace button and your whole playbook is going to break.
+
+[arif] 08:20:37
+No.
+
+[rochak agrawal] 08:20:38
+Right, so you can see.
+
+[rochak agrawal] 08:20:40
+If I give it, like…
+
+[rochak agrawal] 08:20:44
+Now it will be fine.
+
+[rochak agrawal] 08:20:46
+So that is what, uh, you need to absolutely gain.
+
+[arif] 08:20:51
+We can check, but there is no, uh, formatting, like, in Terraform in, uh, in SQL.
+
+[rochak agrawal] 08:20:56
+Again, there may be, uh…
+
+[rochak agrawal] 08:20:59
+Because, see, nowadays, it is… these type of things, your IDE will be providing. So, for example, if you're using VS Code, there will be multiple extensions. So, if you go to VS Code, for example.
+
+[rochak agrawal] 08:21:14
+And you search for the extensions.
+
+[rochak agrawal] 08:21:18
+We did the HasiCorp HCL extension. There would be ensemble extensions also.
+
+[rochak agrawal] 08:21:28
+Do you see? Enable language support extension.
+
+[rochak agrawal] 08:21:31
+we can use these extensions in our IDE, because, see, when you will be writing your code, you're not going to write on the command prompt, right? So, your IDE provides all these functionalities.
+
+[arif] 08:21:43
+Okay.
+
+[rochak agrawal] 08:21:45
+Okay.
+
+[arif] 08:21:47
+And the playbook that we have run for the some IP host we have mentioned in the inventory.
+
+[rochak agrawal] 08:21:52
+Okay.
+
+[rochak agrawal] 08:21:53
+Mm-hmm.
+
+[arif] 08:21:55
+So, but that does not exist, that is for the example, right?
+
+[rochak agrawal] 08:21:57
+But, yes, by this run, because…
+
+[rochak agrawal] 08:22:01
+in our playbook, we are managing the connection as a local. So everything, it is running locally. So that's why I said I move the connection, and as a next step also, we are going to create another server.
+
+[arif] 08:22:06
+Yep.
+
+[rochak agrawal] 08:22:14
+Uh, and, uh, run our commands on that server. But, uh, your question is valid. These IPs are not going to exist by… it is not showing us the error because of this line. It is running everything locally.
+
+[arif] 08:22:27
+Okay, okay. And that… the flow that you have explained yesterday, that copy, execute, and report and everything, so it is applicable when you are creating an inventory with some additional host, like managed host?
+
+[rochak agrawal] 08:22:30
+Mm-hmm.
+
+[rochak agrawal] 08:22:39
+Um, can you, can you repeat the question, Arif?
+
+[arif] 08:22:42
+Uh, yesterday, we talked about the, uh…
+
+[rochak agrawal] 08:22:44
+Correct.
+
+[rochak agrawal] 08:22:44
+Yes, this is the… this is the flow.
+
+[arif] 08:22:48
+This is when you have to connect with some other managed servers, managed host.
+
+[rochak agrawal] 08:22:52
+No, see, it is, it is, it is not like that. When you are running here also, if you see.
+
+[rochak agrawal] 08:22:59
+Even when we are running at the local host.
+
+[rochak agrawal] 08:23:14
+So, you see here…
+
+[rochak agrawal] 08:23:16
+The first thing, it do a gather fact, correct?
+
+[arif] 08:23:19
+Mmhm.
+
+[rochak agrawal] 08:23:20
+Even if it is running at, uh…
+
+[rochak agrawal] 08:23:23
+Uh, so it says host, local host is using the discovered Python interpreter. So again, it is finding the Python interpreter on your local machine. See, local, you understand as another target only. That's it.
+
+[arif] 08:23:37
+Yeah, yeah, I got it. But the thing is, this gathering facts, I'm seeing it again. Uh, what is…
+
+[rochak agrawal] 08:23:42
+Every time you are going to run, because see, till the time it does not gather the fact how it is going to compare the state.
+
+[arif] 08:23:44
+Okay.
+
+[arif] 08:23:51
+So, before running any task, it will do a gather text.
+
+[rochak agrawal] 08:23:55
+It will do a gather fact. Correct.
+
+[arif] 08:23:57
+Okay.
+
+[rochak agrawal] 08:23:58
+Okay.
+
+[rochak agrawal] 08:23:59
+Now, let's create another server.
+
+[rochak agrawal] 08:24:06
+So I'll launch another instance, Ubuntu only.
+
+[rochak agrawal] 08:24:10
+I will say Cebu.
+
+[rochak agrawal] 08:24:17
+Note. Simple.
+
+[rochak agrawal] 08:24:21
+or one, two…
+
+[rochak agrawal] 08:24:28
+E3 dot micro, and use.
+
+[rochak agrawal] 08:24:37
+What is most important is allow SSAS traffic, because Ansible machine runs on this, uh…
+
+[rochak agrawal] 08:24:48
+That will get created.
+
+[rochak agrawal] 08:24:54
+Now, there is one thing which we need to create a configuration before running our…
+
+[rochak agrawal] 08:25:03
+And so we'll play. We'll see that. Let's see.
+
+[rochak agrawal] 08:25:33
+Okay.
+
+[rochak agrawal] 08:25:40
+What is the IP of this is this?
+
+[rochak agrawal] 08:25:53
+Here you see…
+
+[rochak agrawal] 08:25:56
+Connection be maintained here.
+
+[rochak agrawal] 08:25:58
+Now, here, I would say…
+
+[rochak agrawal] 08:26:01
+and Sybil…
+
+[rochak agrawal] 08:26:03
+connection.
+
+[rochak agrawal] 08:26:07
+SSH.
+
+[rochak agrawal] 08:26:09
+Okay? And let me remove this one only.
+
+[rochak agrawal] 08:26:25
+So you can see we have one server, and it will be connect to… Ansible will connect to the server using the SSH.
+
+[rochak agrawal] 08:26:34
+And I go to my playbook.
+
+[rochak agrawal] 08:26:36
+And remove this line.
+
+[rochak agrawal] 08:26:47
+Okay.
+
+[rochak agrawal] 08:26:49
+Now let's try to run this and see.
+
+[rochak agrawal] 08:26:58
+You can see the error.
+
+[rochak agrawal] 08:27:03
+Let me try it with the private IP.
+
+[rochak agrawal] 08:27:08
+Since both of them is in the same network.
+
+[rochak agrawal] 08:27:33
+And civil connection.
+
+[rochak agrawal] 08:27:36
+is equal to SSH.
+
+[rochak agrawal] 08:27:40
+Okay, let me try the web IP.
+
+[rochak agrawal] 08:27:48
+See? Reachable.
+
+[rochak agrawal] 08:27:52
+It's not…
+
+[rochak agrawal] 08:27:54
+going there.
+
+[rochak agrawal] 08:27:55
+Can anyone tell me the reason for this?
+
+[rochak agrawal] 08:28:04
+Any guesses?
+
+[arif] 08:28:07
+Maybe this machine does not have that key used for accessing the another server.
+
+[rochak agrawal] 08:28:16
+Correct. So what we need to do?
+
+[arif] 08:28:19
+Need to generate the key.
+
+[rochak agrawal] 08:28:21
+We need to generate the key and set up, uh, basically, uh…
+
+[rochak agrawal] 08:28:27
+The passwordless authentication between your, uh…
+
+[rochak agrawal] 08:28:34
+So, see, what's going to happen is…
+
+[rochak agrawal] 08:28:47
+You see, we have two servers, right?
+
+[rochak agrawal] 08:28:54
+Now, this is my master machine.
+
+[rochak agrawal] 08:29:00
+And this is my burger.
+
+[rochak agrawal] 08:29:03
+Simple a note.
+
+[rochak agrawal] 08:29:05
+Now, from there, you are pushing some commands.
+
+[rochak agrawal] 08:29:08
+Correct.
+
+[rochak agrawal] 08:29:10
+Hey, now…
+
+[rochak agrawal] 08:29:13
+We need to set up some authentication mechanism between these machines, correct? Otherwise, anyone can go and push anything. That is where we need to set up the SSC authentication between my master and my worker.
+
+[rochak agrawal] 08:29:29
+Okay, now I'll connect to my second machine.
+
+[rochak agrawal] 08:29:39
+Connect.
+
+[rochak agrawal] 08:29:44
+Okay, I'll take the… what is the private IP of this? Is this… Now, here, if you see, if I try to SSH…
+
+[rochak agrawal] 08:29:56
+Ubuntu.
+
+[rochak agrawal] 08:30:02
+Which is the user. U B U N T U U.
+
+[rochak agrawal] 08:30:09
+and the private IP. You give the public IP, private IP does not matter for now, because we have the security group open, but, like, as you have the network connectivity, you can decide, uh, you need to use the public IP or the private IP.
+
+[Vaibhav] 08:30:19
+Mm-hmm.
+
+[rochak agrawal] 08:30:22
+Do you see?
+
+[rochak agrawal] 08:30:24
+I say yes.
+
+[rochak agrawal] 08:30:28
+It is permission denied.
+
+[rochak agrawal] 08:30:33
+8.
+
+[rochak agrawal] 08:30:34
+So same same error basically it is getting failed to connect to the host via the host verification.
+
+[rochak agrawal] 08:30:43
+We are going to set up the passwordless authentication between these machines, and then we are going to run our thing. So what we need to do, we need to run a command, and this is always you need to do whenever you are adding a machine.
+
+[rochak agrawal] 08:30:59
+You need to first set up.
+
+[rochak agrawal] 08:31:02
+SSAC.
+
+[rochak agrawal] 08:31:03
+Gijin?
+
+[rochak agrawal] 08:31:05
+This is a standard command you will find on Google.
+
+[rochak agrawal] 08:31:10
+4096. So it is going to create two keys, okay?
+
+[rochak agrawal] 08:31:20
+Okay, now…
+
+[rochak agrawal] 08:31:23
+You do, so there is a S-S-S-S-S-S-S-S-S-S.
+
+[rochak agrawal] 08:31:27
+Again, this is not Ansible-specific, this is Linux-specific.
+
+[rochak agrawal] 08:31:32
+Now here you will see there are two keys are there, idrsa and idrsa.pub, right? So idrsa is your private key, which is like your lock, and idrsa.pub is your public key, which is safe to share.
+
+[rochak agrawal] 08:31:48
+Okay, so what I'm going to do…
+
+[rochak agrawal] 08:31:52
+I will…
+
+[rochak agrawal] 08:31:54
+Copy this ID LSA.
+
+[rochak agrawal] 08:32:03
+Not public.
+
+[rochak agrawal] 08:32:04
+OK, this key.
+
+[Vaibhav] 08:32:06
+Hmm.
+
+[rochak agrawal] 08:32:09
+Okay, I'll copy this. Make sure that you are not having any…
+
+[rochak agrawal] 08:32:19
+White spaces of…
+
+[rochak agrawal] 08:32:22
+some… you're copying exactly the thing. Then, I'll go to the second server.
+
+[rochak agrawal] 08:32:27
+Second server, also, you will have to…
+
+[rochak agrawal] 08:32:35
+dot S SS folder.
+
+[rochak agrawal] 08:32:39
+which just by default comes with go to CB SSH.
+
+[rochak agrawal] 08:32:43
+LS-LRT. Here, there is a folder called the Authorized Keys. You… not a folder, sorry, it's a file called the Authorized Keys. BI Authorized Keys.
+
+[rochak agrawal] 08:32:54
+And what I'm going to do…
+
+[rochak agrawal] 08:33:00
+I am going to copy my file, uh, my public key here.
+
+[rochak agrawal] 08:33:14
+Okay? Now, you notice one thing here is…
+
+[rochak agrawal] 08:33:19
+Here is a public key of first EC2, which we have selected while, uh…
+
+[rochak agrawal] 08:33:27
+Creating the virtual machine. So that is also there. So if someone will log in using this key.
+
+[rochak agrawal] 08:33:33
+It will work, or someone will use from this server.
+
+[rochak agrawal] 08:33:37
+It is going to work.
+
+[rochak agrawal] 08:33:38
+So let me save this.
+
+[rochak agrawal] 08:33:42
+Okay, so both the keys are there.
+
+[rochak agrawal] 08:33:48
+Okay, now what I'm going to do…
+
+[rochak agrawal] 08:33:52
+I will…
+
+[rochak agrawal] 08:33:54
+What is the definition of this? Is…
+
+[rochak agrawal] 08:33:58
+600, yeah, file permissions are good.
+
+[rochak agrawal] 08:34:04
+For definition of S-S-S-S-S-S-S-S-S-S.
+
+[rochak agrawal] 08:34:08
+Now, if you try to access, it should work.
+
+[rochak agrawal] 08:34:11
+Okay?
+
+[rochak agrawal] 08:34:23
+A permission denied public key.
+
+[rochak agrawal] 08:34:31
+Let me…
+
+[rochak agrawal] 08:34:33
+Logo and log in.
+
+[rochak agrawal] 08:35:18
+Why is getting permission denied?
+
+[rochak agrawal] 08:35:33
+Forgive us.
+
+[rochak agrawal] 08:35:40
+It means the remote server rejected your connection because it did not receive or accept your correct SSO.
+
+[rochak agrawal] 08:36:15
+should not happen.
+
+[rochak agrawal] 08:36:24
+I'm giving the spelling correct, uh, U-B-U-N-T-U.
+
+[rochak agrawal] 08:36:31
+U B U N T U.
+
+[rochak agrawal] 08:36:51
+Let me…
+
+[rochak agrawal] 08:37:14
+No route to host?
+
+[arif] 08:37:22
+IP format is not correct or something.
+
+[rochak agrawal] 08:37:24
+No, that's what I'm, uh, looking over into.
+
+[rochak agrawal] 08:37:29
+This irritates me a lot, uh, I…
+
+[rochak agrawal] 08:37:32
+I haven't faced this problem in Azure also very much. I don't know the exact issue for this.
+
+[rochak agrawal] 08:37:38
+172.31.
+
+[rochak agrawal] 08:37:48
+Thanks.
+
+[rochak agrawal] 08:37:53
+Suddenly, it will start working.
+
+[rochak agrawal] 08:38:17
+One, two…
+
+[rochak agrawal] 08:38:18
+dot SSH, IDRSA.
+
+[rochak agrawal] 08:38:28
+Not working file.
+
+[rochak agrawal] 08:38:52
+Verify the username. We have verified the username.
+
+[rochak agrawal] 08:39:33
+Loaded public key from this, okay? Identity file is this.
+
+[rochak agrawal] 08:39:40
+Authenticated.
+
+[rochak agrawal] 08:39:43
+Who has opened who?
+
+[rochak agrawal] 08:39:45
+Found a keyhole type is this.
+
+[rochak agrawal] 08:39:58
+There's no error, only debug is there.
+
+[rochak agrawal] 08:40:10
+Do-do-do-do-do. Pillar temp key.
+
+[rochak agrawal] 08:40:12
+Okay, public key prepare.
+
+[rochak agrawal] 08:40:20
+No more authentication between authenticated method. There's no error altogether.
+
+[rochak agrawal] 08:40:36
+Anything, you guys, which I did wrong?
+
+[arif] 08:40:41
+Maybe we can check the public key on both sides.
+
+[rochak agrawal] 08:40:45
+Change them?
+
+[arif] 08:40:47
+We can check the public key, make sure it is the same on both sides, the master and the…
+
+[rochak agrawal] 08:40:52
+That is what we copied, right? Uh, this… if you go…
+
+[rochak agrawal] 08:41:05
+So, if you see…
+
+[rochak agrawal] 08:41:08
+This is my public key.
+
+[rochak agrawal] 08:41:21
+Let me use another…
+
+[rochak agrawal] 08:41:24
+Copy the public key to the server.
+
+[rochak agrawal] 08:41:35
+S. S. A. C. P. P. I. D. Username.
+
+[rochak agrawal] 08:41:45
+This is not… also not going to work, but…
+
+[rochak agrawal] 08:41:50
+What is the server IP? 172.
+
+[rochak agrawal] 08:42:39
+Let's copy ID…
+
+[rochak agrawal] 08:42:44
+Alright, that's it.
+
+[rochak agrawal] 08:42:47
+I know it's also not going to work.
+
+[rochak agrawal] 08:43:02
+It's the same thing.
+
+[rochak agrawal] 08:43:04
+Permission denied.
+
+[rochak agrawal] 08:43:06
+Populate key.
+
+[rochak agrawal] 08:43:08
+I have tried all that.
+
+[rochak agrawal] 08:43:11
+Look for the lines offering public and see if the motor works. We'll simply reject this.
+
+[rochak agrawal] 08:43:38
+There is no white space also.
+
+[rochak agrawal] 08:44:09
+This is offering public key.
+
+[rochak agrawal] 08:44:12
+Which is IWOT1.
+
+[rochak agrawal] 08:44:19
+Now, before we get going with this…
+
+[rochak agrawal] 08:44:37
+No such identity.
+
+[rochak agrawal] 08:45:29
+Your call is usually just chicken…
+
+[rochak agrawal] 08:45:35
+Manual key transfer, also the…
+
+[rochak agrawal] 08:45:45
+We've won this
+
+[rochak agrawal] 08:46:18
+Move to a new line at the bottom of the file and paste the public keystring.
+
+[rochak agrawal] 08:46:25
+That's what we've done.
+
+[rochak agrawal] 08:46:31
+Copy it again.
+
+[rochak agrawal] 08:47:47
+Instead of VA…
+
+[rochak agrawal] 08:47:50
+Let me…
+
+[rochak agrawal] 08:48:08
+Okay, let's see…
+
+[rochak agrawal] 08:48:21
+Let's see, this time…
+
+[rochak agrawal] 08:48:26
+So they are saying, uh…
+
+[rochak agrawal] 08:48:30
+600 and 700, so we have these permissions.
+
+[rochak agrawal] 08:48:34
+The 600, 4, 2.
+
+[rochak agrawal] 08:48:38
+So, yeah, go there.
+
+[rochak agrawal] 08:48:51
+Hmm
+
+[rochak agrawal] 08:49:05
+fix…
+
+[rochak agrawal] 08:49:09
+For the users on a local, ensure a local key file has the correct restricted permissions.
+
+[rochak agrawal] 08:49:17
+local file.
+
+[rochak agrawal] 08:49:22
+I have 400 permissions only.
+
+[rochak agrawal] 08:49:47
+This is a very repetitive issue. I've got this issue multiple times, but…
+
+[rochak agrawal] 08:49:54
+There is no…
+
+[rochak agrawal] 08:50:41
+Okay, uh, let's do… let's try another way.
+
+[rochak agrawal] 08:50:45
+With the username and the password.
+
+[rochak agrawal] 08:50:48
+So let's try that.
+
+[rochak agrawal] 08:50:52
+You'll see. It's a, uh, intermittent issue, like, just…
+
+[rochak agrawal] 08:50:57
+So we… what we tried to do, uh, so we were trying to set up the SSoy connection with the help of the public and private key, which unfortunately is not working. I'll try after the class as well.
+
+[rochak agrawal] 08:51:07
+Now, we will try to do it with the help of username and the password, okay? So, um, what we need to do, we need to add something called, uh…
+
+[rochak agrawal] 08:51:18
+SSAS pass, so I'll just update it first.
+
+[rochak agrawal] 08:51:23
+And then, I'm going to install…
+
+[rochak agrawal] 08:51:33
+Okay, SSL pass is already there. Now, what we are going to do…
+
+[rochak agrawal] 08:51:39
+We are going to…
+
+[rochak agrawal] 08:51:43
+Manage note?
+
+[rochak agrawal] 08:51:54
+Google VA.
+
+[rochak agrawal] 08:52:02
+SSH.
+
+[rochak agrawal] 08:52:13
+So here, there will be something called password authentication.
+
+[rochak agrawal] 08:52:20
+So, password authentication is…
+
+[rochak agrawal] 08:52:25
+Yes.
+
+[rochak agrawal] 08:52:27
+Oops, this is a public key authentication.
+
+[rochak agrawal] 08:52:37
+Okay?
+
+[rochak agrawal] 08:52:42
+Password authentication, I'll keep it, yes. Oh, I think this was restricted because of that. Let me try it again.
+
+[rochak agrawal] 08:52:57
+So, those… CTL…
+
+[rochak agrawal] 08:53:05
+Please start SSH.
+
+[rochak agrawal] 08:53:07
+Now, let me try…
+
+[rochak agrawal] 08:53:16
+Okay, no problem. So, now, what I'm going to do, I'm going to change the, uh, set up a password for my Ubuntu user.
+
+[rochak agrawal] 08:53:43
+Civil at the red one only.
+
+[rochak agrawal] 08:53:47
+Okay, now password updated successfully. Now, what we are going to do…
+
+[rochak agrawal] 08:53:55
+I'm going to go to my inventory file.
+
+[rochak agrawal] 08:54:01
+So I'll say…
+
+[rochak agrawal] 08:54:10
+One, you can name anything.
+
+[rochak agrawal] 08:54:12
+in Cebu.
+
+[rochak agrawal] 08:54:15
+Ust is a good tool.
+
+[rochak agrawal] 08:54:17
+this…
+
+[rochak agrawal] 08:54:19
+Principal username is…
+
+[rochak agrawal] 08:54:40
+Password…
+
+[rochak agrawal] 08:54:43
+As you call the symbol.
+
+[rochak agrawal] 08:54:46
+Okay.
+
+[rochak agrawal] 08:54:52
+Okay.
+
+[rochak agrawal] 08:54:54
+Now, let's see if it is working or not.
+
+[rochak agrawal] 08:55:01
+Although this is not a good practice, because you are clearly exposing your password.
+
+[rochak agrawal] 08:55:06
+But since our public key is not working, that's why we are trying this.
+
+[rochak agrawal] 08:55:27
+Failed to connect to host via this permission denied again public.
+
+[rochak agrawal] 08:57:01
+Shouldn't work this time.
+
+[rochak agrawal] 08:57:10
+Because we are not using the SS>C key.
+
+[rochak agrawal] 08:57:25
+We have did that also.
+
+[rochak agrawal] 08:57:42
+Answer will use the answer will use an alt.
+
+[rochak agrawal] 08:58:30
+Password authentication is yes.
+
+[rochak agrawal] 08:58:34
+Right, and we have restarted the SSD.
+
+[rochak agrawal] 08:59:17
+Guys, I need to check on that, I'm sorry, it's not working out.
+
+[rochak agrawal] 08:59:23
+We cannot do further demos if this is not working, and I'm not sure at this point why it is not working, because we have tried every step.
+
+[rochak agrawal] 08:59:33
+Even with the password authentication, it should have been worked.
+
+[rochak agrawal] 08:59:40
+But it's somehow not working.
+
+[rochak agrawal] 08:59:43
+We have changed the password, authentication, restart SSHD.
+
+[rochak agrawal] 08:59:56
+this also, but…
+
+[rochak agrawal] 09:00:02
+This task field, okay, field, connect via SSCH, Ubuntu, permission denied.
+
+[rochak agrawal] 09:00:09
+The same error is coming.
+
+[rochak agrawal] 09:00:16
+Guys, I need to check on this. I'm not sure why it is not working.
+
+[rochak agrawal] 09:00:20
+Any suggestion someone can give at this point?
+
+[rochak agrawal] 09:00:30
+I'm not seeing a reason why it should not working.
+
+[rochak agrawal] 09:00:47
+We keep the public key authentication also, yes.
+
+[rochak agrawal] 09:00:56
+Resetting is correct.
+
+[rochak agrawal] 09:00:58
+It's a very small process, but these, even though I get the same…
+
+[rochak agrawal] 09:01:03
+Cool.
+
+[rochak agrawal] 09:01:09
+SSH.
+
+[rochak agrawal] 09:01:13
+One, two…
+
+[rochak agrawal] 09:01:37
+Something wrong.
+
+[rochak agrawal] 09:01:45
+Guys, I'll check on this, and I'm not understanding right now why it's not working, and what is something… because it's a very small process, we've done everything. Even with the password, it's the same error we are getting.
+
+[rochak agrawal] 09:02:01
+Well, to connect to host via SSH.
+
+[rochak agrawal] 09:02:15
+I'm not sure.
+
+[rochak agrawal] 09:03:47
+Okay.
+
+[rochak agrawal] 09:05:28
+Working.
+
+[rochak agrawal] 09:05:32
+I don't know what I did.
+
+[rochak agrawal] 09:05:34
+But… it is working.
+
+[rochak agrawal] 09:05:38
+Okay?
+
+[rochak agrawal] 09:05:43
+Now, I go to my ensemble…
+
+[rochak agrawal] 09:06:07
+So I just keep it.
+
+[rochak agrawal] 09:06:11
+Just for now.
+
+[rochak agrawal] 09:06:18
+Several…
+
+[rochak agrawal] 09:06:39
+A inventory.
+
+[rochak agrawal] 09:06:49
+You see, it is working, and now if you go…
+
+[rochak agrawal] 09:06:57
+A little txt has been created.
+
+[rochak agrawal] 09:07:06
+What is my playbook saying?
+
+[rochak agrawal] 09:07:12
+So, create a new directory in this.
+
+[rochak agrawal] 09:07:23
+Because this is working on.
+
+[rochak agrawal] 09:07:49
+So you see now it is working on this server.
+
+[rochak agrawal] 09:07:55
+Ensemble playbook-i inventory playbook.yaml. Now it is gathering the host fact about this host using this playbook.
+
+[rochak agrawal] 09:08:06
+Python, and it is going to run on this Python.
+
+[rochak agrawal] 09:08:11
+And now you will see here.
+
+[rochak agrawal] 09:08:14
+Your file.txt is created, your new project is created, and inside this new project.
+
+[rochak agrawal] 09:08:22
+Output PHD is working. Can anyone tell me the reason why it has started working?
+
+[rochak agrawal] 09:08:28
+Any, any observation?
+
+[arif] 09:08:31
+Yeah, I think we were… we were bopping the wrong key.
+
+[rochak agrawal] 09:08:34
+No, we actually were not copying the wrong key, so if you see…
+
+[arif] 09:08:41
+We generated in some other folder, and we copied, I think, so…
+
+[rochak agrawal] 09:08:43
+No, no, no, no, no, no. So if you see here…
+
+[rochak agrawal] 09:08:49
+Uh, if you go to SSH…
+
+[rochak agrawal] 09:08:54
+So you can see, my public file…
+
+[rochak agrawal] 09:09:04
+We previously used this publicly, correct?
+
+[arif] 09:09:04
+Yep.
+
+[rochak agrawal] 09:09:05
+Okay, and now it is working with this ID.
+
+[rochak agrawal] 09:09:10
+Okay. Sorry.
+
+[rochak agrawal] 09:09:17
+But we were copying at the right place, so you can see my both of the, uh…
+
+[rochak agrawal] 09:09:22
+Files… my… both of the public key has been copied at the right place, correct?
+
+[rochak agrawal] 09:09:28
+The reason was, uh…
+
+[rochak agrawal] 09:09:31
+If you go to history.
+
+[rochak agrawal] 09:09:45
+Previously, we used a 4096 bit of key.
+
+[rochak agrawal] 09:09:48
+Okay.
+
+[rochak agrawal] 09:09:50
+or the RSA type of the key, which is not working with AWS instances, it seems.
+
+[rochak agrawal] 09:09:57
+So that is why it was not accepting the public key. When we run it with the default option, just, uh, SSRC key… I told you, it's a very, uh, very small process, it's nothing…
+
+[rochak agrawal] 09:10:10
+much into it, so that it is, uh, getting failed or something. Um…
+
+[rochak agrawal] 09:10:16
+But that's how it is. Sometimes you've got these small issues, and they keep drag for a long period of the time, so just we run it with the default options, and we copy the key with the default option, and that worked. But that's a standard, uh…
+
+[rochak agrawal] 09:10:32
+Command which we used most of the time.
+
+[rochak agrawal] 09:10:35
+So that was the reason I think RSA is not supported on the AWS EC2 instances.
+
+[rochak agrawal] 09:10:40
+That might be the reason it is not working. I'm not 100% sure, but that looks like it.
+
+[rochak agrawal] 09:10:48
+Okay, so now, with, uh…
+
+[rochak agrawal] 09:10:57
+So now you can see, um…
+
+[rochak agrawal] 09:11:00
+It's a good employee. Yeah.
+
+[rochak agrawal] 09:11:03
+So I'll, let's say, now create a playbook which is going to install Nginx on another server, right? So I'll just create another playbook.
+
+[rochak agrawal] 09:11:28
+Now, before I install Nginx…
+
+[rochak agrawal] 09:11:31
+So let's say…
+
+[rochak agrawal] 09:11:35
+And the next…
+
+[rochak agrawal] 09:11:39
+Just, um, CTL…
+
+[rochak agrawal] 09:11:42
+Status NGINX. There is no NGINX service found, correct?
+
+[rochak agrawal] 09:11:48
+Now, we'll take the playbook.
+
+[rochak agrawal] 09:11:55
+And I create another playbook, and I'll say NGINX.
+
+[rochak agrawal] 09:12:01
+Playbook.
+
+[rochak agrawal] 09:12:08
+So here you can see this is one play, install and configure NGINX. I'll just say for now all.
+
+[rochak agrawal] 09:12:29
+Okay? Uh, become, uh, if you see, we have used this one. Become is equal to true. Now, if you don't, uh, see for installing another thing, you need the sudo privileges.
+
+[rochak agrawal] 09:12:40
+So become through means.
+
+[rochak agrawal] 09:12:44
+that your Ansible user… So, for example, we are running our Ansible command with a sudo, uh, Ubuntu user.
+
+[rochak agrawal] 09:12:51
+It will run the task with the sudo privileges required for the package installation.
+
+[rochak agrawal] 09:12:55
+Okay, if you don't give this option, then it is going to run with your normal Ubuntu user.
+
+[rochak agrawal] 09:13:01
+So, update app cache and install Nginx. Now, it is using another module called APT. Correct. And it says Nginx should be present.
+
+[rochak agrawal] 09:13:11
+and update cache is true. Now, what this command is going to do, if the nginx.
+
+[rochak agrawal] 09:13:18
+package is not installed, then it is going to install the NGINX, and then once the NGINX is installed, it is going to start.
+
+[rochak agrawal] 09:13:25
+OK, I'm going to run this.
+
+[rochak agrawal] 09:13:37
+Now, instead of playbook.
+
+[rochak agrawal] 09:13:41
+dot Yamal.
+
+[rochak agrawal] 09:13:57
+See, it would have been updating the cache, and uh…
+
+[rochak agrawal] 09:14:02
+Install the Nginx.
+
+[rochak agrawal] 09:14:08
+You see? Now, if you go here…
+
+[rochak agrawal] 09:14:15
+This is Annie.
+
+[rochak agrawal] 09:14:18
+Right? So.
+
+[rochak agrawal] 09:14:20
+That is the point, if you have multiple servers, then it is going to run, um…
+
+[rochak agrawal] 09:14:27
+It is going to run, uh, for example, in…
+
+[rochak agrawal] 09:14:33
+Multiple servers.
+
+[rochak agrawal] 09:14:36
+In parallel.
+
+[rochak agrawal] 09:14:40
+Now, if you run it again, it will not do anything.
+
+[rochak agrawal] 09:14:51
+See?
+
+[rochak agrawal] 09:15:01
+Now, if you say, uh, let me, let me uninstall the NGINX.
+
+[rochak agrawal] 09:15:09
+Sudo.
+
+[rochak agrawal] 09:15:22
+If you want to see some of the logs, so then you can run it with the hyphen v command.
+
+[rochak agrawal] 09:15:33
+You'll see it is giving some…
+
+[rochak agrawal] 09:15:36
+more, uh…
+
+[rochak agrawal] 09:15:38
+logs to you.
+
+[rochak agrawal] 09:15:41
+Changed, what is it changing, and other things. We can get it from here.
+
+[rochak agrawal] 09:15:47
+Again, there is a different, different option. If you do it with a single hyphen V command, then it will give you the, uh, level 1 verbosity. Uh, you do hyphen VV, it is a level 2 verbosity. Hyphen VVV, it is a level 3 verbosity.
+
+[rochak agrawal] 09:16:03
+You can got it, uh, get it. And there, uh, is, um, uh, so basically now, be…
+
+[rochak agrawal] 09:16:12
+we can completely control this worker node, and whatever I want to do it on a worker node, I can just…
+
+[rochak agrawal] 09:16:18
+do it with this… and it is not like you can run a single playbook, right? We have run two playbooks on the same server. So what is going to happen? You can have multiple playbooks.
+
+[rochak agrawal] 09:16:34
+Right? And then, whenever you are running a particular playbook, let's say, for example, in our case, we have run the NGINX playbook.
+
+[rochak agrawal] 09:16:42
+So, what is going to happen is, engineer… uh, sorry.
+
+[rochak agrawal] 09:16:46
+Ansible is going to compare your desired state with your playbook. If that is there, it will not do anything. If that is not there, then it will do the changes. So that is how it is going to work.
+
+[rochak agrawal] 09:17:04
+So if you see, um… see, it is all about, um…
+
+[rochak agrawal] 09:17:18
+Okay, so here we have used the APT module or the service module. You can also run, let's say, shell module here where I will run the command manually itself.
+
+[rochak agrawal] 09:17:30
+So there can be multiple ways of doing things and there are multiple modules is there in Ansible. So of course that thing you will get time to time, but you will have multiple modules in Ansible.
+
+[rochak agrawal] 09:17:46
+So…
+
+[rochak agrawal] 09:17:53
+let's say if you go to AWS.
+
+[rochak agrawal] 09:17:56
+Let me see. Aws.
+
+[rochak agrawal] 09:18:17
+Great. So yeah, um…
+
+[rochak agrawal] 09:18:20
+Inside the AWS, you have, again, there's a different, different modules are there.
+
+[rochak agrawal] 09:18:26
+Right.
+
+[rochak agrawal] 09:18:30
+So see in the end we need to use these modules in our playbook file. See what is the playbook? Playbook is a collection of the task and task is you will probably use a particular module in which.
+
+[rochak agrawal] 09:18:47
+Like, Ansible knows what to do. So, for example, if you are using this APT module.
+
+[rochak agrawal] 09:18:52
+Ansible knows Ansible APT module if I go.
+
+[rochak agrawal] 09:19:01
+She manages the app packages.
+
+[rochak agrawal] 09:19:04
+So this module is part of the Ansible core and included in all Ansible installation. In most cases, you can start, you can use the short module name APT even without specifying the collection. So this built-in is a collection basically. And here you can see if you go to examples.
+
+[rochak agrawal] 09:19:22
+There's multiple things. We use the update cache. Run the equivalent of apt-get update before the operation.
+
+[rochak agrawal] 09:19:32
+Same thing. Right? So…
+
+[rochak agrawal] 09:19:36
+You see APT, Apache 2 present, updated cache, yes. If you say state is equal to absent, then it will uninstall it.
+
+[rochak agrawal] 09:19:45
+So, install a list of the package, so then we can give the packages in this format. Right now, we gave only the NGINX, right?
+
+[rochak agrawal] 09:19:54
+So you can see there can be multiple, uh…
+
+[rochak agrawal] 09:19:58
+Options will be there.
+
+[arif] 09:20:01
+So, Ruchak, can we run multiple playbooks at the same time?
+
+[rochak agrawal] 09:20:06
+Uh, multiple playbooks at the same time, uh…
+
+[rochak agrawal] 09:20:10
+But, uh…
+
+[rochak agrawal] 09:20:13
+Why do you use… why do you want to run multiple playbooks at the same time?
+
+[arif] 09:20:18
+I have… suppose I have a different playbook for different, different servers, like web servers, database servers, so…
+
+[arif] 09:20:24
+Can I run both at the same time, or is it not possible?
+
+[rochak agrawal] 09:20:27
+No, you need to run those commands separately.
+
+[arif] 09:20:30
+Okay.
+
+[rochak agrawal] 09:20:30
+Okay, because, see, um…
+
+[rochak agrawal] 09:20:34
+it takes… see, you need to give two arguments to the NCBLIVO command, right? Uh, what… see, um, what op…
+
+[rochak agrawal] 09:20:42
+scenario, you are telling me that I have a different set of the server, uh, and I want to run a particular task to a particular server, right? If that is your scenario, do you have a better way of doing things? For example.
+
+[rochak agrawal] 09:20:55
+I will just go to my playbook.
+
+[rochak agrawal] 09:21:01
+And here, I will say…
+
+[rochak agrawal] 09:21:06
+Post is…
+
+[rochak agrawal] 09:21:09
+web server.
+
+[rochak agrawal] 09:21:12
+And here, I will go in Play 2, and say Hostess DB Server.
+
+[rochak agrawal] 09:21:18
+It's the same thing as running multiple playgroups, correct?
+
+[arif] 09:21:22
+Mm-hmm, yeah.
+
+[rochak agrawal] 09:21:22
+So we can do it that way, but when you are running the Ansible playbook command, it will take one playbook.
+
+[rochak agrawal] 09:21:29
+Now, inside this playbook, I can create multiple plays, which would be running on a different set of the servers.
+
+[arif] 09:21:29
+Okay.
+
+[rochak agrawal] 09:21:36
+which I can do, which is actually solving your scenario.
+
+[arif] 09:21:43
+Okay, one last two questions. So, regarding this initial SSRC connection, so we need to do it manually, like, we have 100 servers or something, we need to mention.
+
+[rochak agrawal] 09:21:49
+Hmm.
+
+[arif] 09:21:54
+All the IP addresses.
+
+[rochak agrawal] 09:21:55
+Yeah, see, uh… it's a very small thing, Arif. So what you did is, um…
+
+[rochak agrawal] 09:22:03
+You created the public key of the controller node, right? And you copied it to the remote server.
+
+[arif] 09:22:09
+Yep.
+
+[rochak agrawal] 09:22:09
+Correct? Now, let's say, um, you have, let's say, as you are saying, 100 servers, so what do you need to do? So there is one command, actually, um, which we also run, but since we were using the wrong format, so it don't… did not work.
+
+[rochak agrawal] 09:22:24
+There is something called SSH.
+
+[rochak agrawal] 09:22:28
+Copy ID command.
+
+[rochak agrawal] 09:22:29
+Okay.
+
+[rochak agrawal] 09:22:33
+Let's show you from here.
+
+[rochak agrawal] 09:22:42
+So it says… oh, sorry, it is giving me the wrong context.
+
+[rochak agrawal] 09:22:55
+Okay. So, SSC copy ID, and you give the IP of your server. That's it.
+
+[rochak agrawal] 09:23:01
+Okay, now…
+
+[rochak agrawal] 09:23:04
+What it is going to do, it is going to copy your public key, which we did manually, correct?
+
+[rochak agrawal] 09:23:10
+Now, if you have a list of the 100 servers, you create a script which will read line by line and start copying it. So, I'll then show you.
+
+[rochak agrawal] 09:23:20
+I have a list of 100 servers.
+
+[rochak agrawal] 09:23:26
+Can you…
+
+[rochak agrawal] 09:23:27
+Write a script.
+
+[rochak agrawal] 09:23:30
+For me.
+
+[rochak agrawal] 09:23:32
+Copy my…
+
+[rochak agrawal] 09:23:35
+Public key?
+
+[rochak agrawal] 09:23:39
+to this server.
+
+[rochak agrawal] 09:23:43
+Using SSH.
+
+[rochak agrawal] 09:23:45
+Property ID.
+
+[rochak agrawal] 09:23:51
+See?
+
+[rochak agrawal] 09:23:52
+This is your, uh, list of the server, okay?
+
+[rochak agrawal] 09:23:57
+And you see this is a script. You have a server file, you have a SSEC user, SSEC password, and then public key, correct? And you just…
+
+[rochak agrawal] 09:24:07
+copy it while you are reading it from the server. So the point is, they have created a very complicated script.
+
+[rochak agrawal] 09:24:15
+You can just write a shell script which will copy your SSC key to 100,000, whatever the number of the servers you have.
+
+[rochak agrawal] 09:24:26
+Okay, so we will not do it, that process, also manually. We can, uh, with the shell automations, uh, you can do it, but you can say that, yes, that is a prerequisite. Till the time we do not have a SS you can connect between those machines, Ansible will not be able to do anything.
+
+[rochak agrawal] 09:24:43
+So, yes, you have to do it as a prerequisite, but you do it with the help of some self-scripting, or you're doing it manually. That is, of course, like, your choice.
+
+[Vaibhav] 09:24:56
+Uh, sorry to interrupt, like, it's, it's like, uh, look like a looping, uh, concepts?
+
+[rochak agrawal] 09:24:59
+Correct, because, yes, while we are using the while, because we are saying you have a 100 server, correct?
+
+[Vaibhav] 09:25:05
+Mm-hmm.
+
+[rochak agrawal] 09:25:06
+I need to copy everywhere. Correct? So I'll do the looping only, because I need to do the same thing 100 times.
+
+[rochak agrawal] 09:25:14
+Correct?
+
+[Vaibhav] 09:25:15
+But, uh, so, like, uh, it's not, like, the IP is, like, 17231131246, but sometimes the IP is not, like, in a, like, cement-based manner, like, it's different.
+
+[rochak agrawal] 09:25:27
+So, so what?
+
+[rochak agrawal] 09:25:29
+It can be 246, 298, something. See, we are not looping on the sequence. We are looping on the entries, one entry, second entry, third entry.
+
+[Vaibhav] 09:25:31
+Mmhm.
+
+[Vaibhav] 09:25:38
+Okay, okay, okay, I got it, alright.
+
+[rochak agrawal] 09:25:40
+Wait!
+
+[Vaibhav] 09:25:40
+Mm-hmm.
+
+[rochak agrawal] 09:25:41
+We are not looping on the sequence. We are saying, this is my list of the servers. It may be in a sequential manner, it may not be in a sequential manner. I don't care. I will read line by line, and then start copying it. That is the goal.
+
+[Vaibhav] 09:25:43
+Okay.
+
+[Vaibhav] 09:25:50
+Mm-hmm.
+
+[Vaibhav] 09:25:56
+Okay, okay.
+
+[rochak agrawal] 09:25:57
+Okay, so here also, if you see…
+
+[rochak agrawal] 09:26:00
+We are saying, read the file, correct?
+
+[rochak agrawal] 09:26:05
+And then copying the key to the server, whatever the server list is.
+
+[Vaibhav] 09:26:09
+Okay, okay, got it.
+
+[rochak agrawal] 09:26:11
+Okay, so if it is in a sequential or non-sequential manner, does not matter.
+
+[arif] 09:26:21
+Uh, Roger just wanted to know, uh, so this, with the help of this Ansible, we can, uh, configure our whole Jenkins server also, right?
+
+[rochak agrawal] 09:26:30
+Anything you can do.
+
+[arif] 09:26:32
+It requires any plugins or something, or the…
+
+[rochak agrawal] 09:26:34
+No, no, no, no. See, you need to understand one thing here. So when you say the plugins, of course, for example, if you tell me I want to create a VPC in AWS, can I do it with Ansible?
+
+[arif] 09:26:35
+Okay.
+
+[rochak agrawal] 09:26:49
+Yes, you can do it with the Ansible.
+
+[rochak agrawal] 09:26:51
+Do I need a plugin or a collection for it? Yes, you need an AWS module. Basically, see, Ensemble works on the modules, correct?
+
+[rochak agrawal] 09:27:00
+Now, if you see here, we are using, let's say, services module.
+
+[rochak agrawal] 09:27:05
+Got it?
+
+[rochak agrawal] 09:27:06
+Now, services module is a part of the built-in collection, which is installed when you're installing the Ansible.
+
+[rochak agrawal] 09:27:14
+Correct?
+
+[rochak agrawal] 09:27:16
+Now, that you need to check, um, uh, if whatever… see, now when you say, uh, I need to install the Jenkins, I can do it with the APT package, correct? I'll say name Jenkins, state is present, right? Now, when you do something inside of the Jenkins, does Ansible provide you a module for that?
+
+[rochak agrawal] 09:27:35
+If it is a part of the built-in collection, that will decide basis on that.
+
+[rochak agrawal] 09:27:40
+But you can configure it, yes. For example, in Jenkins also, there is something called the Jenkins CLI is there. I'm running a Kubernetes command.
+
+[arif] 09:27:42
+Okay.
+
+[rochak agrawal] 09:27:52
+See, for example, I am running the Kubernetes.
+
+[rochak agrawal] 09:27:57
+Sorry, kubectl.
+
+[rochak agrawal] 09:28:02
+Get deployments, for example.
+
+[rochak agrawal] 09:28:04
+Okay, very simple command. Now, this is a Kubernetes command, correct?
+
+[rochak agrawal] 09:28:09
+which is doing something in Kubernetes. Correct? Agree?
+
+[arif] 09:28:09
+Yep.
+
+[arif] 09:28:13
+Yep.
+
+[arif] 09:28:14
+Yep.
+
+[rochak agrawal] 09:28:14
+But in the end, it is a shell command. I'm running it on my shell.
+
+[rochak agrawal] 09:28:19
+Correct?
+
+[arif] 09:28:20
+No.
+
+[rochak agrawal] 09:28:21
+So I can run it with the shell module.
+
+[rochak agrawal] 09:28:27
+Right? So, um, uh, now there is two part of, uh, uh, answer to that question, Arev. First, what is you want to configure?
+
+[rochak agrawal] 09:28:36
+If that you can do it with the shell command, then you do not need any additional plugins or something. You can do it directly with the built-in modules also. You have a command module, you have a file module, multiple is there, whatever you want. So for example, I want to restart the Jenkins service.
+
+[rochak agrawal] 09:29:09
+I'm going to use the service module.
+
+[rochak agrawal] 09:29:09
+Correct?
+
+[rochak agrawal] 09:29:09
+But if you say I want to configure something inside the Jenkins, then you need to look out if there is any additional module or any additional collection you need to install with Ansible. For example, right now I would not be able to create the AWS VPC.
+
+[rochak agrawal] 09:29:10
+Because I do not have the AWS collection installed.
+
+[rochak agrawal] 09:29:17
+Okay?
+
+[arif] 09:29:20
+Okay.
+
+[rochak agrawal] 09:29:26
+Okay, I think, um, we have, uh, like, um, our…
+
+[rochak agrawal] 09:29:30
+Half
+
