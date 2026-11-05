@@ -1,0 +1,2994 @@
+[rochak agrawal] 07:38:35
+Hello, everyone. Good morning.
+
+[rochak agrawal] 07:38:36
+The start.
+
+[rochak agrawal] 07:38:43
+So today we are going to start, uh, talking about.
+
+[rochak agrawal] 07:38:47
+the networking in Docker, and as we discussed multiple times, if you will be using the container orchestration tool, any of the container orchestration tool, that tool also will give you certain networking options. If you're using Kubernetes, you will probably never use the Docker networking.
+
+[rochak agrawal] 07:39:03
+But till the time we are not reaching to Kubernetes, we need to understand it from a Docker perspective as well.
+
+[rochak agrawal] 07:39:10
+Now, as we discussed, there will be a host.
+
+[rochak agrawal] 07:39:17
+And inside host…
+
+[rochak agrawal] 07:39:20
+A container is running.
+
+[rochak agrawal] 07:39:23
+Okay.
+
+[rochak agrawal] 07:39:25
+And we expose the port on the host so that the traffic coming to the host port will be redirected to the container port. And that is how we access our application.
+
+[rochak agrawal] 07:39:36
+running in a container, right? But that is just one way. Apart from it, there are multiple other options in the Docker. So what is going to happen?
+
+[rochak agrawal] 07:39:48
+Let's say if these two containers are running on.
+
+[rochak agrawal] 07:39:52
+to the same Docker host.
+
+[rochak agrawal] 07:39:57
+Then, by default, they would not be able to talk to each other.
+
+[rochak agrawal] 07:40:04
+Okay? So, by default, I'm saying, by default, they would not be able to talk to each other. So, every container.
+
+[rochak agrawal] 07:40:12
+gets its own network namespace, its own interfaces, IP addresses, and the port. Docker then connects these namespaces together using the network drivers.
+
+[rochak agrawal] 07:40:22
+network drivers, so there is different type of the network available in Docker.
+
+[rochak agrawal] 07:40:28
+If you go to your host, and if you search doctor network.
+
+[rochak agrawal] 07:40:34
+LS. Again, it will list out what is the type of the network you are having.
+
+[rochak agrawal] 07:40:39
+So you can say I have currently 3, 4 network is there.
+
+[rochak agrawal] 07:40:43
+One is a bridge.
+
+[rochak agrawal] 07:40:45
+So, here, type is equal to driver. So, bridge…
+
+[rochak agrawal] 07:40:50
+Host, null. So, and there's a one network, Ubuntu default, and this is also a type of a bridge network.
+
+[rochak agrawal] 07:40:57
+So these three, if you see, these are the default networks, okay? And this O12 default is one network which I created for one of my containers.
+
+[rochak agrawal] 07:41:06
+So, you can see there is a three type is there, uh, host.
+
+[rochak agrawal] 07:41:12
+Null and bridge. And apart from it, there is one more, MACDLN, MACDLN.
+
+[rochak agrawal] 07:41:19
+So, if you are not defining any network to the container, okay.
+
+[rochak agrawal] 07:41:24
+Then, every container…
+
+[rochak agrawal] 07:41:27
+Joins its unless told otherwise container can reach.
+
+[rochak agrawal] 07:41:32
+by IP, but not by name. This is a very important point to remember.
+
+[rochak agrawal] 07:41:37
+So till now, whatever container we were running.
+
+[rochak agrawal] 07:41:42
+NGINX, Ubuntu, BusyBox, or whatsoever, Jenkins, Tomcat.
+
+[rochak agrawal] 07:41:49
+every container. Since we are… we were not defining which network this should go to.
+
+[rochak agrawal] 07:41:55
+everyone is going to the default bridge network. So, for example, if you see here, I have two bridge networks. One is a bridge itself, which is a default network.
+
+[rochak agrawal] 07:42:04
+Another is a Ubuntu default, which is also a…
+
+[rochak agrawal] 07:42:08
+bridge network. So, if I'm running a container, so, for example, if I just say docker.
+
+[rochak agrawal] 07:42:15
+Hyphen B Nginx.
+
+[rochak agrawal] 07:42:17
+Okay, doc, yes. So your container is running. Now, in this, I have not defined this will be part of any network.
+
+[rochak agrawal] 07:42:28
+So then, Docker…
+
+[rochak agrawal] 07:42:32
+Inspect.
+
+[rochak agrawal] 07:42:50
+So if you see here…
+
+[rochak agrawal] 07:43:09
+See, network mode is bridge.
+
+[rochak agrawal] 07:43:13
+So, it is going to be attached to…
+
+[rochak agrawal] 07:43:18
+to the bridge, default bridge network, okay? And same thing, I can go, and if you see doctor.
+
+[rochak agrawal] 07:43:27
+Neck to walk.
+
+[rochak agrawal] 07:43:31
+Bridge.
+
+[rochak agrawal] 07:43:36
+So you can see a container has been attached to this container, which is a Lucid RDLE, endpoint ID, MAC address, IPv4 address. So you can see.
+
+[rochak agrawal] 07:43:47
+This is a default network in which you are going to run any container you are going to run.
+
+[rochak agrawal] 07:43:55
+This is so if I run other container.
+
+[rochak agrawal] 07:43:59
+One more container day, everything will go inside this default bridge network.
+
+[rochak agrawal] 07:44:06
+Okay.
+
+[rochak agrawal] 07:44:07
+But the problem with the bridge network is…
+
+[rochak agrawal] 07:44:11
+See, for example, if you see, let's say, bridge, uh, there's a bridge network. Inside that, there is a three container running. Web, app, and database. Now, if you restart a container, okay.
+
+[rochak agrawal] 07:44:24
+it may get a different IP. So currently, whatever the IP of your container is, if you restart the container.
+
+[rochak agrawal] 07:44:34
+your IP is going to be changed. It might change, it might not change, so there is no guarantee that you will get the same IP. And if you're hard-coding the IP, it becomes very fragile, because every time your container is restarting, you need to.
+
+[rochak agrawal] 07:44:50
+change your IP. Then the problem is container can reach other by the IP, but not by the name.
+
+[rochak agrawal] 07:44:57
+Now, when I'm saying not by the name.
+
+[rochak agrawal] 07:45:08
+Just a second.
+
+[rochak agrawal] 07:45:23
+So, when I say, or not by the name, so for example, if I run another container in this, and try to ping…
+
+[rochak agrawal] 07:45:31
+So.
+
+[rochak agrawal] 07:45:32
+Let me give a decent name.
+
+[rochak agrawal] 07:45:38
+Local RM.
+
+[rochak agrawal] 07:45:52
+Okay, yes.
+
+[rochak agrawal] 07:46:00
+Let me continue with the name.
+
+[rochak agrawal] 07:46:07
+That's the hyphen icon name.
+
+[rochak agrawal] 07:46:12
+Okay, so docker ps. Now, one of my container web is running. Now, if I run another container, so let's say docker…
+
+[rochak agrawal] 07:46:33
+Busy box.
+
+[rochak agrawal] 07:46:35
+The busy box is the image which we are using.
+
+[rochak agrawal] 07:46:38
+And I'll say ping.
+
+[rochak agrawal] 07:46:41
+from Sieben.
+
+[rochak agrawal] 07:46:43
+Let's say let's first run some internet website.
+
+[rochak agrawal] 07:46:50
+So you can see?
+
+[rochak agrawal] 07:46:53
+One packet transmitted? No, let me do that.
+
+[rochak agrawal] 07:47:01
+You see?
+
+[rochak agrawal] 07:47:04
+One packet transmitted, one packet received, 0% packet loss. If you try to ping google.com.
+
+[rochak agrawal] 07:47:14
+It is also working. One packet received, 0% packet lost. But if you try to…
+
+[rochak agrawal] 07:47:22
+reach them.
+
+[rochak agrawal] 07:47:31
+It is going to…
+
+[rochak agrawal] 07:47:34
+There, also.
+
+[rochak agrawal] 07:47:54
+It is taking host IP.
+
+[rochak agrawal] 07:47:57
+So…
+
+[rochak agrawal] 07:47:59
+Now, if you see Docker…
+
+[rochak agrawal] 07:48:02
+Yes.
+
+[rochak agrawal] 07:48:11
+If I am not seeing the BusyBox container…
+
+[rochak agrawal] 07:48:27
+Let me come back to this.
+
+[rochak agrawal] 07:48:29
+So…
+
+[rochak agrawal] 07:48:30
+User-defined network fixed for both. So we can define our own network. Now, whatever the type you want, okay? So there is different, different types, as we have seen. So now we have these 1, 2, 3, 4, 5.
+
+[rochak agrawal] 07:48:46
+5 type of the network.
+
+[rochak agrawal] 07:48:50
+Here, we call it as a network driver, but you can simply call them as a network type also.
+
+[rochak agrawal] 07:48:56
+Now, bridge is the most common one.
+
+[rochak agrawal] 07:49:01
+Berez is the most common one. It is a private network on one host. Containers can reach the outside through the net.
+
+[rochak agrawal] 07:49:11
+When to use it? The default for the single host application.
+
+[rochak agrawal] 07:49:15
+Very, very important point to remember in case of a bridge network. Bridge is only a single host network when you are going to run.
+
+[rochak agrawal] 07:49:29
+container application on a single Docker host, like we are doing till now.
+
+[rochak agrawal] 07:49:37
+Okay, so if you, uh, want to run all the containers on the same host.
+
+[rochak agrawal] 07:49:45
+And you want to run it on a same network so that you can configure your network settings.
+
+[rochak agrawal] 07:49:51
+you can use the bridge network. Bridge you cannot use when your container are running on a different host. So for example, if your containers are running.
+
+[rochak agrawal] 07:50:03
+Like this. Then you can use… create a network called bridge.
+
+[rochak agrawal] 07:50:08
+not called bridge, I bridge. You can name anything, and then they will be able to, uh, communicate with each other. IPs is going to be fixed and all of that.
+
+[rochak agrawal] 07:50:18
+But, when you…
+
+[rochak agrawal] 07:50:21
+Let's say I have server one.
+
+[rochak agrawal] 07:50:25
+I have server 2.
+
+[rochak agrawal] 07:50:29
+My web server… web container is running here, and my DB container is running here.
+
+[rochak agrawal] 07:50:34
+Okay, in this case, you cannot bound them using a bridge network.
+
+[rochak agrawal] 07:50:42
+Very, very, very important point to remember. The bridge network is only for single host.
+
+[rochak agrawal] 07:50:51
+Okay? Then the second part is the host network. Now, in this…
+
+[rochak agrawal] 07:50:56
+Container uses the host network stack directly. No isolation, no port mapping.
+
+[rochak agrawal] 07:51:02
+Now, when we use the bridge network, okay.
+
+[rochak agrawal] 07:51:06
+In that case, the container IP range will be different from the host IP range.
+
+[rochak agrawal] 07:51:13
+Okay, uh, and then we do the port mapping with the hyphen P, uh.
+
+[rochak agrawal] 07:51:20
+Flag. And then, in that case.
+
+[rochak agrawal] 07:51:23
+Like, in case of a bridge, um, you need to do the port ban. But in case, if you are using the host network, then you will directly use the host network stack directly.
+
+[rochak agrawal] 07:51:36
+You are going to get the maximum network performance, because there is no layering in between, but you…
+
+[rochak agrawal] 07:51:45
+probably never going to use the host network. And even in that, for the matter of the fact, bridge also, because, uh, single host container, uh, doesn't, uh…
+
+[rochak agrawal] 07:51:57
+What we can say is, um…
+
+[rochak agrawal] 07:52:00
+I'm not very robust for running your application, and as we keep saying, there are certain, um…
+
+[rochak agrawal] 07:52:07
+Challenges with respect to Docker which we are going to discuss so.
+
+[rochak agrawal] 07:52:12
+Then the third type of a network is none.
+
+[rochak agrawal] 07:52:14
+If you define your container using…
+
+[rochak agrawal] 07:52:21
+a null network or so none network.
+
+[rochak agrawal] 07:52:24
+Then your container, whatever you are running in a container, you will not be able to access it.
+
+[rochak agrawal] 07:52:31
+No network at all, only a loopback interface, which is a local address.
+
+[rochak agrawal] 07:52:36
+Okay.
+
+[rochak agrawal] 07:52:37
+Now, when I would not be able to reach out to it, then what is the running… what is the logic of running, uh, something with a non-network?
+
+[rochak agrawal] 07:52:47
+Okay, so then, in that case, why you need to use the none network? Because, let's say, you have some background processes which no user is accessing, right? So then, let's say you need to process, sell your 10,000 people.
+
+[rochak agrawal] 07:53:03
+Now, that's the application which is calculating the salary. Now, no one is accessing that application, but once it is done, it is going to…
+
+[rochak agrawal] 07:53:13
+create an Excel file with the salaries calculated. So, those type of processes, you can run with the done network, where you want a complete, uh.
+
+[rochak agrawal] 07:53:24
+Privacy. Like, no one would be able to access it.
+
+[rochak agrawal] 07:53:28
+Then comes the overlay network. Now, overlay is going to be used here.
+
+[rochak agrawal] 07:53:36
+Overlay network span across.
+
+[rochak agrawal] 07:53:46
+multiple Docker hosts. So if your containers are running.
+
+[rochak agrawal] 07:53:52
+A crossing.
+
+[rochak agrawal] 07:53:53
+So you can say Obalay is a multi-host bridge network.
+
+[rochak agrawal] 07:53:58
+That would not be a wrong statement. So…
+
+[rochak agrawal] 07:54:08
+a network spanning several Docker hosts. So, if your containers are running on multiple Docker hosts.
+
+[rochak agrawal] 07:54:16
+Okay, so then, um, when to use it? So there is a functionality in Docker itself for container orchestration. That is called the Docker Swarm. So if you would be using the Docker Swarm.
+
+[rochak agrawal] 07:54:29
+Uh, you would be using the overlay network, because SOAM is, like, um…
+
+[rochak agrawal] 07:54:37
+Swarm is a multi-host Docker container engine.
+
+[rochak agrawal] 07:54:41
+Then, the last type of a network is a MAC BLAN. Now, MAC BLAN is a container gets its own MAC address. So, when… what is a MAC address? MAC address is a physical address of your device, okay? In our case, we know container does not have a physical identity.
+
+[rochak agrawal] 07:55:00
+So, container will not have its own MAC address. They… for the MAC address, they are going to rely, uh…
+
+[rochak agrawal] 07:55:09
+they are going to rely on the host. Now, in some cases, if you want to give containers a real physical address, then you are going to use something called…
+
+[rochak agrawal] 07:55:22
+The MAC VLAN address, in that, you are going to, um, use this, um…
+
+[rochak agrawal] 07:55:30
+Magdalen type of address, right? So, you see, containers have networking enabled by default, and they can make outgoing connections. A container has no information about what kind of network it is attached to.
+
+[rochak agrawal] 07:55:43
+or whether its network peers are also Docker containers. A container only sees a network interface, IP address, and other networking details.
+
+[rochak agrawal] 07:55:53
+Now…
+
+[rochak agrawal] 07:56:00
+container attached to the default bridge network will have access to the network services outside the Docker host, which means if the Docker host has the internet access.
+
+[rochak agrawal] 07:56:12
+no additional configuration is needed for the container to have internet access. Very important point to remember. So if we are running our container in a default bridge network.
+
+[rochak agrawal] 07:56:33
+in a default bridge network, then if my Docker host has an outbound internet connection.
+
+[rochak agrawal] 07:56:49
+Then, whatever the container I am running.
+
+[rochak agrawal] 07:56:54
+they also will have a default internet access. I do not need to configure anything if I'm running them in a default bridge network.
+
+[rochak agrawal] 07:57:03
+Okay, now if I talk about the user-defined network, so with the default configuration, container attached to the default operation network will have unrestricted network access to each other using container IP address.
+
+[rochak agrawal] 07:57:19
+They cannot refer to each other by name, so it can be useful to separate group of container so that they have full access to each other, but restricted access to container in other group.
+
+[rochak agrawal] 07:57:33
+We can create, uh…
+
+[rochak agrawal] 07:57:37
+custom user-defined network and connect group of containers to the same network. Once connected to a user-defined network, container can communicate with each other using the container IP address or the container name.
+
+[rochak agrawal] 07:57:50
+So, how to create a network?
+
+[rochak agrawal] 07:57:54
+So, if you go very simple, like, we created a volume, docker network.
+
+[rochak agrawal] 07:58:03
+create…
+
+[rochak agrawal] 07:58:05
+5B.
+
+[rochak agrawal] 07:58:07
+And I need to define the network type.
+
+[rochak agrawal] 07:58:12
+Dilbert Bridge?
+
+[rochak agrawal] 07:58:15
+So, hyphen D denotes the driver, network driver, which is basically network type, and I can say mynet.
+
+[rochak agrawal] 07:58:22
+You can name anything.
+
+[rochak agrawal] 07:58:24
+Okay? So, a network is created. Now, if you go to our network.
+
+[rochak agrawal] 07:58:31
+LS?
+
+[rochak agrawal] 07:58:32
+So you can see here, there is a My Net has been created.
+
+[rochak agrawal] 07:58:37
+Okay, now…
+
+[rochak agrawal] 07:58:40
+You can see, Docker…
+
+[rochak agrawal] 07:58:44
+Run.
+
+[rochak agrawal] 07:58:47
+Here, if you want to run container in a MyNet network, so you need to define it.
+
+[rochak agrawal] 07:58:55
+Network is equal to my net.
+
+[rochak agrawal] 07:58:58
+Hyphen ID.
+
+[rochak agrawal] 07:59:00
+It's a busy box.
+
+[rochak agrawal] 07:59:27
+Yeah, what is the problem?
+
+[rochak agrawal] 07:59:30
+Unknown shortened flag in…
+
+[rochak agrawal] 07:59:34
+Okay, I need to give…
+
+[rochak agrawal] 07:59:37
+Hyphen hyphen.
+
+[rochak agrawal] 07:59:48
+It gives me the error that mynet not found, because my name is my-net.
+
+[rochak agrawal] 07:59:56
+Do you see? I am… goes inside the container. Now, let me exit this.
+
+[rochak agrawal] 08:00:04
+Docker PS…
+
+[rochak agrawal] 08:00:10
+Okay, if you inspect…
+
+[rochak agrawal] 08:00:29
+You see? Networks, my net.
+
+[rochak agrawal] 08:00:34
+Correct? Can you see? So, driver, um…
+
+[rochak agrawal] 08:00:47
+Ilya, till now, any question?
+
+[rochak agrawal] 08:00:57
+Yes, I did.
+
+[arif] 08:01:01
+Yeah, Rochak, so, uh, what is the IP address, uh, after creating the network? What is the IP address of this container?
+
+[rochak agrawal] 08:01:06
+Yes. By default, your containers can take the default IP address defined at your host layer level.
+
+[rochak agrawal] 08:01:16
+Okay, so there is some private IP address range it is going to pick up. Okay, so if you see IP address, you are going to see it here.
+
+[rochak agrawal] 08:01:32
+Let me inspect it.
+
+[rochak agrawal] 08:01:34
+Doctor?
+
+[rochak agrawal] 08:01:40
+Network.
+
+[rochak agrawal] 08:01:49
+Okay, so this is the IP address, this, uh…
+
+[rochak agrawal] 08:01:53
+network is going to use. So this is a kind of a default IP address RF.
+
+[rochak agrawal] 08:01:59
+Because, see, every bridge network.
+
+[rochak agrawal] 08:02:03
+So let's say whenever you will be, let's say.
+
+[rochak agrawal] 08:02:11
+I can create multiple bridge networks, right?
+
+[rochak agrawal] 08:02:20
+So, uh…
+
+[rochak agrawal] 08:02:22
+this is the default IP address the Bridge Network is going to use, because, uh, your, um…
+
+[rochak agrawal] 08:02:30
+every network is a private network from one another, but we can customize this by creating the network itself. Uh, and I'll show you how to do that. So, there is an option of subnet range, uh, which we need to give. So…
+
+[rochak agrawal] 08:02:44
+Uh, I can give assign, um, so for example.
+
+[rochak agrawal] 08:02:48
+When we were creating the token network.
+
+[rochak agrawal] 08:02:52
+Docker network.
+
+[rochak agrawal] 08:02:55
+create…
+
+[rochak agrawal] 08:03:00
+Let's say hyphen hyphen subnet.
+
+[rochak agrawal] 08:03:04
+192.0… whatever number you want to give, 2.0 slash 24.
+
+[rochak agrawal] 08:03:16
+And, uh, custom net, for example.
+
+[rochak agrawal] 08:03:20
+Okay, now if you inspect the custom net…
+
+[rochak agrawal] 08:03:31
+JC?
+
+[rochak agrawal] 08:03:35
+So you can define the IP, uh, by creating the network, uh, itself. And right now, if you see previous example, when the no subnet, uh.
+
+[rochak agrawal] 08:03:50
+When… oh, sorry.
+
+[rochak agrawal] 08:03:55
+when the no subnet was allocated, Docker automatically selects a subnet from the predefined default address pool. Okay, when I'm saying predefined default address pool.
+
+[rochak agrawal] 08:04:10
+So there is something called… a file will be there, which is…
+
+[rochak agrawal] 08:04:21
+PTC Docker, default.
+
+[rochak agrawal] 08:04:28
+If this is not configured, let me see…
+
+[rochak agrawal] 08:04:38
+C D E T C.
+
+[rochak agrawal] 08:04:40
+Doctor?
+
+[rochak agrawal] 08:04:43
+Okay, oh, it is not configured for us.
+
+[rochak agrawal] 08:04:47
+Uh, so there is a file called default.json, okay? Uh, in that, you can define your default address pool.
+
+[rochak agrawal] 08:04:58
+So, if you are not defining the custom subnet while running your…
+
+[rochak agrawal] 08:05:05
+this custom net.
+
+[rochak agrawal] 08:05:06
+So then it will pick up the address from the default.json if it is there.
+
+[rochak agrawal] 08:05:11
+Okay? Otherwise, you can give… customize your subnet totally from… while creating your subnet itself.
+
+[arif] 08:05:19
+So, since this is an AWS, can we check the… what are the IP address of this Ubuntu machine?
+
+[rochak agrawal] 08:05:24
+No, this is nothing about AWS, Arif. This is, uh… see, that is what I'm trying to explain. Your host network is our AWS network, correct?
+
+[arif] 08:05:35
+Hmmm.
+
+[rochak agrawal] 08:05:36
+This is bridge, this is Docker internal mechanism
+
+[rochak agrawal] 08:05:40
+This has nothing to do with AWS. If you, uh, do it on Azure, it is going to work on the same way if you're running in an on-premises environment. It has nothing to do with Docker, uh, AWS.
+
+[arif] 08:05:52
+Okay, so you mean to say that the host can be on a different network, and container cannot be a different network?
+
+[rochak agrawal] 08:05:57
+Correct.
+
+[rochak agrawal] 08:05:58
+That is what we are discussing. See, if you see, uh, here, if you use… see, there is another type of a driver, which is a hosted driver.
+
+[arif] 08:06:00
+Okay.
+
+[rochak agrawal] 08:06:08
+Now, if you're using the host driver, so for example, let's say I go create a network type with the host driver, then I am going to use the underlying platform network. For example, in our case, that is AWS.
+
+[arif] 08:06:24
+Okay.
+
+[rochak agrawal] 08:06:25
+Bridges? See, um…
+
+[rochak agrawal] 08:06:28
+You understand this?
+
+[rochak agrawal] 08:06:30
+Bridge is something which is internal to Docker.
+
+[rochak agrawal] 08:06:36
+Okay? Now, wherever you install Docker, Bridge is going to work in a same way. That's it.
+
+[rochak agrawal] 08:06:44
+So, it is irrespective of the platform.
+
+[arif] 08:06:49
+Okay, and regarding this MAC address, so this…
+
+[arif] 08:06:54
+Like, how this container is getting this MAC address? From the host, right?
+
+[rochak agrawal] 08:06:57
+From the host, yes, correct, right? But if you… but there will be certain legacy applications. So, for example, let's say if you install…
+
+[rochak agrawal] 08:07:07
+Um, Oracle WebLogic or IBM WebSphere, they still talks on the, um, the… they still identify the services based on the MAC address, right? So, in that case, it is very necessary that every container will have a.
+
+[rochak agrawal] 08:07:22
+MAC address, correct? So then, you can use a network driver, which is assigning the MAC address to every container. Right now, MAC address will be, uh…
+
+[rochak agrawal] 08:07:32
+Like, there is no physical identity of a container, correct? It is running inside a virtual machine. So it is… it will use the MAC address of the underlying machine.
+
+[rochak agrawal] 08:07:44
+Okay.
+
+[arif] 08:07:45
+So… so your machine can have multiple macrodisks, like, how many macrodisks is it?
+
+[rochak agrawal] 08:07:51
+Yeah, VM machine can have multiple MAC address. See, it is not about, again, um…
+
+[arif] 08:07:55
+Thank you.
+
+[rochak agrawal] 08:07:59
+See, um…
+
+[rochak agrawal] 08:08:02
+BM machine can have a different MAC address, multiple MAC address, it's a separate thing.
+
+[rochak agrawal] 08:08:10
+Since when you will be using the MAC, VLAN type of address, okay?
+
+[rochak agrawal] 08:08:19
+It is going to set up a pool for the containers.
+
+[rochak agrawal] 08:08:23
+Okay. See, it is still, if you see, uh, it is a single host, uh, container. So, for example.
+
+[rochak agrawal] 08:08:35
+Let's say, here, I am using the MacBill, um…
+
+[rochak agrawal] 08:08:39
+Type of the driver.
+
+[rochak agrawal] 08:08:46
+Now, it means these containers can talk to each other over the MAC address.
+
+[arif] 08:08:52
+Hmm.
+
+[rochak agrawal] 08:08:54
+There's nothing from outside.
+
+[arif] 08:08:59
+So we can configure any random MAC address to these containers, you see?
+
+[rochak agrawal] 08:09:01
+Yes. Yes. When you say random, it's not about random. When you use… see, that is why we are using the drivers. The driver will configure the MAC address for you. We will just use the driver.
+
+[arif] 08:09:18
+Ah, how the macro does, we can see in the inspect thing.
+
+[rochak agrawal] 08:09:21
+Yes, yes, you can see the MAC address.
+
+[rochak agrawal] 08:09:25
+Okay.
+
+[arif] 08:09:26
+And what about these containers? How do the containers, one container, know about the IP address of the other containers?
+
+[rochak agrawal] 08:09:32
+See, that is what we are discussing here. So, if you see…
+
+[rochak agrawal] 08:09:40
+If you are part of the same network, like, if you remember in AWS, if you're part of a subnet, right, you can talk to each other over the private IP. So, if you see this IP.
+
+[rochak agrawal] 08:09:55
+This is a private IP, correct?
+
+[rochak agrawal] 08:09:58
+So if I create another container in the same network, they can communicate to each other via the private IP.
+
+[rochak agrawal] 08:10:07
+Eight.
+
+[arif] 08:10:11
+Yeah, they can communicate, but I think the… the way it, uh, generally the network devices communicate, like, uh, it will broadcast, right? It will broadcast the traffic to other containers.
+
+[rochak agrawal] 08:10:18
+Mm-hmm.
+
+[arif] 08:10:23
+Because it… it was…
+
+[rochak agrawal] 08:10:24
+No, it will not broadcast. See, uh, it depends. See, for example, when you say it broadcasts, that is… that is about the network devices. That can be true about the network devices.
+
+[rochak agrawal] 08:10:36
+Now forget about the Docker for a moment. Now let's say you have an application running.
+
+[rochak agrawal] 08:10:43
+Okay.
+
+[rochak agrawal] 08:10:44
+And you have a database running.
+
+[rochak agrawal] 08:10:48
+Correct?
+
+[rochak agrawal] 08:10:49
+Now, how you are going to connect from your application to database?
+
+[rochak agrawal] 08:10:55
+Forget the containers, Docker, AWS for a moment. Generally, you tell me.
+
+[rochak agrawal] 08:11:05
+How you are going to connect?
+
+[arif] 08:11:14
+mean…
+
+[rochak agrawal] 08:11:18
+So you will have a?
+
+[arif] 08:11:19
+Be busy on the…
+
+[rochak agrawal] 08:11:20
+Database… see, you will have a database host.
+
+[arif] 08:11:24
+Yup.
+
+[rochak agrawal] 08:11:25
+You will have a DB port, correct?
+
+[rochak agrawal] 08:11:29
+And then you will run a command, for example, if you're using MySQL, so you will run a command, something called MySQL…
+
+[rochak agrawal] 08:11:40
+hyphen U, your username.
+
+[rochak agrawal] 08:11:43
+Hyphen P. Password.
+
+[rochak agrawal] 08:11:47
+And then, your DB host.
+
+[rochak agrawal] 08:11:52
+Slack… colon DV port.
+
+[rochak agrawal] 08:11:55
+Correct?
+
+[rochak agrawal] 08:11:57
+Something like that. It may be database to database, but majorly. Now, in this example, if you see.
+
+[rochak agrawal] 08:12:05
+From here, I am running a command, mysql-user, password, dbhost, and dbport. So, here, this server…
+
+[rochak agrawal] 08:12:15
+will try to reach out to the DB host on that particular port. Once that network connection is established, then the authentication will happen. Correct. And then all goes well, you will be connected to your database. Agree?
+
+[rochak agrawal] 08:12:31
+Is there a broadcast happening here?
+
+[arif] 08:12:35
+No, broadcasts require when you have multiple databases, and if the DB host, I don't know if…
+
+[arif] 08:12:42
+With the same name, or…
+
+[arif] 08:12:44
+Different name.
+
+[rochak agrawal] 08:12:44
+No, see, even… no, then also the broadcast will not happen. You will configure those things in this… can you give me an example of a broadcast, when you are going to use the broadcast?
+
+[rochak agrawal] 08:12:56
+You are mixing too many things there, Arif. Give me an example of broadcast.
+
+[arif] 08:13:01
+Broadcast is, like, uh, suppose, uh, there is a server who wants to assign IP address to multiple devices connected to, uh, so it will broadcast, uh, IP address.
+
+[rochak agrawal] 08:13:09
+When you use the… when you use the broadcast for connecting two applications.
+
+[arif] 08:13:15
+I'm not sure that is what I'm asking, whether it's the same concept on the network or the application.
+
+[rochak agrawal] 08:13:17
+No, don't use… you… you don't use… you don't use broadcast. Uh, see, broadcast is, uh…
+
+[rochak agrawal] 08:13:25
+Broadcast is for, uh, advertising something.
+
+[rochak agrawal] 08:13:31
+Okay, now…
+
+[arif] 08:13:32
+Yeah, it can be, uh…
+
+[rochak agrawal] 08:13:33
+Right? So when you say, okay, if you're not convinced with this, you say, no, no, I have multiple, um, database host, right? Um, let's say you have multiple database hosts, okay.
+
+[rochak agrawal] 08:13:49
+Now, I cannot give the database hostname.
+
+[rochak agrawal] 08:13:52
+Agree? Correct?
+
+[arif] 08:13:54
+Hmmm.
+
+[rochak agrawal] 08:13:55
+Because every DB will have its own host. So what are you going to do? You are going to put up a load balancer in front of this.
+
+[rochak agrawal] 08:14:10
+You're going to put up a load balancer. Your application will connect to load balancer. Load balancer will send the request.
+
+[rochak agrawal] 08:14:17
+to the backend server. So instead of DB host, you will probably give the LB host here.
+
+[rochak agrawal] 08:14:25
+So the point here I'm trying to explain, Arif, is when application want to communicate with another application. In our example, we have…
+
+[rochak agrawal] 08:14:35
+used DB. And very simple, forget about everything. Let's say from your laptop, if you want to access.
+
+[rochak agrawal] 08:14:43
+a website.
+
+[rochak agrawal] 08:14:45
+How you access it?
+
+[rochak agrawal] 08:14:46
+You give the name of the website. You are explicitly telling that I want to connect to google.com.
+
+[arif] 08:14:54
+Hmm.
+
+[rochak agrawal] 08:14:54
+Now, in the backend, DNS will be happening, and the name resolution will be happening, but… see, in the end, you are connecting to the IP of Google.com, correct?
+
+[rochak agrawal] 08:15:01
+But you are telling I want to connect to google.com.
+
+[arif] 08:15:02
+Mmhm.
+
+[arif] 08:15:05
+Hmm.
+
+[rochak agrawal] 08:15:06
+You are telling I want to connect to Instagram.com, correct? Now, let's say if my laptop does not have the internet connectivity, then I would not be able to connect to Google.com.
+
+[rochak agrawal] 08:15:18
+Right? So, if the network connectivity is there, okay.
+
+[rochak agrawal] 08:15:22
+If the network connectivity is there, then…
+
+[rochak agrawal] 08:15:26
+I will tell which IP I want to connect to, and then…
+
+[rochak agrawal] 08:15:30
+If the network connectivity is there, I would be able to connect. So, for example, in container's case, how it is going to happen?
+
+[rochak agrawal] 08:15:37
+Let's see.
+
+[rochak agrawal] 08:15:40
+This is my host.
+
+[rochak agrawal] 08:15:43
+Okay, now I said I'm going to create a bridge network, MyNet.
+
+[rochak agrawal] 08:15:49
+Accurated Average Network.
+
+[rochak agrawal] 08:15:54
+Okay?
+
+[rochak agrawal] 08:15:57
+Let's say MyNet.
+
+[rochak agrawal] 08:16:02
+Now, inside this, you created three containers.
+
+[rochak agrawal] 08:16:10
+Let's say Google Data.
+
+[rochak agrawal] 08:16:11
+Now here, I am running my Jenkins as a…
+
+[rochak agrawal] 08:16:18
+container, or my Tomcat also as a container.
+
+[rochak agrawal] 08:16:23
+Okay?
+
+[rochak agrawal] 08:16:26
+Now, in a Jenkins pipeline, you have defined a step, let's say last step, deploy to Tomcat.
+
+[rochak agrawal] 08:16:39
+And, uh, you will run some command, right?
+
+[rochak agrawal] 08:16:43
+You will reach out to the Tomcat server.
+
+[rochak agrawal] 08:16:52
+And then…
+
+[rochak agrawal] 08:16:54
+Deploy.
+
+[rochak agrawal] 08:16:57
+the app.
+
+[rochak agrawal] 08:16:59
+Headache. Now.
+
+[rochak agrawal] 08:17:00
+If you remember, uh, when you, uh, when we were doing the Jenkins, what do you give?
+
+[rochak agrawal] 08:17:09
+Complete URL?
+
+[rochak agrawal] 08:17:12
+Correct. And the credentials.
+
+[rochak agrawal] 08:17:17
+Right?
+
+[rochak agrawal] 08:17:19
+Kitty?
+
+[arif] 08:17:21
+No.
+
+[rochak agrawal] 08:17:21
+So, let's say, in this case, an IP will be assigned, or a hostname will be assigned to the container. So, I'm going to use that IP slash hostname.
+
+[rochak agrawal] 08:17:36
+And then credential, of course, you will have the credential. Now, since these two are part of the same network.
+
+[rochak agrawal] 08:17:44
+When I will be hitting the Tomcat URL, the connection will be established.
+
+[rochak agrawal] 08:17:52
+Right? And then you will deploy your application, as simple as that. So there is no need for broadcast.
+
+[rochak agrawal] 08:17:59
+Okay, now…
+
+[arif] 08:18:02
+We are specifically defining the IP, then it is not required, I understand that, but…
+
+[arif] 08:18:07
+But, uh, like, the assignment is how it is going to happen in the assignment, the IP assignment. If you just configure a network.
+
+[arif] 08:18:13
+with the subnet.
+
+[arif] 08:18:16
+how these containers are getting the different individual IPs.
+
+[rochak agrawal] 08:18:21
+So, that is the same question, let me ask you. When you were defining a subnet in AWS, right?
+
+[rochak agrawal] 08:18:29
+You define a subnet in AWS or Azure.
+
+[arif] 08:18:32
+Yeah.
+
+[rochak agrawal] 08:18:32
+And you create a virtual machine in that subnet, how that IP allocation was happening?
+
+[arif] 08:18:39
+I don't know whether they are using DHCP server as enterprise server or anything.
+
+[rochak agrawal] 08:18:41
+See? No, see?
+
+[rochak agrawal] 08:18:44
+So, subnet is, it will pick up an IP from the subnet range.
+
+[rochak agrawal] 08:18:49
+Similarly, my subnet is correct. So my subnet range is 192.0.2.0/24. So if I'm creating a container in this network, so 24 bits are going to be selected for the network address.
+
+[arif] 08:18:50
+Yeah.
+
+[rochak agrawal] 08:19:05
+And then it would be 2.1, 2.2, 2.3, 2.4, 2.5, etc, etc.
+
+[arif] 08:19:12
+Mmhm.
+
+[rochak agrawal] 08:19:12
+So, out of this subnet range, one IP will be allocated to my… any of the container, which I am going to create from a network. Simple. Now, if you say, why, um…
+
+[rochak agrawal] 08:19:26
+Let's see…
+
+[rochak agrawal] 08:19:29
+Let's say 192.0.2…
+
+[rochak agrawal] 08:19:34
+Dot 7 has been assigned.
+
+[rochak agrawal] 08:19:36
+Got it?
+
+[arif] 08:19:37
+Mmhm.
+
+[rochak agrawal] 08:19:37
+One IP will be assigned. Now, you say, why 2.7? Why not 2.6?
+
+[rochak agrawal] 08:19:42
+Okay, so it… basically, what it does is, um…
+
+[rochak agrawal] 08:19:47
+It picks up the…
+
+[rochak agrawal] 08:19:49
+Available IPs, whatever IP is available.
+
+[rochak agrawal] 08:19:53
+you can… it will be assigned to the container. That's the first thing. The second thing is, even though…
+
+[rochak agrawal] 08:20:02
+I have assigned 2.7 or 2.8. See, I need a firm IP assignment, correct? Now, if it is 2.6 or 2.7, how does it matter to me? That is first.
+
+[arif] 08:20:12
+It doesn't… it doesn't matter, yeah.
+
+[rochak agrawal] 08:20:13
+I think…
+
+[rochak agrawal] 08:20:14
+That does not matter. Second thing, see, we are…
+
+[rochak agrawal] 08:20:20
+Let's forget about the IP also. See, IP, when we reach out to google.com, I don't care about the IP, correct?
+
+[rochak agrawal] 08:20:29
+When I reach out to facebook.com, I don't care about the IP. And that's where we said IP slash name. So if two containers are part of the same network.
+
+[rochak agrawal] 08:20:40
+I can refer them using their names.
+
+[rochak agrawal] 08:20:42
+Okay, so I will simply say…
+
+[rochak agrawal] 08:20:46
+Hostname, HTTP.
+
+[rochak agrawal] 08:20:52
+It would have been some name.
+
+[rochak agrawal] 08:20:54
+Simple.
+
+[rochak agrawal] 08:20:55
+So, now name you can define, correct?
+
+[arif] 08:21:01
+So, uh, that's a slight confusion. So, you are saying this, uh, container IP address we have to configure manually?
+
+[arif] 08:21:09
+Or only, uh, subnet?
+
+[rochak agrawal] 08:21:09
+No, you do not need to configure manually. When I'm saying I need to configure manually.
+
+[arif] 08:21:11
+Okay, then…
+
+[arif] 08:21:13
+Yeah, so then, what is the problem is, what I'm correlating is the concept of the IP assignment using DHCP, right?
+
+[arif] 08:21:20
+So, but if the container of the host is not requesting an IP address, how it is going to be assigned the IP address?
+
+[rochak agrawal] 08:21:26
+I'm sorry, can you come again?
+
+[arif] 08:21:31
+You will know that DSCB concept, right?
+
+[rochak agrawal] 08:21:32
+Got it, yeah.
+
+[arif] 08:21:34
+Okay, so the SCP concept, until and unless the host requests an IP… does not require an IP address, it will not assign the IP address. So I'm saying, the same thing, containers…
+
+[rochak agrawal] 08:21:39
+Hmm?
+
+[rochak agrawal] 08:21:40
+Correct.
+
+[arif] 08:21:44
+requesting an IP address from something, uh, somewhere, or how, how, how the process is there?
+
+[rochak agrawal] 08:21:50
+See, uh, you are getting a little confused here, okay? Uh, no, I understand, I totally…
+
+[arif] 08:21:55
+That's correct, yeah.
+
+[arif] 08:21:56
+Because you have not… because you have not covered the networking thing, right? You need to… that's why.
+
+[rochak agrawal] 08:22:01
+Where I have not covered the networking.
+
+[arif] 08:22:05
+Networking is still pending, right? We have, uh, options, uh…
+
+[rochak agrawal] 08:22:06
+No, networking has been covered.
+
+[arif] 08:22:08
+No, no, no, we have some questions, and it has not been continued.
+
+[rochak agrawal] 08:22:09
+No, you, you, uh, you, you, you can talk to the ops team, RFM, in that case.
+
+[arif] 08:22:14
+I can talk to them, I already raised the questions to you, right? The packet flow and the networking fundamentals, everything.
+
+[arif] 08:22:20
+But you said we will talk about it later.
+
+[rochak agrawal] 08:22:20
+Everything is covered in the basic session. Arif, you can go through the recordings once. Uh, we have covered, uh…
+
+[arif] 08:22:27
+I do remember correctly. I will talk. That's why I'm so you can just answer my questions. Yeah.
+
+[rochak agrawal] 08:22:31
+Yeah, yeah.
+
+[rochak agrawal] 08:22:32
+Yeah, yeah, so that, uh… see…
+
+[rochak agrawal] 08:22:36
+First, you need to understand the difference.
+
+[rochak agrawal] 08:22:39
+between a self-hosted service and a managed service.
+
+[rochak agrawal] 08:22:44
+Okay.
+
+[rochak agrawal] 08:22:46
+So, you are mixing too many things here, because you are still comparing it.
+
+[rochak agrawal] 08:22:52
+with the self-hosted services.
+
+[rochak agrawal] 08:22:54
+Okay, now DHCP.
+
+[rochak agrawal] 08:22:57
+Is used when you are managing the network.
+
+[rochak agrawal] 08:23:01
+Right? But here…
+
+[rochak agrawal] 08:23:03
+Why are you using the Docker? Why are you… see, for example, when you attach a device to your…
+
+[rochak agrawal] 08:23:11
+When you want to attach a device in your laptop.
+
+[rochak agrawal] 08:23:15
+need to install the drivers for it, correct? Now, most of the hardware interfacing.
+
+[rochak agrawal] 08:23:21
+the driver is going to do. You just configure the driver, and rest of the things your driver is going to do. So, for example, if I want to, um…
+
+[rochak agrawal] 08:23:32
+have a printer connected to my laptop. I will install the printer driver on my laptop, and that's about it. I will just plug in my printer.
+
+[rochak agrawal] 08:23:40
+There is no hardware configuration I need to do once I install the driver, correct?
+
+[rochak agrawal] 08:23:47
+Similar thing is happening here. You are using the networking. See, Docker is a managed solution. You are running out the container from the Docker.
+
+[rochak agrawal] 08:23:58
+Okay.
+
+[rochak agrawal] 08:23:59
+Now, when you say…
+
+[rochak agrawal] 08:24:04
+Docker is
+
+[rochak agrawal] 08:24:05
+when I'm using a network driver, what is the role of a network driver here? Network driver is assigning, uh, network driver is assigning the, uh, IPs to your containers. That's, that's the whole point of the network driver.
+
+[rochak agrawal] 08:24:23
+There is no role of DHCP here. Even if you see, my container is having a name here.
+
+[rochak agrawal] 08:24:32
+You see here…
+
+[rochak agrawal] 08:24:34
+If you run any of the containers.
+
+[rochak agrawal] 08:24:36
+So you see the name here, correct?
+
+[rochak agrawal] 08:24:38
+Am I using the DNS here? No.
+
+[rochak agrawal] 08:24:41
+This is a container name.
+
+[rochak agrawal] 08:24:44
+I can reach from one container to another container with the help of a container name, which is like a host name.
+
+[arif] 08:24:52
+Huh.
+
+[rochak agrawal] 08:24:52
+Do I need the DNS here? No. So simply, DHCP is also not required here. And if even, uh, when you go advanced, okay, in Kubernetes also.
+
+[rochak agrawal] 08:25:03
+See, all these products were introduced so that your operational complexities has been resolved.
+
+[rochak agrawal] 08:25:12
+Okay, here…
+
+[rochak agrawal] 08:25:15
+Even if we have in AWS, we have used, for matter of fact, many managed services. For example, EFS only, Elastic File System, right? That Elastic File System, if you see…
+
+[rochak agrawal] 08:25:32
+If you do that elastic file system on your own, we have to do multiple things.
+
+[rochak agrawal] 08:25:39
+Multiple configuration we need to do. What is the type of the file system, and…
+
+[rochak agrawal] 08:25:44
+different things. But since we are using the managed services, I just created a file system, and I am going to attach it to…
+
+[rochak agrawal] 08:25:52
+my host. It could be an EC2 instance, it could be my on-premises instance also. You just need to have the right network connectivity.
+
+[rochak agrawal] 08:26:01
+So the point here is in case of a managed services.
+
+[rochak agrawal] 08:26:06
+There are many things which will be abstracted from you.
+
+[rochak agrawal] 08:26:10
+You do not need to worry about. See, that's the whole point of a driver.
+
+[arif] 08:26:14
+Yeah, but in case of… in case of host driver, we should be aware, right? About this.
+
+[rochak agrawal] 08:26:15
+The driver is doing it.
+
+[rochak agrawal] 08:26:21
+No, you don't need to be aware, uh, see, you, you, see.
+
+[arif] 08:26:23
+My… that's what my confusion is, my host is running on different network, how it is communicated with the container, we don't need to worry about it or what.
+
+[rochak agrawal] 08:26:32
+Can you come again?
+
+[arif] 08:26:34
+That's one net, a different network, how they talk to each other, right, that's what my computer.
+
+[rochak agrawal] 08:26:41
+On… you are saying host or network are on a… host on a container on a different network
+
+[arif] 08:26:46
+We are.
+
+[rochak agrawal] 08:26:48
+So, in the bridge network, are they on the same network? They are on a different network.
+
+[rochak agrawal] 08:26:52
+Bridge is a different network, right? Your host is a different network.
+
+[arif] 08:26:57
+Yeah, that's what the bridge, under the bridge there are containers.
+
+[rochak agrawal] 08:27:00
+Huh?
+
+[arif] 08:27:01
+Those are in the sub-network, suppose 172, and my host is on 192.
+
+[rochak agrawal] 08:27:06
+Mm-hmm.
+
+[arif] 08:27:07
+So they can communicate to each other, right? Or they can…
+
+[rochak agrawal] 08:27:10
+Correct, yeah, see, that is what we were, uh, again, RF, uh, you…
+
+[rochak agrawal] 08:27:14
+You're mixing too many things, okay?
+
+[rochak agrawal] 08:27:17
+See, from the day one, we are saying…
+
+[rochak agrawal] 08:27:21
+Your container does not have a physical existence, okay?
+
+[rochak agrawal] 08:27:25
+Right?
+
+[rochak agrawal] 08:27:27
+It depends on the host.
+
+[rochak agrawal] 08:27:32
+namespaces and cgroups. With the help of cgroup, we control how much resource it is going to use, and with the help of namespaces, we are going to isolate the processes.
+
+[rochak agrawal] 08:27:42
+Now, if you forget about any of the network driver.
+
+[rochak agrawal] 08:27:47
+there is a default bridge network, okay? So if you are not defining any of the network, every container goes into this default bridge network, correct?
+
+[rochak agrawal] 08:28:00
+Agree? Till now?
+
+[rochak agrawal] 08:28:03
+Then
+
+[rochak agrawal] 08:28:04
+Whatever running on this, we do a port mapping.
+
+[rochak agrawal] 08:28:09
+And you
+
+[rochak agrawal] 08:28:12
+Reach out to this, correct?
+
+[rochak agrawal] 08:28:14
+From the host.
+
+[rochak agrawal] 08:28:16
+If you are using the host network, you do not need this port mapping at all.
+
+[arif] 08:28:16
+Hmm.
+
+[rochak agrawal] 08:28:21
+That's the only difference.
+
+[rochak agrawal] 08:28:30
+Clear?
+
+[arif] 08:28:32
+Okay, so… so we don't need to, uh, worry about what is going in the back, and what… how it's working. Okay.
+
+[rochak agrawal] 08:28:36
+Correct.
+
+[rochak agrawal] 08:28:38
+G.
+
+[rochak agrawal] 08:28:38
+Just give me a simple answer. When you use AWS.
+
+[rochak agrawal] 08:28:45
+Do you worry about…
+
+[rochak agrawal] 08:28:47
+Where is my hardware?
+
+[rochak agrawal] 08:28:49
+You can say, oh, I need to take care of the virtualization also. Are you taking care of that? No.
+
+[rochak agrawal] 08:28:55
+Correct? See, every product, if you say, I want to have a complete control over the network and everything, okay, don't run it with the containers. Container works in that way.
+
+[arif] 08:28:56
+Yeah, yeah.
+
+[rochak agrawal] 08:29:10
+Now, why we use, uh, since we already have our default network, default bridge network, now what, what is the use of, uh.
+
+[rochak agrawal] 08:29:21
+The custom bridge network, because see, if you let every container run in a default bridge network, they will be able to talk to each other. So this can talk to this, this can talk to this, and this can talk to this, right? So you say, no, no, I do not want container A to talk to container C.
+
+[rochak agrawal] 08:29:39
+Correct. That is where we are using the bridge net, uh, the custom bridge network. So I can create, let's say.
+
+[rochak agrawal] 08:29:50
+Now, there is one more interesting thing, let me show you that as well.
+
+[rochak agrawal] 08:29:55
+So, our requirement is…
+
+[rochak agrawal] 08:30:02
+And see.
+
+[rochak agrawal] 08:30:04
+A can talk to B.
+
+[rochak agrawal] 08:30:06
+B can talk to C.
+
+[rochak agrawal] 08:30:07
+But A cannot talk to C.
+
+[rochak agrawal] 08:30:10
+Okay.
+
+[rochak agrawal] 08:30:12
+Now, how we are going to do this? So, what we are going to do, we, let's say, create two networks.
+
+[rochak agrawal] 08:30:27
+Okay?
+
+[rochak agrawal] 08:30:29
+Put up A here.
+
+[rochak agrawal] 08:30:32
+I put up C here.
+
+[rochak agrawal] 08:30:35
+Okay.
+
+[rochak agrawal] 08:30:40
+They will not be able to talk to each other, correct? Because they're in a different bridge network, different custom bridge network, right?
+
+[rochak agrawal] 08:30:47
+Now where you are going to put B? If I put here, let's say one.
+
+[rochak agrawal] 08:30:55
+If I put in 1.
+
+[rochak agrawal] 08:30:58
+Then A can talk to B, but B cannot talk to C. If I put up B here.
+
+[rochak agrawal] 08:31:04
+Then
+
+[rochak agrawal] 08:31:08
+B can talk to C, but we cannot talk to A. So that is where, when you will be creating B.
+
+[rochak agrawal] 08:31:16
+B will be part of both of the networks.
+
+[rochak agrawal] 08:31:23
+So a container can be part of the multiple bridge networks, okay? We have a slide also for that.
+
+[rochak agrawal] 08:31:35
+Like this.
+
+[rochak agrawal] 08:31:35
+So you can see here, your frontend, uh, like ABC, front, BAB, app, DB. So BAB can, uh…
+
+[rochak agrawal] 08:31:44
+reach application, because they both are part of the front-end network. Your application can reach out to database, because they're also part of the same network.
+
+[rochak agrawal] 08:31:53
+Web and DB are not part of the same network, so they will not be able to do it. Now.
+
+[rochak agrawal] 08:32:00
+This is called the…
+
+[rochak agrawal] 08:32:09
+Just a second, I'm getting a call.
+
+[rochak agrawal] 08:33:16
+Okay? Uh, so yeah. So, we, um, we… your application… uh, Arif, can you please go on mute?
+
+[rochak agrawal] 08:33:28
+So your, uh, BAB, uh, is part of the front-end network, your app, uh, is part of both of the network, and DB is part of…
+
+[rochak agrawal] 08:33:38
+the backend network. So you can see it here, your app can talk to the web also, your app can talk to DB also. Okay, so…
+
+[rochak agrawal] 08:33:51
+your container can be part of multiple bridge networks. So, for example, let's say if I go…
+
+[rochak agrawal] 08:34:03
+So, currently, if you see docker ps, uh, web container is running, and uh…
+
+[rochak agrawal] 08:34:09
+This is part of.
+
+[rochak agrawal] 08:34:11
+No card network.
+
+[rochak agrawal] 08:34:14
+LS. So I have, let's say, MyNet and CustomNet.
+
+[rochak agrawal] 08:34:19
+Okay? So, two…
+
+[rochak agrawal] 08:34:20
+Custom networks are there currently, if you see Docker.
+
+[rochak agrawal] 08:34:35
+Currently, it is part of…
+
+[rochak agrawal] 08:34:38
+Cheers.
+
+[rochak agrawal] 08:34:46
+It's a part of a bridge network, default network.
+
+[rochak agrawal] 08:35:08
+Currently, there is, I think, no container is in use. Okay.
+
+[rochak agrawal] 08:35:12
+Now, let me create a container.
+
+[rochak agrawal] 08:35:38
+Okay, done.
+
+[rochak agrawal] 08:35:42
+I don't know the name.
+
+[rochak agrawal] 08:35:44
+My index.
+
+[rochak agrawal] 08:35:47
+Network.
+
+[rochak agrawal] 08:36:02
+20…
+
+[rochak agrawal] 08:36:07
+I mean, there's no problem with the name.
+
+[rochak agrawal] 08:36:22
+Okay, cool.
+
+[rochak agrawal] 08:36:31
+Okay, you see here, Docker PS.
+
+[rochak agrawal] 08:36:41
+Okay, now if you inspect this, doctor…
+
+[rochak agrawal] 08:36:45
+inspect
+
+[rochak agrawal] 08:37:01
+You see, my net, okay? And, uh…
+
+[rochak agrawal] 08:37:05
+IP address is 179.19.0.2.
+
+[rochak agrawal] 08:37:09
+And then, if you see…
+
+[rochak agrawal] 08:37:12
+I can connect it to another network altogether. So the command for connecting to another network is…
+
+[rochak agrawal] 08:37:27
+Docker network.
+
+[rochak agrawal] 08:37:28
+Nice.
+
+[rochak agrawal] 08:37:33
+It's a command.
+
+[rochak agrawal] 08:37:37
+This is Docker Network Connect.
+
+[rochak agrawal] 08:37:40
+I would say.
+
+[rochak agrawal] 08:37:43
+Custom net.
+
+[rochak agrawal] 08:37:47
+And my end effects.
+
+[rochak agrawal] 08:37:50
+So, you will see here…
+
+[rochak agrawal] 08:37:53
+If you inspect both of the network.
+
+[rochak agrawal] 08:38:05
+So you see.
+
+[rochak agrawal] 08:38:08
+There is one container, my Nginx, right?
+
+[rochak agrawal] 08:38:11
+Okay, and then, uh…
+
+[rochak agrawal] 08:38:15
+If you inspect custom neck.
+
+[rochak agrawal] 08:38:22
+miles.
+
+[rochak agrawal] 08:38:24
+So it is part of the both network. And same thing, we can verify…
+
+[rochak agrawal] 08:38:43
+So you can see, custom neck.
+
+[rochak agrawal] 08:38:46
+And, uh…
+
+[rochak agrawal] 08:38:48
+IP address is 192.0.2.2.
+
+[rochak agrawal] 08:38:54
+And…
+
+[rochak agrawal] 08:38:56
+IP address is 179.19.0.2, okay? So now, what happens is, when you assign multiple networks, uh…
+
+[rochak agrawal] 08:39:08
+multiple networks to a container. Uh, so, for example, when, uh…
+
+[rochak agrawal] 08:39:13
+It is going to talk to container A, it is going to talk to 172 IP, then it is going to talk to, uh…
+
+[rochak agrawal] 08:39:22
+Container C, it is going to talk to 192.0.0.2 IP. So this is called assigning multiple network interfaces to your machine. And this is not only true about the containers, even if you see in AWS.
+
+[rochak agrawal] 08:39:39
+you can assign, uh, uh, what you can say is, uh, multiple IP address, uh, so you're basically an, uh.
+
+[rochak agrawal] 08:39:47
+AWS machine also can be part of, uh…
+
+[rochak agrawal] 08:39:54
+Um, the multiple networks. So, by default, most operating system, um.
+
+[rochak agrawal] 08:39:59
+Will automatically route traffic?
+
+[rochak agrawal] 08:40:01
+through the primary interface, okay? So…
+
+[rochak agrawal] 08:40:07
+If you want to route the traffic through the secondary interface, then we need to explicitly define, but that is more towards the networking-related settings.
+
+[rochak agrawal] 08:40:15
+So we can assign multiple IP addresses here.
+
+[rochak agrawal] 08:40:21
+By attaching our, uh…
+
+[rochak agrawal] 08:40:25
+Container to multiple, um…
+
+[rochak agrawal] 08:40:29
+What you can say is, so…
+
+[rochak agrawal] 08:40:32
+Multiple, uh, bridge networks. Okay, so that, now, there is a…
+
+[rochak agrawal] 08:40:38
+A cannot talk to C, but A can talk to B on a different IP, B can talk to C on a different IP.
+
+[rochak agrawal] 08:40:45
+But the communication is very much… will be there, uh, between these two.
+
+[rochak agrawal] 08:40:52
+These two here.
+
+[rochak agrawal] 08:40:55
+And these two here.
+
+[rochak agrawal] 08:40:57
+Okay?
+
+[rochak agrawal] 08:41:03
+Yes, you are.
+
+[Jeeva Koli] 08:41:06
+Uh, yeah, I have a question, like, uh, what Arif was asking is, if we assign the, uh, static IP address to… can we assign the static IP address to the, uh, container?
+
+[rochak agrawal] 08:41:10
+Mm-hmm.
+
+[rochak agrawal] 08:41:18
+Yeah, you can.
+
+[Jeeva Koli] 08:41:20
+Okay. So, in case, suppose there are, uh, on a host machine, there are, uh, many containers, like, 4 or 5 containers, okay?
+
+[rochak agrawal] 08:41:25
+Hmm?
+
+[rochak agrawal] 08:41:27
+Got it. Okay.
+
+[Jeeva Koli] 08:41:29
+So, in case of one container got vanished.
+
+[rochak agrawal] 08:41:32
+Mm-hmm.
+
+[Jeeva Koli] 08:41:33
+Since we already assigned the static IP address.
+
+[rochak agrawal] 08:41:36
+Hmm?
+
+[Jeeva Koli] 08:41:36
+And, suppose it gets recreated.
+
+[Jeeva Koli] 08:41:40
+Will the static IP address get assigned? Same IP address get assigned to that container?
+
+[rochak agrawal] 08:41:43
+See, that's the whole point of static IP.
+
+[rochak agrawal] 08:41:48
+Jiva. Uh, okay, uh, so if you are using the static IP, uh, then, uh, if you… if the container is restarting… See, there is two things. One is, let's say…
+
+[rochak agrawal] 08:42:01
+See, what we need to understand is containers is very transitory in nature. See, for example.
+
+[rochak agrawal] 08:42:21
+Let's say…
+
+[rochak agrawal] 08:42:25
+And I'm running this… Just a second.
+
+[rochak agrawal] 08:42:32
+Let's say I'm not giving a name.
+
+[rochak agrawal] 08:42:35
+Okay.
+
+[rochak agrawal] 08:42:36
+When I'm running this command two times.
+
+[rochak agrawal] 08:42:40
+That's the one time.
+
+[rochak agrawal] 08:42:42
+And 2 times. Okay?
+
+[rochak agrawal] 08:42:44
+If you see Docker PS.
+
+[rochak agrawal] 08:42:47
+There is two containers got created, correct? With the same image.
+
+[Jeeva Koli] 08:42:53
+Yes.
+
+[rochak agrawal] 08:42:54
+Correct?
+
+[rochak agrawal] 08:42:54
+Now, can you say these are the same container?
+
+[rochak agrawal] 08:42:58
+No. 8.
+
+[rochak agrawal] 08:42:59
+So, first, uh, is…
+
+[rochak agrawal] 08:43:04
+Container, by definition, is transitory. See, container is running what is there in an image.
+
+[rochak agrawal] 08:43:13
+Correct? So even if a new container is coming up, then it is okay if it is having a different IP, because.
+
+[rochak agrawal] 08:43:20
+Uh, see, um…
+
+[rochak agrawal] 08:43:23
+Like, how to explain to it is…
+
+[rochak agrawal] 08:43:27
+So, first, we need to define, uh, same container, same IP is going to be have when you have something… when you're running containers, something for a stateful application. So…
+
+[rochak agrawal] 08:43:43
+so there is two types of applications. One is a stateless application, another is a stateful application. Okay, a stateless application is, for example, if I'm going to, uh…
+
+[rochak agrawal] 08:43:57
+If I'm going to, let's say, BBC website, now there are news articles, I'm going to read it or something, and then I'll come out again, and then I go after 5 minutes, 10 minutes, I will see some other news or something, right? So that is a stateless application where.
+
+[rochak agrawal] 08:44:13
+I don't care where my state is getting saved.
+
+[rochak agrawal] 08:44:19
+But if you go for a stateful applications, for example, Amazon, like in Amazon, you do login and then you save something in your cart. Now, if you are coming after one month also, so the same item will be there in your cart.
+
+[rochak agrawal] 08:44:35
+Correct. So, somewhere your state, session state is being saved. So, that is called the stateful application. Now, generally, stateful applications, we don't run with containers, okay, uh, because, uh.
+
+[rochak agrawal] 08:44:50
+As we are seeing, containers are, uh…
+
+[rochak agrawal] 08:44:53
+Very transient in nature. Okay. So.
+
+[rochak agrawal] 08:44:56
+But, um, we can assign a static IP to the container, so that if you're restarting the same container. But here, if I give the name, for example.
+
+[rochak agrawal] 08:45:15
+My C1, for example.
+
+[rochak agrawal] 08:45:18
+Okay, now you have an identification of your container.
+
+[rochak agrawal] 08:45:23
+I can stop it with the help of a name, and then when you want to restart it again, then you can assign the same IP to the same container.
+
+[rochak agrawal] 08:45:33
+Generally, um…
+
+[rochak agrawal] 08:45:35
+If the containers are part of the same network, see the whole premise of the containers is they are going to give you the isolated environment, correct?
+
+[Jeeva Koli] 08:45:47
+Ah, yes.
+
+[rochak agrawal] 08:45:48
+Right, so…
+
+[rochak agrawal] 08:45:49
+most of the time, uh, even… see, and the IPs that you're going to assign, uh.
+
+[rochak agrawal] 08:45:57
+They are the private IPs, correct? Anyways, you cannot talk to them, uh…
+
+[rochak agrawal] 08:46:05
+a different network, because it's a private IP. It is only routable, uh, within a particular network, correct? So the point here is, um.
+
+[rochak agrawal] 08:46:16
+when I have a better way of resolving and reaching out to the container with the help of their names.
+
+[rochak agrawal] 08:46:23
+I won't focus much on the IPs, even they are changing, not changing, why I am going to add an additional layer of complexity.
+
+[rochak agrawal] 08:46:33
+Right? But sometime, if you need it, you can do it.
+
+[Jeeva Koli] 08:46:37
+So, normally in production, what happens? Like, they provide a static, or it will be random events?
+
+[rochak agrawal] 08:46:42
+Okay. So, see, um, the Jiva in production.
+
+[rochak agrawal] 08:46:48
+You will never use Docker.
+
+[rochak agrawal] 08:46:50
+Okay.
+
+[Jeeva Koli] 08:46:50
+Mm-hmm.
+
+[rochak agrawal] 08:46:51
+The reason for that is there are certain problems with Docker.
+
+[rochak agrawal] 08:46:59
+big problems, okay? And that is where… I'll discuss the challenges with the Docker.
+
+[rochak agrawal] 08:47:06
+See first.
+
+[rochak agrawal] 08:47:07
+Docker is a single host platform.
+
+[Jeeva Koli] 08:47:10
+Mm-hmm.
+
+[rochak agrawal] 08:47:11
+Nate
+
+[rochak agrawal] 08:47:12
+That's the biggest problem with Docker.
+
+[Jeeva Koli] 08:47:22
+But the… currently, for containerization, only the most favorable is Docker only is available, right?
+
+[rochak agrawal] 08:47:29
+Correct. Docker is available and that is why we have a layer called container orchestration.
+
+[rochak agrawal] 08:47:40
+That is where Kubernetes comes into the picture.
+
+[Jeeva Koli] 08:47:40
+I…
+
+[rochak agrawal] 08:47:42
+So whatever this volume networking you are going to see, you're never going to use it.
+
+[Jeeva Koli] 08:47:43
+Correct.
+
+[rochak agrawal] 08:47:49
+Okay.
+
+[rochak agrawal] 08:47:50
+Uh, so the problem with the Docker is, first problem, Docker is a single host.
+
+[rochak agrawal] 08:47:57
+platform.
+
+[rochak agrawal] 08:48:00
+I can run 5 containers, 10 containers, like, of course, whatever the capacity of my host, I can run the container easily. So, the problem with that is, if something goes wrong, so let's say I'm running my Jenkins.
+
+[rochak agrawal] 08:48:13
+I'm running my NGINX…
+
+[rochak agrawal] 08:48:16
+I'm running my database, I'm running my Tomcat, everything here as a container, correct? Now, if something goes wrong with this host.
+
+[rochak agrawal] 08:48:26
+What's going to happen?
+
+[rochak agrawal] 08:48:28
+Everything is doomed.
+
+[Jeeva Koli] 08:48:31
+Correct.
+
+[rochak agrawal] 08:48:31
+Connect?
+
+[rochak agrawal] 08:48:32
+Right? So that is the single most.
+
+[rochak agrawal] 08:48:36
+Biggest problem with the Docker.
+
+[rochak agrawal] 08:48:40
+What's the problem? Single host architecture.
+
+[rochak agrawal] 08:48:51
+Okay? Second problem is…
+
+[rochak agrawal] 08:48:58
+Let's…
+
+[rochak agrawal] 08:48:59
+I am running.
+
+[rochak agrawal] 08:49:02
+Uh, NGINX container.
+
+[rochak agrawal] 08:49:04
+Okay.
+
+[rochak agrawal] 08:49:07
+Now…
+
+[rochak agrawal] 08:49:09
+In your production environment, uh, when the load will be increasing.
+
+[rochak agrawal] 08:49:14
+You would need another instances of your applications, correct?
+
+[Jeeva Koli] 08:49:18
+Yes.
+
+[rochak agrawal] 08:49:19
+In Docker.
+
+[rochak agrawal] 08:49:22
+If a container is running.
+
+[rochak agrawal] 08:49:25
+Dennis?
+
+[rochak agrawal] 08:49:26
+No orbits.
+
+[rochak agrawal] 08:49:29
+Okay? If a container is running, one instance is running. If you say, okay, I want another instance for it, you manually go create another container for NGINX.
+
+[rochak agrawal] 08:49:40
+Okay.
+
+[rochak agrawal] 08:49:42
+If you create another container, how would you do the load balancing?
+
+[rochak agrawal] 08:49:46
+That's a problem.
+
+[rochak agrawal] 08:49:49
+No load balance.
+
+[rochak agrawal] 08:49:52
+Got it?
+
+[rochak agrawal] 08:49:54
+Third problem, if somehow this container goes down.
+
+[rochak agrawal] 08:49:59
+Somehow, any reason, it could be out-of-memory issues, someone manually deleted the container, your host got restarted, can be multiple reasons, there was a network fluctuation.
+
+[rochak agrawal] 08:50:11
+There is no mechanism in Docker.
+
+[rochak agrawal] 08:50:14
+Which is going to restart the container automatically.
+
+[rochak agrawal] 08:50:27
+No to eating.
+
+[rochak agrawal] 08:50:28
+Okay.
+
+[Jeeva Koli] 08:50:31
+Okay.
+
+[rochak agrawal] 08:50:31
+I picked the problem.
+
+[rochak agrawal] 08:50:33
+is, if I am running my database.
+
+[rochak agrawal] 08:50:38
+host.
+
+[rochak agrawal] 08:50:40
+Database with the container.
+
+[rochak agrawal] 08:50:42
+Okay.
+
+[rochak agrawal] 08:50:45
+When you manually see, of course, this is no auto-scaling, no load balancing is applicable to this also. But if you see, if you're running something, a stateful application.
+
+[rochak agrawal] 08:51:00
+you have to manually manage the state of your application in Docker. So there is no…
+
+[rochak agrawal] 08:51:10
+What you can say is, uh…
+
+[Jeeva Koli] 08:51:14
+Auto manage.
+
+[rochak agrawal] 08:51:16
+Or do state management.
+
+[rochak agrawal] 08:51:20
+Okay.
+
+[rochak agrawal] 08:51:22
+Fifth problem is.
+
+[rochak agrawal] 08:51:25
+let's say…
+
+[rochak agrawal] 08:51:29
+Now, you guys must be wondering when there is so much problem, why we are even discussing with the doctor.
+
+[rochak agrawal] 08:51:38
+Let's say…
+
+[rochak agrawal] 08:51:45
+You have a web application running, right? And the DB, uh, let's say, app and web.
+
+[rochak agrawal] 08:51:52
+Subham?
+
+[rochak agrawal] 08:51:54
+And, uh…
+
+[rochak agrawal] 08:51:57
+Right. Now, let's say…
+
+[rochak agrawal] 08:52:00
+So first, we discussed there's no auto-scaling, there is no load balancing. We have to manually tell my web application.
+
+[rochak agrawal] 08:52:09
+to reach out to containerized app application, app container, correct? There is…
+
+[rochak agrawal] 08:52:17
+No service discovery is available in Docker.
+
+[rochak agrawal] 08:52:26
+Okay.
+
+[Jeeva Koli] 08:52:26
+So, we cannot create the network between these two applications, and these two containers?
+
+[rochak agrawal] 08:52:30
+We can create, but we have to manually create it, right?
+
+[rochak agrawal] 08:52:33
+That's what… we have to manually set up the link between these containers. There's no service discovery.
+
+[Jeeva Koli] 08:52:38
+Okay.
+
+[rochak agrawal] 08:52:42
+Okay, so now if you see with these challenges.
+
+[rochak agrawal] 08:52:47
+Docker is not a fit for the production workload.
+
+[rochak agrawal] 08:52:52
+So you can very well say Docker is not a fit.
+
+[rochak agrawal] 08:52:59
+All are.
+
+[rochak agrawal] 08:53:01
+Production.
+
+[rochak agrawal] 08:53:08
+It's a… it's a known fact, okay?
+
+[rochak agrawal] 08:53:10
+Docker is not a fit for the production workload.
+
+[rochak agrawal] 08:53:12
+Now, there is one more problem, Docker.
+
+[rochak agrawal] 08:53:16
+does not support the multi-containers. For example, let's say I can only run NGINX here, correct? Or I can only run my Tomcat here.
+
+[rochak agrawal] 08:53:26
+It would be very tough to stitch multi-containers together.
+
+[rochak agrawal] 08:53:31
+So Docker is not fit for a production workload.
+
+[rochak agrawal] 08:53:36
+And that is where… now you say, no, I… I… everywhere I'm hearing there is, uh… uh, there are containers, uh…
+
+[rochak agrawal] 08:53:44
+Uh, running in the production environment.
+
+[rochak agrawal] 08:53:47
+Hey, so then, um…
+
+[rochak agrawal] 08:53:50
+how I am going to run the containers in the production environment.
+
+[rochak agrawal] 08:53:55
+Okay.
+
+[rochak agrawal] 08:53:57
+That is where there is a layer called the container orchestration layer comes into the picture.
+
+[rochak agrawal] 08:54:04
+Now, there are different, different container orchestration tools are available.
+
+[rochak agrawal] 08:54:19
+Container orchestration tools are available. In Docker, see, Docker also realizes, realizes later, okay, Docker is good for packaging the application, but then if I'm not giving you the runtime capabilities.
+
+[rochak agrawal] 08:54:33
+It is…
+
+[rochak agrawal] 08:54:36
+It is not, uh…
+
+[rochak agrawal] 08:54:39
+Very easy to run those in a production. So Docker itself, something released called the Docker Swarm.
+
+[rochak agrawal] 08:54:45
+Okay.
+
+[rochak agrawal] 08:54:46
+Docker Swarm is, you can say, a lightweight container.
+
+[rochak agrawal] 08:54:52
+Okay, which resolves some of its, um…
+
+[rochak agrawal] 08:54:58
+problems.
+
+[rochak agrawal] 08:54:59
+But it is not so powerful. And the actual container orchestration is Kubernetes. Okay. So people…
+
+[rochak agrawal] 08:55:09
+get confused that Docker and Kubernetes are different.
+
+[rochak agrawal] 08:55:13
+So Docker and Kubernetes are not different.
+
+[rochak agrawal] 08:55:16
+So, inside the Kubernetes, you are going to run Docker containers only, but when you will be learning Kubernetes, um, we will see that, um.
+
+[rochak agrawal] 08:55:29
+It is…
+
+[rochak agrawal] 08:55:31
+the Docker layer will be completely abstracted from us, okay? We are not going to use Docker volumes, we are not going to use Docker networking, because Kubernetes itself will give you.
+
+[rochak agrawal] 08:55:45
+So powerful features that…
+
+[rochak agrawal] 08:55:49
+it itself will manage everything, okay? So now, Docker Swarm, if we are going to discuss, Docker Swarm is nothing, but it is a…
+
+[rochak agrawal] 08:55:58
+Multi-node docker.
+
+[rochak agrawal] 08:56:02
+So you can…
+
+[rochak agrawal] 08:56:06
+Install Docker on multiple hosts, uh, nodes.
+
+[rochak agrawal] 08:56:10
+And then you can connect them together.
+
+[rochak agrawal] 08:56:16
+With the help of a swarm cluster.
+
+[rochak agrawal] 08:56:23
+Okay.
+
+[rochak agrawal] 08:56:25
+Out of this, one node will become master.
+
+[rochak agrawal] 08:56:29
+And another will be burger noodles.
+
+[rochak agrawal] 08:56:39
+So now, the first problem is resolved.
+
+[rochak agrawal] 08:56:44
+Right. What was the first problem? Single host architecture. Now you have multiple hosts. You can add the nodes. So let's say if these two nodes have any problem, you can add another node at any point of time. So the single host architecture is.
+
+[rochak agrawal] 08:56:59
+going to resolve, then it gives you feature about auto-scaling, it gives you feature about load balancing, auto-healing. But there are no specific features about service discovery, networking, and volume management.
+
+[rochak agrawal] 08:57:14
+So, how to create the cluster? If you go…
+
+[rochak agrawal] 08:57:19
+If you see docker info.
+
+[rochak agrawal] 08:57:36
+It's currently, if you see, SOAM is inactive.
+
+[rochak agrawal] 08:57:39
+Okay.
+
+[rochak agrawal] 08:57:41
+So…
+
+[rochak agrawal] 08:57:43
+Currently, SOAM is inactive, means, uh, SOAM… Docker SOAM is.
+
+[rochak agrawal] 08:57:47
+Running Docker Swarm is very easy. There's nothing much in it. So I will just start another server.
+
+[rochak agrawal] 08:58:00
+To create…
+
+[rochak agrawal] 08:58:03
+The song?
+
+[Jeeva Koli] 08:58:28
+So, in the meantime, what is your favorite question on the Docker network for the interview ticker?
+
+[rochak agrawal] 08:58:36
+See, if you, uh…
+
+[rochak agrawal] 08:58:39
+That's what I'm saying. Most of the question comes from the Kubernetes. Docker, in interviews, mostly question revolve around your Docker file.
+
+[Jeeva Koli] 08:58:51
+Okay.
+
+[rochak agrawal] 08:58:52
+Okay, because since in production you are not using it, so then people generally don't ask about it. Because in… you cannot run your… what you can say…
+
+[rochak agrawal] 08:59:04
+Your production environment with… only with the Docker containers.
+
+[rochak agrawal] 08:59:10
+Okay.
+
+[rochak agrawal] 08:59:12
+So most of the question will be on… when it is about the containers, so most of the question will be around the Kubernetes, and then, uh…
+
+[rochak agrawal] 08:59:22
+Docker, if there's a Docker-related question, it would be mostly around, uh…
+
+[rochak agrawal] 08:59:27
+Docker file, how to build, what are the steps you are doing, so… generally.
+
+[rochak agrawal] 08:59:35
+Now if I connect to the server as well.
+
+[rochak agrawal] 08:59:52
+Okay. Now…
+
+[rochak agrawal] 08:59:55
+Initiating docker swarm is very easy, just docker swarm in it.
+
+[rochak agrawal] 09:00:01
+Okay? So it says swarm initialized. Current node is now a manager. Okay? To add a worker node to the swarm, you need to run a following command.
+
+[rochak agrawal] 09:00:11
+So I'll just take this command.
+
+[rochak agrawal] 09:00:14
+Okay, I need to install Docker also first on this.
+
+[rochak agrawal] 09:00:23
+Docker is not found.
+
+[rochak agrawal] 09:00:24
+Let me run this.
+
+[Jeeva Koli] 09:00:31
+So, worker node will be installed on, uh, SOM.
+
+[rochak agrawal] 09:00:35
+No, no, worker node is not installed on SOM. SOM just connect multiple hosts together.
+
+[rochak agrawal] 09:00:41
+So you can see… see…
+
+[rochak agrawal] 09:00:44
+We discussed Docker as a single node, uh…
+
+[rochak agrawal] 09:00:48
+architecture, correct? But then, if you want to run multiple Docker hosts together, you connect them via Swarm.
+
+[Jeeva Koli] 09:00:50
+Alright.
+
+[rochak agrawal] 09:00:56
+So say Docker. Okay.
+
+[rochak agrawal] 09:01:00
+Yes
+
+[rochak agrawal] 09:01:02
+So there was one post installation step was there.
+
+[rochak agrawal] 09:01:36
+Okay, let me connect again.
+
+[rochak agrawal] 09:02:04
+Okay?
+
+[rochak agrawal] 09:02:06
+Now, I'll take this command. So, Docker itself will give you this command.
+
+[rochak agrawal] 09:02:13
+Okay.
+
+[rochak agrawal] 09:02:16
+Clear. Now before running the command, so there is a, uh, I want to see how many nodes are there. So docker node ls.
+
+[rochak agrawal] 09:02:24
+So you can see currently one node is there.
+
+[rochak agrawal] 09:02:28
+With this, status is ready, and management status is leader, which is, it says it is a manager node.
+
+[rochak agrawal] 09:02:34
+Now, if I'm going to run this…
+
+[rochak agrawal] 09:02:38
+So, see, this node joined as a swarm, uh, as a worker.
+
+[rochak agrawal] 09:02:43
+Correct? Now, if you're going to run this.
+
+[rochak agrawal] 09:02:50
+Docker Node LS.
+
+[rochak agrawal] 09:02:52
+So you can see.
+
+[rochak agrawal] 09:02:54
+Two nodes are there now. One is 72, which is the same node, and another one is a 41.
+
+[rochak agrawal] 09:03:00
+Which is another node, and this is a…
+
+[rochak agrawal] 09:03:03
+worker node, because the management status is not a leader, correct? So, you can see here, now, if I have multiple servers, like, no matter how many servers are there, uh, I can, um…
+
+[rochak agrawal] 09:03:19
+use this, so…
+
+[rochak agrawal] 09:03:21
+to add as many servers as I want, okay? Now, if you say…
+
+[rochak agrawal] 09:03:28
+I can leave this also Docker.
+
+[rochak agrawal] 09:03:32
+Swam leap.
+
+[rochak agrawal] 09:03:35
+So is it? Node left the song. Now if you run it again.
+
+[rochak agrawal] 09:03:44
+It is… it will take some time. So, at any point of time, you can leave it, okay?
+
+[rochak agrawal] 09:03:51
+You can, uh…
+
+[rochak agrawal] 09:03:57
+Okay, you can see the status as a down.
+
+[rochak agrawal] 09:04:00
+Great. So, again, I'll do the join.
+
+[rochak agrawal] 09:04:12
+Correct? So…
+
+[rochak agrawal] 09:04:14
+You can see this will still show as a down, but there's another node as joined as a ready cluster.
+
+[rochak agrawal] 09:04:22
+Right, so the node bill is still appeared in the node list and marked as a down. It is no longer affects SWAM operation, but a long list of down nodes can clutter the nodes, so we can use, uh, something called…
+
+[rochak agrawal] 09:04:32
+Docker.
+
+[rochak agrawal] 09:04:36
+Node RM.
+
+[rochak agrawal] 09:04:37
+And…
+
+[rochak agrawal] 09:04:40
+Heidi?
+
+[rochak agrawal] 09:04:44
+Okay? If you see here.
+
+[rochak agrawal] 09:04:46
+Docker node LS. So now you have two, uh, things are there, right? So…
+
+[rochak agrawal] 09:04:58
+That is how Docker Swarm is, so…
+
+[rochak agrawal] 09:05:01
+Now, how… let me, uh…
+
+[rochak agrawal] 09:05:04
+Take a simple example.
+
+[rochak agrawal] 09:05:10
+We can run it, uh…
+
+[rochak agrawal] 09:05:22
+Container NGINX on Docker, so on.
+
+[rochak agrawal] 09:05:40
+I do not have a file at this moment.
+
+[rochak agrawal] 09:05:49
+So you can see…
+
+[rochak agrawal] 09:05:58
+I do not have an example application right now.
+
+[rochak agrawal] 09:06:32
+Uh, I do not have an example application right now, I'll just take this in our next class, uh, Docker Swarm.
+
+[rochak agrawal] 09:06:39
+Um, but I'll continue with the questions. Yes, Arif.
+
+[arif] 09:06:53
+So, yeah, I was asking about what is this, uh, orchestration?
+
+[rochak agrawal] 09:06:57
+See, orchestration is this only. So, Docker Swarm, you can say, is a lightweight orchestrator. So, with the help of… see, currently, till now, uh, when we were running the container, we were manually running the container, like, Docker run, Nginx.
+
+[rochak agrawal] 09:07:13
+And it is going to start the container. So in that there is no auto scaling, there is no load balancing, there's no auto healing. Correct. So that is where containers comes into the picture. It is the very first problem we discuss is a multi single host architecture.
+
+[rochak agrawal] 09:07:29
+Correct. So now, you can see, with the help of a container orchestration, or I would say a container orchestrator, is going to provide you all those functionality.
+
+[rochak agrawal] 09:07:41
+OK, so currently if you see we have.
+
+[rochak agrawal] 09:07:45
+done one, right? Now, I can… so, from any of the host, okay, I will just issue the command. Now, my container can go on 72 node, or it can go on the 41 node.
+
+[rochak agrawal] 09:07:57
+Okay. Right now, we have two nodes, but you can have multiple nodes altogether. So, I have worked on a cluster on Kubernetes, which was…
+
+[rochak agrawal] 09:08:08
+60 node clusters, uh, 60 node was there, 60 servers were there. So you can say you can run a container now on any of the node, so that if one or two server going down into the maintenance, you do not need to worry about it. If you talk about Docker, Docker was only a single host containers.
+
+[rochak agrawal] 09:08:26
+Correct. So, basically, container orchestration, um, is going to resolve all those problems, uh, with the help of auto-scaling, auto-healing, and all of that, so that.
+
+[rochak agrawal] 09:08:40
+you just focus on building your containers and run it with the container orchestration. So you're not going to run container plain with the Docker itself. You run your container with the Docker orchestration tool, you just build your container with the Docker now.
+
+[arif] 09:08:58
+You mean to say I have only one web server on a container?
+
+[arif] 09:09:03
+So
+
+[arif] 09:09:04
+How it is going, it is going to replicate this, or… I'm not getting it.
+
+[rochak agrawal] 09:09:09
+Yes, so that's what I'm saying. I do not have an example application right now. So we'll discuss this with the help of an example application. Okay, so how to scale it, how to scale up, scale down, we will see everything.
+
+[rochak agrawal] 09:09:21
+So, right now, you understand the… see, uh, how SOAM will be do… uh, let's leave it for now, because we have not seen it, but you understand the challenges, correct? Any… any question in these challenges?
+
+[arif] 09:09:36
+No, no, no questions.
+
+[rochak agrawal] 09:09:37
+Right? So, to resolve these challenges, and be resolved one. See, be…
+
+[rochak agrawal] 09:09:44
+We deploy the Docker Swarm on multiple nodes. We connected those as a multi-node cluster. Rest, when we deploy an application, so we will see how we can do auto-scale, how we can do the load balancing, auto-healing.
+
+[rochak agrawal] 09:10:00
+some of the features we are going to see. So, if you do not have a very complex application.
+
+[rochak agrawal] 09:10:06
+Uh, see the problem, uh…
+
+[rochak agrawal] 09:10:10
+these two container orchestration tools are there. See, apart from it, also, there are other container orchestration tools are there. So, for example.
+
+[rochak agrawal] 09:10:21
+venture is there
+
+[rochak agrawal] 09:10:24
+Then OpenShift is there, uh, OpenShift…
+
+[rochak agrawal] 09:10:28
+OpenShift, yes.
+
+[rochak agrawal] 09:10:29
+OpenShift is there. There are other tools are also there, but they all are using OpenShift.
+
+[rochak agrawal] 09:10:37
+Kubernetes in backend.
+
+[rochak agrawal] 09:10:39
+So, you… we should be really, really focusing on the Kubernetes. Okay, uh…
+
+[rochak agrawal] 09:10:46
+But, see, these Rancher and OpenShift and, uh, maybe others also, they all use the Kubernetes in backend.
+
+[rochak agrawal] 09:10:54
+Now, the problem with the Kubernetes is Kubernetes is very complex.
+
+[rochak agrawal] 09:10:59
+Okay.
+
+[rochak agrawal] 09:11:01
+When I'm saying very complex, it is very complex. Like, right now, whatever we have seen in Docker, uh…
+
+[rochak agrawal] 09:11:08
+This is nothing Kubernetes.
+
+[rochak agrawal] 09:11:11
+is really, really very complex, okay? And uh…
+
+[rochak agrawal] 09:11:17
+And what was on top of that is…
+
+[rochak agrawal] 09:11:19
+See, right now, I think Kubernetes 1.33 or 1.35 version is running.
+
+[rochak agrawal] 09:11:40
+1.37, I was telling 1.35. You see, August 2026, it has released.
+
+[rochak agrawal] 09:11:46
+So this is a major version release, okay? I started working with Kubernetes when it was on 1.12 or 1.13.
+
+[rochak agrawal] 09:11:55
+The problem with the Kubernetes is whenever there is a version change.
+
+[rochak agrawal] 09:12:01
+There are a hell lot of the features which is going to be added, to be removed.
+
+[rochak agrawal] 09:12:08
+Deleted, uh, to be updated, okay?
+
+[rochak agrawal] 09:12:11
+So Kubernetes is not.
+
+[rochak agrawal] 09:12:14
+you can say backward compatible. So, what Kubernetes says, if you are… if I'm releasing 1.37.
+
+[rochak agrawal] 09:12:26
+We will only support N-2 release.
+
+[rochak agrawal] 09:12:31
+Now what does it mean? It means if Kubernetes has released 1.37, they are only going to support 1.36, 1.35.
+
+[rochak agrawal] 09:12:42
+If you…
+
+[rochak agrawal] 09:12:44
+0.21, 1.30, 1.32.
+
+[rochak agrawal] 09:12:49
+And any issue comes.
+
+[rochak agrawal] 09:12:51
+You are on your own.
+
+[rochak agrawal] 09:12:54
+Okay. So managing Kubernetes itself is a very, very, very complex thing. Okay. So that is why if your application is, and it gives you, of course, when it is powerful, when it is complex, it is very powerful also. Okay.
+
+[rochak agrawal] 09:13:10
+But sometime you will run only a very single, uh, simple application, like a web application type of a thing. So all those features you can leverage in Docker Swarm.
+
+[rochak agrawal] 09:13:22
+Okay, so all those auto-healing, auto-scaling, uh, if you do not need advanced networking, like we were discussing, uh, static IP management, uh.
+
+[rochak agrawal] 09:13:33
+the DSCP integration, all those Kubernetes is going to provide you, but sometimes you do not need all of those, right? So, if you do not need all of those, Docker Swarm is not, uh, feature-rich as comparison to, um.
+
+[rochak agrawal] 09:13:48
+Kubernetes, but it is very easy to operate. Okay? It is very easy to operate, and uh…
+
+[rochak agrawal] 09:13:56
+easy to maintain as well, but Kubernetes, on the other hand, it's very powerful, but it is very, very complex to manage. So, now the alternative to Kubernetes is also in form of.
+
+[rochak agrawal] 09:14:13
+Something called the managed Kubernetes.
+
+[rochak agrawal] 09:14:20
+If you see, every cloud service provider, uh, provide you a managed Kubernetes services. So, for example, there is… in AWS, there is something called EKS.
+
+[rochak agrawal] 09:14:35
+In Agile, there is AKS, and then there is something called GKE.
+
+[rochak agrawal] 09:14:40
+Google Kubernetes Engine, Azure Kubernetes Engine, Elastic Kubernetes Services. So not Azure Kubernetes Engine, Azure Kubernetes Services. So these cloud service provider itself gives you an option that you can run your Kubernetes as a managed service.
+
+[rochak agrawal] 09:14:59
+And they will take the management overhead from you on them. It is very similar to, like, see…
+
+[rochak agrawal] 09:15:05
+When you do the… when you… when you launch an EC2 instance.
+
+[rochak agrawal] 09:15:09
+Now you can launch an EC2 instance on our own. Like what? You need a hypervisor to launch an EC2 instance right now. The cloud provider says it. You don't worry about it. We will take care of it. You just focus on launching the server and underlying hardware. We will take care.
+
+[rochak agrawal] 09:15:26
+So, similar to that, in case of a managed Kubernetes, they say, you launch your Kubernetes.
+
+[rochak agrawal] 09:15:33
+From a management perspective, we will look after it. You just focus on running your application. It is that complex that there are managed services around it.
+
+[rochak agrawal] 09:15:41
+Okay, so first we will, uh…
+
+[rochak agrawal] 09:15:46
+we will learn an application with the Docker Swarm, understand its functionality, but as I said, it is not so powerful. Um…
+
+[rochak agrawal] 09:15:55
+And then, we will move to Kubernetes. Kubernetes is a real powerful engine, and if you're going into a DevOps interview.
+
+[rochak agrawal] 09:16:04
+In today's scenario.
+
+[rochak agrawal] 09:16:05
+I think, uh, 50 to 60% question will be on, uh.
+
+[rochak agrawal] 09:16:15
+50-60% question will be on, uh, Kubernetes.
+
+[rochak agrawal] 09:16:22
+20% question, 20-25% question will be on Terraform.
+
+[rochak agrawal] 09:16:31
+Remaining is next.
+
+[rochak agrawal] 09:16:33
+So, all this Docker, Jenkins, people, like, generally don't ask questions. Kubernetes is super, super, super important.
+
+[rochak agrawal] 09:16:41
+If you only know Kubernetes, then…
+
+[rochak agrawal] 09:16:45
+Uh, you can land a job.
+
+[rochak agrawal] 09:16:48
+Only if you know Kubernetes. So, Kubernetes is that important, and if you see, Kubernetes is not only about, like, a DevOps engineer. In Kubernetes, there are 3 tracks.
+
+[rochak agrawal] 09:17:02
+Admin, which is a DevOps engineer.
+
+[rochak agrawal] 09:17:09
+There is a developer track also.
+
+[rochak agrawal] 09:17:16
+And then there is a security track.
+
+[rochak agrawal] 09:17:23
+Because nowadays, you see, uh, not only, uh, your…
+
+[rochak agrawal] 09:17:28
+applications, your machine learning models are also deployed on Kubernetes only. So we have to be absolutely sure about the security of your application running on Kubernetes. So there's three different tracks altogether.
+
+[rochak agrawal] 09:17:46
+It's a niche skill, is that what I can say right now in the market. So if you are going for a DevOps interview, most of the question will revolve around Kubernetes.
+
+[rochak agrawal] 09:17:59
+Uh, yes, Megan?
+
+[Megha U] 09:18:03
+Yeah. Hi, Roshak. Can you just crawl up with the diagram where networking a communicating with B and C.
+
+[rochak agrawal] 09:18:14
+Yeah?
+
+[Megha U] 09:18:16
+Yeah, I actually got lost there, so A was not…
+
+[Megha U] 09:18:21
+communicating with Z, so how we resolve that, can you just, uh, summarize this?
+
+[rochak agrawal] 09:18:24
+But that is what we want. That is what we want, right? That is intentional, Megha.
+
+[Megha U] 09:18:31
+Yeah.
+
+[rochak agrawal] 09:18:31
+Right? If I want A to talk to B.
+
+[Megha U] 09:18:32
+Yeah, so difference was like, okay. Yeah, I did.
+
+[Megha U] 09:18:38
+Yeah, yeah, please go ahead.
+
+[rochak agrawal] 09:18:41
+Yeah, so the point was, Megha, uh, like, that was intentional, right? See, my problem statement was, A can talk… A need to talk to B, B need to talk to C, and A don't need to talk to C, correct?
+
+[Megha U] 09:18:59
+You're okay.
+
+[rochak agrawal] 09:18:59
+Mega… yes, right? So, if we want A to talk to C, why I'm going to create in a different network? I'll create everything in the same network.
+
+[rochak agrawal] 09:19:08
+Correct?
+
+[Megha U] 09:19:09
+Okay, okay.
+
+[rochak agrawal] 09:19:11
+So, that was intentional. We do not want A to talk to C. So, if we don't want A to talk to C, I don't need to resolve it.
+
+[rochak agrawal] 09:19:21
+Right?
+
+[Megha U] 09:19:21
+Okay.
+
+[Jeeva Koli] 09:19:28
+Uh, there is one question on multi-container, actually.
+
+[rochak agrawal] 09:19:31
+Okay, yeah.
+
+[Jeeva Koli] 09:19:32
+So where are you?
+
+[Jeeva Koli] 09:19:33
+You, you… can you show the diagram that where you multi-container…
+
+[rochak agrawal] 09:19:37
+But multi-container, we have not covered yet.
+
+[Jeeva Koli] 09:19:40
+No, not there, not there, just below, below, below, down, down, down.
+
+[rochak agrawal] 09:19:41
+Well, I…
+
+[Jeeva Koli] 09:19:46
+Yeah, below this.
+
+[Jeeva Koli] 09:19:48
+Ah, here.
+
+[rochak agrawal] 09:19:48
+Okay.
+
+[Jeeva Koli] 09:19:50
+Just, just about, one, one hour.
+
+[rochak agrawal] 09:19:52
+This one?
+
+[Jeeva Koli] 09:19:53
+Hear you? Yeah, ah, this one, correct.
+
+[rochak agrawal] 09:19:54
+Mm-hmm.
+
+[Jeeva Koli] 09:19:55
+So, uh, here are multi-containers, actually, and uh…
+
+[rochak agrawal] 09:19:58
+Mm-hmm.
+
+[Jeeva Koli] 09:20:00
+I don't want to expose all the containers to the internet. I only want… I only want exposed to the web container. The rest of the containers should, uh, communicate with internally themselves.
+
+[rochak agrawal] 09:20:04
+Correct.
+
+[Jeeva Koli] 09:20:13
+So, in that case, for web, I can create the network of breach and rest.
+
+[rochak agrawal] 09:20:21
+Hmm?
+
+[Jeeva Koli] 09:20:22
+And for the rest, what I can create here?
+
+[rochak agrawal] 09:20:24
+No, you can create… see, default, uh, bridge has the…
+
+[rochak agrawal] 09:20:30
+outbound internet connectivity, your custom, uh, bridge network will not have an outbound internet connectivity. It's a private network. You have to, uh, set it up, the internet connectivity, again.
+
+[Jeeva Koli] 09:20:42
+No, no, I don't want to expose all other containers to the internet.
+
+[rochak agrawal] 09:20:46
+See, that is what I'm saying. So let's say, uh, when you create a custom network.
+
+[rochak agrawal] 09:20:53
+Okay? It does not have the internet connectivity by itself.
+
+[rochak agrawal] 09:20:57
+So you can put up a web in your default bridge network, which will have the internet connectivity, or other in a custom VNet, which will not have internet connectivity.
+
+[Jeeva Koli] 09:21:09
+Okay, separate bridge will be there for, uh, rest of the year. Okay.
+
+[rochak agrawal] 09:21:11
+No.
+
+[rochak agrawal] 09:21:12
+Correct.
+
+[rochak agrawal] 09:21:14
+Okay.
+
+[Jeeva Koli] 09:21:15
+Yeah.
+
+[rochak agrawal] 09:21:18
+So guys, OK, I'll take the remaining question in the next class. I need to head somewhere, so I'll just close 10 minutes before.
+
+[rochak agrawal] 09:21:25
+So next we will cover Docker Swarm. We will be container creation Docker Swarm is, like, very easy
+
