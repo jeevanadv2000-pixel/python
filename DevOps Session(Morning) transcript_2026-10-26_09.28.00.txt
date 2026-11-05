@@ -1,0 +1,2820 @@
+[rochak agrawal] 07:41:23
+Hey, good morning, everyone. So, we'll just start.
+
+[rochak agrawal] 07:41:30
+Okay.
+
+[rochak agrawal] 07:41:36
+So, in our last class.
+
+[rochak agrawal] 07:41:38
+We were discussing about, um…
+
+[rochak agrawal] 07:41:41
+the count block.
+
+[rochak agrawal] 07:41:42
+And we said if we want to create…
+
+[rochak agrawal] 07:41:46
+Multiple resources.
+
+[rochak agrawal] 07:41:49
+Together in one block, there are two ways. One is a count, another is a.
+
+[rochak agrawal] 07:41:55
+Count, we have seen that if you want, the difference between the count and for each is, with the help of count, you are going to create the identical resources, and we have seen that.
+
+[rochak agrawal] 07:42:07
+Now, whatever the 100 buckets are getting created, those are created exactly with the same configuration. So if you want exactly the same configuration, you can use the count.
+
+[rochak agrawal] 07:42:20
+Okay, but you say, I want to create…
+
+[rochak agrawal] 07:42:25
+Similar, but different kind of resources.
+
+[rochak agrawal] 07:42:29
+For example, you want to create 3 IAM users. Now, every IAM user name will be different. You want to create…
+
+[rochak agrawal] 07:42:37
+three EC2 instances with the different size, or with the different region, or with the different operating system. Now, in that case, you need to create three EC2 instances, which is a similar resource.
+
+[rochak agrawal] 07:42:49
+But you need different configuration, and that is where count is not going to work. Uh, you need to use something called a 4H. Now, 4H is very, um…
+
+[rochak agrawal] 07:43:02
+Uh, what you can see now, again.
+
+[rochak agrawal] 07:43:06
+In the forage also, there is
+
+[rochak agrawal] 07:43:09
+Two variations, I would say.
+
+[rochak agrawal] 07:43:17
+So, if you want to create similar type of the resources
+
+[rochak agrawal] 07:43:27
+You are going to use the thumb.
+
+[rochak agrawal] 07:43:30
+But if you want to use…
+
+[rochak agrawal] 07:43:39
+Team, resources
+
+[rochak agrawal] 07:43:41
+But
+
+[rochak agrawal] 07:43:44
+Friends?
+
+[rochak agrawal] 07:43:49
+Configuration.
+
+[rochak agrawal] 07:43:52
+Right? So, we have taken an example, IAM users, and uh…
+
+[rochak agrawal] 07:44:00
+Your EC2 instances you want to create in…
+
+[rochak agrawal] 07:44:03
+Multiple, uh, region, multiple operating system.
+
+[rochak agrawal] 07:44:08
+Now in the for rule for each there is two type bit without dynamic block.
+
+[rochak agrawal] 07:44:21
+When I'm saying the without dynamic blob, that is a normal which we discussed.
+
+[rochak agrawal] 07:44:27
+Right? Same resources you want to create.
+
+[rochak agrawal] 07:44:30
+Multiple resources.
+
+[rochak agrawal] 07:44:34
+bit…
+
+[rochak agrawal] 07:44:36
+different configuration.
+
+[rochak agrawal] 07:44:40
+Then there is something called the dynamic.
+
+[rochak agrawal] 07:44:50
+Okay.
+
+[rochak agrawal] 07:44:51
+Same resource.
+
+[rochak agrawal] 07:44:54
+Multiple configuration.
+
+[rochak agrawal] 07:44:58
+Now, what does it mean? Uh, you remember Security Group?
+
+[rochak agrawal] 07:45:07
+In Security Group.
+
+[rochak agrawal] 07:45:07
+I can create multiple, uh, Firewood rules.
+
+[rochak agrawal] 07:45:16
+Right? So then when I will be creating a security group, I am going to use it, something called a dynamic block. I'll show you with an example. I'll show… and then we are going to run it.
+
+[rochak agrawal] 07:45:29
+Thank you.
+
+[rochak agrawal] 07:45:30
+So, count we have already seen, now we'll see a demo of the 4H.
+
+[rochak agrawal] 07:45:37
+Let me see if there is something.
+
+[rochak agrawal] 07:45:51
+Now, I can update my main.ef.
+
+[rochak agrawal] 07:45:59
+So you can see?
+
+[rochak agrawal] 07:46:02
+Betty, um…
+
+[rochak agrawal] 07:46:05
+small, so you can see I defined 3 IAM users. Alice, Bob, and Charlie.
+
+[rochak agrawal] 07:46:12
+Okay, and I'm saying resource IAM user.
+
+[rochak agrawal] 07:46:16
+For each.
+
+[rochak agrawal] 07:46:18
+For each…
+
+[rochak agrawal] 07:46:20
+Local.IAMUsers means first it is going to run with Ellis, then it's for Bob, then it's for Charlie. Name is equal to each dot value. Now you see there is a couple of things are here.
+
+[rochak agrawal] 07:46:34
+First is the each variable is there whenever you want to refer something.
+
+[rochak agrawal] 07:46:42
+in a for each block every time it will be referred for a each value. So for example.
+
+[rochak agrawal] 07:46:50
+We have given three names, Alice, Bob, and Charlie.
+
+[rochak agrawal] 07:47:11
+Yes.
+
+[rochak agrawal] 07:47:14
+Well…
+
+[rochak agrawal] 07:47:20
+Now, this is my set.
+
+[rochak agrawal] 07:47:24
+Okay.
+
+[rochak agrawal] 07:47:26
+Now, you said…
+
+[rochak agrawal] 07:47:31
+Yes?
+
+[rochak agrawal] 07:47:33
+Put each.
+
+[rochak agrawal] 07:47:34
+ToSet. ToSet is a Terraform function. There are multiple inbuilt Terraform functions which you can use for a different, different purpose. Set, basically, it reads the value from a set.
+
+[rochak agrawal] 07:47:47
+Okay, two sec.
+
+[rochak agrawal] 07:47:49
+So this is for each whatever the value in this set. So it's a two-set, removes the duplicate, and forms the allocation, okay?
+
+[rochak agrawal] 07:48:00
+For each two sets. Now, basically.
+
+[rochak agrawal] 07:48:03
+I said 4 each.
+
+[rochak agrawal] 07:48:13
+So how many iteration? 1, 2, and 3. And each time.
+
+[rochak agrawal] 07:48:18
+When it will be in the LS iteration, each dot value is equal to…
+
+[rochak agrawal] 07:48:28
+Ellis?
+
+[rochak agrawal] 07:48:31
+et cetera, et cetera, right? So, L is Bob Charlie. Now, if you run this.
+
+[rochak agrawal] 07:48:58
+Here, you see?
+
+[rochak agrawal] 07:48:59
+3 to add.
+
+[rochak agrawal] 07:49:01
+Now, if you see…
+
+[rochak agrawal] 07:49:02
+First, it is going to create Alice, then Bob.
+
+[rochak agrawal] 07:49:06
+And then Johnny.
+
+[rochak agrawal] 07:49:08
+Now, if you don't…
+
+[rochak agrawal] 07:49:28
+Okay. Now, you go to IAM Users.
+
+[rochak agrawal] 07:49:42
+You see? Alice, Bob, and Johnny.
+
+[rochak agrawal] 07:49:47
+You see?
+
+[rochak agrawal] 07:49:48
+Let's get into it.
+
+[rochak agrawal] 07:49:51
+Right? Now, if I go and add…
+
+[rochak agrawal] 07:49:57
+Let's say another user.
+
+[rochak agrawal] 07:50:11
+It will only create one user.
+
+[rochak agrawal] 07:50:16
+Because it will run 4 times, but since…
+
+[rochak agrawal] 07:50:19
+3 is already there, it is only 1 to add.
+
+[rochak agrawal] 07:50:25
+And if you refresh this…
+
+[rochak agrawal] 07:50:29
+I will check this out for now. Great.
+
+[rochak agrawal] 07:50:32
+Let me destroy this.
+
+[rochak agrawal] 07:50:58
+Now, let me take another example.
+
+[rochak agrawal] 07:51:07
+BVM?
+
+[rochak agrawal] 07:51:10
+Decides.
+
+[rochak agrawal] 07:51:43
+Good to see you.
+
+[rochak agrawal] 07:51:45
+Locals, EC2 instance, I am defining, for instance, web server, app server, DB server. For web server, it is t3.micro, it's t3.small, it's t3.media.
+
+[rochak agrawal] 07:51:57
+Again, the same thing.
+
+[rochak agrawal] 07:51:59
+AWS instance example for each local.ec2 instance. Now, it is saying for each ec2 instance, means for web server, for app server, and DB server.
+
+[rochak agrawal] 07:52:10
+Instance type is each.value.instanceType, which is my variable.
+
+[rochak agrawal] 07:52:16
+And then…
+
+[rochak agrawal] 07:52:19
+Let me remove this.
+
+[rochak agrawal] 07:52:25
+Let's save this.
+
+[rochak agrawal] 07:52:28
+If you run a Terraform plan.
+
+[rochak agrawal] 07:52:31
+3 EC2 instances with 3 sizes.
+
+[rochak agrawal] 07:52:34
+Three different size.
+
+[rochak agrawal] 07:52:42
+AMI must be specified. Okay, uh… I'll go to…
+
+[rochak agrawal] 07:52:50
+You see two?
+
+[rochak agrawal] 07:53:48
+You can see 3 to add.
+
+[rochak agrawal] 07:53:51
+Now, if you see the size…
+
+[rochak agrawal] 07:53:57
+E3 dot small, which is your, uh…
+
+[rochak agrawal] 07:54:01
+Web server?
+
+[rochak agrawal] 07:54:06
+Absalom, sorry.
+
+[rochak agrawal] 07:54:07
+Then, if you go…
+
+[rochak agrawal] 07:54:09
+It's a T3 dot medium.
+
+[rochak agrawal] 07:54:12
+Which is your…
+
+[rochak agrawal] 07:54:14
+DB server, and third is the T3.micro, which is a web server.
+
+[rochak agrawal] 07:54:20
+Hey, cool.
+
+[rochak agrawal] 07:54:41
+So these all we are creating without the dynamic block.
+
+[rochak agrawal] 07:54:46
+Okay, where we are saying you… we are…
+
+[rochak agrawal] 07:54:51
+Without dynamic block, multiple resources.
+
+[rochak agrawal] 07:54:55
+Okay, with the different configuration. Now…
+
+[rochak agrawal] 07:54:59
+Your room.
+
+[rochak agrawal] 07:55:01
+Previous example, IAM Ethernet is going to be different. Now, your EC2 instance size is different.
+
+[rochak agrawal] 07:55:13
+Okay, re-edit. Now, if you go…
+
+[rochak agrawal] 07:55:16
+two instances.
+
+[rochak agrawal] 07:55:19
+You can see T3 dot small, T3 dot micro, T3 dot medium.
+
+[rochak agrawal] 07:55:24
+Right?
+
+[rochak agrawal] 07:55:29
+Let me destroy this again.
+
+[rochak agrawal] 07:55:43
+Now comes the question, in which scenario I am going to use the dynamic block?
+
+[rochak agrawal] 07:55:49
+Okay, so we have another example. Just let it get deployed, uh, destroyed.
+
+[rochak agrawal] 07:56:30
+Okay.
+
+[rochak agrawal] 07:56:33
+Now, dynamic block.
+
+[rochak agrawal] 07:56:34
+Okay.
+
+[rochak agrawal] 07:56:36
+in Terraform is a programming construct that used to dynamically generate multiple repetitive.
+
+[rochak agrawal] 07:56:45
+multiple repeated configuration blocks for your resources.
+
+[rochak agrawal] 07:56:50
+Okay, um…
+
+[rochak agrawal] 07:56:53
+Now…
+
+[rochak agrawal] 07:56:54
+What is the difference between a 4H and dynamic block?
+
+[rochak agrawal] 07:56:59
+4D generate.
+
+[rochak agrawal] 07:57:00
+multiple entire resources. We created 3 machines, we created 3 IAM users, which is 3 different resources.
+
+[rochak agrawal] 07:57:11
+While the dynamic block will generate multiple child blocks, multiple sub-configuration for a single resource.
+
+[rochak agrawal] 07:57:21
+Right? For example, for each three separate AWS CC instance, S3 buckets.
+
+[rochak agrawal] 07:57:27
+While the dynamic block, what it'll do, so you are creating one security group rule, and inside that, if you want to create multiple rules, then I'm going to use the dynamic.
+
+[rochak agrawal] 07:57:39
+So let's take an example of a dynamic block.
+
+[rochak agrawal] 07:57:44
+Now you see.
+
+[rochak agrawal] 07:57:46
+Same thing, locals
+
+[rochak agrawal] 07:57:49
+I am creating a security pool.
+
+[rochak agrawal] 07:57:51
+port 80, protocol TCP, HTTP, description, this, this, this, this, this. Now you're creating a single security group.
+
+[rochak agrawal] 07:57:59
+So AWS Security Group, web SG, name is this, description is this. Now, inside a security group, you create multiple ingress and out…
+
+[rochak agrawal] 07:58:12
+ingress and egress rules, right, inbound and outbound rule.
+
+[rochak agrawal] 07:58:17
+Here, I am saying dynamic ingress. It means for the ingress rule, it is going to run multiple iteration.
+
+[rochak agrawal] 07:58:28
+For each local security rule, for each this and description ingress.
+
+[rochak agrawal] 07:58:36
+dot value, dot description.
+
+[rochak agrawal] 07:58:39
+ingress.value.port and this CIDR blocks here.
+
+[rochak agrawal] 07:58:44
+So let me copy this.
+
+[rochak agrawal] 07:59:04
+Yes?
+
+[rochak agrawal] 07:59:21
+delete it. Now, if I go…
+
+[rochak agrawal] 07:59:31
+Bev Server SG.
+
+[rochak agrawal] 07:59:34
+No sync.
+
+[rochak agrawal] 07:59:36
+Three rules has been created. HTTP, SSH, HTTPS.
+
+[rochak agrawal] 07:59:43
+802443.
+
+[rochak agrawal] 07:59:50
+8020443. Let me create another one.
+
+[rochak agrawal] 08:00:10
+Okay?
+
+[rochak agrawal] 08:00:24
+I need to give a comb here.
+
+[rochak agrawal] 08:00:29
+Save.
+
+[rochak agrawal] 08:00:43
+Now, it is one to change.
+
+[rochak agrawal] 08:00:44
+Right? Because you're not creating a new security group, you are changing your existing one. And now, if you refresh…
+
+[rochak agrawal] 08:00:57
+You see?
+
+[rochak agrawal] 08:01:01
+RDP, TCP389, CIDR block, whatever you have given.
+
+[rochak agrawal] 08:01:06
+Similarly, if you go to outbound rule, there is no outbound rule, because I've not created any outbound rule. Similarly, I can create outbound rule as well.
+
+[rochak agrawal] 08:01:16
+If you want to create multiple outbound rules, so…
+
+[rochak agrawal] 08:01:20
+You will just…
+
+[rochak agrawal] 08:01:24
+Bill Run.
+
+[rochak agrawal] 08:01:31
+So, it's dynamic.
+
+[rochak agrawal] 08:01:38
+Igles.
+
+[rochak agrawal] 08:01:43
+Let me… the same thing here, as well.
+
+[rochak agrawal] 08:01:55
+Okay, now if you see…
+
+[rochak agrawal] 08:02:20
+You know what is the mistake here? We need to find egress.
+
+[rochak agrawal] 08:02:46
+Okay?
+
+[rochak agrawal] 08:02:48
+Let me…
+
+[rochak agrawal] 08:03:02
+Okay, now if you go…
+
+[rochak agrawal] 08:03:08
+Refresh the security group.
+
+[rochak agrawal] 08:03:10
+Can you see?
+
+[rochak agrawal] 08:03:12
+there is outbound rules as well. So, of course, like, I have used the same rule, but, uh, you might use some different rules for the outbound rule. But the point is, now you see, uh.
+
+[rochak agrawal] 08:03:24
+The looping is happening for the particular resource.
+
+[rochak agrawal] 08:03:29
+Right? It is not happening… I'm not creating multiple security groups. I'm creating a single security group. Now, inside that, I need to add multiple things. And it… see, another example could be, uh, you are creating an EC2 instance. Now, when you need to add multiple EBS disks.
+
+[rochak agrawal] 08:03:48
+you can use something like a dynamic block. So, have this understanding very clear, if you use 4H without a dynamic block.
+
+[rochak agrawal] 08:03:58
+it is basically you're creating multiple resources. But when you use with the dynamic block, dynamic block is creating the sub-configuration for a single resource.
+
+[rochak agrawal] 08:04:11
+Now, for AWS, you only created one security group, right? Which is a single resource. And inside that, you have created multiple egress and ingress rules.
+
+[rochak agrawal] 08:04:40
+Okay? So, any question about 4H?
+
+[rochak agrawal] 08:04:53
+Are we good?
+
+[rochak agrawal] 08:04:57
+Yes, baby.
+
+[Vaibhav Gupta] 08:05:05
+Do more than that.
+
+[rochak agrawal] 08:05:07
+Yes, yes, ma'am.
+
+[Vaibhav Gupta] 08:05:09
+So, Rojit, uh, I'm not able to understand the security groups that we have worked, and, uh, one more thing, like, uh, when, uh, as you said, like, in dynamic situation, like, we have the same resources with different.
+
+[rochak agrawal] 08:05:15
+Mm-hmm.
+
+[Vaibhav Gupta] 08:05:27
+configuration. So, like, I'm not able to get situation in what, uh, in what scenario we use that.
+
+[rochak agrawal] 08:05:35
+But that is what we discussed. Security group is that situation. See, you created one resource, correct? That's the one security group.
+
+[rochak agrawal] 08:05:43
+Now, in that security group, you create multiple egress or ingress rule, correct?
+
+[Vaibhav Gupta] 08:05:44
+Mm-hmm.
+
+[rochak agrawal] 08:05:51
+That's a one security group ever, right?
+
+[Vaibhav Gupta] 08:05:52
+So, we are not able to, like…
+
+[Vaibhav Gupta] 08:05:55
+Yeah, yeah.
+
+[rochak agrawal] 08:05:56
+See, forget it. No, okay, no problem. See, one situation, you say, I want to create three EC2 instances.
+
+[Vaibhav Gupta] 08:05:56
+I'm not able to understand that thing.
+
+[rochak agrawal] 08:06:05
+Okay? Now, when you will be creating 3 EC2 instances, both, uh, like, all the EC2 instances will have the instance ID. So, for AWS, you created 3 different resources, correct?
+
+[Vaibhav Gupta] 08:06:08
+Okay.
+
+[Vaibhav Gupta] 08:06:18
+Mm-hmm.
+
+[rochak agrawal] 08:06:20
+Agree?
+
+[Vaibhav Gupta] 08:06:23
+Yeah.
+
+[rochak agrawal] 08:06:24
+Now, let's say I am creating one EC2 instance, but I need to add four EVS volumes to that EC2 instance.
+
+[rochak agrawal] 08:06:35
+Correct.
+
+[Vaibhav Gupta] 08:06:35
+Mm-hmm.
+
+[rochak agrawal] 08:06:35
+So for AWS, how many resources you are creating? Only one resource, correct?
+
+[Vaibhav Gupta] 08:06:41
+Wonderful.
+
+[rochak agrawal] 08:06:43
+Similarly, when you're creating the security group, if you see the configuration here, now it is deleted, let me apply it again.
+
+[rochak agrawal] 08:07:00
+When you run a Terraform API, what it says?
+
+[rochak agrawal] 08:07:10
+It says 1 to add, right?
+
+[Vaibhav Gupta] 08:07:13
+Hmm.
+
+[rochak agrawal] 08:07:14
+What does this mean?
+
+[rochak agrawal] 08:07:16
+Let me click on. Yes.
+
+[rochak agrawal] 08:07:20
+Ubuntu ad means whatever you are writing.
+
+[rochak agrawal] 08:07:23
+It is creating one security group.
+
+[Vaibhav Gupta] 08:07:27
+Hmm.
+
+[rochak agrawal] 08:07:29
+Right? Now, inside this security group, see, I'll go…
+
+[rochak agrawal] 08:07:34
+One security group. So, for AWS, this is one resource, correct?
+
+[Vaibhav Gupta] 08:07:39
+Mm-hmm.
+
+[rochak agrawal] 08:07:41
+Now, inbound rule or the outbound rule is the part of that security group. I'm not creating multiple resources for AWS. Understand this. And that is where… see, if you want…
+
+[rochak agrawal] 08:07:54
+a loop inside the configuration block or of a particular resource.
+
+[rochak agrawal] 08:08:00
+Then I'm going to use a dynamic block.
+
+[rochak agrawal] 08:08:04
+See, uh, previously, we used a block, for example, for Alice, Bob, and Charlie, correct? For each block.
+
+[rochak agrawal] 08:08:15
+In this case, how many resources we are creating?
+
+[Vaibhav Gupta] 08:08:19
+resources.
+
+[rochak agrawal] 08:08:21
+3 resources, correct?
+
+[Vaibhav Gupta] 08:08:24
+Hmm.
+
+[rochak agrawal] 08:08:26
+Right? Now, Ellis is a different IAM user, Bob is a different IAM user, Charlie is a different IAM user. Correct?
+
+[Vaibhav Gupta] 08:08:27
+Hmm.
+
+[Vaibhav Gupta] 08:08:32
+Charlie's… hmm.
+
+[rochak agrawal] 08:08:33
+Right? Now, let me… let me create an example. I'll explain with an example.
+
+[Vaibhav Gupta] 08:08:35
+Yeah.
+
+[rochak agrawal] 08:09:10
+Now till the time my code is getting created.
+
+[Vaibhav Gupta] 08:09:15
+So, also, while practicing, we have… we also have used to, like.
+
+[Vaibhav Gupta] 08:09:21
+you know, that Google for the course…
+
+[rochak agrawal] 08:09:25
+I'm sorry, can you come again?
+
+[Vaibhav Gupta] 08:09:29
+Uh, while practicing, we also have to use the Google for code.
+
+[rochak agrawal] 08:09:34
+Yeah, because, see, you might have… in your organization, you might have Claude or Cursor or something. Now…
+
+[Vaibhav Gupta] 08:09:41
+Mm-hmm, mm-hmm.
+
+[rochak agrawal] 08:09:42
+You just need to understand the concept.
+
+[Vaibhav Gupta] 08:09:46
+Okay, so during interview, they will not ask…
+
+[rochak agrawal] 08:09:46
+No one is writing the code.
+
+[rochak agrawal] 08:09:51
+No, see, the concept is being asked, like, how you are going to use the dynamic block.
+
+[rochak agrawal] 08:09:55
+See, what we are doing is for the syntax.
+
+[Vaibhav Gupta] 08:09:59
+Mm-hmm.
+
+[rochak agrawal] 08:10:00
+Right?
+
+[Vaibhav Gupta] 08:10:01
+Mm-hmm.
+
+[rochak agrawal] 08:10:02
+Now you see here.
+
+[rochak agrawal] 08:10:04
+Previously, also, we were using the.
+
+[rochak agrawal] 08:10:07
+this block.
+
+[rochak agrawal] 08:10:09
+Right? So, for each IAM user, and this is a…
+
+[Vaibhav Gupta] 08:10:10
+Hmm.
+
+[rochak agrawal] 08:10:16
+Right? Local IAM user, LS, Bob.
+
+[rochak agrawal] 08:10:20
+Charlie, right? And it go… it is going to create a 3 IAM user.
+
+[Vaibhav Gupta] 08:10:24
+Hmm.
+
+[rochak agrawal] 08:10:24
+Previously also we did. Now for each IAM user.
+
+[Vaibhav Gupta] 08:10:27
+Okay.
+
+[rochak agrawal] 08:10:31
+It's not using the dynamic block.
+
+[rochak agrawal] 08:10:43
+Let me take another example. It is not using the time.
+
+[rochak agrawal] 08:10:51
+City Security Group.
+
+[rochak agrawal] 08:10:53
+With
+
+[rochak agrawal] 08:10:57
+For each.
+
+[rochak agrawal] 08:11:02
+Dynamic. Low.
+
+[rochak agrawal] 08:11:15
+Yes, this is Victor.
+
+[rochak agrawal] 08:11:43
+Okay, so we define three locals. Security group, sorry, one local inside the security group. We have three. Web security group, app security group, and DB security group. Correct. Now for the web security group, you have a different rules.
+
+[rochak agrawal] 08:11:58
+For app security group, you have a different rule, and for DB security group, you have a different rule, correct?
+
+[rochak agrawal] 08:12:05
+Now, when you're creating the security group.
+
+[Vaibhav Gupta] 08:12:06
+Hmm.
+
+[rochak agrawal] 08:12:10
+You are creating here, you are using the for each without the dynamic block.
+
+[rochak agrawal] 08:12:17
+You see for each local.securitygroup. So it is going to create three security groups for you. One is web security group, app security group, and DB security group.
+
+[rochak agrawal] 08:12:32
+Yes? No?
+
+[Vaibhav Gupta] 08:12:33
+Mm-hmm. Yes, yes, yes.
+
+[rochak agrawal] 08:12:34
+Okay yes right for each it says name is this each dot key which is a web SG app SG DV SG BPC ID I'll just remove it for now.
+
+[rochak agrawal] 08:12:46
+Okay, now inside the security group.
+
+[rochak agrawal] 08:12:50
+You… what is that you're going to have? Ingress and outgress rules? Ingress or egress rules, correct?
+
+[Vaibhav Gupta] 08:12:57
+Mm-hmm.
+
+[rochak agrawal] 08:12:58
+Now, one security group can have one egress rule, one ingress rule, multiple egress rule, multiple ingress rules, correct?
+
+[rochak agrawal] 08:13:08
+Now, and then your web security group can have a different security ingress egress rule than your application security group, correct? So now you see, here we have created use the for each.
+
+[rochak agrawal] 08:13:22
+And we are saying, create three resources. But now, inside a resource.
+
+[Vaibhav Gupta] 08:13:28
+Hmm.
+
+[rochak agrawal] 08:13:29
+You need to create different, different rules.
+
+[rochak agrawal] 08:13:33
+There, I'm using a dynamic block.
+
+[rochak agrawal] 08:13:36
+With the footage.
+
+[rochak agrawal] 08:13:37
+So now, this block, what it does…
+
+[rochak agrawal] 08:13:41
+It will go inside the each security group, which you created as part of the upper block.
+
+[rochak agrawal] 08:13:46
+And then inside it, it is going to create a loop, and it is going to create multiple rules inside each particular security group.
+
+[Vaibhav Gupta] 08:13:48
+Hmm.
+
+[rochak agrawal] 08:13:55
+So you see, without using the dynamic block, you are going to create multiple resources, correct? Three security groups.
+
+[rochak agrawal] 08:14:03
+But when you're using it with a dynamic block.
+
+[rochak agrawal] 08:14:06
+Within the single security group, it is going to create.
+
+[rochak agrawal] 08:14:10
+Multiple rules of that security group.
+
+[rochak agrawal] 08:14:14
+Let me run this.
+
+[rochak agrawal] 08:14:20
+Okay.
+
+[rochak agrawal] 08:14:49
+TOI created something manually.
+
+[Vaibhav Gupta] 08:14:57
+So, uh, we can say, like, we create an AWS source, like, say, one AWS source, and inside that, we have created, uh, multiple security groups as a point-to-invulnerable routes, ingress or egress.
+
+[rochak agrawal] 08:15:00
+Mm-hmm.
+
+[rochak agrawal] 08:15:06
+Hmm?
+
+[Vaibhav Gupta] 08:15:09
+Right.
+
+[rochak agrawal] 08:15:09
+Correct? Right.
+
+[rochak agrawal] 08:15:13
+Okay.
+
+[rochak agrawal] 08:15:16
+Just one second.
+
+[rochak agrawal] 08:15:18
+I created this DVSG manually.
+
+[rochak agrawal] 08:15:25
+Now let me run this.
+
+[rochak agrawal] 08:15:39
+DBSG, BevSG. Now, if you go here…
+
+[rochak agrawal] 08:15:45
+So you have a 3FHG, DBHG, WebHG, correct?
+
+[rochak agrawal] 08:15:49
+Now why three we have? Because of this block.
+
+[Vaibhav Gupta] 08:15:52
+Mm-hmm.
+
+[rochak agrawal] 08:15:55
+It says, for each.
+
+[rochak agrawal] 08:15:57
+go to these values, so we have WebSG, AppSG, and DVHG, correct? So, it created 3 security groups. Now, if you go inside each security group, so for example.
+
+[rochak agrawal] 08:16:12
+Let's say I go to WebSG.
+
+[rochak agrawal] 08:16:16
+Now, inside the WebSG, you can see two inbound rules.
+
+[rochak agrawal] 08:16:20
+80 and 4430, correct?
+
+[rochak agrawal] 08:16:23
+Now, that is because of this dynamic block.
+
+[Vaibhav Gupta] 08:16:24
+Hmm.
+
+[rochak agrawal] 08:16:26
+When you… when you… because…
+
+[rochak agrawal] 08:16:29
+for… with the help of this block, you created 3 resources. Okay? Now…
+
+[rochak agrawal] 08:16:34
+When you say dynamic, it goes inside each resource and create whatever the rules you have defined here.
+
+[rochak agrawal] 08:16:43
+Here, only one rule you have defined, correct?
+
+[rochak agrawal] 08:16:46
+So if you go to Apache, there will be…
+
+[Vaibhav Gupta] 08:16:48
+Periodically, why it is break, uh…
+
+[rochak agrawal] 08:16:51
+I'm saying with the dynamic block I go inside a security group and creating an inbound rule. You can see only one rule is there. Why? Because I have created only one rule here. Now let's say I create one more rule here.
+
+[Vaibhav Gupta] 08:16:51
+Sorry, I'm waiting to speak.
+
+[Vaibhav Gupta] 08:17:05
+Mm-hmm.
+
+[Vaibhav Gupta] 08:17:12
+Okay.
+
+[rochak agrawal] 08:17:13
+Okay? And I'll just say 8090, for example.
+
+[rochak agrawal] 08:17:23
+Okay? Um…
+
+[Vaibhav Gupta] 08:17:27
+Hmm.
+
+[rochak agrawal] 08:17:28
+Hello.
+
+[rochak agrawal] 08:17:29
+8090.
+
+[rochak agrawal] 08:17:32
+Control S.
+
+[rochak agrawal] 08:17:33
+Now you see, let me run the apply again.
+
+[rochak agrawal] 08:17:46
+Refresh this.
+
+[rochak agrawal] 08:17:53
+Got it.
+
+[Vaibhav Gupta] 08:17:55
+Mm-hmm.
+
+[rochak agrawal] 08:17:55
+Have you created another resource? No.
+
+[rochak agrawal] 08:17:58
+You…
+
+[Vaibhav Gupta] 08:18:00
+Mm-hmm.
+
+[rochak agrawal] 08:18:00
+Chase the property of a resource, which is this one.
+
+[rochak agrawal] 08:18:04
+Got it? So you see, simple use case. When you want to create multiple AWS resource, you are going to use for each without the dynamic block. As simple as that.
+
+[Vaibhav Gupta] 08:18:08
+Hmm.
+
+[rochak agrawal] 08:18:18
+Like here.
+
+[Vaibhav Gupta] 08:18:19
+Mm-hmm.
+
+[rochak agrawal] 08:18:22
+Right? I'm creating 3 security groups. 3 because I have given S3. You can…
+
+[rochak agrawal] 08:18:27
+create a number of the security group. But when you want to change the property of your security group.
+
+[Vaibhav Gupta] 08:18:31
+Hmm.
+
+[rochak agrawal] 08:18:35
+or I would say when you want to iterate, when you want to loop off the configuration of a single resource, then you are going to use the dynamic block.
+
+[rochak agrawal] 08:18:47
+You want you are going to use for each inside a dynamic.
+
+[rochak agrawal] 08:18:53
+Clear now?
+
+[Vaibhav Gupta] 08:18:55
+Mm-hmm.
+
+[rochak agrawal] 08:18:57
+Okay? So that is about the 4H. Again, 3 variations we have if we want to create multiple resources.
+
+[rochak agrawal] 08:19:05
+We have the count. Again, count is very simple. Count is going to create only the identical resources.
+
+[rochak agrawal] 08:19:15
+You create one resource, you create two resource, 100 resource, 500 resource.
+
+[rochak agrawal] 08:19:21
+Every resource created with the help of count iteration will be.
+
+[rochak agrawal] 08:19:27
+identical in nature. So, if I want to create 100 virtual machines of exactly same type, then the best alternative is to use the count.
+
+[Vaibhav Gupta] 08:19:35
+Mm-hmm.
+
+[rochak agrawal] 08:19:37
+Okay, but when you want to give different different configuration to your resources, you are going to use the for each.
+
+[rochak agrawal] 08:19:48
+Now, for each also, I can use for each in two variations. One is without the dynamic block, so that it is going to create multiple AWS resources. It is going to loop.
+
+[rochak agrawal] 08:20:01
+on the resources itself. So in this example, we created three security groups, which is three AWS resources, right?
+
+[Vaibhav Gupta] 08:20:10
+Mm-hmm.
+
+[rochak agrawal] 08:20:10
+Then, with the help of the dynamic block.
+
+[rochak agrawal] 08:20:13
+if you want to loop on a property of an AWS resource. So, once your security group is created, I want to create multiple ingress and egress rules.
+
+[rochak agrawal] 08:20:25
+for that particular security group. So then I am going to use a dynamic block for that particular resource.
+
+[rochak agrawal] 08:20:32
+So, that is about the looping in Terraform.
+
+[rochak agrawal] 08:20:37
+Okay?
+
+[Vaibhav Gupta] 08:20:39
+AWS inside security groups. Inside the security groups, we have the ingress and aggressive rules.
+
+[rochak agrawal] 08:20:44
+See, security groups is just an example. We have taken another example. One way is, I see, for example.
+
+[rochak agrawal] 08:20:58
+Now, I want to create 3…
+
+[rochak agrawal] 08:21:02
+Different…
+
+[rochak agrawal] 08:21:02
+EC2 instance. No, okay. I want to create 3 exactly same EC2 instance, what is you going to use?
+
+[rochak agrawal] 08:21:13
+Right?
+
+[rochak agrawal] 08:21:16
+I want to use 3 different EC2 instances.
+
+[rochak agrawal] 08:21:24
+What is I'm going to use?
+
+[rochak agrawal] 08:21:27
+Ulrich?
+
+[rochak agrawal] 08:21:30
+Right?
+
+[rochak agrawal] 08:21:32
+But I want to use… here, I have to add, let's say, for example.
+
+[rochak agrawal] 08:21:44
+EBS volume.
+
+[rochak agrawal] 08:21:47
+Different, different EBS volumes.
+
+[rochak agrawal] 08:21:52
+Great.
+
+[rochak agrawal] 08:21:52
+So, with the 4H, I will use a dynamic block also.
+
+[Vaibhav Gupta] 08:21:59
+Hmm.
+
+[rochak agrawal] 08:22:00
+Hey!
+
+[rochak agrawal] 08:22:01
+So security group we have taken as an example, but it could be anything.
+
+[rochak agrawal] 08:22:06
+But you just remember, when you are using only for each.
+
+[rochak agrawal] 08:22:11
+It is creating different AWS resources.
+
+[Vaibhav Gupta] 08:22:12
+Hmm.
+
+[rochak agrawal] 08:22:16
+or I should not say the AWS resources, different resources you will see, because you can use with Azure also, with GCP also, right? You are going to create distinct cloud resources. But when you use 4H within the dynamic block.
+
+[rochak agrawal] 08:22:32
+Then you are looping into the configuration of a single resource.
+
+[rochak agrawal] 08:22:38
+That is the difference. Okay?
+
+[Vaibhav Gupta] 08:22:42
+Hmm.
+
+[rochak agrawal] 08:22:45
+Okay, so this is about the looping in Terraform. Now, we discuss one more thing, which is the provisionals.
+
+[Vaibhav Gupta] 08:22:46
+Okay.
+
+[Vaibhav Gupta] 08:22:56
+I'm just asking, this is a basic thing, like, just, um, what is a key component required for a dynamic block?
+
+[rochak agrawal] 08:23:05
+What is the key component required? But it will depend on the resource you are creating. For example, for a security group, you can loop.
+
+[rochak agrawal] 08:23:21
+For the security group, you can create multiple ingress rules, correct? Or multiple egress rules.
+
+[rochak agrawal] 08:23:26
+So, in… in Security Group's case, it is your, um…
+
+[rochak agrawal] 08:23:32
+ingress and egress is a key component for you. But when I'm using EC2 instance.
+
+[rochak agrawal] 08:23:37
+I can apply… I can attach multiple EBS volumes to it, correct?
+
+[Vaibhav Gupta] 08:23:38
+Mm-hmm.
+
+[rochak agrawal] 08:23:45
+Or for example, if I'm using S3 bucket, then I can apply multiple bucket policies to my bucket. So when you see, I'm not sure if I understood your question correctly or not. When you say what is a key component required for a dynamic?
+
+[Vaibhav Gupta] 08:23:45
+Okay.
+
+[rochak agrawal] 08:24:02
+So, you see, you understand, you create… what is a dynamic blog? Dynamic blog is…
+
+[rochak agrawal] 08:24:09
+You are looping on a particular resource, correct?
+
+[Vaibhav Gupta] 08:24:12
+Mm-hmm.
+
+[rochak agrawal] 08:24:14
+Now
+
+[rochak agrawal] 08:24:15
+If the resource is security group, its key component will be different. If the resource is EC2 instance, its key component will be different. For example, I'm creating a load balancer. Now, in the load balancer, I can create multiple backends, correct?
+
+[Vaibhav Gupta] 08:24:20
+Mm-hmm.
+
+[Vaibhav Gupta] 08:24:30
+Mm-hmm.
+
+[rochak agrawal] 08:24:31
+So, for that, the key component will be the backends.
+
+[rochak agrawal] 08:24:37
+Okay.
+
+[Vaibhav Gupta] 08:24:40
+So, basically, we can say our key components are our rules.
+
+[rochak agrawal] 08:24:45
+No, again, uh, wherever you… you came on the ground zero. Not rules. See, secu… for rules is for the security group.
+
+[Vaibhav Gupta] 08:24:54
+Yep.
+
+[rochak agrawal] 08:24:55
+For example, if I'm creating a EC2 instance, I can create multiple EBS volumes, correct?
+
+[Vaibhav Gupta] 08:25:02
+Mm-hmm.
+
+[rochak agrawal] 08:25:03
+So then EBS volume is a key component for me in case of a EC2.
+
+[Vaibhav Gupta] 08:25:08
+Okay, okay.
+
+[rochak agrawal] 08:25:10
+For load balancer, it could be the back end.
+
+[Vaibhav Gupta] 08:25:11
+So, uh…
+
+[Vaibhav Gupta] 08:25:13
+Yeah, yeah.
+
+[rochak agrawal] 08:25:14
+Mm-hmm.
+
+[Vaibhav Gupta] 08:25:15
+So, depend on the property, that what we are using, that depends on it.
+
+[rochak agrawal] 08:25:18
+Very good.
+
+[rochak agrawal] 08:25:19
+Instead of rule, we would say the attribute or the properties, as you say, of the service you are working on.
+
+[Vaibhav Gupta] 08:25:30
+Okay.
+
+[rochak agrawal] 08:25:31
+Okay?
+
+[rochak agrawal] 08:25:33
+Yep.
+
+[Vaibhav Gupta] 08:25:33
+Okay.
+
+[rochak agrawal] 08:25:35
+Okay, now, uh, we discussed about the provisioners also. Uh, so we have three types of the provisioners, basically. But mostly, if you go to interview, you say three or two. It really does not matter, because mostly, we say we have two types of, uh.
+
+[rochak agrawal] 08:25:53
+Uh… provisioner, one is a local provisioner.
+
+[rochak agrawal] 08:26:03
+And one is a remote provisioning.
+
+[rochak agrawal] 08:26:08
+Okay, now…
+
+[rochak agrawal] 08:26:11
+Remote provision…
+
+[rochak agrawal] 08:26:16
+In the local provisioners, um, something happens…
+
+[rochak agrawal] 08:26:22
+where your Terraform is running. So, for example, my Terraform is running on my Windows laptop right now, so local provisioner will run something on your machine where the Terraform is running, okay?
+
+[rochak agrawal] 08:26:36
+While the remote provisioner will do something.
+
+[rochak agrawal] 08:26:40
+Where you created a machine.
+
+[rochak agrawal] 08:26:44
+Sorry. Created a machine, and then, um…
+
+[rochak agrawal] 08:26:47
+You want to install NGINX on that machine, correct? So then you are going to use something called the remote provisioner.
+
+[rochak agrawal] 08:26:55
+Let me see if I delete… let me delete the resources, and then…
+
+[rochak agrawal] 08:27:16
+Now, let me take the example of…
+
+[rochak agrawal] 08:28:04
+Just…
+
+[rochak agrawal] 08:28:18
+I need to have a key.
+
+[rochak agrawal] 08:28:59
+Okay, let me first generate it.
+
+[rochak agrawal] 08:29:14
+Oh, oh, oh, even key, no such…
+
+[rochak agrawal] 08:29:31
+show people's…
+
+[rochak agrawal] 08:29:33
+We need this e-pair, uh…
+
+[rochak agrawal] 08:29:37
+Use this. Yeah. 1st DC.
+
+[rochak agrawal] 08:29:40
+I have a previously.
+
+[rochak agrawal] 08:29:45
+created .m file.
+
+[rochak agrawal] 08:30:06
+Let me take this, and we will resolve any issues coming in the runtime.
+
+[rochak agrawal] 08:30:29
+Okay? Now here, you see what we are doing.
+
+[rochak agrawal] 08:30:35
+We are creating an AWS instance, which is a web, okay? Again, I need the EC2 instance ID.
+
+[rochak agrawal] 08:30:50
+AMAs?
+
+[rochak agrawal] 08:30:53
+Go to…
+
+[rochak agrawal] 08:30:55
+instances.
+
+[rochak agrawal] 08:31:06
+AMI ID.
+
+[rochak agrawal] 08:31:17
+Security group ID.
+
+[rochak agrawal] 08:31:31
+Data Security Group.
+
+[rochak agrawal] 08:31:53
+Okay, so this is still now, there's a very, um, key name is…
+
+[rochak agrawal] 08:32:07
+My first easy tool.
+
+[rochak agrawal] 08:32:20
+Now, if you see here.
+
+[rochak agrawal] 08:32:24
+Okay, so this is my normal web server. I am… okay, I've done one mistake.
+
+[rochak agrawal] 08:32:38
+Instead of AMID, I have updated the instance size.
+
+[rochak agrawal] 08:32:49
+Micro, okay. Now, I'm saying, forget about the provisioners as of now.
+
+[rochak agrawal] 08:32:56
+I am using, and I'm creating an AWS instance, which we have seen previously also, giving the AMI ID, giving the instance type, and I'm saying use this key, since the key is already presented in my AWS account. Here you can see my first EC2.
+
+[rochak agrawal] 08:33:13
+And…
+
+[rochak agrawal] 08:33:14
+BPC Security Group ID, also we have given.
+
+[rochak agrawal] 08:33:19
+So forget the connection and the provisioner as of now.
+
+[rochak agrawal] 08:33:23
+What this will do is it is going to create a AWS instance of this particular size and AMI ID.
+
+[rochak agrawal] 08:33:30
+Simple. Okay. Now, um…
+
+[rochak agrawal] 08:33:34
+What we need to do, we said we are going to use something called the yoga.
+
+[rochak agrawal] 08:33:43
+Nginx, once the server is created, we need to install Nginx on the server, and then…
+
+[rochak agrawal] 08:33:53
+run it, right? So, for that, we are using something called the remote exec provisioner. So, what this provisioner will do, it is going to run these commands.
+
+[rochak agrawal] 08:34:04
+On the server, once it's created, it is going to install the Nginx, and then once it is installed, it is going to start it. But for a remote provisioner to work, you need to have a connection.
+
+[rochak agrawal] 08:34:20
+Connection.
+
+[rochak agrawal] 08:34:21
+Host is a public IP and the private key. Okay, so my private key is where in this folder.
+
+[rochak agrawal] 08:34:33
+So, I am going to use…
+
+[rochak agrawal] 08:34:44
+Okay, and what is the name of my key?
+
+[rochak agrawal] 08:35:01
+Okay? So this is my key.
+
+[rochak agrawal] 08:35:04
+So with the help of this key.
+
+[rochak agrawal] 08:35:07
+I am going to connect to my user.
+
+[rochak agrawal] 08:35:19
+I think we need to change the username also.
+
+[rochak agrawal] 08:35:46
+Easy to use, yes.
+
+[rochak agrawal] 08:35:53
+Okay.
+
+[rochak agrawal] 08:35:56
+To save, now I'm going to come here, and…
+
+[rochak agrawal] 08:36:01
+Telephone plan.
+
+[rochak agrawal] 08:36:10
+Symbol, zero, zero? Yeah, we have given the zero.
+
+[rochak agrawal] 08:37:07
+Yeah, use the same thing.
+
+[rochak agrawal] 08:37:09
+Let's see.
+
+[rochak agrawal] 08:37:21
+So you can see, uh, it is going to create… what it is going to create for you.
+
+[rochak agrawal] 08:37:28
+This… this… it's really micro, my first EC2 key name it is using
+
+[rochak agrawal] 08:37:33
+And then, now what I'll do is, I will take the, uh…
+
+[rochak agrawal] 08:37:39
+IP as an output, public IP.
+
+[rochak agrawal] 08:37:46
+So that once it is created, we will just go…
+
+[rochak agrawal] 08:38:20
+Okay, easy to public IP description, awsinstance.web.publicIP. Perfect.
+
+[rochak agrawal] 08:38:26
+Okay, now let me run the plan again.
+
+[rochak agrawal] 08:38:40
+Okay.
+
+[rochak agrawal] 08:38:42
+Then play.
+
+[rochak agrawal] 08:38:45
+It's auto.
+
+[rochak agrawal] 08:38:47
+Approve.
+
+[rochak agrawal] 08:38:48
+Let's see.
+
+[rochak agrawal] 08:38:57
+So first, it is creating the…
+
+[rochak agrawal] 08:39:00
+instance web.
+
+[rochak agrawal] 08:39:12
+Okay, so you see, um, provisioning with the remote exec.
+
+[rochak agrawal] 08:39:18
+Connected. Okay, it got connected.
+
+[rochak agrawal] 08:39:20
+So, connecting to remote host via SSA, host is this, so easy to user, password false, this is true, and connected. It says…
+
+[rochak agrawal] 08:39:31
+Okay, now you see the error, what we are getting, because we are using the wrong commands here. We are using the Ubuntu commands, but our server is a CentOS server, and that is why it says command not found, command not found, and fail to start.
+
+[rochak agrawal] 08:39:49
+So we need to fix this.
+
+[rochak agrawal] 08:39:53
+I'll just do a destroyer first.
+
+[rochak agrawal] 08:40:02
+And here, what we need to do is, we need to use something called…
+
+[rochak agrawal] 08:40:10
+Yum.
+
+[rochak agrawal] 08:40:21
+Apt install is, uh, apt-get is used in the Linux, uh, sorry, Ubuntu-based system. In the CentOS, we need to use something called the EM.
+
+[rochak agrawal] 08:40:42
+Okay, now let me run it again.
+
+[rochak agrawal] 08:41:14
+It's connected.
+
+[rochak agrawal] 08:41:46
+It'll take a couple of minutes.
+
+[rochak agrawal] 08:42:23
+Okay, now it's created, completed, NGINX has been installed, right? Here you can see.
+
+[rochak agrawal] 08:42:31
+And if you go, open the public IP of my server.
+
+[rochak agrawal] 08:42:43
+You see, NGINX is already installed.
+
+[rochak agrawal] 08:42:48
+How… how have we done it? We simply use something called the…
+
+[rochak agrawal] 08:42:56
+Provisioner, and we run this command.
+
+[rochak agrawal] 08:42:59
+Right?
+
+[rochak agrawal] 08:43:00
+So you can see, with the help of a remote provisioner, once your machine is created.
+
+[rochak agrawal] 08:43:05
+I can do anything on that machine.
+
+[rochak agrawal] 08:43:09
+As simple as that.
+
+[rochak agrawal] 08:43:11
+Earlier about the remote provisioner?
+
+[rochak agrawal] 08:43:22
+Yes, I'm here.
+
+[Amiya Nanda] 08:43:24
+Ah, hi Roshak, good morning. Ah, Roshak, ah, can you please explain the code in step by step once, please?
+
+[rochak agrawal] 08:43:26
+Good morning.
+
+[rochak agrawal] 08:43:31
+Sure. See, uh, here, if you see, that is what we… I explained, uh, previously also. So, if you see here.
+
+[rochak agrawal] 08:43:46
+See, this is my provider block, okay, which we are using in every code. Now, if you see, forget provisioner for a moment, and that is what, like, I explained.
+
+[Amiya Nanda] 08:43:51
+Yeah
+
+[Amiya Nanda] 08:43:56
+Mmhm.
+
+[rochak agrawal] 08:43:59
+In this…
+
+[rochak agrawal] 08:43:59
+Any question? It's a simple AWS instance we are creating.
+
+[rochak agrawal] 08:44:05
+just the configuration here, you see, uh, see, these are the attributes. Those attributes are going to change as per your resource you are creating. Right now, I'm creating the AWS instance, so you can see the values, like AMI, instance type.
+
+[rochak agrawal] 08:44:19
+Security group and these will be changed from resource to resource.
+
+[rochak agrawal] 08:44:24
+Yeah, clear, right? Then, output also we discussed multiple times.
+
+[Amiya Nanda] 08:44:25
+Okay, okay. Hmm.
+
+[rochak agrawal] 08:44:30
+Anything…
+
+[rochak agrawal] 08:44:32
+For example…
+
+[Amiya Nanda] 08:44:32
+Key and that key name we need to create from cloud provider.
+
+[rochak agrawal] 08:44:35
+Yes, no. See, you can create the key name from the code itself. I used a key which is already there.
+
+[Amiya Nanda] 08:44:45
+Okay, and this key we need to create from cloud provider itself.
+
+[rochak agrawal] 08:44:45
+Like, your security group.
+
+[rochak agrawal] 08:44:50
+No, we can… yes, so this key should be present in AWS.
+
+[Amiya Nanda] 08:44:54
+Okay.
+
+[rochak agrawal] 08:44:54
+Okay.
+
+[Amiya Nanda] 08:44:56
+Okay.
+
+[rochak agrawal] 08:44:56
+Because if you see, I have the key pair is already there.
+
+[Amiya Nanda] 08:45:01
+Okay.
+
+[rochak agrawal] 08:45:01
+So, I've used the same…
+
+[Vaibhav Gupta] 08:45:01
+So, we have to create manually.
+
+[Amiya Nanda] 08:45:04
+I have to create my own.
+
+[rochak agrawal] 08:45:05
+See, there is multiple ways you can do it from the, uh, this, um, uh, Terraform also.
+
+[Vaibhav Gupta] 08:45:12
+Okay.
+
+[rochak agrawal] 08:45:12
+Okay, then output is something which is.
+
+[rochak agrawal] 08:45:18
+Output is a value of the resource which is being created. For example, what values you can get from the output? Now, if you see here, there will be certain field which says known after apply. Known after apply, correct? Can you see here?
+
+[Amiya Nanda] 08:45:36
+Yes.
+
+[rochak agrawal] 08:45:37
+So, if you see, we have taken the public IP.
+
+[rochak agrawal] 08:45:41
+Public IP, known after a lie.
+
+[rochak agrawal] 08:45:44
+So, those things which is not known to me. So, for example, instance size.
+
+[rochak agrawal] 08:45:49
+Instance size I have already given, correct? And that's why it is…
+
+[rochak agrawal] 08:45:52
+T3.micro.
+
+[rochak agrawal] 08:45:54
+Correct?
+
+[rochak agrawal] 08:45:56
+So, any value which is known after apply, we can get those.
+
+[rochak agrawal] 08:46:03
+into the output block.
+
+[rochak agrawal] 08:46:05
+So say output. Again, this is a name. Now how to get the value? What value you want? aws_instance.web and .what value you want.
+
+[rochak agrawal] 08:46:21
+Public ID, so this field. If I want the public DNS, so I will say aws_instance.web, because this is the name web. So whatever name you will give, your Terraform is going to refer your resources with that name, and then this.
+
+[rochak agrawal] 08:46:36
+is the attribute which you want to know. It could be ARN, it could be AMI, whatsoever.
+
+[rochak agrawal] 08:46:42
+So that is about the output block.
+
+[rochak agrawal] 08:46:45
+Okay, now…
+
+[Amiya Nanda] 08:46:46
+Okay.
+
+[rochak agrawal] 08:46:48
+So, output, again, is nothing to do with the provisioner, okay? Uh…
+
+[rochak agrawal] 08:46:54
+Now, if you see the provisioner block, there is nothing.
+
+[rochak agrawal] 08:46:57
+This could be any command, correct?
+
+[rochak agrawal] 08:47:00
+I want to install nginx, that is why I am running the nginx command. If I want to install Java.
+
+[rochak agrawal] 08:47:07
+I will install the java like sudo yum install java sudo yum install python correct.
+
+[rochak agrawal] 08:47:15
+So these are the those commands. So basically, these are the command which is going to run once your provisioner is running. So you need to define provisioner, remote exec.
+
+[rochak agrawal] 08:47:26
+Same thing, inline.
+
+[rochak agrawal] 08:47:28
+And then your commands, whatever you are going to run.
+
+[rochak agrawal] 08:47:31
+Clear about the provisional
+
+[Amiya Nanda] 08:47:33
+And these are the commands which is going to run in this web machine, AWS instance, right?
+
+[rochak agrawal] 08:47:38
+Machine.
+
+[rochak agrawal] 08:47:39
+Correct. Once this is created, and that is what we have seen in the output. So once when the newly run Terraform apply, so it says creating.
+
+[rochak agrawal] 08:47:50
+Still creating?
+
+[rochak agrawal] 08:47:52
+now as you created, right?
+
+[rochak agrawal] 08:47:55
+Provisioning with the remote exit, and it get first connecting to remote host.
+
+[rochak agrawal] 08:48:01
+Once it is connected, then it started running your commands.
+
+[rochak agrawal] 08:48:05
+Derek?
+
+[rochak agrawal] 08:48:08
+You see?
+
+[Amiya Nanda] 08:48:08
+Yeah.
+
+[rochak agrawal] 08:48:09
+installing… install 7 package, then installing NGINX, right? It is installing NGINX.
+
+[rochak agrawal] 08:48:17
+it is installed, and then it is going to create… it is going to run those. So whatever you want to run, it will go inside this inline block.
+
+[rochak agrawal] 08:48:26
+Okay.
+
+[rochak agrawal] 08:48:30
+Now, there is one very interesting thing is…
+
+[rochak agrawal] 08:48:33
+Sorry.
+
+[rochak agrawal] 08:48:35
+If you want.
+
+[rochak agrawal] 08:48:39
+Please give me a minute.
+
+[rochak agrawal] 08:49:07
+So, um…
+
+[rochak agrawal] 08:49:09
+Whatever command you want to run, that will go here. Simple. Now…
+
+[rochak agrawal] 08:49:15
+here, there is something called connection, because, see, it's a remote machine. Now, let's say you are in an isolated network. Uh, would you be able to connect to your machine? So that is where you need to define.
+
+[rochak agrawal] 08:49:28
+Your connection.
+
+[rochak agrawal] 08:49:31
+This one.
+
+[rochak agrawal] 08:49:32
+Okay, so that is what we are defining in the connection. We are saying connection type is SSH.
+
+[rochak agrawal] 08:49:40
+User is this.
+
+[rochak agrawal] 08:49:42
+Host is the public IP. Public IP, and that is what if self.publicIP means. If you want to see, this block is in a resource block only.
+
+[rochak agrawal] 08:49:53
+Correct?
+
+[rochak agrawal] 08:49:56
+So, you say host is a self.publicIP. This is… see, this provisioner, this connection is part of the Terraform resource only. So, you see.
+
+[rochak agrawal] 08:50:06
+my public IP is this, user is this, type is this, and how you are going to authenticate using this private key, which I…
+
+[rochak agrawal] 08:50:15
+Sorry, already downloaded on my system.
+
+[rochak agrawal] 08:50:18
+If you don't give this, for example, let's say, let me first destroy this.
+
+[rochak agrawal] 08:50:39
+Now, let's say I will change it to something which is not there.
+
+[rochak agrawal] 08:50:44
+Okay.
+
+[rochak agrawal] 08:50:46
+Control S.
+
+[rochak agrawal] 08:50:48
+Your instance will be created, but your connection.
+
+[rochak agrawal] 08:50:52
+is going to fail.
+
+[Amiya Nanda] 08:50:54
+Ah, connection in the sense, ah, first we created it, ah, the web instance, right?
+
+[Amiya Nanda] 08:50:59
+Then, uh…
+
+[rochak agrawal] 08:51:00
+Then you connect with the instance to run those commands.
+
+[Amiya Nanda] 08:51:03
+Okay, okay, okay.
+
+[rochak agrawal] 08:51:04
+Without connecting it, how you're going to run these commands?
+
+[rochak agrawal] 08:51:10
+Hey!
+
+[rochak agrawal] 08:51:10
+If I cannot log in into the machine.
+
+[Amiya Nanda] 08:51:10
+Right!
+
+[rochak agrawal] 08:51:14
+How am I… how am I going to install it?
+
+[rochak agrawal] 08:51:16
+See, it is simple. If, let's say, there is a laptop running, and I want to watch a YouTube movie on it.
+
+[rochak agrawal] 08:51:23
+If…
+
+[rochak agrawal] 08:51:24
+I'm not able to log in to this machine. Can I watch a YouTube?
+
+[rochak agrawal] 08:51:28
+No, wait.
+
+[Amiya Nanda] 08:51:30
+Correct.
+
+[rochak agrawal] 08:51:31
+Anything you can do on your laptop, on your system, is the first thing is you need to have a connection.
+
+[rochak agrawal] 08:51:39
+Hey
+
+[Amiya Nanda] 08:51:40
+Right.
+
+[rochak agrawal] 08:51:41
+So now, you see, I have given this, uh…
+
+[rochak agrawal] 08:51:45
+instance, a different key which is not there. Now see what is going to happen.
+
+[rochak agrawal] 08:51:59
+See?
+
+[rochak agrawal] 08:52:01
+Here itself, it says…
+
+[rochak agrawal] 08:52:02
+It is not even going and creating it. It says invalid function argument.
+
+[rochak agrawal] 08:52:08
+Invalid value for the path parameter. It says no file exists.
+
+[rochak agrawal] 08:52:13
+With this name. This function works only with the file that are distributed as a part of the configuration source code, so if this file will be created by a resource in this configuration.
+
+[rochak agrawal] 08:52:23
+you must instead obtain this result from an attribute of the source source. Since this file is not present at all, and similar error you will get once you run the telephone plan.
+
+[rochak agrawal] 08:52:36
+Because this file itself is not existed, right?
+
+[Amiya Nanda] 08:52:39
+And what is this file about? It will…
+
+[rochak agrawal] 08:52:40
+This is a key file.
+
+[rochak agrawal] 08:52:44
+See, uh, you have your key in AWS, correct?
+
+[Amiya Nanda] 08:52:50
+Correct.
+
+[rochak agrawal] 08:52:51
+which is a public key. So then there is a PEM, which you need to download. So it is like, uh, it is a combination of a lock and key. Lock is in AWS, you need to provide the key, then only you are going to open the gate.
+
+[Amiya Nanda] 08:53:06
+Okay, okay.
+
+[rochak agrawal] 08:53:07
+Okay, so the key is there, and it is not like any other key. The corresponding private key you need to download, which I already have. You see, my first ec2.pen. So both of these combinations, and that is what here you see.
+
+[rochak agrawal] 08:53:22
+Let's see…
+
+[rochak agrawal] 08:53:23
+I'll show you another example.
+
+[rochak agrawal] 08:53:27
+Let's see…
+
+[rochak agrawal] 08:53:31
+Okay, this file is there.
+
+[rochak agrawal] 08:53:33
+That is what I'm using it. But here I go, and…
+
+[Amiya Nanda] 08:53:35
+Huh-huh.
+
+[rochak agrawal] 08:53:40
+I use something different.
+
+[rochak agrawal] 08:53:42
+Okay, which may or may not exist.
+
+[Amiya Nanda] 08:53:45
+Umm.
+
+[rochak agrawal] 08:53:51
+Now you will not get an error in Terraform plan.
+
+[rochak agrawal] 08:53:56
+You see? There is no error, correct?
+
+[rochak agrawal] 08:54:00
+Because…
+
+[rochak agrawal] 08:54:02
+But you see what is going to happen when I'm going to run the Terraform apply.
+
+[rochak agrawal] 08:54:14
+You see?
+
+[rochak agrawal] 08:54:16
+This key pair does not exist.
+
+[rochak agrawal] 08:54:19
+But if you use key pair, for example, let's say I go create another key pair.
+
+[rochak agrawal] 08:54:27
+I'll say my…
+
+[rochak agrawal] 08:54:29
+Second…
+
+[rochak agrawal] 08:54:30
+EC2, same thing, right? And I'll download them, so when you…
+
+[rochak agrawal] 08:54:36
+You see, when you create this now, uh, your PEM file is downloaded, but what I'm trying to show you is…
+
+[Amiya Nanda] 08:54:39
+Oh yeah
+
+[rochak agrawal] 08:54:43
+Let's say I use this…
+
+[rochak agrawal] 08:54:54
+I'm using my second EC2, but here I'm using my first EC2. Let's see what is going to happen.
+
+[rochak agrawal] 08:55:16
+You see, instance will be created.
+
+[rochak agrawal] 08:55:30
+You see? It's connecting, connecting, it will fail.
+
+[rochak agrawal] 08:55:37
+Why it is filling?
+
+[rochak agrawal] 08:55:40
+Because you are using a different key for your lock.
+
+[Amiya Nanda] 08:55:45
+Got it.
+
+[rochak agrawal] 08:55:47
+You see, it will not connect.
+
+[rochak agrawal] 08:55:53
+It will just go, go, go, and in the end, it is going to do a timeout.
+
+[rochak agrawal] 08:55:58
+So, what I need to do…
+
+[rochak agrawal] 08:56:01
+I will…
+
+[rochak agrawal] 08:56:06
+Go boom.
+
+[rochak agrawal] 08:56:07
+Stop.
+
+[rochak agrawal] 08:56:10
+Download.
+
+[rochak agrawal] 08:56:13
+Copy this.
+
+[rochak agrawal] 08:56:16
+Copy this.
+
+[rochak agrawal] 08:56:18
+And let me…
+
+[rochak agrawal] 08:56:22
+Second.
+
+[rochak agrawal] 08:56:24
+Okay.
+
+[rochak agrawal] 08:56:30
+And go S.
+
+[rochak agrawal] 08:56:32
+Now, when I run it again…
+
+[rochak agrawal] 08:56:38
+It says authentication failed.
+
+[rochak agrawal] 08:56:42
+Refreshing state.
+
+[rochak agrawal] 08:57:16
+You see? Now connected.
+
+[rochak agrawal] 08:57:20
+Date?
+
+[Amiya Nanda] 08:57:20
+Right.
+
+[rochak agrawal] 08:57:22
+So, you need to use the right combination. So, it is like, uh, the T and log pair is this. Okay? So…
+
+[rochak agrawal] 08:57:33
+Uh, thanks, give me a couple of minutes.
+
+[rochak agrawal] 09:01:04
+Yes, question.
+
+[Kaushal] 09:01:09
+Uh, hey Ruchik, uh, so if I recall correctly, uh, like, Terraform is only, uh, should be used for creating resources, right? And, uh, uh, like, for configuring and installing softwares inside what's the resources created, we should use other technologies, like, uh.
+
+[rochak agrawal] 09:01:18
+Mm-hmm.
+
+[rochak agrawal] 09:01:26
+Answer me. Got it. Hmm.
+
+[Kaushal] 09:01:26
+Ansible app, right? So then, what's the point of using this provisioners?
+
+[rochak agrawal] 09:01:30
+No, okay. So, see, remember, um, so what you're recalling is, uh, the hard thing, okay? So, we discussed that, uh, see, there are two things in IAC. One is the infrastructure provisioning, another is the configuration management, okay? Now, um.
+
+[rochak agrawal] 09:01:47
+For example, provisioners have a very limited capabilities in terms of what you can do in terms of configuration management.
+
+[rochak agrawal] 09:01:58
+See, at max, what they are seeing, what they are doing is, uh…
+
+[rochak agrawal] 09:02:05
+They are running some commands while you're creating it, correct?
+
+[rochak agrawal] 09:02:08
+it does not give you the complete configuration management picture. So, if you want to do some basic work, you can use the provisioner, but if you're already using configuration, a management tool like Ansible and other, or Ansible, Chef, Puppet.
+
+[rochak agrawal] 09:02:23
+So then you do not need to use provisioners. So now to answer your question, Terraform, and this is vice versa, even Ansible can do some of the infra provisioning also. So if you are using, for example, Ansible for the configuration management, you probably don't need to use Terraform provisioners.
+
+[rochak agrawal] 09:02:42
+But yes, in Terraform also, there will… there is a functionality in terms of provisioner. So the basic configuration management work you can do with the help of… so for example, you just need to run some commands, some basic stuff you want to do. Uh, you… so for that, you don't… probably do not need to use the configuration.
+
+[rochak agrawal] 09:03:01
+a different technological configuration management tool, you can manage it with the Terraform only. But if you are already using Ansible, then there is no need to use the provisioners.
+
+[Kaushal] 09:03:13
+Okay. Okay.
+
+[rochak agrawal] 09:03:15
+OK. So it's a, it's a limited functionality configuration management approach. OK. And you see, we can only do it with the while you are producing your resources, right? Because the problem with that, this approach is.
+
+[rochak agrawal] 09:03:30
+See, every time, let's say I change some command, okay, and you run the Terraform apply again, your infrastructure is going to refresh every time, correct?
+
+[Kaushal] 09:03:41
+Great.
+
+[rochak agrawal] 09:03:41
+And that would not be a correct approach. So anything you want to run while your infrastructure is provisioned, you can run it with the provisioners, but.
+
+[rochak agrawal] 09:03:51
+let's say you have already 50 servers available, and you want to create the users on it, you want to delete some files on it, then I don't think Full Reasoner would be a right choice, because every time you run the Terraform Hubli, it…
+
+[rochak agrawal] 09:04:06
+It is going to refresh your whole infrastructure, which would not be a good approach.
+
+[Kaushal] 09:04:15
+Okay, yeah, got it. Yes.
+
+[rochak agrawal] 09:04:15
+Okay?
+
+[rochak agrawal] 09:04:17
+Okay.
+
+[rochak agrawal] 09:04:20
+Now, there is something called, any other question, anyone?
+
+[rochak agrawal] 09:04:47
+Okay.
+
+[rochak agrawal] 09:04:50
+Now, you remember, um, we use the variable files, right? Uh, we still might have those, so you have a prod.tfvars, you have a…
+
+[rochak agrawal] 09:05:01
+Uh, dev.tl was, correct? Now…
+
+[rochak agrawal] 09:05:05
+You see, um…
+
+[rochak agrawal] 09:05:07
+There is a problem with that. Now, what is the problem?
+
+[rochak agrawal] 09:05:18
+Let's see, you've written the code, and you have two files.
+
+[rochak agrawal] 09:05:24
+One is a broad.
+
+[rochak agrawal] 09:05:26
+dot…
+
+[rochak agrawal] 09:05:27
+Yeah, of course.
+
+[rochak agrawal] 09:05:29
+Another is the dev.dfs.
+
+[rochak agrawal] 09:05:33
+Ready?
+
+[rochak agrawal] 09:05:37
+Now here the values might be different, let's say here.
+
+[rochak agrawal] 09:05:42
+It is T2.large.
+
+[rochak agrawal] 09:05:45
+And here…
+
+[rochak agrawal] 09:05:47
+It is E2.micro.
+
+[rochak agrawal] 09:05:50
+Benny?
+
+[rochak agrawal] 09:05:53
+Now, we have seen that whenever I want to run it on my production environment.
+
+[rochak agrawal] 09:05:59
+I will run it with the prod PF first, so it is going to create a T2.large type of the instance.
+
+[rochak agrawal] 09:06:05
+Then, when I want to run it on my dev environment, I am going to run it on a dev.tfbus, which is going to create a t2.micro type of the instance.
+
+[rochak agrawal] 09:06:17
+We have done it, but can anyone tell me what is the problem with this approach?
+
+[rochak agrawal] 09:06:23
+What do you think is a problem with this approach?
+
+[rochak agrawal] 09:06:27
+And it is not a small problem, it's a big problem.
+
+[rochak agrawal] 09:06:47
+No? No one?
+
+[rochak agrawal] 09:06:49
+At least try, someone.
+
+[rochak agrawal] 09:07:03
+Beauvoir?
+
+[rochak agrawal] 09:07:11
+Okay. Now the problem is…
+
+[rochak agrawal] 09:07:14
+See, when you run the Terraform code.
+
+[rochak agrawal] 09:07:17
+What is going to happen?
+
+[rochak agrawal] 09:07:19
+It is going to capture everything in the…
+
+[rochak agrawal] 09:07:29
+State file.
+
+[rochak agrawal] 09:07:30
+Correct?
+
+[rochak agrawal] 09:07:32
+Now, when you run, let's say, first prod.tabars, so then it is going to provision a t2.large, and it is going to…
+
+[rochak agrawal] 09:07:47
+Make an entry in the state file with the help of t2.large. Now, when you run the dev.tfvars file, it says t2.micro. And it says in your state file, there is an entry for t2.large.
+
+[rochak agrawal] 09:08:02
+Then what it's going to do, it is going to delete this and create this.
+
+[rochak agrawal] 09:08:08
+It means…
+
+[rochak agrawal] 09:08:12
+Your production environment can be gone, correct?
+
+[rochak agrawal] 09:08:16
+So, that is a very risky approach. So, that is what you need to do. Uh, so there, again, there can be two approaches to solve this. One approach is, let's say.
+
+[rochak agrawal] 09:08:29
+You create two different folders.
+
+[rochak agrawal] 09:08:41
+Same code and
+
+[rochak agrawal] 09:08:44
+Different. Bare file.
+
+[rochak agrawal] 09:08:47
+Now, what is the use of that is, like, get… when you do a two different folder, so there will be two separate.
+
+[rochak agrawal] 09:08:56
+State file will be there.
+
+[rochak agrawal] 09:08:58
+Okay, so you will have a prod, uh, state file, you will have a dev state file, so now whatever you are doing in the production will be in the production, whatever you are doing, you know.
+
+[rochak agrawal] 09:09:09
+um, uh, development will be in a development. That is more of a manual approach. So here, what I can do, let's say here, um, I'll create two folders.
+
+[rochak agrawal] 09:09:23
+Let's say Deb.
+
+[rochak agrawal] 09:09:25
+And, uh…
+
+[rochak agrawal] 09:09:29
+Rod, now…
+
+[rochak agrawal] 09:09:31
+You can see.
+
+[rochak agrawal] 09:09:33
+Your main.tf, the same code will go in this.
+
+[rochak agrawal] 09:09:39
+And same code will go in this, okay? But the variable file also will go same.
+
+[rochak agrawal] 09:09:52
+Because the code is the same, right? But…
+
+[rochak agrawal] 09:09:57
+Your prod.tfvars will go into the prod.
+
+[rochak agrawal] 09:10:02
+And your dev.tfvars will go into the dev.
+
+[rochak agrawal] 09:10:06
+Okay, so now what happens is, when you run the… now you are not going to run the Terraform here. What you will do, you will go inside there.
+
+[rochak agrawal] 09:10:15
+And then run Terraform init, Terraform plan, etc. And your Terraform…
+
+[rochak agrawal] 09:10:20
+So now you are only running with the dev.tfbus, and…
+
+[rochak agrawal] 09:10:27
+So whenever you will be running, there will be a different state file in the dev folder, different state file in the production folder. Again, as I said, that is a manual approach. So if you have 10 environments, you need to maintain 10 different folders, and you will be running…
+
+[rochak agrawal] 09:10:42
+your Terraform again and again and again, right? The second approach is more automated and more inbuilt.
+
+[rochak agrawal] 09:10:51
+within the Terraform, which is using the Terraform workspaces.
+
+[rochak agrawal] 09:10:58
+Terraform Workspace. Okay, so now what is a Terraform Workspace? A Terraform Workspace is a lightweight, built-in way to run your Terraform code.
+
+[rochak agrawal] 09:11:12
+against multiple separate state files.
+
+[rochak agrawal] 09:11:15
+It solves the switching problem, but does not change how the underlying state.
+
+[rochak agrawal] 09:11:22
+is stored on log, okay? So, what it does, basically.
+
+[rochak agrawal] 09:11:33
+Terraform Workspace allows us to manage multiple isolated deployment using the exact same configuration file, so instead of duplicating code across separate folders.
+
+[rochak agrawal] 09:11:50
+Separate folders.
+
+[rochak agrawal] 09:11:53
+Workspace let you use a single set of Terraform file while instructing Terraform to read and write to completely separate state file behind the scene. Okay, so I can create, I can see.
+
+[rochak agrawal] 09:12:08
+So, for example, I go to my main folder
+
+[rochak agrawal] 09:12:13
+And
+
+[rochak agrawal] 09:12:15
+Terraform.
+
+[rochak agrawal] 09:12:22
+work space list.
+
+[rochak agrawal] 09:12:35
+So you can see right now, I have only one workspace there, which is a default workspace, right? And, um, you can…
+
+[rochak agrawal] 09:12:45
+You want to see?
+
+[rochak agrawal] 09:12:47
+So, see what it does? Terraform workspace show. Command will show you in which workspace you're currently in. Terraform workspace list will list down all the selected workspace. Now, how you can create a new workspace?
+
+[rochak agrawal] 09:13:03
+So, Terraform workspace…
+
+[rochak agrawal] 09:13:06
+New.
+
+[rochak agrawal] 09:13:07
+Deb.
+
+[rochak agrawal] 09:13:11
+Okay.
+
+[rochak agrawal] 09:13:14
+Neil?
+
+[rochak agrawal] 09:13:15
+Broad.
+
+[rochak agrawal] 09:13:20
+Now, if you see…
+
+[rochak agrawal] 09:13:26
+If you show, so it's a broad, but if you list.
+
+[rochak agrawal] 09:13:31
+So you have 3 workspaces now. Default day of… I meant it there, but…
+
+[rochak agrawal] 09:13:37
+I press the enter button zooms.
+
+[rochak agrawal] 09:13:39
+Dev and prod. Now, if you want to select anything, workspace.
+
+[rochak agrawal] 09:13:44
+Select…
+
+[rochak agrawal] 09:13:47
+D4.
+
+[rochak agrawal] 09:13:52
+Okay.
+
+[rochak agrawal] 09:13:53
+So you can see here that you can run it now.
+
+[rochak agrawal] 09:14:00
+Very simple command I'm going to run with this.
+
+[rochak agrawal] 09:14:04
+So I'll just remove all of that.
+
+[rochak agrawal] 09:14:11
+So I'll create a resource.
+
+[rochak agrawal] 09:14:17
+AWS…
+
+[rochak agrawal] 09:14:25
+S3.
+
+[rochak agrawal] 09:14:27
+Bucket?
+
+[rochak agrawal] 09:14:39
+bucket.
+
+[rochak agrawal] 09:14:47
+I'll just give the name of the bucket.
+
+[rochak agrawal] 09:14:55
+bucket.
+
+[rochak agrawal] 09:14:57
+is equal to…
+
+[rochak agrawal] 09:15:00
+my…
+
+[rochak agrawal] 09:15:07
+And…
+
+[rochak agrawal] 09:15:08
+I generally take the account ID.
+
+[rochak agrawal] 09:15:13
+Because your bucket name should be globally unique.
+
+[rochak agrawal] 09:15:17
+And, very importantly.
+
+[rochak agrawal] 09:15:20
+I am going to use something called.
+
+[rochak agrawal] 09:15:29
+terraform.org.
+
+[rochak agrawal] 09:15:32
+Workspace.
+
+[rochak agrawal] 09:15:34
+Okay, now I'm going to run this.
+
+[rochak agrawal] 09:15:38
+Now, before that, let me check the syntax is correct or not.
+
+[rochak agrawal] 09:16:02
+Okay, now you see what is going to happen.
+
+[rochak agrawal] 09:16:11
+you run Terraform Plant.
+
+[rochak agrawal] 09:16:33
+Let me run Terraform Destroyer first.
+
+[rochak agrawal] 09:17:43
+Okay.
+
+[rochak agrawal] 09:17:45
+No.
+
+[rochak agrawal] 09:17:57
+Now, you see the name here, name of the bucket, is default.
+
+[rochak agrawal] 09:18:02
+My app…
+
+[rochak agrawal] 09:18:04
+This and default. Now what I'm going to do I'm just switch the workspace and run this. So first Terraform apply hyphen hyphen auto proof.
+
+[rochak agrawal] 09:18:27
+Okay, now Terraform.
+
+[rochak agrawal] 09:18:33
+workspace…
+
+[rochak agrawal] 09:18:36
+select…
+
+[rochak agrawal] 09:18:40
+Broad.
+
+[rochak agrawal] 09:18:45
+And you run the Terraform apply.
+
+[rochak agrawal] 09:18:58
+See the name here.
+
+[rochak agrawal] 09:19:03
+Similarly, I will go…
+
+[rochak agrawal] 09:19:10
+Select Deb.
+
+[rochak agrawal] 09:19:18
+Now you see it is creating your infrastructure as per the workspace you are in.
+
+[rochak agrawal] 09:19:28
+Okay, here you see.
+
+[rochak agrawal] 09:19:31
+My app is DE. If you go to your AWS, go to S3.
+
+[rochak agrawal] 09:19:43
+You will see, you have these 3 buckets.
+
+[rochak agrawal] 09:19:46
+Can you see?
+
+[rochak agrawal] 09:19:48
+My AppDE, Default, and Prod, because these are the 3 workspaces I have.
+
+[rochak agrawal] 09:19:55
+And, most importantly, if you go here.
+
+[rochak agrawal] 09:20:00
+Okay, so you… you are not going to see the workspace, uh, state file, but whatever workspace, you can see it here.
+
+[rochak agrawal] 09:20:12
+see, this state file, if you're seeing terraform.tfstate, right? This is for the, um, your default workspace. But if you go inside this folder.
+
+[rochak agrawal] 09:20:25
+UCD and prod.
+
+[rochak agrawal] 09:20:27
+For development, there is a different, uh, state file, and you can see it here. I'll open this.
+
+[rochak agrawal] 09:20:36
+Here you can see.
+
+[rochak agrawal] 09:20:39
+the name.
+
+[rochak agrawal] 09:20:41
+Right? And…
+
+[rochak agrawal] 09:20:43
+If you go in the broad.
+
+[rochak agrawal] 09:20:52
+You can see it here. Broad.
+
+[rochak agrawal] 09:20:55
+So basically, I'll show you, I'll create one more workspace.
+
+[rochak agrawal] 09:21:08
+Okay? Created and switched to the workspace demo. Now, if you run your apply once again.
+
+[rochak agrawal] 09:21:27
+You will see a demo is also created for you.
+
+[rochak agrawal] 09:21:31
+Got it? Now, you see here, uh…
+
+[rochak agrawal] 09:21:42
+Yeah. So you can see here, with the help of the Terraform workspaces, within the same folder, I can run… of course, I can customize multiple things using this variable, terraform.workspace, right?
+
+[rochak agrawal] 09:21:56
+So, whatever the workspace you are running in, it can pick up the right variable files, and then… and even if I… if you delete it now, so, for example, if I go Terraform.
+
+[rochak agrawal] 09:22:10
+Destroy Autopulu.
+
+[rochak agrawal] 09:22:14
+What is going to, uh, destroy? Only in the particular workspace. So my default bucket will be destroyed now, for example.
+
+[rochak agrawal] 09:22:24
+You can see I have four buckets. Now if I run the Terraform destroy auto approve.
+
+[rochak agrawal] 09:22:31
+Which bucket will be destroyed? Whatever the workspace I am in.
+
+[rochak agrawal] 09:22:39
+Okay, now let's refresh.
+
+[rochak agrawal] 09:22:44
+you see I am in a demo workspace, so demo has been deleted.
+
+[rochak agrawal] 09:22:49
+Right?
+
+[rochak agrawal] 09:22:50
+If I switch to…
+
+[rochak agrawal] 09:23:04
+Then my dev also will be ready.
+
+[Amiya Nanda] 09:23:10
+And row check after apply only the state file will be created, right?
+
+[rochak agrawal] 09:23:14
+Yes, yes, of course. Because, see, once you apply it, then only it is going to create a state file.
+
+[Amiya Nanda] 09:23:20
+Okay, okay.
+
+[rochak agrawal] 09:23:21
+Right? Now, if you see, the… your dev bucket will also be gone. Right?
+
+[rochak agrawal] 09:23:26
+So now, within the same folder, like, I do not need to create multiple folders like this, correct?
+
+[rochak agrawal] 09:23:36
+I'm using the same file, and then, for example, now I can do one thing, is that, uh, um…
+
+[rochak agrawal] 09:23:45
+Basis on the workspace you are in, you provide the variable file, and then that's about it.
+
+[rochak agrawal] 09:23:54
+So, with the help of the Terraform workspaces, you can manage multiple Terraform environment within the single folder itself. It is going to track them separately. Now, if you go here.
+
+[rochak agrawal] 09:24:10
+In the demo or prod, there will be nothing.
+
+[rochak agrawal] 09:24:16
+Right? Because I deleted it. Correct?
+
+[rochak agrawal] 09:24:19
+So now, basically.
+
+[rochak agrawal] 09:24:22
+the number of the workspaces is equal to your state file. Every workspace state is being tracked separately.
+
+[rochak agrawal] 09:24:31
+Simple as that.
+
+[rochak agrawal] 09:24:34
+Okay. You say, I don't want to use it. No problem. You create it in separate, separate folders. Absolutely fine. Right? It is up to you.
+
+[Amiya Nanda] 09:24:46
+And if we'll create the workspace in, uh, workspace in Terraform, that, uh, uh, workspace will not be, uh, created in our local system, right? We can see it in cloud.
+
+[rochak agrawal] 09:24:57
+See, workspace… see, when you say you can see it in a cloud, no, it is not in a cloud. It is… see, you understand workspace very similar to the Git branches.
+
+[Amiya Nanda] 09:25:09
+Okay.
+
+[rochak agrawal] 09:25:09
+Okay, see, when you say, can I not see that in my local system? See, you created this demo, then only… you can see it here, right?
+
+[Amiya Nanda] 09:25:19
+Yes.
+
+[rochak agrawal] 09:25:21
+So, it is visible on your local system.
+
+[Amiya Nanda] 09:25:23
+Now, if we'll not create this, we'll select the workspace in Terraform, like that, like you, uh, specify demo, right?
+
+[rochak agrawal] 09:25:27
+Okay.
+
+[Amiya Nanda] 09:25:33
+So, this demo workspace will be created in our local system. If we'll select here.
+
+[rochak agrawal] 09:25:38
+Mm-hmm.
+
+[rochak agrawal] 09:25:40
+No, see, once you create a workspace, now, in my local system.
+
+[rochak agrawal] 09:25:48
+four workspaces there. One is a default, and then these three ones, correct?
+
+[Amiya Nanda] 09:25:52
+Yeah, yeah.
+
+[rochak agrawal] 09:25:53
+Now I can choose in which workspace I want to work, and I will select it like this. So I'll say Terraform workspace select prod.
+
+[Amiya Nanda] 09:26:05
+Now, if we'll delete that folder and we'll, uh, specify here.
+
+[rochak agrawal] 09:26:10
+No, I can delete it from here. So, for example, let's say I want to delete it. So, delete.
+
+[rochak agrawal] 09:26:15
+And demo. Okay?
+
+[Amiya Nanda] 09:26:18
+Yeah.
+
+[rochak agrawal] 09:26:23
+This is a deleted workspace demo, right?
+
+[Amiya Nanda] 09:26:25
+Uh, let's go to the… if it is deleted, yeah, it's deleted. So, if we'll create here, it will reflect.
+
+[rochak agrawal] 09:26:27
+Yep.
+
+[rochak agrawal] 09:26:28
+It's deleted.
+
+[rochak agrawal] 09:26:31
+Got it, got it, yes.
+
+[Amiya Nanda] 09:26:31
+If you delete also, you get it, okay, okay, okay.
+
+[rochak agrawal] 09:26:34
+Yep.
+
+[rochak agrawal] 09:26:35
+Okay, so I can delete, uh, for example.
+
+[rochak agrawal] 09:26:40
+This one as well.
+
+[rochak agrawal] 09:26:46
+You see, only broad is there.
+
+[Amiya Nanda] 09:26:48
+Okay, okay, so it's repeated.
+
+[rochak agrawal] 09:26:49
+Right? So it is… it is actually a… and uh… we do follow that. For example, you are doing some POC, and you do not want to touch your existing environment, or existing… so you quickly provision a new workspace, do your POC there.
+
+[rochak agrawal] 09:27:03
+And once your POC is done, you delete your workspace.
+
+[rochak agrawal] 09:27:07
+So that you are not touching your existing infrastructure.
+
+[Amiya Nanda] 09:27:13
+Mm-hmm, yeah.
+
+[rochak agrawal] 09:27:15
+Right? And for your regular environment also you can create different workspace. Now the use of this is, see it is maintaining a separate estate file. So one resource in one workspace is not impacting the other resource.
+
+[Amiya Nanda] 09:27:15
+Okay.
+
+[rochak agrawal] 09:27:31
+In the other workspace, correct?
+
+[Amiya Nanda] 09:27:34
+Correct.
+
+[rochak agrawal] 09:27:35
+So, that is actually the main advantage of using the workspace. So, with the help of the workspaces, you are going to manage and maintain multiple Terraform environment together within the same folder itself.
+
+[rochak agrawal] 09:27:51
+Okay?
+
+[Amiya Nanda] 09:27:51
+Okay.
+
+[rochak agrawal] 09:27:53
+Okay.
+
+[rochak agrawal] 09:27:54
+So guys, on Wednesday, we will have a shorter session of around one hour. Tomorrow, we will have a regular class, so I'll just thought to keep you
+
