@@ -1,0 +1,2469 @@
+[rochak agrawal] 07:40:39
+Hey, good morning, everyone.
+
+[rochak agrawal] 07:40:41
+So, let's start.
+
+[rochak agrawal] 07:40:46
+So in our last class, we have seen that how Terraform works.
+
+[rochak agrawal] 07:40:52
+Right, um, you create a Terraform file, Terraform configuration file, save it as a .tf extension, and then…
+
+[rochak agrawal] 07:41:01
+You are going to run Terraform Plant, Terraform Apply, Terraform Destroy as a requirement.
+
+[rochak agrawal] 07:41:06
+Now today, what we are going to see, how we write this Terraform blocks, what are the important things are there.
+
+[rochak agrawal] 07:41:13
+And then we are going to discuss about those. So if you see our… if you remember our Terraform file, there are a few important, um…
+
+[rochak agrawal] 07:41:23
+Components of that file.
+
+[rochak agrawal] 07:41:25
+One was a provider.
+
+[rochak agrawal] 07:41:28
+Another is a resource.
+
+[rochak agrawal] 07:41:32
+Variables.
+
+[rochak agrawal] 07:41:35
+Output.
+
+[rochak agrawal] 07:41:36
+Then, there is two more. One is called Locals.
+
+[rochak agrawal] 07:41:40
+And, uh, there is cold data.
+
+[rochak agrawal] 07:41:43
+So first of all, understand them one by one, what do they do, and then we will see how we are going to write them. Provider variables and output will be a quality thing. Sources also we've seen.
+
+[rochak agrawal] 07:41:56
+We are going to see in detail about the resources.
+
+[rochak agrawal] 07:41:59
+The provider is…
+
+[rochak agrawal] 07:42:02
+It's like a plugin.
+
+[rochak agrawal] 07:42:05
+Which?
+
+[rochak agrawal] 07:42:06
+is going to…
+
+[rochak agrawal] 07:42:12
+Terraform.
+
+[rochak agrawal] 07:42:14
+To the backend.
+
+[rochak agrawal] 07:42:18
+Okay, I'm seeing the backend cloud. So if I want to create an AWS infrastructure, I need to use the AWS provider. If I want to use Azure cloud, I need to use the Azure provider. So whatever the API call Terraform is making to the backend cloud.
+
+[rochak agrawal] 07:42:34
+It is going to help, um…
+
+[rochak agrawal] 07:42:36
+the provider is going through there. So if there is no provider, there is… you can write everything, but there will… there will not be any actual work which is going to happen.
+
+[rochak agrawal] 07:42:47
+Then comes the resource block.
+
+[rochak agrawal] 07:42:50
+Now, you can say resource is the single most important part.
+
+[rochak agrawal] 07:42:58
+Okay, and when I'm saying the single most important part, because in the resource block only, you are going to define.
+
+[rochak agrawal] 07:43:06
+What…
+
+[rochak agrawal] 07:43:08
+Cloud resource you are going to create.
+
+[rochak agrawal] 07:43:12
+Okay.
+
+[rochak agrawal] 07:43:14
+In my Terraform file, I can define multiple resources of same time, same type or different type. For example, we created a resource of AWS VPC, then we created a resource AWS subnet.
+
+[rochak agrawal] 07:43:30
+Now, everything you are doing… See, in the end, you want to create the cloud resources. So…
+
+[rochak agrawal] 07:43:37
+Provider one thing, then the resources.
+
+[rochak agrawal] 07:43:40
+These two things need to be there in your Terraform configuration. Okay, here we are going to define.
+
+[rochak agrawal] 07:43:54
+Cloud services.
+
+[rochak agrawal] 07:43:58
+See, I'm using the cloud terms again and again, because we are going to mostly use Terraform with the cloud, but we… you have seen there's a Kubernetes provider, there's a GitHub provider, you can create the GitHub repos and everything also in the backend.
+
+[rochak agrawal] 07:44:11
+What services?
+
+[rochak agrawal] 07:44:14
+You would like to provision.
+
+[rochak agrawal] 07:44:19
+Okay.
+
+[rochak agrawal] 07:44:22
+Now, other things, if you see this, sorry, variables, output, locals, and data.
+
+[rochak agrawal] 07:44:28
+These are our optional fields. They…
+
+[rochak agrawal] 07:44:32
+actually modularize your configuration so that you can reuse it.
+
+[rochak agrawal] 07:44:38
+The variables you see.
+
+[rochak agrawal] 07:44:42
+Templatize…
+
+[rochak agrawal] 07:44:45
+our configuration.
+
+[rochak agrawal] 07:44:49
+So that…
+
+[rochak agrawal] 07:44:53
+We can… we use it.
+
+[rochak agrawal] 07:44:58
+At multiple places.
+
+[rochak agrawal] 07:45:02
+Right? Yesterday, we created two variables files. One is for prod, one is for… even not two variable files, two value files.
+
+[rochak agrawal] 07:45:14
+What's a similar name?
+
+[rochak agrawal] 07:45:17
+So that our configuration becomes modular, and we can use it at multiple places. Now, what things can you variableize? It is up to us. Like, for example, yesterday, first we variableize the data.
+
+[rochak agrawal] 07:45:34
+the CIDR range, and then finally we variableize the AWS region also. So you can keep something common, something up to us, like how we want to write it.
+
+[rochak agrawal] 07:45:44
+Then comes the output.
+
+[rochak agrawal] 07:45:49
+Now, when you create the Terraform resources or the cloud resources, there are certain things which will take value.
+
+[rochak agrawal] 07:45:58
+Once the resource is created.
+
+[rochak agrawal] 07:46:00
+For example, when you create an EC2 instance, the public IP of the resources.
+
+[rochak agrawal] 07:46:06
+a public IP of that server, you will know once the resource instance is created. Similarly, when you create a VPC, the VPC ID will be known to you.
+
+[rochak agrawal] 07:46:20
+Once the VPC is created.
+
+[rochak agrawal] 07:46:23
+You are creating a load balancer. Load balancer DNS name will be known once the load balancer is created. So, all those value…
+
+[rochak agrawal] 07:46:34
+Which?
+
+[rochak agrawal] 07:46:37
+will be known.
+
+[rochak agrawal] 07:46:41
+Once the resource is ready.
+
+[rochak agrawal] 07:46:48
+You can take out.
+
+[rochak agrawal] 07:46:52
+Dial pop.
+
+[rochak agrawal] 07:46:54
+Oh, good.
+
+[rochak agrawal] 07:46:56
+Right? We, uh, defined one output block, I think.
+
+[rochak agrawal] 07:47:03
+I deleted it. So…
+
+[rochak agrawal] 07:47:08
+anything. So, for example, you're creating a S3 bucket, and you want to know a particular value of the S3 bucket, right? But that will be… value will be known once the S3 bucket is created, so we can define.
+
+[rochak agrawal] 07:47:23
+What we want to know in the output in Terraform, once it will create the S3 bucket, it is going to show that particular value, which we configured as the output.
+
+[rochak agrawal] 07:47:33
+And you can see that.
+
+[rochak agrawal] 07:47:38
+Now, clear all this, check these four, then I'll go to these two.
+
+[rochak agrawal] 07:47:43
+Any question in these four?
+
+[rochak agrawal] 07:47:55
+Okay.
+
+[rochak agrawal] 07:48:02
+Now, locals, okay? Now, and this is one of the most…
+
+[rochak agrawal] 07:48:09
+Common interview question again.
+
+[rochak agrawal] 07:48:12
+What is the difference between?
+
+[rochak agrawal] 07:48:14
+Uh, and variables in Terraform.
+
+[rochak agrawal] 07:48:16
+Okay, now you understand.
+
+[rochak agrawal] 07:48:23
+Let's say, um…
+
+[rochak agrawal] 07:48:26
+You are creating…
+
+[rochak agrawal] 07:48:29
+What do you say? Multiple resources in your Terraform configuration. Okay, and then…
+
+[rochak agrawal] 07:48:39
+You want to put up a reason everywhere.
+
+[rochak agrawal] 07:48:43
+Right, uh, reason is AP South 1, reason is AP South 1, reason is AP South 1. See, locals does two things, okay? Uh, one thing local does is…
+
+[rochak agrawal] 07:48:58
+Let me explain it in a different way.
+
+[rochak agrawal] 07:49:02
+Terraform local value or the locals allows us to assign a name to a valid HCL expression.
+
+[rochak agrawal] 07:49:09
+so that we can reuse it throughout our configuration. They function like the temporary or private tables with the programming language, helping you enforce drive principles and keep your.
+
+[rochak agrawal] 07:49:24
+Code base maintainable. Okay.
+
+[rochak agrawal] 07:49:26
+Now, what does it mean? It means, let's say.
+
+[rochak agrawal] 07:49:37
+I am defining a variable.
+
+[rochak agrawal] 07:49:39
+Okay, so variable is…
+
+[rochak agrawal] 07:49:45
+Are you…
+
+[rochak agrawal] 07:49:46
+is equal to a string.
+
+[rochak agrawal] 07:49:49
+default.
+
+[rochak agrawal] 07:49:52
+is equal to Deb.
+
+[rochak agrawal] 07:49:53
+Okay.
+
+[rochak agrawal] 07:49:55
+So this is a variable.
+
+[rochak agrawal] 07:50:00
+You might have another variable.
+
+[rochak agrawal] 07:50:22
+Okay.
+
+[rochak agrawal] 07:50:24
+Now, if you save it as…
+
+[rochak agrawal] 07:50:39
+That could be. Okay. Now, if I want to, let's say I'm creating a resource.
+
+[rochak agrawal] 07:50:45
+AWS…
+
+[rochak agrawal] 07:50:47
+BPC.
+
+[rochak agrawal] 07:50:50
+Because my syntax is wrong, but I'm just trying to show you what's the difference between local and a variable.
+
+[rochak agrawal] 07:50:56
+And, uh, main, something like that.
+
+[rochak agrawal] 07:51:00
+Here, you… if you want to, let's say, uh…
+
+[rochak agrawal] 07:51:09
+So very little.
+
+[rochak agrawal] 07:51:12
+E and B?
+
+[rochak agrawal] 07:51:13
+And let's see…
+
+[rochak agrawal] 07:51:18
+Okay.
+
+[rochak agrawal] 07:51:20
+Okay, now let's say you are creating a AWS VPC, and you want to give the name of your role.
+
+[rochak agrawal] 07:51:32
+BPC.
+
+[rochak agrawal] 07:51:32
+If you are using the variable, for example, then you can simply say, uh, my name is bear.project.
+
+[rochak agrawal] 07:51:41
+Okay.
+
+[rochak agrawal] 07:51:45
+Your name is equal to where.project.
+
+[rochak agrawal] 07:51:47
+Right? So then, whatever the name of the project, your BPC name will come here. Uh, your BPC name will be e-commerce, or if you give, uh, bear.env, so then your BPC name would be your, uh…
+
+[rochak agrawal] 07:52:03
+Name is equal to dev. But that is a very simple substitution.
+
+[rochak agrawal] 07:52:08
+Okay.
+
+[rochak agrawal] 07:52:10
+What… what if you want my variable… my DPC name should be…
+
+[rochak agrawal] 07:52:15
+ecommerce-deb-project.
+
+[rochak agrawal] 07:52:20
+Okay.
+
+[rochak agrawal] 07:52:21
+So that is where variables cannot do anything, and that is where we need to define a temporary substitute, which we call it as a local.
+
+[rochak agrawal] 07:52:32
+So, I'll see locals.
+
+[rochak agrawal] 07:52:36
+And I will define a local's, let's say, name prefix.
+
+[rochak agrawal] 07:52:44
+And
+
+[rochak agrawal] 07:52:47
+I'll say dollar.
+
+[rochak agrawal] 07:52:51
+where dot…
+
+[rochak agrawal] 07:52:53
+Project name?
+
+[rochak agrawal] 07:52:57
+Bad or bullet in our case?
+
+[rochak agrawal] 07:53:01
+hyphen…
+
+[rochak agrawal] 07:53:05
+there.environment.
+
+[rochak agrawal] 07:53:10
+Okay.
+
+[rochak agrawal] 07:53:12
+And here, in the name, I am going to use…
+
+[rochak agrawal] 07:53:17
+local…
+
+[rochak agrawal] 07:53:20
+Name prefix.
+
+[rochak agrawal] 07:53:23
+Okay, so what local is doing, you see, local allows us to assign a valid XCL expression. So now, wherever I need to use the name prefix, okay, see, for example, I can use something called.
+
+[rochak agrawal] 07:53:42
+Yeah, uh, like this.
+
+[rochak agrawal] 07:53:44
+BPC.
+
+[rochak agrawal] 07:53:45
+Okay, if I go, I want to create an EC2 instance, so the source…
+
+[rochak agrawal] 07:53:54
+Easy to.
+
+[rochak agrawal] 07:53:57
+AWS underscore instance.
+
+[rochak agrawal] 07:54:09
+Here also, if you need to give the name, you will just simply say.
+
+[rochak agrawal] 07:54:24
+Nobel.
+
+[rochak agrawal] 07:54:30
+Dot.
+
+[rochak agrawal] 07:54:41
+Name prefix?
+
+[rochak agrawal] 07:54:44
+Something like that. So now you can use this expression.
+
+[rochak agrawal] 07:54:49
+anywhere in your code with the help of local dot reference. Okay, now if you see the difference between the variable and.
+
+[rochak agrawal] 07:55:00
+Uh, your loan.
+
+[rochak agrawal] 07:55:01
+locals. The purpose is, um, variables you are going to use as the user input, right? Now, for example, I want to use, instead of dev or e-commerce, I want to use something else, so we know we can use it.
+
+[rochak agrawal] 07:55:16
+So let me make this index clean.
+
+[rochak agrawal] 07:55:37
+Okay, so you can see…
+
+[rochak agrawal] 07:55:41
+local hype underscore name hyphen prefix, uh, BPC. So you can see here, uh, variable serves as the API arguments for the user input.
+
+[rochak agrawal] 07:55:53
+Correct? So I can change these values. Now, locals value I cannot provide. It is deriving from this configuration.
+
+[rochak agrawal] 07:56:02
+from this expression. So, if my project value will change, my name prefix value is going to change. So, locals acts as the internal configuration expressions.
+
+[rochak agrawal] 07:56:15
+We can, of course, cite it very well. We have seen the…
+
+[rochak agrawal] 07:56:20
+by a CLI flag, environment variable, or the TF4 files, while the local are strictly within the HCL file itself. I cannot provide a local value from external, okay?
+
+[rochak agrawal] 07:56:33
+Because local values is dependent on these variable values.
+
+[rochak agrawal] 07:56:37
+Correct? Uh, then…
+
+[rochak agrawal] 07:56:47
+Variables cannot reference resource output function or other variable for the default values.
+
+[rochak agrawal] 07:56:54
+Locals has this capability, okay? Locals are highly dynamic, can calculate expression, and processes resource output. Now, what does it mean? It means, let's say…
+
+[rochak agrawal] 07:57:05
+you are creating an EC2 instance. Now EC2 instance is using a.
+
+[rochak agrawal] 07:57:16
+Once the EC2 instance is created, it is going to give you the public IP. Now, you need to take this public IP, and…
+
+[rochak agrawal] 07:57:26
+You need to, um…
+
+[rochak agrawal] 07:57:28
+make an entry in your firewall using Terraform. Now.
+
+[rochak agrawal] 07:57:33
+With the help of variable, we cannot do that, okay? So, anywhere you need to…
+
+[rochak agrawal] 07:57:39
+Have a substitute. Okay.
+
+[rochak agrawal] 07:57:43
+where you are picking up some value from somewhere, and then passing it to somewhere else, you are going to use the LOSA.
+
+[rochak agrawal] 07:57:52
+Okay? So that is the use of local. So local is intermediately placeholders in between.
+
+[rochak agrawal] 07:57:59
+Now you can say it is taking the values from the variable. So the local's value is totally dependent on the variables. If the variable's value is going to change, the local's value is going to change. But whatever the local value is there.
+
+[rochak agrawal] 07:58:14
+Okay, whatever the name prefix is there, you can reference it anywhere in your Terraform code.
+
+[rochak agrawal] 07:58:21
+Okay.
+
+[rochak agrawal] 07:58:27
+Then comes the last point, which is the data.
+
+[rochak agrawal] 07:58:32
+Data is very interesting, okay? Again, there can be a question about what is the difference between…
+
+[rochak agrawal] 07:58:40
+Data and, um…
+
+[rochak agrawal] 07:58:43
+Very well
+
+[rochak agrawal] 07:58:44
+Now.
+
+[rochak agrawal] 07:58:45
+Data and variable kind of do the same thing, but their use case is different.
+
+[rochak agrawal] 07:58:52
+Okay? Now, what is the use case of data? See, for example, you understand why we use the variable whenever we want to.
+
+[rochak agrawal] 07:59:03
+give something, okay, which we want to temporalize and we want to reuse, correct? So for example, AWS region or for example.
+
+[rochak agrawal] 07:59:20
+Your room.
+
+[rochak agrawal] 07:59:22
+project name, or environment name, or something, we are going to give it as a variable. Because these values, whatever we want, we can give it.
+
+[rochak agrawal] 07:59:31
+Correct?
+
+[rochak agrawal] 07:59:34
+But data we use in a case, um…
+
+[rochak agrawal] 07:59:39
+Let me…
+
+[rochak agrawal] 07:59:40
+Fetch an example.
+
+[rochak agrawal] 08:00:10
+So, yeah, you see…
+
+[rochak agrawal] 08:00:15
+Now, you want to know, uh…
+
+[rochak agrawal] 08:00:18
+See regions, you know, size probably, you know, t2.micro, t2.nano, etc, etc.
+
+[rochak agrawal] 08:00:25
+Now, the value of the AWS AMI. So, whenever you are going to launch an instance.
+
+[rochak agrawal] 08:00:30
+For example, I go EC2.
+
+[rochak agrawal] 08:00:49
+So you can see it, there is a…
+
+[rochak agrawal] 08:00:51
+Biggie. Correct?
+
+[rochak agrawal] 08:00:53
+A, M, I, 0, 8, 8, F, B, 1, 2, this, this, this.
+
+[rochak agrawal] 08:00:57
+Similarly, uh, Amazon Linux, uh, 6.18 is this AMI ID. 6.1 is a different AMI ID, correct?
+
+[rochak agrawal] 08:01:07
+So there are so many AMI IDs out there.
+
+[rochak agrawal] 08:01:11
+So, you can see it here. Now, these values…
+
+[rochak agrawal] 08:01:14
+First, you cannot remember. Now you can ask even. Reason is the AWS-specific thing, we can give it as a variable, because the reason name is not going to change. If it is an AP South one.
+
+[rochak agrawal] 08:01:25
+It is always going to remain the AP South one, but the AMI ID can be changed. For example, you see it here.
+
+[rochak agrawal] 08:01:36
+Now, both are Amazon Linux 2023, correct? Now, both AMI IDs are different. So, the point here is, anything which you cannot customize.
+
+[rochak agrawal] 08:01:47
+Which keeps changing and where the.
+
+[rochak agrawal] 08:01:51
+backend provider is giving the value. Now, this value, I cannot make it up by myself.
+
+[rochak agrawal] 08:01:58
+Right, this value should be, like, if I'm hard-coding our AMI value, it should be hard-coded exactly what it is written here, like 397F06.
+
+[rochak agrawal] 08:02:08
+Now, maybe after some time, they might deprecate this AMI, or there is a newer version of the AMI is available. So the point is, AMI keeps changing.
+
+[rochak agrawal] 08:02:20
+The value of the AMI is directly provided to us by AWS.
+
+[rochak agrawal] 08:02:26
+So, any sort of this argument.
+
+[rochak agrawal] 08:02:29
+Terraform defines them as the data block, and it is going to fetch them at the runtime, okay? So we do not need to define and hardcode these value.
+
+[rochak agrawal] 08:02:42
+in my Terraform code. So now if you see the code here.
+
+[rochak agrawal] 08:02:46
+It says AWS AMI, okay?
+
+[rochak agrawal] 08:02:50
+I want this Amazon Linux 2023.
+
+[rochak agrawal] 08:02:55
+And which is, uh…
+
+[rochak agrawal] 08:02:57
+which is the values I want to find. So you can say, um…
+
+[rochak agrawal] 08:03:01
+I won't, even if you give nothing, this one only, this is also going to work.
+
+[rochak agrawal] 08:03:07
+So you see?
+
+[rochak agrawal] 08:03:08
+Most recent is equal to true.
+
+[rochak agrawal] 08:03:11
+And the owner of the AMI should be Amazon. These two are the criteria. Now, if you see here.
+
+[rochak agrawal] 08:03:19
+Amazon Linux 2023, you have two AMIs, correct? One is 97F06 and 2880, uh…
+
+[rochak agrawal] 08:03:30
+So you can see it here. Most recent one is a 6.18. So it will pick up the F706 AMI.
+
+[rochak agrawal] 08:03:37
+The reason for that is so that we do not need to hard code it.
+
+[rochak agrawal] 08:03:42
+Ilya?
+
+[rochak agrawal] 08:03:44
+Now…
+
+[rochak agrawal] 08:03:46
+one thing you do not need to worry about, how will I write that I need to know that most recent is equal to true or the owner? So that is where…
+
+[rochak agrawal] 08:03:57
+you do not need to worry about. So, for example, when you go AWS instance.
+
+[rochak agrawal] 08:04:28
+So here, you can see AWS instance.
+
+[rochak agrawal] 08:04:33
+Right? And here you can see the data source.
+
+[rochak agrawal] 08:04:41
+So, data source AWS instance. So, AWS instance is also a data source, right? Then…
+
+[rochak agrawal] 08:04:48
+If you want to figure out.
+
+[rochak agrawal] 08:04:57
+So you can see AMI related resources are this much.
+
+[rochak agrawal] 08:05:02
+API gateway, no, I want to go to EC2 instances.
+
+[rochak agrawal] 08:05:09
+So, you can see, data source is AWS AMI and AWS AMI ID, correct? So, if you click on AWS AMI.
+
+[rochak agrawal] 08:05:17
+It will give you what are the parameters it takes, most recent, name, regular expression, owner, then you can filter, right?
+
+[rochak agrawal] 08:05:27
+It's the only one.
+
+[rochak agrawal] 08:05:28
+So.
+
+[rochak agrawal] 08:05:30
+you do not need to worry about what is going into the data block. What you need to understand is.
+
+[rochak agrawal] 08:05:38
+what is the type of the resource I need to use? Okay. See, first.
+
+[rochak agrawal] 08:05:42
+We need to understand this six very, very clearly, where to use what. Now, when you know what a DataBlock can do, so for example, you are using AWS instance, so you can figure out what are the data source related to AWS instances there.
+
+[rochak agrawal] 08:05:58
+Can I use it in my code?
+
+[rochak agrawal] 08:06:01
+And then, what you're writing inside the data source is already available in the documentation, because you cannot remember… there are so many…
+
+[rochak agrawal] 08:06:11
+If I…
+
+[rochak agrawal] 08:06:15
+It is not practically possible for us to remember all of this. So we need to, like, when you will start working on it.
+
+[rochak agrawal] 08:06:23
+You can rely on the documentation, but see, as you will work most of the common services, you will get to know what are the parameters you need to use and what are the things you need to use. And nowadays, we have the coding agents available. It becomes a child's play now. You just need to understand the concept.
+
+[rochak agrawal] 08:06:43
+So that is about the data. Anything which, uh, you want to dynamically fetch, and those value, you cannot decide. The platform is deciding those value.
+
+[rochak agrawal] 08:06:53
+Those we need to define as the data block.
+
+[rochak agrawal] 08:06:58
+Gilead, any question with these six?
+
+[rochak agrawal] 08:07:16
+But Jeeva, that is the example we have taken. This is the…
+
+[rochak agrawal] 08:07:31
+This is a live example only, right?
+
+[rochak agrawal] 08:07:34
+I am…
+
+[rochak agrawal] 08:07:36
+See, this is… I have defined two variables, but then I want to use…
+
+[rochak agrawal] 08:07:41
+Something very specific to my name.
+
+[rochak agrawal] 08:07:43
+I do not want to use the e-commerce, I do not want to use the dev directly, right? What I want to use is…
+
+[rochak agrawal] 08:07:50
+My project name?
+
+[rochak agrawal] 08:07:52
+hyphen my environment. So then I'm creating an expression here, and then I'm using that expression in local.
+
+[rochak agrawal] 08:08:06
+For these type of scenarios, only locals is being used.
+
+[rochak agrawal] 08:08:17
+Yes, Velvo.
+
+[Vaibhav Gupta] 08:08:20
+Thank you. Bye.
+
+[Vaibhav Gupta] 08:08:22
+Hello.
+
+[rochak agrawal] 08:08:24
+Yes, we will.
+
+[Vaibhav Gupta] 08:08:28
+Hello, is there multiple right now?
+
+[rochak agrawal] 08:08:30
+Yeah, yeah, I can hear you, by the way.
+
+[Vaibhav Gupta] 08:08:33
+So, good morning. So, I'm not, like, confused in the local, like…
+
+[Vaibhav Gupta] 08:08:39
+That you're using…
+
+[Vaibhav Gupta] 08:08:41
+Same name and prefix, and it's confusing locally.
+
+[rochak agrawal] 08:08:45
+What is the confusion?
+
+[Vaibhav Gupta] 08:08:48
+Not able to get the local one.
+
+[rochak agrawal] 08:08:50
+No, but what you are not able to get, we have very clear here. See, you are defining the variable, correct? You need to see if I'm going to define a variable as a string, variable has a fixed type.
+
+[Vaibhav Gupta] 08:08:55
+Mm-hmm, mm-hmm.
+
+[Vaibhav Gupta] 08:08:57
+Mm-hmm.
+
+[Vaibhav Gupta] 08:09:03
+Mm-hmm.
+
+[rochak agrawal] 08:09:03
+a string, number, boolean, right? So then, when you define a variable, you can… I cannot give something like this as a string, correct?
+
+[Vaibhav Gupta] 08:09:13
+Hmm.
+
+[rochak agrawal] 08:09:14
+Or…
+
+[rochak agrawal] 08:09:16
+something, uh, right, then I have a project.
+
+[rochak agrawal] 08:09:22
+Now, these values you can give differently for the production, for the dev, for the test environment. Agree?
+
+[Vaibhav Gupta] 08:09:29
+Mm-hmm.
+
+[rochak agrawal] 08:09:31
+Correct? We are using a default value, but with the tf.war file, I can use it different values.
+
+[Vaibhav Gupta] 08:09:39
+E.
+
+[rochak agrawal] 08:09:39
+Agree? Till now? Now, let's say you… when you… you have a requirement, uh, so, for example, let's say your project name would be same.
+
+[Vaibhav Gupta] 08:09:40
+Mm-hmm.
+
+[rochak agrawal] 08:09:50
+But whenever you are creating a BPC, it should be, uh… when you are creating in a dev, it should be dev BPC.
+
+[rochak agrawal] 08:10:06
+Okay, when you are creating an abroad, it should be…
+
+[Vaibhav Gupta] 08:10:15
+Brown UPC.
+
+[rochak agrawal] 08:10:16
+Broad BPC. Hey, see, one way is…
+
+[rochak agrawal] 08:10:19
+I again give the exact value as my variable files.
+
+[rochak agrawal] 08:10:24
+Okay? But… see, that is okay when you are creating one resource. When you are creating, again, a virtual machine, your virtual machine name should be eCommerceDevInstance, eCommerceProdInstance, you're creating a load balancer, uh, eCommerceDevLB.
+
+[rochak agrawal] 08:10:39
+e-commerce prod ILB, something like that, right? Now, one way of doing this is you define… you have a prod.tabbar, you have a dev.tabbar, you define all those values there.
+
+[rochak agrawal] 08:10:51
+Connect.
+
+[Vaibhav Gupta] 08:10:53
+Hmm.
+
+[rochak agrawal] 08:10:54
+But if you are creating 100 resources, then you need to define 100 values, right?
+
+[Vaibhav Gupta] 08:11:00
+Yep.
+
+[rochak agrawal] 08:11:01
+Then your variable file also becomes very big, and not easy to maintain.
+
+[rochak agrawal] 08:11:07
+That's why I am going to define only the variables.
+
+[rochak agrawal] 08:11:11
+So I'll define two variables, environment and project.
+
+[rochak agrawal] 08:11:15
+Okay, you give these values. Now your project is going to say you just need to pass the environment value.
+
+[rochak agrawal] 08:11:21
+And I am creating a local value for my Terraform code, which is taking these value and combining them by using this expression.
+
+[Vaibhav Gupta] 08:11:31
+Okay.
+
+[rochak agrawal] 08:11:32
+Okay. Now, you see, in this case, my expression would be…
+
+[rochak agrawal] 08:11:38
+E-commerce?
+
+[rochak agrawal] 08:11:41
+Correct.
+
+[Vaibhav Gupta] 08:11:43
+Hmm.
+
+[rochak agrawal] 08:11:44
+Right?
+
+[Vaibhav Gupta] 08:11:45
+Right.
+
+[rochak agrawal] 08:11:46
+So, anytime you are creating a resource.
+
+[rochak agrawal] 08:11:50
+You will… it is going to take a reference of this local.
+
+[rochak agrawal] 08:11:54
+And it is going to create the name e-commerce.
+
+[Vaibhav Gupta] 08:12:02
+You see.
+
+[rochak agrawal] 08:12:03
+Simple. Now, if I change it to production, it will be e-commerce hyphen prod hyphen VPC, correct?
+
+[Vaibhav Gupta] 08:12:11
+Nate.
+
+[rochak agrawal] 08:12:11
+So now you do not need to define any values in your tier bars also.
+
+[rochak agrawal] 08:12:17
+It's eating this expression at runtime.
+
+[Vaibhav Gupta] 08:12:21
+Hmm.
+
+[rochak agrawal] 08:12:21
+Right? So that is what local does. Local is like a temporary placeholder, which is taking its values, and it's not only from the variable. You can take it from, uh, for example, from an expression, uh…
+
+[rochak agrawal] 08:12:36
+It is just like a regular expression. You define something in a data block, it takes the value from the data block, calculates it, it can do all of that. Then you can refer instead of referring the complex values again and again.
+
+[rochak agrawal] 08:12:50
+or defining those value again and again, I will just simply refer the local.
+
+[rochak agrawal] 08:12:57
+Okay.
+
+[rochak agrawal] 08:13:00
+So that is the use of local.
+
+[rochak agrawal] 08:13:07
+Let me… let me give an example.
+
+[rochak agrawal] 08:14:22
+Lucia.
+
+[rochak agrawal] 08:14:24
+We defined two variables.
+
+[rochak agrawal] 08:14:26
+Right? Staging, and the project name e-commerce. And here, I am defining a looper.
+
+[rochak agrawal] 08:14:31
+Okay. Local says… here you can see…
+
+[rochak agrawal] 08:14:37
+Here, I am defining two locals. One is a name prefix, like we were using it all together, which is a where.projectname and where.environment. Now, here, I'm defining another local, which is a common tag.
+
+[rochak agrawal] 08:14:50
+So, you can see here I'm not doing any calculation, it is just I'm defining the common tag, correct?
+
+[rochak agrawal] 08:14:57
+And I am going to use these locals everywhere. So you can see, um, locals, um…
+
+[rochak agrawal] 08:15:08
+I've taken a complex example.
+
+[rochak agrawal] 08:15:31
+Yeah, this is the more appropriate one for us.
+
+[rochak agrawal] 08:15:35
+Okay? So, again, the same thing, um, provider AWS…
+
+[rochak agrawal] 08:15:41
+two environment, uh, two variable environment and project name, and you are defining a local. Name prefix, where.projectname, where.environment, and common text. Now, when you are creating the BPC, you can see.
+
+[rochak agrawal] 08:15:56
+The name it is taking as the local.name prefix. It does not need to calculate the name again.
+
+[rochak agrawal] 08:16:03
+And.
+
+[rochak agrawal] 08:16:05
+It is applying the common text. Same here with the subnet.
+
+[rochak agrawal] 08:16:11
+You see here, local.name underscore prefix. And…
+
+[rochak agrawal] 08:16:17
+So let me run this.
+
+[rochak agrawal] 08:16:24
+I'll copy this in.
+
+[rochak agrawal] 08:16:37
+It's.
+
+[rochak agrawal] 08:16:42
+So, S…
+
+[rochak agrawal] 08:16:44
+Now, if you go run terraform.
+
+[rochak agrawal] 08:16:50
+Lan.
+
+[rochak agrawal] 08:17:06
+You see, it is creating a subnet, okay, and if you see the name of the subnet.
+
+[rochak agrawal] 08:17:15
+Okay, from where the name is coming.
+
+[rochak agrawal] 08:17:22
+You see here in the subnet.
+
+[rochak agrawal] 08:17:25
+This, this, this, this, this.
+
+[rochak agrawal] 08:17:26
+It says local.name prefix hyphen public hyphen subnet hyphen bane, correct?
+
+[Vaibhav Gupta] 08:17:33
+Hmm.
+
+[rochak agrawal] 08:17:33
+So here, you are getting hyphen public, hyphen subnet, hyphen 1A.
+
+[rochak agrawal] 08:17:38
+Then…
+
+[rochak agrawal] 08:17:40
+Your local dot name prefix. Now, what is your local dot name prefix?
+
+[rochak agrawal] 08:17:44
+Your local.name prefix is bear.projectname-bear.environment.
+
+[rochak agrawal] 08:17:50
+Which is your cloud app?
+
+[rochak agrawal] 08:17:52
+Hyphen production.
+
+[rochak agrawal] 08:17:55
+Understood. So first, a local name is created. Now, you want… I will… let's say you define another local with this name also.
+
+[rochak agrawal] 08:18:04
+Public subnet A. And instead of defining it also, you can see, let's say I define another one.
+
+[rochak agrawal] 08:18:17
+Suffix is equal to…
+
+[rochak agrawal] 08:18:24
+Public.
+
+[rochak agrawal] 08:18:26
+underscore sub.
+
+[rochak agrawal] 08:18:32
+Something like that, okay? So now, what you can do here as well…
+
+[rochak agrawal] 08:18:38
+Where is this? So I can see.
+
+[rochak agrawal] 08:18:41
+Local.
+
+[rochak agrawal] 08:18:43
+dot suffix also.
+
+[rochak agrawal] 08:18:46
+Simple. Now I'm using two local in the same name. So see, in the end, it is a programming language. How you can play around, it is up to you. What important for us is to know what is the use case where I'm going to use it.
+
+[rochak agrawal] 08:19:02
+Okay.
+
+[rochak agrawal] 08:19:07
+So, this is about the locals.
+
+[rochak agrawal] 08:19:12
+Just delete this.
+
+[rochak agrawal] 08:19:19
+Yes, Arif?
+
+[arif] 08:19:23
+Yeah, Ruchak, so, uh, just one thing, like, if I do a local thing also, configure, and, uh, if I have also the TF4 files with the same variant.
+
+[rochak agrawal] 08:19:32
+Mm-hmm. Mm-hmm.
+
+[arif] 08:19:34
+So, take precedence, like, how Terraform will decide to…
+
+[rochak agrawal] 08:19:38
+See, understood, I got a question. So, Adiv, you see, um…
+
+[rochak agrawal] 08:19:43
+Let me do it here itself, okay?
+
+[rochak agrawal] 08:19:48
+So, this is my file.
+
+[rochak agrawal] 08:19:58
+I'm going to open.
+
+[rochak agrawal] 08:20:01
+Don't.
+
+[rochak agrawal] 08:20:05
+replace it.
+
+[rochak agrawal] 08:20:07
+You see, um, and if I…
+
+[rochak agrawal] 08:20:11
+Let me delete…
+
+[rochak agrawal] 08:20:18
+See, understand this, RF, um…
+
+[rochak agrawal] 08:20:24
+Local value is dependent on?
+
+[rochak agrawal] 08:20:30
+In this expression, local value is dependent on?
+
+[arif] 08:20:35
+The variables mentioned in this, uh, yeah.
+
+[rochak agrawal] 08:20:37
+Correct. In this expression, variable.projectName, variable.environment, correct?
+
+[arif] 08:20:39
+Yeah.
+
+[Vaibhav Gupta] 08:20:43
+Hmm.
+
+[rochak agrawal] 08:20:43
+Now you see.
+
+[rochak agrawal] 08:20:45
+When you give the TF vars, the value of variable is going to change.
+
+[arif] 08:20:50
+Mm-hmm. Yep.
+
+[rochak agrawal] 08:20:50
+Got it?
+
+[rochak agrawal] 08:20:52
+So, accordingly, the local value is going to change.
+
+[rochak agrawal] 08:20:56
+For example, now these are my default value. When I'm not providing any dev.tfbar or prod.tfbar, then these are my default value, which is Cloud App Production.
+
+[arif] 08:21:03
+Mmhm.
+
+[arif] 08:21:06
+Okay, okay. Okay, okay.
+
+[rochak agrawal] 08:21:07
+But if I give a value, then my this value is going to change, and according… see, local does not have a value. Local is deriving its value from this expression.
+
+[rochak agrawal] 08:21:18
+Correct?
+
+[arif] 08:21:19
+Okay, we got it. Whether you are defining default or, uh, TA profile, yeah.
+
+[rochak agrawal] 08:21:22
+Correct. Since we are not defining the dev.tf… any tfvars value right now, it is taking the default value, which is a cloud app or production. Now, let's say I will say…
+
+[rochak agrawal] 08:21:33
+Cloud AWS, which is a default value, correct? I save this. Now, if you run the plan.
+
+[rochak agrawal] 08:21:48
+Where I have made a mistake…
+
+[rochak agrawal] 08:21:54
+I probably have not saved this. Yeah.
+
+[rochak agrawal] 08:22:04
+Now you will see Cloud AWS.
+
+[rochak agrawal] 08:22:11
+Okay.
+
+[rochak agrawal] 08:22:13
+Because… local…
+
+[rochak agrawal] 08:22:15
+is driving it to value from the expression and the expression you see of course we have discussed yesterday in yesterday's class as well.
+
+[rochak agrawal] 08:22:26
+you can have multiple ways where I can customize the value of a variable. So, value of variable is being changed, absolutely fine. Local will adjust accordingly.
+
+[rochak agrawal] 08:22:38
+Killian, Adith?
+
+[arif] 08:22:40
+Yeah, yeah, I got it.
+
+[Vaibhav Gupta] 08:22:44
+So, what we are configuring, uh…
+
+[Vaibhav Gupta] 08:22:46
+When variable, so that, uh, defines the, our local output, right?
+
+[rochak agrawal] 08:22:48
+Hmm?
+
+[rochak agrawal] 08:22:51
+No.
+
+[rochak agrawal] 08:22:54
+It is a wrong statement, or I would say it's a half statement.
+
+[Vaibhav Gupta] 08:22:56
+Mm-hmm.
+
+[rochak agrawal] 08:22:59
+In this expression, yes.
+
+[rochak agrawal] 08:23:01
+So, the local value does not only derived from the…
+
+[rochak agrawal] 08:23:09
+Very well. I will just simply say…
+
+[Vaibhav Gupta] 08:23:09
+Mm-hmm.
+
+[rochak agrawal] 08:23:12
+Look, name prefix is.
+
+[rochak agrawal] 08:23:15
+For example.
+
+[rochak agrawal] 08:23:18
+Simple. There is no calculation.
+
+[rochak agrawal] 08:23:20
+Right? So now, in this case, it is going to act as a constant.
+
+[Vaibhav Gupta] 08:23:20
+Mm-hmm.
+
+[rochak agrawal] 08:23:26
+Everywhere you will say local.name prefix, it is AWS one.
+
+[Vaibhav Gupta] 08:23:27
+Hmm.
+
+[rochak agrawal] 08:23:31
+So, the local value is derived from this expression which we are writing here.
+
+[rochak agrawal] 08:23:37
+Since we are writing the where.projectname where.environment, in this case, it is going to dependent on the variables, correct? But…
+
+[rochak agrawal] 08:23:47
+variable is not the only thing on which a local value will depend. Local value is dependent on… see, for example, in this case.
+
+[rochak agrawal] 08:23:54
+Now, if I give only this…
+
+[Vaibhav Gupta] 08:23:57
+Mm-hmm.
+
+[rochak agrawal] 08:23:59
+Common text is managed by Terraform.
+
+[rochak agrawal] 08:24:02
+Now, does this value is derived from a variable? No.
+
+[rochak agrawal] 08:24:07
+Right? It is like a simple constant. Like, there is a concept of variable and constant, correct?
+
+[Vaibhav Gupta] 08:24:13
+Mm-hmm.
+
+[rochak agrawal] 08:24:15
+So local can act as a constant also. Now in this case, this is like my universal to load. This is not dependent on anything. Anytime I'm going to use local load to comment text, it is managed by Terraform.
+
+[Vaibhav Gupta] 08:24:23
+Hmm.
+
+[rochak agrawal] 08:24:27
+So local value is depend on what expression you are writing.
+
+[Vaibhav Gupta] 08:24:28
+Okay.
+
+[rochak agrawal] 08:24:34
+Then, throughout the program, that value is going to remain the constant.
+
+[rochak agrawal] 08:24:39
+If it is just a simple statement, I'll say name is equal to Rochak. That holds true. But if I'm saying name is equal to where.name.
+
+[rochak agrawal] 08:24:48
+Then it will derive its value from the variable.
+
+[Vaibhav Gupta] 08:24:54
+Got it.
+
+[rochak agrawal] 08:24:55
+Okay.
+
+[rochak agrawal] 08:24:58
+Okay.
+
+[rochak agrawal] 08:25:02
+So, output, uh…
+
+[rochak agrawal] 08:25:05
+Already we have seen yesterday output data and this. Now, the very important thing is…
+
+[rochak agrawal] 08:25:16
+So, see, fundamentally, um, any question in the… in these 6 blocks, what they are going to do.
+
+[rochak agrawal] 08:25:29
+Okay.
+
+[rochak agrawal] 08:25:31
+Now, the most important thing as we are discussing — see, all other things — see, provider is, you can say, the foundation of the Terraform. Because if there is no foundation, you will not be able to do anything. See, for example, if I want to connect to internet, I need to have a laptop or a router or a mobile.
+
+[rochak agrawal] 08:25:48
+then you can go and do the things, right? So, provider you can understand as a foundational layer, um, because if the provider is not there, there is no connection at all. But all other things you see variables.
+
+[rochak agrawal] 08:26:02
+Output
+
+[rochak agrawal] 08:26:04
+Locals and data.
+
+[rochak agrawal] 08:26:06
+This supports one thing, okay? The whole aim is to…
+
+[rochak agrawal] 08:26:14
+Create the resources, right?
+
+[rochak agrawal] 08:26:17
+To get the information of the resources.
+
+[rochak agrawal] 08:26:21
+They all…
+
+[rochak agrawal] 08:26:23
+Variables place variables output locals and data.
+
+[rochak agrawal] 08:26:28
+They are, like, the supporting element. If I don't want to use the variable in my code, I will hardcode everything, and my code is going to work fine. It is just… it will not be reusable, but…
+
+[rochak agrawal] 08:26:38
+It is going to work exactly fine, correct?
+
+[rochak agrawal] 08:26:42
+So the single most important thing is the resources. Okay. Now.
+
+[rochak agrawal] 08:26:51
+Resources is any infrastructure object.
+
+[rochak agrawal] 08:27:00
+Resources is any infrastructure object which we want to create and manage with Terraform.
+
+[rochak agrawal] 08:27:06
+See, that's the whole point of us using Terraform is because we want to manage the resources, right?
+
+[rochak agrawal] 08:27:13
+Now you manage multiple other type of resources, but our focus right now is on cloud resources, so I'll just… if I'm saying cloud resources, you can understand it can manage other resources also.
+
+[rochak agrawal] 08:27:25
+Uh, including virtual network, compute instances, DNS record, load balancer, storage account, everything.
+
+[rochak agrawal] 08:27:33
+The kind of the resources you are going to provision with Terraform.
+
+[rochak agrawal] 08:27:38
+will depend on the kind of the provider you are using with Terraform. So for example, if I'm using AWS provider, then I can create AWS instance, AWS VPC, AWS load balancer, et cetera, et cetera.
+
+[rochak agrawal] 08:27:53
+If I'm using, um…
+
+[rochak agrawal] 08:27:55
+Azure provider, then Azure instance, Azure VM, AKS, and other things I am going to provision.
+
+[rochak agrawal] 08:28:04
+Very clear. Now, providers, as you understand, providers are the plugin that offers a collection of the resource type that we can provision on a single cloud.
+
+[rochak agrawal] 08:28:15
+or on-premises infrastructure platform.
+
+[rochak agrawal] 08:28:17
+Right? So…
+
+[rochak agrawal] 08:28:20
+We need to add the resource block in our Terraform configuration file and specify the necessary arguments.
+
+[rochak agrawal] 08:28:29
+Most arguments are specific to the resources and control its behavior.
+
+[rochak agrawal] 08:28:36
+We can also configure terraform specific argument which we call it as a meta argument.
+
+[rochak agrawal] 08:28:42
+For example, there will be resource-specific argument.
+
+[rochak agrawal] 08:28:50
+Then there will be Terraform specific argument.
+
+[rochak agrawal] 08:28:59
+Which we call it as a meta-argument.
+
+[rochak agrawal] 08:29:04
+Okay?
+
+[rochak agrawal] 08:29:07
+that determines how Terraform is going to create and manage the resources. So, um…
+
+[rochak agrawal] 08:29:14
+Once you run the Terraform apply, it creates the resources in the configuration that do not yet exist as the infrastructure object.
+
+[rochak agrawal] 08:29:24
+Destroy resources that exist in the state but no longer exist in the configuration. Update any resources in place if their argument has been changed.
+
+[rochak agrawal] 08:29:35
+Now, the important thing is how to configure a resource, and that is what we need to understand.
+
+[rochak agrawal] 08:29:43
+So at the source of Nikon.
+
+[rochak agrawal] 08:29:47
+We need to declare a resource.
+
+[rochak agrawal] 08:29:52
+In the resource block, starting with the resource block.
+
+[rochak agrawal] 08:29:56
+Okay.
+
+[rochak agrawal] 08:29:57
+Then you will define the resource type.
+
+[rochak agrawal] 08:30:05
+And it is true for all the resources you are creating, AWS resource, Azure resource, GCP resource. The good thing about the Terraform is the way of working is Terraform is exactly the same, so it does not matter which type of resource you are creating. Then you need to give the name of that resource.
+
+[rochak agrawal] 08:30:23
+Now, this name is nothing to do with the cloud. This is a name by which Terraform will internally refer to this resource, okay? And then you are going to write.
+
+[rochak agrawal] 08:30:34
+Whatever the configuration you want, I'll come to that. And you close the loop, okay?
+
+[rochak agrawal] 08:30:40
+So…
+
+[rochak agrawal] 08:30:42
+We need to add a resource block to our configuration, we need to declare a type, and specify a name for it.
+
+[rochak agrawal] 08:30:48
+The type determines the kind of infrastructure object the resource block is going to manage. What arguments the resource supports? Most resource types are implemented by your provider, but Terraform includes a native resource type also.
+
+[rochak agrawal] 08:31:05
+Then we also specify a name, which is a local name for the resource. Again, so if I'm saying VM1, that VM1 is not the name which AWS will take, it is the name which Terraform will refer to your resources.
+
+[rochak agrawal] 08:31:19
+If you see our configuration.
+
+[rochak agrawal] 08:31:23
+So you see, resource type is the AWS subnet, and this is a public one, right? And then resource type is AWS VPC, and the name is main.
+
+[rochak agrawal] 08:31:34
+Now, why resource type is needed? Because all the parameters, all the arguments you are going to define in the…
+
+[rochak agrawal] 08:31:41
+within the resource block will depend on what type of resource you want to create. For example, if you want to create AWS instance, their resource arguments is going to be different than a AWS VPC.
+
+[rochak agrawal] 08:31:54
+Okay?
+
+[rochak agrawal] 08:32:11
+Clear till now, any question?
+
+[rochak agrawal] 08:32:43
+That'd be good.
+
+[rochak agrawal] 08:32:46
+Arif, you have a question?
+
+[rochak agrawal] 08:32:55
+All right, Vevo, I can see your hand raised. Any questions?
+
+[Vaibhav Gupta] 08:33:00
+Uh, no, no, no.
+
+[rochak agrawal] 08:33:05
+Okay, so…
+
+[rochak agrawal] 08:33:08
+We understood the basic, thing about the block, but if you see resources, the resource block.
+
+[rochak agrawal] 08:33:16
+See, right now.
+
+[rochak agrawal] 08:33:18
+Are you seeing something?
+
+[arif] 08:33:21
+No, no, uh…
+
+[rochak agrawal] 08:33:21
+Okay.
+
+[rochak agrawal] 08:33:23
+right now, what we don't need to worry about that… see, for example, if I'm creating this AWS BPC.
+
+[rochak agrawal] 08:33:33
+Late.
+
+[rochak agrawal] 08:33:34
+So, AWS VPC, I'm using the CIDR block, enable DNS hostname, and text, right? In the subnet, I'm using the VPC ID, CIDR block, availability zone, etc, etc. So, a resource type…
+
+[rochak agrawal] 08:33:49
+Whether it's AWS Subnet, AWS VPC, AWS Instance, AWS Load Balancer, AWS S3.
+
+[rochak agrawal] 08:33:57
+is going to have multiple arguments, okay? And you don't remember, and…
+
+[rochak agrawal] 08:34:04
+When I say you don't remember, it is…
+
+[rochak agrawal] 08:34:07
+practically not possible for you to remember all of this. It is not humanly possible.
+
+[rochak agrawal] 08:34:13
+So whenever you are creating, and of course, as you practice, as you will create the infrastructure, you will get to know. Now I know, for example, I need to create a VPC, so which things is necessary for me? That is going to come with the practice. But right now, we are going to take the help of a documentation.
+
+[rochak agrawal] 08:34:29
+So, for example, I want AWS Provider. I'll go to AWS Provider.
+
+[rochak agrawal] 08:34:37
+Telephone.
+
+[rochak agrawal] 08:34:45
+Now you see AWS provider provides these type of resources. You can see Amplify, App Mesh. It is basically all the AWS services. AppFabric, AppFlows, Backup, Batch, Bedrock. You can see Chatbot, Chime.
+
+[rochak agrawal] 08:35:02
+Cloud9, CloudFormation, you can see so many services.
+
+[rochak agrawal] 08:35:08
+I believe that almost all the services would be there. Then all the common services like EC2, EBS, DynamoDB, EFS, EKS, everything is there.
+
+[rochak agrawal] 08:35:24
+Now…
+
+[rochak agrawal] 08:35:26
+It out repeatedly.
+
+[rochak agrawal] 08:35:29
+Let's pick up S3. Now in the S3, AWS provides you these type of resources. I can create a bucket.
+
+[rochak agrawal] 08:35:36
+I can create some configuration related to bucket, course configuration, intelligent tiering configuration, bucket inventory, bucket logging. You can see so many things are there.
+
+[rochak agrawal] 08:35:49
+Now if you go to, now you say I want to create a bucket. So you click on AWS S3 bucket.
+
+[rochak agrawal] 08:35:56
+And here…
+
+[rochak agrawal] 08:36:00
+You are going to see…
+
+[rochak agrawal] 08:36:07
+You are going to see the example uses private bucket with the tag, bucket in account regional namespaces, right?
+
+[rochak agrawal] 08:36:16
+And then these are the arguments. Acceleration status, ACL, bucket.
+
+[rochak agrawal] 08:36:24
+Bucket namespace, bucket prefix, course rule, force destroy. You can see there are so many options out there.
+
+[rochak agrawal] 08:36:32
+Can you remember all of this? There's no need.
+
+[rochak agrawal] 08:36:35
+Right? Website.
+
+[rochak agrawal] 08:36:38
+And then the course rule configuration.
+
+[rochak agrawal] 08:36:40
+You can see there are so many rules out there.
+
+[rochak agrawal] 08:36:44
+And with each, there will be. So, for example, I need to create a route for P3.
+
+[rochak agrawal] 08:36:50
+Route 43, there are so many things out there. Route 43 record, if you are going to create.
+
+[rochak agrawal] 08:36:55
+So this is a simple record, right? But there can be any multiple other things also, weighted routing policy.
+
+[rochak agrawal] 08:37:04
+So now.
+
+[rochak agrawal] 08:37:08
+for the resource-specific argument.
+
+[rochak agrawal] 08:37:17
+You
+
+[rochak agrawal] 08:37:19
+Need to rely?
+
+[rochak agrawal] 08:37:23
+on the…
+
+[rochak agrawal] 08:37:27
+documents.
+
+[rochak agrawal] 08:37:28
+Okay? If you're confused what you want to do, always refer to the documentation.
+
+[rochak agrawal] 08:37:35
+As simple as that. And of course, as you will practice, um, you will…
+
+[rochak agrawal] 08:37:43
+You will get to know what are the parameters, and of course, there was one point which we were discussing yesterday, that you should have the cloud knowledge.
+
+[rochak agrawal] 08:37:54
+Uh, if you're creating the resources with the Terraform, because if I do not know… for example, if I do not know what is the weighted routing policy, right?
+
+[rochak agrawal] 08:38:04
+Would I be able to use the weighted routing policy in my Terraform code? No. So, see, Terraform is just a medium to automate the resource infrastructure provisioning. The assumption is that you need to basically know the underlying.
+
+[rochak agrawal] 08:38:19
+platform, then only you will be effectively can use the Terraform configuration.
+
+[rochak agrawal] 08:38:27
+Clear till now?
+
+[rochak agrawal] 08:38:35
+Now there is a second thing.
+
+[rochak agrawal] 08:38:40
+which be said is a.
+
+[rochak agrawal] 08:38:43
+Terraform-specific argument, okay?
+
+[rochak agrawal] 08:38:46
+Now, what are the Terraform specific argument?
+
+[rochak agrawal] 08:38:53
+If you see here, um…
+
+[rochak agrawal] 08:38:56
+Just give me a second.
+
+[rochak agrawal] 08:39:14
+Okay.
+
+[rochak agrawal] 08:39:22
+Telecom?
+
+[rochak agrawal] 08:39:24
+When we are defining a resource block.
+
+[rochak agrawal] 08:39:27
+Okay.
+
+[rochak agrawal] 08:39:29
+You can define multiple Terraform specific argument.
+
+[rochak agrawal] 08:39:34
+Okay, uh, what are those?
+
+[rochak agrawal] 08:39:37
+Let me show you.
+
+[rochak agrawal] 08:39:50
+So if you see this.
+
+[rochak agrawal] 08:39:59
+It's just not coming as a color.
+
+[rochak agrawal] 08:40:01
+Okay, now if you read this, it says resource type level, provider argument count depends on for each.
+
+[rochak agrawal] 08:40:12
+Let me just delete this one.
+
+[rochak agrawal] 08:40:15
+Then provider, lifecycle, uh, create before destroy, ignore changes, precondition, postcondition, connection, provisional, uh, environment, VAN, quiet, inline, script.
+
+[rochak agrawal] 08:40:27
+Now you see there is nothing.
+
+[rochak agrawal] 08:40:31
+Related to any of the resource type, for example.
+
+[rochak agrawal] 08:40:37
+These were see.
+
+[rochak agrawal] 08:40:41
+this resource-specific argument will depend on resource to resource. So example, for AWS BPC, there will be a different…
+
+[rochak agrawal] 08:40:52
+Arguments?
+
+[rochak agrawal] 08:40:56
+For AWS instance.
+
+[rochak agrawal] 08:41:01
+there would be a different arguments, right? But when you talk about the Terraform specific argument.
+
+[rochak agrawal] 08:41:09
+These are the list of the argument which is going to work with everything.
+
+[rochak agrawal] 08:41:14
+Now, what are these arguments? We'll see that one by one. But so, for example, if you talk about count, if you talk about depends on, if you talk about foreach.
+
+[rochak agrawal] 08:41:23
+Um, they are going to work with all the, um…
+
+[rochak agrawal] 08:41:29
+resources, okay? But again, uh, we want to use it, we don't want to use it, it is up to us, okay?
+
+[rochak agrawal] 08:41:38
+When you need to use what argument, we are going to see that.
+
+[rochak agrawal] 08:41:42
+But these are the Terraform-specific argument. So we will start from the basics of…
+
+[rochak agrawal] 08:41:49
+this.
+
+[rochak agrawal] 08:41:51
+Now, resource, type, and label.
+
+[rochak agrawal] 08:41:53
+This is the first thing you are going to define. So type, as we discussed, type specifies the type of the resources to create.
+
+[rochak agrawal] 08:42:02
+We can declare either a resource type determined by the provider, okay? Uh, then the label. Label is the name. Uh, for example, specify a name for the resources.
+
+[rochak agrawal] 08:42:13
+Terraform uses this label to track the resources in your state file. It has nothing to do with your cloud, okay?
+
+[rochak agrawal] 08:42:21
+Then these numbers come.
+
+[rochak agrawal] 08:42:25
+count…
+
+[rochak agrawal] 08:42:27
+And again, we call them as a meta-argument we discussed. So first is a count. Count meta-argument instruct Terraform to provision multiple instances of the same resources.
+
+[rochak agrawal] 08:42:41
+with the identical configuration. This is very important with the count.
+
+[rochak agrawal] 08:42:47
+Count only create the resources with the identical configuration. Now, this is also very important. You cannot use count and foreach.
+
+[rochak agrawal] 08:42:57
+together in a resource block. Either you use count, or you are going to use use for each. For example, when you are going to use count, and when you are going to use for each.
+
+[rochak agrawal] 08:43:08
+Now, let's see.
+
+[rochak agrawal] 08:43:14
+Both are…
+
+[rochak agrawal] 08:43:22
+Both are being used for, um…
+
+[rochak agrawal] 08:43:29
+Creating multiple resources.
+
+[rochak agrawal] 08:43:30
+Now, let's assume.
+
+[rochak agrawal] 08:43:34
+There are 3…
+
+[rochak agrawal] 08:43:39
+subnets, okay? Now, what you want is, you want one virtual machine to go in this subnet, one virtual machine to go in this subnet, another virtual machine to go in this subnet, okay?
+
+[rochak agrawal] 08:43:52
+Then the second example is where I want all the three virtual machines.
+
+[rochak agrawal] 08:43:58
+to go in the subnet.
+
+[rochak agrawal] 08:44:03
+Okay.
+
+[rochak agrawal] 08:44:07
+Now, if you see, um…
+
+[rochak agrawal] 08:44:10
+the second case, where I want to… where I want all my three virtual machines to go into the same subnet, it means they are having the identical configuration, then I am going to use…
+
+[rochak agrawal] 08:44:25
+Something called count.
+
+[rochak agrawal] 08:44:31
+But in this case, every virtual machine is going into a different, uh…
+
+[rochak agrawal] 08:44:37
+subnet. It means they are not having the identical configuration, so we are going to place them.
+
+[rochak agrawal] 08:44:45
+With 4H. We will see a detailed example of 4H, but right now you understand, if you want to create the similar type of the resources, it is going to be the count.
+
+[rochak agrawal] 08:44:57
+If you want to, um, have a different kind of the configuration.
+
+[rochak agrawal] 08:45:04
+Then you deploy them with the foliage.
+
+[rochak agrawal] 08:45:08
+Okay.
+
+[rochak agrawal] 08:45:23
+Then comes the depends one.
+
+[rochak agrawal] 08:45:26
+So content for each is done. Then comes the depend zone. Now we discussed yesterday there are two type of dependencies are there. Okay. So the implicit dependency. So if you are creating the resources within the Terraform block.
+
+[rochak agrawal] 08:45:41
+Uh, within your Terraform code, and uh… so Terraform will…
+
+[rochak agrawal] 08:45:45
+by itself will figure out that I need to create a VPC, then subnet, then the virtual machine. So that is called the implicit dependency, and we do not need to define that.
+
+[rochak agrawal] 08:45:56
+Right? Um, but if you, let's say, uh, would define some…
+
+[rochak agrawal] 08:46:02
+explicit dependency, like you are creating an S3 bucket and the EC2 instance. Now, these are mutually exclusive, they do not depend on each other. But you want to create a dependency saying that I… my S3 bucket should be created before my virtual machine is created. So you can define that dependencies.
+
+[rochak agrawal] 08:46:19
+With the help of depends on meta argument.
+
+[rochak agrawal] 08:46:23
+The depends on meta argument specifies an upstream resource that the resource depends on.
+
+[rochak agrawal] 08:46:28
+Terraform must complete all operations on the upstream resource before performing operations on the resource.
+
+[rochak agrawal] 08:46:35
+containing the depends on argument. So I will just simply say, um…
+
+[rochak agrawal] 08:46:43
+AWS, uh, underscore S3 dot bucket name.
+
+[rochak agrawal] 08:46:49
+For example, if I am going to define this in my AWS instance block, then AWS instance will go and check if that AWS S3 bucket is there or not. If that bucket is not there, then it is not going to create your AWS instance.
+
+[rochak agrawal] 08:47:07
+So that is a depends on argument.
+
+[rochak agrawal] 08:47:10
+Okay, um…
+
+[rochak agrawal] 08:47:12
+So this is about the 4 each, depends on in the count.
+
+[rochak agrawal] 08:47:18
+Then comes the life cycle.
+
+[rochak agrawal] 08:47:25
+Provider also, already we know, provider is the backend plugin. And then comes the lifecycle. So lifecycle block define lifecycle rules that instruct Terraform.
+
+[rochak agrawal] 08:47:38
+When and how to operate on your resource.
+
+[rochak agrawal] 08:47:42
+Now, what does it mean? We can specify the following lifecycle, uh, to manage, like, action trigger events. Action trigger specify a set of arguments that determine which event.
+
+[rochak agrawal] 08:47:55
+trigger one or more.
+
+[rochak agrawal] 08:47:59
+provider action, under which conditions the action run, and which action Terraform invokes.
+
+[rochak agrawal] 08:48:08
+Now we have multiple before create, after create, before update, after update, before destroy, after destroy, correct? Now.
+
+[rochak agrawal] 08:48:18
+And then, uh…
+
+[rochak agrawal] 08:48:19
+Select me.
+
+[rochak agrawal] 08:48:24
+Take a lifecycle block separately.
+
+[rochak agrawal] 08:48:29
+Okay, so let's say you will define an event. Now you are updating a database and you want to take a backup of that database. So you'll say before update.
+
+[rochak agrawal] 08:48:42
+Neat.
+
+[rochak agrawal] 08:48:45
+You want to delete a database, and…
+
+[rochak agrawal] 08:48:48
+You are deleting an S3 bucket. Now, before deleting the S3 bucket, you want to take an extract of the data that is there in the S3 bucket. So I'll say before destroy. That is an event, right? So action on failure.
+
+[rochak agrawal] 08:49:04
+Or whatsoever. Then, create before destroy means Terraform… if you define this, create before destroy. Then, Terraform creates a replacement resource before destroying the current resource.
+
+[rochak agrawal] 08:49:17
+Then prevent-to-destroy, Terraform rejects operation. So if prevent-to-destroy is true.
+
+[rochak agrawal] 08:49:23
+Then, when you will be running terraform destroy command, it is not going to destroy your object. Now, this is one of, uh, again, the common interview question. See, um…
+
+[rochak agrawal] 08:49:35
+they are going to ask you, uh, what is the command to destroy the Terraform resources? You will very confidently say, Terraform destroy.
+
+[rochak agrawal] 08:49:43
+Which is true
+
+[rochak agrawal] 08:49:45
+OK. Now the question is the follow up question there is.
+
+[rochak agrawal] 08:49:49
+When I'm running the terraform destroy command, I am not able to destroy my resources. Now, what could be the reason for this?
+
+[rochak agrawal] 08:49:57
+The reason is very simple. In your lifecycle meta argument, you have set up the prevented destroy is equal to true.
+
+[rochak agrawal] 08:50:06
+Prevent Terraform reject operations to destroy the resources and returns an error.
+
+[rochak agrawal] 08:50:14
+This rule does not prevent Terraform from destroying the resource if you remove the resource configuration, right? So then we have the ignore changes. Ignore changes specify a list of resource attribute that the Terraform ignore changes to.
+
+[rochak agrawal] 08:50:29
+See, for example.
+
+[rochak agrawal] 08:50:33
+you have created a t2.micro type of the instance, okay? And then…
+
+[rochak agrawal] 08:50:40
+you go change your parameter to t2.large, something like that. But in the ignore changes, you have defined this attribute. If the size is getting changed, you ignore it.
+
+[rochak agrawal] 08:50:51
+Now, even though your Terraform configuration has changed, Terraform is not going to update your resources, because it says it is ignoring those changes.
+
+[rochak agrawal] 08:51:04
+Then the replace triggered by Terraform replace the resources when any of the reference resources or a specified attribute change. Then comes the precondition and the postcondition.
+
+[rochak agrawal] 08:51:19
+So, precondition specifies the condition that Terraform evaluates before creating the resource.
+
+[rochak agrawal] 08:51:25
+Post condition specify a condition that Terraform evaluates after creating a resource, right? For example.
+
+[rochak agrawal] 08:51:40
+that the block should return to do. So, for example.
+
+[rochak agrawal] 08:51:47
+You are creating an EC2 instance, and uh…
+
+[rochak agrawal] 08:51:50
+the AMI should be available with you. Then only you will be able to create it. So you can define it as a precondition. Even before someone tried to create a resource, they will check this condition. If the AMI is not available, this is going to return false, and your resource creation will not be attempted.
+
+[rochak agrawal] 08:52:07
+Similarly, post-condition. Post-condition block specifies the condition that must return true after Terraform perform operation on the resources. We can also specify an error message for Terraform to print to console when the condition.
+
+[rochak agrawal] 08:52:22
+Returns false.
+
+[rochak agrawal] 08:52:24
+Okay, so this is a lifecycle block. Again, you can, as per your need, you can use any of these arguments.
+
+[rochak agrawal] 08:52:32
+These are common. Then comes the connection.
+
+[rochak agrawal] 08:52:40
+Connection blocks specify setting that let provisioner connect to resource so that Terraform can perform operations on the resource after creating it.
+
+[rochak agrawal] 08:52:52
+Okay, so…
+
+[rochak agrawal] 08:52:57
+Now, when we were…
+
+[rochak agrawal] 08:53:00
+Discussing when we were.
+
+[rochak agrawal] 08:53:06
+Just a second.
+
+[rochak agrawal] 08:53:12
+Let me take the provisional block now.
+
+[rochak agrawal] 08:53:18
+Okay. Now, you remember then when we were comparing, uh, Terraform with the Ansible, um…
+
+[rochak agrawal] 08:53:27
+There are something, we said that Terraform can do some bits of the Ansible, Ansible can do some bits of Terraform. So Terraform can do some bits of the configuration management with the help of this provisioner.
+
+[rochak agrawal] 08:53:41
+Okay, so provisioner is…
+
+[rochak agrawal] 08:53:45
+Provisioner block define actions to perform on the local machine.
+
+[rochak agrawal] 08:53:51
+All on the created resources such as preparing servers or other infrastructure object.
+
+[rochak agrawal] 08:53:59
+for the services.
+
+[rochak agrawal] 08:54:00
+So, the provisional blocks support these arguments, like the type of the provisional.
+
+[rochak agrawal] 08:54:08
+Okay, um…
+
+[rochak agrawal] 08:54:11
+file, um…
+
+[rochak agrawal] 08:54:14
+source content command. So here, we are going to give the commands, uh, destination, server, and the source.
+
+[rochak agrawal] 08:54:22
+And then it is going to, uh, give you… so, for example, source specifies the location of a file or directory to copy to the location specified in the destination argument. So if you want to copy from… some file from your local machine to the machine which is getting created, we can give the source and destination.
+
+[rochak agrawal] 08:54:42
+Then the…
+
+[rochak agrawal] 08:54:45
+Then the content argument specifies content to write directly to the location specified in the destination argument, right? And then you have the command.
+
+[rochak agrawal] 08:54:55
+The command argument specifies a command for a local executable to run. We can specify an absolute path, or a related path, or the current working directory.
+
+[rochak agrawal] 08:55:06
+Then we have a working directory, as the name is suggesting, where the command is going to run, interpreter and environment. Now, in all of this, this VIN is very important.
+
+[rochak agrawal] 08:55:17
+When argument specifies a Terraform command, that triggers action specified in the provisioner.
+
+[rochak agrawal] 08:55:25
+So when you run the specified Terraform command, Terraform runs the command specified in the command argument, and then it is going to run. So now provisioners is of two type, okay?
+
+[rochak agrawal] 08:55:38
+So again, on failure, connection. Connection, we discussed, like, what… This is a connection by which we are going to define and connect to.
+
+[rochak agrawal] 08:55:48
+euro.
+
+[rochak agrawal] 08:55:51
+Server. Now, provisioners is of two type.
+
+[rochak agrawal] 08:55:56
+And this is very important.
+
+[rochak agrawal] 08:56:00
+Remote exit?
+
+[rochak agrawal] 08:56:05
+Local exit?
+
+[rochak agrawal] 08:56:06
+And remote access.
+
+[rochak agrawal] 08:56:09
+Local exec means, um…
+
+[rochak agrawal] 08:56:12
+something is going to run on your server, where your Terraform code is running, okay?
+
+[rochak agrawal] 08:56:20
+Remote exec is…
+
+[rochak agrawal] 08:56:24
+Once your machine is created, then it is going to run on the machine once it is created.
+
+[rochak agrawal] 08:56:30
+Uh, guys, give me, uh, 5 minutes, I'm getting a call, I'll just come back.
+
+[rochak agrawal] 09:03:29
+Hey guys, um, so we were discussing about the provisioners, okay? Um, so provisioner is a very important, um.
+
+[rochak agrawal] 09:03:36
+if you're not using a configuration management tool, then they becomes very important, because they are… this is the only resort which is trying to fill the gap which Terraform has. So…
+
+[rochak agrawal] 09:03:49
+Now, one thing people get confused about the provisioner and the provider. So provisioners have nothing in common with the provider. Provisioners allow the execution of the various commands or scripts on either the local or the remote machines.
+
+[rochak agrawal] 09:04:05
+So they can also transfer file from the local environment to a remote one. Now, Terraform offers three. So I forget one.
+
+[rochak agrawal] 09:04:14
+Which is the file type as well.
+
+[rochak agrawal] 09:04:20
+The file provisioner copies file or directories from the machine running Terraform to a remote resource, S3 bucket or EC2 instance, etc.
+
+[rochak agrawal] 09:04:31
+Which is useful for transferring config files, script, or binaries at boot time.
+
+[rochak agrawal] 09:04:36
+Then we have the local exec provisioner, which is going to run a command or a script on the Terraform host itself.
+
+[rochak agrawal] 09:04:43
+Understand this, remote local provisioner means wherever you are running the Terraform itself, this local exec is going to run the command is on the machine where Terraform is running itself.
+
+[rochak agrawal] 09:05:00
+Rather than on any remote resource, making it is a good fit for triggering external processes, invoking CLI tools, or writing output to our local files.
+
+[rochak agrawal] 09:05:10
+Then we have the remote exec provisioners.
+
+[rochak agrawal] 09:05:15
+which does the SSCH or WinRMs into the newly created resources.
+
+[rochak agrawal] 09:05:20
+and run commands directly on it, typically to install or perform initial configuration.
+
+[rochak agrawal] 09:05:26
+Now, before the provisioner, we have seen the connection block. So, remote exec require a connection block that tells Terraform how to reach to the target machine.
+
+[rochak agrawal] 09:05:38
+If it cannot reach to the target machine, it would not be able to run anything. So local exec needs no connection since it is going to run locally.
+
+[rochak agrawal] 09:05:47
+Now, provisioning primarily involves configuration activities performed rather after the resource is created. It may involve some file operation, executing CLI command, or even executing some of the script.
+
+[rochak agrawal] 09:06:01
+Once the resource is successfully initialized, it is ready to accept the connection. Now, these connections help Terraform log…
+
+[rochak agrawal] 09:06:09
+Login into the newly created instances.
+
+[rochak agrawal] 09:06:14
+and perform these operation. Now.
+
+[rochak agrawal] 09:06:17
+Terraform provisioners are not very mature, to be honest, and they should be used as the last resort. The main reason is the availability of the dedicated tool and the platform that align well the use cases with the provisioners.
+
+[rochak agrawal] 09:06:33
+Hachikov suggests that a terraform provisioner should be considered only when there is no other option.
+
+[rochak agrawal] 09:06:40
+Okay. So.
+
+[rochak agrawal] 09:06:46
+It is, uh, you can say, um…
+
+[rochak agrawal] 09:06:49
+Provisioners we should be using only, we do not have any other option remaining.
+
+[rochak agrawal] 09:06:58
+then you are going to use the provisioners. Now, it is possible to specify, uh…
+
+[rochak agrawal] 09:07:04
+When the provisioner should run, Terraform mainly provide you two options, apply and destroy. If we want to run the provisioner to handle some logic at the creation time, we use the creation time provisioner. Similarly, we want to handle the destroy time scenarios differently.
+
+[rochak agrawal] 09:07:22
+we use the destroy time provisioner, okay? And that is where the when attribute used in the provisioner block determine when, uh…
+
+[rochak agrawal] 09:07:33
+And that is where this VIN, uh…
+
+[rochak agrawal] 09:07:37
+block is going to come into the picture when and where you want to run this provisioner. So, creation time provisioner and the destroy time provisioner, we have two provisioners with two when options would be available by default.
+
+[rochak agrawal] 09:07:51
+All provisioners are creation time provisioners. So for example, when you are not giving any argument in when, then the provisioners is going to run at the creation time. This means that when you are creating the resources associated with the provisioners.
+
+[rochak agrawal] 09:08:08
+the provisioners will automatically run and do their task. You do not need to specify the when option if you want to use the creation time provisioner. However, if you want to run a provisioner when a destroy of a resource happens.
+
+[rochak agrawal] 09:08:23
+This keyword becomes important, right?
+
+[rochak agrawal] 09:08:26
+So that is also we can do, and the connection block is, uh, obviously, uh, the important one when you are using this, uh…
+
+[rochak agrawal] 09:08:40
+Remote provisioner or the file provisioner, because with the help of the connection block only, they are going to… what you can say is…
+
+[rochak agrawal] 09:08:52
+create the connection, and then perform the operation. Okay, so these, again, these are the Terraform-specific argument. Now, we understand, uh, we have understood the use cases of each of one.
+
+[rochak agrawal] 09:09:06
+See, we need to use only when it is needed, okay? If it is not needed, like for our examples, we were not using it till now, right? If you see this example, we have a provider, AWS, and we are defining the local variables, and we are creating the AWS VPC.
+
+[rochak agrawal] 09:09:25
+Here, I am only using, um…
+
+[rochak agrawal] 09:09:29
+What you can say is the.
+
+[rochak agrawal] 09:09:37
+resource-specific argument, not the Terraform-specific argument, because I don't need it. So, you… and of course, out of these so many arguments, you just need to choose what.
+
+[rochak agrawal] 09:09:49
+is appropriate for you. You don't need to use every argument, right? So, this is about, uh, home arguments. Now, let's take up simple example of the count.
+
+[rochak agrawal] 09:09:59
+Okay, um…
+
+[rochak agrawal] 09:10:30
+Okay? So it is, uh… I'll just…
+
+[rochak agrawal] 09:10:34
+be the AWS account ID also.
+
+[rochak agrawal] 09:10:37
+Give the unique bucket names.
+
+[rochak agrawal] 09:10:51
+Now, you see? Oh, give it to me.
+
+[rochak agrawal] 09:10:54
+Okay.
+
+[rochak agrawal] 09:11:07
+Now you see, very simply, I'm creating an AWS S3 bucket. Internally, it will be referred as the example.
+
+[rochak agrawal] 09:11:13
+Count is equal to three bucket, my app bucket, this, this, this, this, this. Now let me run the Terraform plan.
+
+[rochak agrawal] 09:11:38
+You can see, plan 3 to add.
+
+[rochak agrawal] 09:11:41
+Right? Zero to change, zero to destroy. And here you can see there's a…
+
+[rochak agrawal] 09:11:49
+Now you can ask one question.
+
+[rochak agrawal] 09:11:52
+Yes.
+
+[rochak agrawal] 09:11:55
+this example, we said when a resource is getting created, this will be referred with this name within the Terraform, correct?
+
+[rochak agrawal] 09:12:04
+Now, you say, I am creating 3 bucket, then which…
+
+[rochak agrawal] 09:12:09
+resource it is going to, uh, refer example. So that is where count index comes into the picture, okay? So, when you create, the count is equal to 3.
+
+[rochak agrawal] 09:12:20
+Basically, it is zero.
+
+[rochak agrawal] 09:12:25
+So pound zero is.
+
+[rochak agrawal] 09:12:28
+Uh, so for example, example 0 is your first bucket, example 1 will be your second bucket, example 2 will be yours.
+
+[rochak agrawal] 09:12:37
+Good luck. Now, I'll do that output.
+
+[rochak agrawal] 09:12:48
+What is that? ARN, I want to know.
+
+[rochak agrawal] 09:12:53
+I'll just take a copy.
+
+[rochak agrawal] 09:12:57
+AKRN as output.
+
+[rochak agrawal] 09:13:12
+Okay? So here you see AWS output first bucket ARN, AWS S3 bucket dot example zero. If I give here one, it will be second bucket ARN.
+
+[rochak agrawal] 09:13:24
+3, uh, sorry, 2, it will be second, third bucket ARN. And if you give a star, then it will give you all the bucket ARNs.
+
+[rochak agrawal] 09:13:35
+Run it again.
+
+[rochak agrawal] 09:13:45
+You see? First bucket here, and because the name is first bucket, but it is giving you 3 values.
+
+[rochak agrawal] 09:13:52
+Great! And let me…
+
+[rochak agrawal] 09:13:55
+Do apply.
+
+[rochak agrawal] 09:14:15
+You see, I am getting 3 ARN, and if I go to my S3.
+
+[rochak agrawal] 09:14:30
+You see? 012.
+
+[rochak agrawal] 09:14:33
+Siri bucket is created. Now, if you go… let me destroy it first.
+
+[rochak agrawal] 09:15:00
+If I give you only zero here, for example, instead of star.
+
+[rochak agrawal] 09:15:05
+Or let's say second. So then it will give me the ARN for the third bucket.
+
+[rochak agrawal] 09:15:23
+See, it is creating three buckets, right? But it has given me the ARN of only the third bucket because that is what I asked for.
+
+[rochak agrawal] 09:15:34
+So, but…
+
+[rochak agrawal] 09:15:35
+As we discussed that when you using the count, it is going to create an identical set of the resources. So when you see these three buckets, the configuration of all these buckets are going to be identical.
+
+[rochak agrawal] 09:15:52
+If you want, let's say I want, uh…
+
+[rochak agrawal] 09:15:55
+10 years.
+
+[rochak agrawal] 09:15:58
+Now let's see what's going to happen.
+
+[rochak agrawal] 09:16:12
+Now you see 7 to 8, add. Because 3 was already there, I said I want 10. So then it says I will create the remaining 7. So 3, 4, 5, 6, 7, 8, 9. And now if you go to your buckets.
+
+[rochak agrawal] 09:16:31
+You can see.
+
+[rochak agrawal] 09:16:34
+10 buckets is created.
+
+[rochak agrawal] 09:16:37
+Immediately, I'm going to destroy it.
+
+[rochak agrawal] 09:16:57
+Yes.
+
+[rochak agrawal] 09:17:00
+Right?
+
+[rochak agrawal] 09:17:03
+Yes, Alif.
+
+[arif] 09:17:10
+Ah, nothing on my side. Maybe I have to lower my hand a little bit.
+
+[rochak agrawal] 09:17:11
+Okay.
+
+[rochak agrawal] 09:17:16
+So, uh, now you see with the, um…
+
+[rochak agrawal] 09:17:19
+Down the command, I can create any number of the resources, like, there is no limit. I can go in here, I'll say…
+
+[rochak agrawal] 09:17:28
+100.
+
+[rochak agrawal] 09:17:32
+But the only thing is.
+
+[rochak agrawal] 09:17:40
+Only thing is, of course, your account should limit it. There should not be a restriction on your AWS account.
+
+[rochak agrawal] 09:17:46
+And you can see it has started creating it.
+
+[rochak agrawal] 09:17:54
+No.
+
+[rochak agrawal] 09:17:56
+Of course, bucket is just going to create in a minute or so, and when you are creating the load balancer, CC to the sensor, it is going to create time, right? And you can just run the Terraform command, and you can do any other work which you would like to do.
+
+[rochak agrawal] 09:18:09
+And here, if you see…
+
+[rochak agrawal] 09:18:16
+You see?
+
+[rochak agrawal] 09:18:17
+100 buckets is created automatically for you.
+
+[rochak agrawal] 09:18:25
+Right?
+
+[rochak agrawal] 09:18:36
+But just remember, you are only going to use the count argument.
+
+[rochak agrawal] 09:18:42
+When…
+
+[rochak agrawal] 09:18:47
+We are only going to use the count argument when we want to create a similar type of the resources. Identical configuration of the resources. If the identical configuration is not there, then we are going to use the for each and which we will group.
+
+[rochak agrawal] 09:19:03
+to see in next class where we will like this scenario which we discussed that if.
+
+[rochak agrawal] 09:19:12
+your resources.
+
+[rochak agrawal] 09:19:13
+would like to have the different properties, then either you create them separately, or… see, if all of the properties of a resource is different from each other, then, of course, you will make them separately. But let's say there are certain properties which are…
+
+[rochak agrawal] 09:19:31
+Only… see, you want to create t2.micro, but you want to put up in all… in a different, different subnet. So, in that case, I'm going to use the for each, uh, directive, or the meta arguments.
+
+[rochak agrawal] 09:19:44
+Which, um…
+
+[rochak agrawal] 09:19:49
+is going to create the resources with a little different configuration across the board.
+
+[rochak agrawal] 09:19:55
+Okay?
+
+[rochak agrawal] 09:20:00
+So, any question, anyone?
+
+[Vaibhav Gupta] 09:20:09
+No questions right now, but maybe…
+
+[Vaibhav Gupta] 09:20:12
+On Monday, we have questions regarding that.
+
+[rochak agrawal] 09:20:14
+Sure, no problem, yeah, yeah, of course. Okay.
+
+[rochak agrawal] 09:20:18
+See, Terraform, I'll tell you, the learning curve in Terraform is very small.
+
+[rochak agrawal] 09:20:23
+Because this is called the DSL. DSL is a domain-specific language. So whatever we are writing, so the code, whatever you are seeing here, it's not a programming language.
+
+[rochak agrawal] 09:20:39
+It is only be working with Terraform. When you run a code in Python, you can create a web application with Python, you can create a networking application with Python, you can create a gaming application with Python, you can do multiple things and you can run it everywhere.
+
+[rochak agrawal] 09:20:55
+You can run it with the FastAPI, Django, different frameworks are also available.
+
+[rochak agrawal] 09:21:00
+But, see, whatever we are seeing right now is only, only, only specific to Terraform. I cannot run it anywhere else.
+
+[rochak agrawal] 09:21:09
+Right.
+
+[rochak agrawal] 09:21:13
+So
+
+[rochak agrawal] 09:21:16
+Of course, it is not going to give you multiple programming language features as well.
+
+[rochak agrawal] 09:21:22
+Because it's not a programming language, it's a DSL.
+
+[rochak agrawal] 09:21:29
+Okay, so…
+
+[Vaibhav Gupta] 09:21:36
+But I hope you end up with something other than that.
+
+[rochak agrawal] 09:21:39
+So, Jeeva is asking in production what kind of
+
