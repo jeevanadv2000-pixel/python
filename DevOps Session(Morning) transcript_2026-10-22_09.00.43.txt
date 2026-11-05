@@ -1,0 +1,2133 @@
+[rochak agrawal] 07:41:02
+Hey, good morning, everyone.
+
+[rochak agrawal] 07:41:03
+So let's start.
+
+[rochak agrawal] 07:41:14
+Okay. So yesterday, uh, we created a very small, uh, main.tf file. So your main.tf, again, as we discussed yesterday also.
+
+[rochak agrawal] 07:41:24
+You can create everything in the one main.tf file, or you can create different, different files. It is up to you when you run off.
+
+[rochak agrawal] 07:41:31
+Terraform plan or a Terraform apply command within a folder, Terraform is going to collate all the files which is ending with the TF and it is going to treat them as a one file. So when we are creating multiple file, it is for our own convenience, that's about it.
+
+[rochak agrawal] 07:41:48
+Okay, now, if you see, uh, so Terraform block is there, where we are going to do the provider. You can, again, define the multiple provider. Okay, now…
+
+[rochak agrawal] 07:42:03
+Now you see he had, um…
+
+[rochak agrawal] 07:42:07
+And this is block is required. Whenever you are doing any changes here, then at that time, you need to run the Terraform init. Otherwise, there is no need to run Terraform init again and again.
+
+[rochak agrawal] 07:42:18
+Then, whatever the provider is getting installed, I am using this provider here, and then I am creating a resource. Now, resource is the most important type of the block in Terraform.
+
+[rochak agrawal] 07:42:32
+And we discussed yesterday also, uh, like.
+
+[rochak agrawal] 07:42:35
+So resource will have two parts. One is this.
+
+[rochak agrawal] 07:42:40
+And one is this, okay? So AWS BPC.
+
+[rochak agrawal] 07:42:45
+For example…
+
+[rochak agrawal] 07:42:47
+is the type of resource.
+
+[rochak agrawal] 07:42:52
+Which is going to create.
+
+[rochak agrawal] 07:42:58
+AWS BBC.
+
+[rochak agrawal] 07:42:59
+Okay, now…
+
+[rochak agrawal] 07:43:03
+There is a different type of the resources. If you want to, let's say, create Amazon EC2 instance, so you are going to create AWS underscore instance. So that is going to be fixed and it will depend on the type of the infrastructure.
+
+[rochak agrawal] 07:43:19
+you want to create. Now, in the same file, I can create multiple resource blocks, so if I want to create another virtual machine and so on, so we can do that. Then, my VPC is something.
+
+[rochak agrawal] 07:43:37
+Now, again, my VPC, uh, you can give it any name here, this is not a fix, but this is something…
+
+[rochak agrawal] 07:43:48
+Which Terraform recognize?
+
+[rochak agrawal] 07:43:55
+Okay, this name is going nowhere in AWS. AWS name will be Meridian VPC, but this name is Terraform Internal Reference. So whenever I need to call this resource, I will call it as a My VPC.
+
+[rochak agrawal] 07:44:09
+Okay, so for example, whenever I need to use the CIDR block of this VPC, I will use it something like my…
+
+[rochak agrawal] 07:44:22
+PC dot…
+
+[rochak agrawal] 07:44:24
+Let's see the idea below.
+
+[rochak agrawal] 07:44:25
+Okay? So that is what the name meaning is. We will understand more about how we are going to write it. Right now, we are going to understand the loop. So I'll save this.
+
+[rochak agrawal] 07:44:36
+And I am going to run the first thing, terraform init we have done yesterday.
+
+[rochak agrawal] 07:44:44
+But if you run it again, it will not do anything.
+
+[rochak agrawal] 07:44:48
+This is initializing the backend.
+
+[rochak agrawal] 07:44:56
+So reusing the previous version of the log file, and it's not installed anything because your version using previously installed HashiCorp AWS 6.69.1. So until, unless you're not changing anything into your…
+
+[rochak agrawal] 07:45:13
+environment, it is not going to, uh, give you any, uh, installation. Now, what reason I am using? I'm using AP Southwan.
+
+[rochak agrawal] 07:45:21
+So I'll go log into VPC first and show there is no resources there.
+
+[rochak agrawal] 07:45:35
+It's a login log out.
+
+[rochak agrawal] 07:46:00
+Let's see.
+
+[rochak agrawal] 07:46:08
+So you can see here, there is only one VPC, which is a default VPC.
+
+[rochak agrawal] 07:46:13
+So default VPC, yes. Now let me run my…
+
+[rochak agrawal] 07:46:17
+So the next command I'm going to run. So there is something called terraform validate also.
+
+[rochak agrawal] 07:46:24
+Terraform validate is going to validate if your… whatever you have written in Terraform configuration is valid or not.
+
+[rochak agrawal] 07:46:35
+So see? See success, the configuration is valid.
+
+[rochak agrawal] 07:46:38
+Then there is another command. Now, this is not needed. If you want to run it, run it.
+
+[rochak agrawal] 07:46:43
+Both validate and format.
+
+[rochak agrawal] 07:46:47
+So…
+
+[rochak agrawal] 07:46:48
+it is going to correct the format of your main.tf. So if there's any indentation error or something like that, it will correct it.
+
+[rochak agrawal] 07:46:58
+These two commands are optional. If you want to run it, you can run it.
+
+[rochak agrawal] 07:47:03
+Now you are going to run something called the Terraform plan.
+
+[rochak agrawal] 07:47:08
+Now, error form plan, as we discussed yesterday.
+
+[rochak agrawal] 07:47:12
+It is not going to do anything.
+
+[rochak agrawal] 07:47:14
+It's just a bill.
+
+[rochak agrawal] 07:47:17
+It will tell you what it will do when you run the Terraform apply.
+
+[rochak agrawal] 07:47:22
+So, if you run the Terraform plan.
+
+[rochak agrawal] 07:47:32
+Now you see.
+
+[rochak agrawal] 07:47:35
+It says, uh, awsbpc.mybpc will be created.
+
+[rochak agrawal] 07:47:40
+And you can see CIDR block.
+
+[rochak agrawal] 07:47:44
+And the text, is it getting list? All the things, it is known after applying.
+
+[rochak agrawal] 07:47:49
+Okay, known after apply means since we are going with the default value, once the BPC is created, you will get those values.
+
+[rochak agrawal] 07:47:58
+And it says Buntu.
+
+[rochak agrawal] 07:48:01
+Change zero to destroy.
+
+[rochak agrawal] 07:48:02
+It means when you run the Terraform apply.
+
+[rochak agrawal] 07:48:07
+This is one VPC to be added, but there's nothing to change or zero to destroy. If let's say I go change the CIDR in my next iteration, it will say zero to add, one to change, because the VPC is already there, but you're changing it.
+
+[rochak agrawal] 07:48:21
+Okay.
+
+[rochak agrawal] 07:48:23
+Now.
+
+[rochak agrawal] 07:48:23
+I'm going to run the Terraform apply.
+
+[rochak agrawal] 07:48:30
+I can run Terraform Apply in two formats. One is like this, simple Terraform Apply.
+
+[rochak agrawal] 07:48:35
+And the second is auto approve.
+
+[rochak agrawal] 07:48:40
+if you run Terraform apply hyphen hyphen auto-approve, then Terraform is not going to ask you for the approval before applying it, it will directly go apply. But if you run it like Terraform apply.
+
+[rochak agrawal] 07:48:52
+It will show you the plan once again and ask if you want to do it.
+
+[rochak agrawal] 07:49:03
+So you can see the same thing which Terraform plan showed, it is also showing, and it says, do you want to perform these action? Terraform will perform the action described above.
+
+[rochak agrawal] 07:49:16
+Say yes.
+
+[rochak agrawal] 07:49:17
+to accept to approve. Now, if you run Terraform apply hyphen hyphen auto approve, this option will not be there.
+
+[rochak agrawal] 07:49:26
+So this is my VPC created
+
+[rochak agrawal] 07:49:28
+Creating and creation complete after two seconds. It's a small resource.
+
+[rochak agrawal] 07:49:34
+Now, if you go refresh this.
+
+[rochak agrawal] 07:49:37
+You see?
+
+[rochak agrawal] 07:49:40
+Default VPC, no
+
+[rochak agrawal] 07:49:43
+When you see Meridian, BBC is created.
+
+[rochak agrawal] 07:49:49
+Correct? Now, very important thing is…
+
+[rochak agrawal] 07:49:59
+If you go…
+
+[rochak agrawal] 07:50:01
+Here, so there is a terraform.tf state file is created, which is your state file. If you open this.
+
+[rochak agrawal] 07:50:11
+You can see.
+
+[rochak agrawal] 07:50:15
+It is going to store everything in a state file and you can see all the values there.
+
+[rochak agrawal] 07:50:24
+Okay.
+
+[rochak agrawal] 07:50:27
+We'll discuss more about the state file later on, but it is going to create a state file. Now, the next is, let's say I do not need a…
+
+[rochak agrawal] 07:50:38
+this infrastructure anymore, so I'll go and run the Terraform destroy.
+
+[rochak agrawal] 07:50:42
+Okay, and again, in the destroy also, you can auto approve.
+
+[rochak agrawal] 07:50:48
+So it is not going to ask you for an approval.
+
+[rochak agrawal] 07:51:02
+This.
+
+[rochak agrawal] 07:51:04
+Here, it did not ask you for the approval. It says, uh, 0 to add, 0 to change, 1 to destroy.
+
+[rochak agrawal] 07:51:11
+So it would have been destroyed my VPC.
+
+[rochak agrawal] 07:51:15
+And you will refresh this.
+
+[rochak agrawal] 07:51:18
+You see? The VPC is gone.
+
+[rochak agrawal] 07:51:21
+Correct? And if you, very interestingly, if you see the state file, there is nothing in it.
+
+[rochak agrawal] 07:51:27
+The same state file.
+
+[rochak agrawal] 07:51:30
+You see the resource block is empty because there is no resource which Terraform is managing.
+
+[rochak agrawal] 07:51:37
+Now, similarly, what we can do is, let me run the apply again.
+
+[rochak agrawal] 07:51:55
+Let's see, yes.
+
+[rochak agrawal] 07:51:59
+Okay? Again, it has created. Now what I'm going to do…
+
+[rochak agrawal] 07:52:04
+You see, again, my terraform.state has been populated.
+
+[rochak agrawal] 07:52:10
+Now, if I go to main.tf, I will change something here.
+
+[rochak agrawal] 07:52:19
+change the PPC.
+
+[rochak agrawal] 07:52:20
+Okay?
+
+[rochak agrawal] 07:52:25
+Now you see what's going to happen.
+
+[rochak agrawal] 07:52:42
+You see?
+
+[rochak agrawal] 07:52:44
+It is refreshing the state. It reads your state file, okay? Then it will compare it, what you have written in your configuration. So it says, Terraform, use the selected provider to generate the following execution plan.
+
+[rochak agrawal] 07:52:56
+Resource actions are indicated with the following symbols. Update in place.
+
+[rochak agrawal] 07:53:01
+Terraform will perform the following action.
+
+[rochak agrawal] 07:53:05
+So, previously, the tag was Meridian VPC. It will be changed to Change VPC. So, it says…
+
+[rochak agrawal] 07:53:12
+You're not adding any new resources. There will be one to change, zero to destroy.
+
+[rochak agrawal] 07:53:16
+And if you run telephone.
+
+[rochak agrawal] 07:53:19
+Apply hyphen hyphen auto.
+
+[rochak agrawal] 07:53:22
+Group?
+
+[rochak agrawal] 07:53:36
+Okay, now if you refresh this…
+
+[rochak agrawal] 07:53:40
+Change to VPC.
+
+[rochak agrawal] 07:53:44
+And similarly, you will see here in the terraform.tf state.
+
+[rochak agrawal] 07:53:52
+change to BBC.
+
+[rochak agrawal] 07:53:54
+8?
+
+[rochak agrawal] 07:53:55
+And anytime you want to destroy, you will just run.
+
+[rochak agrawal] 07:54:11
+So…
+
+[rochak agrawal] 07:54:12
+If you don't give it the auto-approval.
+
+[rochak agrawal] 07:54:20
+It is going to ask you for your approval, enter a value, and it will destroy it.
+
+[rochak agrawal] 07:54:25
+So that is the loop that, um…
+
+[rochak agrawal] 07:54:30
+Terraform follows. Anytime you are changing it, I can add more resources in this, and it will say 1 to add, 0 to change, 0 to destroy, right? So…
+
+[rochak agrawal] 07:54:42
+But that is a loop. How we are going to write it, we will do a deep dive, but how it works. So you create your Terraform configuration, you run Terraform in it for the first time. You are not going to run Terraform in it again and again, okay?
+
+[rochak agrawal] 07:54:57
+And, uh…
+
+[rochak agrawal] 07:55:00
+Then you run Terraform plan. You can optionally run Terraform format and Terraform validate. All looks good.
+
+[rochak agrawal] 07:55:08
+Once that is there, you are going to apply. Terraform Apply is going to create the actual resources for you.
+
+[rochak agrawal] 07:55:15
+Okay, uh, then…
+
+[rochak agrawal] 07:55:18
+Terraform Apply can create actual resources for you, and then when you want to destroy them, you can…
+
+[rochak agrawal] 07:55:25
+You can destroy them with the Terraform destroy command. And similarly, when you will change your configuration and as per what you are changing.
+
+[rochak agrawal] 07:55:32
+Uh, Terraform is going to…
+
+[rochak agrawal] 07:55:35
+Compare your desired state, which you have written in your configuration, which you have updated in your configuration.
+
+[rochak agrawal] 07:55:41
+with your current state, which is the state file, so any resource you are going to create in Terraform.
+
+[rochak agrawal] 07:55:47
+It is going to be recorded in the Terraform state file.
+
+[rochak agrawal] 07:55:52
+Clear any confusion.
+
+[rochak agrawal] 07:56:01
+Yes, you are.
+
+[Jeeva Koli] 07:56:03
+So, when I'm writing the Terraform, uh…
+
+[Jeeva Koli] 07:56:08
+Uh, the script, if one of the resources already exists. So, does it get…
+
+[rochak agrawal] 07:56:11
+Okay.
+
+[Jeeva Koli] 07:56:13
+The name of that resource already exists, and does it tell me the validate?
+
+[rochak agrawal] 07:56:15
+Okay.
+
+[Jeeva Koli] 07:56:19
+Uh, if it is already exist.
+
+[rochak agrawal] 07:56:21
+No, it will not tell. So, see, for example, let's say, now you're… let me create another VPC. Let's do a demo only.
+
+[rochak agrawal] 07:56:31
+Okay. So, for example.
+
+[rochak agrawal] 07:56:34
+I'll create a VPC.
+
+[rochak agrawal] 07:56:39
+Oh…
+
+[rochak agrawal] 07:56:40
+you give, let's say, my BPC.
+
+[rochak agrawal] 07:56:44
+Okay.
+
+[rochak agrawal] 07:56:45
+And I'll give a BPCC ID at 10.0.0.
+
+[rochak agrawal] 07:56:51
+Zero.
+
+[rochak agrawal] 07:56:53
+slash 24.
+
+[rochak agrawal] 07:56:55
+Now, I manually created this VPC, correct?
+
+[rochak agrawal] 07:56:59
+And you create the BPC.
+
+[rochak agrawal] 07:57:05
+Okay, so let me first destroy this.
+
+[rochak agrawal] 07:57:13
+Yeah, I am seeing both VPC here.
+
+[rochak agrawal] 07:57:17
+Okay, my VPC, and this. So, what I'm going to do…
+
+[rochak agrawal] 07:57:24
+Let me…
+
+[rochak agrawal] 07:57:27
+Change it here.
+
+[rochak agrawal] 07:57:30
+Okay, and here, I'm going to give them my VPC.
+
+[rochak agrawal] 07:57:37
+Okay?
+
+[rochak agrawal] 07:57:40
+I'll save this.
+
+[rochak agrawal] 07:57:42
+Now…
+
+[rochak agrawal] 07:57:45
+See.
+
+[rochak agrawal] 07:57:47
+Telephone.
+
+[rochak agrawal] 07:57:53
+Validate.
+
+[rochak agrawal] 07:57:55
+So Terraform Validate will not tell you.
+
+[rochak agrawal] 07:58:03
+Okay? Now, the reason for that is Terraform Validate, what it does, it is still not interacting with the AWS. So Terraform, when you run the Terraform Validate command, Terraform does not know what is there in your AWS account.
+
+[rochak agrawal] 07:58:17
+Okay? What Terraform validate command does it, it looks at your configuration, and it…
+
+[rochak agrawal] 07:58:22
+It is looking valid for it, right? So all the syntactical error or dependency mapping is there or not. All those things, Terraform Validate is going to check.
+
+[rochak agrawal] 07:58:32
+So it is like you are compiling your file.
+
+[rochak agrawal] 07:58:36
+Okay, now you run Terraform plan.
+
+[rochak agrawal] 07:58:54
+So you can see Terraform plan is also not giving you an error. It says plan 1 to add, 0 to change, 0 to destroy, because it is reading your file, and it is saying, okay, I'll add one VPC, which will be my VPC.
+
+[rochak agrawal] 07:59:08
+Okay, now I'm going to…
+
+[rochak agrawal] 07:59:11
+Do a terraform apply.
+
+[rochak agrawal] 07:59:14
+Hyphen hyphen auto.
+
+[Jeeva Koli] 07:59:20
+Uh, there is spelling mistake, yeah.
+
+[rochak agrawal] 07:59:22
+Yeah, yeah.
+
+[rochak agrawal] 07:59:33
+This is it.
+
+[rochak agrawal] 07:59:35
+It got created. Okay. Now, if you go here.
+
+[rochak agrawal] 07:59:45
+So you can see my VPC, my VPC is created with a different VPC ID.
+
+[rochak agrawal] 07:59:50
+Okay, now what does this conclude? You can have two VPC in AWS with the same VPC name.
+
+[rochak agrawal] 08:00:00
+But their BPC ID will be different. So…
+
+[rochak agrawal] 08:00:03
+The conclusion is.
+
+[rochak agrawal] 08:00:05
+Uh, Terraform does not know about the resources which you created outside of the BPC, uh, outside of Terraform.
+
+[rochak agrawal] 08:00:13
+Okay, but where the error will come? See, for example, I created an IAM user.
+
+[rochak agrawal] 08:00:19
+with the name Rojak.
+
+[rochak agrawal] 08:00:21
+Manually. But you go try to create an IAM user with Terraform with the name Rochak, then it will give you an error, and it will say the IAM user is already present.
+
+[rochak agrawal] 08:00:32
+Okay, so it will depend on… I can create two servers with the same name.
+
+[rochak agrawal] 08:00:37
+No problem, right? I can create two subnets with the same name in different VPCs, right? So it will… see, now to answer your question, Terraform does not know anything which you're creating outside of Terraform.
+
+[rochak agrawal] 08:00:53
+Okay.
+
+[rochak agrawal] 08:00:55
+So, now when you create the same resource using the Terraform.
+
+[rochak agrawal] 08:00:59
+If the AWS allows the duplication, like it is allowing the duplication in case of a BPC.
+
+[rochak agrawal] 08:01:06
+Same name can be there.
+
+[rochak agrawal] 08:01:09
+then it will allow you to create the resource, but when it will not allow the duplication, like it will not do in case of an IAM user, your Terraform code is going to give you the error.
+
+[rochak agrawal] 08:01:21
+Okay?
+
+[Jeeva Koli] 08:01:23
+Okay, and suppose I'm creating a VM, and I mentioned the use this for my VPC, because there are two, right? So how Terraform will decide that which one need to be picked up for it?
+
+[rochak agrawal] 08:01:24
+Yep.
+
+[rochak agrawal] 08:01:30
+Mm-hmm.
+
+[rochak agrawal] 08:01:35
+Because your VPC is not going to refer by the name, it is going to refer by the ID.
+
+[rochak agrawal] 08:01:43
+And the ID is different.
+
+[rochak agrawal] 08:01:45
+Okay, so when I will run, when I will be creating my virtual machine, and let's say I'm creating the Terraform, so you will say my VPC.
+
+[rochak agrawal] 08:02:01
+dot ID.
+
+[rochak agrawal] 08:02:02
+Right? So then it will refer to this ID.
+
+[rochak agrawal] 08:02:08
+And I'll show you.
+
+[rochak agrawal] 08:02:09
+There is something called output block in Terraform.
+
+[rochak agrawal] 08:02:52
+Okay, so awsbpc.my.
+
+[rochak agrawal] 08:03:20
+Let me check if this syntax is correct.
+
+[rochak agrawal] 08:03:32
+And before that, let me run the Terraform destroy.
+
+[rochak agrawal] 08:04:02
+So now you see here, what we are doing it… Let me remove it again.
+
+[rochak agrawal] 08:04:08
+And go to S.
+
+[rochak agrawal] 08:04:12
+So, when you run Terraform plan.
+
+[rochak agrawal] 08:04:29
+Okay? So you can see here, there are certain field.
+
+[rochak agrawal] 08:04:34
+Which says known after apply. Known after apply. Known after apply. Correct?
+
+[rochak agrawal] 08:04:39
+It means buns.
+
+[rochak agrawal] 08:04:42
+Terraform is going to create the resource. Then after, value will be known, correct? So for example, ID, IP, v6e IDL block, and so on. So anything which you want to know which will be known after applying.
+
+[rochak agrawal] 08:04:58
+I can…
+
+[rochak agrawal] 08:05:00
+find those value with the help of an output block. So here I'm saying, uh, output VPC ID, uh, description, the ID of the VPC, and the value.
+
+[rochak agrawal] 08:05:10
+Okay, so once it is going to run, it is going to give me the ID.
+
+[rochak agrawal] 08:05:34
+And you see here, you are going to get the VPC ID, correct? Now, if you go in your console.
+
+[rochak agrawal] 08:05:44
+So you have two MyVPC, but the ID is different. One is 93733, and one another is 3D432. Which one is yours? Yours is 3D432.
+
+[rochak agrawal] 08:05:56
+So, Terraform does not know anything about.
+
+[rochak agrawal] 08:06:01
+This one.
+
+[rochak agrawal] 08:06:02
+Correct?
+
+[rochak agrawal] 08:06:06
+Whenever you will refer myvpc.id, it will always go to this one.
+
+[rochak agrawal] 08:06:12
+So, because Terraform can only work with the resources which it has been created with the Terraform. Manually, what you are doing, Terraform does not have any control over it.
+
+[Jeeva Koli] 08:06:23
+Okay, got it.
+
+[rochak agrawal] 08:06:24
+Okay.
+
+[rochak agrawal] 08:06:25
+So, even though they are the same resource, but we very clearly know that this.
+
+[rochak agrawal] 08:06:31
+93D432 is my BPC, which has been created by Terraform.
+
+[rochak agrawal] 08:06:36
+So whenever you… let's say you will create a VM, and now, let's say…
+
+[rochak agrawal] 08:06:43
+Let me show you one more thing.
+
+[rochak agrawal] 08:07:00
+The year, you can see.
+
+[rochak agrawal] 08:07:04
+This is creating so many things.
+
+[rochak agrawal] 08:07:07
+So this is a simple EC2 instance, right?
+
+[rochak agrawal] 08:07:11
+So when you give this a BPC ID.
+
+[rochak agrawal] 08:07:16
+BPC ID. It will just give you like this.
+
+[rochak agrawal] 08:07:19
+And when it's creating subnet, here, if you see.
+
+[rochak agrawal] 08:07:24
+Where is the subnet? Subnet.
+
+[rochak agrawal] 08:07:27
+So it is going to create it in this DPC ID.
+
+[rochak agrawal] 08:07:32
+Where, let me create a subnet, okay?
+
+[rochak agrawal] 08:07:43
+Okay, so very simple subnet we are creating. Now, subnet need to go inside a VPC, correct? So for that, we are giving the VPC ID. Again, how we are giving the VPC ID? AWS underscore VPC, which is the rest.
+
+[rochak agrawal] 08:07:56
+The source type?
+
+[rochak agrawal] 08:07:58
+dot mybpc dot id right and in which so you save this.
+
+[rochak agrawal] 08:08:04
+And you run.
+
+[rochak agrawal] 08:08:07
+Terraform apply, hyphen hyphen auto approve.
+
+[rochak agrawal] 08:08:30
+Okay, now if you again go to your VPC.
+
+[rochak agrawal] 08:08:36
+I'll first go here.
+
+[rochak agrawal] 08:08:39
+So you can see a subnet is created, my public subnet, correct? Which we created.
+
+[rochak agrawal] 08:08:45
+My public subnet.
+
+[rochak agrawal] 08:08:49
+Great. Now…
+
+[rochak agrawal] 08:08:51
+If you go to another VPC.
+
+[rochak agrawal] 08:08:55
+There is no subnet.
+
+[rochak agrawal] 08:08:56
+So anytime Terraform will refer to my VPC, it will always refer to this one.
+
+[rochak agrawal] 08:09:04
+Okay?
+
+[rochak agrawal] 08:09:12
+Ilejima?
+
+[rochak agrawal] 08:09:23
+Yes, Arif.
+
+[Jeeva Koli] 08:09:23
+Where we mention…
+
+[rochak agrawal] 08:09:24
+Yes, yes, you will.
+
+[Jeeva Koli] 08:09:24
+Uh, the… see, I wanted to create a 10 VPC. So, will we mention in the code?
+
+[rochak agrawal] 08:09:27
+Okay?
+
+[rochak agrawal] 08:09:31
+Uh, we can mention, uh, but 10 BPCs, you will just say, uh, simply here, for example. See, again, uh, this question, uh, we discussed with Arif also yesterday.
+
+[rochak agrawal] 08:09:43
+One very easy way AR is, I will just say count is equal to 10.
+
+[rochak agrawal] 08:09:47
+So it will create 10 VPCs, but I'll park this question for now, because that will depend on, um…
+
+[rochak agrawal] 08:09:54
+what type of resources you want to create, okay? So, let's hold on that question for now, we'll cover that.
+
+[rochak agrawal] 08:10:05
+Yes, Adiv.
+
+[arif] 08:10:08
+Yeah, Rochak, so, uh, the first question is, like, about the destroy. So, destroy will, uh, destroy all the resources, uh, mentioned in the file, right?
+
+[rochak agrawal] 08:10:19
+Okay, so yes, if you are the…
+
+[rochak agrawal] 08:10:24
+See, if you run terraform destroy, whatever it has created, it is going to destroy everything.
+
+[rochak agrawal] 08:10:31
+But let's say you want to destroy a particular thing, so we can do that as well. There is a flag option as well, I'll show you. By default, it will destroy everything.
+
+[arif] 08:10:37
+Okay.
+
+[arif] 08:10:40
+Okay.
+
+[arif] 08:10:42
+And what the, um…
+
+[arif] 08:10:47
+Suppose we want to… it takes the input also, the script, we can add input also.
+
+[rochak agrawal] 08:10:51
+Correct. We can add. We will show you.
+
+[rochak agrawal] 08:10:53
+See, currently, RFBM only is talking about the workflow. How we are going to write the Terraform configuration, we'll see in detail. So when you say, can I give input? Yes, you can give input.
+
+[arif] 08:10:53
+Okay.
+
+[arif] 08:11:07
+Okay, and what, like, suppose there is an issue with the, uh, configuration, uh, like, suppose a dependency, uh, problem. So, we'll get the error on the plan, or on the, after the, like…
+
+[rochak agrawal] 08:11:11
+Mm-hmm.
+
+[rochak agrawal] 08:11:14
+Mm-hmm.
+
+[rochak agrawal] 08:11:18
+No, no, in a plan also, we will get… so see, uh, there is two type of dependencies you can have.
+
+[rochak agrawal] 08:11:25
+One is implicit dependency, one is explicit dependency, okay?
+
+[rochak agrawal] 08:11:31
+Uh, implicit dependency is, for example.
+
+[rochak agrawal] 08:11:35
+Now, if you see this, okay, now instead of this, if I give…
+
+[rochak agrawal] 08:11:42
+Like this.
+
+[rochak agrawal] 08:11:45
+Hit it.
+
+[rochak agrawal] 08:11:47
+AWS subnet I defined before I'm creating the AWS VPC.
+
+[rochak agrawal] 08:11:53
+Does not matter, okay? When you run the Terraform plan.
+
+[rochak agrawal] 08:11:57
+Terraform creates something called the dependency map internally, and it will see, I need to create two resources.
+
+[rochak agrawal] 08:12:04
+But first, I need to create AWS VPC, then only my subnet will go inside the VPC, correct?
+
+[rochak agrawal] 08:12:12
+So you define in whatever order does not matter, okay? You define subnet first, you define VPC first, no matter at all. When you run this, um…
+
+[rochak agrawal] 08:12:23
+Terraform is going to create a dependency graph internally, and it is going to create the resources in that order only.
+
+[rochak agrawal] 08:12:30
+If I create a VPC, let's say, for example, I create a virtual machine now. Now, for a virtual machine to create, a VPC should be there, a subnet should be there, and my machine goes inside a subnet, correct?
+
+[arif] 08:12:43
+Mmhm.
+
+[rochak agrawal] 08:12:44
+So this type of dependency is called the implicit dependency, and you do not need to define it. Terraform will do it automatically.
+
+[rochak agrawal] 08:12:53
+Okay.
+
+[arif] 08:12:54
+Okay.
+
+[rochak agrawal] 08:12:55
+Now.
+
+[rochak agrawal] 08:12:55
+there is a second type of dependency where they are not dependent on each other. So, for example, I want to create an EC2 instance and an S3 bucket.
+
+[rochak agrawal] 08:13:06
+For example. Now, EC2 instance and S3 bucket are not dependent on each other, correct?
+
+[rochak agrawal] 08:13:13
+They can be created in any order. S3 bucket can be created first, or EC2 instance can be created first, no matter.
+
+[rochak agrawal] 08:13:21
+Whilst creating the resource, they are not dependent on each other, correct?
+
+[rochak agrawal] 08:13:25
+But you have a condition that you have your S3 bucket has some file which your EC2 instance user data script is using.
+
+[rochak agrawal] 08:13:40
+Get it?
+
+[rochak agrawal] 08:13:41
+You remember we did the user data script to install and download something, right?
+
+[rochak agrawal] 08:13:46
+Now there is a dependency, correct? But this is not a default dependency or the inbuilt dependency.
+
+[rochak agrawal] 08:13:53
+Now, this is a dependency you need to create. That is called the explicit dependency. And so, in Terraform, there is something called the depends on. So, for example.
+
+[rochak agrawal] 08:14:05
+Again, as I said, uh…
+
+[rochak agrawal] 08:14:08
+So, you will define something called depends on, and uh…
+
+[rochak agrawal] 08:14:12
+you will define that dependency on, let's say, AWS VPC. Now, in our case, it is the implicit, so we do not need to define it. Otherwise.
+
+[rochak agrawal] 08:14:24
+You will define the explicit dependency using the depends on block.
+
+[rochak agrawal] 08:14:27
+We'll see that in detail, but it is just…
+
+[rochak agrawal] 08:14:31
+Just the conceptual view I'm giving you right now.
+
+[rochak agrawal] 08:14:36
+Okay.
+
+[arif] 08:14:36
+So, I think this Terraform, uh… it's a good tool, but the problem is, like, we should be aware about the provider also, right?
+
+[arif] 08:14:46
+If we don't know how provider works, we won't be able to do, uh, work with that.
+
+[rochak agrawal] 08:14:47
+Correct.
+
+[rochak agrawal] 08:14:50
+But, see, what you need to know about provider? Provider is very simple, you just install it once, but if you keep the last, uh, for example.
+
+[rochak agrawal] 08:14:59
+Even if you don't give this, for example.
+
+[rochak agrawal] 08:15:12
+If you keep this open, also block blank also.
+
+[rochak agrawal] 08:15:16
+It is also going to work fine.
+
+[rochak agrawal] 08:15:18
+Okay, now why I am giving this? Because, um, I have multiple credentials, multiple accounts in there, in my, uh, uh, console, so that's why, uh, yesterday we were getting an error. So that's why I am giving the profile explicitly.
+
+[rochak agrawal] 08:15:34
+Reason?
+
+[rochak agrawal] 08:15:35
+I'm setting the default region. Instead of here.
+
+[rochak agrawal] 08:15:39
+I can give it here.
+
+[rochak agrawal] 08:15:41
+in every resource, okay? That is also going to work fine. See, when you say you need to know the provider, provider configuration is one one-time thing.
+
+[rochak agrawal] 08:15:51
+After that, you need to know the resources. There is nothing specific to know in provider, that is what I'm trying to say.
+
+[rochak agrawal] 08:15:58
+You just need to know.
+
+[arif] 08:15:59
+Oh, I meant…
+
+[rochak agrawal] 08:16:00
+Mm-hmm.
+
+[arif] 08:16:01
+I meant, uh, I meant how AWS works, how, uh, GCP works, how Azure works, we, we should…
+
+[rochak agrawal] 08:16:05
+Of course, correct. Yeah, yeah, yeah. Correct. See, when we are creating the cloud resources, so yes, you need to know the cloud. That's it.
+
+[rochak agrawal] 08:16:15
+If you don't know the cloud, then yes, you cannot use Telephone. That is true.
+
+[rochak agrawal] 08:16:22
+Because, um, if you do not know, if I'm creating a VPC and I do not know which parameter I need to give.
+
+[rochak agrawal] 08:16:29
+then you are not going to create it. So, you see, uh, Terraform comes with the cloud knowledge. You need to know the cloud, any cloud.
+
+[rochak agrawal] 08:16:39
+And then you need to know the Terraform. Like, you will not find someone who say, I know Terraform, but I don't know.
+
+[rochak agrawal] 08:16:47
+he would not be able to write the good Terraform configuration in that case, because he does not know the dependencies, he does not know how a VPC is going to work. So, for example, let's say if your virtual machine is in a private subnet, and you do not know a net gateway will give you the outbound internet access.
+
+[rochak agrawal] 08:17:04
+Can you create it? No.
+
+[rochak agrawal] 08:17:07
+Yes, what you're saying is correct. You need to have a good understanding of the Cloud, then you can write and optimize your Terraform code.
+
+[arif] 08:17:07
+No.
+
+[rochak agrawal] 08:17:18
+See, what is the whole purpose of Terraform? To automate your infrastructure creation, correct?
+
+[rochak agrawal] 08:17:25
+So it is assuming that you know the infrastructure creation. It is just, with the help of Terraform, you are not doing it manually, you are doing it in a coding manner. That's it.
+
+[arif] 08:17:26
+No.
+
+[arif] 08:17:37
+No.
+
+[rochak agrawal] 08:17:38
+Right? So, yes.
+
+[arif] 08:17:39
+So this script, we can write in any… anywhere also, right? In Git Bash also, we can write this script.
+
+[rochak agrawal] 08:17:45
+Yes, yes, you can write it.
+
+[rochak agrawal] 08:17:47
+Anyway, see, uh, uh, Terraform is, uh, operating system agnostic. When I'm saying operating system agnostic means, um.
+
+[rochak agrawal] 08:17:58
+Like, right now, I'm running it on Windows. You can run it on your Cloud Shell, you can run it on Command Shell, you can run it on a Git Bash, Linux Terminal, Mac OS Terminal. Your Terraform code is not going to change. Your Terraform commands are not going to change.
+
+[rochak agrawal] 08:18:12
+So you run Terraform validate here also, Git Bash also, Cloud Shell also, Mac Terminal also. Same everywhere.
+
+[arif] 08:18:20
+Okay, okay. Thanks.
+
+[rochak agrawal] 08:18:21
+Okay?
+
+[rochak agrawal] 08:18:28
+Eva?
+
+[Vaibhav Gupta] 08:18:30
+Yeah, hi, good morning, Rajat. Uh, so, my question is related to, um, Terraform Destroyer. So, when we are using the Terraform Destroyer, the, like, 58 or 2 VPCs, so when we, uh, run that Terraform Destroyer, they will delete all the VPCs, right?
+
+[rochak agrawal] 08:18:32
+Good morning.
+
+[rochak agrawal] 08:18:36
+Mm-hmm.
+
+[rochak agrawal] 08:18:46
+Right, okay. So let me do a demo of this, the same thing we were discussing with RF also. So let's do a demo.
+
+[rochak agrawal] 08:18:53
+Okay.
+
+[Vaibhav Gupta] 08:18:54
+Mm-hmm.
+
+[rochak agrawal] 08:19:03
+So if you run the Terraform destroy.
+
+[rochak agrawal] 08:19:35
+Okay, now let me create two VPCs here. I'll just remove the.
+
+[rochak agrawal] 08:19:43
+output part and the subnet part. So I'll create two VPCs.
+
+[rochak agrawal] 08:19:55
+I'll give it here.
+
+[rochak agrawal] 08:19:57
+I don't get it yet.
+
+[rochak agrawal] 08:20:01
+Okay? So I'll say my VPC 1.
+
+[rochak agrawal] 08:20:04
+And I'll say my VPC, too.
+
+[rochak agrawal] 08:20:10
+See?
+
+[rochak agrawal] 08:20:14
+Better for my blade.
+
+[rochak agrawal] 08:20:18
+I have an iPhone Auto.
+
+[Vaibhav Gupta] 08:20:22
+Approved.
+
+[rochak agrawal] 08:20:35
+You see?
+
+[rochak agrawal] 08:20:38
+Here also, we need to change the name, because it is saying you are creating the duplicate resources.
+
+[rochak agrawal] 08:20:43
+So I'll say my VPC man, something.
+
+[rochak agrawal] 08:21:13
+Okay? Now, if you go to the portal…
+
+[rochak agrawal] 08:21:19
+You have two VPC, my VPC one and my VPC two, right? This we created manually. So let me delete this.
+
+[rochak agrawal] 08:21:35
+Okay, now, again, uh, let me run Terraform Destroy.
+
+[rochak agrawal] 08:21:39
+So if we run terraform destroy without anything, it is going to destroy all the resources it has created. We have seen that, but just for the confirmation, we'll see it once.
+
+[rochak agrawal] 08:21:57
+Okay?
+
+[rochak agrawal] 08:21:58
+Now you validate it.
+
+[rochak agrawal] 08:22:03
+Both of your VPC is gone, correct? So, the default nature of the Terraform Destroy is…
+
+[rochak agrawal] 08:22:08
+That if you're running it without any context, so then it is going to delete everything which it has created.
+
+[rochak agrawal] 08:22:16
+But you say, no, I want to delete only one VPC, not the other one. So let me first create it again.
+
+[rochak agrawal] 08:22:34
+Okay.
+
+[rochak agrawal] 08:22:36
+Now, I am going to run Terraform Destroy.
+
+[rochak agrawal] 08:22:46
+Now you say I want to delete only the one VPC, okay? So let's say I want to delete my VPC too.
+
+[rochak agrawal] 08:22:51
+For example. So then you need to define a target.
+
+[rochak agrawal] 08:22:57
+is equal to…
+
+[rochak agrawal] 08:23:03
+AWS underscore BPC.
+
+[rochak agrawal] 08:23:07
+What is the name?
+
+[rochak agrawal] 08:23:10
+Let's see my PPC one.
+
+[rochak agrawal] 08:23:14
+my VPC one.
+
+[rochak agrawal] 08:23:20
+My underscore BPC1.
+
+[rochak agrawal] 08:23:21
+Okay.
+
+[rochak agrawal] 08:23:23
+Now, I am giving my Terraform.
+
+[rochak agrawal] 08:23:27
+to destroy a particular target. Let's see.
+
+[rochak agrawal] 08:23:43
+You see? Only one to destroy.
+
+[rochak agrawal] 08:23:47
+I'll say yes. Again, I can give auto-approval also with that, but I just wanted to show you one to destroy.
+
+[rochak agrawal] 08:24:13
+It is BUN destroyed. Now, validate it.
+
+[rochak agrawal] 08:24:19
+You see? My VPC one is there, but my VPC is deleted.
+
+[rochak agrawal] 08:24:23
+Now, again, if you run Terraform apply, it will compare your state with your desired state, and it will say BPC1 is already there, so I'll create only BPC2.
+
+[rochak agrawal] 08:24:34
+Okay? But you got the point. So, you can do a targeting delete-tation of your resources. But if you run without any target, it is going to delete everything.
+
+[rochak agrawal] 08:24:47
+Iliad, Bevo, Arif
+
+[Vaibhav Gupta] 08:24:49
+And, uh, one more thing, like, uh, I'm not able to get, like, the subnet concept that we are, um, understanding. I'm not able to get that subnet concept, so…
+
+[rochak agrawal] 08:24:58
+No, but what is the question about?
+
+[Vaibhav Gupta] 08:25:00
+Uh, like, uh, we're using… we have less syntax, but we are using… how will you get that syntax, and uh…
+
+[rochak agrawal] 08:25:07
+So, that's what I said, Bebo, that is what I mentioned. We are only understanding the workflow as of now. Syntec, I will explain in detail to you, don't worry.
+
+[Vaibhav Gupta] 08:25:18
+What's the actual use of the subnet that you're using?
+
+[rochak agrawal] 08:25:21
+what is the actual use of subnet? You cannot create… see, without a subnet, how can you deploy the resources?
+
+[rochak agrawal] 08:25:28
+Your resources goes into the subnet, not into VPC.
+
+[rochak agrawal] 08:25:31
+You need to have… you have to create the subnet.
+
+[Vaibhav Gupta] 08:25:31
+Mm-hmm.
+
+[rochak agrawal] 08:25:37
+Late?
+
+[rochak agrawal] 08:25:40
+Yes, Arif.
+
+[arif] 08:25:43
+Can we see, like, can… is there any way to see what is going on at the back end, like, how the API call is going on, and…
+
+[arif] 08:25:49
+Is there any way, just, like, in terms of troubleshooting?
+
+[rochak agrawal] 08:25:52
+I think there must be so… but see, uh, the operations are happening so fast. Now you, for example…
+
+[rochak agrawal] 08:26:03
+You can see…
+
+[rochak agrawal] 08:26:05
+within a second, right? But I think there is an option, uh…
+
+[rochak agrawal] 08:26:10
+Uh, let me figure out, uh…
+
+[arif] 08:26:12
+Terraform logs or something?
+
+[rochak agrawal] 08:26:13
+Ah, something like that is there. Burgos option…
+
+[rochak agrawal] 08:26:25
+So, you can actually export.
+
+[rochak agrawal] 08:26:31
+Let me try this.
+
+[rochak agrawal] 08:26:41
+Now you see it says telephone plan.
+
+[rochak agrawal] 08:26:48
+So you can see, yes, now you can see.
+
+[rochak agrawal] 08:26:50
+it is…
+
+[rochak agrawal] 08:26:53
+So many information you will find.
+
+[arif] 08:26:56
+Okay, got it.
+
+[rochak agrawal] 08:26:58
+Okay, but if you do it without the trace, so then you will get it from here itself, correct?
+
+[arif] 08:27:06
+Hmmm.
+
+[rochak agrawal] 08:27:06
+This one only. But you see there are so many information. It says there is multiple things they do in backend graph transformation.
+
+[rochak agrawal] 08:27:18
+Uh, create the resource context plugin.
+
+[rochak agrawal] 08:27:21
+Although not very useful for us, to be very honest, uh, but yeah, you can do it. Just say…
+
+[rochak agrawal] 08:27:28
+Provider, uh, where it is going…
+
+[rochak agrawal] 08:27:32
+So you can get all those details.
+
+[rochak agrawal] 08:27:36
+Trace, info, log.
+
+[rochak agrawal] 08:27:38
+You can see.
+
+[rochak agrawal] 08:27:39
+We are… it's just provider produced an invalid plan, but we are tolerating it because it is using the legacy plan SDK.
+
+[rochak agrawal] 08:27:48
+The following problem may be the cause of any confusing error from the downstream operations.
+
+[rochak agrawal] 08:27:54
+You can see this in the logs.
+
+[rochak agrawal] 08:28:00
+So that is a way we can do it.
+
+[arif] 08:28:01
+Okay.
+
+[rochak agrawal] 08:28:01
+The backend information also we can do it now how to off it.
+
+[rochak agrawal] 08:28:08
+Denise.
+
+[rochak agrawal] 08:28:21
+You can also save it in a log file, and whenever you apply.
+
+[rochak agrawal] 08:28:27
+It is going to save in this terraform.log, but, um…
+
+[arif] 08:28:27
+Okay.
+
+[rochak agrawal] 08:28:33
+Or if you're not doing it, you will run it like this, Terraform init work goals, Terraform plan, detailed exit code, output JSON, we can do all of that.
+
+[rochak agrawal] 08:28:44
+But it is, as I said, is not needed most of the time.
+
+[rochak agrawal] 08:28:49
+Because what I would be interested in.
+
+[rochak agrawal] 08:28:57
+Stimmate is giving the info.
+
+[rochak agrawal] 08:29:04
+You see now it is giving the info, not the race like the previous one.
+
+[rochak agrawal] 08:29:09
+So info is… there are warnings. It's an invalid plan. This is an invalid plan. Maybe some internal call is happening.
+
+[rochak agrawal] 08:29:18
+I am I'll keep it to error.
+
+[rochak agrawal] 08:29:28
+Now you will only get the errors, if there is any error.
+
+[rochak agrawal] 08:29:36
+Do you see? Now, I am more interested to know if I am making any problem with this code. So, for example, if I…
+
+[rochak agrawal] 08:29:44
+Run something like this here.
+
+[rochak agrawal] 08:29:47
+Some mistakes you are doing.
+
+[rochak agrawal] 08:29:56
+Then, you are going to run.
+
+[rochak agrawal] 08:30:05
+See?
+
+[rochak agrawal] 08:30:12
+The following dependency selection depending in the log file and consistent with the current configuration.
+
+[rochak agrawal] 08:30:17
+It says okay, but no version, uh, required by the no version selected. Let me run this.
+
+[rochak agrawal] 08:30:24
+Terraform. I'm not sure why it is saying us to do this, but…
+
+[rochak agrawal] 08:30:29
+Let's see…
+
+[rochak agrawal] 08:30:32
+Upgrade.
+
+[rochak agrawal] 08:30:44
+You see?
+
+[rochak agrawal] 08:30:48
+Failed to query available, could not retrieve the link.
+
+[rochak agrawal] 08:30:55
+But we are giving the provider why it is giving this error.
+
+[rochak agrawal] 08:31:00
+Maybe this is the resource it is not able to identify, so it is giving us an error.
+
+[rochak agrawal] 08:31:16
+Now you see your error is gone. You are now getting another error. It says duplicate resources AWS VPC configuration. Now the reason is in both of the places I am using my VPC, my VPC. It's a duplication because, right?
+
+[rochak agrawal] 08:31:31
+So, if you give here…
+
+[rochak agrawal] 08:31:34
+My BBC One.
+
+[rochak agrawal] 08:31:36
+And here, let's make some mistake.
+
+[rochak agrawal] 08:31:43
+You don't get a complaint.
+
+[rochak agrawal] 08:31:53
+You see? It is saying you have done the argument name.
+
+[rochak agrawal] 08:31:59
+this block is not expected here. Did you mean the CIDR block? So, it is giving you a walk around also. Now, the same thing if you run Terraform.
+
+[rochak agrawal] 08:32:09
+Delete it.
+
+[rochak agrawal] 08:32:28
+Okay, so same thing, it says…
+
+[rochak agrawal] 08:32:31
+This is giving you an error.
+
+[rochak agrawal] 08:32:34
+unsupported argument.
+
+[rochak agrawal] 08:32:37
+And what is the unsupported argument? It's the same thing, basically, what is the Terraform plan giving, Terraform validator also giving. That is why I said it is not very useful, because if there is any error, you are anyways going to get in a Terraform plan itself.
+
+[rochak agrawal] 08:32:53
+So Terraform validators, like, I don't use it very much.
+
+[rochak agrawal] 08:32:59
+Okay, so this is the one.
+
+[rochak agrawal] 08:33:03
+CID are blocked, okay? So any error, any mistakes you are going to do, then the Terraform format, what it is going to do.
+
+[rochak agrawal] 08:33:14
+Let's say I'm making a format mistake.
+
+[rochak agrawal] 08:33:18
+Okay.
+
+[rochak agrawal] 08:33:20
+Double S.
+
+[rochak agrawal] 08:33:21
+And when you are going to run Terraform FMT.
+
+[rochak agrawal] 08:33:37
+Now you go, it got corrected.
+
+[rochak agrawal] 08:33:40
+Right? So Terraform makes your Terraform format correct.
+
+[rochak agrawal] 08:33:46
+Basically, if you…
+
+[rochak agrawal] 08:33:48
+If you have any syntactical error or something like that, it is going to resolve those type of errors.
+
+[rochak agrawal] 08:33:56
+Clear?
+
+[Vaibhav Gupta] 08:34:03
+One more question I want to, like, ask, uh, which is related to save file. So, uh, if you perform any change, then the save file is, uh, changes automatically.
+
+[rochak agrawal] 08:34:08
+Mm-hmm.
+
+[rochak agrawal] 08:34:12
+Correct.
+
+[Vaibhav Gupta] 08:34:13
+Right.
+
+[Vaibhav Gupta] 08:34:14
+So, uh, is there any way to… we can, uh, log the state file to prevent, uh, destructive action, like, uh, we don't want to change, uh, performing changes?
+
+[rochak agrawal] 08:34:14
+Right.
+
+[Vaibhav Gupta] 08:34:24
+Sweet file. Is it, uh, we can do?
+
+[rochak agrawal] 08:34:26
+No, but, uh, see, uh…
+
+[rochak agrawal] 08:34:29
+See, there is a way, and we will discuss the state file in detail, Vevo, but to answer your question.
+
+[rochak agrawal] 08:34:36
+When your state file is getting changed, when we are running Terraform actions, correct? When I'm running Terraform apply, when I'm running Terraform destroy, then my state file is getting changed, correct? If you do not let Terraform destroy.
+
+[Vaibhav Gupta] 08:34:47
+Mm-hmm.
+
+[rochak agrawal] 08:34:52
+Change your state file.
+
+[rochak agrawal] 08:34:55
+right, then how Terraform is going to delete the resources, because.
+
+[rochak agrawal] 08:35:00
+For Terraform, your state file is the single source of truth.
+
+[rochak agrawal] 08:35:03
+If, let's say, you are trying to delete the resource, but you say, no, no, I'll not let you delete it from the state file, then there will be inconsistency.
+
+[rochak agrawal] 08:35:12
+Correct.
+
+[rochak agrawal] 08:35:15
+Now your questions should be, for example, I can go here in the folder.
+
+[rochak agrawal] 08:35:22
+And I can open the state file.
+
+[rochak agrawal] 08:35:28
+Right? And I can delete something here.
+
+[rochak agrawal] 08:35:36
+Right? So then your question should be, can I log this file?
+
+[rochak agrawal] 08:35:39
+so that other users, apart from Terraform, cannot do any changes.
+
+[rochak agrawal] 08:35:46
+Correct? So, the answer to that also would be yes, and we will see that. So, currently, we are storing the state file in my local server, correct? Where I'm running the Terraform.
+
+[rochak agrawal] 08:35:57
+But it is not going to work when you are working in a multi-people team, because everyone will be running the same Terraform code. Now, if I created a Terraform code and I keep the state file on my system.
+
+[rochak agrawal] 08:36:11
+How will you know or RF know that we have a problem?
+
+[rochak agrawal] 08:36:14
+what is the code you run, because Terraform will always refer the state file, and I do not have the state file you have on your local system, correct? So then you have to…
+
+[rochak agrawal] 08:36:25
+store your state file in something remote. So that is what it's called the remote backend. Currently, we call it as a local backend, right? So we will see that, Bevo, but your question, I'll change it a bit.
+
+[rochak agrawal] 08:36:39
+Terraform need to update the state file, that's why it is going to track the infrastructure, but there are mechanisms by which we can say other people will not be able to do any changes in your state file.
+
+[Vaibhav Gupta] 08:36:52
+Okay, maybe my, uh, my passing way will be different.
+
+[rochak agrawal] 08:36:56
+Yes, yes, no problem. Okay.
+
+[Vaibhav Gupta] 08:36:58
+Yes.
+
+[Vaibhav Gupta] 08:36:58
+So, we can say, like, state file is an infrastructure that we deployed, right?
+
+[rochak agrawal] 08:37:03
+Correct, yes. Whatever you do in, um, with the help of… so let me first unzip this file.
+
+[rochak agrawal] 08:37:11
+I'll say don't save. Okay, so whatever the infrastructure you deployed using, uh, your Terraform.
+
+[Vaibhav Gupta] 08:37:19
+Hmm.
+
+[rochak agrawal] 08:37:19
+then, uh, that will be recorded in the state file. If you delete it, you see it is going to be empty, correct? So, it is the single source of truth for your Terraform.
+
+[Vaibhav Gupta] 08:37:26
+Mm-hmm.
+
+[rochak agrawal] 08:37:32
+Okay.
+
+[rochak agrawal] 08:37:33
+Now there is one more thing I'll show you.
+
+[rochak agrawal] 08:37:36
+So here if you see so let's.
+
+[rochak agrawal] 08:37:41
+Let's do this. Okay. Now, if you see…
+
+[rochak agrawal] 08:37:46
+Uh, as Aleph was asking also, um…
+
+[rochak agrawal] 08:37:50
+This CIDR block.
+
+[rochak agrawal] 08:37:53
+I have hard-coded.
+
+[rochak agrawal] 08:37:55
+Correct.
+
+[rochak agrawal] 08:37:57
+I have hard-coded the value of the CIDR.
+
+[rochak agrawal] 08:38:00
+What does it mean? That whenever I'm going to run it.
+
+[rochak agrawal] 08:38:04
+I am going to create a VPC with 10.0.0.0 slash 24.
+
+[rochak agrawal] 08:38:12
+Correct? Agree?
+
+[rochak agrawal] 08:38:16
+But…
+
+[rochak agrawal] 08:38:17
+You may have a different requirement. You say, no, I want to run this code, but when I want to create a VPC in my dev environment, it should be 10.0.1.0./24. When I'm creating in a test environment, it should be 10.0.2.0.
+
+[rochak agrawal] 08:38:33
+Slash 24. Uh, when I'm creating it in a, uh…
+
+[rochak agrawal] 08:38:38
+what you can say. In a production environment, it should be 10.0.0 slash 24, something like that.
+
+[Vaibhav Gupta] 08:38:44
+Mm-hmm.
+
+[rochak agrawal] 08:38:45
+But in this case, this is not possible, so that is where there is a concept of variable in Terraform.
+
+[rochak agrawal] 08:38:52
+Okay. So, what we are going to do…
+
+[rochak agrawal] 08:39:02
+I'll leave this.
+
+[rochak agrawal] 08:39:38
+So I'll create, uh…
+
+[rochak agrawal] 08:39:41
+A new file. Again, um, for Terraform, it does not matter, but uh…
+
+[rochak agrawal] 08:39:46
+For a better readability purpose, we define variable in a different file. So this is a new file.
+
+[rochak agrawal] 08:39:54
+New text file.
+
+[rochak agrawal] 08:40:06
+Okay? And I'll define a variable with the name called BPCCIDR.
+
+[rochak agrawal] 08:40:11
+Okay. And here, instead of hard coding this, I will say.
+
+[rochak agrawal] 08:40:23
+Well, dot… what is the name?
+
+[rochak agrawal] 08:40:25
+His name is Bpc. Idea.
+
+[rochak agrawal] 08:40:34
+Simple.
+
+[rochak agrawal] 08:40:36
+So let me save this.
+
+[rochak agrawal] 08:41:07
+Okay? Yes.
+
+[rochak agrawal] 08:41:11
+And similarly, now here.
+
+[rochak agrawal] 08:41:39
+Okay.
+
+[rochak agrawal] 08:41:41
+And then there is a default value.
+
+[rochak agrawal] 08:41:51
+Okay, this…
+
+[rochak agrawal] 08:41:57
+Let me open file…
+
+[rochak agrawal] 08:42:04
+Yeah. So now you see that it's an exit. That was so important.
+
+[rochak agrawal] 08:42:07
+So default. Now I save this. Now you see very simply what I have done.
+
+[rochak agrawal] 08:42:13
+And, by the way, you can do it for every, uh, thing you will see, profile, reason, CIDR block, text. I'm just showing you with one example.
+
+[rochak agrawal] 08:42:22
+So now…
+
+[rochak agrawal] 08:42:27
+CIDR block, I have said, I have variableized it, I have templatized it, okay? So…
+
+[rochak agrawal] 08:42:34
+I see same thing. I can define it here as well.
+
+[rochak agrawal] 08:42:39
+Again, I'm reiterating it.
+
+[rochak agrawal] 08:42:42
+For us, for the better readability purpose, we can define it differently, but for Terraform, when you run the Terraform plan and Terraform apply.
+
+[rochak agrawal] 08:42:49
+It is going to take the.
+
+[rochak agrawal] 08:42:52
+Collate all of them, which is there in the folder, and keep it the same. Okay, so now…
+
+[rochak agrawal] 08:42:58
+what I did is I said CIDR block is a variable, and the variable value should come from here, and the default value is this. So if I run Terraform plan now.
+
+[rochak agrawal] 08:43:13
+Let me run it. 10.1. 10.0.10. Okay.
+
+[rochak agrawal] 08:43:24
+Now, if you run Terraform plan.
+
+[rochak agrawal] 08:43:55
+Be given the same value.
+
+[rochak agrawal] 08:43:58
+That's the reason.
+
+[rochak agrawal] 08:44:07
+Okay.
+
+[rochak agrawal] 08:44:09
+If you run the Terraform plan.
+
+[rochak agrawal] 08:44:22
+Just… if I… it is taking… I have not saved it.
+
+[rochak agrawal] 08:44:48
+Okay, so now you see 10.1.0 is coming.
+
+[rochak agrawal] 08:44:53
+Because that's a default value.
+
+[rochak agrawal] 08:44:58
+That's a default value. Now, default value is useful when you do not want to use it. Now, you can create another file called terraform.tfvars in which you can assign the value like this.
+
+[rochak agrawal] 08:45:16
+Simple.
+
+[rochak agrawal] 08:45:23
+Do you create another file?
+
+[rochak agrawal] 08:45:35
+I'll create two files, okay?
+
+[rochak agrawal] 08:45:37
+Telephone.
+
+[rochak agrawal] 08:45:44
+Yeah, of course.
+
+[rochak agrawal] 08:45:47
+Okay, let me change it.
+
+[rochak agrawal] 08:45:53
+I'll say dev.tfvars.
+
+[rochak agrawal] 08:46:01
+And prod.efcourse.
+
+[rochak agrawal] 08:46:03
+Okay.
+
+[rochak agrawal] 08:46:08
+I'll give the value, BPC-CADR, I'll say 10.0.2.0.
+
+[rochak agrawal] 08:46:14
+And brought me a bus, I'll say.
+
+[rochak agrawal] 08:46:17
+10.0.3.0.
+
+[rochak agrawal] 08:46:21
+Now…
+
+[rochak agrawal] 08:46:30
+Whenever you are running Terraform plan.
+
+[rochak agrawal] 08:46:32
+Okay.
+
+[rochak agrawal] 08:46:34
+Which is a good one.
+
+[rochak agrawal] 08:46:37
+Yes.
+
+[rochak agrawal] 08:46:43
+Now, I can give the value at multiple places, okay? So one is, you have seen, I can give a default value.
+
+[rochak agrawal] 08:46:51
+I can give the value here also. Hyphen, hyphen, where?
+
+[rochak agrawal] 08:46:56
+And what is the syntax?
+
+[rochak agrawal] 08:47:11
+It's the correct thing. Eric called to.
+
+[rochak agrawal] 08:47:15
+And…
+
+[rochak agrawal] 08:47:16
+PPCC ADR.
+
+[rochak agrawal] 08:47:19
+I'll say…
+
+[rochak agrawal] 08:47:24
+10.0.4.0.
+
+[rochak agrawal] 08:47:47
+I need to give a valid value. CADR, I need to give a slash 24 also.
+
+[rochak agrawal] 08:47:58
+Okay, so here you can see the CIDR block will be 10.0.4.0.
+
+[rochak agrawal] 08:48:04
+Now, you are able to do so because we have very well, like, temporalized this value. If you have hard-coded this value, then there is no question, correct?
+
+[rochak agrawal] 08:48:16
+You are able to give it because your value is…
+
+[rochak agrawal] 08:48:20
+coming from this variable. And the variable value I am passing on my runtime. Correct? If you have hard-coded like previously we did, then there is no question. So you have seen from two places your value can come.
+
+[rochak agrawal] 08:48:34
+If you're not defining anything, it is going to pick up this default value, 10.0.1.0. Secondly, you can use it with your… while doing the runtime also.
+
+[rochak agrawal] 08:48:45
+Third is, which is most commonly used, so you will have the, uh, different, different, uh, values for a dev environment, for a prod environment, for a, uh, test environment, so what you are going to do.
+
+[rochak agrawal] 08:48:59
+What is the syntax?
+
+[rochak agrawal] 08:49:09
+Syntax window.
+
+[rochak agrawal] 08:49:11
+Yes, worst fail.
+
+[rochak agrawal] 08:49:23
+Yes.
+
+[rochak agrawal] 08:49:27
+Now, you see
+
+[rochak agrawal] 08:49:29
+Same Terraform thing.
+
+[rochak agrawal] 08:49:32
+I'll send it back to you, boss.
+
+[rochak agrawal] 08:49:43
+Tab.pf, of course, does not exist. What is the name?
+
+[rochak agrawal] 08:49:47
+Yeah, it's there.
+
+[rochak agrawal] 08:49:55
+Who's there?
+
+[rochak agrawal] 08:50:19
+I think it is taking it as a…
+
+[rochak agrawal] 08:50:23
+Text file.
+
+[rochak agrawal] 08:51:22
+Yeah, it is dear voice only.
+
+[rochak agrawal] 08:52:06
+Okay?
+
+[rochak agrawal] 08:52:09
+See?
+
+[rochak agrawal] 08:52:16
+Now it is created.
+
+[rochak agrawal] 08:52:33
+Maybe PC :C idea.
+
+[rochak agrawal] 08:52:40
+I'll see 10 dot.
+
+[rochak agrawal] 08:52:42
+3.0.
+
+[rochak agrawal] 08:52:46
+And… broader tier bus.
+
+[rochak agrawal] 08:53:03
+And not 4.0.
+
+[rochak agrawal] 08:53:04
+Okay.
+
+[rochak agrawal] 08:53:07
+Save this.
+
+[rochak agrawal] 08:53:08
+Save this.
+
+[rochak agrawal] 08:53:11
+Now, you run it.
+
+[rochak agrawal] 08:53:15
+Now I'm passing on the variable file, which is a dev.emvars.
+
+[rochak agrawal] 08:53:31
+Now you see?
+
+[rochak agrawal] 08:53:33
+10.3.0.
+
+[rochak agrawal] 08:53:35
+And…
+
+[rochak agrawal] 08:53:36
+If I run it with the Protea bus.
+
+[rochak agrawal] 08:53:51
+See? 10.4.0. Now we are giving, uh, taking an example of one variable. You can variableize everything here.
+
+[rochak agrawal] 08:54:01
+Late.
+
+[rochak agrawal] 08:54:02
+For example, um…
+
+[rochak agrawal] 08:54:04
+your reason also for, uh, I can go create…
+
+[rochak agrawal] 08:54:10
+a visa also.
+
+[rochak agrawal] 08:54:12
+So, it says variable AWS region.
+
+[rochak agrawal] 08:54:17
+I'll go into where.ef.
+
+[rochak agrawal] 08:54:20
+And I'll save this.
+
+[rochak agrawal] 08:54:23
+Here, you can go in adapt.evolves.
+
+[rochak agrawal] 08:54:33
+Maybe, Deb, I'll create a different region.
+
+[rochak agrawal] 08:54:37
+Episode 2, for example.
+
+[rochak agrawal] 08:54:40
+Now I'll save this.
+
+[rochak agrawal] 08:54:49
+Now, if you learn it…
+
+[rochak agrawal] 08:55:07
+Saved it.
+
+[rochak agrawal] 08:55:08
+Maybe so. Okay, yeah, I got it because we have not variableized this.
+
+[rochak agrawal] 08:55:14
+So, where dot?
+
+[rochak agrawal] 08:55:18
+What is the name?
+
+[rochak agrawal] 08:55:20
+AWS underscore reason.
+
+[rochak agrawal] 08:55:29
+Now it builds in the value.
+
+[rochak agrawal] 08:55:43
+Invalid AWS reason…
+
+[rochak agrawal] 08:55:49
+Yeah, bye.
+
+[rochak agrawal] 08:56:00
+Okay, I think it's not taking…
+
+[rochak agrawal] 08:56:11
+We'd find the reason here, and which is…
+
+[rochak agrawal] 08:56:16
+Well…
+
+[rochak agrawal] 08:56:35
+So you can see now it is out too.
+
+[rochak agrawal] 08:56:39
+Okay, so we can not only parameterize one value, whatever the values you are defining, you can parameterize anything. Now, the reason for that is that way your code becomes reusable.
+
+[rochak agrawal] 08:56:53
+Uh, and that is what we do, okay? So you create your Terraform code, uh, but you variabilize everything. So, for example, uh, in your, um, test environment, I'll create an EC2 instance of T2. small size. My own testing environment, I will, uh.
+
+[rochak agrawal] 08:57:09
+uh, create, um, T2 instance of T2.medium, while in a production, I'll create a T2.large.
+
+[rochak agrawal] 08:57:16
+Now, the only thing changing is the value, uh, of the size, so I'll… I'll, uh…
+
+[rochak agrawal] 08:57:22
+instance size, I will variableize it, and I will pass the value according to the environment I am running.
+
+[rochak agrawal] 08:57:29
+Okay?
+
+[rochak agrawal] 08:57:40
+Clear? So, uh… so this is the workflow we understood today. We will understand more about how to write all this, uh…
+
+[rochak agrawal] 08:57:50
+Terraform code, one by one.
+
+[rochak agrawal] 08:57:52
+Okay, so we have understood output also, so if you want to get some values… so let's say you're creating a virtual machine, and you want to take out the public IP of that virtual machine, so then you can take it from…
+
+[rochak agrawal] 08:58:04
+This, um…
+
+[rochak agrawal] 08:58:06
+output sections.
+
+[rochak agrawal] 08:58:09
+Okay, so I'll wrap up a session today a little early. I need to catch up with something. But tomorrow we will understand how we are writing all this. So what are the things you should be knowing?
+
+[rochak agrawal] 08:58:24
+What are the things we can take it as a reference from the documentation? So basically, I think we should be understanding about the concept, how we are writing it, then what are the parameters and everything which you are going to find out in the documentation itself.
+
+[rochak agrawal] 08:58:40
+But any question till now, I'll take it.
+
+[Vaibhav Gupta] 08:58:52
+So…
+
+[Vaibhav Gupta] 08:58:54
+The region, so that you have to find in the, like, the event profile.
+
+[rochak agrawal] 08:59:00
+Sorry, can you come again?
+
+[Vaibhav Gupta] 08:59:01
+Can you…
+
+[Vaibhav Gupta] 08:59:02
+Yeah, can you please open that fraud profile?
+
+[rochak agrawal] 08:59:06
+Proto TF bars?
+
+[Vaibhav Gupta] 08:59:08
+Yes.
+
+[rochak agrawal] 08:59:11
+Yeah?
+
+[Vaibhav Gupta] 08:59:15
+So, uh, we are not here, like, 80 south to…
+
+[rochak agrawal] 08:59:19
+Hmm, but we have given the depth of BARS, AP SOUT2.
+
+[Vaibhav Gupta] 08:59:23
+Okay, okay.
+
+[rochak agrawal] 08:59:25
+Yeah? We run it with the DevTF bars only, huh?
+
+[Vaibhav Gupta] 08:59:32
+Okay, okay.
+
+[rochak agrawal] 08:59:33
+Okay. Here, whatever you give, uh… see, it is not something, uh…
+
+[rochak agrawal] 08:59:39
+Let's say AWS region, I will give both.
+
+[rochak agrawal] 08:59:48
+U.S. East.
+
+[rochak agrawal] 08:59:49
+One, for example.
+
+[rochak agrawal] 08:59:51
+I'll save this.
+
+[rochak agrawal] 08:59:53
+Now you run it.
+
+[rochak agrawal] 08:59:55
+with the prod.
+
+[rochak agrawal] 09:00:09
+You see?
+
+[rochak agrawal] 09:00:13
+U.S. Eastbound.
+
+[Vaibhav Gupta] 09:00:14
+Okay.
+
+[rochak agrawal] 09:00:19
+Okay?
+
+[rochak agrawal] 09:00:22
+Oh.
+
+[rochak agrawal] 09:00:31
+So yes, guys, we'll wrap up a little early today, but tomorrow we will understand how we are writing this step by step.
+
+[rochak agrawal] 09:00:41
+What are the components are there and everything, how to write HCL, which is a
+
