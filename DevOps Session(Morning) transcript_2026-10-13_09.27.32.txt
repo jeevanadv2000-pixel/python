@@ -1,0 +1,3027 @@
+[rochak agrawal] 07:36:50
+Hey, good morning, everyone. So, actually, the Kubernetes cluster is getting created. It will take another five, seven minutes, so then we'll start.
+
+[rochak agrawal] 07:41:46
+Hey, good morning, everyone.
+
+[rochak agrawal] 07:41:49
+Let's start.
+
+[rochak agrawal] 07:41:53
+Okay.
+
+[rochak agrawal] 07:41:57
+Now, uh, in our last class, we talked about the services.
+
+[rochak agrawal] 07:42:02
+Today we talk about two more Kubernetes objects.
+
+[rochak agrawal] 07:42:06
+And then, if there is time, then we'll see other concepts. One is a config map.
+
+[rochak agrawal] 07:42:11
+Another is the…
+
+[rochak agrawal] 07:42:13
+secrets. So, there is no inherent difference between ConfigMap.
+
+[rochak agrawal] 07:42:20
+And secret.
+
+[rochak agrawal] 07:42:22
+They both are kind of the same thing. It is just ConfigMap you are going to use for the non-sensitive configuration.
+
+[rochak agrawal] 07:42:36
+While secrets is used for the sensitive information.
+
+[rochak agrawal] 07:42:42
+Now, before that, before we go understand what is a ConfigMap, we need to understand why do we use ConfigMap.
+
+[rochak agrawal] 07:42:50
+So for example, let's say this is your Docker image.
+
+[rochak agrawal] 07:42:57
+Now, this…
+
+[rochak agrawal] 07:42:58
+And the whole principle about creating the images is that, that you're creating your image once, and then you deploy it everywhere. So you deploy it to the…
+
+[rochak agrawal] 07:43:09
+Dev environment.
+
+[rochak agrawal] 07:43:10
+You deploy it to the, uh…
+
+[rochak agrawal] 07:43:12
+Test environment.
+
+[rochak agrawal] 07:43:14
+And you deploy it to the prod environment.
+
+[rochak agrawal] 07:43:18
+Now…
+
+[rochak agrawal] 07:43:22
+Let's say, uh…
+
+[rochak agrawal] 07:43:25
+In your image, you are connecting to the database.
+
+[rochak agrawal] 07:43:31
+Now, you're using, let's say, DB Host.
+
+[rochak agrawal] 07:43:38
+As an environment variable. Now, if you…
+
+[rochak agrawal] 07:43:42
+use this DB host as an environment variable in your image, hard-coded. So what you need to do, you need to create one image for dev, one image for test, and one image for production. Correct? Because…
+
+[rochak agrawal] 07:43:59
+This value is hard-coded in your image. So that is where we decouple your configuration. And DV host is just one example. It could be anything. It could be, let's say, your Java home, your memory value, or something like that.
+
+[rochak agrawal] 07:44:14
+So…
+
+[rochak agrawal] 07:44:15
+to decouple your configuration, okay, uh, to decouple your configuration, what you are going to use, you are going to use ConfigMap. So instead of creating 3 different images, what you can do is…
+
+[rochak agrawal] 07:44:36
+You are going to create three different config maps.
+
+[rochak agrawal] 07:44:47
+Test.
+
+[rochak agrawal] 07:44:48
+broad, with the respective.
+
+[rochak agrawal] 07:44:52
+corresponding DB host value, or any other environment value. And when you are running a dev pod, you will refer to this, uh…
+
+[rochak agrawal] 07:45:02
+Dev config map when you're referring to test.
+
+[rochak agrawal] 07:45:05
+Test config map and prod so that you are making these connections seamlessly. You do not need to create your image again and again. So any sort of configuration we would like to decouple from your application.
+
+[rochak agrawal] 07:45:21
+And that is where your config map is going to use. A config map is a native Kubernetes API object used to store non-confidential configuration data in a key value pair.
+
+[rochak agrawal] 07:45:37
+Uh, so when I'm seeing key value pair, so it will be stored, like…
+
+[rochak agrawal] 07:45:45
+Like a directory. For example…
+
+[rochak agrawal] 07:45:50
+Java Home.
+
+[rochak agrawal] 07:45:54
+slash ETC. I'm just giving a dummy name.
+
+[rochak agrawal] 07:45:57
+So, this will be called as…
+
+[rochak agrawal] 07:46:02
+The key
+
+[rochak agrawal] 07:46:04
+And this will be called as the value.
+
+[rochak agrawal] 07:46:08
+So we are going to refer the key and the value you can update it. So its primary purpose of a config map is to decouple the environment-specific configuration.
+
+[rochak agrawal] 07:46:21
+from the application code and the container images. By separating these variables, we can run the exact same container image across multiple environments without needing to rebuild it.
+
+[rochak agrawal] 07:46:35
+Okay, now…
+
+[rochak agrawal] 07:46:37
+How you can create ConfigMap, we are going to see that. There are multiple ways, and we will see that.
+
+[rochak agrawal] 07:46:47
+Clear, any question in ConfigMap? Understanding?
+
+[rochak agrawal] 07:46:53
+Similar to ConfigMap.
+
+[rochak agrawal] 07:46:56
+We have very simple. Similar to ConfigMap, we have a Kubernetes secret. Now, Kubernetes secret is an API object that is specifically designed to store and manage sensitive information.
+
+[rochak agrawal] 07:47:12
+Such as password, or token, keys, certificate.
+
+[rochak agrawal] 07:47:17
+Same as ConfigMap, Secret allows us to decouple confidential information.
+
+[rochak agrawal] 07:47:22
+Application code. However.
+
+[rochak agrawal] 07:47:25
+Secrets are handled differently by the Kubernetes to provide additional layer of security. They are encrypted at rest, so you… if you see…
+
+[rochak agrawal] 07:47:38
+The comparison between the ConfigMap and the Secret. The primary use case of a ConfigMap is a non-confidential app configuration.
+
+[rochak agrawal] 07:47:46
+While the primary use case of a secret is sensitive information, token and keys.
+
+[rochak agrawal] 07:47:53
+while data visibility config map will be in a plain text. So whatever you are defining DBOs as this, you can see that. But…
+
+[rochak agrawal] 07:48:03
+Secrets will be base 64 encoded. What does it mean? It means once you define a secret and we will see that.
+
+[rochak agrawal] 07:48:10
+Let's say I've given my password as, uh…
+
+[rochak agrawal] 07:48:14
+demo at the rate 123. Once you create a secret, that demo at the rate 123 will be, um…
+
+[rochak agrawal] 07:48:22
+What you can say is, uh, encoded, right? So…
+
+[rochak agrawal] 07:48:26
+That is about the config map and secret. Now, before I go…
+
+[rochak agrawal] 07:48:31
+have a understanding how we are going to create it. Yes, Weber?
+
+[Vaibhav Gupta] 07:48:36
+Yes, good morning. Uh, can you please repeat the connection, uh, from, uh, this, uh, related to, uh, database?
+
+[rochak agrawal] 07:48:46
+This related… I did not get your question correctly. Can you repeat your question?
+
+[Vaibhav Gupta] 07:48:51
+The, in Unity's, uh, repeated, uh, connection from, uh, their dev environment, test environment, upload environment, database, that, that connection, that.
+
+[rochak agrawal] 07:48:57
+Hmm?
+
+[Vaibhav Gupta] 07:49:01
+So…
+
+[rochak agrawal] 07:49:01
+See, how you… no, therefore, understand one thing.
+
+[rochak agrawal] 07:49:05
+How you are connecting is a separate thing that we are not.
+
+[rochak agrawal] 07:49:10
+ConfigMap stores the configuration. So, for example, ConfigMap tells you which database to connect to. So, for example, let's say I define a variable called DBHost.
+
+[rochak agrawal] 07:49:23
+Okay, so let's say DB host is xyz.com.
+
+[rochak agrawal] 07:49:29
+So, ConfigMap only stores the data. How you are connecting.
+
+[rochak agrawal] 07:49:35
+It still will be in your application code or container image.
+
+[Vaibhav Gupta] 07:49:38
+Okay.
+
+[rochak agrawal] 07:49:40
+Okay, it only stores the configuration data. So, for example, when you book a flight ticket, for example.
+
+[rochak agrawal] 07:49:49
+Flight ticket will tell you which flight you need to take, from where, correct?
+
+[rochak agrawal] 07:49:54
+But still, you need to go to airport and take the flight.
+
+[rochak agrawal] 07:49:57
+But your boarding pass or the ticket will only contain the data to tell you which flight need to take.
+
+[rochak agrawal] 07:50:07
+Okay.
+
+[rochak agrawal] 07:50:08
+So, it is, like…
+
+[rochak agrawal] 07:50:12
+whatever the configuration, DB host is just a common example, but any sort of… let's say you want to download some files from somewhere, and you need to pass that URL.
+
+[rochak agrawal] 07:50:23
+Anything you want to decouple is different for your environment, you can give it as a config map.
+
+[rochak agrawal] 07:50:32
+Or the secret if it has a sensitive information.
+
+[rochak agrawal] 07:50:37
+Okay?
+
+[Vaibhav Gupta] 07:50:39
+Okay.
+
+[rochak agrawal] 07:50:40
+Yeah
+
+[rochak agrawal] 07:50:41
+Any other questions?
+
+[rochak agrawal] 07:50:49
+Okay. Now…
+
+[rochak agrawal] 07:50:52
+How you are going to create a config map? Very simple, uh, command is there.
+
+[rochak agrawal] 07:51:03
+Tube CTL?
+
+[rochak agrawal] 07:51:06
+and Figma.
+
+[rochak agrawal] 07:51:09
+Or, you can write CM also
+
+[rochak agrawal] 07:51:11
+And then you need to give two things. One is the name
+
+[rochak agrawal] 07:51:17
+Name is the name of the container. And then, secondly, you need to give the data source.
+
+[rochak agrawal] 07:51:25
+From where you are, uh…
+
+[rochak agrawal] 07:51:28
+taking the data. For example, let's say right now, if I go
+
+[rochak agrawal] 07:51:36
+So, I have one container, which is…
+
+[rochak agrawal] 07:51:39
+Created.
+
+[rochak agrawal] 07:51:39
+Or I can write, uh…
+
+[rochak agrawal] 07:51:45
+Same thing. So you can write CM, or get CM, or get config map, it's the same thing. Again, when you write this command without anything, it is going to see you the config map in your default namespace, but if you want to see, let's say I want to see in a cube.
+
+[rochak agrawal] 07:52:01
+System.
+
+[rochak agrawal] 07:52:02
+So then, you need to give it. So here, I have multiple…
+
+[rochak agrawal] 07:52:06
+Benfidumab
+
+[rochak agrawal] 07:52:08
+hey.
+
+[rochak agrawal] 07:52:09
+Now, if I go…
+
+[rochak agrawal] 07:52:15
+Let's say I want to see the config map of CNS config.
+
+[rochak agrawal] 07:52:26
+That's an OEM.
+
+[rochak agrawal] 07:52:28
+So you can see.
+
+[rochak agrawal] 07:52:30
+There are many, uh, so you can see, API version V1.
+
+[rochak agrawal] 07:52:37
+Tying the config map, metadata is the name and namespace, right? And this is the data this config map is storing.
+
+[rochak agrawal] 07:52:46
+There are so many data points on there. Enable home is equal to false. Enable IMB2 is false. So you can see.
+
+[rochak agrawal] 07:52:55
+any sort of data, uh, will be there. You… you can store it with the ConfigMap, right? So now, you can, uh, this data source…
+
+[rochak agrawal] 07:53:08
+This data source we are talking.
+
+[rochak agrawal] 07:53:13
+It can be a directory.
+
+[rochak agrawal] 07:53:19
+It can be a file, it can be…
+
+[rochak agrawal] 07:53:26
+literal values.
+
+[rochak agrawal] 07:53:28
+we'll see that, okay? So, you can create it from a multiple way. Now, first, uh, we will see it, uh…
+
+[rochak agrawal] 07:53:37
+Why you need to use directory? Because you can have multiple directories from where… from them you want to store the configuration. So…
+
+[rochak agrawal] 07:53:47
+When you use…
+
+[rochak agrawal] 07:53:49
+When you create a config map based on a directory, kubectl identify file whose file name is a valid key in the directory, and package each of these files into.
+
+[rochak agrawal] 07:53:59
+the new config map, basically. Okay, so I'll download some directories, and then…
+
+[rochak agrawal] 07:54:08
+We will create a config map. Very easy, there is nothing much in this.
+
+[rochak agrawal] 07:54:15
+Okay? So I'll just take the example.
+
+[rochak agrawal] 07:54:19
+Same commands I'm using, which is there.
+
+[rochak agrawal] 07:54:28
+So I'm creating a directory, and I'm going to download…
+
+[rochak agrawal] 07:54:37
+Okay.
+
+[rochak agrawal] 07:54:48
+Yeah?
+
+[rochak agrawal] 07:54:55
+You go here.
+
+[rochak agrawal] 07:54:58
+Do you have?
+
+[rochak agrawal] 07:54:59
+Tool phase.
+
+[rochak agrawal] 07:55:01
+One is a UI.properties, another is a game.properties, and if you see…
+
+[rochak agrawal] 07:55:06
+So, this is just a color…
+
+[rochak agrawal] 07:55:08
+Allow, just some values are there. Similarly.
+
+[rochak agrawal] 07:55:14
+You have another, uh, properties up there. Correct? Now…
+
+[rochak agrawal] 07:55:20
+You need to create, uh…
+
+[rochak agrawal] 07:55:24
+Config map, so how… what is the command to create the config map?
+
+[rochak agrawal] 07:55:30
+QCPL?
+
+[rochak agrawal] 07:55:33
+idiot.
+
+[rochak agrawal] 07:55:36
+Yep.
+
+[rochak agrawal] 07:55:37
+Two things you need to give. The name. I'll say game.
+
+[rochak agrawal] 07:55:42
+And think.
+
+[rochak agrawal] 07:55:46
+From?
+
+[rochak agrawal] 07:55:48
+file.
+
+[rochak agrawal] 07:56:00
+file is…
+
+[rochak agrawal] 07:56:02
+Yes.
+
+[rochak agrawal] 07:56:07
+Correct? Just a simple command.
+
+[rochak agrawal] 07:56:10
+Okay, now…
+
+[rochak agrawal] 07:56:13
+So the above command, uh, it is going to package each file. Uh, in this case, our, uh, we have two properties, game.property and the UI.property, and then when you go describe this.
+
+[rochak agrawal] 07:56:28
+First, let's get see…
+
+[rochak agrawal] 07:56:31
+So you can see now 21 second ago I have created a config map. Now very interestingly if you see there is a two data points.
+
+[rochak agrawal] 07:56:43
+Right? Now, if you show you CTL.
+
+[rochak agrawal] 07:56:49
+Describe.
+
+[rochak agrawal] 07:56:51
+CM?
+
+[rochak agrawal] 07:56:57
+So you can see.
+
+[rochak agrawal] 07:57:02
+Namespace, labels, annotation, none.
+
+[rochak agrawal] 07:57:05
+Namespace default, name is game.config, and it has this data.
+
+[rochak agrawal] 07:57:09
+It has game.properties, and it has UI.properties, right? Now, if you want to see it in another way, so…
+
+[rochak agrawal] 07:57:18
+Thank you, CPL.
+
+[rochak agrawal] 07:57:20
+Get CM.
+
+[rochak agrawal] 07:57:28
+Okay.
+
+[rochak agrawal] 07:57:32
+Now you can see API version V1.
+
+[rochak agrawal] 07:57:35
+This is the data which is having.
+
+[rochak agrawal] 07:57:39
+Correct? And the kind is convenient.
+
+[rochak agrawal] 07:57:42
+Name, game.config, namespace is default. Now, you see, I can…
+
+[rochak agrawal] 07:57:48
+Again, as I said, we can create a config map using multiple ways. I can write a YAML file also similarly. So for example, I'll take this.
+
+[rochak agrawal] 07:58:03
+Okay.
+
+[rochak agrawal] 07:58:29
+Now let me change it, game config 2.
+
+[rochak agrawal] 07:58:34
+Nemesis…
+
+[rochak agrawal] 07:58:37
+Zombies.
+
+[rochak agrawal] 07:58:38
+Now, if I take this also.
+
+[rochak agrawal] 07:58:46
+CAICM.
+
+[rochak agrawal] 07:58:53
+Okay?
+
+[rochak agrawal] 07:58:57
+Cube CPL.
+
+[rochak agrawal] 07:59:00
+like…
+
+[rochak agrawal] 07:59:09
+You can see.
+
+[rochak agrawal] 07:59:10
+Game config 2 is deleted. Cube CTL.
+
+[rochak agrawal] 07:59:14
+TM.
+
+[rochak agrawal] 07:59:17
+24 seconds, oh sorry, 8 seconds, 2 data points, similar. So.
+
+[rochak agrawal] 07:59:23
+You will create from the file which you already have or you can create your config map directly from your you can write a file and then you are going to create your config map directly from that as well.
+
+[rochak agrawal] 07:59:41
+Okay, now one more thing. Instead of giving a command like this.
+
+[rochak agrawal] 07:59:50
+So we have given a command like this.
+
+[rochak agrawal] 07:59:53
+Now, instead of that, you can give some… let's say you want to create a config map using two different files, then instead of giving… and those files may not see currently our file at the same place.
+
+[rochak agrawal] 08:00:07
+So you can give a command like this. Let's say your file is in a different, different directory. So what you can do is, you can give a command, uh, using like this, something.
+
+[rochak agrawal] 08:00:19
+And then you can run.
+
+[rochak agrawal] 08:00:27
+Where you will give another part.
+
+[rochak agrawal] 08:00:30
+8.
+
+[rochak agrawal] 08:00:35
+Although we do not have a path, just… the point I'm trying to make here is, um…
+
+[rochak agrawal] 08:00:48
+You can create a, uh…
+
+[rochak agrawal] 08:00:50
+From a directory, from a single file, and from the multiple file when the different, um, um.
+
+[rochak agrawal] 08:01:01
+when they reside at the different, different places. Okay, now, last…
+
+[rochak agrawal] 08:01:07
+Think about how to create a conflict matrix.
+
+[rochak agrawal] 08:01:10
+You can define your values. So let's say.
+
+[rochak agrawal] 08:01:14
+you have very small values. For example, I just need to define, uh, something at, uh.
+
+[rochak agrawal] 08:01:21
+One or two values I want to have. So, I can define those specs from, um…
+
+[rochak agrawal] 08:01:31
+In the command line itself. So, what you can run it…
+
+[rochak agrawal] 08:01:34
+Tube CTL?
+
+[rochak agrawal] 08:01:36
+28.
+
+[rochak agrawal] 08:01:38
+CM?
+
+[rochak agrawal] 08:01:44
+Just a second.
+
+[rochak agrawal] 08:01:49
+kubectl create cm, uh…
+
+[rochak agrawal] 08:01:54
+I will give a name, so…
+
+[rochak agrawal] 08:01:59
+CLI config.
+
+[rochak agrawal] 08:02:01
+Okay, and then…
+
+[rochak agrawal] 08:02:04
+And from here only from.
+
+[rochak agrawal] 08:02:08
+Literally.
+
+[rochak agrawal] 08:02:19
+DB connection.
+
+[rochak agrawal] 08:02:23
+Is it quite cool?
+
+[rochak agrawal] 08:02:25
+Something like that. And you want to define another value, and then you say from…
+
+[rochak agrawal] 08:02:53
+You see? So I can define the values now, if you run this.
+
+[rochak agrawal] 08:03:00
+So, I have a CLI I can pick also.
+
+[rochak agrawal] 08:03:03
+Now, if I describe tube CPL…
+
+[rochak agrawal] 08:03:19
+You can see, there's two values up there.
+
+[rochak agrawal] 08:03:22
+DB connection, DB encryption. So, you can see it here. I can, uh…
+
+[rochak agrawal] 08:03:35
+what do you say? I can define a config map using a YAML file, I can define a config map using your property file, give the path of the property file, and I can define a config map.
+
+[rochak agrawal] 08:03:51
+Where I am just running it, uh, over the command line itself.
+
+[rochak agrawal] 08:03:55
+Right? So, we can generate, uh, the config map.
+
+[rochak agrawal] 08:03:59
+in multiple ways. Now.
+
+[rochak agrawal] 08:04:05
+Any other questions till now?
+
+[rochak agrawal] 08:04:19
+Okay. Now, see, defining a config map is one thing, but why are we defining the config map? Because, uh, we want to…
+
+[rochak agrawal] 08:04:31
+access that information in my application, correct?
+
+[rochak agrawal] 08:04:34
+So, again, uh, for that, there are multiple ways, uh, of doing that, but right now, I'll show you one. Okay, so let's say…
+
+[rochak agrawal] 08:04:52
+So I have this CLI, for example, right, where we have seen the values.
+
+[rochak agrawal] 08:04:59
+I have two values, DV connection, and uh…
+
+[rochak agrawal] 08:05:13
+Uh, TV connection, and uh…
+
+[rochak agrawal] 08:05:17
+DbEncryption. Now, let's say you want to use this DbEncryption. See, the whole point of creating the config map is you are going to reference them.
+
+[rochak agrawal] 08:05:29
+Into your, uh…
+
+[rochak agrawal] 08:05:34
+Pod, right? So what you need to do, you need to define a pod configuration. So API version V1.
+
+[rochak agrawal] 08:05:42
+kind is…
+
+[rochak agrawal] 08:05:44
+Let me take the example.
+
+[rochak agrawal] 08:06:05
+Okay? So, you can name anything, define the environment where you will.
+
+[rochak agrawal] 08:06:10
+And my environment variable is…
+
+[rochak agrawal] 08:06:21
+Let's say I give the name here anything.
+
+[rochak agrawal] 08:06:24
+Okay, so you say my DB…
+
+[rochak agrawal] 08:06:33
+Post.
+
+[rochak agrawal] 08:06:34
+Any, any random name. Now, you see here, this is the important part. So, you define the container till now, like, the same, but now, if you see, go…
+
+[rochak agrawal] 08:06:45
+Where is the value of DB host coming from? It's a value is from the config map reference and the name is CLI config.
+
+[rochak agrawal] 08:06:56
+You need to give the name of the CLI config.
+
+[rochak agrawal] 08:07:00
+Name of the config map and then you need to use the key.
+
+[rochak agrawal] 08:07:05
+which key you want to use it here. So you can use any of the key.
+
+[rochak agrawal] 08:07:13
+Or, let's say, if I have a more relevant example in…
+
+[rochak agrawal] 08:07:33
+See, for example, I have, uh…
+
+[rochak agrawal] 08:07:36
+this enemies.
+
+[rochak agrawal] 08:07:38
+or color.good. Anything, you can use it, right? So, then you are going to use, uh…
+
+[rochak agrawal] 08:07:48
+That's the CLI config I'm using. So, the name of…
+
+[rochak agrawal] 08:07:56
+That's me.
+
+[rochak agrawal] 08:08:06
+And the key is your, um…
+
+[rochak agrawal] 08:08:10
+What is the key name?
+
+[rochak agrawal] 08:08:21
+Let's divvy in corruption.
+
+[rochak agrawal] 08:08:29
+So two things you need to do. Here, the name can be anything. You're defining the environment variable in your application, which it can name anything. But in general, we keep the same name.
+
+[rochak agrawal] 08:08:45
+from where this value is coming.
+
+[rochak agrawal] 08:08:47
+From where this value is coming, it is value from the ConfigMap reference.
+
+[rochak agrawal] 08:08:52
+The name of the config map, where the value is, and the key.
+
+[rochak agrawal] 08:08:56
+And, uh, like, we discussed that, um, you are going to, uh…
+
+[rochak agrawal] 08:09:10
+How to say it?
+
+[rochak agrawal] 08:09:11
+ConfigMap is a key value pair, right? So the key, the value, if you want to get some value, you need to give the referenced key here and then this value will be passed on to your this particular value variable.
+
+[rochak agrawal] 08:09:27
+So that is how we can reference our, uh…
+
+[rochak agrawal] 08:09:33
+Multiple, uh…
+
+[rochak agrawal] 08:09:35
+values. And again, it is not like that in your pod you can get the value from one config map only. If you have another variable whose value is in another config map, it is the same thing. That's absolutely, absolutely okay.
+
+[rochak agrawal] 08:09:51
+Okay, so you can, um…
+
+[rochak agrawal] 08:09:59
+You can take the value. Now, one more thing I'll show you, uh…
+
+[rochak agrawal] 08:10:06
+So let me create this pod.
+
+[rochak agrawal] 08:10:31
+Okay?
+
+[rochak agrawal] 08:10:46
+Give CTL.
+
+[rochak agrawal] 08:10:49
+Apply.
+
+[rochak agrawal] 08:10:57
+Seriously?
+
+[rochak agrawal] 08:10:59
+Oops again.
+
+[rochak agrawal] 08:11:06
+Okay, it is going into the crash loopback status.
+
+[rochak agrawal] 08:11:10
+Now, why it is going to flash loop back?
+
+[rochak agrawal] 08:11:35
+So you can see successfully assigned to this agent pool, pulling image, container image.
+
+[rochak agrawal] 08:11:42
+Already…
+
+[rochak agrawal] 08:11:45
+Back of restarting fuel container.
+
+[rochak agrawal] 08:11:54
+It's already present in the machine and can be accessed by the pod.
+
+[rochak agrawal] 08:11:58
+Okay, let me try to see the logs.
+
+[rochak agrawal] 08:12:05
+Obsidian logs.
+
+[rochak agrawal] 08:13:05
+There is nothing in log. Maybe there is some issue with the…
+
+[rochak agrawal] 08:13:09
+Uh, this, uh…
+
+[rochak agrawal] 08:13:12
+No, image itself, but uh…
+
+[rochak agrawal] 08:13:16
+We cannot go inside the container now.
+
+[rochak agrawal] 08:13:21
+There's nothing in the logs itself.
+
+[rochak agrawal] 08:13:26
+So you can see it here that we are going to provide the value from the ConfigMap key reference, okay? Now, if you have multiple ConfigMaps, for example, let's say I want to give another value.
+
+[rochak agrawal] 08:13:50
+DB password, for example. Then, your DB password may be in some other, uh…
+
+[rochak agrawal] 08:13:59
+Config map, and then you can give the difference of config map here.
+
+[rochak agrawal] 08:14:07
+Maybe, uh, let's say Game Config.
+
+[rochak agrawal] 08:14:13
+And the value will be?
+
+[rochak agrawal] 08:14:26
+Yozo.
+
+[rochak agrawal] 08:14:28
+Leave me a password.
+
+[rochak agrawal] 08:14:29
+So you can, you can, uh, use, uh, multiple, uh.
+
+[rochak agrawal] 08:14:34
+What you can say is, uh, multiple config map in your drone.
+
+[rochak agrawal] 08:14:42
+Pod or the deployment.
+
+[rochak agrawal] 08:14:48
+Now, there is one more way of attaching your, um, uh…
+
+[rochak agrawal] 08:14:53
+config map, which is like the volumes, but we will discuss that when we understand what is a volume. Okay, so what we can do actually is we can mount this config map as a volume. So I'll show you the example of that.
+
+[rochak agrawal] 08:15:10
+We can mount this config map as a volume.
+
+[rochak agrawal] 08:15:20
+And same goes with the secrets also. So go… where is an example?
+
+[rochak agrawal] 08:15:41
+Yeah, like this. So, if you see this example.
+
+[rochak agrawal] 08:15:48
+So here, instead of giving the config map key reference.
+
+[rochak agrawal] 08:15:57
+We are creating a volume, okay? Uh, config map is this.
+
+[rochak agrawal] 08:16:01
+And this volume amount, we are attaching it to as a volume amount. Now, why I'm not taking this example as of now? Because we have not, uh…
+
+[rochak agrawal] 08:16:10
+gone through the volumes, and then whatever values is there in a config map will be stored in this ETC config.
+
+[rochak agrawal] 08:16:18
+So that also we can do.
+
+[rochak agrawal] 08:16:21
+Okay. Now, similar to ConfigMap, we have, uh…
+
+[rochak agrawal] 08:16:26
+Secrets. So, again, secrets is, uh…
+
+[rochak agrawal] 08:16:30
+An object that contains a… the only difference between the config map and the secret is…
+
+[rochak agrawal] 08:16:37
+Secret is an object that contains a small amount of sensitive data.
+
+[rochak agrawal] 08:16:42
+Such as password, token, or a key. Um…
+
+[rochak agrawal] 08:16:46
+Such information otherwise can be put in a pod specification or a container image. Using a secret means that you do not need to include confidential data.
+
+[rochak agrawal] 08:16:58
+in your application code. And similar to that, like, secret can be created independently of the pod that uses them. Uh, so there is a lesser risk of secret being exposed during the workflow of.
+
+[rochak agrawal] 08:17:11
+creating, viewing, or editing the pod. Now, secrets are the…
+
+[rochak agrawal] 08:17:16
+very similar to ConfigMap, as we are seeing again and again, but they are specifically intended to hold, uh…
+
+[rochak agrawal] 08:17:27
+So at least.
+
+[rochak agrawal] 08:17:31
+And what you can say is, uh…
+
+[rochak agrawal] 08:17:33
+able to hold the sensitive data.
+
+[rochak agrawal] 08:17:37
+Now, you can see, uh, there are multiple types of the secrets is there, but the secret which you are generally going to use is a…
+
+[rochak agrawal] 08:17:47
+Type or back.
+
+[rochak agrawal] 08:17:56
+OPAC type of the secret we are generally going to use. Apart from it, also, there is a service account token.
+
+[rochak agrawal] 08:18:11
+TLS, uh, type of the token, uh…
+
+[rochak agrawal] 08:18:16
+S-S-C-C-C.
+
+[rochak agrawal] 08:18:24
+Dr. CFG.
+
+[rochak agrawal] 08:18:26
+So these are type of the secrets. OPAC is… see, um…
+
+[rochak agrawal] 08:18:34
+Open, anything which we want to define.
+
+[rochak agrawal] 08:18:43
+is used as a OPAC type of a secret. So when you say, you are defining a secret.
+
+[rochak agrawal] 08:18:50
+You always going to use the.
+
+[rochak agrawal] 08:18:53
+OPAC type of the secret. Then a service account token is used by the service account, so Kubernetes also has something called the service account. So if they want to store any secret information, they are going to use.
+
+[rochak agrawal] 08:19:13
+Service account token TLS is for TLS client or the server. SSC auth is…
+
+[rochak agrawal] 08:19:19
+The credentials for the SSC authentication Docker CFG is if you want to store the Docker configuration, right?
+
+[rochak agrawal] 08:19:31
+Now, if you see…
+
+[rochak agrawal] 08:19:39
+If you see Cube CTL, okay.
+
+[rochak agrawal] 08:19:42
+Secrets.
+
+[rochak agrawal] 08:19:45
+So it's a no secret font in the default namespace. And when you create a secret, by default, it goes become the opaque type of the secret.
+
+[rochak agrawal] 08:19:55
+Okay, so…
+
+[rochak agrawal] 08:19:56
+When I go create the secret kubectl.
+
+[rochak agrawal] 08:20:02
+get secret… sorry.
+
+[rochak agrawal] 08:20:19
+I'm basically for now.
+
+[rochak agrawal] 08:20:22
+Now, if you use CTL…
+
+[rochak agrawal] 08:20:26
+Okay.
+
+[rochak agrawal] 08:20:30
+So you can see, type.
+
+[rochak agrawal] 08:20:36
+Good. Now…
+
+[rochak agrawal] 08:20:40
+The data column, 0, if you see, because, um…
+
+[rochak agrawal] 08:20:45
+The number of the data items stored in the secret, in our case, it is right now 0, right?
+
+[rochak agrawal] 08:20:53
+Very simply, for example, let's say, uh…
+
+[rochak agrawal] 08:20:57
+I'll create a secret.
+
+[rochak agrawal] 08:21:02
+So, API version B1 for a kind is, uh…
+
+[rochak agrawal] 08:21:08
+secret?
+
+[rochak agrawal] 08:21:15
+Secret, for example.
+
+[rochak agrawal] 08:21:17
+And then, data.
+
+[rochak agrawal] 08:21:24
+Let's say I'm saying password…
+
+[rochak agrawal] 08:21:28
+is equal to…
+
+[rochak agrawal] 08:21:31
+Demo at the rate 123.
+
+[rochak agrawal] 08:21:33
+Okay?
+
+[rochak agrawal] 08:21:35
+Now, and you remember then when we created the config map, and when we described the config map, you were always able to see the value.
+
+[rochak agrawal] 08:21:45
+Now let's see in the case of a secret.
+
+[rochak agrawal] 08:22:37
+So you can see, yeah, the password value in a Kubernetes secret manifest must be base64 encoded, not the plaintext. So you can see here.
+
+[rochak agrawal] 08:22:48
+So, encode your password in base…
+
+[rochak agrawal] 08:22:57
+So, we cannot give any value in the secret. So, let's say my password is…
+
+[rochak agrawal] 08:23:04
+This, so now I need to use this value.
+
+[rochak agrawal] 08:23:44
+Okay?
+
+[rochak agrawal] 08:23:46
+Now, if you try to run this.
+
+[rochak agrawal] 08:23:52
+Now it is created. If you go here, httl, get secrets.
+
+[rochak agrawal] 08:23:59
+You can see now we have one data point, because we created this data point.
+
+[rochak agrawal] 08:24:04
+Okay, and uh… if you see kubectl…
+
+[rochak agrawal] 08:24:10
+describe
+
+[rochak agrawal] 08:24:12
+secret…
+
+[rochak agrawal] 08:24:15
+My secret…
+
+[rochak agrawal] 08:24:24
+Here you see you are not getting even the encoded value here. Now why what is the reason why I'm not getting encoded value. Because if you get the encoded value you can decode it. So it says I have password.
+
+[rochak agrawal] 08:24:39
+What is the password? That's… okay.
+
+[rochak agrawal] 08:24:42
+Right?
+
+[rochak agrawal] 08:24:45
+Now, if you want to decode it, you can actually decode this.
+
+[rochak agrawal] 08:24:54
+base 64D code.
+
+[rochak agrawal] 08:25:03
+So you can see
+
+[rochak agrawal] 08:25:03
+Instead of just…
+
+[rochak agrawal] 08:25:07
+Here, we need to give the decode.
+
+[rochak agrawal] 08:25:11
+So you can see demo at the rate 123. So that's why it is… it is… the value is…
+
+[rochak agrawal] 08:25:20
+Value is not even shown here, right? So…
+
+[rochak agrawal] 08:25:24
+Again, I can do a secret reference to my Kubernetes pods, or what I can do is, again, I can mount this secret as a volume.
+
+[rochak agrawal] 08:25:35
+Uh, to my, uh…
+
+[rochak agrawal] 08:25:38
+What you can say is…
+
+[rochak agrawal] 08:25:40
+To my port, so that it would be accessible.
+
+[rochak agrawal] 08:25:45
+to your,
+
+[rochak agrawal] 08:25:48
+Application. The only difference you can see here is…
+
+[rochak agrawal] 08:25:57
+Sorry. Only difference here, if you see, um, uh, you are going to have, uh, the config map is…
+
+[rochak agrawal] 08:26:05
+going to be used with the non-sensitive information.
+
+[rochak agrawal] 08:26:11
+You…
+
+[rochak agrawal] 08:26:13
+can have secret for the sensitive information. One more thing is there, uh, there is a size limit. Individual secrets are limited to 1 MB in size, okay? Now.
+
+[rochak agrawal] 08:26:24
+So you cannot have a very high, uh, lengthy secrets, uh, will be there.
+
+[rochak agrawal] 08:26:30
+Okay, so…
+
+[rochak agrawal] 08:26:33
+We can use those secrets in our ports, so that, uh…
+
+[rochak agrawal] 08:26:39
+You do not need to define those values and other things in your image itself.
+
+[rochak agrawal] 08:26:47
+So that is, um, there about the… very simple, there's nothing much. We just need to understand the concept for now. So it's, uh…
+
+[rochak agrawal] 08:26:57
+The whole point of using, uh, your, uh…
+
+[rochak agrawal] 08:27:03
+What you can say is, uh…
+
+[rochak agrawal] 08:27:09
+ConfigMap and Secret is to decouple your configuration.
+
+[rochak agrawal] 08:27:14
+from your application, so that you do not need to define your configuration. Otherwise, I need to build my application again and again, right? So that is a reason to decouple, and that is what we discussed here.
+
+[rochak agrawal] 08:27:30
+To decouple your application, decouple your configuration from your application, you need to use the config map and the secret.
+
+[rochak agrawal] 08:27:39
+Now, let me go to slide. So, yes, uh…
+
+[rochak agrawal] 08:27:44
+Same thing which we discussed, volumes and the ENB from ConfigMap reference.
+
+[rochak agrawal] 08:27:49
+Same image, different config. ENV was unread at the start. Changing a config map does not change a running pod's environment.
+
+[rochak agrawal] 08:27:59
+Now, that is…
+
+[rochak agrawal] 08:28:01
+important, okay? So, for example, you are referring a config map which…
+
+[rochak agrawal] 08:28:07
+is giving you some value. Let's say color is equal to red.
+
+[rochak agrawal] 08:28:10
+Now, if you go change your config map, uh, and change the color to blue.
+
+[rochak agrawal] 08:28:15
+Your application will not change till that time.
+
+[rochak agrawal] 08:28:19
+Sorry. You are not, uh…
+
+[rochak agrawal] 08:28:23
+restarting it, okay? But if you are doing it as a volume, okay, then it will get refreshed after a minute, about a minute.
+
+[rochak agrawal] 08:28:34
+Right? Again, our config map also holds, uh, at least, uh, at most, uh, 1MB, same as a secret.
+
+[rochak agrawal] 08:28:42
+Uh, secret, if you see OPAC, is the most common one. Um, so anything which is user-defined will be of type OPAC.
+
+[rochak agrawal] 08:28:50
+Okay, and then Base64 is encoding, not encryption.
+
+[rochak agrawal] 08:28:58
+Okay, uh, anyone who can read the secret can decode it in one command. It is just…
+
+[rochak agrawal] 08:29:04
+a basic layer of security. In encryption, what happens is, um…
+
+[rochak agrawal] 08:29:10
+You need to have the decryption key, then only you are going to decrypt it. But that is not the case with the Base64. It is not in a plain text. But anyone who have an idea about the Base64, they can decode it as well. So it's a very basic layer of the security.
+
+[rochak agrawal] 08:29:26
+Uh, encrypt at the rest, um, again, we can use, uh.
+
+[rochak agrawal] 08:29:31
+We can store this secret in an encrypted format, which we can configure.
+
+[rochak agrawal] 08:29:37
+Um, restrict access?
+
+[rochak agrawal] 08:29:38
+So, uh, Kubernetes also follows something called the RBAC, okay? Uh, uh, Role-Based Access Control. So what, uh, Kubernetes can do is, uh.
+
+[rochak agrawal] 08:29:51
+You can actually, um…
+
+[rochak agrawal] 08:29:54
+restrict the access of someone who you do not want. They can come, they can use the secret, they can use them in their application, but they are not going to…
+
+[rochak agrawal] 08:30:09
+delete, update, update the secrets, and then never commit them. This is very important.
+
+[rochak agrawal] 08:30:18
+Use sealed secret, external secret, or the vault integration. Now, what does it mean? It means, uh…
+
+[rochak agrawal] 08:30:26
+Your secrets should not be stored in your source code management.
+
+[rochak agrawal] 08:30:34
+Like, you are… see, why we have to explicitly mention this point? Because nowadays, you…
+
+[rochak agrawal] 08:30:39
+you upload everything into the source code repository, because, see, whatever the YAML file you are writing, it is also a code. It also needs to be version controls whenever I'm deploying, defining a deployment.yaml, application.yaml.
+
+[rochak agrawal] 08:30:55
+They also need to be, um…
+
+[rochak agrawal] 08:31:01
+they also need to be version controlled, but your secrets should not be, okay? Now, the reason is, even though you are storing your secret.yaml, like, I have my secret.yaml, for example, if you go here.
+
+[rochak agrawal] 08:31:41
+Okay, so here, this is a YAML only, right?
+
+[rochak agrawal] 08:31:45
+type of bag this data.
+
+[rochak agrawal] 08:31:49
+You can see the password is there.
+
+[rochak agrawal] 08:31:53
+Correct. Now, if you store this in your source code management, and anyone has access to the source code management, they…
+
+[rochak agrawal] 08:32:01
+they can easily decode it, right? You just… what you need to do, you need to run this command. This is your password, and then, you know, the password is demo at the rate 123.
+
+[rochak agrawal] 08:32:12
+So, you should never store your…
+
+[rochak agrawal] 08:32:16
+This is not about the Kubernetes secret. We should never store our…
+
+[rochak agrawal] 08:32:22
+sensitive information, like your API keys, your TLS certificate, your Kubernetes secret in your source code management system.
+
+[rochak agrawal] 08:32:38
+Okay? So secret is a YAML file, in a Git is a lead secret.
+
+[rochak agrawal] 08:32:44
+The object protect inside the cluster, it does nothing for the file you wrote in it.
+
+[rochak agrawal] 08:32:53
+Clear, any question in the secrets and config map?
+
+[rochak agrawal] 08:33:10
+Nothing?
+
+[rochak agrawal] 08:33:20
+Okay?
+
+[rochak agrawal] 08:33:25
+Okay, now…
+
+[rochak agrawal] 08:33:30
+Let's…
+
+[rochak agrawal] 08:33:31
+Understand the pain and toleration and the schedule.
+
+[rochak agrawal] 08:33:35
+Now you see.
+
+[rochak agrawal] 08:33:45
+Get it out.
+
+[rochak agrawal] 08:33:52
+Currently, I do not have a deployment, right, so let me take a deployment, uh…
+
+[rochak agrawal] 08:33:57
+file.
+
+[rochak agrawal] 08:34:09
+Okay.
+
+[rochak agrawal] 08:34:12
+B… A…
+
+[rochak agrawal] 08:34:15
+Well…
+
+[rochak agrawal] 08:34:22
+Thank you, CPN.
+
+[rochak agrawal] 08:34:24
+A fly hyphen f.
+
+[rochak agrawal] 08:34:42
+Now let me…
+
+[rochak agrawal] 08:34:44
+UCTL scale.
+
+[rochak agrawal] 08:34:46
+Deployment…
+
+[rochak agrawal] 08:34:51
+Engine X.
+
+[rochak agrawal] 08:34:57
+Exactly as it's called.
+
+[rochak agrawal] 08:35:00
+Okay? Now if you go UCPL.
+
+[rochak agrawal] 08:35:06
+Get ports.
+
+[rochak agrawal] 08:35:07
+So, there is 10 ports running.
+
+[rochak agrawal] 08:35:14
+So now you see…
+
+[rochak agrawal] 08:35:17
+My ports, right? Uh, it goes into…
+
+[rochak agrawal] 08:35:21
+This node also, or this node also.
+
+[rochak agrawal] 08:35:25
+Correct? So, by default, what's going to happen…
+
+[rochak agrawal] 08:35:30
+When you have…
+
+[rochak agrawal] 08:35:32
+Multiple nodes in your cluster.
+
+[rochak agrawal] 08:35:37
+When you have…
+
+[rochak agrawal] 08:35:40
+Multiple nodes in your cluster.
+
+[rochak agrawal] 08:35:58
+Keeping all things aside, um…
+
+[rochak agrawal] 08:36:02
+The pods get equally distributed on all the nodes.
+
+[rochak agrawal] 08:36:14
+Hey!
+
+[rochak agrawal] 08:36:15
+That's a default nature. When I'm saying keeping all things aside, let's… I'm assuming every node has the same size, and they have the same resources, right? Then, if you need to deploy a 4-pod, then…
+
+[rochak agrawal] 08:36:30
+Every node will get one pod. That's the default nature.
+
+[rochak agrawal] 08:36:34
+So, try to balance the load across all the.
+
+[rochak agrawal] 08:36:41
+node which is running, right? That's a default behavior.
+
+[rochak agrawal] 08:36:48
+Clear any question, any confusion in that, in which we can see that also. There may be, so you can say, out of 10 pods, let's keep that aside the crash loop one, but out of NGINX 10 pod.
+
+[rochak agrawal] 08:37:03
+1…
+
+[rochak agrawal] 08:37:04
+2, 3, 4, 5, 6, and then 1, 2, 3, 4, 5. So, out of 11 pod.
+
+[rochak agrawal] 08:37:12
+Six is running on one node and.
+
+[rochak agrawal] 08:37:16
+5 is running on another node. It is like, uh, it is…
+
+[rochak agrawal] 08:37:20
+almost equally distributed, and that's… that's a default nature. If you run 5 other ports also, then, uh…
+
+[rochak agrawal] 08:37:32
+Okay, so then, um…
+
+[rochak agrawal] 08:37:37
+You are going to, um…
+
+[rochak agrawal] 08:37:39
+Your pods are equally going to be distributed.
+
+[rochak agrawal] 08:37:43
+all the notes, whatever the notes will be. Now, you…
+
+[rochak agrawal] 08:37:49
+come up and say, okay, I want to run this particular pod on this particular node.
+
+[rochak agrawal] 08:37:54
+Can I do it? I do not want this particular pod on this particular… don't want to run it on this particular node. Can I do it?
+
+[rochak agrawal] 08:38:05
+I can do it… that as well. And that is where we have 3 concepts.
+
+[rochak agrawal] 08:38:10
+Okay, one is…
+
+[rochak agrawal] 08:38:21
+Node selectors.
+
+[rochak agrawal] 08:38:26
+Node affinities.
+
+[rochak agrawal] 08:38:30
+And aims and tolerations.
+
+[rochak agrawal] 08:38:34
+Okay, so first, what we can do is, if you go here on the node.
+
+[rochak agrawal] 08:38:45
+UCTL…
+
+[rochak agrawal] 08:38:47
+Now, before that, let me…
+
+[rochak agrawal] 08:38:54
+Tube City.
+
+[rochak agrawal] 08:38:56
+Get notes.
+
+[rochak agrawal] 08:39:00
+Okay? I have two notes.
+
+[rochak agrawal] 08:39:04
+And there is something called the labels.
+
+[rochak agrawal] 08:39:08
+Which will be there on each node.
+
+[rochak agrawal] 08:39:17
+Okay, so there are so many levels out there on each node.
+
+[rochak agrawal] 08:39:20
+So right now, it will be on both of the nodes, it will be the same level. So if you copy…
+
+[rochak agrawal] 08:39:29
+And see it here.
+
+[rochak agrawal] 08:39:31
+So you can see, uh, multiple, uh… so this is the agent pool.
+
+[rochak agrawal] 08:39:38
+Then, this is one level, then one level…
+
+[rochak agrawal] 08:39:43
+OS is Linux, correct? So there is a reason is…
+
+[rochak agrawal] 08:39:47
+East US. So there is a multiple types of level. Now why these levels are there? This is AKS itself has applied to them. We have not applied this but there is you can see there's a multiple levels are there.
+
+[rochak agrawal] 08:40:04
+Now, we can apply our own levels onto our nodes.
+
+[rochak agrawal] 08:40:11
+So, for example, I can go…
+
+[rochak agrawal] 08:40:14
+Alright, let's go.
+
+[rochak agrawal] 08:40:18
+So I have two nodes, right? I will go and say kubectl label.
+
+[rochak agrawal] 08:40:29
+And I will give a… let's say I will label this note.
+
+[rochak agrawal] 08:40:43
+And I can define a label. It could be anything. Again, label is also a key-value pair. So, for example, I will go and say, um…
+
+[rochak agrawal] 08:40:55
+is equal to.
+
+[rochak agrawal] 08:40:58
+Maya. Something. Anything. Anything. Okay. Now, when you assign this level.
+
+[rochak agrawal] 08:41:04
+it says node 01 is labeled. Now, if you go again, see the labels.
+
+[rochak agrawal] 08:41:14
+Put the 01 if you go.
+
+[rochak agrawal] 08:41:25
+There you are going to see somewhere Maya.
+
+[rochak agrawal] 08:41:32
+As you can see.
+
+[rochak agrawal] 08:41:37
+You get it again.
+
+[rochak agrawal] 08:41:40
+Yeah.
+
+[rochak agrawal] 08:41:41
+The first one.
+
+[rochak agrawal] 08:41:43
+Hey!
+
+[rochak agrawal] 08:41:44
+This is there, but if you see on the node 0.
+
+[rochak agrawal] 08:42:04
+Everything will be the same, but, uh, you can see agent pool, agent pool, agent pool, agent pool, then app is equal to my app, but… and beta-kubernetes.io.
+
+[rochak agrawal] 08:42:15
+Here we have Kubernetes. There is no app is equal to my app, right? So…
+
+[rochak agrawal] 08:42:23
+Now…
+
+[rochak agrawal] 08:42:30
+What is going to happen is, um…
+
+[rochak agrawal] 08:42:35
+You apply a label to your note.
+
+[rochak agrawal] 08:42:39
+Okay, now…
+
+[rochak agrawal] 08:42:42
+You go, and uh…
+
+[rochak agrawal] 08:42:59
+So, we have leveled the target node.
+
+[rochak agrawal] 08:43:02
+Right? And configure the node selector in our app.
+
+[rochak agrawal] 08:43:07
+So yeah, you can see…
+
+[rochak agrawal] 08:43:08
+I'm creating a pod.
+
+[rochak agrawal] 08:43:14
+Very simple. Pod container is this. And here, I'm just say…
+
+[rochak agrawal] 08:43:21
+Note selector.
+
+[rochak agrawal] 08:43:23
+Should have this level.
+
+[rochak agrawal] 08:43:25
+Okay, so I'll run this part.
+
+[rochak agrawal] 08:43:46
+It's very simple. Define the node selector here.
+
+[rochak agrawal] 08:43:48
+Okay.
+
+[rochak agrawal] 08:43:54
+We can define the node selector in the deployment also. Here, node selector, same thing, right?
+
+[rochak agrawal] 08:44:02
+Now, once you define the node selector.
+
+[rochak agrawal] 08:44:05
+The Kubernetes scheduler will now ensure that these pods are only placed on the node carrying a matching level. Exact matches only. The node selector requires a strict exact key value pair.
+
+[rochak agrawal] 08:44:21
+Uh, if you define multiple level under node selector, the target node must have all of them to be eligible. That's very important.
+
+[rochak agrawal] 08:44:28
+Okay.
+
+[rochak agrawal] 08:44:31
+Now you see this line is very important.
+
+[rochak agrawal] 08:44:35
+A node selector ensures your pod goes to a specific node, but it does not prevent other pods without selector from scheduling on that same node.
+
+[rochak agrawal] 08:44:45
+Now let me run this.
+
+[rochak agrawal] 08:44:50
+Okay? Skip CPL.
+
+[rochak agrawal] 08:44:54
+Apply F.
+
+[rochak agrawal] 08:44:56
+port.yaml.
+
+[rochak agrawal] 08:45:00
+Now, let me see…
+
+[rochak agrawal] 08:45:12
+You see?
+
+[rochak agrawal] 08:45:13
+It will now always go to 0001.
+
+[rochak agrawal] 08:45:18
+It will never go to the other node, which is this one.
+
+[rochak agrawal] 08:45:24
+So that is the role of a node selector.
+
+[rochak agrawal] 08:45:33
+Clear?
+
+[rochak agrawal] 08:45:40
+Any question in node selector?
+
+[rochak agrawal] 08:45:46
+And we can define, actually, this in, uh…
+
+[rochak agrawal] 08:45:50
+deployment.yaml also.
+
+[rochak agrawal] 08:46:06
+Okay? Now, if you go…
+
+[rochak agrawal] 08:46:14
+Where to find this?
+
+[rochak agrawal] 08:46:22
+Okay.
+
+[rochak agrawal] 08:47:06
+Orders enabled.
+
+[rochak agrawal] 08:47:09
+App is equal to my app, or what?
+
+[rochak agrawal] 08:47:26
+Okay, now if you run this again…
+
+[rochak agrawal] 08:47:36
+You see? Everything is going on to 001.
+
+[rochak agrawal] 08:47:40
+Nothing is going to 0 0 0.
+
+[rochak agrawal] 08:47:47
+Perfect.
+
+[rochak agrawal] 08:47:50
+Yes, I'm here.
+
+[Amiya Nanda] 08:47:56
+Yeah, hi Ruchak, good morning. Ah, Ruchak, ah, we are mentioning as app equal to my app. What does that mean actually? Ah.
+
+[rochak agrawal] 08:47:58
+Good morning.
+
+[rochak agrawal] 08:48:05
+See, this is anything. This is a level which you are defining. You can define any level.
+
+[Amiya Nanda] 08:48:14
+Okay.
+
+[rochak agrawal] 08:48:15
+I can go and say, uh…
+
+[Amiya Nanda] 08:48:20
+So, can you please, ah, ah, like, open, ah, that deployment YML file?
+
+[rochak agrawal] 08:48:26
+Yeah, yeah. Okay, before that, let me come to this. So here, you can see…
+
+[rochak agrawal] 08:48:32
+When you're labeling the node, you need to give the node a name.
+
+[rochak agrawal] 08:48:36
+Late.
+
+[rochak agrawal] 08:48:37
+And then you need to give the label. Label is a key value pair. I can give anything. I can say ENB is equal to production. I can say location is equal to East US. It should be key value. Key and the value. That's it.
+
+[rochak agrawal] 08:48:54
+It could be anything. It could be, uh, uh, day is equal to Wednesday. Anything. Whatever I want.
+
+[rochak agrawal] 08:49:03
+Clear? This part?
+
+[Amiya Nanda] 08:49:05
+Yes yes.
+
+[rochak agrawal] 08:49:06
+Now, if you say, uh…
+
+[Amiya Nanda] 08:49:09
+So, in that, in the above command, uh, level is that node equal to the node we are selecting, right? 001.
+
+[rochak agrawal] 08:49:10
+If you will.
+
+[rochak agrawal] 08:49:15
+Yes, correct. So, we have put up a label, okay? Now, when I'm doing a deployment, I am saying, this is my deployment.
+
+[rochak agrawal] 08:49:24
+But you run it on this node which is having this level.
+
+[Amiya Nanda] 08:49:30
+Okay.
+
+[rochak agrawal] 08:49:31
+Okay.
+
+[rochak agrawal] 08:49:33
+which is having this level, you run this, okay?
+
+[Amiya Nanda] 08:49:37
+Okay.
+
+[rochak agrawal] 08:49:37
+So then, if you have 5 nodes.
+
+[rochak agrawal] 08:49:40
+an out-of-five node if your one node has this level, which we did, correct? So then your ports is going to be scheduled on that particular node.
+
+[Amiya Nanda] 08:49:46
+Hmm.
+
+[rochak agrawal] 08:49:51
+By default, if there is no levels, then they will be equally distributed.
+
+[Amiya Nanda] 08:49:56
+Okay, and with this level, we are selecting the node 001, and in the same way, with other levels, with multiple levels, we can select multiple nodes.
+
+[rochak agrawal] 08:50:00
+Yes.
+
+[rochak agrawal] 08:50:04
+Correct, yeah. We can have multiple levels, right? We have seen that.
+
+[rochak agrawal] 08:50:10
+Any level you can select. Now, interestingly, let me show you one more thing.
+
+[rochak agrawal] 08:50:15
+This part is clear?
+
+[Amiya Nanda] 08:50:17
+Yeah, this plot is clear, yes.
+
+[rochak agrawal] 08:50:18
+Okay. Now, let's say…
+
+[rochak agrawal] 08:50:21
+Let me delete this deployment again.
+
+[rochak agrawal] 08:50:37
+Okay, now, or…
+
+[rochak agrawal] 08:50:42
+Let me do one thing.
+
+[rochak agrawal] 08:50:49
+Remove the navel.
+
+[rochak agrawal] 08:50:52
+From Kubernetes Node.
+
+[rochak agrawal] 08:50:57
+What is the command?
+
+[rochak agrawal] 08:51:00
+Minus, yes.
+
+[rochak agrawal] 08:51:02
+Okay, so what I'm going to do…
+
+[rochak agrawal] 08:51:07
+Now, if you see here, tube C T L.
+
+[rochak agrawal] 08:51:12
+Get node.
+
+[rochak agrawal] 08:51:14
+show level.
+
+[rochak agrawal] 08:51:21
+It won't. That's what the command will be now.
+
+[rochak agrawal] 08:51:37
+Right? So here you can see app, my app is there. Correct?
+
+[rochak agrawal] 08:51:41
+Now, I am going to remove this.
+
+[rochak agrawal] 08:51:47
+So, cube CPL…
+
+[rochak agrawal] 08:51:51
+Label node, node name.
+
+[rochak agrawal] 08:51:56
+label.
+
+[rochak agrawal] 08:51:57
+No.
+
+[rochak agrawal] 08:52:04
+Note name.
+
+[rochak agrawal] 08:52:06
+And?
+
+[rochak agrawal] 08:52:09
+minus. That's it.
+
+[rochak agrawal] 08:52:11
+Okay? It is node unlabeled.
+
+[rochak agrawal] 08:52:15
+Perfect.
+
+[rochak agrawal] 08:52:17
+Now…
+
+[rochak agrawal] 08:52:18
+If you go…
+
+[rochak agrawal] 08:52:23
+Tube CTL.
+
+[rochak agrawal] 08:52:26
+Lai, hyphen F.
+
+[rochak agrawal] 08:52:28
+Employment, okay.
+
+[rochak agrawal] 08:52:32
+Create it. Now, if you see kubectl get ports.
+
+[rochak agrawal] 08:52:37
+iPhone or wide.
+
+[rochak agrawal] 08:52:42
+You see?
+
+[rochak agrawal] 08:52:43
+What is happening?
+
+[Amiya Nanda] 08:52:46
+Hmmm…
+
+[rochak agrawal] 08:52:52
+You understood what has happened?
+
+[Amiya Nanda] 08:52:56
+But it is running on the same node, I think, right? 001.
+
+[rochak agrawal] 08:52:58
+But not running, the NGINX deployment is in a pending status.
+
+[rochak agrawal] 08:53:05
+Where it is running.
+
+[Amiya Nanda] 08:53:06
+This is engine… oh, sorry, sorry, I was referring to the ABLE one, my app.
+
+[rochak agrawal] 08:53:08
+Yeah, that… that is different, right? NGINX deployment is in a pending status, correct?
+
+[Amiya Nanda] 08:53:13
+Yes!
+
+[rochak agrawal] 08:53:14
+Now, why it is in a pending status? Because…
+
+[rochak agrawal] 08:53:20
+It is… we have said that you… it need to run on this node.
+
+[Amiya Nanda] 08:53:25
+Got it, yeah.
+
+[rochak agrawal] 08:53:26
+Correct. Where app is equal to my app should be the label. Okay, perfect. So when you submit the deployment.
+
+[rochak agrawal] 08:53:33
+It goes and checks for the node which is having this level.
+
+[rochak agrawal] 08:53:38
+Now do you have a node which is having this level? No.
+
+[rochak agrawal] 08:53:42
+Correct?
+
+[Amiya Nanda] 08:53:43
+Because we have removed that label.
+
+[rochak agrawal] 08:53:45
+We have removed it, correct. So, currently, I do not have a node which is having this label.
+
+[Amiya Nanda] 08:53:47
+Yeah.
+
+[rochak agrawal] 08:53:51
+Hey.
+
+[Amiya Nanda] 08:53:51
+Got it.
+
+[rochak agrawal] 08:53:51
+So then it is… it does not have any node to run.
+
+[rochak agrawal] 08:53:57
+Great.
+
+[Amiya Nanda] 08:53:58
+Yes.
+
+[rochak agrawal] 08:53:59
+So that is why it is going into the pending status. Now, instead of 001, if I go apply the same level on 000.
+
+[rochak agrawal] 08:54:10
+The deployment would run on that node.
+
+[Amiya Nanda] 08:54:16
+Yeah, correct.
+
+[rochak agrawal] 08:54:18
+Correct? So, let me do that.
+
+[Amiya Nanda] 08:54:19
+Yes.
+
+[rochak agrawal] 08:54:23
+App is equal to my app.
+
+[rochak agrawal] 08:54:26
+And instead of 001, let me say 0.
+
+[rochak agrawal] 08:54:32
+Okay, it's labeled. Now, if you go…
+
+[rochak agrawal] 08:54:46
+You see?
+
+[Amiya Nanda] 08:54:49
+Okay.
+
+[rochak agrawal] 08:54:50
+Okay.
+
+[rochak agrawal] 08:54:52
+Ilya?
+
+[Amiya Nanda] 08:54:53
+Yeah.
+
+[rochak agrawal] 08:54:54
+Now, there's one more problem with this, okay? Uh, I would not say the problem, but there is one more challenge with this. See, what's going to happen is, um…
+
+[rochak agrawal] 08:55:05
+your Kubernetes cluster will have multiple nodes. And when I'm saying multiple nodes, see, for me, both of the nodes are similar. There is no difference. You are running the pod on 00 or 01. But in your… when you will be deploying your cluster.
+
+[rochak agrawal] 08:55:20
+You will have multiple nodes, some node…
+
+[rochak agrawal] 08:55:26
+Will be smaller, some would be higher.
+
+[rochak agrawal] 08:55:30
+Some could be very powerful.
+
+[rochak agrawal] 08:55:34
+Now the problem is with the node selector is.
+
+[rochak agrawal] 08:55:41
+See, I have defined a node selector.
+
+[rochak agrawal] 08:55:52
+There is an application.
+
+[rochak agrawal] 08:55:54
+Add button.
+
+[rochak agrawal] 08:56:00
+Okay.
+
+[rochak agrawal] 08:56:02
+And, uh…
+
+[rochak agrawal] 08:56:04
+I applied a label, let's say, my node.
+
+[rochak agrawal] 08:56:12
+And I said, this happened, you go run on my node.
+
+[rochak agrawal] 08:56:20
+With the node selector, we can easily do so.
+
+[rochak agrawal] 08:56:23
+Correct?
+
+[Amiya Nanda] 08:56:25
+Correct.
+
+[rochak agrawal] 08:56:27
+But the problem is, let's say there is app 2.
+
+[rochak agrawal] 08:56:32
+You, you say, okay, on this node number 3.
+
+[rochak agrawal] 08:56:37
+I want to run only the application, uh, only the pod which belong to App1.
+
+[rochak agrawal] 08:56:44
+So, you go, you apply the node selector. Now, app 1 is going onto node 1 only. It will not go to node 1.
+
+[rochak agrawal] 08:56:52
+It will not go to node 2.
+
+[rochak agrawal] 08:56:54
+Correct?
+
+[rochak agrawal] 08:56:57
+Agree?
+
+[Amiya Nanda] 08:56:58
+Yes.
+
+[rochak agrawal] 08:56:59
+Now, this is only 50% of the soil.
+
+[rochak agrawal] 08:57:02
+Let's say there is Apple.
+
+[rochak agrawal] 08:57:12
+Now you are running 10 ports of F2.
+
+[rochak agrawal] 08:57:18
+Now, let me do that, okay? Uh, I'll go…
+
+[rochak agrawal] 08:57:25
+I'll just change the name of the deployment.
+
+[rochak agrawal] 08:57:28
+and remove the node selector.
+
+[rochak agrawal] 08:57:38
+Okay, I will say…
+
+[rochak agrawal] 08:57:45
+Bidao.
+
+[rochak agrawal] 08:57:48
+Nord.
+
+[rochak agrawal] 08:57:49
+Selector.
+
+[rochak agrawal] 08:57:50
+Okay? And I'll say replica is equal to 10, for example.
+
+[rochak agrawal] 08:58:00
+Okay, and cube CTL.
+
+[rochak agrawal] 08:58:05
+Apply, hyphen, F, development. Yeah.
+
+[rochak agrawal] 08:58:11
+Okay? Now, if you go, you see TL…
+
+[rochak agrawal] 08:58:17
+Okay, but…
+
+[rochak agrawal] 08:58:19
+Hyphen O wide.
+
+[rochak agrawal] 08:58:23
+So if you see…
+
+[rochak agrawal] 08:58:26
+They are going on to 000.
+
+[rochak agrawal] 08:58:29
+They are going on 001 as well, correct?
+
+[Amiya Nanda] 08:58:33
+Correct.
+
+[rochak agrawal] 08:58:34
+Can you see?
+
+[Amiya Nanda] 08:58:35
+Yes.
+
+[rochak agrawal] 08:58:36
+So, you can see…
+
+[rochak agrawal] 08:58:41
+F1 is exclusive to the node 3.
+
+[rochak agrawal] 08:58:45
+Node 3 is not exclusive to F1.
+
+[rochak agrawal] 08:58:52
+Connect?
+
+[Amiya Nanda] 08:58:54
+Ah, this part I did not.
+
+[rochak agrawal] 08:58:55
+Okay. So, you see, with the help of node selector, I have defined that app 1 can… will only go to node 3, correct?
+
+[Amiya Nanda] 08:58:59
+Mmhm.
+
+[Amiya Nanda] 08:59:05
+Correct.
+
+[rochak agrawal] 08:59:06
+But Node 3 can also host Node 2 pod.
+
+[rochak agrawal] 08:59:12
+Right? Which we have data and…
+
+[Amiya Nanda] 08:59:13
+Right.
+
+[rochak agrawal] 08:59:16
+Uh, horns all also, correct?
+
+[rochak agrawal] 08:59:19
+So, your App 1 is exclusive to Node 3.
+
+[rochak agrawal] 08:59:24
+Let me write it.
+
+[rochak agrawal] 08:59:29
+App 1 will only go to node.
+
+[rochak agrawal] 08:59:38
+because of…
+
+[rochak agrawal] 08:59:45
+node as label.
+
+[rochak agrawal] 08:59:49
+Load selector.
+
+[rochak agrawal] 08:59:52
+Is that it? Agree?
+
+[Amiya Nanda] 08:59:53
+Correct.
+
+[rochak agrawal] 08:59:54
+But, the problem is…
+
+[rochak agrawal] 08:59:57
+Note the 3.
+
+[rochak agrawal] 09:00:00
+can also host.
+
+[rochak agrawal] 09:00:03
+Other ignition also.
+
+[rochak agrawal] 09:00:05
+Great!
+
+[Amiya Nanda] 09:00:06
+Right.
+
+[rochak agrawal] 09:00:08
+Because, see, why it is a problem? Because maybe, see, you are running multiple application in your cluster. Now there are other application which has occupied your node.
+
+[rochak agrawal] 09:00:24
+Which has occupied your node till the time app one is coming when it when it tried to schedule themselves so then.
+
+[rochak agrawal] 09:00:33
+What's going to happen is that, um…
+
+[rochak agrawal] 09:00:40
+It does not have the required space to run.
+
+[Amiya Nanda] 09:00:43
+Yeah, it will take more resources on that note, yeah.
+
+[rochak agrawal] 09:00:45
+Correct? Right? Because all other applications have already accommodated that.
+
+[rochak agrawal] 09:00:49
+So to resolve the problem, we have a concept of taint and toleration.
+
+[Amiya Nanda] 09:00:49
+Oh.
+
+[rochak agrawal] 09:01:03
+Okay.
+
+[rochak agrawal] 09:01:05
+Now, what is taint and toleration? Taint is like…
+
+[rochak agrawal] 09:01:18
+Tint is like, um…
+
+[rochak agrawal] 09:01:21
+Like I have agreed this analogy somewhere.
+
+[Amiya Nanda] 09:01:24
+Blocking something, right?
+
+[rochak agrawal] 09:01:27
+Paint is, like, blocking something, yes. So, for example, when, uh, when we go outside, we used to have this, uh, uh, Odomos.
+
+[rochak agrawal] 09:01:37
+strip attached.
+
+[rochak agrawal] 09:01:38
+So that mosquito is not coming to you.
+
+[rochak agrawal] 09:01:43
+Right? So something like that. So what we are going to do, we are going to apply a taint on this node.
+
+[rochak agrawal] 09:01:56
+So that no pod will come here.
+
+[rochak agrawal] 09:02:00
+Okay? And then, application 1 has the node selector, that will come.
+
+[rochak agrawal] 09:02:07
+So only this node is going to, um…
+
+[rochak agrawal] 09:02:13
+Post this application. Now we'll see that.
+
+[rochak agrawal] 09:02:15
+So, if I go, let me delete the deployment.
+
+[rochak agrawal] 09:02:31
+Okay, so I'll delete the second one.
+
+[rochak agrawal] 09:02:55
+Okay, um…
+
+[rochak agrawal] 09:03:09
+So you can see, now, NGINX deployment has a node selector, and it is running on this, uh…
+
+[rochak agrawal] 09:03:16
+uh… what you can say is a 000. Now, I do not want any other pod to come on 000. So, what I am going to do, I am going to apply the tape, and…
+
+[rochak agrawal] 09:03:29
+Not like paint.
+
+[rochak agrawal] 09:03:33
+Similar to levels only
+
+[rochak agrawal] 09:03:35
+So you can see.
+
+[rochak agrawal] 09:03:40
+We have 3 paint schedules. Now, uh, before that, let me…
+
+[rochak agrawal] 09:03:47
+Done this.
+
+[rochak agrawal] 09:03:53
+UCTL, okay.
+
+[rochak agrawal] 09:03:56
+which node I want to paint the first one, right? So, I'll just run this command, qctl paint node.
+
+[rochak agrawal] 09:04:11
+And, uh, you can give, again, the key-value pair could be anything. I can give, let's say, app is equal to my app, or anything. So, it'll say, uh…
+
+[rochak agrawal] 09:04:24
+What should be that, uh, one?
+
+[rochak agrawal] 09:04:30
+Not allowed.
+
+[rochak agrawal] 09:04:32
+Symbol, anything. And…
+
+[Amiya Nanda] 09:04:33
+Hmm.
+
+[rochak agrawal] 09:04:36
+No scheduled. Okay, it should be equal to…
+
+[rochak agrawal] 09:04:42
+Okay? Run is equal to not allowed or no schedule. Now, there is three taint effects. No schedule, prefer no schedule, and no execute.
+
+[Amiya Nanda] 09:04:51
+Okay, means we have to explicitly mention this no schedule.
+
+[rochak agrawal] 09:04:52
+This is…
+
+[rochak agrawal] 09:04:55
+Yes, yes. Why? Because that's where we are understanding the effects. This is one of the very common interview questions.
+
+[Amiya Nanda] 09:04:56
+Okay.
+
+[rochak agrawal] 09:05:05
+No schedule means if you apply no schedule.
+
+[rochak agrawal] 09:05:11
+And you read the line. When applying a tint, you must choose one of the three scheduling effects.
+
+[rochak agrawal] 09:05:17
+When you are selecting no schedule.
+
+[rochak agrawal] 09:05:20
+That's the hard rule. New pod without a matching toleration will not be scheduled on this node.
+
+[rochak agrawal] 09:05:27
+Existing pod, very important, this one. Existing pod already running on the node remain unaffected.
+
+[rochak agrawal] 09:05:37
+Understood.
+
+[rochak agrawal] 09:05:38
+Prefer no schedule? The control pin will try to avoid placing non-tolerating pod on this node.
+
+[rochak agrawal] 09:05:46
+But if there is no resource available on any other node, then it can schedule. It's a soft blocking.
+
+[Amiya Nanda] 09:05:56
+No.
+
+[rochak agrawal] 09:05:56
+Okay, then the third, no execute. In the no execute, what is going to happen? That, uh…
+
+[Amiya Nanda] 09:05:58
+Hmm, yes.
+
+[rochak agrawal] 09:06:05
+When you apply a taint and the pods does not have the toleration, then whatever existing pod was running, they will also get evicted. So this is the same difference between what we have in a cordon and rain.
+
+[rochak agrawal] 09:06:22
+Okay, now, when you apply this.
+
+[Amiya Nanda] 09:06:23
+Yes.
+
+[rochak agrawal] 09:06:26
+I'll say no schedule, for example.
+
+[rochak agrawal] 09:06:31
+It's a note tinted.
+
+[rochak agrawal] 09:06:33
+Okay?
+
+[rochak agrawal] 09:06:35
+Now, if you go…
+
+[rochak agrawal] 09:06:37
+cube CTL, um…
+
+[rochak agrawal] 09:06:40
+Lai.
+
+[rochak agrawal] 09:06:44
+Hyphen F.
+
+[rochak agrawal] 09:06:48
+deployment.yaml.
+
+[rochak agrawal] 09:06:50
+Okay, now see.
+
+[rochak agrawal] 09:06:54
+QTTL, get ports, hyphen O wide.
+
+[rochak agrawal] 09:07:02
+You see?
+
+[rochak agrawal] 09:07:04
+Where is everything going?
+
+[Amiya Nanda] 09:07:07
+0 0 1.
+
+[rochak agrawal] 09:07:08
+Why not 000? Because it is blocked, it is tainted.
+
+[rochak agrawal] 09:07:20
+Clear? Nginx is running on 0 0 0.
+
+[rochak agrawal] 09:07:24
+Because it is having the node selector as well. So now you see whenever and this is one of the common question it is being asked. So someone may ask you that I am running.
+
+[rochak agrawal] 09:07:41
+Certain ports on a node, okay?
+
+[rochak agrawal] 09:07:44
+Now, answer this. I'm running certain ports on a particular node.
+
+[rochak agrawal] 09:07:49
+N number of the ports are already running.
+
+[rochak agrawal] 09:07:52
+Now you apply a taint on that particular node. What is going to happen on the running ports?
+
+[rochak agrawal] 09:08:01
+So what is going to happen to the running ports?
+
+[Amiya Nanda] 09:08:07
+So if we'll create, ah, the new ports, it will not go to the, ah, running port.
+
+[rochak agrawal] 09:08:11
+But the question is, what has happened, what will happen to the running pods?
+
+[Amiya Nanda] 09:08:15
+Oh, okay, okay, okay, if we'll apply tint.
+
+[rochak agrawal] 09:08:17
+Yes, if you apply the teams.
+
+[Amiya Nanda] 09:08:21
+I think the port will be running.
+
+[rochak agrawal] 09:08:26
+Okay?
+
+[Amiya Nanda] 09:08:28
+There will be no impact on the port switches.
+
+[rochak agrawal] 09:08:30
+there will be no impact on the running boards, right? As you are saying. No. But that will depend… see, that is where this, uh…
+
+[Amiya Nanda] 09:08:33
+Yes.
+
+[Amiya Nanda] 09:08:35
+Yes.
+
+[rochak agrawal] 09:08:39
+taint effects are there. If it is a no schedule, then there will be no impact on the running pod. If it is a no execute.
+
+[Amiya Nanda] 09:08:46
+Okay, okay, okay.
+
+[rochak agrawal] 09:08:50
+Any existing pod on the node that do not tolerate this trend are instantly evicted.
+
+[rochak agrawal] 09:08:57
+Can you see?
+
+[Amiya Nanda] 09:09:00
+Yes.
+
+[rochak agrawal] 09:09:00
+So that's where this taint effect we need to understand.
+
+[rochak agrawal] 09:09:06
+Now, tell me one thing.
+
+[Amiya Nanda] 09:09:08
+I mean here no execute means the running ports also will be stopped.
+
+[rochak agrawal] 09:09:14
+Got it. Got it.
+
+[rochak agrawal] 09:09:16
+So, now let me do that. I'll show you.
+
+[rochak agrawal] 09:09:19
+So, to remove a taint, now, let me remove the taint.
+
+[rochak agrawal] 09:09:24
+And?
+
+[rochak agrawal] 09:09:40
+Okay? Untinted. Now…
+
+[rochak agrawal] 09:09:42
+I'll say no execute.
+
+[rochak agrawal] 09:09:52
+God, it's been a mistake.
+
+[rochak agrawal] 09:09:56
+You see what's going to happen.
+
+[rochak agrawal] 09:09:59
+Tinted?
+
+[rochak agrawal] 09:10:01
+Okay?
+
+[rochak agrawal] 09:10:03
+Now, you see?
+
+[rochak agrawal] 09:10:25
+You see what happened there?
+
+[Amiya Nanda] 09:10:29
+Ah, this one, right? Nginx deployment.
+
+[rochak agrawal] 09:10:34
+Now…
+
+[rochak agrawal] 09:10:36
+You see? See, that's a combination. Now, what happened is…
+
+[rochak agrawal] 09:11:06
+Okay. I have two notes.
+
+[rochak agrawal] 09:11:11
+Correct?
+
+[rochak agrawal] 09:11:17
+I apply a taint on the node number 0.
+
+[rochak agrawal] 09:11:22
+Correct?
+
+[Amiya Nanda] 09:11:23
+Yes.
+
+[rochak agrawal] 09:11:24
+So, see what happened.
+
+[rochak agrawal] 09:11:28
+Right? So that no pod can come.
+
+[rochak agrawal] 09:11:32
+Got it?
+
+[Amiya Nanda] 09:11:32
+Correct.
+
+[rochak agrawal] 09:11:34
+And the pod is going here on the node 001.
+
+[rochak agrawal] 09:11:38
+Agree? Till now?
+
+[Amiya Nanda] 09:11:40
+Yep.
+
+[rochak agrawal] 09:11:41
+But I have an application, Nginx.
+
+[rochak agrawal] 09:11:49
+Which says I will go to this node 001 only, because I have a node selector.
+
+[rochak agrawal] 09:11:54
+Got it?
+
+[rochak agrawal] 09:11:56
+They…
+
+[Amiya Nanda] 09:11:57
+Right.
+
+[rochak agrawal] 09:11:59
+But this is okay, this is blocked, there is a taint is there. I'm not allow you.
+
+[rochak agrawal] 09:12:05
+Then, what should we do?
+
+[rochak agrawal] 09:12:07
+So that is where taint run in a combination with the toleration. So we need to apply something called the toleration.
+
+[rochak agrawal] 09:12:15
+onto our application. So you see, pains and toleration.
+
+[rochak agrawal] 09:12:21
+So, we need to apply something called a toleration on this, uh…
+
+[rochak agrawal] 09:12:29
+Born.
+
+[rochak agrawal] 09:12:31
+Okay, so I'll apply toleration.
+
+[rochak agrawal] 09:12:55
+Okay? So you need to use this…
+
+[rochak agrawal] 09:13:01
+Polarization in…
+
+[rochak agrawal] 09:13:03
+Now I will go. So, QCTL added deployment.
+
+[rochak agrawal] 09:13:33
+So you see, node selector is there, right?
+
+[rochak agrawal] 09:13:38
+Where I need to apply this? Containers…
+
+[rochak agrawal] 09:13:46
+So, whatever tails you have applied.
+
+[rochak agrawal] 09:13:50
+You need to apply a toleration to your application.
+
+[rochak agrawal] 09:14:01
+What level?
+
+[rochak agrawal] 09:14:09
+Let me create it again.
+
+[rochak agrawal] 09:14:14
+Editing a YAML link.
+
+[rochak agrawal] 09:14:17
+Yes
+
+[rochak agrawal] 09:15:11
+So I'll go.
+
+[rochak agrawal] 09:15:18
+I just start copying.
+
+[rochak agrawal] 09:15:32
+Copy.
+
+[rochak agrawal] 09:15:38
+Apply Note Selector.
+
+[rochak agrawal] 09:15:41
+And, uh…
+
+[rochak agrawal] 09:15:43
+toleration.
+
+[rochak agrawal] 09:15:52
+Okay? Now what I'm going to do, I'll copy this…
+
+[rochak agrawal] 09:15:59
+Okay, my note selector was app…
+
+[rochak agrawal] 09:16:05
+my app, right?
+
+[rochak agrawal] 09:16:08
+intoleration was?
+
+[rochak agrawal] 09:16:12
+Guys, uh, can you please go on mute?
+
+[rochak agrawal] 09:16:18
+It was run, no, not allowed, no execute.
+
+[rochak agrawal] 09:16:29
+Run.
+
+[rochak agrawal] 09:16:34
+And copy this.
+
+[rochak agrawal] 09:17:04
+Let's see, in the next deployment.
+
+[rochak agrawal] 09:17:07
+Okay? So simple.
+
+[rochak agrawal] 09:17:10
+Here, I have added the…
+
+[rochak agrawal] 09:17:13
+Note selector. Where is it? This note selector.
+
+[rochak agrawal] 09:17:17
+Ensure pod only schedule on the node matching these key-value pair, and toleration allow pod to schedule onto node with matching themes. Right? So now I will go…
+
+[rochak agrawal] 09:17:33
+India, QCTL.
+
+[rochak agrawal] 09:17:37
+Delete.
+
+[rochak agrawal] 09:17:39
+Deployment.
+
+[rochak agrawal] 09:17:41
+And gimmicks.
+
+[rochak agrawal] 09:17:44
+Okay?
+
+[rochak agrawal] 09:17:56
+You have CTL?
+
+[rochak agrawal] 09:17:59
+Apply.
+
+[rochak agrawal] 09:18:00
+Hyphen F.
+
+[rochak agrawal] 09:18:04
+Okay? Now, if you go…
+
+[rochak agrawal] 09:18:08
+Tube seat care.
+
+[rochak agrawal] 09:18:10
+Get watts.
+
+[rochak agrawal] 09:18:12
+Hyphen.
+
+[rochak agrawal] 09:18:13
+So, like…
+
+[rochak agrawal] 09:18:17
+You see, nginx is running on 0 0 0.
+
+[rochak agrawal] 09:18:22
+But NGINX without the node selector will always run on node 001.
+
+[rochak agrawal] 09:18:27
+you cannot run anything on node 000 because it has a taint, okay? So taint and toleration work in a combination, and then with the help of node selector, you are selecting that particular node. So the combination of the node selector and taint and toleration.
+
+[rochak agrawal] 09:18:47
+We'll ensure the exclusivity between an application and a node.
+
+[rochak agrawal] 09:18:52
+So, when you apply a node, uh, only the node selector, the application will go onto the particular node, but the node can handle multiple other ports also. When you apply the taint intoleration, so then no…
+
+[rochak agrawal] 09:19:06
+any pod will go to that particular node, so then you need to add the toleration to the particular application. So it is going to work in a combination.
+
+[Amiya Nanda] 09:19:17
+Ah, so, ah, Rochak, if we'll add toleration on, ah, this node.
+
+[Amiya Nanda] 09:19:23
+And.
+
+[Amiya Nanda] 09:19:25
+Taint also have been applied on this node.
+
+[rochak agrawal] 09:19:27
+The tint you apply at the node level?
+
+[rochak agrawal] 09:19:34
+Toleration you apply at the application deployment level or a pod level.
+
+[rochak agrawal] 09:19:45
+See, it is like when you are going to a VIP event, now everyone is blocked into attending the event. Then you will show your ticket that I have the ticket rights to enter. So toleration is like your ticket to this blocked arena.
+
+[Amiya Nanda] 09:19:57
+Hmm, okay.
+
+[Amiya Nanda] 09:20:03
+Okay.
+
+[rochak agrawal] 09:20:04
+Okay.
+
+[rochak agrawal] 09:20:05
+Node selector is just the exclusivity that I will go only this node.
+
+[rochak agrawal] 09:20:14
+Okay?
+
+[Amiya Nanda] 09:20:17
+Yes.
+
+[rochak agrawal] 09:20:19
+So, we have this combination. Now, apart from it, uh, see, most of the.
+
+[rochak agrawal] 09:20:24
+Problem, you can solve the…
+
+[rochak agrawal] 09:20:27
+With this, uh, the… uh, taints and toleration and node selector, but apart from it, also, there is something called the…
+
+[rochak agrawal] 09:20:36
+Node affinity, which is not very much in use.
+
+[rochak agrawal] 09:20:43
+While toleration allows you to port to land on a node with the taints, node affinity allows you to attract a pod to the specific node based on the labels.
+
+[rochak agrawal] 09:20:56
+which I think we can already do with the node selectors. So I don't find node affinity very useful, but then in the node affinity also, there is two rules.
+
+[rochak agrawal] 09:21:07
+Required during scheduling, ignored during execution. Preferred during scheduling, ignored during execution. So the pod must match the criteria to be scheduled.
+
+[rochak agrawal] 09:21:17
+If no matching node exists, the pod will remain in the pending status. Soft rule is scheduler will try to find a matching node. If none of available, it will schedule the pod on a regular node. Now…
+
+[rochak agrawal] 09:21:32
+You see the difference between the node selector and the node affinity? Node selector is a hard rule, like the first one. And we have seen that if there was no node matching that level, then your pod goes into the pending status.
+
+[rochak agrawal] 09:21:49
+But node affinity gives you another option, which is a soft rule. It says, I will try to schedule you on your preferred node, but if that node is not available, we'll schedule you somewhere else. So that's the only difference.
+
+[rochak agrawal] 09:22:05
+So you can see the hard rule, this one, required during scheduling, ignored during execution, is nothing but the node selector only. So node selector is a hard rule where if you are not matching the node selector, then your pod will always be in a pending state, correct?
+
+[rochak agrawal] 09:22:23
+And that is where there is a soft rule also, which is, I will try to prefer… I will try to schedule you on your preferred nodes, but if the preferred node is available, I'll schedule you everywhere, anywhere.
+
+[Amiya Nanda] 09:22:36
+Yes, yeah.
+
+[rochak agrawal] 09:22:37
+Okay?
+
+[rochak agrawal] 09:22:37
+So that is a little bit flexibility in the node scheduler. That's it.
+
+[rochak agrawal] 09:22:44
+Okay?
+
+[rochak agrawal] 09:22:47
+So, this is about how to schedule your pods. So, when you have multiple types of the node pool, then you can decide which pod.
+
+[rochak agrawal] 09:22:57
+We'll go to which of these nodes and see we have only two nodes. So we have seeing one node, one node. But when you have 20, 30 nodes, you you will apply these labels on the group of the nodes. You will apply these stains and toleration on the group of the nodes.
+
+[rochak agrawal] 09:23:12
+Right? So, we can do that. So, for example, um, we can apply, uh, we, we, we'll create three, four nodes, and, uh, which will be very, um.
+
+[rochak agrawal] 09:23:23
+heavy insights, then I will probably attach some database volumes to it, storage volumes to it, and I will always want my database port to be running on those particular nodes.
+
+[rochak agrawal] 09:23:36
+Something like that. It could be any use cases. But we can control — by default, the pod will go evenly. If you're already running one, one, one, one pod, the next pod will randomly go to any of the node.
+
+[rochak agrawal] 09:23:51
+But I can control it with the help of node selectors, node affinity, and taints and tolerations.
+
+[rochak agrawal] 09:24:10
+Okay, so next we will understand the volumes. So we have volumes in the form of, here we call it as the persistent volume, then the persistent volume claims and the storage classes.
+
+[rochak agrawal] 09:24:30
+And guys, if you're using AKS or something, either delete your cluster, okay?
+
+[rochak agrawal] 09:24:36
+That would be the best way, because even if you stop your cluster.
+
+[rochak agrawal] 09:24:42
+Even if you stop your cluster, you are going to consume some of the cost.
+
+[rochak agrawal] 09:24:47
+So better to delete it and recreate it again tomorrow morning.
+
+[Amiya Nanda] 09:24:56
+Ah, actually, I have a question. I have created a account in Microsoft Azure.
+
+[rochak agrawal] 09:25:00
+Okay.
+
+[Amiya Nanda] 09:25:01
+Okay, uh, like, it will be free, or it will be chargeable?
+
+[rochak agrawal] 09:25:06
+No, it will be free, it will be free, $200 of credits, uh, you will get.
+
+[Amiya Nanda] 09:25:11
+Okay, but after that, I am, like, not sure how to create this cluster and all.
+
+[rochak agrawal] 09:25:12
+Yeah.
+
+[Amiya Nanda] 09:25:19
+Or virtual machine from there.
+
+[rochak agrawal] 09:25:20
+I will… I will upload the documentation for that. No worries. It's just very easy. So you… this is just nothing. You just go…
+
+[Amiya Nanda] 09:25:22
+For Azure?
+
+[rochak agrawal] 09:25:28
+See first.
+
+[rochak agrawal] 09:25:30
+You search for the Kubernetes, okay?
+
+[Amiya Nanda] 09:25:31
+Uh-huh.
+
+[rochak agrawal] 09:25:34
+Kubernetes service. It's very easy, there is nothing much in it. So you just go to Kubernetes cluster.
+
+[rochak agrawal] 09:25:41
+You just give your… see, some things will be auto-populated. You just give your cluster name.
+
+[Amiya Nanda] 09:25:47
+Aha.
+
+[rochak agrawal] 09:25:48
+Okay? And then there's nothing much. You just click on Review and Create, your cluster will be created.
+
+[Amiya Nanda] 09:25:54
+Okay, that's it.
+
+[rochak agrawal] 09:25:55
+That's it. That's… there's a many service. Okay.
+
+[Amiya Nanda] 09:25:57
+Okay, and, uh, same as, uh, creating, uh, this instance also, VM…
+
+[rochak agrawal] 09:26:03
+Yeah, yeah, everything will be created. And once this cluster is created, you click on Connect button. See, first you open this Cloud Shell.
+
+[rochak agrawal] 09:26:11
+Okay.
+
+[rochak agrawal] 09:26:13
+You can… can you see the cloud shell?
+
+[Amiya Nanda] 09:26:16
+Ah, here above where?
+
+[rochak agrawal] 09:26:18
+Yeah, yeah, this cursor you can see?
+
+[Amiya Nanda] 09:26:20
+Ha ha ha, yes, yes, yes.
+
+[rochak agrawal] 09:26:21
+Yeah? Right? So, Cloud Shell will open, you go and run this command.
+
+[rochak agrawal] 09:26:28
+This… this one. That's it.
+
+[rochak agrawal] 09:26:32
+Is that it?
+
+[rochak agrawal] 09:26:34
+And you…
+
+[rochak agrawal] 09:26:36
+Just after this, you can run your commands.
+
+[rochak agrawal] 09:26:39
+Okay?
+
+[Amiya Nanda] 09:26:39
+Okay, first, we need to run this.
+
+[rochak agrawal] 09:26:44
+Correct.
+
+[rochak agrawal] 09:26:45
+Correct, because, uh, see, Cloud Shell is a temporary instance, uh, it… whatever you are doing in a cloud, it is a thermal in nature. So, it is going to get lost, so…
+
+[rochak agrawal] 09:26:56
+To run it, first connect with your cluster and then run your Kubernetes command.
+
+[Amiya Nanda] 09:27:03
+Okay, and the same process for creating a VM.
+
+[rochak agrawal] 09:27:04
+Okay?
+
+[rochak agrawal] 09:27:08
+Deleting the…
+
+[Amiya Nanda] 09:27:10
+Virtual Miss.
+
+[rochak agrawal] 09:27:11
+Yeah, yeah, yeah, same.
+
+[rochak agrawal] 09:27:13
+Okay.
+
+[Amiya Nanda] 09:27:14
+And I have an issue with AWS account, Rochak, and I have created multiple cases also, multiple requests for AWS, but no one is responding.
+
+[rochak agrawal] 09:27:22
+Hmm?
+
+[Amiya Nanda] 09:27:26
+Ah, for that case, how can I proceed? I'm not sure.
+
+[rochak agrawal] 09:27:27
+But generally, it should not happen. Whenever you raise a ticket, uh, we…
+
+[rochak agrawal] 09:27:33
+We get a very prompt response. I'm not sure
+
