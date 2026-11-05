@@ -1,0 +1,2487 @@
+[rochak agrawal] 07:35:17
+Hey, good morning, everyone.
+
+[rochak agrawal] 07:35:19
+So.
+
+[rochak agrawal] 07:35:21
+Let's start.
+
+[rochak agrawal] 07:35:25
+So, we have seen the virtual machines, we have seen, um…
+
+[rochak agrawal] 07:35:30
+the Azure App Services. Now, there are a couple of other computing services are also available in Azure, which we can use to run our…
+
+[rochak agrawal] 07:35:40
+applications, okay? Now, we discussed that in the studies class, that if we want to run a compute service, there are three ways, major ways is there. One is your.
+
+[rochak agrawal] 07:35:55
+Virtual machine where you need to manage the complete infrastructure operating system and other things. Second is the app service where you will just create the app service plan. You know you have a visibility where your applications is running, but you do not need to manage it.
+
+[rochak agrawal] 07:36:11
+Third is the Azure Functions. Azure Function is a completely serverless service. Now, as discussed yesterday, serverless does not mean there are no servers. Serverless means that we do not have the visibility of the servers.
+
+[rochak agrawal] 07:36:27
+Azure Functions is a serverless computing service offered by Microsoft Azure. It enables the execution of the small unit of code called the function without the need to manage the server. These functions are.
+
+[rochak agrawal] 07:36:43
+triggered by…
+
+[rochak agrawal] 07:36:46
+specific events or input, allowing developer to respond to the event in the real time by utilizing Azure Functions. We can focus solely on the writing the code and not worry about the infrastructure management. Now, when the function is being used.
+
+[rochak agrawal] 07:37:02
+Function is majorly used for the.
+
+[rochak agrawal] 07:37:07
+Event.
+
+[rochak agrawal] 07:37:09
+Driven art teachers.
+
+[rochak agrawal] 07:37:15
+Now what does it mean? It means that see when I'm running an application on the virtual machine. So for example a web server, a web server will continue running right when I'm when I deployed a web application on Azure web app.
+
+[rochak agrawal] 07:37:31
+you can choose that it should continue to be running. But what does the event-driven architecture say? That your application should be running.
+
+[rochak agrawal] 07:37:41
+in response to an event.
+
+[rochak agrawal] 07:37:43
+Okay.
+
+[rochak agrawal] 07:37:45
+Application.
+
+[rochak agrawal] 07:37:50
+should trigger.
+
+[rochak agrawal] 07:37:53
+In response…
+
+[rochak agrawal] 07:37:54
+to an event. Okay, now what does that mean?
+
+[rochak agrawal] 07:38:03
+It means that something is happening somewhere, um…
+
+[rochak agrawal] 07:38:11
+And in response to that, you want to run some execution.
+
+[rochak agrawal] 07:38:15
+So, yes, it is similar to AWS Lambda. See, whatever the services be you are going to see in Azure, we have almost a similar counterpart in AWS or GCP. So, yes, what AWS in Lambda does in AWS Azure Function is therein.
+
+[rochak agrawal] 07:38:34
+Azure.
+
+[rochak agrawal] 07:38:36
+For example is let's say you uploaded a.
+
+[rochak agrawal] 07:38:39
+file in your storage account. Now, as you uploaded the file.
+
+[rochak agrawal] 07:38:46
+You… you have a requirement that you need to.
+
+[rochak agrawal] 07:38:52
+compress that file, right? Now, till the time you are not uploading the file, there is no compression, correct? So that is where…
+
+[rochak agrawal] 07:38:59
+What is the event? Uploading a file to the storage account. Then, when the uploading, uh…
+
+[rochak agrawal] 07:39:07
+this event is happening, your function should trigger, and then, um, you are going to run your, um, code to compress the file. So now you see, in this example, your function is running. When some event is happening, and what was the event in this case?
+
+[rochak agrawal] 07:39:23
+Event is, um…
+
+[rochak agrawal] 07:39:26
+Uploading the file to your, uh…
+
+[rochak agrawal] 07:39:29
+storage account. Now, it could be anything. Now, let's say, uh… another example is, let's say someone deleted your virtual machine, and then, uh…
+
+[rochak agrawal] 07:39:39
+You should…
+
+[rochak agrawal] 07:39:42
+send a justification mail to someone who has deleted the virtual machine, correct? So, since it is an event-driven architecture.
+
+[rochak agrawal] 07:39:52
+it is going… it is being used in many of the automations, right? Because automations you do when something is happening, and you, in response to that, um, you want to do something. So, for example, if your virtual machine get in, uh, get stopped.
+
+[rochak agrawal] 07:40:08
+Somehow. You want to restart it. Now, what is the event in this case? Your virtual machine getting stopped. And what you will do? You will restart the virtual machine. So you can write the code for that, right? So that is where it is going to use very much in…
+
+[rochak agrawal] 07:40:22
+in automations. Now, there are two very important things in the Azure Functions. One is the triggers.
+
+[rochak agrawal] 07:40:33
+And another is the bindings.
+
+[rochak agrawal] 07:40:41
+Now, triggers, as we define, trigger is something which is going to trigger the function. What is the event that should trigger the event or trigger the function? For example, we discussed stopping your virtual machine as a trigger.
+
+[rochak agrawal] 07:40:58
+Uploading a file…
+
+[rochak agrawal] 07:41:00
+in the storage account can be a trigger, right? So that is where whatever the event which can trigger your function is called a trigger.
+
+[rochak agrawal] 07:41:11
+No.
+
+[rochak agrawal] 07:41:13
+So triggers basically define the event that…
+
+[rochak agrawal] 07:41:18
+That can invoke the Lambda functions. So it can be an HTTP request.
+
+[rochak agrawal] 07:41:26
+For example, I will just… when you, uh…
+
+[rochak agrawal] 07:41:33
+When you create a function, if you trigger… if your trigger is HTTP request, then… so then you will get a URL. Anytime you are hitting the URL, your function is going to trigger. Then it can be timers.
+
+[rochak agrawal] 07:41:45
+For example, I can say, uh, my function should be running every day at 9 PM, 9 AM, something like that, right? Then…
+
+[rochak agrawal] 07:41:53
+It can be storage changes.
+
+[rochak agrawal] 07:41:57
+It can be messages from the queues, multiple other types.
+
+[rochak agrawal] 07:42:04
+Okay, so again, these are just examples. There can be other type of the triggers also.
+
+[rochak agrawal] 07:42:10
+Now.
+
+[rochak agrawal] 07:42:12
+binding. So, triggers you understand as the input to the function.
+
+[rochak agrawal] 07:42:20
+Okay.
+
+[rochak agrawal] 07:42:22
+When the function should run.
+
+[rochak agrawal] 07:42:25
+Binding, on the other hand, is like the output.
+
+[rochak agrawal] 07:42:29
+So, example, um…
+
+[rochak agrawal] 07:42:37
+Created something.
+
+[rochak agrawal] 07:42:39
+So, for example, you…
+
+[rochak agrawal] 07:42:42
+Let's say a file is getting uploaded into the storage account, and then, um…
+
+[rochak agrawal] 07:42:48
+Once the file is uploaded.
+
+[rochak agrawal] 07:42:51
+uploading of the file is a trigger, then your code is going to execute, which is, let's say, compress the file, and then compress the file you want to save in, let's say, in a database. So then the binding will be your, um…
+
+[rochak agrawal] 07:43:06
+Database or Azure Storage.
+
+[rochak agrawal] 07:43:14
+Cosmos DB.
+
+[rochak agrawal] 07:43:18
+Right? This other type of the, um…
+
+[rochak agrawal] 07:43:21
+Bindings also can be there. So bindings are like the output.
+
+[rochak agrawal] 07:43:24
+Now I'll go create the functions. I'll search for…
+
+[rochak agrawal] 07:43:28
+The function app.
+
+[rochak agrawal] 07:43:34
+Okay?
+
+[rochak agrawal] 07:43:37
+Create the function.
+
+[rochak agrawal] 07:43:39
+So yet, if you see…
+
+[rochak agrawal] 07:43:42
+There are multiple types of the functions.
+
+[rochak agrawal] 07:43:47
+is available, right? So you can say fast event driven, event driven metrics based. Now you can see I can run a function with the app service also, right?
+
+[rochak agrawal] 07:43:59
+So run web apps and the function app in the same plan. Now here you see I can run the same. I can use the.
+
+[rochak agrawal] 07:44:07
+same app service plan to run my functions as well, okay? But I'll not go into these options. So there is two options, you can say flex consumption and the function premium.
+
+[rochak agrawal] 07:44:18
+So you see, they get high availability with the computerized virtual networking and pay-as-you-go billing.
+
+[rochak agrawal] 07:44:23
+So you say scale to zero.
+
+[rochak agrawal] 07:44:26
+Scale behavior is fast, event-driven, virtual networking, options with always ready, and max scale-out instances, 1,000. Now, if you see here, scale to zero option is there. Okay. Now, what does that mean? It means that…
+
+[rochak agrawal] 07:44:43
+Let's see…
+
+[rochak agrawal] 07:44:45
+You created a virtual machine.
+
+[rochak agrawal] 07:44:48
+Okay.
+
+[rochak agrawal] 07:44:50
+or the app service plan, both of the things. Now you're running an application on it.
+
+[rochak agrawal] 07:44:56
+Let's say NGINX or we created an IIS web servers.
+
+[rochak agrawal] 07:45:02
+Derek?
+
+[rochak agrawal] 07:45:04
+Now…
+
+[rochak agrawal] 07:45:06
+You see…
+
+[rochak agrawal] 07:45:07
+When you are when you when your virtual machine is running, right?
+
+[rochak agrawal] 07:45:12
+Does not matter, um…
+
+[rochak agrawal] 07:45:15
+External users are accessing your application or not, you will continue to keep paying.
+
+[rochak agrawal] 07:45:29
+Continue to keep paying.
+
+[rochak agrawal] 07:45:32
+If VM is running.
+
+[rochak agrawal] 07:45:36
+No matter.
+
+[rochak agrawal] 07:45:44
+The request is coming online.
+
+[rochak agrawal] 07:45:49
+Right?
+
+[rochak agrawal] 07:45:49
+No matter, uh, if you, if you started a virtual machine, you're, you're running an application, does not matter one user is coming or 100 user is coming, you need to pay for it.
+
+[rochak agrawal] 07:46:00
+While on the other hand, we say that your functions is serverless.
+
+[rochak agrawal] 07:46:07
+So you… I don't know where my server is running, okay?
+
+[rochak agrawal] 07:46:11
+What I know is I have executed the code. I have given the code to Azure functions.
+
+[rochak agrawal] 07:46:18
+Now.
+
+[rochak agrawal] 07:46:20
+till the time…
+
+[rochak agrawal] 07:46:21
+No trigger is coming.
+
+[rochak agrawal] 07:46:23
+You are not paying for it.
+
+[rochak agrawal] 07:46:26
+You need to pay… see, that is what the scale to zero means, okay?
+
+[rochak agrawal] 07:46:31
+It means that if there is no request.
+
+[rochak agrawal] 07:46:35
+In case of a function.
+
+[rochak agrawal] 07:46:37
+If…
+
+[rochak agrawal] 07:46:38
+There is no request.
+
+[rochak agrawal] 07:46:42
+Ms. Trigger?
+
+[rochak agrawal] 07:46:46
+There is no way.
+
+[rochak agrawal] 07:46:48
+As simple as that. For example, I created a function where I'm saying, uh, it should trigger when I'm uploading a file to the storage account, okay? But during the whole month.
+
+[rochak agrawal] 07:46:59
+I have not uploaded a single file to my storage account.
+
+[rochak agrawal] 07:47:03
+Since I have not uploaded a file, there, my function will not be triggered. So the cost of function will also be zero.
+
+[rochak agrawal] 07:47:13
+That is very important. If your function is not running, you are not paying for it.
+
+[rochak agrawal] 07:47:20
+Then, um…
+
+[rochak agrawal] 07:47:24
+I'll select the flex consumption only.
+
+[rochak agrawal] 07:47:26
+Now, again, I'll select.
+
+[rochak agrawal] 07:47:30
+The demo RG.
+
+[rochak agrawal] 07:47:35
+Function app name?
+
+[rochak agrawal] 07:47:40
+Let's see.
+
+[rochak agrawal] 07:47:43
+Okay? Anything. Region, again, uh, functions is a regional service, so…
+
+[rochak agrawal] 07:47:50
+When you deploy a function, you deploy a function in a particular region.
+
+[rochak agrawal] 07:47:56
+Again, this is important. Similar to the app service, there are…
+
+[rochak agrawal] 07:48:03
+only certain, um, uh, programming language which is supported by the function. So you can say Python. Go is there, while Go was not there in the app service.
+
+[rochak agrawal] 07:48:12
+Okay, so Go, Java, PowerShell, and then there's a custom handler also, which is a little advanced thing. We can write our own runtime stack with the help of Azure Function. So I'll select Python.
+
+[rochak agrawal] 07:48:28
+And then version, again, there's a different versions are there, and the instance size. So basically, where my function is going to run, what is the… See, as I said.
+
+[rochak agrawal] 07:48:41
+Function instance size, if you see here, the amount of memory allocated to each instance of the function, okay?
+
+[rochak agrawal] 07:48:50
+What does it mean? It means that…
+
+[rochak agrawal] 07:48:51
+It is serverless, but…
+
+[rochak agrawal] 07:48:56
+Serverless just mean that I don't know where the server is, but in the end, it will be running on the servers only. Correct? So, that's where you're selecting the instance.
+
+[rochak agrawal] 07:49:07
+size, okay? And then the zone redundancy, again, uh, zone redundancy is disabled. Your flex consumption app will not be zone redundant enabled. So what is going to happen when, let's say, multiple requests is coming to your functions.
+
+[rochak agrawal] 07:49:23
+In that case, when it will be creating multiple instances, if it is enabled, your instances will be distributed across different availability zones.
+
+[rochak agrawal] 07:49:34
+I'll keep it disabled.
+
+[rochak agrawal] 07:49:37
+Then you go to storage.
+
+[rochak agrawal] 07:49:39
+So, there is a storage account will be created where it is going to, uh…
+
+[rochak agrawal] 07:49:45
+Uh, store all its metadata, temporary data, and other things.
+
+[rochak agrawal] 07:49:51
+OpenAI, I'll just not go there. Again, the same thing, like you did in a…
+
+[rochak agrawal] 07:49:59
+App service, public access, if you keep it off, your function is going to be private. Then if you enable the virtual network integration, so then it will get a private IP from your network, and then resources in your virtual network can talk to this function.
+
+[rochak agrawal] 07:50:15
+Over a private connectivity.
+
+[rochak agrawal] 07:50:18
+Then you go to monitoring. Again, basic monitoring will be enabled by default.
+
+[rochak agrawal] 07:50:29
+Yes, Christie is asking, does this come under platform as a service? Yes. See, there is no specification. Platform as a service, infrastructure as a service are just the models, right? So here it is not like you will selecting the platform as a service, then the function is going to come.
+
+[rochak agrawal] 07:50:46
+But yes, on a conceptual level, it is a platform as a service. It's the same as an app service only.
+
+[rochak agrawal] 07:50:52
+So, I will disable the application inside for now.
+
+[rochak agrawal] 07:51:00
+Again, the same thing, continuous deployment, you do your, uh…
+
+[rochak agrawal] 07:51:06
+repository.
+
+[rochak agrawal] 07:51:09
+Organization and other things, right? And uh… same thing, I'll just keep it.
+
+[rochak agrawal] 07:51:15
+Disable for now. Authentication.
+
+[rochak agrawal] 07:51:21
+The two…
+
+[rochak agrawal] 07:51:23
+For best security practices, again, I'm not going into the authentication for now. We will have a different service for the authentication. Tags and review and create.
+
+[rochak agrawal] 07:51:37
+Okay? So here is my configuration, and I'm going to create this. Now, till now you see.
+
+[rochak agrawal] 07:51:45
+You created a function, right? Function app, basically.
+
+[rochak agrawal] 07:51:54
+Okay, let it get created.
+
+[rochak agrawal] 07:51:57
+So here you see storage account is creating, server form is getting created.
+
+[rochak agrawal] 07:52:46
+Okay? My function is created. So you see here, when you're creating the function application, function app.
+
+[rochak agrawal] 07:52:55
+I'm not defined any trigger or something, right? So what you need to do, you need to first create the function like we did, and then, uh…
+
+[rochak agrawal] 07:53:03
+Once it is completed, so you see all your instance memory, operating system, default domain.
+
+[rochak agrawal] 07:53:11
+Other things. Here, uh, you will go and, uh…
+
+[rochak agrawal] 07:53:21
+In the function app.
+
+[rochak agrawal] 07:53:27
+So you can see all of those options which we have seen, um…
+
+[rochak agrawal] 07:53:31
+And now, see you.
+
+[rochak agrawal] 07:53:34
+Where is the…
+
+[rochak agrawal] 07:53:39
+Goodbye.
+
+[rochak agrawal] 07:54:13
+Deployment center, we'll get this, uh, GitHub option.
+
+[rochak agrawal] 07:54:20
+So manual deployment, in case here, if you want to do the manual deployment, so you just upload your code file from here, okay? And that's about it.
+
+[rochak agrawal] 07:54:34
+Location, package, location, this is okay.
+
+[rochak agrawal] 07:54:52
+This is not there.
+
+[rochak agrawal] 07:55:02
+Generally come options only.
+
+[rochak agrawal] 07:55:11
+trigger for agile functions.
+
+[rochak agrawal] 07:56:06
+From portal
+
+[rochak agrawal] 07:56:17
+Overview page, we have, uh, the overview page.
+
+[rochak agrawal] 07:56:31
+Why we are not getting these options? We are at the functions.
+
+[rochak agrawal] 07:56:40
+There is only host key option is there.
+
+[rochak agrawal] 07:56:56
+Set to development portal.
+
+[rochak agrawal] 07:57:29
+This…
+
+[rochak agrawal] 07:57:30
+Taking the donut tutorial…
+
+[rochak agrawal] 07:57:53
+In the left-hand menu, under the Function section, click on Function. That is what we are doing in the Function…
+
+[rochak agrawal] 07:58:27
+Creating this option.
+
+[rochak agrawal] 07:59:03
+We selected Python, yeah.
+
+[rochak agrawal] 07:59:06
+Okay.
+
+[rochak agrawal] 07:59:55
+I think there is some UI changes recently. They've disabled this option or not.
+
+[rochak agrawal] 08:00:20
+Create a function app, we update that operating system, review, create.
+
+[rochak agrawal] 08:00:25
+Function is created. If you're in function app.
+
+[rochak agrawal] 08:00:30
+In your function app, select Overview.
+
+[rochak agrawal] 08:00:32
+Okay, then select plus create under function, if you don't…
+
+[rochak agrawal] 08:00:39
+Why we are not seeing the quit button?
+
+[rochak agrawal] 08:01:04
+If you're not able to create a function code in the portal, you can create… instead create a local project.
+
+[rochak agrawal] 08:01:18
+I'm not getting that option here.
+
+[rochak agrawal] 08:01:22
+Function app…
+
+[rochak agrawal] 08:02:27
+Function app is there.
+
+[rochak agrawal] 08:02:44
+I need to check why this is not coming. I'm not sure why it is not coming, because it's a straightforward thing. Here, we have created the function app. Now, we need to deploy our code, okay? And then, while creating the code.
+
+[rochak agrawal] 08:03:01
+We will be getting this, uh…
+
+[rochak agrawal] 08:03:04
+Uh, select the template and the bind, uh, trigger and the binding option, but, uh…
+
+[rochak agrawal] 08:03:09
+Not sure why this is not giving us an option of creating a function.
+
+[rochak agrawal] 08:03:14
+Okay, um, so I'll check on that.
+
+[rochak agrawal] 08:03:21
+Yes, Fahad?
+
+[Shah Fahad] 08:03:30
+Uh, Ruchik, I had a question regarding yesterday's session, so is it fine if I ask now?
+
+[rochak agrawal] 08:03:33
+Yeah, yeah, sure. Yeah, I'll just if you have any question on this functions then you OK anyways ask we we cannot go ahead with the functions. So yeah, I'll take the question on function or yesterday session.
+
+[Shah Fahad] 08:03:49
+Uh, yeah, so yesterday we did this deployment set, right?
+
+[rochak agrawal] 08:03:53
+Mm-hmm. Deployment slots.
+
+[Shah Fahad] 08:03:55
+Uh, deployment slots. So, you added the main branch as a trigger to it, so whenever the code change is done, it is automatically triggered, or how?
+
+[rochak agrawal] 08:03:55
+Yep.
+
+[rochak agrawal] 08:04:03
+Uh, yes. So, as I said, Fahad, we don't do it directly. It is an option, okay?
+
+[rochak agrawal] 08:04:13
+Then the code changes will be done, it will not be automatically, we need to refresh our app service again.
+
+[rochak agrawal] 08:04:19
+Okay, so, like, uh, there is the… similar to that, refresh button is, uh, there in the app service also. So, if we refresh or restart our function, then it will, uh, restart our app service, then it will take the updated change.
+
+[Shah Fahad] 08:04:37
+Okay, fine.
+
+[rochak agrawal] 08:04:38
+Okay.
+
+[Shah Fahad] 08:04:38
+And, uh, you said some… there is one option in scale out and scale in. I didn't get the difference between that. What is it?
+
+[rochak agrawal] 08:04:43
+Correct?
+
+[rochak agrawal] 08:04:44
+Okay. So, Fahad, scale out was meaning that, uh…
+
+[rochak agrawal] 08:04:51
+Understand it, uh, in a terms of horizontal and vertical scaling. You understand what is a horizontal and vertical scaling?
+
+[Shah Fahad] 08:04:57
+Yep.
+
+[rochak agrawal] 08:04:58
+Okay? So, scale out, you understand, as you are doing the vertical scaling. So, for example, um…
+
+[rochak agrawal] 08:05:06
+you have 2GB of the RAM, and I'm seeing, okay, 2GB RAM is not enough, so instead of giving 2GB, I'm giving you 4GB or 8GB. I'm making you more powerful.
+
+[rochak agrawal] 08:05:17
+Okay.
+
+[rochak agrawal] 08:05:18
+On the other hand, uh…
+
+[rochak agrawal] 08:05:22
+It is, like, running the mode number of the instances. So you are 2GB?
+
+[rochak agrawal] 08:05:26
+okay, I'm not making you more power, but I'll create one more instance, third instance, fourth instance. So that was the difference between scale-out and the other one.
+
+[Shah Fahad] 08:05:39
+Okay. And…
+
+[rochak agrawal] 08:05:40
+Scale up and scale out.
+
+[Shah Fahad] 08:05:42
+Scale up and scale down. So, scale out is vertical.
+
+[rochak agrawal] 08:05:43
+Okay? One is, like, the vertical skin? Yes, one is horizontal.
+
+[rochak agrawal] 08:05:48
+Okay.
+
+[Shah Fahad] 08:05:49
+And, uh, this thing, right? The spot instance that we discussed in the previous class session.
+
+[rochak agrawal] 08:05:53
+Mm-hmm.
+
+[Shah Fahad] 08:05:54
+Uh, the AWS, like, uh, in the spot instance, like, it's available, but whenever there is a potential client, they take it back. So, it's same with Azure also.
+
+[rochak agrawal] 08:05:58
+Yes.
+
+[rochak agrawal] 08:06:00
+Got it.
+
+[rochak agrawal] 08:06:02
+Same, exactly same. There is no difference.
+
+[rochak agrawal] 08:06:05
+And that is why we cannot, uh, learn our, um…
+
+[Shah Fahad] 08:06:05
+Okay, that's it.
+
+[rochak agrawal] 08:06:12
+Important application, the application which you continuously want them to be running, right? We don't run on the spot instances. The reason for that is because any point of time Azure is going to take the spot instances back from you.
+
+[rochak agrawal] 08:06:29
+So, it is, like, when you're running, let's say, 10 number of instances. 2, 3, you run it with the spot instances, so that it is not impacting your application downtime, right? If 2, 3 is not available, then my application is running with the 7 instances.
+
+[rochak agrawal] 08:06:45
+Right? Or application which can suffer the downtime. Uh, okay. When I'm saying suffer the downtime is, um…
+
+[rochak agrawal] 08:06:53
+See, for example, you are processing the salary of 10,000, okay? You are doing the calculation of salary of 10,000 employees, and you do it on the spot instances. Now, after 2 hours.
+
+[rochak agrawal] 08:07:07
+Let's say, um, you process the salary of 500 employees, and your spot instance has been taken from you. Okay. Now, after…
+
+[rochak agrawal] 08:07:18
+two days it is coming, and it is starting exactly from the employee number 501, right? And you need to do this calculation in the whole month, for example.
+
+[rochak agrawal] 08:07:27
+So, I'll continue doing so. So, these type of use cases you can run with the spot instances, applications which need to be continuously running.
+
+[rochak agrawal] 08:07:38
+you should not run with this participant system. And it is exactly same as AWS.
+
+[Shah Fahad] 08:07:45
+Mm-hmm, okay.
+
+[rochak agrawal] 08:07:47
+Okay?
+
+[Shah Fahad] 08:07:49
+Yeah, sure, okay. Thank you.
+
+[rochak agrawal] 08:07:50
+Okay.
+
+[rochak agrawal] 08:07:56
+Yes, ma'am, see?
+
+[Vamsi Mohan Yacham] 08:08:27
+Hello?
+
+[rochak agrawal] 08:08:29
+Yes, ma'am, see?
+
+[Vamsi Mohan Yacham] 08:08:31
+I'm audible.
+
+[rochak agrawal] 08:08:32
+Yes, yes, you are.
+
+[Vamsi Mohan Yacham] 08:08:33
+Yeah, like, while deployment, we have to use web server, application server, and database server, and coming to Azure applications, uh, like, where the data will be stored, uh, I think there is no database server there, right?
+
+[rochak agrawal] 08:08:38
+Okay.
+
+[rochak agrawal] 08:08:43
+Okay, so Vamsi, yes, so data, uh, we have, uh, storage, um, we have multiple storage options are there, where we are going to store the data. So, uh, I'll park your question for now, because, uh, there are multiple storage services which we are going to explore, but just to give you an example.
+
+[Vamsi Mohan Yacham] 08:08:52
+Okay.
+
+[rochak agrawal] 08:09:00
+we have a storage account, we have Azure Files, uh, we have Azure SQL Service, Cosmos DB, so there are multiple services there.
+
+[Vamsi Mohan Yacham] 08:09:07
+Okay, after deploying the function app, we have to attach that, right? Attach the storage part to the function app.
+
+[rochak agrawal] 08:09:13
+It depends, like, see, function app is when you're saying after deploying the… if you remember when we did the demo yesterday of the app service, there was an option of adding the database to it, right? If you click on add the database. So, it depends if you need the database or not.
+
+[Vamsi Mohan Yacham] 08:09:21
+Okay.
+
+[Vamsi Mohan Yacham] 08:09:25
+Okay.
+
+[Vamsi Mohan Yacham] 08:09:27
+Yes, yes.
+
+[rochak agrawal] 08:09:30
+Correct. Now, it may… it might also happen that your database is in…
+
+[rochak agrawal] 08:09:34
+See, the point is, when you say 3-tier architecture, right, as you said, we have AppDB, correct? So…
+
+[Vamsi Mohan Yacham] 08:09:41
+Yes.
+
+[rochak agrawal] 08:09:42
+The purpose of having a 3-tier architecture is your tiers are decoupled from each other.
+
+[rochak agrawal] 08:09:49
+Okay? And when I'm saying decoupled from each other, it may happen also that your application is running in Azure, but your database is in an on-premises environment.
+
+[rochak agrawal] 08:09:59
+Correct. So, the point is, your database need not to be available in Azure only. If your database is running somewhere else also, it is fine. You just need to have the network connectivity.
+
+[Vamsi Mohan Yacham] 08:10:00
+Yes.
+
+[Vamsi Mohan Yacham] 08:10:09
+Yes.
+
+[rochak agrawal] 08:10:11
+Okay.
+
+[Vamsi Mohan Yacham] 08:10:12
+Yeah. Okay. Thank you.
+
+[rochak agrawal] 08:10:20
+Yes, William?
+
+[rochak agrawal] 08:10:40
+Sereno?
+
+[Tarannum Jahan] 08:10:56
+Hello, am I audible?
+
+[rochak agrawal] 08:10:56
+Yes, sir, you are audible.
+
+[Tarannum Jahan] 08:10:58
+Uh, okay. So, hi, Rochak. Uh, this, like, the, uh, my question is not related to the topic, but I have a doubt, because… should I ask?
+
+[rochak agrawal] 08:11:07
+Hmm?
+
+[rochak agrawal] 08:11:09
+Yes, yes, please go ahead.
+
+[Tarannum Jahan] 08:11:11
+So, uh, today is my fourth class with PeopleLive. Also, this is the first time when I'm learning Azure now.
+
+[rochak agrawal] 08:11:16
+Mm-hmm.
+
+[Tarannum Jahan] 08:11:17
+Here, my question is, some topics I'm able to understand, uh, last three, um, uh, classes, and I'm unable to understand some of the topics.
+
+[rochak agrawal] 08:11:20
+Mm-hmm.
+
+[rochak agrawal] 08:11:26
+Okay?
+
+[Tarannum Jahan] 08:11:28
+Um, now my question is, how can I overcome this? Because I check over the drive, and there is no course material, or…
+
+[rochak agrawal] 08:11:35
+No, it's still not there, I am preparing the course material, uh, Ranum, we will update it.
+
+[Tarannum Jahan] 08:11:40
+Okay, because I'm, like, I'm confused here, like, how to understand all the topics, or is there any basic knowledge required to understand all the topics of Azure? So, could you please suggest something so that I can.
+
+[rochak agrawal] 08:11:40
+Okay?
+
+[rochak agrawal] 08:11:54
+Sure. So, yeah, yeah. So, uh, Tarun, what exactly you are struggling with, and then accordingly, maybe I can suggest better?
+
+[rochak agrawal] 08:12:03
+So, when you say… when you say you are understanding some of the topic, you are not understanding some other topics, right? So, exactly where you are struggling, and then accordingly, maybe I can suggest better.
+
+[Tarannum Jahan] 08:12:03
+Maybe, uh…
+
+[Tarannum Jahan] 08:12:10
+Right.
+
+[Tarannum Jahan] 08:12:16
+Uh, like, when you are, um, showing the pictures, like, we have to understand this is, like, yesterday's topic, few, a few topics I'm not able to understand might be possible due to hands-on practices, lacking of hands-on practices, maybe I'm lacking.
+
+[rochak agrawal] 08:12:28
+Mm-hmm.
+
+[rochak agrawal] 08:12:33
+No, no, but can you give me a topic example, when you say a few of the topics?
+
+[Tarannum Jahan] 08:12:37
+like, in today's topic also, functions, you are able to understand. Like, in initial level, I'm not able to understand, and later on, I am just trying to understand.
+
+[Tarannum Jahan] 08:12:49
+So, the same thing happened to other topics as well.
+
+[rochak agrawal] 08:12:55
+Okay, so then what I'll do is, um, uh, I will upload some basic Azure material. Uh, so, see, we are, uh, right now preparing for AJ104, which is a Azure Administrator course, okay? Uh, uh, and there is a basic course also, which is AJ900, which is Azure Fundamentals.
+
+[rochak agrawal] 08:13:14
+So, I have some notes regarding the AJ900 as well. I am going to upload those as well, and I hope that is going to help you setting up your basic fundamentals, and probably then you will understand more.
+
+[Tarannum Jahan] 08:13:26
+Okay. Okay. Yeah. Thank you so much.
+
+[rochak agrawal] 08:13:28
+Yeah? Okay, I'll do it today, yeah.
+
+[Tarannum Jahan] 08:13:31
+Mm-hmm, thank you.
+
+[rochak agrawal] 08:13:31
+Okay.
+
+[rochak agrawal] 08:13:37
+Yes, Poojan?
+
+[rochak agrawal] 08:13:52
+Okay.
+
+[rochak agrawal] 08:13:55
+So I'll check on it, I'll come back, but that is how the function works, okay? Uh, so…
+
+[rochak agrawal] 08:14:01
+Maybe I'm selecting a wrong redemption plan or something, and that's why we are not seeing the option.
+
+[rochak agrawal] 08:14:08
+Next topic is very interesting, okay? But before going to the servers directly, we need to understand the concept behind it, okay? And very interesting topic, okay? And this is, you will see.
+
+[rochak agrawal] 08:14:25
+You are going to…
+
+[rochak agrawal] 08:14:28
+I'm the long sleeve.
+
+[rochak agrawal] 08:14:42
+So there is something called the…
+
+[rochak agrawal] 08:14:45
+containers, okay?
+
+[rochak agrawal] 08:14:47
+Now…
+
+[rochak agrawal] 08:14:50
+Before I go into this, we need to understand the difference between the.
+
+[rochak agrawal] 08:14:57
+Containers and virtual machines.
+
+[rochak agrawal] 08:15:13
+I do this.
+
+[rochak agrawal] 08:15:23
+This is not complete.
+
+[rochak agrawal] 08:15:32
+Now, if you see…
+
+[rochak agrawal] 08:15:35
+So, on the left-hand side, we have, uh…
+
+[rochak agrawal] 08:15:39
+the containers.
+
+[rochak agrawal] 08:15:42
+Now you might be hearing containers very much and nowadays most of the application runs on the containers and this is your virtual machine.
+
+[rochak agrawal] 08:16:01
+Now first we'll understand the virtual machine and then we will understand the container. Now in a virtual machine, what happens is like what is a virtual machine? When we are creating an Azure virtual machine, you create a virtual machine in AWS.
+
+[rochak agrawal] 08:16:18
+Uh, which is an EC2 instance. That is…
+
+[rochak agrawal] 08:16:23
+What is virtual machine? So, see, virtual machine…
+
+[rochak agrawal] 08:16:28
+Like, if you ask me, uh, let's say my laptop.
+
+[rochak agrawal] 08:16:33
+your laptop, your desktop, from which we are connected to this Zoom session. These are the physical machines, right? Like, if I shut down my laptop.
+
+[rochak agrawal] 08:16:43
+I will… my connection is going to be dropped, right? So this is… my laptop is a physical machine. It has…
+
+[rochak agrawal] 08:16:51
+Physically, I can see this machine, correct? But virtual machines, when we say virtual machine, okay, the name itself is virtual, right? So, virtual machines are virtual in nature, where, uh…
+
+[rochak agrawal] 08:17:06
+They do not have a physical existence.
+
+[rochak agrawal] 08:17:09
+There is… there will be a physical server, like this.
+
+[rochak agrawal] 08:17:16
+There is a physical server, and then, with the help of a virtualization software.
+
+[rochak agrawal] 08:17:22
+Hypervisor is mostly used, but there are multiple other virtualization softwares out there.
+
+[rochak agrawal] 08:17:31
+Basis on that, I can create multiple smaller virtual machines on my physical server.
+
+[rochak agrawal] 08:17:39
+So I'll divide basically this…
+
+[rochak agrawal] 08:17:44
+Server onto multiple virtual machines.
+
+[rochak agrawal] 08:17:47
+Now, how many virtual machines will depend on what is the total capacity of this physical server.
+
+[rochak agrawal] 08:17:54
+and how many virtual machines… what size of virtual machine I create… I want to create. So, for example, if the physical server capacity is, uh, 20 GB, then I'll create…
+
+[rochak agrawal] 08:18:05
+Two virtual machine, one…
+
+[rochak agrawal] 08:18:08
+16GB, another 4GB. I can create 5 virtual machines, 4GB each. I can create 10 virtual machines, or 2GB each, correct? Because in the end, your virtual machine is taking the resources from the physical server, correct? So, um, virtual machine will have.
+
+[rochak agrawal] 08:18:26
+The full operating system and we have seen in one of our class as well when you when when I created a Windows based virtual machine and once I logged in it is like my own system, correct? There is no difference at all. So you have your full operating system.
+
+[rochak agrawal] 08:18:44
+Right.
+
+[rochak agrawal] 08:18:45
+Complete operating system.
+
+[rochak agrawal] 08:18:48
+On your virtual machine, and then, um…
+
+[rochak agrawal] 08:18:52
+You can install your application, you can install your runtime, and everything on that, correct? So that is about the virtual machine. So what is a virtual machine? You are dividing your physical server into multiple smaller machines.
+
+[rochak agrawal] 08:19:07
+Which is having the full operating system in place, okay?
+
+[rochak agrawal] 08:19:14
+Now
+
+[rochak agrawal] 08:19:17
+Till now, clear, right? Virtual machine does not have a physical existence. Understand this. That's why they they are being called as a virtual machines. Okay. So for example, if this physical server will go down and that is what we are understanding, high availability, availability zones.
+
+[rochak agrawal] 08:19:34
+data centers. If the physical server is not available, if something goes wrong with the physical server, then all the virtual machines running on that physical server will.
+
+[rochak agrawal] 08:19:46
+also go down. Because, right, see, similarly, if, um, my Zoom is running on my laptop, if my laptop is shut down, Zoom… how the Zoom is going to work. Similarly, if my physical server is not available, then my, um.
+
+[rochak agrawal] 08:20:02
+Virtual machine will also not be available.
+
+[rochak agrawal] 08:20:06
+OK, so.
+
+[rochak agrawal] 08:20:13
+So that is where this is called the virtual machines. Now, the problem with the virtual machine, I would not say the problem, but the limitation of a virtual machine. Virtual machines are usually very heavy in size. So for example, there was two issues with the virtual machine.
+
+[rochak agrawal] 08:20:31
+Again, those were not issues, but with the help of the containers, you will try to optimize it, okay?
+
+[rochak agrawal] 08:20:38
+Now, let's say on my laptop.
+
+[rochak agrawal] 08:20:42
+I want to run a Python application, okay? When I want to run a Python application, uh…
+
+[rochak agrawal] 08:20:50
+what is that I needed? Okay, what is that you need to run the Python application? You just need to have Python installed on your system, and you can run your Python application. But…
+
+[rochak agrawal] 08:21:03
+But on my laptop, Zoom is also installed, Chrome is also installed, Java is also installed, right?
+
+[rochak agrawal] 08:21:10
+which is not needed to run the Python application, correct? So, usually, virtual machines are very heavy in nature, and that is where, um…
+
+[rochak agrawal] 08:21:22
+it, it becomes, uh, like, if you want to run a very small application, then also you need to create a heavy, uh, virtual machine. That was one problem. Second problem is, let's say, um.
+
+[rochak agrawal] 08:21:34
+you have a different operating system. I have a different operating system. So, for example, let's say we discussed that when I need to install Nginx, if I am running on a Ubuntu-based system, then I am running on, uh…
+
+[rochak agrawal] 08:21:49
+APT package, uh, right, uh, when I'm running, uh, uh…
+
+[rochak agrawal] 08:21:55
+Linux system, I will run a EM package manager. So, she's doing the same thing, and if it is a Windows…
+
+[rochak agrawal] 08:22:02
+Your command will be altogether very different. Correct. Now what is going to happen is because of that there will be configuration changes. Now it may happen. There are some applications.
+
+[rochak agrawal] 08:22:16
+which is running on my laptop with a particular operating system. But when I'm sharing those application code with you, you might be running with a different operating system, different configuration settings.
+
+[rochak agrawal] 08:22:30
+It is not it might not work on your system. And that was a problem which were being faced. See, either you will have all the all the machines with the same configuration, but that is not practically that was not practically possible. Right.
+
+[rochak agrawal] 08:22:47
+And that is where, uh, uh, containers comes into the picture. Containers solves this exact problem, okay? So, we got the problem, right? Um, every machine will have a different configuration, um, so to run that, uh.
+
+[rochak agrawal] 08:23:03
+Application on different, different machine.
+
+[rochak agrawal] 08:23:07
+There was challenges.
+
+[rochak agrawal] 08:23:09
+Because…
+
+[rochak agrawal] 08:23:11
+Unix have a different command, Linux has a different stack, Windows has a different stack.
+
+[rochak agrawal] 08:23:19
+Now to come.
+
+[rochak agrawal] 08:23:21
+Now to overcome that there was a containers into the picture. OK, now what exactly is the container so you understand the container?
+
+[rochak agrawal] 08:23:33
+As… let's say…
+
+[rochak agrawal] 08:23:35
+UCD player, okay?
+
+[rochak agrawal] 08:23:37
+So you see, uh, let's say…
+
+[rochak agrawal] 08:23:41
+If I want to…
+
+[rochak agrawal] 08:23:43
+show the same movie to, let's say, 100 people, okay? What I'm going to do is, I am going to create a CD, uh, okay?
+
+[rochak agrawal] 08:23:53
+And then…
+
+[rochak agrawal] 08:23:55
+I am going to create the 100 copies of that CD.
+
+[rochak agrawal] 08:23:59
+And I am going to distribute that copy to everyone, correct?
+
+[rochak agrawal] 08:24:04
+Now that copy will be called as the image.
+
+[rochak agrawal] 08:24:11
+That copy will be called as an image. Now, when you run that CD in your CD player, okay.
+
+[rochak agrawal] 08:24:19
+It does not matter if your CD player is Sony, your CD player is Tosiva, Samsung, whatsoever. I don't care. What is going to run? Your movie is going to run exactly the same way, correct? Because movie is not on a CD player. Movie is inside the CD.
+
+[rochak agrawal] 08:24:36
+Correct. So similarly, your application is in a image.
+
+[rochak agrawal] 08:24:42
+When you… and I'm going to distribute this image to everyone. And when you are going to run this image.
+
+[rochak agrawal] 08:24:51
+you are going to run an exact same application everywhere. Does not matter, I'm running a Windows-based system, I'm running a Linux-based system, I'm not… now, I'm not running the application on the system.
+
+[rochak agrawal] 08:25:04
+I'm running this image.
+
+[rochak agrawal] 08:25:06
+Okay, so container is nothing.
+
+[rochak agrawal] 08:25:16
+Is the runtime version runtime instance?
+
+[rochak agrawal] 08:25:26
+of this image.
+
+[rochak agrawal] 08:25:29
+Okay, so container is a runtime instance of this image.
+
+[rochak agrawal] 08:25:34
+Okay, now…
+
+[rochak agrawal] 08:25:36
+how we are going to create the image, basically. Uh, so instead of an operating system.
+
+[rochak agrawal] 08:25:44
+One more understand, uh, difference we need to understand is, um…
+
+[rochak agrawal] 08:25:49
+Virtualization, when we talk about the virtualization, virtualization is a hardware-level virtualization. I am dividing my physical server.
+
+[rochak agrawal] 08:26:02
+into multiple smaller virtual machines, depending on the size. I can create 2 or 20, okay?
+
+[rochak agrawal] 08:26:11
+While the containerization is a operating system level virtualization.
+
+[rochak agrawal] 08:26:16
+So when I'm packaging my application here, so this is one package.
+
+[rochak agrawal] 08:26:23
+This is another package.
+
+[rochak agrawal] 08:26:28
+Okay.
+
+[rochak agrawal] 08:26:31
+This package is not going to.
+
+[rochak agrawal] 08:26:35
+have the operating system. For operating system needs, they are going to depend on the.
+
+[rochak agrawal] 08:26:43
+server itself. Now, you see the difference. In this case.
+
+[rochak agrawal] 08:26:49
+You have a full operating system, right?
+
+[rochak agrawal] 08:26:55
+but your container images, and we call it as the images, container images, whatsoever. So, when you will be packaging your application, okay, um…
+
+[rochak agrawal] 08:27:05
+you build the packaging with all the dependencies to run that application. So, for example, what example we were discussing was that when we want to run our application, right?
+
+[rochak agrawal] 08:27:20
+a Python application, what do you need? I need my application code, I need my Python runtime, and any third-party libraries or dependencies is needed. Okay, I will package everything.
+
+[rochak agrawal] 08:27:33
+These things, which is needed to run my application, not any other thing, okay?
+
+[rochak agrawal] 08:27:40
+I will package those things in this, and then I am going to run that as my container, okay?
+
+[rochak agrawal] 08:27:50
+So, first I am going to create the image, and then once that image is there, I will download this image, I will distribute this image, and then I am going to… whenever… wherever you run. So, once the image is created, I run it on my laptop, you run it on your laptop.
+
+[rochak agrawal] 08:28:07
+Someone else run on their laptop, your application is going to run in exactly the same way.
+
+[rochak agrawal] 08:28:15
+Okay, uh, now this is about the container, and Docker is the most important, um.
+
+[rochak agrawal] 08:28:23
+not the most important, Docker is the containerization tool, basically. So if you need, uh, to have the containers, if you need to create the images, um, you need to install Docker on your system.
+
+[rochak agrawal] 08:28:35
+Okay. Now again, we can use the containerization in two ways.
+
+[rochak agrawal] 08:28:41
+One is DIY.
+
+[rochak agrawal] 08:28:48
+DIY means…
+
+[rochak agrawal] 08:28:51
+Do it yourself.
+
+[rochak agrawal] 08:28:53
+Right? It's similar, uh, okay…
+
+[rochak agrawal] 08:28:57
+Now we have seen two service. One is the virtual machine, one is the app service. Correct. Now virtual machine is like the DIY way. App service is the managed service way. Similarly here as well, when we say do it yourself, what you are going to do?
+
+[rochak agrawal] 08:29:13
+You will, let's say…
+
+[rochak agrawal] 08:29:15
+Create a VM.
+
+[rochak agrawal] 08:29:21
+Install the… the docker.
+
+[rochak agrawal] 08:29:25
+Then third is, uh, create images.
+
+[rochak agrawal] 08:29:30
+And finally, you are going to run the query.
+
+[rochak agrawal] 08:29:38
+Correct.
+
+[rochak agrawal] 08:29:39
+But the problem with this is, again, I would not say it's a problem, but the limitation is.
+
+[rochak agrawal] 08:29:45
+There is an operational overhead. For example, if my virtual machine goes down, then all the containers running on that virtual machine also will not be available. Correct. You need to manage, install the configuration of Docker. Everything we need to manage. Correct.
+
+[rochak agrawal] 08:30:00
+Then there is a second way of doing the things, which is a managed service. So, like the app service, there is something called the Azure Container Instances.
+
+[rochak agrawal] 08:30:15
+Again, this is a managed service, or it is in a S category.
+
+[rochak agrawal] 08:30:22
+Okay, manage service.
+
+[rochak agrawal] 08:30:26
+Uh, and in a test category.
+
+[rochak agrawal] 08:30:28
+So what is going to happen is…
+
+[rochak agrawal] 08:30:32
+Like the app service, you will just go…
+
+[rochak agrawal] 08:30:35
+Tell Azure, boss, this is my image. You run it. Now, where it is running, I don't know.
+
+[rochak agrawal] 08:30:41
+So this is also kind of a serverless service where you will just give your image. You create your image locally or wherever. So for example, there are already images are available and then you will just run.
+
+[rochak agrawal] 08:30:57
+you will just tell, uh, Azure that this is my image, run it. So what we are going to do, uh, we are going to…
+
+[rochak agrawal] 08:31:06
+Docker in containers in both the ways, and you will see what is the difference between them. Okay, now, before running the containers, I'll show you one thing. So, there are…
+
+[rochak agrawal] 08:31:17
+Now the question is, from where I am going to find these images? Okay, so there are multiple websites where you can find your public images, so if you go to hub.docker.com.
+
+[rochak agrawal] 08:31:29
+So, we call it as a Docker Hub, okay?
+
+[rochak agrawal] 08:31:33
+And…
+
+[rochak agrawal] 08:31:35
+You won't believe any application.
+
+[rochak agrawal] 08:31:40
+You are… you have used it till now.
+
+[rochak agrawal] 08:31:43
+you can containerize that application. So, for example, if I search for NGINX.
+
+[rochak agrawal] 08:31:50
+You find that there is almost 3 lakh images is there for NGINX. And if you see the hardened image, the official image, right?
+
+[rochak agrawal] 08:32:00
+You see the downloads, 1 billion downloads, 100 threads.
+
+[rochak agrawal] 08:32:08
+And you name any software, you are going to find the Docker image for it.
+
+[rochak agrawal] 08:32:14
+You want to find it, for example, pumpkin.
+
+[rochak agrawal] 08:32:21
+500 million plus.
+
+[rochak agrawal] 08:32:23
+1 million plus, 10 million plus. So, it's a Docker official image. So, always try to use the Docker official image, and then these are the, uh, different, different organizations.
+
+[rochak agrawal] 08:32:34
+OpenEuler, Leilig, University, you can see they might have customized this image and published it. So you can create… you… you can also create your own images and publish it over the Docker Hub. So if you say I… if I logged in into my account…
+
+[rochak agrawal] 08:32:58
+So you can see, I have these images, they're my custom Nginx about a month ago. So I also have a Sugi or Gemato app, my demo app, Flask app. So these are my images, okay, which I have published.
+
+[rochak agrawal] 08:33:14
+But, uh, for this, our focus is not on Docker, so…
+
+[rochak agrawal] 08:33:20
+First, I'll go create a virtual machine and run a container on this.
+
+[rochak agrawal] 08:33:44
+Ubuntu, I'll go with Ubuntu.
+
+[rochak agrawal] 08:33:49
+It's password.
+
+[rochak agrawal] 08:34:05
+I'll open HTTP as well, because we are going to run, uh…
+
+[rochak agrawal] 08:34:15
+Next. Next.
+
+[rochak agrawal] 08:34:20
+Click, and it will create.
+
+[rochak agrawal] 08:35:47
+Okay, now my virtual machine is created.
+
+[rochak agrawal] 08:35:51
+I'll take the public IP of this.
+
+[rochak agrawal] 08:35:54
+Connect.
+
+[rochak agrawal] 08:36:00
+Okay.
+
+[rochak agrawal] 08:36:01
+I'll open my Cloud Shell.
+
+[rochak agrawal] 08:36:27
+We connect to my virtual machine.
+
+[rochak agrawal] 08:36:41
+Now I am inside my virtual machine, correct? It's a demo VM. So you see, when we say, uh, to run your container, you need to create the VM. Now I need to install the Docker first thing, okay? Then I'll, uh, either use the image, uh, create the image, run the container.
+
+[rochak agrawal] 08:36:58
+Right? So, I will go and install Docker on Ubuntu. I'll go through…
+
+[rochak agrawal] 08:37:06
+Install Docker.
+
+[rochak agrawal] 08:37:09
+Again, this is nothing related to Azure, but since we need to go to understand the Azure container instances.
+
+[rochak agrawal] 08:37:17
+That's where it is imperative to understand how Docker actually runs, right? So I'll just go to…
+
+[rochak agrawal] 08:37:25
+the official documentation, and I'll just follow the steps, which is there.
+
+[rochak agrawal] 08:37:31
+So give.
+
+[rochak agrawal] 08:37:34
+Copying the commands.
+
+[rochak agrawal] 08:37:40
+Okay.
+
+[rochak agrawal] 08:38:15
+Okay. Now…
+
+[rochak agrawal] 08:38:19
+with another command.
+
+[rochak agrawal] 08:39:02
+Okay, now if you run Docker…
+
+[rochak agrawal] 08:39:05
+Docker is installed.
+
+[rochak agrawal] 08:39:07
+Eddie?
+
+[rochak agrawal] 08:39:08
+Okay? Docker is installed. Now, we need to do one more thing.
+
+[rochak agrawal] 08:39:17
+We need to see the status of the docker.
+
+[rochak agrawal] 08:39:21
+This is running, right? Now, there is one more thing we need to do. We say docker ps.
+
+[rochak agrawal] 08:39:27
+It says permission denied.
+
+[rochak agrawal] 08:39:30
+while trying to connect to Docker API. Now, this is one of the issues you might face, generally. So, people install the Docker, but then they say, okay, I'm not able to run the Docker, okay? So, that is where there is something called the post-installation steps are there.
+
+[rochak agrawal] 08:39:46
+Okay, so you need to run these, uh, two commands there.
+
+[rochak agrawal] 08:40:07
+Okay? And after that, you still will get this error. Let me see…
+
+[rochak agrawal] 08:40:13
+Okay, what do you need to do? You need to log out.
+
+[rochak agrawal] 08:40:20
+And log in again.
+
+[rochak agrawal] 08:40:33
+Okay? Now…
+
+[rochak agrawal] 08:40:35
+if you run Docker.
+
+[rochak agrawal] 08:40:37
+PS. A Docker PS is basically the command to see what are the running containers on your system.
+
+[rochak agrawal] 08:40:45
+There is nothing, right? So you…
+
+[rochak agrawal] 08:40:48
+See here.
+
+[rochak agrawal] 08:40:52
+I created a virtual machine. I installed the Docker on it. Now, either I will create the images or I'll, let's say, use… I'll pull the image from Docker up. So let's say I want to run nginx. So I'm going to pull…
+
+[rochak agrawal] 08:41:07
+And the next image.
+
+[rochak agrawal] 08:41:09
+Now, before that, I'll show you Docker images.
+
+[rochak agrawal] 08:41:13
+So you can see here, currently no images are there.
+
+[rochak agrawal] 08:41:17
+I can download as many images. Now, understand this thing. See, when you say Docker images, Docker images, you cannot go and download just like you're downloading any PDF or something.
+
+[rochak agrawal] 08:41:30
+Docker images will be downloaded using only with this command. I'll say docker pull nginx.
+
+[rochak agrawal] 08:41:39
+So you see, downloading, download complete.
+
+[rochak agrawal] 08:41:42
+Now, if you run a Docker…
+
+[rochak agrawal] 08:41:46
+Images.
+
+[rochak agrawal] 08:41:48
+You can see Nginx image is there.
+
+[rochak agrawal] 08:41:52
+size is 243MB, content size is 68MB, something. So this is the ID, this is… you can say the name, okay? So it is not like that you will go… I cannot transfer it in a pen drive or something. It only works with Docker.
+
+[rochak agrawal] 08:42:09
+Okay, now…
+
+[rochak agrawal] 08:42:11
+If I go to NGINX image.
+
+[rochak agrawal] 08:42:15
+So you see…
+
+[rochak agrawal] 08:42:19
+What is the public IP of my server?
+
+[rochak agrawal] 08:42:24
+If you see, there is nothing…
+
+[rochak agrawal] 08:42:27
+running currently on port 80. Port 80 is the default port, you do not need to give the port if the port is 80. So what I'm going to do, I am going to run a container and then see if the container is accessible with this machine or not.
+
+[rochak agrawal] 08:42:42
+So…
+
+[rochak agrawal] 08:42:43
+I'm going to run a Nginx container. So I'll just take Nginx container.
+
+[rochak agrawal] 08:42:59
+So I'll take the command.
+
+[rochak agrawal] 08:43:11
+Again the purpose here not to show about Docker but just to get you an idea how you are going to run the containers in a DIY mode versus how when we are going to use the Azure container instances.
+
+[rochak agrawal] 08:43:27
+Okay, now I'll paste this Docker run.
+
+[rochak agrawal] 08:43:35
+You need to give the name of the container.
+
+[rochak agrawal] 08:43:40
+I'd say my…
+
+[rochak agrawal] 08:43:43
+Engine X.
+
+[rochak agrawal] 08:43:44
+Okay? And, uh…
+
+[rochak agrawal] 08:43:46
+Hyphen D is…
+
+[rochak agrawal] 08:43:48
+it is going to run the container in the background, so that you can… like, it is not occupying the terminal. So, for example, if I run it with this, your container is going to run fine, okay?
+
+[rochak agrawal] 08:44:02
+And the image name.
+
+[rochak agrawal] 08:44:05
+Hyphen P option, I'll come in, uh, in a bit.
+
+[rochak agrawal] 08:44:09
+So you see, when you run it without hyphen D, it is going to run in the foreground, and you will not be able to do anything at all, right? So that is where I'll do a Ctrl-C, and you…
+
+[rochak agrawal] 08:44:22
+Container is going to exit.
+
+[rochak agrawal] 08:44:25
+Now…
+
+[rochak agrawal] 08:44:27
+I'll do Dr Adam my.
+
+[rochak agrawal] 08:44:30
+Next.
+
+[rochak agrawal] 08:44:32
+Okay? Now, I'm going to run it with the hyphen D, so it is going to run in the background.
+
+[rochak agrawal] 08:44:39
+And hyphen P.
+
+[rochak agrawal] 08:44:42
+I'll explain hyphen B option in a bit.
+
+[rochak agrawal] 08:44:45
+And you see, my container is started. Now, if you run Docker PS.
+
+[rochak agrawal] 08:44:55
+There's a container ID, image, which… So, image is using…
+
+[rochak agrawal] 08:45:02
+Uh, created status, and this is something inside the image. And then the ports…
+
+[rochak agrawal] 08:45:09
+And the name of the container is my NGINX, okay? Now, if I…
+
+[rochak agrawal] 08:45:13
+Go reach the container.
+
+[rochak agrawal] 08:45:17
+You see?
+
+[rochak agrawal] 08:45:19
+My NGINX is running.
+
+[rochak agrawal] 08:45:21
+Now you understand this.
+
+[rochak agrawal] 08:45:24
+Have I installed NGINX on the virtual machine? No.
+
+[rochak agrawal] 08:45:27
+Then it is running inside the container. Okay. So and this is very, very important to understand.
+
+[rochak agrawal] 08:45:37
+So, if you understand it.
+
+[rochak agrawal] 08:45:41
+I have a virtual machine.
+
+[rochak agrawal] 08:45:47
+Which is having an IP.
+
+[rochak agrawal] 08:45:52
+Correct?
+
+[rochak agrawal] 08:45:53
+Then, inside the virtual machine, you are running.
+
+[rochak agrawal] 08:45:56
+the container.
+
+[rochak agrawal] 08:45:59
+Now, containers are isolated in nature.
+
+[rochak agrawal] 08:46:04
+Okay, the whole point of the container is the isolation. So containers are isolated in nature. Now, as a user.
+
+[rochak agrawal] 08:46:18
+You cannot reach to the container.
+
+[rochak agrawal] 08:46:22
+Okay? That is where, if you see, I am using the…
+
+[rochak agrawal] 08:46:29
+virtual machines help me to access my application inside the container.
+
+[rochak agrawal] 08:46:33
+What we are doing is, and what this hyphen P option does.
+
+[rochak agrawal] 08:46:40
+So…
+
+[rochak agrawal] 08:46:42
+It is established that you cannot reach to the container directly.
+
+[rochak agrawal] 08:46:48
+Okay.
+
+[rochak agrawal] 08:46:49
+Now, with the hyphen P.
+
+[rochak agrawal] 08:46:55
+I know my NGINX runs on port 80.
+
+[rochak agrawal] 08:47:01
+Okay.
+
+[rochak agrawal] 08:47:03
+Now…
+
+[rochak agrawal] 08:47:05
+I cannot reach to the container directly, so that is where, with the hyphen P.
+
+[rochak agrawal] 08:47:12
+We create a mapping.
+
+[rochak agrawal] 08:47:20
+between the container port 80 and the virtual machine port 80.
+
+[rochak agrawal] 08:47:24
+For example, now I create a mapping between the virtual machine port 80.
+
+[rochak agrawal] 08:47:37
+Virtual machines port 80, and containers port 80. Okay? So that any traffic coming to virtual machine port 80.
+
+[rochak agrawal] 08:47:47
+We'll go here.
+
+[rochak agrawal] 08:47:50
+Okay, that is what hyphen P does. Now, let's…
+
+[rochak agrawal] 08:47:56
+Do this.
+
+[rochak agrawal] 08:48:00
+Now let me…
+
+[rochak agrawal] 08:48:03
+Remove that first… my… first.
+
+[rochak agrawal] 08:48:14
+Okay, now if you run it with… so you see, it will be gone now.
+
+[rochak agrawal] 08:48:27
+So, see? It is not working.
+
+[rochak agrawal] 08:48:34
+It will go…
+
+[rochak agrawal] 08:48:36
+Connection refused, right? Now, instead of port 81.
+
+[rochak agrawal] 08:48:42
+Oh, sorry, 80. If you give, let's say, 80, 1.
+
+[rochak agrawal] 08:48:46
+Then, what's going to happen?
+
+[rochak agrawal] 08:48:50
+Lucy?
+
+[rochak agrawal] 08:48:52
+It's not working.
+
+[rochak agrawal] 08:48:54
+And if you give, uh…
+
+[rochak agrawal] 08:48:57
+Port 81.
+
+[rochak agrawal] 08:49:01
+It's a connection timeout because 81 is not opened by your Network Security Group rule, right? So, you see, um…
+
+[rochak agrawal] 08:49:09
+You understood the point, right? It is the mapping between the port. If you run it again on port 80.
+
+[rochak agrawal] 08:49:29
+One again.
+
+[rochak agrawal] 08:49:33
+You see it is working. So container as we said container does not have any operating system of their own. So for your networking, for your storage, for your process management, they depend on the.
+
+[rochak agrawal] 08:49:49
+machine on which they are running. While on the other hand, if you compare the virtual machine, virtual machine will have a full-fledged operating system of their own. So that is the reason, um, uh, and that is where, um.
+
+[rochak agrawal] 08:50:05
+Uh, they don't rely on the physical server for which they are running. They have a full-fledged operating system of their own. Now, that was a DIY way of doing the things, right?
+
+[rochak agrawal] 08:50:16
+When I'm saying the DIY, we are managing the Docker, we are managing the machine, uh, we are managing the installation and everything, and then we are managing, uh.
+
+[rochak agrawal] 08:50:29
+the containers also. You say, no, I don't want to… let's say if this virtual machine is not available, are your container is going to be available? No, because they are running on the virtual machine, correct? So that is where we have.
+
+[rochak agrawal] 08:50:42
+a service called the Azure Container Instances.
+
+[rochak agrawal] 08:50:51
+So you click on the container instances.
+
+[rochak agrawal] 08:50:55
+Click create.
+
+[rochak agrawal] 08:50:57
+Again, same thing.
+
+[rochak agrawal] 08:50:59
+I'll select Demo RG so that after the class, I'll delete the resource group, and all the resources which I created is going to be deleted.
+
+[rochak agrawal] 08:51:07
+Now, you need to give the container details, okay?
+
+[rochak agrawal] 08:51:14
+So, you give the container name, I'll say my NGINX.
+
+[rochak agrawal] 08:51:22
+Okay.
+
+[rochak agrawal] 08:51:23
+Availability zone, again, you can select the availability zone, I'll just go.
+
+[rochak agrawal] 08:51:29
+Then you have a standard SKU, standard container group, providing hypervisor-level isolation, recommended for the most workload. Then the confidential container group provides in-memory encryption and hardware-level isolation from other container groups. Now, it's a more, um…
+
+[rochak agrawal] 08:51:46
+post-re-service, see what is going to happen in a standard? They are going to run on a hardware which might be used by someone else also, which is a basic construct of the cloud altogether, right? And then, you just need to tell.
+
+[rochak agrawal] 08:52:01
+Uh, your image source, for example.
+
+[rochak agrawal] 08:52:03
+If you say other, uh…
+
+[rochak agrawal] 08:52:07
+I'll say public, and I am going to have…
+
+[rochak agrawal] 08:52:14
+I will get this image.
+
+[rochak agrawal] 08:52:29
+Okay? I will just give the image name here.
+
+[rochak agrawal] 08:52:35
+Okay.
+
+[rochak agrawal] 08:52:36
+Now you can see image type is public or private. Since we are using a public image, if it is a private image, for example, then if you select on the private image, then you need to give the registry login server the username and the password as well.
+
+[rochak agrawal] 08:52:52
+Since my image is public, so then I do not need to give all of that. Then you select the operating system like you selected in the, uh…
+
+[rochak agrawal] 08:53:01
+Linux or the Windows, and the sites with the container would be running. And you will just go networking, again, both of the options, the same option, public, private, and none. Public will create a public IP address for your container instance, so that you can access it.
+
+[rochak agrawal] 08:53:17
+Private will allow you to choose, uh, again, the Bnet integration, which you… we have seen in all the services, um, and none is your container will be completely isolated. Now, none… you may… you might ask when you want to use the none.
+
+[rochak agrawal] 08:53:33
+So, if you want to run a batch processes or the background processes where user does not need to access the application, you can run it with a NAND interface.
+
+[rochak agrawal] 08:53:45
+So this will not create either a public IP or a virtual network. You will still be able to access your container log using the command line. So I'll select public.
+
+[rochak agrawal] 08:53:54
+For now, and uh…
+
+[rochak agrawal] 08:53:56
+Next monitoring, again, uh…
+
+[rochak agrawal] 08:53:59
+I'll disable the insight, go to it. So, restart policy, on failure, always, never. So, if a container is going to fail, it is going to restart it.
+
+[rochak agrawal] 08:54:09
+Something that. And you can define your environment variable, okay? So if you say inside your container you are using some environment variable like Java home, your DB server, DB password, those I can define it here.
+
+[rochak agrawal] 08:54:25
+And tags.
+
+[rochak agrawal] 08:54:26
+And review and create
+
+[rochak agrawal] 08:54:49
+Okay. Now, one very important thing was the image.
+
+[rochak agrawal] 08:54:54
+I will come back to it as well, but let me create it first.
+
+[rochak agrawal] 08:56:15
+Okay, now I go to the resource.
+
+[rochak agrawal] 08:56:22
+So here you can see…
+
+[rochak agrawal] 08:56:26
+I can start, uh, restart, stop, delete the container.
+
+[rochak agrawal] 08:56:31
+Right? And, uh, this is a memory of it.
+
+[rochak agrawal] 08:56:37
+It has not given me… if I take the public IP.
+
+[rochak agrawal] 08:56:58
+You see? My NGINX is working. Great. Now you see the difference in the two approaches.
+
+[rochak agrawal] 08:57:05
+In the first approach, we have to manage everything on our own.
+
+[rochak agrawal] 08:57:11
+I need to manage the virtual machine where container is running, I need to install the docker, I need to download the images and everything.
+
+[rochak agrawal] 08:57:19
+Right? In the second image, I will just go, I have just gone, and, um, I told Azure that.
+
+[rochak agrawal] 08:57:28
+This is my image and you need to run this. That's it.
+
+[rochak agrawal] 08:57:32
+Right? And it is running that, uh, image for me. So, this is, uh, the Azure container instances. Now, you can see there are other options also, so I can stop the container here.
+
+[rochak agrawal] 08:57:45
+And if you try to access it now, it is…
+
+[rochak agrawal] 08:57:52
+It is gone now, right?
+
+[rochak agrawal] 08:58:11
+Right.
+
+[rochak agrawal] 08:58:12
+And I can start. Now you can see restart and stop, but stop button is disabled because container is already in a stopped state. I can start it again.
+
+[rochak agrawal] 08:58:57
+Okay, if you go it again…
+
+[rochak agrawal] 08:59:02
+take some time.
+
+[rochak agrawal] 08:59:20
+Started.
+
+[rochak agrawal] 08:59:22
+Okay, uh, the IP has been changed.
+
+[rochak agrawal] 08:59:35
+And if you access this IP again.
+
+[rochak agrawal] 08:59:53
+See?
+
+[rochak agrawal] 08:59:55
+Now, this one important thing is, if you go to Settings, so, you have, uh, noticed that, uh, when you are, uh.
+
+[rochak agrawal] 09:00:07
+Restarting your container instances, your IP is going to change and that is where FQDN come very handy. So we have not given any DNS address.
+
+[rochak agrawal] 09:00:18
+While creating your containers, we can give this FQDN also. So even if your IPs keep changing, it is going to work with the…
+
+[rochak agrawal] 09:00:29
+FQDN, which is fully qualified domain name, okay? Now, if you go to monitoring, you will get all your metrics, alerts, and logs. So, you can see, although we will not get it, uh, anything right now. So, you see.
+
+[rochak agrawal] 09:00:42
+When I'm using the DIY, this everything I need to do on my own, correct? But here, monitoring, alerts, logging, everything is coming by default for me. So what's better than this?
+
+[rochak agrawal] 09:00:58
+Right? And then if you go to containers.
+
+[rochak agrawal] 09:01:01
+So you can see this is my NGINX. NGINX, this is a status start time. And if you go here.
+
+[rochak agrawal] 09:01:11
+Started events, if you see complete events.
+
+[rochak agrawal] 09:01:15
+Right? So it says pulling the image, pulled the image, successfully pulled the image, started the container. All the images you are, events you're going to see.
+
+[rochak agrawal] 09:01:25
+And then your properties.
+
+[rochak agrawal] 09:01:28
+Name, image, everything which we did it.
+
+[rochak agrawal] 09:01:32
+And
+
+[rochak agrawal] 09:01:34
+Here is the logs.
+
+[rochak agrawal] 09:01:37
+Okay, so what is happening inside the container? You will get all the logs here. So as you will, uh, access this, so you can see, this is the, what, time? 3.30. Okay, now if you say…
+
+[rochak agrawal] 09:01:53
+If you access it multiple times.
+
+[rochak agrawal] 09:02:04
+So, it will get updated.
+
+[rochak agrawal] 09:02:09
+Okay, in some time, it will come here in the logs. So we'll get the logs, complete logs. So, uh, till this here, um…
+
+[rochak agrawal] 09:02:20
+this is the started, and then you are started using this, so you can see status is 200. So the point is, like, all the things, you can see it from logs, you can see it here, and then if you want to connect to the container, so you can connect also.
+
+[rochak agrawal] 09:02:37
+with the container. I can go inside the container, and then probably, let's say.
+
+[rochak agrawal] 09:02:43
+run some command ps hyphen ef.
+
+[rochak agrawal] 09:02:47
+Grab Engine X.
+
+[rochak agrawal] 09:02:49
+So see, PS is not formed, less hyphen LRT. I can run some commands, basically. This is inside the container, right? So…
+
+[rochak agrawal] 09:02:58
+This… all things we can do, that's, uh, one thing. Second, there is another service, uh, I'll show you that as well. Okay, so if you see it here…
+
+[rochak agrawal] 09:03:13
+When you go create a container instance.
+
+[rochak agrawal] 09:03:17
+There was an option of image source, okay?
+
+[rochak agrawal] 09:03:21
+Image source, there is a quick start images. So, these are, if you see, these are the, uh, images which, uh, Microsoft is using it. So, if you go my MCR…
+
+[rochak agrawal] 09:03:33
+Doctor Rabu.
+
+[rochak agrawal] 09:03:39
+So you can see it's a Microsoft art artifact registry.
+
+[rochak agrawal] 09:03:46
+Okay.
+
+[rochak agrawal] 09:03:47
+These images are, like, the sample images, or the…
+
+[rochak agrawal] 09:03:50
+You can use them just… these are just an example.
+
+[rochak agrawal] 09:03:54
+Then in the other registry we have seen, either you can give the URL of the public image or the private image, right?
+
+[rochak agrawal] 09:04:02
+We have used the public image, but if you want to give the private image as well, then you need to give from where you are pulling, and then you need to give the username and the password alongside with the… your, um…
+
+[rochak agrawal] 09:04:16
+Registry. Uh, okay. Now, there is third option is the Azure Container Registry. Okay. If you click on the Azure Container Registry, it will ask in which Azure Container Registry your image is available.
+
+[rochak agrawal] 09:04:31
+Okay. Now, Azure Container Registry is also one of the service, so if you go here and search for Azure Container Registry.
+
+[rochak agrawal] 09:04:58
+Wait, it's not coming here.
+
+[rochak agrawal] 09:05:13
+So, if you go to containers…
+
+[rochak agrawal] 09:05:18
+container registries.
+
+[rochak agrawal] 09:05:21
+Okay? So you can create your own registry. Now, you understand this.
+
+[rochak agrawal] 09:05:26
+This Docker Hub, which you are seeing, it's a public registry, so you will keep hearing the terms registry or repository.
+
+[rochak agrawal] 09:05:37
+You can use them interchangeably, so someone is saying, um, uh, Docker repository or Docker registry, these are the same thing, okay? Artifact registry, artifact repository, it's the same thing, right? So when you see dockerhub.com.
+
+[rochak agrawal] 09:05:54
+is the public repository slash registry, where anyone can publish the images, although when you create the image, I can create a private image also, but the platform itself is a public.
+
+[rochak agrawal] 09:06:08
+Right? So I can create either the public images, like we used Nginx as a public image, then there are certain images which are private in nature, but the platform itself is a public platform, right?
+
+[rochak agrawal] 09:06:20
+But when you are dealing with your sensitive information, because your image will have everything.
+
+[rochak agrawal] 09:06:28
+Azure container data and, um, application data and application configuration.
+
+[rochak agrawal] 09:06:36
+You are not going to, uh… what you can say is…
+
+[rochak agrawal] 09:06:42
+you would probably don't want to store it on a public platform. And that is where there are multiple options of the private image registry, okay?
+
+[rochak agrawal] 09:06:53
+when I'm saying the private image registry, where you will set up the registry, and then you are going to store your images, instead of Docker Hub, into that particular registry.
+
+[rochak agrawal] 09:07:05
+And in Azure, every platform is giving you this option. In AWS, we call it as the ECR. In GCP also, we call it as a container registry only, artifact registry. Where in AWS, in Azure, we call it as the Azure Container Registry, or the ACR.
+
+[rochak agrawal] 09:07:22
+So, Azure Container Registry is a fully managed private Docker registry slash repository service from Azure, which is used to build, store, and manage the container images.
+
+[rochak agrawal] 09:07:38
+Now, why do we need it? It's a private storage. It keeps Docker images, Helm charts. Now, Helm is another thing, Helm charts, and then other artifacts.
+
+[rochak agrawal] 09:07:49
+ACR. Now with this ACR task, we can automate image building, testing, patching.
+
+[rochak agrawal] 09:07:55
+Geo replication, we can distribute registry content across multiple regions for high availability, and then you are going to get the security and access control. We can authenticate using Microsoft Active Directory, managed identity, and multiple other things, right?
+
+[rochak agrawal] 09:08:12
+Now…
+
+[rochak agrawal] 09:08:13
+I'll create a registry.
+
+[rochak agrawal] 09:08:17
+Again, resource group and subscription. Enter the name. It's in demo.
+
+[rochak agrawal] 09:08:39
+Okay.
+
+[rochak agrawal] 09:08:42
+Okay, it should be…
+
+[rochak agrawal] 09:08:45
+Unique in nature, so…
+
+[rochak agrawal] 09:08:51
+Okay.
+
+[rochak agrawal] 09:08:53
+Now.
+
+[rochak agrawal] 09:08:54
+Again, the location you need to give, so…
+
+[rochak agrawal] 09:08:58
+location, I'll keep it as a default, what we are keep using. Domain name level scope.
+
+[rochak agrawal] 09:09:04
+So the scope defines a registry to prevent takeover attacks. The registry domain name can include an optional DNL component, which is a unique hash. So for example, then right now my registry name is demosrocheck.azurecr.io.
+
+[rochak agrawal] 09:09:21
+But if you, let's say, uh, use subscription reuse, then demos row check, like, you can see the registry domain name will be something like this. But if you are not using it.
+
+[rochak agrawal] 09:09:35
+Then, it will be…
+
+[rochak agrawal] 09:09:36
+demosrocheck.azurecr.io, right? We can use the availability zones.
+
+[rochak agrawal] 09:09:43
+Now, the pricing plan. So you can see there is basic, standard, and the premium. And if you see the pricing plan, each pricing plan.
+
+[rochak agrawal] 09:09:54
+provide different capabilities. Uh, now, basic plan, uh…
+
+[rochak agrawal] 09:10:00
+cost-optimized entry point for the learning and small-scale development. Standard offers increased workload, increased storage and throughput, while the Premium unlocks the highest storage, geo-replication, private endpoint, and customer-managed keys. So, I'll show you the options with the Premium.
+
+[rochak agrawal] 09:10:18
+But then I'll go create the basic one.
+
+[rochak agrawal] 09:10:21
+Okay, now if you go to networking, so in the networking, it says public access anywhere. Again, you can access your image from anywhere. Then the private access, then you need to create a private endpoint connection.
+
+[rochak agrawal] 09:10:37
+Go in the private endpoint connection as of now.
+
+[rochak agrawal] 09:10:40
+Then, no.
+
+[rochak agrawal] 09:10:43
+I'll just say public access. And this is a global endpoint. Regional endpoint also you can create, for example, it says West US 3.
+
+[rochak agrawal] 09:10:52
+And dedicated data endpoint you can create, but…
+
+[rochak agrawal] 09:10:57
+The dedicated data point, uh…
+
+[rochak agrawal] 09:11:00
+So that it will be more faster in the read and write operations endpoint protocol IPv4.
+
+[rochak agrawal] 09:11:09
+Then in the encryption, you can see, uh, I… see, by default, whatever you are storing in the Azure Container Registry, it is going to be there in the… with the Azure Managed Key, if you are disabling it. But if you enable this, so then you can provide your own key.
+
+[rochak agrawal] 09:11:25
+to encrypt the images using your own key. So, I'll disable it. Now, again, I'll go to…
+
+[rochak agrawal] 09:11:32
+And check it to the basic.
+
+[rochak agrawal] 09:11:35
+Now, if you see the basics, these options are not there, right?
+
+[rochak agrawal] 09:11:40
+Public access, private access. This is a private access is only available for the premium pricing plans.
+
+[rochak agrawal] 09:11:47
+And then if you go to encryption, so this is also not enabled for you. So customer managed key is only available for the premium SKU. Next tag, debian create, and I am going to create this.
+
+[rochak agrawal] 09:12:21
+So Shah is asking, we are just restarting the container, so why the instance IP is getting changed? If we restart the instance, then understood IP change. Does restarting count means restarting the instance? See, I'll just go to…
+
+[rochak agrawal] 09:12:37
+the containers.
+
+[rochak agrawal] 09:12:49
+Okay, so if you go here…
+
+[rochak agrawal] 09:12:54
+If you're restarting, see, there is no virtual machine here, Shah. You are restarting the instance on which the container is running effectively, and that is why the IP is changing.
+
+[rochak agrawal] 09:13:07
+Okay.
+
+[rochak agrawal] 09:13:10
+So now my container registry is created.
+
+[rochak agrawal] 09:13:13
+Now I go to resource.
+
+[rochak agrawal] 09:13:18
+And here you are going to see location, login server, creation date, basic plan, other things. And you can see in the settings the access key, encryption, networking.
+
+[rochak agrawal] 09:13:33
+All those things, right?
+
+[rochak agrawal] 09:13:36
+And then…
+
+[rochak agrawal] 09:13:38
+Services, so you can see the geo-replication.
+
+[rochak agrawal] 09:13:42
+Again, upgrade to premium plan to enable that application. Uh, repositories…
+
+[rochak agrawal] 09:13:51
+So, currently, I do not have any. And then, connected registries, if you have any.
+
+[rochak agrawal] 09:13:59
+Upgraded again, again, upgraded to premium.
+
+[rochak agrawal] 09:14:03
+So, here I go, and if you see…
+
+[rochak agrawal] 09:14:11
+So we say push a container image. Okay, so I'll want to push a container image.
+
+[rochak agrawal] 09:14:16
+So you…
+
+[rochak agrawal] 09:14:24
+So I'll go to my virtual machine again.
+
+[rochak agrawal] 09:14:39
+Okay? So I'll pull this image, Docker, pull Nginx here.
+
+[rochak agrawal] 09:15:26
+EJ, come on.
+
+[rochak agrawal] 09:15:32
+store.
+
+[rochak agrawal] 09:15:35
+Let's see that I…
+
+[rochak agrawal] 09:15:55
+Write this.
+
+[rochak agrawal] 09:16:40
+Okay, now it must be there. So what is the command we need to run?
+
+[rochak agrawal] 09:16:47
+So it says, AJ login.
+
+[rochak agrawal] 09:17:32
+room
+
+[rochak agrawal] 09:17:36
+Okay, it should be.
+
+[rochak agrawal] 09:17:43
+Okay.
+
+[rochak agrawal] 09:17:45
+One.
+
+[rochak agrawal] 09:17:47
+Right. Now I will run these commands. AJACR login.
+
+[rochak agrawal] 09:18:03
+Says login succeeded.
+
+[rochak agrawal] 09:18:04
+And then, I am going to…
+
+[rochak agrawal] 09:18:11
+let's say I have these images, Docker images.
+
+[rochak agrawal] 09:18:16
+Right, NGINX latest is there, so I am going to…
+
+[rochak agrawal] 09:18:20
+Docker tag.
+
+[rochak agrawal] 09:18:33
+So I'm going to use this…
+
+[rochak agrawal] 09:18:40
+My image name, NGINX.
+
+[rochak agrawal] 09:18:43
+latest.
+
+[rochak agrawal] 09:18:45
+And then…
+
+[rochak agrawal] 09:18:49
+Okay? And, uh…
+
+[rochak agrawal] 09:18:52
+Finally, I am going to push.
+
+[rochak agrawal] 09:18:56
+So every command is written there, we don't need to do much.
+
+[rochak agrawal] 09:18:59
+And… push.
+
+[rochak agrawal] 09:19:03
+Okay, now when the image is pushed, you will see here, close.
+
+[rochak agrawal] 09:19:17
+So you see, samples hello world is there. And now inside this, if you see, there is a latest image has been created. Now, when I… when you will go create your container.
+
+[rochak agrawal] 09:19:46
+Same thing. Now, in the image source, I'm going to use the Azure Container Registry at this time.
+
+[rochak agrawal] 09:19:52
+Okay, and…
+
+[rochak agrawal] 09:19:56
+You see? Oh.
+
+[rochak agrawal] 09:19:57
+And…
+
+[rochak agrawal] 09:20:02
+Access the image, okay, uh, admin user, what we need to do…
+
+[rochak agrawal] 09:20:07
+Each container has three, which is disabled by default.
+
+[rochak agrawal] 09:20:13
+How to do this?
+
+[rochak agrawal] 09:20:32
+Do we have an admin user
+
+[rochak agrawal] 09:20:39
+All right, so.
+
+[rochak agrawal] 09:20:43
+Okay.
+
+[rochak agrawal] 09:20:45
+Yep.
+
+[rochak agrawal] 09:20:46
+Now, if you refresh this…
+
+[rochak agrawal] 09:21:00
+Azure Container Registry. Now you can see.
+
+[rochak agrawal] 09:21:03
+I have only one container sheet, so that's why there is no, um…
+
+[rochak agrawal] 09:21:09
+Drop down is coming.
+
+[rochak agrawal] 09:21:11
+Right? But, uh, you can see demos, roadshark, and image is simple, hello world. Image tag is latest, because we have only one, um, images available, right? And you go networking, monitoring, everything, same.
+
+[rochak agrawal] 09:21:27
+Review create.
+
+[rochak agrawal] 09:21:34
+And create.
+
+[rochak agrawal] 09:22:20
+Okay? Now, if you go to your…
+
+[rochak agrawal] 09:22:24
+Containers, again, uh, you'll take the IP.
+
+[rochak agrawal] 09:22:36
+Okay? It is working. Now, if you see here, uh…
+
+[rochak agrawal] 09:22:41
+In your, logs
+
+[rochak agrawal] 09:22:44
+or containers.
+
+[rochak agrawal] 09:22:46
+And event.
+
+[rochak agrawal] 09:22:50
+Now, it is… if you see the notice, if you notice the difference.
+
+[rochak agrawal] 09:22:59
+Maya and Yannicks.
+
+[rochak agrawal] 09:23:09
+And containers.
+
+[rochak agrawal] 09:23:13
+And you notice here…
+
+[rochak agrawal] 09:23:19
+Here, it is pulling the image NGINX, right?
+
+[rochak agrawal] 09:23:23
+But here, if you see…
+
+[rochak agrawal] 09:23:33
+pulling image demos roadcheck.azureacr.io slash sample slash hello world, correct? But here it is pulling the image. So, now you can see.
+
+[rochak agrawal] 09:23:45
+You have…
+
+[rochak agrawal] 09:23:48
+multiple ways in which you can run your container, right? One is with DIY, where I am going to manage the virtual machine where my container is running. Secondly, I can do it as a managed service over the Azure container instances.
+
+[rochak agrawal] 09:24:06
+Where I will just need to get my image, right? Then where it is running, I do not have a visibility about it, and that is what I want. That's why I'm coming to this, right? Secondly, when you're creating the Azure container instances, you.
+
+[rochak agrawal] 09:24:21
+can give your public image URL, like, for the Docker Hub or your images somewhere else. Um…
+
+[rochak agrawal] 09:24:29
+In that case, so I'll just explain it while creating it.
+
+[rochak agrawal] 09:24:42
+So you see here, uh, when you create an image source in the other registry, there is two options you have, either a public registry or the private registry. You can set up your own registry also.
+
+[rochak agrawal] 09:24:56
+Uh, in that case, if you're setting up your own registry, you need to give, uh, like, your server your username and the password, correct?
+
+[rochak agrawal] 09:25:07
+If it is a public, like, we used the public image, so then you just need to give the public URL, and that is about, uh, it. Correct? So, this is about the public one. Then, you can use your Azure Container Registries. Now, the benefit of Azure Container Registry is the integration, uh, with the…
+
+[rochak agrawal] 09:25:26
+Are your, uh…
+
+[rochak agrawal] 09:25:27
+containers instances is seamless, and then, uh, on top of it, when you use the Azure Container Registries altogether.
+
+[rochak agrawal] 09:25:35
+And if you're using the premium plan.
+
+[rochak agrawal] 09:25:43
+Right, so you will have the, uh, what you can say is, uh, Jira applications.
+
+[rochak agrawal] 09:25:51
+So that you can, um, do a disaster recovery of your images as well. Right? And then, uh, there are webhooks available.
+
+[rochak agrawal] 09:26:04
+Where I can do a buy book?
+
+[rochak agrawal] 09:26:06
+So you can see, and then, um…
+
+[rochak agrawal] 09:26:09
+so what… what is the webhook is doing? So it is going to push this image to somewhere, delete this image, and the different, different actions are there. We can create the webhooks, uh, for my, uh, images.
+
+[rochak agrawal] 09:26:23
+then you can have multiple repositories in your registry. So I have one as of now, right? And then, uh…
+
+[rochak agrawal] 09:26:32
+There was one option, so here you can see, you can enable the Microsoft Defender for the cloud also for your containers.
+
+[rochak agrawal] 09:26:39
+What this will do, it will keep scanning your… so you can see, try it free for the first 30 days. It will keep enhance… uh, keep scanning your Docker images.
+
+[rochak agrawal] 09:26:51
+And it will give you the security recommendations also.
+
+[rochak agrawal] 09:26:55
+Okay, so you do not need to pay, uh, of course, like, if you're enhancing the plan. So, you do not need to have any other security assessment, security vulnerability tool altogether. If you're using Azure Container Registry, you can integrate your Microsoft Defender altogether.
+
+[rochak agrawal] 09:27:11
+Right? And then you can have a private integration for your Azure Container Registry. Currently, it is public access, but I can make it completely private altogether.
+
+[rochak agrawal] 09:27:23
+So these are some of the benefit about.
+
+[rochak agrawal] 09:27:27
+Then about the encryption also, you can encrypt…
+
+[rochak agrawal] 09:27:31
+all your images using the customer-managed keys as well. So now, there is two type of key, customer-managed key or the Azure-managed key. By default, any data you are storing in Azure.
+
+[rochak agrawal] 09:27:45
+It is going to be encrypted using the…
+
+[rochak agrawal] 09:27:51
+Azure managed keys, but if you say no, I don't want to do it with the Azure managed keys, then you can create your own keys. So there is a service in AWS, we call it as a key management service. In Azure we call it as a.
+
+[rochak agrawal] 09:28:06
+Key Vault. So, you can go to Key Vault, create your own keys, and you can encrypt all your images. And it is not only about the images. Any storage service.
+
+[rochak agrawal] 09:28:17
+Uh, and we'll see the storage services, like storage account, uh, files, and others, where we are going to…
+
+[rochak agrawal] 09:28:27
+we can encrypt the data using the customer-managed keys. And then, secondly, in the key vault, you can bring your own keys as well. So, you… let's say you have a hardware security module, uh, at your, um, on-premises, um.
+
+[rochak agrawal] 09:28:42
+system where you're generating the keys. So then you can generate those keys and come back, uh, to your, uh, import those keys in the keyword and encrypt your data with those. So these are some of the benefit of using the, um.
+
+[rochak agrawal] 09:28:59
+Azure Container Registry. You can use any other registry as well, but there are certain tangible benefits of using this.
+
+[rochak agrawal] 09:29:09
+As well.
+
+[rochak agrawal] 09:29:11
+So, this is it for today. Tomorrow I'll check on that function, might be, I have selected some wrong configuration or something. So
+
