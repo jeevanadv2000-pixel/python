@@ -1,0 +1,2772 @@
+[rochak agrawal] 07:40:32
+Good morning, everyone.
+
+[rochak agrawal] 07:40:35
+Let's just start.
+
+[rochak agrawal] 07:40:43
+Okay.
+
+[rochak agrawal] 07:40:55
+So now, today, we are going to discuss about the volumes. We have discussed, we have seen the volume in Docker as well. So, see, what is going to happen is, when you want to store some data, either in container or in.
+
+[rochak agrawal] 07:41:11
+With Kubernetes, your data is going to be transient. Like for example, when a container stops or container discarded, similarly the pod stopped and pod discarded, so then your data is going.
+
+[rochak agrawal] 07:41:26
+not to be persisted. So, if you want to persist your data, for example, your application, which is running in Kubernetes, are writing some logs.
+
+[rochak agrawal] 07:41:35
+And you want those logs to be persisted, right? So that is where you need something called the volumes.
+
+[rochak agrawal] 07:41:43
+And there is a different types of volumes are there in…
+
+[rochak agrawal] 07:41:47
+Kubernetes. But why container data disappears? Because restarts by bit. So like we have seen in a container and inside a container, inside a pod, we are basically running a container.
+
+[rochak agrawal] 07:41:59
+So the top layer is a writable layer, and this layer will disappear when you're restarting your container.
+
+[rochak agrawal] 07:42:06
+Right? So.
+
+[rochak agrawal] 07:42:09
+And when you are restarting your container.
+
+[rochak agrawal] 07:42:14
+then pods are replaced, not repaired. So you are not getting the same pod again, right? And so that is why your data is not going to be persistent. Now, to persist your data into Kubernetes, there are.
+
+[rochak agrawal] 07:42:27
+Many options are there. We will consider everything in a volume only, but there are many, right? So…
+
+[rochak agrawal] 07:42:36
+Kind of volume, if you talk about, there are multiple type of…
+
+[rochak agrawal] 07:42:41
+Things are there, multiple kind of concepts are there.
+
+[rochak agrawal] 07:42:45
+By which we can, um…
+
+[rochak agrawal] 07:42:49
+Persist our data into…
+
+[rochak agrawal] 07:42:51
+Kubernetes, okay. One is empty DIR. Now, empty DIR is also kind of a temporary storage.
+
+[rochak agrawal] 07:43:01
+But when you are running, say, for example, multi-container.
+
+[rochak agrawal] 07:43:04
+In a board.
+
+[rochak agrawal] 07:43:11
+So, uh, empty DIR is used, and we will see, discuss this in detail.
+
+[rochak agrawal] 07:43:15
+So, for example, there is one container running, and then another sidecar container is running.
+
+[rochak agrawal] 07:43:22
+Okay, now this container is generating some data and this is second container want to access this data. So that is where we are going to add a empty DIR volume.
+
+[rochak agrawal] 07:43:37
+Okay?
+
+[rochak agrawal] 07:43:41
+Then, we have the host path. So, host path, as the name is suggesting, um, a directory from a node on which the pod is running, node's own file system tied to that, uh.
+
+[rochak agrawal] 07:43:54
+pod, right? Now, host path is not particularly very useful because, uh…
+
+[rochak agrawal] 07:43:59
+The problem with the host part is, for example, let's say I am running multiple nodes.
+
+[rochak agrawal] 07:44:08
+When you use the host path, let's say this nodes…
+
+[rochak agrawal] 07:44:12
+Host.
+
+[rochak agrawal] 07:44:14
+Some path, let's say some temp directory.
+
+[rochak agrawal] 07:44:18
+Is mounted to a pod.
+
+[rochak agrawal] 07:44:20
+Correct. Now, the problem with this is, when the pod gets restarted, it might come here, and it might come here, right? But your data is stored in the stem directory, right? So that's a problem. So Hostpa, generally, we do not use it in a production environment, but when you are using.
+
+[rochak agrawal] 07:44:38
+some POC or development, then you can use it.
+
+[rochak agrawal] 07:44:44
+Then we have config map and the secrets, so we have seen the config map and secrets as well, right? Where, what you are going to do, uh…
+
+[rochak agrawal] 07:44:53
+So you can.
+
+[rochak agrawal] 07:44:55
+store your data like it's a configuration data. So config map and secret is also one type of the storage only. Then the main thing is this project volume persistent volume claim. So we'll see in this detail there is three concepts are there.
+
+[rochak agrawal] 07:45:20
+persistent volume.
+
+[rochak agrawal] 07:45:22
+Persistent volume claim.
+
+[rochak agrawal] 07:45:32
+And storage classes.
+
+[rochak agrawal] 07:45:32
+So, these are the different types of the Kubernetes volume.
+
+[rochak agrawal] 07:45:37
+which you can use to store your data across the Kubernetes. Now, we are going to first start with the MPDIR.
+
+[rochak agrawal] 07:45:46
+Okay, uh, then we will go to other as well.
+
+[rochak agrawal] 07:45:51
+So, in the empty DIY.
+
+[rochak agrawal] 07:45:56
+Empty DIR volume is created fresh when a pod is assigned to a node. Now, one thing we need to understand with respect to empty DIR is…
+
+[rochak agrawal] 07:46:10
+It exists for the entire lifetime of that pod.
+
+[rochak agrawal] 07:46:14
+and it is deleted when the pod is deleted, okay? So, again, uh, MTDIR is not, um, uh, what you can say is, uh.
+
+[rochak agrawal] 07:46:26
+Um, it is not for, um…
+
+[rochak agrawal] 07:46:31
+persistent storage. It is, like, um, more of the sharing of the data, uh, between the multiple containers, if you are having.
+
+[rochak agrawal] 07:46:40
+The key distinction is the empty DIR is pod scoped. Pod scoped, not the container scoped. So if a container inside the pod crashes and restart.
+
+[rochak agrawal] 07:46:50
+Empty DIR volume and all its data will still be there.
+
+[rochak agrawal] 07:46:54
+The data is only lost when the entire pod is deleted. This makes an empty DIR useful for the data that need to survive container restart, but does not need, uh…
+
+[rochak agrawal] 07:47:07
+to outlive the pod lifecycle. By default, MTDIR uses the node's disk, and we can optionally back it with the node name for the faster access. Now, what is a common use case for MTDIR?
+
+[rochak agrawal] 07:47:25
+Shared space between containers in the same code. That's the main one.
+
+[rochak agrawal] 07:47:38
+in Zimbabwe.
+
+[rochak agrawal] 07:47:42
+So, main application file writes file to an empty DIR in a sidecar container, reads from the same directory, right? And this is a common pattern for log shipping, the application write logs, and…
+
+[rochak agrawal] 07:47:54
+Something like that, right? So then, MTDIR is used. Then, for example, caching…
+
+[rochak agrawal] 07:48:02
+Downloaded assets.
+
+[rochak agrawal] 07:48:07
+Pod that processes files that can download them into MPDIL.
+
+[rochak agrawal] 07:48:12
+In an init container, and then process them into the main container, something like that, right?
+
+[rochak agrawal] 07:48:19
+Then, temporary file processing.
+
+[rochak agrawal] 07:48:29
+And there can be multiple use cases, something like that, right? So this is about the MTDI.
+
+[rochak agrawal] 07:48:35
+Okay, now…
+
+[rochak agrawal] 07:48:41
+Let's see a demo about the NTDIR. So I'll just create, I'll take a basic pod definition file.
+
+[rochak agrawal] 07:49:13
+So, very simple.
+
+[rochak agrawal] 07:49:19
+So you can see API version.
+
+[rochak agrawal] 07:49:22
+For containers, I'll just use the busy box image.
+
+[rochak agrawal] 07:49:30
+image is also…
+
+[rochak agrawal] 07:49:34
+Busy box.
+
+[rochak agrawal] 07:49:42
+command I will use.
+
+[rochak agrawal] 07:50:01
+While… through?
+
+[rochak agrawal] 07:50:16
+This is running a loop for an hour.
+
+[rochak agrawal] 07:50:19
+No.
+
+[rochak agrawal] 07:50:21
+Okay? Volume mode is, uh…
+
+[rochak agrawal] 07:50:25
+Namedo.
+
+[rochak agrawal] 07:50:26
+You can name it anything, basically.
+
+[rochak agrawal] 07:50:30
+let's say…
+
+[rochak agrawal] 07:50:31
+Yeah, more volume.
+
+[rochak agrawal] 07:50:35
+I am saying slash.
+
+[rochak agrawal] 07:50:40
+And…
+
+[rochak agrawal] 07:50:42
+Same name we need to use here.
+
+[rochak agrawal] 07:50:50
+So here you see, I am using an empty DIY type of the volume. Now, whatever is being written in this volume.
+
+[rochak agrawal] 07:51:01
+What you can say is in this container, this will be mounted to the demo. And as long as your pod is running, data in the MPDIR is going to be persisted. Now let's create a pod for this.
+
+[rochak agrawal] 07:51:31
+Okay? Simple.
+
+[rochak agrawal] 07:51:35
+Okay.
+
+[rochak agrawal] 07:51:38
+I'll just go QTTL…
+
+[rochak agrawal] 07:51:40
+like…
+
+[rochak agrawal] 07:51:42
+Hyphen app, or dot yaml.
+
+[rochak agrawal] 07:51:57
+It should be command.
+
+[rochak agrawal] 07:52:07
+The command is basically what is my pod, basically a container is going to run. So I'm running a while loop for 36 second.
+
+[rochak agrawal] 07:52:19
+Okay? Now, let me connect.
+
+[rochak agrawal] 07:52:23
+Okay, perfect. Now, if you say kubectl get ports…
+
+[rochak agrawal] 07:52:30
+Basic DDIR board.
+
+[rochak agrawal] 07:52:33
+Right. It is running. Now I will go inside this pod.
+
+[rochak agrawal] 07:52:38
+How to go inside the pod with the help of kubectl exit command.
+
+[rochak agrawal] 07:52:44
+and hyphen IT, you want to run something into, uh, in an interactive mode.
+
+[rochak agrawal] 07:52:50
+And I'll go basic.
+
+[rochak agrawal] 07:52:54
+M… E…
+
+[rochak agrawal] 07:52:58
+D-I-M board.
+
+[rochak agrawal] 07:53:04
+So you can see now I am inside the container.
+
+[rochak agrawal] 07:53:07
+Eric?
+
+[rochak agrawal] 07:53:08
+If you go inside the file.
+
+[rochak agrawal] 07:53:12
+which we created. Now, you can see I can create some file here.
+
+[rochak agrawal] 07:53:29
+Now, I'll use it.
+
+[rochak agrawal] 07:53:32
+Now, if you see…
+
+[rochak agrawal] 07:53:40
+Now, you again go and do a LS.
+
+[rochak agrawal] 07:53:49
+Or I'll run the command from the… from here.
+
+[rochak agrawal] 07:53:55
+TLS, uh, demo?
+
+[rochak agrawal] 07:53:58
+We should see that file.
+
+[rochak agrawal] 07:54:01
+Hey, it means my data is going to be persisted, correct? So MTD, now if I delete this board.
+
+[rochak agrawal] 07:54:11
+Yup, CPN?
+
+[rochak agrawal] 07:54:12
+Delete.
+
+[rochak agrawal] 07:54:15
+On.
+
+[rochak agrawal] 07:54:20
+Copy.
+
+[rochak agrawal] 07:54:22
+Peace.
+
+[rochak agrawal] 07:54:24
+Okay, now if you recreate the, uh…
+
+[rochak agrawal] 07:54:47
+Okay? Now, if you… if I recreate the pod, and you see the content…
+
+[rochak agrawal] 07:54:52
+You see what's going to happen.
+
+[rochak agrawal] 07:54:56
+Same port, I've not changed anything, but if you see the content now…
+
+[rochak agrawal] 07:55:03
+You see? Nothing. So the MPDIR is gone.
+
+[rochak agrawal] 07:55:10
+I'll delete this again.
+
+[rochak agrawal] 07:55:12
+So that is one use case where I want to store something. Uh, I can use the empty DIR. Second is what is… what we are, uh, saying, right? Um…
+
+[rochak agrawal] 07:55:26
+So, what is going to happen? We are going to use this, um…
+
+[rochak agrawal] 07:55:39
+empty DIR for the shared storage, right? So, I'll create two containers, and I'll share the storage between them, okay? So, pod name is…
+
+[rochak agrawal] 07:55:51
+I'll change the name. Shared.
+
+[rochak agrawal] 07:55:54
+Or something. Uh, one container is… I'll name it as a writer.
+
+[rochak agrawal] 07:56:08
+Okay? Another container I'm going to create, let's say, as a leader.
+
+[rochak agrawal] 07:56:16
+And then, I am going to use some command, while true, do.
+
+[rochak agrawal] 07:56:45
+Okay.
+
+[rochak agrawal] 07:56:49
+So what I'm doing is, uh, I'm using this, uh…
+
+[rochak agrawal] 07:56:56
+Script and I'm saying write something into log.txt.
+
+[rochak agrawal] 07:57:00
+Let's see shared.
+
+[rochak agrawal] 07:57:02
+Perfect.
+
+[rochak agrawal] 07:57:04
+You can name, let's say, for this specification, shared data.
+
+[rochak agrawal] 07:57:09
+Okay, now same thing I am going to use in another container.
+
+[rochak agrawal] 07:57:18
+And volume name should also be the same.
+
+[rochak agrawal] 07:57:24
+Shared.
+
+[rochak agrawal] 07:57:25
+And here, what I'm going to do…
+
+[rochak agrawal] 07:57:31
+Instead of writing.
+
+[rochak agrawal] 07:57:41
+I'll just need the content of the file.
+
+[rochak agrawal] 07:57:44
+Okay.
+
+[rochak agrawal] 07:57:49
+So, let me check the syntax for this.
+
+[rochak agrawal] 07:58:10
+Okay.
+
+[rochak agrawal] 07:58:12
+What was the edit?
+
+[rochak agrawal] 07:58:14
+The retail container, your command array, okay, yeah.
+
+[rochak agrawal] 07:58:22
+So, I'll ZVA shared…
+
+[rochak agrawal] 07:58:25
+Odd.
+
+[rochak agrawal] 07:58:26
+Dot, yeah.
+
+[rochak agrawal] 07:58:31
+So, basically, what we are doing here, we are creating two containers, okay, inside one pod.
+
+[rochak agrawal] 07:58:38
+One container is writing something into the shared log.txt. Another container is reading the same file and both of these containers are writing and reading from this volume mounts shared data.
+
+[rochak agrawal] 07:58:53
+Okay?
+
+[rochak agrawal] 07:59:02
+Apply.
+
+[rochak agrawal] 07:59:03
+Or create anything you can, right?
+
+[rochak agrawal] 07:59:08
+Okay? You've CTL.
+
+[rochak agrawal] 07:59:12
+Get quotes, so you will see 2x2, right?
+
+[rochak agrawal] 07:59:16
+And now if you see that logs for the leader pod, mctl log.
+
+[rochak agrawal] 07:59:22
+CR.
+
+[rochak agrawal] 07:59:25
+Odd.
+
+[rochak agrawal] 07:59:26
+and hyphen C, for whatever container you want to see the logs, okay? Um…
+
+[rochak agrawal] 07:59:33
+Then they are going to… you need to give the name of the container.
+
+[rochak agrawal] 07:59:38
+So you can see.
+
+[rochak agrawal] 07:59:40
+The logs, we are going to get the complete logs here.
+
+[rochak agrawal] 07:59:45
+Why we are getting these logs? Because your leader is can read. Now, both containers share the same shared directory via the MPDI volume.
+
+[rochak agrawal] 07:59:55
+Data written by one of the one container is immediately.
+
+[rochak agrawal] 08:00:04
+Back, um, visible to other container.
+
+[rochak agrawal] 08:00:08
+Okay, now one more thing I can do is, um…
+
+[rochak agrawal] 08:00:13
+in the MPTT DIR is, so right now it is, let's say, infinite, so it can actually…
+
+[rochak agrawal] 08:00:22
+what you can see is, let's say, if your file start generating some of the content, it is going to increase the size. If you want to limit the size, you just need to use something like, uh…
+
+[rochak agrawal] 08:00:36
+Medium.
+
+[rochak agrawal] 08:00:40
+Memory.
+
+[rochak agrawal] 08:00:46
+Size limit.
+
+[rochak agrawal] 08:00:49
+It's 128.
+
+[rochak agrawal] 08:00:51
+MD. So if you give it like this, then MTDIR volume size will only be.
+
+[rochak agrawal] 08:01:01
+128 MB, if it is generating more than that, then it is not going to, um…
+
+[rochak agrawal] 08:01:10
+It is not going to, um…
+
+[rochak agrawal] 08:01:14
+store more than 128 MB of data.
+
+[rochak agrawal] 08:01:16
+So that is about the NPDIR volume.
+
+[rochak agrawal] 08:01:20
+Okay, not much into this, but this is mostly used when you want to store a shared storage between the containers, or you want something temporary data you want to store, which can survive.
+
+[rochak agrawal] 08:01:36
+Uh, the individual container failure, but when your pod is going to get restarted, then you're wrong.
+
+[rochak agrawal] 08:01:47
+Then your data is going to be lost.
+
+[Vyom Gupta] 08:01:58
+Hey, hi, Richard. Good morning.
+
+[Vyom Gupta] 08:02:02
+So, I want to ask about, like, how you are writing these commands.
+
+[Vyom Gupta] 08:02:08
+I'm not able to understand the…
+
+[rochak agrawal] 08:02:10
+Which command?
+
+[Vyom Gupta] 08:02:11
+To make.
+
+[Vyom Gupta] 08:02:12
+Like, uh, the shared log.txt.
+
+[rochak agrawal] 08:02:16
+See, this is just an example command. We have gone through the shell scripting, right? So this command, you see what this is doing.
+
+[Vyom Gupta] 08:02:19
+due date.
+
+[rochak agrawal] 08:02:24
+This is…
+
+[rochak agrawal] 08:02:26
+writing some date to this log file. That's it. You know, this is an input redirection, output redirection, sorry. So we have covered everything in this. See, I'm using this command for an example.
+
+[rochak agrawal] 08:02:38
+You can use any, anything. So for example.
+
+[rochak agrawal] 08:02:41
+You can directly say, get, uh…
+
+[rochak agrawal] 08:02:45
+Or not at, let's say, touch file.txt.
+
+[rochak agrawal] 08:02:49
+Okay? Anything it could be. The point here is, uh…
+
+[rochak agrawal] 08:02:55
+Uh, what we wanted to show here is that…
+
+[rochak agrawal] 08:02:58
+empty DIR, see both here, here also it is shared data, here also it is shared data, correct?
+
+[rochak agrawal] 08:03:05
+So the point here is both of the containers, right?
+
+[Vyom Gupta] 08:03:05
+Well…
+
+[rochak agrawal] 08:03:11
+So, for example, when I'm creating a pod.
+
+[rochak agrawal] 08:03:18
+Both of the containers are reading.
+
+[rochak agrawal] 08:03:22
+From the same…
+
+[rochak agrawal] 08:03:24
+empty DIL volume. That's it. Command could be anything. Command will depend based on your application.
+
+[rochak agrawal] 08:03:31
+I'm just used one command to generate a temporary file, which we are reading from a second container. That's it.
+
+[Vyom Gupta] 08:03:41
+Okay.
+
+[rochak agrawal] 08:03:42
+Okay.
+
+[Vyom Gupta] 08:03:47
+And, uh, walk home.
+
+[rochak agrawal] 08:03:47
+Yes, you are.
+
+[rochak agrawal] 08:03:48
+Yes, yes, surely, Bill. Yeah, go ahead.
+
+[Vyom Gupta] 08:03:51
+And, uh, what is the sketching downloaded assets, like, use case?
+
+[rochak agrawal] 08:03:58
+See, for example, when you want to, right, um…
+
+[rochak agrawal] 08:04:03
+Let's say you want to install Tomcat. Now your main, for example, let's say you want to install, run your application on Tomcat, for example. Now what you can do is first you need to download the Tomcat, then you install it, then you run your application, correct?
+
+[Vyom Gupta] 08:04:21
+Yeah.
+
+[rochak agrawal] 08:04:22
+So, now you… when you download the file, once it is installed, you do not need the downloaded file, correct?
+
+[rochak agrawal] 08:04:30
+So those type of file, I do not need to persist somewhere, uh, for a permanent storage. So this is, like, uh…
+
+[Vyom Gupta] 08:04:31
+Hmm.
+
+[rochak agrawal] 08:04:39
+I can use it in an empty DIR volume. So till the time pod is running, those files will be there. Once the pod is deleted, those files will also be deleted.
+
+[rochak agrawal] 08:04:48
+Take your temporary file. I do not need those files after 2 years, 4 years, 5 years, but…
+
+[rochak agrawal] 08:04:55
+Only I need it when my pod is running.
+
+[Vyom Gupta] 08:05:01
+Okay.
+
+[rochak agrawal] 08:05:02
+Okay?
+
+[rochak agrawal] 08:05:04
+Yes, you will.
+
+[rochak agrawal] 08:05:20
+Okay, now, uh, let me, uh, go to another one, which is a host path volume. Okay, now, as the name is suggesting, so when your containers…
+
+[rochak agrawal] 08:05:31
+Run, of course, container or a pod going to run on multiple.
+
+[rochak agrawal] 08:05:37
+Notes
+
+[rochak agrawal] 08:05:40
+Correct. So then, in a host path volume.
+
+[rochak agrawal] 08:05:44
+Mounts a file or a directory.
+
+[rochak agrawal] 08:05:47
+So for example, let's say on this machine, I am going to create, let's say, slash.
+
+[rochak agrawal] 08:05:53
+Home.
+
+[rochak agrawal] 08:05:54
+And that I am going to mount it to.
+
+[rochak agrawal] 08:05:57
+my pod. Similar thing we have seen in the Docker, right? So a host path volume mounts a file or directly from the nodes file system directly into the pod.
+
+[rochak agrawal] 08:06:07
+It is one of the simplest volume type, but also one of the most dangerous in a wrong context. Okay? Now, the problem with the host path is…
+
+[rochak agrawal] 08:06:20
+When a pod with a host path volume is scheduled to a node, Kubernetes mount the specified path from that file system into the container at the defined mount path.
+
+[rochak agrawal] 08:06:33
+Data lives on our node, not in the pod, very importantly.
+
+[rochak agrawal] 08:06:38
+Data is going to live in the node, not on the pod. Now, if you create the file inside the container at the mount path, it is going to appear on the node file system at the host path location.
+
+[rochak agrawal] 08:06:51
+Right now.
+
+[rochak agrawal] 08:06:54
+By, um…
+
+[rochak agrawal] 08:06:58
+B, as I am saying, B are not going to use the host path.
+
+[rochak agrawal] 08:07:06
+Do not…
+
+[rochak agrawal] 08:07:07
+Use the host path.
+
+[rochak agrawal] 08:07:11
+In production?
+
+[rochak agrawal] 08:07:14
+multi-node cluster.
+
+[rochak agrawal] 08:07:16
+Okay? It is a type which is available to you, but…
+
+[rochak agrawal] 08:07:20
+This is a limitation. The host path gives a pod.
+
+[rochak agrawal] 08:07:25
+Direct access to the host node file system in a multi-tenant cluster.
+
+[rochak agrawal] 08:07:31
+Uh, it could create two risks, multi-node cluster. One is a portability failure.
+
+[rochak agrawal] 08:07:41
+Another is a security risk.
+
+[rochak agrawal] 08:07:46
+Now, portability player is, uh, let's say you're… you have n number of the nodes, let's say, for example, two nodes only.
+
+[rochak agrawal] 08:07:53
+I have node number 1 and node number 2.
+
+[rochak agrawal] 08:08:01
+Okay.
+
+[rochak agrawal] 08:08:04
+If a pod is deleted and rescheduled on a different node, so from node 1 it goes to node 2, the host path data is not there because your data is on node 1, correct?
+
+[rochak agrawal] 08:08:16
+So the pod starts on a different node, and the file it creates on a previous node are inaccessible. There is no portability across the nodes.
+
+[rochak agrawal] 08:08:28
+Then we have the security node or security list.
+
+[rochak agrawal] 08:08:33
+A compromised or the misconfigured pod with a host path volume can read sensitive files from the node.
+
+[rochak agrawal] 08:08:41
+including credentials, certificate, or other containers' data. So in a multi-tenant cluster, this is significant attack surface.
+
+[rochak agrawal] 08:08:48
+Now, for the persistent storage, we are going to use a PVC with the dynamic provisioning. We'll see that. But what is the use case for the…
+
+[rochak agrawal] 08:08:59
+host part, right? So, first use case is, if you are using a single node cluster.
+
+[rochak agrawal] 08:09:13
+and you do not want to complicate things, you go where the pod reaches during the different node is not a concern. So, because you know, in any case, your pod is going to the same node, then you can use, what you can say is.
+
+[rochak agrawal] 08:09:32
+Whose part?
+
+[rochak agrawal] 08:09:33
+Then.
+
+[rochak agrawal] 08:09:34
+If you are running some agents.
+
+[rochak agrawal] 08:09:37
+Okay, like, for example, logging agent.
+
+[rochak agrawal] 08:09:43
+And monitoring agents.
+
+[rochak agrawal] 08:09:47
+Okay, such as Prometheus NodeX portal, uh, which need access to your host system data.
+
+[rochak agrawal] 08:09:55
+So that you need to run it as a host volume only.
+
+[rochak agrawal] 08:09:58
+Then…
+
+[rochak agrawal] 08:10:00
+There is something called the Demon's Edge.
+
+[rochak agrawal] 08:10:08
+Okay, daemon set is something… we'll talk more about the daemon set. Uh, daemon set is something where, um…
+
+[rochak agrawal] 08:10:16
+On whatever the number of the nodes available in your system, okay, in your cluster, um…
+
+[rochak agrawal] 08:10:23
+DaemonSet is going to run exactly one pod on each and every node.
+
+[rochak agrawal] 08:10:29
+So then you know that on every port my, uh, in every node…
+
+[rochak agrawal] 08:10:36
+In every note, my pod is running so that you can use it, right? Now…
+
+[rochak agrawal] 08:10:40
+If you see the working example, so…
+
+[rochak agrawal] 08:10:45
+I use the same example.
+
+[rochak agrawal] 08:10:47
+Now, what we are going to do…
+
+[rochak agrawal] 08:10:50
+Uh, you just change the name.
+
+[rochak agrawal] 08:10:59
+The volume is…
+
+[rochak agrawal] 08:11:02
+First, I'll change the volume, host volume.
+
+[rochak agrawal] 08:11:08
+And here, instead of MPDIR.
+
+[rochak agrawal] 08:11:12
+It would be…
+
+[rochak agrawal] 08:11:21
+Postpart.
+
+[rochak agrawal] 08:11:23
+What do you need to give?
+
+[rochak agrawal] 08:11:32
+What part on your, uh…
+
+[rochak agrawal] 08:11:34
+Post you want to run it. So I'll say data or let's say for now I'll say temp.
+
+[rochak agrawal] 08:11:40
+And then there is a type.
+
+[rochak agrawal] 08:11:46
+Type is directory.
+
+[rochak agrawal] 08:11:50
+Now, there is multiple type, okay, uh, in the host path.
+
+[rochak agrawal] 08:11:56
+What are the different types?
+
+[rochak agrawal] 08:12:01
+First is the directory.
+
+[rochak agrawal] 08:12:06
+Now, if you are giving a directory, then path must already exist as a directory. So, for example, if I'm giving.
+
+[rochak agrawal] 08:12:15
+Slash M.
+
+[rochak agrawal] 08:12:16
+Then on my host node, celestemp should be present if that is not present.
+
+[rochak agrawal] 08:12:22
+Then it is going to fail.
+
+[rochak agrawal] 08:12:25
+Then the second type is a directory.
+
+[rochak agrawal] 08:12:30
+All create.
+
+[rochak agrawal] 08:12:32
+Now, there is no difference in directory or directory or period. Now, in first case, we discussed that the slash temp should be present. If the slash temp is not present.
+
+[rochak agrawal] 08:12:42
+Then, my…
+
+[rochak agrawal] 08:12:44
+container, my pod is going to fail. In the second case, directory.create, it creates the directory if the directory does not exist. And similarly, we have file.
+
+[rochak agrawal] 08:12:55
+and file or create.
+
+[rochak agrawal] 08:12:59
+Okay, so I'm going to use, uh…
+
+[rochak agrawal] 08:13:04
+directory, or create.
+
+[rochak agrawal] 08:13:10
+Okay, so in the case if slash temp is not present on my node, Kubernetes is going to…
+
+[rochak agrawal] 08:13:18
+Hit it for me.
+
+[rochak agrawal] 08:13:20
+Okay, now in the bowl, I'll remove the second container.
+
+[rochak agrawal] 08:13:28
+So, volume path will be host volume.
+
+[rochak agrawal] 08:13:34
+And, uh, let's see, slash demo.
+
+[rochak agrawal] 08:13:47
+Simply, I'll… again, I'll say…
+
+[rochak agrawal] 08:13:54
+do…
+
+[rochak agrawal] 08:14:00
+Nothing much, I'm just…
+
+[rochak agrawal] 08:14:02
+Okay, so I'll…
+
+[rochak agrawal] 08:14:05
+Again, check the syntax for this and create the pod.
+
+[rochak agrawal] 08:14:21
+Again, I'm using… this is… let me change this.
+
+[rochak agrawal] 08:14:29
+Okay.
+
+[rochak agrawal] 08:14:47
+Okay, so host at broad, um, I mean, name you could have changed also, that's okay.
+
+[rochak agrawal] 08:14:54
+And you're doing this. Now, uh, running it.
+
+[rochak agrawal] 08:15:15
+Oops, again?
+
+[rochak agrawal] 08:15:31
+Great. Now
+
+[rochak agrawal] 08:15:33
+UTTM reports.
+
+[rochak agrawal] 08:15:38
+Post up broad, and now if you do a kubectl exec.
+
+[rochak agrawal] 08:15:47
+For an ID.
+
+[rochak agrawal] 08:16:10
+And give it a board.
+
+[rochak agrawal] 08:16:14
+Okay, now I'm inside a container.
+
+[rochak agrawal] 08:16:16
+Okay, now what I'm going to do, I'll go to what is the path which I have given.
+
+[rochak agrawal] 08:16:24
+I have given demo, right?
+
+[rochak agrawal] 08:16:28
+So I'll go cd slash demo.
+
+[rochak agrawal] 08:16:32
+Now, currently, if you see, there will be nothing.
+
+[rochak agrawal] 08:16:36
+So…
+
+[rochak agrawal] 08:16:41
+So there is some file already created. Now what I'm going to do, I'm going to create a test file.
+
+[rochak agrawal] 08:16:49
+And now to do LS-LRT, so there is a test file got created.
+
+[rochak agrawal] 08:16:53
+Okay, now…
+
+[rochak agrawal] 08:16:57
+if you…
+
+[rochak agrawal] 08:17:03
+Exit this port.
+
+[rochak agrawal] 08:17:06
+Okay.
+
+[rochak agrawal] 08:17:09
+So now, whatever you have written.
+
+[rochak agrawal] 08:17:13
+It will go to…
+
+[rochak agrawal] 08:17:22
+So, my OSPAC port is running on this node. So, basically, it will be written into this node, and where on this node?
+
+[rochak agrawal] 08:17:33
+into
+
+[rochak agrawal] 08:17:35
+slash them. Okay?
+
+[rochak agrawal] 08:17:39
+So, now, whatever is going to happen, it is between your… now, if I delete and create another port, which will have the same data. So, for example.
+
+[rochak agrawal] 08:17:50
+Now, previously, in the empty DIR volume, we have seen that, uh…
+
+[rochak agrawal] 08:17:54
+Data is lost.
+
+[rochak agrawal] 08:18:09
+Okay.
+
+[rochak agrawal] 08:18:16
+Okay, now if you mute it again…
+
+[rochak agrawal] 08:18:40
+You can see?
+
+[rochak agrawal] 08:18:42
+Test is already there.
+
+[rochak agrawal] 08:18:44
+Why? Because when you created the test, it goes into the node file system, right? And when you're creating another pod which is mounting the same file system, the file will be there.
+
+[rochak agrawal] 08:18:54
+So that is about the host path file system. Okay. So we have seen two type of file system.
+
+[rochak agrawal] 08:19:04
+Postpart, and another is, uh, your, uh…
+
+[rochak agrawal] 08:19:12
+MTDIR. Any question in any of these? Now, just to give you a little perspective, we generally don't use both of them. They both have a…
+
+[rochak agrawal] 08:19:22
+very specific use cases, right? So when you want to share the content within the container, you can use the empty DIA. When you want to use the node path, you are going to use this.
+
+[rochak agrawal] 08:19:42
+But we have something very interesting, which is a persistent volume and a persistent volume claim, okay, which we are going to study. But before that, if you have any questions, anyone has any questions.
+
+[rochak agrawal] 08:20:00
+Okay.
+
+[rochak agrawal] 08:20:06
+Now you see…
+
+[rochak agrawal] 08:20:10
+There are 3 things, uh, as we said previously also.
+
+[rochak agrawal] 08:20:15
+PB, PBC, and um…
+
+[rochak agrawal] 08:20:23
+Jeeva, you have a question?
+
+[rochak agrawal] 08:20:30
+Diva, I'm sorry, I'm not able to listen to your voice.
+
+[Jeeva Koli] 08:20:43
+Well, no.
+
+[rochak agrawal] 08:20:44
+Yes, I can hear you.
+
+[Jeeva Koli] 08:20:47
+Uh, just question, like, uh…
+
+[Jeeva Koli] 08:20:50
+What happens if, uh, Node get, uh, like…
+
+[Jeeva Koli] 08:20:54
+something happened to Node, and, uh, will there be… still Valung will be available?
+
+[rochak agrawal] 08:21:00
+See, when you say something happens to node, uh, what does it mean? Uh, see, if the node is getting deleted.
+
+[rochak agrawal] 08:21:08
+Then your data will be deleted, of course. But let's say you say node got down or you're applying some patch, in that case, data will be there.
+
+[rochak agrawal] 08:21:18
+Data will be persisted.
+
+[Jeeva Koli] 08:21:21
+Okay, even the node get rebooted, that time also data will be there, right?
+
+[rochak agrawal] 08:21:25
+Yeah, yeah, data, because… see, that is the whole purpose, because now your data is stored on the node.
+
+[rochak agrawal] 08:21:34
+So even if you remove it from the Kubernetes cluster, your data will be there.
+
+[Jeeva Koli] 08:21:39
+Okay.
+
+[rochak agrawal] 08:21:40
+Okay?
+
+[Jeeva Koli] 08:21:41
+So, in a shared path, uh, like, whatever the, uh, pod-level data gets saved, will… if I wanted to save it on node-level also.
+
+[rochak agrawal] 08:21:47
+Mm-hmm.
+
+[rochak agrawal] 08:21:51
+Yeah?
+
+[Jeeva Koli] 08:21:52
+I mean, that is possible, right?
+
+[rochak agrawal] 08:21:54
+No, uh, can you repeat your question?
+
+[Jeeva Koli] 08:21:57
+Like, uh, in the node, I have two ports, two ports.
+
+[rochak agrawal] 08:21:58
+Mm-hmm.
+
+[rochak agrawal] 08:22:00
+Okay? Two ports, okay?
+
+[Jeeva Koli] 08:22:02
+And…
+
+[Jeeva Koli] 08:22:03
+Yeah. And, uh, I have created volume at pod level of pod 1.
+
+[rochak agrawal] 08:22:09
+Okay? So you're saying you have two pods. One pod and two pod.
+
+[Jeeva Koli] 08:22:10
+No.
+
+[rochak agrawal] 08:22:13
+Okay? Mm-hmm.
+
+[Jeeva Koli] 08:22:13
+Right.
+
+[Jeeva Koli] 08:22:15
+Now, I created a volumet pod 1.
+
+[rochak agrawal] 08:22:19
+Host path volume.
+
+[Jeeva Koli] 08:22:22
+Uh… yeah, I'm container path… container level there.
+
+[rochak agrawal] 08:22:26
+No, but…
+
+[Jeeva Koli] 08:22:27
+Inside…
+
+[rochak agrawal] 08:22:28
+Accordingly, we'll be in…
+
+[Jeeva Koli] 08:22:30
+Sorry.
+
+[rochak agrawal] 08:22:33
+Volume is at the pod level, right? Not at the container level.
+
+[rochak agrawal] 08:22:38
+Even when you have multi-container.
+
+[Jeeva Koli] 08:22:40
+Mmhm.
+
+[rochak agrawal] 08:22:42
+Uh, see, right now we have seen two volumes. MTDIR.
+
+[rochak agrawal] 08:22:48
+Correct?
+
+[Jeeva Koli] 08:22:48
+Mm-hmm.
+
+[rochak agrawal] 08:22:49
+And host path.
+
+[rochak agrawal] 08:22:55
+Both we are creating at a pod level. See, the whole point of using the Kubernetes is that you're managing.
+
+[rochak agrawal] 08:23:02
+Ports, not the containers.
+
+[rochak agrawal] 08:23:04
+So when you are saying, I am attaching a volume, you are attaching a volume to a pod, not to a container.
+
+[rochak agrawal] 08:23:12
+Gillian?
+
+[Jeeva Koli] 08:23:13
+Correct.
+
+[rochak agrawal] 08:23:15
+Now, yes, go ahead, what is your question? What is the scenario?
+
+[Jeeva Koli] 08:23:19
+Like, uh, the… whatever data's, uh, saved on the, uh…
+
+[Jeeva Koli] 08:23:24
+this MTDR cannot be shared at node host path also, right?
+
+[rochak agrawal] 08:23:25
+Mm-hmm.
+
+[rochak agrawal] 08:23:29
+See, uh, it can happen, okay, uh, I'll tell you how.
+
+[rochak agrawal] 08:23:34
+See, for example…
+
+[rochak agrawal] 08:23:39
+there can be multiple variations. So, I'll come and accept.
+
+[rochak agrawal] 08:23:50
+So, let's say I'll create a volume also here.
+
+[rochak agrawal] 08:24:00
+I'll create another volume, for example.
+
+[rochak agrawal] 08:24:05
+Okay.
+
+[rochak agrawal] 08:24:13
+So now I have two volumes. One is a host DIR, and one other is this. Now what I'm going to do, I am use one more volume mounts.
+
+[rochak agrawal] 08:24:26
+And I will say, share data.
+
+[rochak agrawal] 08:24:34
+And I will mount it to, let's say…
+
+[rochak agrawal] 08:24:42
+Let's say demo 2.
+
+[rochak agrawal] 08:24:44
+Just an example, right? Now, you see, in my container, in my pod, I have two volumes now.
+
+[rochak agrawal] 08:24:51
+One is this host volume and another is the empty DIR correct. Now you say I want to have the same data. So you run another command.
+
+[rochak agrawal] 08:25:05
+Maybe, for example.
+
+[rochak agrawal] 08:25:14
+Rsync is a command which is going to sync two files, two directories.
+
+[rochak agrawal] 08:25:21
+Simple.
+
+[rochak agrawal] 08:25:21
+Okay, so you see now what we have done. We have two volumes. One is a host volume, which is a host path, correct? Another is a shared data, which is a demo tool, right?
+
+[rochak agrawal] 08:25:33
+MTDIR.
+
+[rochak agrawal] 08:25:34
+And I'm creating a command, I'm running a command, rsync. Now, rsync is a Unix command, which syncs to folder. When you are writing one thing in one folder, it will get reflected in another folder. Now, when you run the rsync, your demo and demo2 folder will always be in the sync.
+
+[rochak agrawal] 08:25:52
+And which is basically one is a host path volume, another is a MTDI algorithm.
+
+[rochak agrawal] 08:25:57
+Only thing is, when your pod will get deleted, this demo2 will get deleted, but whatever data you have in demo, it will go stored in the host path.
+
+[rochak agrawal] 08:26:09
+So, yes, we can do it, but it will… how you want to do it will exactly refer, uh, like, what is your exact use case. But yes, we can do it.
+
+[Jeeva Koli] 08:26:21
+Uh, in a normal, like, you know, production, uh, I mean, do we use this scenario, or…
+
+[rochak agrawal] 08:26:26
+No. See, that is why I said, uh, in the starting, in production scenario, neither we use the host path, neither we use the MTDIR. We are going to use something which we are going to study now, which is a PV, PVC, and storage classes.
+
+[Jeeva Koli] 08:26:38
+Okay, okay. Yeah, got it, okay.
+
+[rochak agrawal] 08:26:39
+Okay? We have the very specific use cases in which we are going to use MTDIR as well as the host path. MTDIR, when you want to share the storage between the containers, that's the main use case. And host path is… we discussed two, three use cases here for the host path as well.
+
+[rochak agrawal] 08:27:00
+Right? Single node cluster, if you are running some agent or daemon set, then you are going to use the host path. Otherwise, for all your storage needs, we are going to use the PB.
+
+[rochak agrawal] 08:27:13
+which is called as persistent volumes.
+
+[rochak agrawal] 08:27:18
+Okay?
+
+[Jeeva Koli] 08:27:19
+Yeah, got it.
+
+[rochak agrawal] 08:27:20
+Which, of course, we are going to see now.
+
+[rochak agrawal] 08:27:23
+Okay, now, um…
+
+[rochak agrawal] 08:27:28
+Pods are informal. We know that, right? When a pod is deleted and recreated.
+
+[rochak agrawal] 08:27:33
+Any data written to its local file system is gone.
+
+[rochak agrawal] 08:27:39
+Persistent volume solve this by providing storage that exists independently of the pod lifecycle.
+
+[rochak agrawal] 08:27:48
+A pod can be deleted, rescheduled to a different node.
+
+[rochak agrawal] 08:27:52
+But it will be reconnected to a same storage when it backs out.
+
+[rochak agrawal] 08:27:57
+Now, in this dialog.
+
+[rochak agrawal] 08:28:00
+two concept. I'll come to the storage class a little later. There is two concept PV and PVC.
+
+[rochak agrawal] 08:28:07
+Okay.
+
+[rochak agrawal] 08:28:09
+PB is a persistent volume.
+
+[rochak agrawal] 08:28:11
+PBC is a persistent volume claim.
+
+[rochak agrawal] 08:28:14
+Understand this. Now, PBC, for example, I have multiple pods running.
+
+[rochak agrawal] 08:28:25
+and have multiple ports running, okay? Then I can have my volumes running, which I call them PB.
+
+[rochak agrawal] 08:28:32
+So PB runs separately, independently from your pod.
+
+[rochak agrawal] 08:28:38
+You can create as many PVs as you need.
+
+[rochak agrawal] 08:28:42
+Okay, so a persistent volume is a storage resource.
+
+[rochak agrawal] 08:28:48
+provision in the cluster. Simply, it is like your hard disk, okay? It is an abstraction of the underlying storage backend, whether it's a local disk, NFS share, or any other storage system. Very importantly, now, this is one very, very important point.
+
+[rochak agrawal] 08:29:10
+You, uh, remember that inside a cluster.
+
+[rochak agrawal] 08:29:20
+We have multiple namespaces.
+
+[rochak agrawal] 08:29:25
+Late?
+
+[rochak agrawal] 08:29:27
+When you create a deployment, when you create a pod, when you create a service.
+
+[rochak agrawal] 08:29:32
+These resources, so most of the resources in Kubernetes is…
+
+[rochak agrawal] 08:29:41
+Name, space, scope.
+
+[rochak agrawal] 08:29:44
+10.
+
+[rochak agrawal] 08:29:46
+Very important point. So when I'm creating a deployment, when I'm creating a pod, when I'm creating a daemon set, when I'm creating a job, everything is namespace scoped. What does it mean? A deployment in one namespace.
+
+[rochak agrawal] 08:30:01
+is isolated from a deployment or services or pod running in a different namespace.
+
+[rochak agrawal] 08:30:11
+Bile.
+
+[rochak agrawal] 08:30:13
+PB?
+
+[rochak agrawal] 08:30:16
+Cluster scoped.
+
+[rochak agrawal] 08:30:21
+BBs are less than school.
+
+[rochak agrawal] 08:30:26
+It means PVs are created here, for example.
+
+[rochak agrawal] 08:30:33
+Like this.
+
+[rochak agrawal] 08:30:38
+Resources in this namespace also use this. Resources in this namespace also use this.
+
+[rochak agrawal] 08:30:45
+Very… PB is one of the major component, uh, or I would say…
+
+[rochak agrawal] 08:30:51
+PD is only in Kubernetes, which is a cluster scoped object. Otherwise, every object is a namespace scoped object.
+
+[rochak agrawal] 08:31:03
+Okay? Now, PB we create independently of the pod. Now, let's say I have one…
+
+[rochak agrawal] 08:31:13
+Here, also, a…
+
+[rochak agrawal] 08:31:16
+B… C…
+
+[rochak agrawal] 08:31:18
+D. Now, since they are running independently of your application, you need to create a mapping. Let's say you want pod 1 to use the.
+
+[rochak agrawal] 08:31:28
+PB number C, PBC, or PBB, or PBA. So then you need to create a mapping between your pod.
+
+[rochak agrawal] 08:31:37
+And your PB?
+
+[rochak agrawal] 08:31:39
+which is called the PVC.
+
+[rochak agrawal] 08:31:45
+Which is a persistent volume claim.
+
+[rochak agrawal] 08:31:48
+So persistent volume clean is a request.
+
+[rochak agrawal] 08:31:52
+For a storage made by a user or a workload, the user specifies how much storage they need, which access mode they require, and optionally, which storage class to use.
+
+[rochak agrawal] 08:32:05
+Kubernetes matches PVC, so I will define, so…
+
+[rochak agrawal] 08:32:11
+I am going to define my requirement in the PBC.
+
+[rochak agrawal] 08:32:16
+okay, what type of storage I want, then what is Kubernetes going to do? Kubernetes is going to match this against all your PBs, and it is going to assign one volume to my claim, and that volume is going to be attached to my.
+
+[rochak agrawal] 08:32:32
+pod. Okay, Kubernetes matches the PVC to the available PV that satisfies those requirements and binds them together.
+
+[rochak agrawal] 08:32:42
+Okay, now there was one major challenge into this, and I'll come back to it later.
+
+[rochak agrawal] 08:32:50
+Now…
+
+[rochak agrawal] 08:32:53
+The control plane continuously watches for the PVCs and tries to find a matching persistent volume. Once a match is found.
+
+[rochak agrawal] 08:33:03
+PVC moves to a bound state and PB is reserved exclusively for that PVC. Okay, so our relation PVC and PB have their own life cycle separate from any pod.
+
+[rochak agrawal] 08:33:16
+Deleting a pod does not delete the PBC or PB.
+
+[rochak agrawal] 08:33:21
+Okay, now one very important thing is.
+
+[rochak agrawal] 08:33:26
+Listen…
+
+[rochak agrawal] 08:33:29
+Very carefully. So now we have two objects, three objects.
+
+[rochak agrawal] 08:33:35
+One is a board.
+
+[rochak agrawal] 08:33:44
+Right? Another is…
+
+[rochak agrawal] 08:33:46
+EBC.
+
+[rochak agrawal] 08:33:53
+So, these two things you are going to define, okay? You are going to define PVs also, but PVs you define separately. You can have, let's say, multiple PVC, PVs, volumes.
+
+[rochak agrawal] 08:34:06
+When you are defining your application, you are going to define these two things.
+
+[rochak agrawal] 08:34:13
+I would say application, not pod.
+
+[rochak agrawal] 08:34:16
+Okay. So, and your storage requirement in a PVC, persistent volume claim, like how much volume you are going to require. When you create a PVC, it will be in an unbound state.
+
+[rochak agrawal] 08:34:35
+And Kubernetes will try to find a matching.
+
+[rochak agrawal] 08:34:41
+PB to that PBC, so let's say…
+
+[rochak agrawal] 08:34:44
+PB number 2 is matching the requirement. Once it is attached to the PBC, your PBC will go into a bound state.
+
+[rochak agrawal] 08:34:55
+Okay? And then there will be a one-to-one relationship.
+
+[rochak agrawal] 08:35:02
+between a PB and PBC. Now, what does it mean? A PBC can claim only one PB.
+
+[rochak agrawal] 08:35:09
+A PB can
+
+[rochak agrawal] 08:35:12
+BBC. So once you claimed it, then that's it.
+
+[rochak agrawal] 08:35:17
+Clear any question till now.
+
+[rochak agrawal] 08:35:19
+Very important to understand.
+
+[rochak agrawal] 08:35:23
+Are we good? Till now?
+
+[rochak agrawal] 08:35:30
+Yes, ma'am.
+
+[Vyom Gupta] 08:35:30
+Yeah.
+
+[Vyom Gupta] 08:35:32
+Like, uh, we have one-to-one relationship, and, uh, previously you tell that, uh, uh, multiple PV…
+
+[Vyom Gupta] 08:35:41
+can, uh, like, PVC can, uh, redirect to multiple PV.
+
+[rochak agrawal] 08:35:47
+Correct.
+
+[rochak agrawal] 08:35:48
+But it can… so, yeah, let me explain. See, when your PB is un… when you create a claim, now the claim can go to…
+
+[Vyom Gupta] 08:35:49
+So…
+
+[rochak agrawal] 08:35:59
+This?
+
+[rochak agrawal] 08:36:00
+can be this, this, okay? But once it is the match happened.
+
+[rochak agrawal] 08:36:06
+Okay? See, understand it like this, uh… I have 5 laptops, and you have a hard disk.
+
+[rochak agrawal] 08:36:14
+Okay, now you can attach your hard disk to laptop number 1, laptop number 2, laptop number 3, laptop number 4, correct?
+
+[rochak agrawal] 08:36:24
+But once you attach it to laptop number 2.
+
+[rochak agrawal] 08:36:28
+Since it is attached, can you attach it to laptop number 3? No.
+
+[rochak agrawal] 08:36:34
+Correct?
+
+[rochak agrawal] 08:36:37
+So, once the relationship established, see, I… I got this PV and PVC. So, see, when you create a PVC, it can go to any PV. It… see, basically, when I'm saying it can go to any PV means.
+
+[rochak agrawal] 08:36:51
+It can…
+
+[rochak agrawal] 08:36:52
+go to matching PV. And matching can be happen, like, there can be same, um, requirement, same configuration of the volumes. So your PVC can have the multiple PVs, which is matching its requirement, correct?
+
+[rochak agrawal] 08:37:08
+Now, out of this, let's say if, uh…
+
+[rochak agrawal] 08:37:11
+The attachment happened here.
+
+[rochak agrawal] 08:37:14
+So once the attachment happened, then it's a one-to-one relationship.
+
+[rochak agrawal] 08:37:20
+So, once it is attached, it cannot go and create an attachment with this one. That is not possible.
+
+[rochak agrawal] 08:37:30
+Clear?
+
+[Jeeva Koli] 08:37:35
+Here, the learn will not be… I mean, learn concept will not be used, right?
+
+[rochak agrawal] 08:37:39
+Um, sorry, which concept?
+
+[Jeeva Koli] 08:37:43
+Ellujan Lan.
+
+[rochak agrawal] 08:37:44
+No, I'm not sure of that. Can you elaborate a bit?
+
+[Jeeva Koli] 08:37:48
+Like, one storage can be attached to the multiple…
+
+[rochak agrawal] 08:37:53
+No, of course, very clearly not. But that PVC can be attached to multiple ports.
+
+[Jeeva Koli] 08:37:54
+Uh… let me see…
+
+[rochak agrawal] 08:38:02
+But the relationship between PV and PVC is one-to-one. Always one-to-one. And that's a very, very major challenge, uh, okay? And we will discuss what is the challenge, but the relation between PVC and PV is one-to-one.
+
+[Vyom Gupta] 08:38:17
+So, uh, when we delete a pod.
+
+[Vyom Gupta] 08:38:20
+It will not impact on PVC and PV.
+
+[rochak agrawal] 08:38:20
+Mmhm.
+
+[rochak agrawal] 08:38:23
+No, it will not. They are separate from the pod.
+
+[rochak agrawal] 08:38:27
+So the relation see for example.
+
+[rochak agrawal] 08:38:31
+So your data will be here, right? Let me…
+
+[rochak agrawal] 08:38:39
+Your data will be here, correct? In a volume, correct?
+
+[rochak agrawal] 08:38:43
+Now, pod reads the data via the help of PBC. So, you make a request via claim, and the claim will attach it to the volume, and then, finally, you read that data, correct? Now, if your pod is getting deleted, that is okay. Your claim will.
+
+[rochak agrawal] 08:38:58
+Again, will be free to attach to any other pod, and your data will still be…
+
+[rochak agrawal] 08:39:04
+Because it is in a PB, so there is no, uh… it is… see, it is very similar. Let's say your laptop get crashed.
+
+[rochak agrawal] 08:39:12
+Does it going to impact your data, which is there in your external hard disk? No. Right? Same thing.
+
+[rochak agrawal] 08:39:20
+PB is external to your application, either it's a pod or a deployment.
+
+[rochak agrawal] 08:39:27
+Okay?
+
+[Vyom Gupta] 08:39:28
+And PVC is inside the node.
+
+[rochak agrawal] 08:39:31
+PBC is a logical object. It is just a medium between your application and your volume.
+
+[Vyom Gupta] 08:39:34
+Okay.
+
+[rochak agrawal] 08:39:39
+So you… it is just like a request. So, for example, I will go tell Kubernetes, uh, PBC, you understand it as your storage requirements.
+
+[rochak agrawal] 08:39:51
+Nothing much. So, for example.
+
+[rochak agrawal] 08:39:56
+My application need 5 GB of data. So I'll create a claim of 5 GB and I'll go to Kubernetes and I'll say, boss, I need the 5 GB of storage. Now Kubernetes, what it will do, it will search for the volumes which is having the 5 GB of data.
+
+[rochak agrawal] 08:40:11
+And it will attach it to your play. That's it.
+
+[rochak agrawal] 08:40:15
+Data is stored in the PB.
+
+[rochak agrawal] 08:40:24
+Hope that…
+
+[Jeeva Koli] 08:40:24
+So, how much storage? Uh, sorry.
+
+[rochak agrawal] 08:40:27
+Yeah, yeah, go ahead.
+
+[Jeeva Koli] 08:40:28
+The whole…
+
+[Jeeva Koli] 08:40:29
+How much storage need to be assigned? That we define in the umbrella, right?
+
+[rochak agrawal] 08:40:33
+Yes, in PBC. And that is a major challenge, actually, which I was talking about, and that's where the storage class comes into the picture. So, for example.
+
+[rochak agrawal] 08:40:42
+Let's see.
+
+[rochak agrawal] 08:40:54
+Okay?
+
+[rochak agrawal] 08:40:57
+Now, let's say I have 4 volumes.
+
+[rochak agrawal] 08:41:00
+minus 10 GB?
+
+[rochak agrawal] 08:41:03
+One is 20GB.
+
+[rochak agrawal] 08:41:05
+30 GB?
+
+[rochak agrawal] 08:41:07
+40 degrees. Okay. Um…
+
+[rochak agrawal] 08:41:13
+Your application created a claim that I need 2GB of the storage.
+
+[rochak agrawal] 08:41:20
+Okay.
+
+[rochak agrawal] 08:41:21
+You submit this claim in a form of a PVC, and then what's going to happen is Kubernetes will search for the matching. Let's say, I'm assuming, hypothetically, every other parameter is the same.
+
+[rochak agrawal] 08:41:36
+Kubernetes will see it requires two GB, so this is my least size disk I'm attaching to this.
+
+[rochak agrawal] 08:41:45
+Now the problem you see, okay? What is the size of this disk, 10 GB?
+
+[rochak agrawal] 08:41:54
+Connect?
+
+[rochak agrawal] 08:41:56
+How much you are using?
+
+[rochak agrawal] 08:41:59
+Because that's the claim you made.
+
+[rochak agrawal] 08:42:02
+Right?
+
+[rochak agrawal] 08:42:04
+The remaining 8 GB is waste.
+
+[rochak agrawal] 08:42:09
+Why it is based? Because it's a one-to-one relationship. There is no other PVC which can come and claim this. So, to overcome this, there is a concept of the storage classes, but I'll come to the storage classes a little later on.
+
+[rochak agrawal] 08:42:22
+Which will basically do the dynamic provisioning of this. So, let's do one thing, let's do a hands-on, and then probably we'll understand more.
+
+[rochak agrawal] 08:42:33
+So, I'll go…
+
+[rochak agrawal] 08:42:44
+Now, before do the demo, I'll need to explain few things as well.
+
+[rochak agrawal] 08:42:48
+Okay. Now when you create the PB.
+
+[rochak agrawal] 08:42:54
+There are two things. One is the access modes.
+
+[rochak agrawal] 08:43:10
+Okay? So we have 3 access modes. Read, write once.
+
+[rochak agrawal] 08:43:19
+Read only many?
+
+[rochak agrawal] 08:43:26
+Read right menu.
+
+[rochak agrawal] 08:43:30
+Okay.
+
+[rochak agrawal] 08:43:33
+Now, when you said read-write once.
+
+[rochak agrawal] 08:43:37
+Mounted wheat, right?
+
+[rochak agrawal] 08:43:44
+By a single node.
+
+[rochak agrawal] 08:43:47
+So in… if you are creating a persistent volume as a read-write once, you cannot mount that on multiple node. Again, so if you have a single node cluster, you can use this mode.
+
+[rochak agrawal] 08:44:03
+Read only many, so mounted.
+
+[rochak agrawal] 08:44:05
+Read only.
+
+[rochak agrawal] 08:44:10
+on multiples.
+
+[rochak agrawal] 08:44:13
+This is particularly useful when you want to share some configuration across multiple nodes. You are controlling that configuration from somewhere else, but then, um…
+
+[rochak agrawal] 08:44:26
+It is being read by multiple nodes. And then we have the third mode, which is…
+
+[rochak agrawal] 08:44:32
+Read write by many notes simultaneously.
+
+[rochak agrawal] 08:44:44
+Then we have the reclaim policies.
+
+[rochak agrawal] 08:44:49
+Reclaim policy is to retain.
+
+[rochak agrawal] 08:45:00
+As the name is suggesting.
+
+[rochak agrawal] 08:45:04
+PB stays in the release status. Data is preserved, but the PB must be manually reclaimed before use.
+
+[rochak agrawal] 08:45:13
+In delete, when you are deleting your application, your PB will also be deleted.
+
+[rochak agrawal] 08:45:18
+Okay, um, then we have, uh…
+
+[rochak agrawal] 08:45:22
+Now we can we are going to create the persistent volume.
+
+[rochak agrawal] 08:45:27
+So, creating a persistent volume, uh, is very easy, okay? Um…
+
+[rochak agrawal] 08:45:34
+So, what do you need to do? You need to create a persistent volume, persistent volume claim, and then we are going to use a pod, which is going to use…
+
+[rochak agrawal] 08:45:53
+Which is going to use this application, uh, storage. Now…
+
+[rochak agrawal] 08:45:58
+When you go here, and you search for kubectl…
+
+[rochak agrawal] 08:46:03
+Get. Maybe?
+
+[rochak agrawal] 08:46:05
+So you see, there's no resource found, and you say PBC.
+
+[rochak agrawal] 08:46:10
+No resource found.
+
+[rochak agrawal] 08:46:11
+Okay, now you see the difference.
+
+[rochak agrawal] 08:46:15
+when you are looking for the PB, it says no resource found, right? But when you say PBC, it says no resource found in the default namespace. Why you're not seeing, uh…
+
+[rochak agrawal] 08:46:29
+in default namespace with the PB. The reason for that is a PB is a cluster scope object, which we discussed, which you can see it from here as well, right?
+
+[rochak agrawal] 08:46:40
+Now, I'm going to create a persistent volume claim, so…
+
+[rochak agrawal] 08:46:51
+Simple EV.
+
+[rochak agrawal] 08:46:54
+E. PC. Yaml.
+
+[rochak agrawal] 08:47:08
+So, see, API version V1, kind, persistent…
+
+[rochak agrawal] 08:47:12
+Volume. Name, you can give, uh, name, let's say I'm giving…
+
+[rochak agrawal] 08:47:18
+Demo. Phoebe?
+
+[rochak agrawal] 08:47:20
+Capacity is 5 GB, okay? Capacity you need to define.
+
+[rochak agrawal] 08:47:25
+And, uh, volume mode is… I do not need the volume mode.
+
+[rochak agrawal] 08:47:31
+Okay.
+
+[rochak agrawal] 08:47:35
+And, uh, storage class name is manual for now.
+
+[rochak agrawal] 08:47:43
+Assistant, uh…
+
+[rochak agrawal] 08:47:47
+Access mode is the right ones.
+
+[rochak agrawal] 08:47:51
+And you can define the host path also.
+
+[rochak agrawal] 08:47:54
+Yes.
+
+[rochak agrawal] 08:47:56
+then it will be… if I want to mount it to host path, so then I can do it as well, right? Because then it is path…
+
+[rochak agrawal] 08:48:11
+Deep data, something like that. So this is going to create my PB, okay? I'll go…
+
+[rochak agrawal] 08:48:20
+Check for the syntax.
+
+[rochak agrawal] 08:48:28
+Okay.
+
+[rochak agrawal] 08:48:32
+VA, BB…
+
+[rochak agrawal] 08:48:35
+You've got the number. You can name it anything.
+
+[rochak agrawal] 08:48:43
+Yup, CTL.
+
+[rochak agrawal] 08:48:47
+Hyphen F.
+
+[rochak agrawal] 08:48:50
+Now, if you see QTTL…
+
+[rochak agrawal] 08:48:53
+Good. EB?
+
+[rochak agrawal] 08:48:55
+You see, demo PB is created, capacity is 5GB, access mode is read, write once, retain policy is retained, status is available, right? Because we have not claimed this volume as of now. So you can see.
+
+[rochak agrawal] 08:49:11
+Any PVC can claim this, correct? Now what I'm going to do, I am going to create a claim. Persistent volume.
+
+[rochak agrawal] 08:49:21
+Clean?
+
+[rochak agrawal] 08:49:23
+Name is, uh, Demo PB Claim.
+
+[rochak agrawal] 08:49:31
+Storage class name is Manuel.
+
+[rochak agrawal] 08:49:33
+Access mode is reader advanced. Resource.
+
+[rochak agrawal] 08:49:39
+So, I do not need to define the capacity here, I need to define the resource. What is that I required? So, resources…
+
+[rochak agrawal] 08:49:47
+And, uh…
+
+[rochak agrawal] 08:49:49
+Request.
+
+[rochak agrawal] 08:50:01
+And I need storage.
+
+[rochak agrawal] 08:50:06
+of 5GB, for example.
+
+[rochak agrawal] 08:50:12
+I don't need this and this, and I do not need this, this as well.
+
+[rochak agrawal] 08:50:18
+So you see here, uh…
+
+[rochak agrawal] 08:50:40
+Create this.
+
+[rochak agrawal] 08:50:49
+Very simple, V1, persistent volume claim, name is this, resources, I require 5GB, manual.
+
+[rochak agrawal] 08:50:57
+So, I'll say…
+
+[rochak agrawal] 08:51:02
+KubeCTL.
+
+[rochak agrawal] 08:51:02
+create…
+
+[rochak agrawal] 08:51:03
+Hyphen F.
+
+[rochak agrawal] 08:51:04
+ABC?
+
+[rochak agrawal] 08:51:07
+Okay? Now, if you see cube CTL…
+
+[rochak agrawal] 08:51:13
+dot ABC.
+
+[rochak agrawal] 08:51:17
+Now, status is bound. And now, if you see PB.
+
+[rochak agrawal] 08:51:26
+Previously it was available, right? Now it is bound. Why? Because a claim has come which is requiring a PB. So now there is a relation as soon as you create a claim if the PB is available.
+
+[rochak agrawal] 08:51:41
+Right? Then, if I delete the PVC, for example, if you see QTTL.
+
+[rochak agrawal] 08:51:47
+Delete PVC.
+
+[rochak agrawal] 08:51:52
+Demo BBC.
+
+[rochak agrawal] 08:51:58
+What is the name which we created?
+
+[rochak agrawal] 08:52:02
+Demo BBC.
+
+[rochak agrawal] 08:52:07
+Okay, now if you again see…
+
+[rochak agrawal] 08:52:14
+It is released.
+
+[rochak agrawal] 08:52:17
+Right? Because there was a claim which was claiming the volume, now it has been deleted.
+
+[rochak agrawal] 08:52:25
+We'll create it again.
+
+[rochak agrawal] 08:52:29
+I'll delete the volume also once.
+
+[rochak agrawal] 08:52:32
+So, we can delete the volume also. Delete DB.
+
+[rochak agrawal] 08:52:40
+Okay, and let me create again.
+
+[rochak agrawal] 08:52:52
+You see, it is available now, but as you create the PVC, it will go into bound status, because what I am looking out is there in that PV, the requirement is matching, so that's fair. Now, let's do one more thing.
+
+[rochak agrawal] 08:53:07
+VIPBC.ml.
+
+[rochak agrawal] 08:53:09
+I'll say I need…
+
+[rochak agrawal] 08:53:12
+15 GB, for example. Okay? Now, let me create UTTL…
+
+[rochak agrawal] 08:53:19
+Yet.
+
+[rochak agrawal] 08:53:23
+c.yaml.
+
+[rochak agrawal] 08:53:26
+Okay?
+
+[rochak agrawal] 08:53:28
+Now, if you see…
+
+[rochak agrawal] 08:53:32
+It is still available. Why it is still available? Because…
+
+[rochak agrawal] 08:53:36
+Your volume is 5GB, but my claim is saying I need a volume which is 15GB. This is not matching, there is no matching, correct?
+
+[rochak agrawal] 08:53:47
+You see, status is pending.
+
+[rochak agrawal] 08:53:50
+Why it is pending? Because what is required, there is no volume available for this.
+
+[rochak agrawal] 08:53:55
+Correct? So when there is no volume available, it is going into the pending status.
+
+[rochak agrawal] 08:54:03
+Let me delete it, and create a 5GB.
+
+[rochak agrawal] 08:54:11
+Okay?
+
+[rochak agrawal] 08:54:16
+I'll just see.
+
+[rochak agrawal] 08:54:36
+See? Now it is bound. Right?
+
+[rochak agrawal] 08:54:39
+Now what I'm going to do.
+
+[rochak agrawal] 08:54:41
+So we can actually see PVC PV in the same command like this.
+
+[rochak agrawal] 08:54:48
+Sorry. So here, you can see, persistent volume claim is a demo, bound.
+
+[rochak agrawal] 08:54:53
+to this.
+
+[rochak agrawal] 08:54:54
+And, uh, persistent volume is there.
+
+[rochak agrawal] 08:54:58
+And which claim it is using, it is also very visible here.
+
+[rochak agrawal] 08:55:05
+Correct? Now your application, okay? The application, which is your pod, it is not going to use… it will not go in directly and say, I am using this.
+
+[rochak agrawal] 08:55:18
+They use something called the PBC, okay? So…
+
+[rochak agrawal] 08:55:34
+Let's say I'll go…
+
+[rochak agrawal] 08:55:49
+Yes.
+
+[rochak agrawal] 08:56:13
+So, you didn't give it.
+
+[rochak agrawal] 08:56:16
+TV pod.
+
+[rochak agrawal] 08:56:17
+Something. Okay? Uh, this is, this is, this is volume mounts. Okay.
+
+[rochak agrawal] 08:56:23
+Uh, now, you need to define two things here, okay? One is volume mounts, of course, let me define. So, we can say…
+
+[rochak agrawal] 08:56:36
+where I want to mount this volume, so I'll say mount.
+
+[rochak agrawal] 08:56:42
+This is inside a container. Let's see, user…
+
+[rochak agrawal] 08:56:49
+HTML, NGINX, HTML. Something, what part?
+
+[rochak agrawal] 08:56:54
+You are going to tell the name of the volume.
+
+[rochak agrawal] 08:56:58
+Name is…
+
+[rochak agrawal] 08:57:01
+BB volume, for example.
+
+[rochak agrawal] 08:57:03
+Okay, now you see from where this volume is coming. So that is where…
+
+[rochak agrawal] 08:57:20
+So, we need to define it here.
+
+[rochak agrawal] 08:57:23
+In the volume mounts.
+
+[rochak agrawal] 08:57:24
+Okay.
+
+[rochak agrawal] 08:57:29
+Then you need to define the volume from where the volume will come. Okay, so I'll say name…
+
+[rochak agrawal] 08:57:49
+Most importantly, the persistent volume claims.
+
+[rochak agrawal] 08:58:00
+What is the name of my persistent volume claim? It's…
+
+[rochak agrawal] 08:58:06
+Demo PB… where is it? Demo PB Game.
+
+[rochak agrawal] 08:58:19
+Lane.
+
+[rochak agrawal] 08:58:20
+Name?
+
+[rochak agrawal] 08:58:21
+is this.
+
+[rochak agrawal] 08:58:22
+Again, I'll get the syntax checked.
+
+[rochak agrawal] 08:58:40
+So now you see.
+
+[rochak agrawal] 08:58:42
+This is my file. So here, this is my volume.
+
+[rochak agrawal] 08:58:47
+Which is the volume? Persistent volume claim. Okay. And the same volume I'm using here, which will be mounted into user share nginx.html.
+
+[rochak agrawal] 08:58:56
+Now, when you create this pod.
+
+[rochak agrawal] 08:58:59
+Now, this is like any other board now.
+
+[rochak agrawal] 08:59:12
+UPCTL… create…
+
+[rochak agrawal] 08:59:17
+See? So…
+
+[rochak agrawal] 08:59:20
+In your application definition file, it could be a pod file, or it could be a, um…
+
+[rochak agrawal] 08:59:27
+deployment file, okay? You need to define the claim, uh, which claim you want to use, and then claim will be bound to a persistent volume. So now your application is basically using a persistent volume. So you can say a persistent volume is…
+
+[rochak agrawal] 08:59:45
+What you can say, um…
+
+[rochak agrawal] 08:59:48
+Is a link between, uh, your, um…
+
+[rochak agrawal] 08:59:57
+Application and the storage.
+
+[rochak agrawal] 08:59:59
+So it does nothing. It basically creates the mapping between an application and the storage. Nothing much. Now, all is good with this approach. There's only one problem. The problem is —.
+
+[rochak agrawal] 09:00:21
+The problem is, um…
+
+[rochak agrawal] 09:00:23
+You are, uh, see, for example.
+
+[rochak agrawal] 09:00:29
+we have created a persistent volume of 5GB, for example. Now, as your… see, first problem we have discussed that, um…
+
+[rochak agrawal] 09:00:40
+If my persistent… see, I created a volume for 5GB, but I'm claiming only 1GB, for example. Let's try to do that, okay?
+
+[rochak agrawal] 09:00:50
+So, let me delete the board.
+
+[rochak agrawal] 09:01:03
+Yeah.
+
+[rochak agrawal] 09:01:21
+Okay, now I'll delete the PVC as well.
+
+[rochak agrawal] 09:01:43
+Okay, now what I'm going to do… let's see…
+
+[rochak agrawal] 09:01:52
+Instead of 5GB, I'll say…
+
+[rochak agrawal] 09:01:55
+What would you think?
+
+[rochak agrawal] 09:02:00
+Okay, and I'll copy pbc.yaml.
+
+[rochak agrawal] 09:02:07
+Two PVC two dot YAML also.
+
+[rochak agrawal] 09:02:11
+And here, if you see, I'll go PVC2.
+
+[rochak agrawal] 09:02:16
+And I'll get one more draw.
+
+[rochak agrawal] 09:02:19
+Click.
+
+[rochak agrawal] 09:02:45
+Okay, now, you see, I have a… let me delete the PBN, start it again.
+
+[rochak agrawal] 09:02:52
+CPN…
+
+[rochak agrawal] 09:02:54
+Didn't need it.
+
+[rochak agrawal] 09:02:56
+DB demo.
+
+[rochak agrawal] 09:02:59
+Okay.
+
+[rochak agrawal] 09:03:01
+Now, cube CPL.
+
+[rochak agrawal] 09:03:04
+idiot.
+
+[rochak agrawal] 09:03:06
+Hyphen air.
+
+[rochak agrawal] 09:03:09
+BV?
+
+[rochak agrawal] 09:03:12
+Okay.
+
+[rochak agrawal] 09:03:15
+Yes?
+
+[rochak agrawal] 09:03:17
+Yep, CPL, get TV.
+
+[rochak agrawal] 09:03:20
+So you can say capacity is 5GB, okay? Everything is good, it is available. Now let me create a claim.
+
+[rochak agrawal] 09:03:31
+Perfect.
+
+[rochak agrawal] 09:03:34
+Now, I'll get PB again.
+
+[rochak agrawal] 09:03:39
+It says it is bound, okay? It is bound by the default PV claim. And if you get the PVC.
+
+[rochak agrawal] 09:03:51
+volume demo PV, and the capacity is 5GB.
+
+[rochak agrawal] 09:03:55
+Now, you click here.
+
+[rochak agrawal] 09:03:59
+Describe…
+
+[rochak agrawal] 09:04:01
+B, C…
+
+[rochak agrawal] 09:04:03
+Demo PPP…
+
+[rochak agrawal] 09:04:08
+So you can see, it is…
+
+[rochak agrawal] 09:04:19
+Okay? Now, you see, I only claimed for 2GB, but it is…
+
+[rochak agrawal] 09:04:25
+allocating all 5GB to me, correct? Now, if you try to do…
+
+[rochak agrawal] 09:04:42
+PVC2.yaml.
+
+[rochak agrawal] 09:04:46
+Now, if you get
+
+[rochak agrawal] 09:04:51
+You see, it will go into the pending status. Now you see the problem.
+
+[rochak agrawal] 09:04:56
+Problem is.
+
+[rochak agrawal] 09:05:04
+I have a 5GB of volume.
+
+[rochak agrawal] 09:05:08
+Late.
+
+[rochak agrawal] 09:05:14
+Now, I have a 2PM
+
+[rochak agrawal] 09:05:19
+Both.
+
+[rochak agrawal] 09:05:20
+2GB?
+
+[rochak agrawal] 09:05:23
+Budget.
+
+[rochak agrawal] 09:05:24
+Got it?
+
+[rochak agrawal] 09:05:25
+So the first problem is months.
+
+[rochak agrawal] 09:05:29
+Claim has been made.
+
+[rochak agrawal] 09:05:31
+Onto this.
+
+[rochak agrawal] 09:05:32
+It still has the 3GB remaining, but I cannot go and make this claim. It's a one-to-one relationship.
+
+[rochak agrawal] 09:05:40
+That is one problem with the static provisioning.
+
+[rochak agrawal] 09:05:44
+Okay, another problem is…
+
+[rochak agrawal] 09:05:54
+Another problem is, let's say you are using 5GB. Now, this is fixed.
+
+[rochak agrawal] 09:06:02
+Now, if your storage will keep increasing, then how you are going to increase the space, and that is where dynamic provisioning will come into the picture. Now, before we go to dynamic provisioning, I will open for questions.
+
+[rochak agrawal] 09:06:18
+Because, um, I'm sure you might be having a different, different question.
+
+[rochak agrawal] 09:06:23
+Um, so…
+
+[rochak agrawal] 09:06:25
+Any question till now?
+
+[rochak agrawal] 09:06:39
+Here's Anthony.
+
+[Anthony Joseph] 09:06:42
+Hi, Rochak. I just wanted to understand, like, what is the use case in this? Like, if you have a PV of 5GB, then you're allocating only 2GB, and other pods can't use that remaining space, because it is attached one… it is a one-to-one relationship, right?
+
+[rochak agrawal] 09:06:49
+Mm-hmm.
+
+[rochak agrawal] 09:06:57
+Direct, yeah? So… see, that… see, that…
+
+[Anthony Joseph] 09:06:58
+So, like, what is the use case? Like, you're just, like, I mean, you're claiming only 2GB out of 5GB, the 3GB is just, uh…
+
+[Anthony Joseph] 09:07:07
+Just there, as it is, unutilized.
+
+[rochak agrawal] 09:07:09
+Mm-hmm.
+
+[rochak agrawal] 09:07:10
+See, that is what we are saying, it's a problem, right? So, you… what you need to do, you need to do the exact capacity planning if you want to use the static, uh, pricing, uh, static, uh, uh, provisioning.
+
+[rochak agrawal] 09:07:26
+Right? You should exactly get to know that I want to use, uh, 5GB only.
+
+[rochak agrawal] 09:07:35
+If you want to overcome this problem, so then there is a concept of the storage classes, which uses the dynamic provisioning.
+
+[Anthony Joseph] 09:07:48
+Okay.
+
+[rochak agrawal] 09:07:48
+Okay.
+
+[Anthony Joseph] 09:07:53
+So, ideally, if there is a 5GB of PV that I've created, I can use that entire 5GB, right, instead of, you know, allocating only 2GB or something?
+
+[rochak agrawal] 09:07:59
+But that is by design, Bjorn. It is not, uh…
+
+[rochak agrawal] 09:08:05
+Uh, see, you can use 5GB space, but not in Kubernetes. Kubernetes… see, uh, let's say your hard disk has 100GB space, um, but, um…
+
+[rochak agrawal] 09:08:16
+For example, when you attach this PV of 2GB, Kubernetes is going to use 2GB only.
+
+[rochak agrawal] 09:08:24
+That is what it meant. You have another 3GB of space, I can go manually do anything, but another pod or another PVC will not be able to use it.
+
+[Anthony Joseph] 09:08:35
+Yeah, that is a problem that I see.
+
+[rochak agrawal] 09:08:38
+That is what we are saying, that's a problem.
+
+[Anthony Joseph] 09:08:41
+Okay, okay.
+
+[rochak agrawal] 09:08:42
+Yeah? See, that is a challenge with the static provisioning in Kubernetes, and that is, um, I would not say a problem, they have designed it in a way, um, so that, uh…
+
+[rochak agrawal] 09:08:54
+see, there is… we will see there is an option of static provisioning also. Okay, so there is something called the storage classes is there. So if you go, uh, kubectl…
+
+[rochak agrawal] 09:09:07
+Let's see, storage classes. So you can see here, there is many storage classes in here, right? So Azure…
+
+[rochak agrawal] 09:09:18
+Manage CSI. CSI is inbuilt. DiscoCSIAzure.com.
+
+[rochak agrawal] 09:09:23
+This is, by default, coming because we are using the AKS.
+
+[rochak agrawal] 09:09:28
+Okay, now…
+
+[rochak agrawal] 09:09:30
+I can create another storage class. So you can see there are so many storage classes with the diskcsi.azure.com. Now, what does it mean? Whenever I'm going to create a persistent volume claim using this storage class, okay?
+
+[rochak agrawal] 09:09:45
+Uh, it is going to create, uh, another, uh, persistent disk. For example.
+
+[rochak agrawal] 09:09:53
+So, what I'm going to do…
+
+[rochak agrawal] 09:10:01
+So, in a static provisioning, you have seen that there is a mapping between PB and PBC, correct? So, if the PB is there, then only it will be allocated.
+
+[rochak agrawal] 09:10:11
+But with the help of a storage classes, it is not like that.
+
+[rochak agrawal] 09:10:14
+So I'll get a storage class.
+
+[rochak agrawal] 09:10:16
+Yaman?
+
+[rochak agrawal] 09:10:31
+disk.csi.hr.
+
+[rochak agrawal] 09:10:38
+So, yeah, this is a very, uh, small storage classes there. So, kind of storage class, I'll say…
+
+[rochak agrawal] 09:10:47
+Test.
+
+[rochak agrawal] 09:10:49
+SC?
+
+[rochak agrawal] 09:10:50
+Provisioner is this. Parameter is SKU name. Reclaim policy is delete.
+
+[rochak agrawal] 09:10:59
+Uh, caching mode, uh, allow volume expansion is true.
+
+[rochak agrawal] 09:11:02
+And volume winding mode is based for the first enumer. Right. Perfect.
+
+[rochak agrawal] 09:11:07
+So I'll just create this.
+
+[rochak agrawal] 09:11:14
+B-I-S-C dot E-M-L.
+
+[rochak agrawal] 09:11:20
+Now, what the storage class does, uh, storage class is a dynamic provisioning of the, um.
+
+[rochak agrawal] 09:11:29
+volumes, okay? So it says the provisioner is Azure disk. Since we are using the Azure, that's why I'm giving this provisioner. Uh, depending on the platform, you can give the provisioner, and you can see, whenever you are creating a disk, you create the premium LRS type of a disk.
+
+[rochak agrawal] 09:11:45
+And those parameters will change on the, um…
+
+[rochak agrawal] 09:11:50
+Platform you will be using, so I'll just say kubectl.
+
+[rochak agrawal] 09:11:53
+You?
+
+[rochak agrawal] 09:11:55
+hyphen f sc dot yaml.
+
+[rochak agrawal] 09:11:59
+Storage class, test SE is created. Now, if you go kubectl…
+
+[rochak agrawal] 09:12:05
+Get, uh, see?
+
+[rochak agrawal] 09:12:07
+So you have your test storage class, which is, again, the same only, but I created just to show you.
+
+[rochak agrawal] 09:12:14
+8 seconds ago, okay? Now, when you go create a PVC.
+
+[rochak agrawal] 09:12:26
+Now, what's going to happen when I'm going to create a PVC?
+
+[rochak agrawal] 09:12:31
+Where is the BBC, Amal?
+
+[rochak agrawal] 09:12:37
+Yeah.
+
+[rochak agrawal] 09:12:38
+Take this.
+
+[rochak agrawal] 09:12:40
+Okay, persistent volume claim, uh, name, uh…
+
+[rochak agrawal] 09:12:49
+Dynamic PVC?
+
+[rochak agrawal] 09:12:52
+That's it.
+
+[rochak agrawal] 09:12:56
+Dynamic claim. Uh, SPAC, uh, access mode is retried once.
+
+[rochak agrawal] 09:13:02
+Storage class name is SSC which we created.
+
+[rochak agrawal] 09:13:07
+And, uh, then resource request storage is 5GB. Nothing else. Okay. So what is going to happen?
+
+[rochak agrawal] 09:13:15
+Let me delete the TV also, if we have any.
+
+[rochak agrawal] 09:13:28
+Good. EB?
+
+[rochak agrawal] 09:13:29
+Okay? So let me delete the PVC and PV both.
+
+[rochak agrawal] 09:13:35
+UPL bleed.
+
+[rochak agrawal] 09:13:37
+BBC.
+
+[rochak agrawal] 09:13:40
+Demo B, B, C, plane.
+
+[rochak agrawal] 09:13:50
+Here at BBC.
+
+[rochak agrawal] 09:14:01
+Okay, so I do not have a…
+
+[rochak agrawal] 09:14:06
+Kubectl get PB. There is no PB. There is no PVC. Again, I will go create.
+
+[rochak agrawal] 09:14:23
+This, nothing much I'm doing, so here, you see, in this, I'm just saying my storage class is this, and I need a 5GB.
+
+[rochak agrawal] 09:14:30
+Okay, so I'll go.
+
+[rochak agrawal] 09:14:39
+Now you see, um…
+
+[rochak agrawal] 09:14:41
+When you create this kubectl.
+
+[rochak agrawal] 09:14:46
+Hyphen F, A, B, C.
+
+[rochak agrawal] 09:14:49
+So, Amal?
+
+[rochak agrawal] 09:14:56
+See?
+
+[rochak agrawal] 09:14:58
+So, right now, it is pending. Uh, in the backend, it is, uh, your…
+
+[rochak agrawal] 09:15:08
+Now, it will take some time, because in the backend, it is going to create a disk for us. Okay, so…
+
+[rochak agrawal] 09:15:19
+It will take some time, but you see the storage class, it is using the test SC. So it will create a disk, and…
+
+[rochak agrawal] 09:15:27
+It will use that disk. Now…
+
+[rochak agrawal] 09:15:30
+In a storage class, when you define a storage class, um, it is, um, basically dynamically, so whenever there is a claim is coming.
+
+[rochak agrawal] 09:15:40
+We have seen there was a problem with the…
+
+[rochak agrawal] 09:15:43
+Uh, static provisioning, right?
+
+[rochak agrawal] 09:15:57
+Problem with the static provisioning was that if I have 100 GB disk and I'm just doing a claim of 2 GB, then even my remaining 98 GB is a total wastage in terms of Kubernetes. So that is where…
+
+[rochak agrawal] 09:16:16
+Uh, that is where it is your…
+
+[rochak agrawal] 09:16:18
+What you can see, um…
+
+[rochak agrawal] 09:16:24
+Like, how to put it up.
+
+[rochak agrawal] 09:16:25
+And that is where your static, uh…
+
+[rochak agrawal] 09:16:29
+Uh, sorry, dynamic provisioners, your storage classes comes into the picture. They are going to create your resources.
+
+[rochak agrawal] 09:16:36
+When you need them, even, uh… see, for example, right now, also, if you see…
+
+[rochak agrawal] 09:16:42
+your disk is in a pending status. Why? The reason for that is, until and unless there is not an application who need this claim, your disk is not going to be created. So you need to create a pod, you need to create an application.
+
+[rochak agrawal] 09:16:58
+Which is going to use this, uh, your…
+
+[rochak agrawal] 09:17:06
+disk claim, and then your appli- uh, then your, uh, disk will be created, and then, um, an Azure disk will be created in the backend dynamically. So that is a dynamic provisioning. So you have both static provisioning.
+
+[rochak agrawal] 09:17:19
+Static provisioning you are going to use when you know exactly your capacity management, that I'm going to create a 100 GB disk, and then this…
+
+[rochak agrawal] 09:17:33
+100 GB, I am going to use. So same way, I am going to create it. But if you do not know, then you can use the dynamic provisioning alternative.
+
+[rochak agrawal] 09:17:44
+Okay?
+
+[rochak agrawal] 09:17:49
+Yes, Navi?
+
+[Naveen Kr Nair] 09:17:53
+Uh, hi, uh, Roger, can you hear me?
+
+[Naveen Kr Nair] 09:17:58
+Uh, hello, uh, Rocha, can you hear me?
+
+[rochak agrawal] 09:18:04
+Um, I'm not able to hear you, Naveen.
+
+[Naveen Kr Nair] 09:18:10
+Uh, hello?
+
+[rochak agrawal] 09:18:28
+Okay, uh…
+
+[rochak agrawal] 09:18:31
+Not able to hear, Naveen.
+
+[rochak agrawal] 09:18:34
+So this is about the volumes. Any question, anyone?
+
+[rochak agrawal] 09:18:44
+Yes, Kaushal.
+
+[Kaushal] 09:18:46
+So, uh, uh, in this storage class, dynamic provisioning, uh, let's say my application… I mean…
+
+[rochak agrawal] 09:18:53
+I'm not sure what is the problem is, Kaushal, I'm not able to hear your voice also.
+
+[Kaushal] 09:19:00
+Okay
+
+[Kaushal] 09:19:02
+Hello?
+
+[rochak agrawal] 09:19:03
+No, I can see you are speaking, but unfortunately, I cannot hear.
+
+[Kaushal] 09:19:14
+Hello?
+
+[rochak agrawal] 09:19:30
+Okay, um…
+
+[rochak agrawal] 09:19:33
+You can type a question also if it works, I'm not able to hear.
+
+[rochak agrawal] 09:19:50
+So next, we are going to see some more configuration options with respect to Kubernetes, like how to autoscale the number of the pods. So there is something called horizontal pod autoscaler. We are going to explore that. Then we will see how we can control the behavior of our application.
+
+[rochak agrawal] 09:20:09
+which are running in Kubernetes, for example, your room.
+
+[rochak agrawal] 09:20:14
+How to assign CPU, how to assign memory, and all of that concept we are going to see in the next class.
+
+[rochak agrawal] 09:20:21
+So yeah, I think we are good for today. Anything new we are going to cover tomorrow.
+
+[rochak agrawal] 09:20:34
+Thank you, guys.
+
