@@ -1,0 +1,3087 @@
+[rochak agrawal] 07:34:59
+Hey, good morning, everyone.
+
+[rochak agrawal] 07:35:06
+Let's start.
+
+[rochak agrawal] 07:35:12
+Okay, so yesterday we covered about the virtual machines. Before we move to another service, any question as we discussed? We'll take the question first today about the virtual machines, and then we will move to other topic.
+
+[rochak agrawal] 07:35:31
+Yes, Deep.
+
+[DEEPRADEB] 07:35:33
+Yes, sir, actually, my question is that, uh, what is the latest series of the VMs? Because, uh, in one interview, an interviewer asked me, okay, what is the latest series of the VMs, and how shall I answer it?
+
+[rochak agrawal] 07:35:48
+Mm-hmm.
+
+[rochak agrawal] 07:35:50
+Okay, so you should answer, Adit, like this, that when you say, what is the latest series of the BM, so as we have seen yesterday, there are many families of the BM is there.
+
+[rochak agrawal] 07:36:02
+So, storage optimizes their… memory optimizes their… correct. So, in every type of the family, there will… the latest version of the VM keep coming. So, for example, if I go to the virtual machines.
+
+[DEEPRADEB] 07:36:02
+Okay.
+
+[DEEPRADEB] 07:36:06
+Hmm.
+
+[rochak agrawal] 07:36:16
+And click on Creating a Virtual Machine.
+
+[rochak agrawal] 07:36:19
+When you need to select the size, okay?
+
+[DEEPRADEB] 07:36:19
+Hmm.
+
+[rochak agrawal] 07:36:24
+So you see all the sizes?
+
+[DEEPRADEB] 07:36:26
+Mm-hmm.
+
+[rochak agrawal] 07:36:28
+Here, if you see, uh, in a D series, V7 is there, V6 is there, correct?
+
+[DEEPRADEB] 07:36:34
+Hmm.
+
+[rochak agrawal] 07:36:35
+So, V7 is the latest generation.
+
+[DEEPRADEB] 07:36:39
+Gotcha. Okay.
+
+[rochak agrawal] 07:36:40
+Okay, so here, but in E-Series, if you see, E-Series V7 is the latest generation.
+
+[DEEPRADEB] 07:36:42
+Okay.
+
+[rochak agrawal] 07:36:47
+So there will be multiple families in which you need to see which is the latest generation.
+
+[DEEPRADEB] 07:36:55
+Okay, okay.
+
+[DEEPRADEB] 07:36:57
+Okay.
+
+[DEEPRADEB] 07:36:58
+Understood, understood, understood. Okay, another question is that, uh, you have told that, uh.
+
+[rochak agrawal] 07:36:58
+Yeah? Okay.
+
+[DEEPRADEB] 07:37:05
+in the, uh, Azure, there are, uh, different management groups. Okay, uh, below the… that is, uh, under the management group, there are subscription, and under subscription, there are the resource group. Okay, right.
+
+[rochak agrawal] 07:37:17
+Correct. Right?
+
+[DEEPRADEB] 07:37:19
+So, suppose, uh, I have, uh, I have one company, okay. And, uh, also I have another company, that is my sister company. So I have created two management groups.
+
+[rochak agrawal] 07:37:33
+Okay.
+
+[DEEPRADEB] 07:37:33
+Now, the VMs which are created under these management groups… let's say about the resources which are created between management group A and management group B, those can be interconnected.
+
+[rochak agrawal] 07:37:50
+Yes, they can be interconnected, but by default, they will not be connected, but they can be.
+
+[DEEPRADEB] 07:37:52
+Um, but…
+
+[DEEPRADEB] 07:37:55
+They can be interconnected. Okay, that we will learn afterwards, right?
+
+[rochak agrawal] 07:37:57
+Yes.
+
+[rochak agrawal] 07:38:00
+In the networking, yeah.
+
+[DEEPRADEB] 07:38:02
+Okay, okay, okay, okay. Okay, right now, uh, oh, another thing is that, uh, you have told about the higher availability, right? Uh, right, uh, there is the Microsoft Gates, uh, the SLA 99.99.
+
+[rochak agrawal] 07:38:04
+Okay.
+
+[rochak agrawal] 07:38:09
+Mm-hmm.
+
+[DEEPRADEB] 07:38:17
+percent, okay, that, uh, in this higher availability, uh, that is, uh, that is 99.99% that SLA is 8 hours, 43 minutes, uh, uh, that is.
+
+[rochak agrawal] 07:38:18
+Right.
+
+[rochak agrawal] 07:38:21
+Mm-hmm.
+
+[DEEPRADEB] 07:38:32
+Okay, is it the standardized form of… that is standardized?
+
+[rochak agrawal] 07:38:35
+It's a seat.
+
+[rochak agrawal] 07:38:37
+It's the standard. See, this is what I'm saying, if you are deploying… see, Azure… Azure is saying… Azure is saying if you don't deploy the virtual machine with high availability, you will get a 99.9% SLA, but you're deploying it with availability zones, you are going to get a 99.99%.
+
+[DEEPRADEB] 07:38:47
+Hmm.
+
+[rochak agrawal] 07:38:55
+So…
+
+[rochak agrawal] 07:38:56
+It means for the maximum of eight minutes a virtual machine can be down. It's not like it will be down.
+
+[rochak agrawal] 07:39:04
+Okay?
+
+[DEEPRADEB] 07:39:05
+Okay, okay, right now I have these questions only, okay.
+
+[rochak agrawal] 07:39:07
+Sure.
+
+[rochak agrawal] 07:39:11
+Yes, Moni?
+
+[rochak agrawal] 07:39:17
+Yes, I do.
+
+[Muni Prasadreddy] 07:39:19
+Uh, hi Ruchika! Actually, I have 3 questions. One from a previous session, I was not able to…
+
+[Muni Prasadreddy] 07:39:28
+Uh, respond, uh, in that.
+
+[Muni Prasadreddy] 07:39:29
+So, uh, from the yesterday session, uh, like, Windows, uh, do we have any interface for Ubuntu, like, uh, Linux?
+
+[rochak agrawal] 07:39:39
+When do we have connected the virtual machine money?
+
+[rochak agrawal] 07:39:41
+We created a virtual machine. Yeah, of course, we have CentOS and…
+
+[Muni Prasadreddy] 07:39:42
+Yeah.
+
+[Muni Prasadreddy] 07:39:42
+Yeah, we created interface for…
+
+[Muni Prasadreddy] 07:39:47
+No, my question is, for Windows, we have downloaded RDP, and we have seen some interface, right? Windows Server 1.
+
+[rochak agrawal] 07:39:57
+Mm-hmm.
+
+[Muni Prasadreddy] 07:39:57
+So, like that Ubuntu 25.04 version, we can…
+
+[rochak agrawal] 07:40:02
+Yeah, yeah, you can use any other tool like MobaXterm and other tools are there. You can connect to Ubuntu-based virtual machine. See, first we need to understand if your machine, whatever the machine you selected, is it giving you the GUI or not?
+
+[rochak agrawal] 07:40:17
+Right? And then you can use any other tool. See, mostly Linux or the Ubuntu flavor, we work on the command line. Right? So that is what we connected via the SSH. But you can use other tools to connect to the Ubuntu-based machine.
+
+[Muni Prasadreddy] 07:40:17
+Okay.
+
+[Muni Prasadreddy] 07:40:25
+Okay. Alright.
+
+[rochak agrawal] 07:40:32
+Which is providing you the UI. We can do that.
+
+[Muni Prasadreddy] 07:40:34
+Okay, thank you. And my second question that, uh, as you have mentioned yesterday, uh, update domain and fart, uh, fart domain…
+
+[rochak agrawal] 07:40:43
+One, Paul domain.
+
+[Muni Prasadreddy] 07:40:45
+Yeah, uh, is it chargeable if I choose 3 for domain phone?
+
+[rochak agrawal] 07:40:47
+No, no, no, it is not chargeable. No, no, no.
+
+[rochak agrawal] 07:40:51
+But as we discussed, like, update domain and fault domain is going to use when you're using the multiple virtual machines, right? So anyways, like, you will be deploying more than one virtual machine.
+
+[Muni Prasadreddy] 07:40:52
+Oh, okay.
+
+[rochak agrawal] 07:41:04
+And even the same set, uh, same thing is there with the BM scale sets. BM scale set as a service is not chargeable, but if you're deploying 2 virtual machines or 5 virtual machines inside the scale set, that will be chargeable.
+
+[Muni Prasadreddy] 07:41:20
+Do you mean, uh, that, uh, disk, data disk?
+
+[rochak agrawal] 07:41:23
+No, no. What I mean to say is, as a scale set, as a service, it's not chargeable. So you're scaling up, scaling down.
+
+[Muni Prasadreddy] 07:41:28
+Okay.
+
+[rochak agrawal] 07:41:31
+Whatever the virtual machine you will be creating as part of the skill set, that will be chargeable.
+
+[Muni Prasadreddy] 07:41:31
+Yeah.
+
+[Muni Prasadreddy] 07:41:36
+For that, updated domain and fault domain will be created.
+
+[rochak agrawal] 07:41:40
+Just not chargeable.
+
+[Muni Prasadreddy] 07:41:42
+Okay. And my last question, uh…
+
+[Muni Prasadreddy] 07:41:46
+If we are attaching data disks, so, uh, while I have… but suppose I have created one virtual machine, uh, I have attached one data disk.
+
+[rochak agrawal] 07:41:55
+Mm-hmm.
+
+[Muni Prasadreddy] 07:41:59
+Uh, so, uh, unfortunately, I, I want to delete that virtual machine, and, uh, I, uh, I haven't deleted that, uh, data disk.
+
+[Muni Prasadreddy] 07:42:08
+I have just detached that one. So, I can use, uh, another virtual…
+
+[rochak agrawal] 07:42:10
+Mm-hmm. Mm-hmm.
+
+[rochak agrawal] 07:42:12
+You can use it with another virtual machine, yes?
+
+[Muni Prasadreddy] 07:42:15
+Uh, but uh, but my question is, uh…
+
+[Muni Prasadreddy] 07:42:19
+How to vanish that, uh, data disk if I deleted virtual mission before?
+
+[rochak agrawal] 07:42:24
+You…
+
+[Muni Prasadreddy] 07:42:28
+Uh, but I haven't created any virtual machine.
+
+[rochak agrawal] 07:42:31
+So then see, understood. See, yesterday also we have explained that think of your data disk as your external hard disk.
+
+[Muni Prasadreddy] 07:42:32
+That's a better…
+
+[rochak agrawal] 07:42:41
+Now, let's say there is a laptop at your home, you detach your, uh, sorry, attach your data disk and access the data, correct?
+
+[Muni Prasadreddy] 07:42:49
+Yes.
+
+[rochak agrawal] 07:42:49
+Now, you go send your laptop to somewhere, but your data disk, which is your hard disk, is safe at your home. If some other laptop is coming, you will attach it and access it, right?
+
+[Muni Prasadreddy] 07:42:59
+Yeah.
+
+[rochak agrawal] 07:42:59
+So data disk is different. The lifecycle of a data disk is separate from a virtual machine. So even if you're deleting the virtual machine.
+
+[rochak agrawal] 07:43:09
+You will not be able… you will not be losing the data disks.
+
+[rochak agrawal] 07:43:14
+Okay, so if you create any other virtual machine, you attach it to that virtual machine.
+
+[Muni Prasadreddy] 07:43:19
+Okay, uh, after, uh, if I check in that, uh…
+
+[Muni Prasadreddy] 07:43:25
+Detach a disk, my data will be vanished.
+
+[rochak agrawal] 07:43:28
+Yes, no, no, no, no. Detach means… see, when I'm saying compare it with your hard disk.
+
+[Muni Prasadreddy] 07:43:32
+Ah, yeah, yeah, clear, clear, clear.
+
+[rochak agrawal] 07:43:34
+Right? When you detach it, it is not available on your laptop, but data is still there in hard disk, right? Same thing.
+
+[Muni Prasadreddy] 07:43:38
+Yeah, yeah, yeah.
+
+[Muni Prasadreddy] 07:43:40
+Yeah, clear
+
+[Muni Prasadreddy] 07:43:42
+But, when it will be vanished, that I want to… if I want to delete that data
+
+[rochak agrawal] 07:43:47
+You attach it to your laptop, you delete your data, and it will be deleted.
+
+[Muni Prasadreddy] 07:43:51
+Okay, okay.
+
+[rochak agrawal] 07:43:52
+Yeah? Or you delete the disk altogether.
+
+[Muni Prasadreddy] 07:43:53
+Thank you.
+
+[rochak agrawal] 07:43:56
+Okay.
+
+[rochak agrawal] 07:43:59
+Yes, Alex.
+
+[arif] 07:44:07
+Hello?
+
+[rochak agrawal] 07:44:08
+Yes, good morning, Arif.
+
+[arif] 07:44:09
+Yeah, yeah, good morning. So, Rochak, um, I had a question regarding that virtual machine scale set.
+
+[rochak agrawal] 07:44:15
+Mm-hmm.
+
+[arif] 07:44:17
+So, in that case, can we create multiple virtual machines with different, different configurations using auto-scaling, or it can be done only manually?
+
+[rochak agrawal] 07:44:23
+No.
+
+[rochak agrawal] 07:44:25
+No, no, no. See, it is… see, the whole purpose of the virtual machine… a virtual machine skill set is you are running an application with the multiple virtual machine with the same configuration, and when the load is increasing, you want to have the same configuration.
+
+[rochak agrawal] 07:44:42
+So it is similar to the auto-scaling group in AWS. So…
+
+[arif] 07:44:48
+Okay.
+
+[rochak agrawal] 07:44:49
+No different configuration.
+
+[arif] 07:44:52
+But I think in the, in the real world, uh, some different, different ways virtual machines require.
+
+[rochak agrawal] 07:44:56
+No. Can you give me any use case?
+
+[arif] 07:44:59
+I think earlier you said for Mac, for mobile application, we use Mac web.
+
+[rochak agrawal] 07:45:03
+No, but then it will not be behind a load balancer, right? See, for example.
+
+[rochak agrawal] 07:45:09
+For a different application, you need a different virtual machine, but let's say my…
+
+[rochak agrawal] 07:45:13
+Web server is running.
+
+[rochak agrawal] 07:45:15
+Let's say with two instances.
+
+[rochak agrawal] 07:45:19
+Now, these two instances will be same or different.
+
+[arif] 07:45:26
+Yeah, same.
+
+[rochak agrawal] 07:45:28
+See? Then…
+
+[rochak agrawal] 07:45:30
+The role of a virtual machine skill set is…
+
+[rochak agrawal] 07:45:33
+If the load is increasing on these two instances.
+
+[rochak agrawal] 07:45:37
+Add another one, correct?
+
+[rochak agrawal] 07:45:39
+So that third instance will be the same one or a different one.
+
+[arif] 07:45:43
+Yeah, it will be the same.
+
+[rochak agrawal] 07:45:45
+So that's the purpose of the virtual machine skill set.
+
+[rochak agrawal] 07:45:47
+So you can put up a load balancer in front, and then it will start sending the traffic to these instances. So all these instances need to be same.
+
+[arif] 07:45:59
+Okay.
+
+[rochak agrawal] 07:46:00
+Okay.
+
+[arif] 07:46:00
+And, uh, regarding that, uh, update domain and file domain…
+
+[rochak agrawal] 07:46:04
+Now, before I go to the next question, I'll…
+
+[rochak agrawal] 07:46:09
+Explain one more scenario. See, for example.
+
+[arif] 07:46:11
+Okay.
+
+[rochak agrawal] 07:46:13
+when you're saying you need the different, different virtual machines, right? A different size of the virtual machine. So maybe, let's say, uh…
+
+[rochak agrawal] 07:46:30
+Maybe you can see you might be running a different application which might require a different set of virtual machine.
+
+[rochak agrawal] 07:46:39
+Okay, now for that, let's say I'm creating another virtual machine scale set.
+
+[rochak agrawal] 07:46:44
+It may be another configuration, another size. Now here also you can have a application gateway, which is your application load balancer. And I will say if the request is coming to /appbun.
+
+[rochak agrawal] 07:47:00
+It should go to your VM SS1.
+
+[rochak agrawal] 07:47:04
+But if the request is coming to slash app 2.
+
+[rochak agrawal] 07:47:09
+It should go to VMSS2, for example, right? So, different application, different configuration, but my load balancer can do the path-based routing, correct? Now, in this case, in a same application.
+
+[rochak agrawal] 07:47:23
+See, when we talk about the same application, let's say if I talk about amazon.com, it's not the same application. It is based on the microservices architecture. There will be multiple microservices, and then, um…
+
+[rochak agrawal] 07:47:34
+Every microservices might have a different configuration. But when I talk about a single microservices, all the machine which is running that microservices will have the same configuration.
+
+[arif] 07:47:46
+Okay.
+
+[rochak agrawal] 07:47:47
+Okay, yeah.
+
+[arif] 07:47:48
+Okay. And regarding that update domain and that file domain, I'm not getting how… how can we decide how many update domain of…
+
+[arif] 07:47:57
+Or… that we have to configure.
+
+[rochak agrawal] 07:48:00
+that we discussed yesterday. See, fault domain is maximum 3.
+
+[rochak agrawal] 07:48:05
+Okay.
+
+[rochak agrawal] 07:48:09
+Right? So if you are running more than 3 virtual machines, you will always select the 3 update domain, uh, fault domain.
+
+[rochak agrawal] 07:48:17
+So that every machine is going into different, different fault domain.
+
+[arif] 07:48:21
+Okay. Mm-hmm.
+
+[rochak agrawal] 07:48:21
+Right? Okay.
+
+[rochak agrawal] 07:48:24
+So, for domain, Talia?
+
+[arif] 07:48:25
+Hmm.
+
+[rochak agrawal] 07:48:26
+Now, update domain by default is 5.
+
+[rochak agrawal] 07:48:31
+And then you can go up to 20.
+
+[arif] 07:48:34
+Mmhm.
+
+[rochak agrawal] 07:48:35
+Okay, so that is what we discussed. Let's say I need to run 10 virtual machines.
+
+[rochak agrawal] 07:48:43
+Okay.
+
+[rochak agrawal] 07:48:46
+Now if someone is asking, when an update is happening, let's say hypothetically you are running 10 virtual machines.
+
+[rochak agrawal] 07:48:55
+Okay.
+
+[rochak agrawal] 07:48:56
+Then someone is saying, okay, when the update is happening, I am fine if my five, uh, sorry, eight virtual machines are available, for example.
+
+[rochak agrawal] 07:49:06
+2 is going into the maintenance at once, that is okay, right?
+
+[rochak agrawal] 07:49:10
+So then I will go with the default one with the five update domain.
+
+[rochak agrawal] 07:49:17
+Right? Where… one…
+
+[rochak agrawal] 07:49:21
+3 4 5 6 7 8 9 10.
+
+[rochak agrawal] 07:49:26
+Correct?
+
+[rochak agrawal] 07:49:29
+Now…
+
+[rochak agrawal] 07:49:30
+We know this is UD1, 2, UD1, 2, 3, 4, 5.
+
+[rochak agrawal] 07:49:36
+Now, as per Azure, when an update is going to happen, it will take one update domain.
+
+[rochak agrawal] 07:49:42
+Patch it, maintain it, maintenance, uh, do all the maintenance, then bring it back, then take another update domain, correct?
+
+[rochak agrawal] 07:49:48
+So, at one point of time, this will go into maintenance. Once this is back up, this will go into maintenance. Once this is up, this will go into maintenance, like this, correct? So, you see, at any point of time, your two virtual machines will not be available.
+
+[arif] 07:49:49
+-H
+
+[arif] 07:49:59
+Hmm.
+
+[rochak agrawal] 07:50:02
+Right?
+
+[arif] 07:50:04
+Yep.
+
+[rochak agrawal] 07:50:05
+So 8 will be available, so I can go with the 5 domain, 5 update domain. But you say, no, I…
+
+[rochak agrawal] 07:50:12
+can lose only one virtual machine, I need to go with the 9.
+
+[rochak agrawal] 07:50:15
+Nine virtual machines should always be available.
+
+[rochak agrawal] 07:50:20
+Then I can go with the 5 update domain. No.
+
+[rochak agrawal] 07:50:23
+Correct?
+
+[rochak agrawal] 07:50:25
+Then what we need to do, we need to see 10 update domains.
+
+[rochak agrawal] 07:50:32
+1, 2, 3, 4, 5, 6, 7, 8, 9.
+
+[rochak agrawal] 07:50:36
+So, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
+
+[rochak agrawal] 07:50:43
+Okay, then in this case, one update domain at a time, so your one virtual machine will not be available, right? So that depends. So fault domain is three. So if you have the rule of thumb is if you have more than three virtual machine running as part of the group, okay?
+
+[rochak agrawal] 07:50:59
+you select the fault domain as 3, but the update domain is how many virtual machines you can afford to lose when an update is happening. And accordingly.
+
+[rochak agrawal] 07:51:09
+like, how many total number of the VMs, and how many machines you can lose when an update is happening, will decide how many update domain you need to have.
+
+[arif] 07:51:20
+Yeah, I got your point, but the thing is, uh, this is, uh, the diagram, the pictorial view, we can understand, but…
+
+[arif] 07:51:27
+suppose if I configure 20 virtual machines on Azure platform, at the back end, who is going to decide how many virtual machines will be put in?
+
+[rochak agrawal] 07:51:34
+No, we don't decide, we just… see, that is what update domain fault… see, any hardware level thing is not our responsibility, it's a Microsoft's responsibility, okay? So, when I'm saying 10 virtual machine.
+
+[rochak agrawal] 07:51:47
+and I am using the 10 update domain. So then every virtual machine will go into a single update domain. So it is not our responsibility. We just need to tell Azure, I have 10 virtual machine, I have selected 10 update domain.
+
+[rochak agrawal] 07:52:03
+Microsoft will automatically put them in a different, different update domains. So we don't do that. We just select the number of the virtual machines and number of the update domains.
+
+[arif] 07:52:11
+Okay.
+
+[rochak agrawal] 07:52:13
+Okay.
+
+[arif] 07:52:15
+Okay, okay.
+
+[rochak agrawal] 07:52:15
+Even with the fault domain also, you just select the number of the fault domain. Then once you select the number, Microsoft will put your virtual machine. Now you say I have selected three fault domain, but my virtual machine is five, for example.
+
+[rochak agrawal] 07:52:30
+Then…
+
+[rochak agrawal] 07:52:32
+It will…
+
+[rochak agrawal] 07:52:33
+evenly distributed. So, two virtual machines in another update domain, two virtual machines in another update domain, then one in another update domain.
+
+[rochak agrawal] 07:52:41
+So that is all Microsoft does it at the back end. We don't need to do anything. We just need to tell how many update domain and fault domain we want.
+
+[arif] 07:52:51
+Okay, so… so that is, uh, by default, it will start from the domain 5, right?
+
+[rochak agrawal] 07:52:58
+Yes, upgrade domain, but you say, I have only 3 virtual machines, for example. Then it will use 3 upgrade domain.
+
+[arif] 07:53:04
+Yeah.
+
+[arif] 07:53:07
+Okay.
+
+[rochak agrawal] 07:53:08
+Right?
+
+[arif] 07:53:09
+So that's not the minimum, 5. 5 is not the minimum.
+
+[rochak agrawal] 07:53:10
+That's not the minimum. It's a default, uh, thing you can say. You are only running, uh, two virtual machines. Then they both will be in a different, different update domain.
+
+[arif] 07:53:14
+Okay.
+
+[arif] 07:53:19
+Okay, okay.
+
+[rochak agrawal] 07:53:20
+Yeah?
+
+[arif] 07:53:20
+Got it.
+
+[rochak agrawal] 07:53:21
+Okay.
+
+[arif] 07:53:26
+And one last thing, just to follow up, we asked some questions regarding the last class session, and…
+
+[rochak agrawal] 07:53:28
+Yep.
+
+[arif] 07:53:33
+Uh, issues with the, uh, the training thing. Did you check and get an update from…
+
+[rochak agrawal] 07:53:36
+Mm-hmm.
+
+[rochak agrawal] 07:53:37
+Yeah, I… I checked, uh… they said they'll talk to everyone, so that is what I got. I raised that people have enrolled for AWS, and we are starting with Ajot, and so they… the response I got is they are going to talk to everyone.
+
+[arif] 07:53:53
+Only promises and quotes contained, items contained.
+
+[rochak agrawal] 07:53:55
+Yeah, yeah, about that also, about that also.
+
+[rochak agrawal] 07:53:57
+Whatever we discussed, I have communicated.
+
+[arif] 07:54:01
+And the suspect…
+
+[rochak agrawal] 07:54:01
+And I told you RFID.
+
+[arif] 07:54:04
+Yeah, that suspend thing, did you get a chance to check, like, ah, the ground?
+
+[rochak agrawal] 07:54:06
+Yes, suspending I get a chance, yes. Arif, what's going to happen is when we run a PowerShell, so there was two, three options, start, stop. Yes, no suspend. The suspend button is not for every type of the command.
+
+[arif] 07:54:20
+Yeah.
+
+[rochak agrawal] 07:54:23
+It is visible for every command, but let's say when I'm deleting a resource group and I select suspend, so that is not going to have any impact, basically. Suspend is, so there is another service in, there is not another, there is multiple other services.
+
+[arif] 07:54:35
+Okay.
+
+[rochak agrawal] 07:54:40
+in Azure, where you will be having a long-running processes.
+
+[rochak agrawal] 07:54:45
+So for one of the service which is Azure Automation account is there. So Azure Automation account, what Azure Automation account does is you can create your workflows in the Azure Automation account which will be the long running processes.
+
+[rochak agrawal] 07:55:00
+Okay, so let's say you run a Azure automation account processes using the PowerShell, but in the meantime, you realize that there is something wrong, or…
+
+[arif] 07:55:02
+Mmhm.
+
+[rochak agrawal] 07:55:11
+There is some problem, and you want to suspend the execution of that instance in middle, so that is where the suspend button is for.
+
+[arif] 07:55:21
+Okay.
+
+[rochak agrawal] 07:55:21
+Okay, it is not for every command. It is also visible for every command, but it is not applicable to every command.
+
+[rochak agrawal] 07:55:29
+So it is applicable for the processes which is long running.
+
+[rochak agrawal] 07:55:35
+So, for example, I'll give you another example. So, uh, there is another service called the ARM Templates.
+
+[rochak agrawal] 07:55:41
+Like, we have the cloud formation in AWS, we have a ARM template in, um…
+
+[rochak agrawal] 07:55:47
+Azure, where I can create my infrastructure, um, in a template manner. Now, when you create… when you run a template, and let's say you're creating 10 virtual machines, uh, with the help of the template, and you run… again, you can run the template with the Azure CLI or, uh, with the PowerShell.
+
+[rochak agrawal] 07:56:04
+And when you're running with the PowerShell, now you're creating 10 virtual machines. It might take five, seven minutes to complete that process. And in the meanwhile, if you want to suspend it, then you can do a control suspend button. So that is what the suspend is for.
+
+[arif] 07:56:22
+Oh, okay, okay.
+
+[rochak agrawal] 07:56:23
+For the long-running processes, okay?
+
+[arif] 07:56:25
+Okay.
+
+[rochak agrawal] 07:56:26
+Yep.
+
+[arif] 07:56:26
+The last question is, uh, regarding this, uh, while creating virtual machine, we can, uh, like, have this user data script, so I know about the Linux thing, we can, uh, write some code and it will work, but in the, uh, suppose that is the some…
+
+[rochak agrawal] 07:56:34
+Mm-hmm.
+
+[arif] 07:56:42
+Like Nginx and some by default servers are there. But what about the customized web server in Windows machine?
+
+[rochak agrawal] 07:56:43
+Mm-hmm.
+
+[arif] 07:56:51
+How can we create a customized web application server?
+
+[rochak agrawal] 07:56:51
+Customize.
+
+[rochak agrawal] 07:56:53
+Yeah, so you can write the PowerShell script, right?
+
+[arif] 07:56:56
+Uh, not for… on the Windows. Yesterday, we have created… we have some options, we have created selected web server.
+
+[rochak agrawal] 07:57:00
+Mm-hmm.
+
+[arif] 07:57:04
+Uh, and then it creates the web application. So, there is any way to do a customized option also?
+
+[rochak agrawal] 07:57:06
+Got it.
+
+[rochak agrawal] 07:57:09
+Yeah, we can do that. See, for example, uh, see, when you say customized, uh, see.
+
+[rochak agrawal] 07:57:14
+You agree we can write a script there, correct? Now, you see, when you say, I want to run a customized script, so what you can do is, let's say, when we are talking about the customized script, it means you have some web pages in your website which we want to display, correct?
+
+[arif] 07:57:17
+No.
+
+[rochak agrawal] 07:57:33
+So what you can do is, again, there are multiple ways of doing this, but let's say with the user data, how you can do it is, uh, see, for example, let's say you put up your, um.
+
+[rochak agrawal] 07:57:44
+web pages and everything in… in a storage account, in Blob Azure. Now, you write a script, which will download those content, then paste it in a NGINX bare www HTML folder, and…
+
+[rochak agrawal] 07:57:59
+Started see now.
+
+[rochak agrawal] 07:58:02
+It will totally depend on which web server you are using, but, uh, if you're using NGINX, so inside NGINX, the…
+
+[rochak agrawal] 07:58:09
+Content folder is where?
+
+[rochak agrawal] 07:58:13
+WWW?
+
+[rochak agrawal] 07:58:16
+HTML, correct?
+
+[rochak agrawal] 07:58:20
+Now, I upload everything into a storage account. Before installing the NGINX, I will write first, uh, line to download the file, then I'll install my NGINX, um, and then, um…
+
+[rochak agrawal] 07:58:31
+I'm going to copy the content inside this folder. That's it.
+
+[rochak agrawal] 07:58:39
+Okay, see, user data script is giving you a platform. Now, what you can do with it, I can do multiple things.
+
+[rochak agrawal] 07:58:48
+Just give me a second.
+
+[rochak agrawal] 07:58:56
+Just give me a minute.
+
+[rochak agrawal] 08:00:18
+Sorry. So yes, Arif, uh, so that is how we can do it. Uh, there can be other ways also, but one of the ways is I will upload, uh, uh, the content on the, uh, some shared folder. Now…
+
+[rochak agrawal] 08:00:30
+See, I've given an example of a storage account. I can probably have some…
+
+[rochak agrawal] 08:00:37
+Next is when we will learn storage, so there is something called the Azure Files is also there. I can have my custom data available at the EFS, and then I'll copy from the EFS to this NGINX folder. So, we can do that.
+
+[arif] 08:00:53
+Uh, but we, we should know this, the, this part where these engineering server.
+
+[rochak agrawal] 08:00:56
+But that is not Azure thing, but that will be NGINX thing. If you, let's say, will be using HTTPD, which is another web server, the path might be different. It has nothing to do with Azure.
+
+[arif] 08:01:08
+So, we need to know the path, right?
+
+[rochak agrawal] 08:01:10
+So, of course, the product you are working, you should know the configuration path for that product.
+
+[rochak agrawal] 08:01:18
+Okay.
+
+[rochak agrawal] 08:01:20
+Okay.
+
+[arif] 08:01:21
+And regarding the XE, you did not provide any exercises for AWS. Please provide for Azure from the starting.
+
+[arif] 08:01:28
+So then we can do some exercises, troubleshooting, right?
+
+[rochak agrawal] 08:01:30
+Sure, sure.
+
+[arif] 08:01:32
+Okay, yeah.
+
+[rochak agrawal] 08:01:32
+Okay.
+
+[rochak agrawal] 08:01:41
+Okay, uh, so let's start with another service. Uh, so you see, uh…
+
+[rochak agrawal] 08:01:47
+VMs were the IaaS.
+
+[rochak agrawal] 08:01:54
+Which is infrastructure as a service. So when you were and when we have seen the shared responsibility model, we said that.
+
+[rochak agrawal] 08:02:03
+Storage, networking, and physical infrastructure is the responsibility of your…
+
+[rochak agrawal] 08:02:11
+Uh, what you can say is about, uh…
+
+[rochak agrawal] 08:02:16
+The cloud service provider, then on top of it, uh, still operating system.
+
+[rochak agrawal] 08:02:22
+runtime…
+
+[rochak agrawal] 08:02:24
+Your application…
+
+[rochak agrawal] 08:02:29
+And data is the customer's responsibility.
+
+[rochak agrawal] 08:02:32
+So, for example, when I'm creating a virtual machine, I am selecting which operating system I need to do, right? I can select Windows, I can select…
+
+[rochak agrawal] 08:02:43
+Uh, Linux, etc. And then, um…
+
+[rochak agrawal] 08:02:47
+Once the virtual machine is ready, it is like a plain server, there is nothing on it, and then, um…
+
+[rochak agrawal] 08:02:54
+You can choose what runtime, what applications you need to install on it.
+
+[rochak agrawal] 08:03:01
+Everything is customizable, but only doing it on the physical infrastructure on which my machine is running is not my responsibility. It is CSP's responsibility. But still you have to manage the virtual machines.
+
+[rochak agrawal] 08:03:17
+Now, cloud provides multiple managed services as well. So, for example, in this case, if someone goes and, uh, stops your virtual machines, then also your, uh.
+
+[rochak agrawal] 08:03:31
+Stop working, because in the end, your application is running on the virtual machine.
+
+[rochak agrawal] 08:03:37
+And then if the virtual machine is stopped, then your application will stop working. So you say, okay, I don't want to manage the virtual machines also.
+
+[rochak agrawal] 08:03:44
+Okay, then…
+
+[rochak agrawal] 08:03:46
+Do you have any other options? So, Azure provides different other options also, which will come into the.
+
+[rochak agrawal] 08:03:55
+Ask anybody.
+
+[rochak agrawal] 08:04:02
+S is a platform as a service.
+
+[rochak agrawal] 08:04:07
+Again, where I am going…
+
+[rochak agrawal] 08:04:11
+I will not manage even the OS and runtime, I will just manage.
+
+[rochak agrawal] 08:04:17
+Application.
+
+[rochak agrawal] 08:04:20
+Runtime partially.
+
+[rochak agrawal] 08:04:26
+and data. So, for example.
+
+[rochak agrawal] 08:04:29
+If I compare it with the virtual machines, so virtual machines…
+
+[rochak agrawal] 08:04:34
+We create the virtual machine, we configure our virtual machine, and then we are going to run our application on it.
+
+[rochak agrawal] 08:04:41
+In case… so, for example, the first test service is…
+
+[rochak agrawal] 08:04:45
+Azure web apps.
+
+[rochak agrawal] 08:04:49
+Okay, in the Azure web app, what you need to do, you will just tell Azure that I have a, uh, for example, a Java-based application.
+
+[rochak agrawal] 08:04:59
+And I want to run it. Azure says, okay, no problem. You give the code to me, and I will run it.
+
+[rochak agrawal] 08:05:06
+Now, understand one thing here.
+
+[rochak agrawal] 08:05:09
+See, in the end.
+
+[rochak agrawal] 08:05:11
+Even if you're using… so, then we have the third is serverless.
+
+[rochak agrawal] 08:05:17
+Which is Azure Functions.
+
+[rochak agrawal] 08:05:21
+So we have three categories of service if we compare this.
+
+[rochak agrawal] 08:05:24
+VM?
+
+[rochak agrawal] 08:05:27
+Babeb?
+
+[rochak agrawal] 08:05:29
+and functions.
+
+[rochak agrawal] 08:05:32
+In the VM.
+
+[rochak agrawal] 08:05:34
+You are managing the servers.
+
+[rochak agrawal] 08:05:39
+Servers means the virtual machines. In the web app.
+
+[rochak agrawal] 08:05:43
+You will see the servers.
+
+[rochak agrawal] 08:05:51
+Not managed.
+
+[rochak agrawal] 08:05:57
+So when we will do a web app, you will see you will go to Azure and say I want to run something Azure. OK, Azure will provision a server for you. You will know the configuration of the server which is running and everything.
+
+[rochak agrawal] 08:06:12
+But managing it is not your responsibility. Azure says, okay, you don't worry, you focus on your application. I will take care of it.
+
+[rochak agrawal] 08:06:22
+In the case of Azure Functions, which is a third service, you…
+
+[rochak agrawal] 08:06:27
+will not even see the servers.
+
+[rochak agrawal] 08:06:30
+They must be running somewhere. Okay. Now, this is called the…
+
+[rochak agrawal] 08:06:37
+serverless.
+
+[rochak agrawal] 08:06:38
+Okay.
+
+[rochak agrawal] 08:06:41
+there is a very big misconception people understand is… see, when you say serverless, serverless does not mean that your application is not running on the server. See, when…
+
+[rochak agrawal] 08:06:55
+Something is running…
+
+[rochak agrawal] 08:06:57
+an application is running, it might must be running somewhere. Correct?
+
+[rochak agrawal] 08:07:02
+For example, we all use Gmail, Google Maps, YouTube.
+
+[rochak agrawal] 08:07:08
+They must be running somewhere, like some Google servers. When I'm using Salesforce, see, we all are using Zoom right now. Zoom is running somewhere, correct? Maybe on the Zoom server?
+
+[rochak agrawal] 08:07:19
+or if it is deployed on Cloud to some Cloud server, but it would have been running somewhere.
+
+[rochak agrawal] 08:07:25
+It is just… I cannot see the server where Zoom is running. I cannot see the server where Gmail is running. I cannot see the server where…
+
+[rochak agrawal] 08:07:33
+Google Map is running. For me, the service is serverless. I just go use the service. Similarly, Azure functions are there. So serverless, if someone asks you what does serverless means, and…
+
+[rochak agrawal] 08:07:48
+In serverless, we do not have any type of the server. So no serverless means.
+
+[rochak agrawal] 08:07:56
+The servers layer, where your application is running, is abstracted from us.
+
+[rochak agrawal] 08:08:01
+it is not visible to us, okay? So the complete responsibility of managing the server will be with Azure.
+
+[rochak agrawal] 08:08:10
+Okay? But in case of a web app, also you won't manage it, but you have a visibility on what type of the server your application is running. In case of a function, you will not have that visibility also.
+
+[rochak agrawal] 08:08:23
+Okay, so this is called the platform as a service where I will just go and tell boss I want to run my application. Can you please do something for me? So Azure will say, okay, no worries. I will take care of the infrastructure part. You focus on your application.
+
+[rochak agrawal] 08:08:39
+So here, I don't need to do the operating system, I… I need to runtime in terms of telling it, okay, um, I want to run a Java-based application, I want to run a Python-based application, and so…
+
+[rochak agrawal] 08:08:53
+That is the plus point of the web app and the function. You don't need to manage the infrastructure. Then people may ask, okay, that's a good thing.
+
+[rochak agrawal] 08:09:03
+If I do not need to worry about the infrastructure, then why I'm not always running it with the web app or the function? Why I need to use the virtual machine in the first place?
+
+[rochak agrawal] 08:09:12
+So the thing is, in case of Azure Web App, it does not support.
+
+[rochak agrawal] 08:09:18
+all the programming languages, it supports some major ones, like Java, Python, Node.js, um…
+
+[rochak agrawal] 08:09:27
+NET, some couple of mores. For example, if you are developing your application.
+
+[rochak agrawal] 08:09:35
+And that language is not supported by the web app, so even you do not have a choice, you need to run your application with the virtual machine. So, for example, if I'm creating a program in R.
+
+[rochak agrawal] 08:09:46
+Scala.
+
+[rochak agrawal] 08:09:48
+Or something like that, right? So then…
+
+[rochak agrawal] 08:09:51
+Azure Web App does not support these languages. So that's where you do not have any choice altogether. You need to run your application on the virtual machine itself. But when you are developing a Java-based application, then you might think, um, about, um…
+
+[rochak agrawal] 08:10:05
+running your application with either the VM or the web. If you want the full configuration and customization control, you can go with the virtual machine option, but if you say, okay, I just care about my application, everything else Azure need to take care.
+
+[rochak agrawal] 08:10:20
+then you can go with the web app. Function will have a different functionality, different use case, which we will see separately, but right now, we are going to see about the web app.
+
+[rochak agrawal] 08:10:31
+So, when you see BAB app, okay.
+
+[rochak agrawal] 08:10:36
+Now
+
+[rochak agrawal] 08:10:41
+Before you create a webinar.
+
+[rochak agrawal] 08:10:49
+Before you create a web app.
+
+[rochak agrawal] 08:10:51
+You need to create something called the ASP.
+
+[rochak agrawal] 08:10:57
+Okay?
+
+[rochak agrawal] 08:10:59
+ASP is the app service plan.
+
+[rochak agrawal] 08:11:09
+Okay? Now, what is the app service plan? So, app service plan, think of it something like that. Let's say you want to use the broadband. Now, the first thing what you need to do is you go to your internet service provider, and you will purchase a plan.
+
+[rochak agrawal] 08:11:25
+They…
+
+[rochak agrawal] 08:11:26
+Once you purchase a plan, then according to the plan, you are going to have your bandwidth, how many devices you can connect to the internet, and.
+
+[rochak agrawal] 08:11:38
+All of that stuff.
+
+[rochak agrawal] 08:11:40
+So when you want to create a web app, first thing, you need to have an app service plan.
+
+[rochak agrawal] 08:11:46
+Now, in case of Azure App Service Plan.
+
+[rochak agrawal] 08:11:52
+is, like.
+
+[rochak agrawal] 08:11:55
+So the resources.
+
+[rochak agrawal] 08:11:57
+Which is going to be created for running your…
+
+[rochak agrawal] 08:12:09
+Now, inside this app service plan, I can run either a single web application or I can run multiple web application depending on what is the capacity of your app service plan and what is the capacity your web application is going to consume.
+
+[rochak agrawal] 08:12:26
+For example, if I create a web app service plan.
+
+[rochak agrawal] 08:12:29
+only for one GB, and you want to deploy one web app which is consuming one GB, then you cannot run multiple web applications. So…
+
+[rochak agrawal] 08:12:39
+If you read this line, that you will see the servers but not manage it. So that is with the help of App Service Plan. So first, you create the App Service Plan. In the App Service Plan, you will decide how much infrastructure you need.
+
+[rochak agrawal] 08:12:54
+Okay? And then your web servers is going to be deployed in this app service plan.
+
+[rochak agrawal] 08:13:01
+So, when you read…
+
+[rochak agrawal] 08:13:04
+App service plan defines a set of computer resources for a web application to run.
+
+[rochak agrawal] 08:13:10
+It determines, now, when we will do, uh, create an app service plan, so we'll see there is a different type of the app service plans are available, which is going to give you the different, different functionality.
+
+[rochak agrawal] 08:13:23
+One or more application can be configured to run in the same App Service plan, which we discussed. Now, what is that your App Service plan is going to include? First is the region, in which region you want to create this plan, you want to create this infrastructure.
+
+[rochak agrawal] 08:13:38
+Number of the virtual machine instances. Size of the virtual machine instances.
+
+[rochak agrawal] 08:13:44
+and most importantly, the pricing tier, okay? So, when you will be creating the app service plan, you will tell, like, what… how much physical infrastructure do you need?
+
+[rochak agrawal] 08:13:54
+Then comes the pricing tier.
+
+[rochak agrawal] 08:13:56
+Now, if you see this.
+
+[rochak agrawal] 08:14:00
+There are different type of the app service plans are available.
+
+[rochak agrawal] 08:14:05
+So you can see free, shared, basic, standard, premium, and isolated.
+
+[rochak agrawal] 08:14:12
+Okay, um…
+
+[rochak agrawal] 08:14:16
+Now, you can see there's a different, different…
+
+[rochak agrawal] 08:14:24
+how many web, mobile, and API apps you can deploy on this. So you can say, on a free tier.
+
+[rochak agrawal] 08:14:30
+free app service plan, you can deploy 10 applications. In a shared, you can deploy 100 applications. Then on the higher tiers, you can deploy unlimited applications.
+
+[rochak agrawal] 08:14:40
+Then how much disk space you are going to get? 1GB, 1GB, 10GB, 50GB, 250GB, 1TB. And just keep in mind that this 50GB or 250GB.
+
+[rochak agrawal] 08:14:54
+is the amount you can get. But if you say, I want to use only 200 GB, that's okay, you can do that as well.
+
+[rochak agrawal] 08:15:01
+Then, auto-scale, okay? Auto-scale is not there in a free tier, shared tier, and the basic tier. It is supported in a standard, premium, and isolated.
+
+[rochak agrawal] 08:15:12
+Auto-scale means, see, we are not managing the virtual machine here, so there is no skill set, right?
+
+[rochak agrawal] 08:15:18
+But…
+
+[rochak agrawal] 08:15:19
+Let's say you deploy your app with the premium tier or the standard tier, then as the load is going to increase on your application, then in the backend, Azure will start provisioning the more number of the virtual machines.
+
+[rochak agrawal] 08:15:36
+Which, of course, we don't manage.
+
+[rochak agrawal] 08:15:39
+Okay.
+
+[rochak agrawal] 08:15:40
+But…
+
+[rochak agrawal] 08:15:41
+Maximum instance, which is a virtual machine. Here, you can see, till the basic. Free and shared, there is only one instance.
+
+[rochak agrawal] 08:15:50
+Basic up to three.
+
+[rochak agrawal] 08:15:52
+In the standard, up to 10, up to 30, up to 100. So when you are seeing auto-scaling is supported, it will, in the standard tier, it will go to maximum 10 instances. In the premium tier, it is going to up to 30 instances.
+
+[rochak agrawal] 08:16:07
+In the isolated tier, it will go to up to 100 instances. Okay, uh, shared compute means.
+
+[rochak agrawal] 08:16:15
+When you will be, um, run apps on the same Azure VM as other app service app, and the resource cannot scale out. This is very important.
+
+[rochak agrawal] 08:16:26
+Dedicated Compute Basic Standard Premium.
+
+[rochak agrawal] 08:16:30
+Run apps in the same plan in a dedicated Azure virtual machines. Isolated is very, as this name is suggesting.
+
+[rochak agrawal] 08:16:37
+Run.
+
+[rochak agrawal] 08:16:39
+Application in the dedicated Azure Virtual Machine.
+
+[rochak agrawal] 08:16:43
+in the dedicated Azure virtual network.
+
+[rochak agrawal] 08:16:46
+When you want to apps privacy concerns, you are going to run your app service plan.
+
+[rochak agrawal] 08:16:53
+in the isolated tier. Now, here, let me do it from the console itself.
+
+[rochak agrawal] 08:17:03
+So, when you search for App Service Plan.
+
+[rochak agrawal] 08:17:11
+So you can see App Service Plans. Now, the thing is, when you are… see, either you create your App Service Plans separately.
+
+[rochak agrawal] 08:17:19
+Or when you're creating your app service altogether, at that time also, I can create my app service plan. So when you go to create.
+
+[rochak agrawal] 08:17:34
+I deleted the DemoRG resource group yesterday, so I can delete it again.
+
+[rochak agrawal] 08:17:38
+Now you can see here name.
+
+[rochak agrawal] 08:17:42
+demo, and here you can see operating system, you want Linux or Windows.
+
+[rochak agrawal] 08:17:47
+Okay.
+
+[rochak agrawal] 08:17:50
+And the reason, basic stuff. Now comes the pricing plan.
+
+[rochak agrawal] 08:17:55
+So, if you click on the Explore Pricing Plan.
+
+[rochak agrawal] 08:18:06
+So you can see, there is different, different options are there. So we have, uh…
+
+[rochak agrawal] 08:18:15
+The popular option, we have a depth test, we have a production. In the production, premium is there.
+
+[rochak agrawal] 08:18:23
+Isolated might not come, because isolated is, uh, is only available for the enterprise accounts, but free, basic.
+
+[rochak agrawal] 08:18:34
+Is there. Okay. So, you can see, if you go to free.
+
+[rochak agrawal] 08:18:39
+There is one GB of memory, one GB of storage. It cannot scale out and there is no SLA on the free tier. That is most important. And then cost per hour is free, cost per month is free.
+
+[rochak agrawal] 08:18:55
+Then when you go with the basic.
+
+[rochak agrawal] 08:18:57
+And as you will move into the, uh… in the PCPU and memory, for example, if you go premium, uh…
+
+[rochak agrawal] 08:19:05
+B4, P5, then there's a 32…
+
+[rochak agrawal] 08:19:09
+Core CPU, 256 gigs of RAM.
+
+[rochak agrawal] 08:19:12
+And, uh, 350.
+
+[rochak agrawal] 08:19:15
+And it can scale up to 30 instances. Now, the SLA is 99.95%.
+
+[rochak agrawal] 08:19:22
+It is going to cost you approximately 3 US dollar, and…
+
+[rochak agrawal] 08:19:27
+Monthly it is.
+
+[rochak agrawal] 08:19:29
+Almost $2,000. So I'll just go with the basic one.
+
+[rochak agrawal] 08:19:34
+Oh, sorry. Yeah, basic one.
+
+[rochak agrawal] 08:19:36
+Okay?
+
+[rochak agrawal] 08:19:38
+And, uh…
+
+[rochak agrawal] 08:19:40
+Select.
+
+[rochak agrawal] 08:19:41
+So you can see, and the zone redundancy. An app service plan can be deployed as a zone redundant service in the region that supports it. Your initial instance can be set based on your zone redundancy configuration. Now, what does it mean? It means that when you are selecting the premium plans.
+
+[rochak agrawal] 08:19:59
+And when scaling will happen, it… whatever the instance will be created. So, for example, in one of the plans, we have seen that there can be 30 instances can be there. If your zone redundancy is disabled.
+
+[rochak agrawal] 08:20:13
+then your app service plan and the apps will not be zone-redundant, right? So the, uh, your instance might be in a single availability zone. But if it is enabled, then it says your app service plan.
+
+[rochak agrawal] 08:20:27
+Uh, in it will be zone redundant, and how it is going to be zone redundant? There need to be minimum two instances will be there. So if you're selecting a plan with the minimum one instance, then zone redundancy is not there for, uh, us.
+
+[rochak agrawal] 08:20:42
+Right? So you select the pricing tier.
+
+[rochak agrawal] 08:20:46
+And then?
+
+[rochak agrawal] 08:20:46
+You go to text. Of course, text is not necessary for me right now.
+
+[rochak agrawal] 08:21:01
+That is validating.
+
+[rochak agrawal] 08:21:04
+Okay, so the size is small.
+
+[rochak agrawal] 08:21:07
+One point, and I'm going to create it.
+
+[rochak agrawal] 08:21:13
+So, the point is, you have actually…
+
+[rochak agrawal] 08:21:16
+Uh, what you can say is, purchase the virtual machine, which you are not managing.
+
+[rochak agrawal] 08:21:21
+In a very simple language, if you ask me. So, you have selected a virtual machine, or I would say a virtual machine plan, which you have already purchased, but you're not managing it.
+
+[rochak agrawal] 08:21:34
+So, my resource is created. If you go to the resource.
+
+[rochak agrawal] 08:21:40
+So you can see all those. Right now, I do not have any application running on this plan.
+
+[rochak agrawal] 08:21:46
+Networking… and here, I can do a scale up and scale out. Now, what does it mean? Scale up means…
+
+[rochak agrawal] 08:21:52
+So, I started with the basic one.
+
+[rochak agrawal] 08:22:01
+Right. Now, at any point of time, if I feel that, uh…
+
+[rochak agrawal] 08:22:06
+I need a bigger instance or a bigger plan. So then you can select it. I started with the basic B1, you can select to basic B2, premium B3, and so on and so forth. So that is the scale up. You are scaling up your app service plan.
+
+[rochak agrawal] 08:22:24
+Then, in a scale out.
+
+[rochak agrawal] 08:22:39
+Then you can see, uh, right now we have selected a basic plan. Um, so you can see the maximum scale instance is 3. Active instance count is 1.
+
+[rochak agrawal] 08:22:50
+Okay? And, uh, scaling. So, scale automatic is not, uh, enabled for us, because, uh, the plan is not supporting it.
+
+[rochak agrawal] 08:23:00
+Right? So, you need to see the recommended pricing plan.
+
+[rochak agrawal] 08:23:04
+Which is going to select the automated, uh, scaling. So then you… right now, if I want, I can manually set up to two…
+
+[rochak agrawal] 08:23:11
+Or something, right?
+
+[rochak agrawal] 08:23:14
+Then…
+
+[rochak agrawal] 08:23:15
+So that is about the scale-out. Now, this is like, uh, you… your virtual machine is running, but you have not deployed any application on it right now, till now, correct? So that is where…
+
+[rochak agrawal] 08:23:27
+App service plan is just like you have basically purchased the hardware, but you're not running any application on it. So that's where you need to create your web applications.
+
+[rochak agrawal] 08:23:41
+App Service.
+
+[rochak agrawal] 08:23:44
+And I'm going to create a web app. So again, there is a different, different templates are there. You can create web app plus database, WordPress. I'll just go simple web app.
+
+[rochak agrawal] 08:23:53
+Same thing, demo RG.
+
+[rochak agrawal] 08:23:56
+Name?
+
+[rochak agrawal] 08:24:02
+Demo?
+
+[rochak agrawal] 08:24:06
+It says the app name is not available.
+
+[rochak agrawal] 08:24:10
+demo…
+
+[rochak agrawal] 08:24:13
+04112026 something.
+
+[rochak agrawal] 08:24:17
+Okay.
+
+[rochak agrawal] 08:24:19
+Now, container, leave that for now. Code. So when you select the code, here you are going to select the runtime stack.NET, Java, Node.js, PHP, and Python. So you can see.
+
+[rochak agrawal] 08:24:33
+NET, Java, PHP, Python, and Node.js, five languages it is supporting. If your application is being written in these five languages, you can easily run it with the app service.
+
+[rochak agrawal] 08:24:49
+Then…
+
+[rochak agrawal] 08:24:51
+There is another way of using the containers, but we'll cover it in the Azure Container Instances.
+
+[rochak agrawal] 08:25:00
+Then I'll select, let's say, Python. And again, Python, there's a different, different versions are there. I'll select the latest.
+
+[rochak agrawal] 08:25:07
+And here, you can see, uh, basis on the plan, because if you remember, while creating the app service plan, you have selected, uh, the operating system in Windows, and, uh.
+
+[rochak agrawal] 08:25:20
+Windows is not enabled for me. You… I can run only the Linux-based, um…
+
+[rochak agrawal] 08:25:26
+Instances. Reason I have selected. Then…
+
+[rochak agrawal] 08:25:30
+You can see demo V1.
+
+[rochak agrawal] 08:25:33
+My plan, because, again, uh, plan and app service are the reason-specific thing, okay? So…
+
+[rochak agrawal] 08:25:41
+What you are going to do is, uh…
+
+[rochak agrawal] 08:25:45
+see, either you create your pricing plan separately, which we did, or there is an option here itself. So you can go create new.
+
+[rochak agrawal] 08:25:54
+This, this, this, this, this, and here itself, it is going to create the plan, okay? So I'll select the demo V1, and it will select the basic V1, and all of that. All the same options which we were getting there, yes, here as well.
+
+[rochak agrawal] 08:26:10
+Right? And, uh…
+
+[rochak agrawal] 08:26:12
+Next is the database.
+
+[rochak agrawal] 08:26:15
+Again, we are selecting a lower tier. That's why database…
+
+[rochak agrawal] 08:26:20
+It says… it very clearly says, creating a database requires a new app service plan.
+
+[rochak agrawal] 08:26:25
+Why? Because…
+
+[rochak agrawal] 08:26:27
+basic plan does not support the database. Otherwise, if you click on creating the database here, then it will create a data site… a database alongside with your apps dev app.
+
+[rochak agrawal] 08:26:38
+Then comes the deployment.
+
+[rochak agrawal] 08:26:40
+Okay.
+
+[rochak agrawal] 08:26:41
+So here you can see.
+
+[rochak agrawal] 08:26:44
+There are a couple of ways in which we can do the deployment. One is…
+
+[rochak agrawal] 08:26:49
+Let's say, um, GitHub continuous deployment, if you enable, currently it is disabled, so once this app is ready, I can go manually deploy with the CLI or the PowerShell, but let's say if your code is there in your, uh.
+
+[rochak agrawal] 08:27:08
+GitHub. So, I enable this.
+
+[rochak agrawal] 08:27:11
+Okay, and it says GitHub account. I'll select an organization.
+
+[rochak agrawal] 08:27:16
+You select a repository.
+
+[rochak agrawal] 08:27:19
+So you can see, I have a repository.
+
+[rochak agrawal] 08:27:24
+Maybe see, let me see if there's a repository.
+
+[rochak agrawal] 08:28:03
+Yeah, this is the one.
+
+[rochak agrawal] 08:28:15
+I am going to fork this.
+
+[rochak agrawal] 08:28:30
+Just a second.
+
+[rochak agrawal] 08:28:47
+12 years.
+
+[rochak agrawal] 08:28:48
+Work.
+
+[rochak agrawal] 08:28:52
+Okay, ms-dos-python-web-web-quick-start.
+
+[rochak agrawal] 08:29:32
+No, it is not coming.
+
+[rochak agrawal] 08:29:35
+Refresh the page.
+
+[rochak agrawal] 08:30:18
+Now it is coming. So you can see… so directly, uh…
+
+[rochak agrawal] 08:30:23
+If you enable the continuous deployment, so directly it is going to pick up, uh, the changes, uh, the code from your, uh, your, um.
+
+[rochak agrawal] 08:30:32
+GitHub repository.
+
+[rochak agrawal] 08:30:34
+And then I'll go…
+
+[rochak agrawal] 08:30:38
+networking, and here you can see there's two things. Enable public access on and off, enable virtual network integration on and off. Now, these two things are very important.
+
+[rochak agrawal] 08:30:51
+See, um…
+
+[rochak agrawal] 08:30:56
+When you deploy your virtual machines, okay.
+
+[rochak agrawal] 08:31:00
+It's very important to understand.
+
+[rochak agrawal] 08:31:03
+When you deploy your virtual machine, virtual machine will always go inside a network.
+
+[rochak agrawal] 08:31:13
+Here, we call it as a BNet. In AWS, we have called it as a BPC.
+
+[rochak agrawal] 08:31:19
+Now what does it mean? See, you cannot deploy your virtual machine without a VNet. It will mandatorily go in a VNet.
+
+[rochak agrawal] 08:31:32
+So they are private in nature.
+
+[rochak agrawal] 08:31:36
+Okay? Now, you can decide, uh, your, uh, VNet need to be public or private, what its connectivity need to be there, all of that, but it will go in a private network, which we call it as a VNet or VPC. You can have multiple VNet, but your virtual machine.
+
+[rochak agrawal] 08:31:53
+will always, always go in a particular VNet. Without a VNet, you cannot create a virtual machine.
+
+[rochak agrawal] 08:32:00
+But on the other hand, and this I am talking about.
+
+[rochak agrawal] 08:32:06
+All the managed services, you will study storage, you are currently, um…
+
+[rochak agrawal] 08:32:12
+Working on app services, database services, everything.
+
+[rochak agrawal] 08:32:17
+Now, these services, when you deploy them.
+
+[rochak agrawal] 08:32:24
+They are not part of any VNet.
+
+[rochak agrawal] 08:32:28
+Instead, they are part of a network managed by Azure itself, which is not visible to me. So when you're deploying…
+
+[rochak agrawal] 08:32:36
+Uh, App Service, App Service goes here.
+
+[rochak agrawal] 08:32:40
+Okay, app service, because here, if you see, there is not a option of selecting a VNet. Here, a integration option is there, right, in the networking.
+
+[rochak agrawal] 08:32:53
+So, that is where… so first, public access. Enable public access means public access is applied to both the main site and the advanced tool site. Deny public network access will block all incoming traffic.
+
+[rochak agrawal] 08:33:07
+Except that comes from the private endpoint. So if you want to deploy… public access means once the application will be deployed, you will get an URL. If you want to make that URL as public.
+
+[rochak agrawal] 08:33:20
+Then you need to enable it on.
+
+[rochak agrawal] 08:33:23
+And if you don't want to make that URL public, you can take it as off. Most of the time, it will be off, because we will not directly exposing the traffic.
+
+[rochak agrawal] 08:33:34
+to our application, they will sit behind a load balancer or an application gateway. So most of the time, the setting will be off.
+
+[rochak agrawal] 08:33:42
+Then the second setting is a network, uh, virtual network integration. So virtual network integration allows your function app to make.
+
+[rochak agrawal] 08:33:51
+outbound calls from a private address of a virtual network. This is required.
+
+[rochak agrawal] 08:33:57
+for your app to access resources secured behind a virtual network.
+
+[rochak agrawal] 08:34:02
+understand this, okay? So, what is going to happen when you say enable virtual network integration on?
+
+[rochak agrawal] 08:34:13
+Okay, let's say there is some application, some data is there on this virtual machine, which is private in nature. Now your app, which is running in App Service, want to access this.
+
+[rochak agrawal] 08:34:27
+By default, they cannot.
+
+[rochak agrawal] 08:34:28
+Okay, so what you need to do, once you integrate it, so for example, when I select the integration as a on.
+
+[rochak agrawal] 08:34:37
+They'll say, since I do not have a virtual network, I'll say create new.
+
+[rochak agrawal] 08:35:05
+So when you select on virtual network, although we are going to see those things in detail in the networking section, but virtual network you select and then outbound access is on. So then outbound subnet you select, then what is going to happen?
+
+[rochak agrawal] 08:35:21
+Is that…
+
+[rochak agrawal] 08:35:24
+Out of this subnet range which we selected, this app service will get an IP, some private IP.
+
+[rochak agrawal] 08:35:31
+10.0.0.7, for example. Then whatever communication will happen on this to this will happen on a private connectivity.
+
+[rochak agrawal] 08:35:47
+Okay, so that is what the virtual network integration means. I'll keep it off as of now.
+
+[rochak agrawal] 08:35:53
+Then monitor and secure.
+
+[rochak agrawal] 08:36:32
+Now, there is something called the Application Insight, okay? Again, Application Insight is something.
+
+[rochak agrawal] 08:36:40
+When we do the monitoring, okay.
+
+[rochak agrawal] 08:36:42
+There is two level of monitoring will be there.
+
+[rochak agrawal] 08:36:48
+One is infra monitoring.
+
+[rochak agrawal] 08:36:52
+And then second is the app monitoring.
+
+[rochak agrawal] 08:36:56
+Infra monitoring is, for example, how many requests is coming to…
+
+[rochak agrawal] 08:37:03
+your app service, how many successful, how many failures are there. Those things, by default, will be monitored with another service. Like, in AWS, there was a CloudWatch. Here, we have something Azure Monitor is there.
+
+[rochak agrawal] 08:37:16
+Okay. But then, if you want to monitor…
+
+[rochak agrawal] 08:37:22
+In your application, right, you want to generate some logs and everything, then you need to use…
+
+[rochak agrawal] 08:37:29
+Something called the Application Insights.
+
+[rochak agrawal] 08:37:33
+Now, Application Insights is not an easy service to use. You need to make changes in your application code so that it can interact with the Application Insights, and then.
+
+[rochak agrawal] 08:37:46
+Sending your log data, monitoring data to the Application Insight, okay? So I'll just keep it no for now. So let's say Application Insight is an application performance management service for the developers and the DevOps professional. Enable it now to automatically monitor your application.
+
+[rochak agrawal] 08:38:03
+So, two things of monitoring. One is your app service monitoring, which is by default will be covered by the Azure Monitor, but if you want to monitor your application, what is happening inside your application, and that is where Application Insight is going to come into the picture.
+
+[rochak agrawal] 08:38:20
+Then Defender for the Cloud, again, it's some security vulnerability attacks and everything is happening on your App Service. So when you add the Defender for the App Service plan to your subscription, you get a cloud-native security solution that monitors log requests.
+
+[rochak agrawal] 08:38:36
+Multiple other things, but remember, Defender is a price.
+
+[rochak agrawal] 08:38:42
+priced service, so please be very careful for enabling the Defender.
+
+[rochak agrawal] 08:38:51
+Good text and I am going to review and create.
+
+[rochak agrawal] 08:39:30
+Okay, I'll click on create.
+
+[rochak agrawal] 08:40:24
+Okay? My app service is created.
+
+[rochak agrawal] 08:40:28
+web app is created, basically. So, if you go to resource.
+
+[rochak agrawal] 08:40:36
+Now, if you copy…
+
+[rochak agrawal] 08:40:38
+The application we do not need to build, it must be…
+
+[rochak agrawal] 08:40:42
+Learning.
+
+[rochak agrawal] 08:40:51
+Just wait for some time.
+
+[rochak agrawal] 08:40:54
+So here, if you see the status is running, location is West US 3, app service plan, which app service plan it is using.
+
+[rochak agrawal] 08:41:02
+Okay, health check is not configured and we are using this as a source code. So all thing is there.
+
+[rochak agrawal] 08:41:08
+And we can get all of that information. So runtime status, it says issue detected.
+
+[rochak agrawal] 08:41:17
+Status is still unknown.
+
+[rochak agrawal] 08:41:33
+So if you see here in the instances, which we are, so you can see this is a server, right? I can see where this server is. It is in a best US3 AJ2.
+
+[rochak agrawal] 08:41:47
+it is starting, what is the error, and everything. But, see, I am not managing this server, okay? So, and that is where we discussed here, there is three level of server management will be there. You have a VM where you are going to.
+
+[rochak agrawal] 08:42:02
+completely manage your servers. Right now, we are using WebEx, where I know what is a server which is running the application, but I'm not managing it, okay? Who's managing it? Azure itself will manage this, so this is a server.
+
+[rochak agrawal] 08:42:17
+This is an AJ2.
+
+[rochak agrawal] 08:42:19
+we can see all of that, right? Then, if you see the configuration, then… so, there's multiple other configurations related to your application. You can select the health check, create the health check.
+
+[rochak agrawal] 08:42:32
+Right? Runtime status starting, you can select the health check and create the health check.
+
+[rochak agrawal] 08:42:37
+Then you can define your error pages.
+
+[rochak agrawal] 08:42:41
+So you can see error pages, you can define it from here. Then…
+
+[rochak agrawal] 08:42:46
+authentication.
+
+[rochak agrawal] 08:42:50
+Okay, so you see your web app is running and waiting for your content. So this is a sample page.
+
+[rochak agrawal] 08:42:57
+You see, it is running, right? It's built with Python. Your web application is live, but we do not have your content yet.
+
+[rochak agrawal] 08:43:06
+Now you see it here. Here the authentication.
+
+[rochak agrawal] 08:43:10
+Why do you need authentication? So, right now, if you see, I am taking this URL, and I am opening a browser.
+
+[rochak agrawal] 08:43:22
+And I can access it, right? Uh, it says your web app is running and waiting for the content.
+
+[rochak agrawal] 08:43:29
+Means there is no authentication, like…
+
+[rochak agrawal] 08:43:32
+This site is right now have the anonymous access, correct? Anyone can come and hit the URL and they will be able to reach to your application.
+
+[rochak agrawal] 08:43:43
+So if you want this, for example, you are hosting a public website or something, then it is fine.
+
+[rochak agrawal] 08:43:49
+But then, um…
+
+[rochak agrawal] 08:43:53
+So when you're low.
+
+[rochak agrawal] 08:43:55
+you are running a private application, so then you can use the identity provider here. So you can click on Add Identity Provider, and you can see there are multiple identity providers are there. So you can see you can ask your user to log in with GitHub.
+
+[rochak agrawal] 08:44:10
+Apple users, Facebook users, and most importantly, your Microsoft users, right? So then, um…
+
+[rochak agrawal] 08:44:17
+you can say identity provider is Microsoft, and then…
+
+[rochak agrawal] 08:44:21
+Again, this is some act…
+
+[rochak agrawal] 08:44:24
+depending on the provider, you need to select these settings. So, Microsoft uses the Active Directory, so Active Directory-related settings, and then if you are, for example, you are using Facebook. So then, it will ask you your application ID, secret.
+
+[rochak agrawal] 08:44:38
+require authentication, allow unauthenticated access, so multiple things are there. So…
+
+[rochak agrawal] 08:44:45
+You can add your…
+
+[rochak agrawal] 08:44:56
+authentic, uh…
+
+[rochak agrawal] 08:44:58
+Authentication to your — so we can choose an identity provider to manage the user identities and authentication flow for your application. Now, then, we can take the backup of your application, again, as a managed service. So you can see.
+
+[rochak agrawal] 08:45:16
+Configure custom backup, we can take a backup now. Uh, if there is, uh, so automatic backup, it says every 1 hour.
+
+[rochak agrawal] 08:45:24
+Right? And then, when something goes wrong, you can restore it from a previous backup. We can do all of that. Then, one more important thing there is…
+
+[rochak agrawal] 08:45:34
+the custom domains.
+
+[rochak agrawal] 08:45:36
+Okay, right now you see.
+
+[rochak agrawal] 08:45:40
+We have two IP addresses.
+
+[rochak agrawal] 08:45:42
+Okay.
+
+[rochak agrawal] 08:45:45
+And…
+
+[rochak agrawal] 08:45:45
+This is my domain, correct?
+
+[rochak agrawal] 08:45:48
+which you can see.
+
+[rochak agrawal] 08:45:51
+Which we are seeing it here. Now, your domain is not looking, uh, very good, right? Uh, for example, your… when you want to give this domain to your users.
+
+[rochak agrawal] 08:46:01
+They…
+
+[rochak agrawal] 08:46:02
+probably don't like it, um, because, uh, they need something human-readable, like Facebook.com, MyApp.com, ICACBank.com, right, something. So that is where you can add something called the custom domain here.
+
+[rochak agrawal] 08:46:19
+So, let's say, app service domain, and um…
+
+[rochak agrawal] 08:46:24
+See, first you need to buy the app service domain, okay? Then your app service domain will come here, so you can go…
+
+[rochak agrawal] 08:46:32
+add a domain detail, so you can see, I want to have myapp.com.
+
+[rochak agrawal] 08:46:45
+See, this domain is unavailable. So, see, my app…
+
+[rochak agrawal] 08:46:50
+Project.com. Something that might… should be available. Yeah. It says this domain is available, right? Now, what you need to do, you will purchase this domain.
+
+[rochak agrawal] 08:47:00
+Contact information…
+
+[rochak agrawal] 08:47:02
+Assignment, so you can see by web.
+
+[rochak agrawal] 08:47:06
+Advance.
+
+[rochak agrawal] 08:47:07
+X, W and K.
+
+[rochak agrawal] 08:47:09
+Now, I'm not purchasing it, because it is going to cost you, so you see?
+
+[rochak agrawal] 08:47:13
+Uh, it is going to charge… cost me 12 US dollar per year.
+
+[rochak agrawal] 08:47:18
+So once I click on purchase by removing these errors.
+
+[rochak agrawal] 08:47:23
+It's not even an error, we have not filled the details, right? So then this myapprocheck.com, I will…
+
+[rochak agrawal] 08:47:32
+will be assigned to me, and then I will just simply go here.
+
+[rochak agrawal] 08:47:41
+In the custom domains and I will add a custom domain and I am going to select this my app project once I will buy this and let's add so that instead of using this domain name your website will be accessible.
+
+[rochak agrawal] 08:47:57
+With the help of the custom domain, which you have purchased for your application, which is a My App domain.
+
+[rochak agrawal] 08:48:07
+Okay?
+
+[rochak agrawal] 08:48:10
+Then, of course, uh, networking.
+
+[rochak agrawal] 08:48:14
+Uh, certificate also. Certificate is, uh, see, when you add a domain, um, uh, to your, uh.
+
+[rochak agrawal] 08:48:22
+domain, uh, custom domain to your domain name, see, you need to manage the certificates. Certificate is nothing related to Azure, it is about the domain name, so when you go to any of the website and you click here, it says the connection is secure, right?
+
+[rochak agrawal] 08:48:36
+And if you see, the certificate is valid.
+
+[rochak agrawal] 08:48:40
+And, uh, if you click on this, so you say common name.
+
+[rochak agrawal] 08:48:44
+Again, it is not a, um… this is nothing to do with Azure, okay? Uh…
+
+[rochak agrawal] 08:48:51
+So any… anywhere you are going to run a public-facing applications, you need to have these certificates so that any request coming to your website, they would know that you are running a genuine website. So for that, you can run your website without the certificates also, but.
+
+[rochak agrawal] 08:49:07
+It is… it is a good practice, uh, to have the certificate, but again.
+
+[rochak agrawal] 08:49:12
+Not an Azure thing. So you can add your certificates here as per the domain and then the networking. So you see public network access enabled with no restriction. Currently I don't have a zero private endpoint and inbound IPv4 address and IPv6 address we have.
+
+[rochak agrawal] 08:49:30
+And, uh…
+
+[rochak agrawal] 08:49:33
+So, nothing much here.
+
+[rochak agrawal] 08:49:36
+And then we have something called the service connectors.
+
+[rochak agrawal] 08:49:43
+So, I can connect your application with other services.
+
+[rochak agrawal] 08:49:47
+Right? So, for example, I can create a connection.
+
+[rochak agrawal] 08:49:57
+Now you see service type, if you see, it can connect with Kafka, App Configuration, Cosmos DB, Key Vault, Event Hubs, multiple services, storage. Now, for example, um, you…
+
+[rochak agrawal] 08:50:09
+Now, why do you need this? So, for example, you are right, you have created an application which is generating some images. Now, you need some… somewhere, some place, uh, to store that image, right? And that is where I will create a connector, uh, service connector to either a database.
+
+[rochak agrawal] 08:50:26
+Or to a storage.
+
+[rochak agrawal] 08:50:29
+Now, what is the benefit of a service connector is…
+
+[rochak agrawal] 08:50:31
+I can write the full code in my application code altogether, that's not a problem. But then my application code will become very heavy, so that's why instead of writing the full code in the application code, I will create this connector, and then I will just refer this connector whenever I need to store something.
+
+[rochak agrawal] 08:50:50
+Store, just an example, but you can see there is multiple connectors we can use.
+
+[rochak agrawal] 08:50:54
+Then, if you go to the app performance, uh, you can do the load testing of your app service.
+
+[rochak agrawal] 08:51:01
+So you can see, of course, we do not have any application running, so… but you can create the test.
+
+[rochak agrawal] 08:51:10
+load testing resources, a test name, slot, request, we can add a request. So, we can do all of those things with the app service, and most importantly, there's one thing, as an app service plan.
+
+[rochak agrawal] 08:51:25
+we know I'm using this demo app service plan, uh, with the demo RG V1, instance count is 1 for now.
+
+[rochak agrawal] 08:51:34
+Now, there is one thing you will see is the slots, okay? Currently, the slots is zero.
+
+[rochak agrawal] 08:51:42
+Okay, uh, I'll come to the slots.
+
+[rochak agrawal] 08:51:46
+Then we have something called the deployment tool. I can SSH, um…
+
+[rochak agrawal] 08:51:52
+SS; S provider web access SS; S console interface to your app. So you go.
+
+[rochak agrawal] 08:52:25
+So now you see, uh, now my…
+
+[rochak agrawal] 08:52:29
+Basically, I have been logged in into the server.
+
+[rochak agrawal] 08:52:34
+Which server?
+
+[rochak agrawal] 08:52:40
+The silver.
+
+[rochak agrawal] 08:52:41
+Okay, now, whatever, see, for example, I want to see if there is any logs it's generating.
+
+[rochak agrawal] 08:52:47
+So, this is a hosting start.html file is there, and if you open this.
+
+[rochak agrawal] 08:52:54
+So this is the same… you see, your web app is live, but we do not have any content here. The same page which we are getting.
+
+[rochak agrawal] 08:53:02
+Right? So, we can do login if we want to do any changes manually also. We can do all of that, uh, as well by doing the SSH. So this is… that's why it's a development tool.
+
+[rochak agrawal] 08:53:13
+Now…
+
+[rochak agrawal] 08:53:16
+Thumbs up.
+
+[rochak agrawal] 08:53:18
+Deployment center.
+
+[rochak agrawal] 08:53:23
+So, you go to the settings. So, currently, you can see I am using…
+
+[rochak agrawal] 08:53:28
+the GitHub as my source code. And here you can see it is by default coming.
+
+[rochak agrawal] 08:53:36
+Logs also you can see.
+
+[rochak agrawal] 08:53:38
+So you can see here, the status was failed, but then we restarted.
+
+[rochak agrawal] 08:53:43
+And it worked fine. Containers, we are not using it, so I'll not go to containers. And then what is the endpoint? File server endpoint we can use if you want to send the files. See, basically this is this SSM root only, right?
+
+[rochak agrawal] 08:54:00
+And…
+
+[rochak agrawal] 08:54:02
+There is something very important, is the deployment slots.
+
+[rochak agrawal] 08:54:07
+So it says upgrade to a standard or the premium plan to add the slots, and most of the questions you are going to get in an interview will come from the deployment slots.
+
+[rochak agrawal] 08:54:19
+So it says deployment slots are the live apps with their own host name, app content, and the configuration element. It can be swapped between two deployments, including the production slot. So now let me upgrade it first.
+
+[rochak agrawal] 08:54:44
+So I'll use the premium B3.
+
+[rochak agrawal] 08:54:53
+This is updating the app service plan.
+
+[rochak agrawal] 08:54:58
+It's updated very quickly.
+
+[rochak agrawal] 08:55:01
+I will go…
+
+[rochak agrawal] 08:55:03
+To this source, check if my app service plan is…
+
+[rochak agrawal] 08:55:07
+Update it.
+
+[rochak agrawal] 08:55:08
+Okay, so it is updated. It says P03V3 means premium version 3. Now, if you go to the deployment slot.
+
+[rochak agrawal] 08:55:19
+It says no slot has been added.
+
+[rochak agrawal] 08:55:24
+Now, deployment slots are the live apps with their own host name, app content, and the configuration element.
+
+[rochak agrawal] 08:55:31
+can be swapped between two deployments, a two deployment slot, including the production slot.
+
+[rochak agrawal] 08:55:37
+Now understand this, what is a deployment slot?
+
+[rochak agrawal] 08:55:42
+Okay, so deployment slots is in Azure web apps are like separate web apps with their own host name that let you test, validate, and hot swap code changes without impacting your production environment.
+
+[rochak agrawal] 08:55:59
+Okay, now that is… I understand that, uh, this is, like, your, um…
+
+[rochak agrawal] 08:56:05
+textbook definition, but, uh, see, what we need to understand in the deployment slot, deployment slot is a feature offered by Azure App Service.
+
+[rochak agrawal] 08:56:15
+Which allows us to create.
+
+[rochak agrawal] 08:56:18
+Separate environment for deploying.
+
+[rochak agrawal] 08:56:21
+And testing your web application.
+
+[rochak agrawal] 08:56:24
+before making the application available to all end users. Now, understand it graphically first.
+
+[rochak agrawal] 08:56:34
+See, for example.
+
+[rochak agrawal] 08:56:46
+He needed a web app.
+
+[rochak agrawal] 08:56:58
+inside the ASP app service plan. As you created the web app, you will get a domain name, and then that domain name, if you're using a custom domain, so then they can reach it to users. So for example, let's say my app.
+
+[rochak agrawal] 08:57:16
+Rocha.com.
+
+[rochak agrawal] 08:57:20
+or whatever the domain name, is reaching out to this URL, where you are, um, basically, um.
+
+[rochak agrawal] 08:57:31
+accessing your application, correct? But the question here is, see, you will not just deploy your application for once, right?
+
+[rochak agrawal] 08:57:40
+You will keep changing your application, you will do a continuous delivery, continuous deployment of application. Now, let's say you… so this is V1, for example.
+
+[rochak agrawal] 08:57:49
+Which is already live, correct? Now you say you have created a V2.
+
+[rochak agrawal] 08:57:58
+But, you are very hesitant.
+
+[rochak agrawal] 08:58:02
+to deploy this to your end user? Because you don't know how this is going to behave, how this is going to behave, and then…
+
+[rochak agrawal] 08:58:14
+You want to test this application.
+
+[rochak agrawal] 08:58:18
+test the version 2 before rolling out to your end users. Correct?
+
+[rochak agrawal] 08:58:24
+that is where deployment slots comes into the picture. So, what the deployment slot does, uh, by the definition in BC, the deployment slot is a feature offered by App Service, which allows you to create.
+
+[rochak agrawal] 08:58:40
+Separate environment for deploying and testing your web application before making the app available to all the end user.
+
+[rochak agrawal] 08:58:49
+The point is, what I can do is, I am going to create a deployment slot, okay? So I'll add a slot.
+
+[rochak agrawal] 08:58:58
+I will say, let's say test.
+
+[rochak agrawal] 08:59:02
+Okay.
+
+[rochak agrawal] 08:59:05
+test, and do not clone setting, okay? You can clone the settings from your main app, but I'm not cloning the setting, I'll add the deployment slot.
+
+[rochak agrawal] 08:59:37
+Okay, so now you see here.
+
+[rochak agrawal] 08:59:41
+I have two slots. One is my default slot, production one.
+
+[rochak agrawal] 08:59:46
+Another is my test slot, and you can see the 100% traffic is going to my production slot, correct? Now, if I click on this test.
+
+[rochak agrawal] 08:59:57
+And if you go to…
+
+[rochak agrawal] 09:00:09
+Okay, here I will say, uh, select an organization.
+
+[rochak agrawal] 09:00:15
+And, uh, repository is the same repository.
+
+[rochak agrawal] 09:00:27
+MS Docs…
+
+[rochak agrawal] 09:00:34
+Now, here, in which…
+
+[rochak agrawal] 09:00:39
+While…
+
+[rochak agrawal] 09:00:46
+Okay, I'll change this, and uh… I'll select the main only.
+
+[rochak agrawal] 09:00:52
+And…
+
+[rochak agrawal] 09:00:57
+Let's hit this, for example.
+
+[rochak agrawal] 09:01:01
+So you can see now, whatever you are doing, you are doing in a test one.
+
+[rochak agrawal] 09:01:06
+Correct?
+
+[rochak agrawal] 09:01:08
+And you will, once you go to your… let it be completed.
+
+[rochak agrawal] 09:01:18
+If you go to Overview, you will get a new URL here.
+
+[rochak agrawal] 09:01:22
+If you copy this.
+
+[rochak agrawal] 09:01:24
+It's just test.
+
+[rochak agrawal] 09:01:27
+If you compare it with this URL, there is no test in this, correct?
+
+[rochak agrawal] 09:01:31
+So this is a test one.
+
+[rochak agrawal] 09:01:33
+Now what I can do is I'll go to the developer tool SSH.
+
+[rochak agrawal] 09:02:22
+Okay?
+
+[rochak agrawal] 09:02:25
+test
+
+[rochak agrawal] 09:02:26
+You can see, uh, it says your web app is… content is running and waiting, and you can see test, it is a different thing, correct?
+
+[rochak agrawal] 09:02:38
+So
+
+[rochak agrawal] 09:02:39
+Now, I have two versions.
+
+[rochak agrawal] 09:02:44
+I have version 1.
+
+[rochak agrawal] 09:02:49
+I have version 1, which is my production one.
+
+[rochak agrawal] 09:02:58
+And I have created a version 2.
+
+[rochak agrawal] 09:03:01
+Which is, right now, is my test one. Correct.
+
+[rochak agrawal] 09:03:05
+Now, 100% traffic is going there.
+
+[rochak agrawal] 09:03:09
+All the traffic is going to be one.
+
+[rochak agrawal] 09:03:11
+So, if you go to the deployment slots.
+
+[rochak agrawal] 09:03:17
+So you can see 100% traffic is going to the production slot, which is this URL.
+
+[rochak agrawal] 09:03:26
+Okay. Now, which is this URL? So, for example, if someone is coming to this URL, which is your main URL, right, which is your production URL, 100% build traffic will go here.
+
+[rochak agrawal] 09:03:37
+If you use this URL, then 100% build traffic come here, but if someone is using this main URL without test.
+
+[rochak agrawal] 09:03:45
+then all of your traffic is coming to your production slot, which is your main slot. Now, what you can do is, I can…
+
+[rochak agrawal] 09:04:04
+I can go and say it should come 50/50. So then you can see the traffic split has been changed, correct?
+
+[rochak agrawal] 09:04:13
+Very importantly, I…
+
+[rochak agrawal] 09:04:18
+let's say, say, 5%. So, you see, 95% will go to the production slot, and the 5% will go to the, um…
+
+[rochak agrawal] 09:04:27
+Your tone.
+
+[rochak agrawal] 09:04:30
+a slot, right? So, you see deployment slots are being used.
+
+[rochak agrawal] 09:04:35
+So that you can test the multiple version of your application.
+
+[rochak agrawal] 09:04:41
+And you do not need to impact your, uh, what you can say.
+
+[rochak agrawal] 09:04:47
+Production environment. So if, uh, right, so we can… what we can do with the…
+
+[rochak agrawal] 09:04:55
+app service deployment slot. So we can route the traffic control, we can do the testing and feedback, so we can direct the percentage of user traffic to different slots.
+
+[rochak agrawal] 09:05:04
+Which will allow you to control the exposure of the new version of your app to your user. Now, this allows us to validate a version of our application, such as new feature, bug fixes, performance improvement, functionality and user experience in a separate environment.
+
+[rochak agrawal] 09:05:24
+before promoting it to the production. Okay. Helping you to ensure the stability and the reliability of your application. And it also allows us to get users feedback before making it available to all the end users.
+
+[rochak agrawal] 09:05:39
+So, for example, now I… I deploy something with the test clause. Now, before I deploy it, full-fledged it, I want to test it, let's say, 5% user. If they are not complaining, then I will go and, uh…
+
+[rochak agrawal] 09:05:55
+uh, do a swap, but first, I want to do some user acceptance testing. So that way, whatever the percentage of the traffic you want to control, you can do it from here, and then whatever your main URL could be.
+
+[rochak agrawal] 09:06:09
+95% traffic will go to the production slot, and then 5% traffic will go to your test slot.
+
+[rochak agrawal] 09:06:16
+Then what other we can do, we can do a release control. So this deployment slot allows us to control the exposure of the new version of your application to your users by gradually increasing the number of the users.
+
+[rochak agrawal] 09:06:31
+It eliminates the downtime. So now, you see, let's say we say my test is my version 2, and which I promoted to. I just need to do a swap, which we'll see. And we can easily roll back. In case we need to revert the deployment, the other deployment will have your.
+
+[rochak agrawal] 09:06:48
+Premier's production version, which can be easily and immediately swapped.
+
+[rochak agrawal] 09:06:53
+Very importantly, we do not need to pay for any additional deployment slot.
+
+[rochak agrawal] 09:07:00
+Very important. See, both of these applications are using the app service plan. So you are paying for the app service plan, not for the.
+
+[rochak agrawal] 09:07:11
+Deployment slots, right?
+
+[rochak agrawal] 09:07:17
+So, now what we can do… That is…
+
+[rochak agrawal] 09:07:20
+So, one way is I can, uh, like, gradually increase the traffic, and for example, if I say 100% here.
+
+[rochak agrawal] 09:07:28
+then automatically it does the swap, but that's not a good way. Uh, so now you can see I have a production slot, which is taking 100% traffic, and then I have a test slot, which is…
+
+[rochak agrawal] 09:07:40
+Uh, which is taking 0% for now. Now, I'm very confident that my test slot is ready, so what I can do is, I can do a swap.
+
+[rochak agrawal] 09:07:49
+So, when you do a swap, so you can see…
+
+[rochak agrawal] 09:07:53
+source target, right? Source to target.
+
+[rochak agrawal] 09:07:58
+And, uh…
+
+[rochak agrawal] 09:08:00
+Config change, there is nothing much in the config change. Swap with preview can only be used with the site that have a deployment slot setting enabled. It's not much for us. And I will start the swap.
+
+[rochak agrawal] 09:08:12
+as you start the swap. Okay?
+
+[rochak agrawal] 09:08:18
+See, you understand what is happening here.
+
+[rochak agrawal] 09:08:21
+This is not version V1 and version V2. So, for example, let's say you have a version V1.
+
+[rochak agrawal] 09:08:31
+you have version V2, which you deployed, correct? Now, version V1 is marked as your production.
+
+[rochak agrawal] 09:08:39
+Edit.
+
+[rochak agrawal] 09:08:41
+User traffic is coming here.
+
+[rochak agrawal] 09:08:43
+And this is marked as two production on B1.
+
+[rochak agrawal] 09:08:49
+Now, when you do a swap.
+
+[rochak agrawal] 09:08:52
+Then, prod right now is…
+
+[rochak agrawal] 09:08:57
+4112026, right? Then you see what is going to happen after the swap.
+
+[rochak agrawal] 09:09:03
+Start the swap.
+
+[rochak agrawal] 09:09:13
+What essentially will happen, then your prod will not point to B1, prod will start pointing to.
+
+[rochak agrawal] 09:09:22
+Me too.
+
+[rochak agrawal] 09:09:24
+So your users are still coming to prod, but they are now being redirected to V2.
+
+[rochak agrawal] 09:09:31
+So let it get done.
+
+[rochak agrawal] 09:10:06
+Okay? Now, if you go…
+
+[rochak agrawal] 09:10:17
+See?
+
+[rochak agrawal] 09:10:19
+It is deployed, uh, taking the test application, so deployment has just happened, and now…
+
+[rochak agrawal] 09:10:31
+See? It's a sample application which got deployed into the test slot.
+
+[rochak agrawal] 09:10:37
+And now 100… if you want to roll back again, so again you do a swap, and it will be rolled back.
+
+[rochak agrawal] 09:10:43
+I can add one more slot saying, let's say…
+
+[rochak agrawal] 09:10:48
+Deb
+
+[rochak agrawal] 09:11:19
+Right? So you can see now I have…
+
+[rochak agrawal] 09:11:22
+Three slots. And for this, you will get a different URL.
+
+[rochak agrawal] 09:11:25
+So you can test them individually also. Here you can see Deb.
+
+[rochak agrawal] 09:11:30
+Right? If you click on this, you will get… go to tab.
+
+[rochak agrawal] 09:11:36
+Correct. So that is where, um…
+
+[rochak agrawal] 09:11:40
+Deployment slots provide you with the benefit of.
+
+[rochak agrawal] 09:11:44
+Having great flexibility to manage and test multiple versions of your applications simultaneously, providing a reliable and controlled deployment process that can maximize the user satisfaction.
+
+[rochak agrawal] 09:12:03
+and minimize the disruption. With this feature, we can reduce the release risk of your application, and ensure a smooth transition between the different versions of your application.
+
+[rochak agrawal] 09:12:16
+Okay.
+
+[rochak agrawal] 09:12:18
+So, you can see it here.
+
+[rochak agrawal] 09:12:22
+If you are in a dev, you will see a deployment center for your dev environment, right?
+
+[rochak agrawal] 09:12:31
+Deployment slot will show you all the slots you will be having.
+
+[rochak agrawal] 09:12:37
+So, in the production slot, it goes… and you notice one thing, when you are in a…
+
+[rochak agrawal] 09:12:43
+dev or a test deployment slot. You will not be able to change the traffic here.
+
+[rochak agrawal] 09:12:47
+Right? I'm not able to do.
+
+[rochak agrawal] 09:12:50
+Until, unless you are not in a main, uh, slot, main application. So once you are in a main application, you go to deployment slot.
+
+[rochak agrawal] 09:12:59
+Now I can do it.
+
+[rochak agrawal] 09:13:03
+Okay? And similarly… yeah. Just, just a second, Arif, yeah?
+
+[rochak agrawal] 09:13:09
+So you can see in the logs, you see, uh, BF swapped, the web app slot succeeded 3 minutes ago, and if you see.
+
+[rochak agrawal] 09:13:16
+The complete details.
+
+[rochak agrawal] 09:13:19
+You are going to see the change history, the JSON, everything we will get, what we have did and everything.
+
+[rochak agrawal] 09:13:27
+Yes, I do.
+
+[arif] 09:13:29
+I just want to know, like, how the web page has changed in the test slot while we are, uh, getting the code from the GitHub.
+
+[rochak agrawal] 09:13:37
+Correct. See, if you remember, when we opened the test, it says, uh, your application, uh, is deployed.
+
+[rochak agrawal] 09:13:44
+Time to take the next step. So it got deployed.
+
+[arif] 09:13:48
+What is deployed?
+
+[rochak agrawal] 09:13:49
+It's a test application.
+
+[rochak agrawal] 09:13:50
+It's a Python application, it's a simple this application.
+
+[rochak agrawal] 09:13:55
+We use this code, right?
+
+[arif] 09:13:57
+We use the same in the production also, right?
+
+[rochak agrawal] 09:14:02
+Yeah, but in production, production also, it will get deployed. See, it was taking some time.
+
+[rochak agrawal] 09:14:08
+It's a sample application, so sample application behave erratically at the times, but the… see, uh, and that is where we are explaining this, uh, these deployment slots here. If you go in production also, it will… it will also do in the same time… sometime.
+
+[rochak agrawal] 09:14:25
+If you have your main application, it will behave reasonably, right? So you can see this, we are going to change.
+
+[rochak agrawal] 09:14:36
+slot, when we swap the slots, it is going to change, uh, what is coming onto the production. Now we'll go to test, and what is coming to the test, it will go to production.
+
+[rochak agrawal] 09:14:46
+So that's the main thing.
+
+[arif] 09:14:48
+So it's just, like, it's just creating another instance, right, for this web application that we are using in production.
+
+[rochak agrawal] 09:14:54
+It is, uh… yes, you can say that. See, that is what, uh…
+
+[rochak agrawal] 09:14:59
+Another instance of…
+
+[rochak agrawal] 09:15:01
+another environment, I would say.
+
+[arif] 09:15:03
+Yep.
+
+[rochak agrawal] 09:15:04
+So, so that, uh, you are not, um, uh, what, uh…
+
+[rochak agrawal] 09:15:08
+So that you're not impacting… and one more thing I will tell you, you will get the questions from the deployment slot, but…
+
+[rochak agrawal] 09:15:17
+C phone.
+
+[rochak agrawal] 09:15:20
+There's another perspective to it, RF. When we are having…
+
+[rochak agrawal] 09:15:26
+the CI/CD pipelines. So we don't actually manually swap the slots.
+
+[rochak agrawal] 09:15:30
+Okay. Because see, if I'm using the app service and like I'm directly doing it from here, I don't need a CICD pipeline probably, correct? But then we generally don't prefer it. We don't do it manually. We do it with the help of our CICD pipeline.
+
+[rochak agrawal] 09:15:52
+Now, you asked me how we do it with our CICD pipeline. Let's say if you're creating a pipeline in Jenkins, we can do a swap with the agent CLI commands.
+
+[rochak agrawal] 09:16:22
+Two simple commands are there.
+
+[rochak agrawal] 09:16:26
+To you, just…
+
+[rochak agrawal] 09:16:31
+You see, AJ, web app deployment, swap, resource group, name, slot, uh, target slot. Two things you need to give. And then, uh, so we… most of the time, we will be running these type of the command. Now, again, PowerShell, CLI, you're doing it with the Terraform.
+
+[rochak agrawal] 09:16:48
+Uh, depending. Uh, we just trigger it from my CICD pipeline. We don't generally do it manually.
+
+[arif] 09:16:59
+Okay.
+
+[rochak agrawal] 09:17:00
+Okay?
+
+[rochak agrawal] 09:17:05
+Let's take the questions.
+
+[rochak agrawal] 09:17:22
+Yes, Pueblo?
+
+[Vaibhav] 09:17:26
+Hello, Chuck, uh, I'm trying to, uh, ask a question for a very long time, so I'm starting, but you did not, uh, mute me, unmute me, and I'm not able to get my questions.
+
+[rochak agrawal] 09:17:35
+By the way, I'm trying… no, I'm trying to do my best, um, there's no need to repeat it.
+
+[Vaibhav] 09:17:39
+No, no, I understand, but, uh, today I was asked about, like, so my question is first of all related to VM. So, uh, like, I want to ask, like, it is possible we can expand the size of OS disk in VM?
+
+[rochak agrawal] 09:17:41
+Yeah.
+
+[rochak agrawal] 09:17:45
+Mm-hmm.
+
+[rochak agrawal] 09:17:55
+We can, uh, do, but, uh, see, uh, when we were creating the VM itself, okay.
+
+[Vaibhav] 09:18:01
+Mm-hmm.
+
+[rochak agrawal] 09:18:01
+So, for example, when you go create a virtual machine.
+
+[rochak agrawal] 09:18:07
+There is an OS disk, right?
+
+[Vaibhav] 09:18:09
+Mm-hmm.
+
+[rochak agrawal] 09:18:11
+So here, itself, uh…
+
+[rochak agrawal] 09:18:16
+So, it says image default is 30 GB, correct?
+
+[Vaibhav] 09:18:19
+Mm-hmm.
+
+[rochak agrawal] 09:18:20
+OS disk. But then I was, uh… default is 30GB, but I can make it 32GB.
+
+[rochak agrawal] 09:18:26
+I can make it 64 GB, right?
+
+[rochak agrawal] 09:18:30
+I can do that.
+
+[Vaibhav] 09:18:30
+While after creating that.
+
+[rochak agrawal] 09:18:32
+Now, after creating that, it would not be possible.
+
+[rochak agrawal] 09:18:36
+See, two things. After creating, it would not be possible, and the second thing is, these are the fixed sizes available, right? I cannot go and say 35GB.
+
+[rochak agrawal] 09:18:50
+Okay?
+
+[Vaibhav] 09:18:52
+But we can expand the, like, in a particular manner, like, in similar way, like, 32, 64, in that manner.
+
+[rochak agrawal] 09:18:59
+Yeah, we can do that. We can do that. See, that is where I would suggest, uh, is, uh, and this is, um, I'm talking about the best practices. See, don't touch your OS disk.
+
+[Vaibhav] 09:18:59
+We can do that.
+
+[rochak agrawal] 09:19:13
+Okay, keep the OS disk as the image default.
+
+[rochak agrawal] 09:19:17
+See, what is the purpose of an OS desk? The purpose of the OS desk is to host the operating system, correct?
+
+[Vaibhav] 09:19:17
+Okay.
+
+[Vaibhav] 09:19:24
+Hmm.
+
+[rochak agrawal] 09:19:25
+Right? So, then, keep the OS disk at the default, and see why you need to expand the disk? Because you are expecting more and more data, correct?
+
+[Vaibhav] 09:19:36
+Hmm.
+
+[rochak agrawal] 09:19:37
+Then use the data disk. Why to mess up with the OS disk? Because if there is something goes wrong with the OS disk, your data got corrupted or something goes wrong, then it may impact your operating system, correct?
+
+[Vaibhav] 09:19:51
+Mm-hmm.
+
+[rochak agrawal] 09:19:52
+So then for data use data disk, why you want to increase or expand the size of the OS disk. OS disk main…
+
+[rochak agrawal] 09:20:00
+main responsibility is to host the operating system, not the data. And that is why OS disk and data disk are separate.
+
+[rochak agrawal] 09:20:09
+Right? You can do it, but it is not recommended to do that.
+
+[Vaibhav] 09:20:10
+Mmhm.
+
+[rochak agrawal] 09:20:15
+So, for example, even if you say, um, I can create a 64GB, uh, or 128GB OS disk, I would recommend not to do it. Go with the image default, because, see, Azure is giving you the enough space, uh, to host your operating system and some data.
+
+[Vaibhav] 09:20:16
+Okay.
+
+[rochak agrawal] 09:20:32
+If you need to… if you need to have more and more data, use data disks.
+
+[Vaibhav] 09:20:37
+Hmm.
+
+[rochak agrawal] 09:20:38
+Okay? So that is as per the recommendations.
+
+[rochak agrawal] 09:20:42
+and best practices.
+
+[Vaibhav] 09:20:43
+Okay.
+
+[rochak agrawal] 09:20:43
+Okay.
+
+[Vaibhav] 09:20:45
+Okay.
+
+[Vaibhav] 09:20:48
+Um, one more thing is, like, uh, related to this recent topic, like, that we are studying. It is, uh, when we, uh, swap the production to test, so we have, uh, like, test the entire code.
+
+[rochak agrawal] 09:20:52
+Mm-hmm.
+
+[Vaibhav] 09:21:02
+From production to taste, right?
+
+[Vaibhav] 09:21:08
+So, is all the configuration will change, or it will remain same, I mean, when we swap that? So, what the things will swap?
+
+[rochak agrawal] 09:21:14
+So, so if you see, uh… okay.
+
+[rochak agrawal] 09:21:18
+See, uh, there is two things in that, um, level. So when you create an app service, okay, uh, sorry, not the app service, the slot. So, for example, when I go to the slot.
+
+[rochak agrawal] 09:21:30
+Okay, let's say I'm creating a slot.
+
+[rochak agrawal] 09:21:36
+Let's say, dummy slot, for example, right? Now, you have…
+
+[rochak agrawal] 09:21:42
+option.
+
+[rochak agrawal] 09:21:43
+clone the setting or not clone the setting. That is one thing, correct? So when you are cloning the setting, let's say I'm cloning this setting, so whatever the configuration settings are there, that will be copied to my dummy slot.
+
+[rochak agrawal] 09:21:57
+Okay?
+
+[rochak agrawal] 09:22:03
+Yes, no, never?
+
+[Vaibhav] 09:22:04
+Okay, okay.
+
+[rochak agrawal] 09:22:06
+Yeah? That is one thing. So, either you can clone the settings from a particular slot, or you say, I'm not copying the setting, I will configure my own setting for that particular slot.
+
+[Vaibhav] 09:22:06
+Mm-hmm.
+
+[rochak agrawal] 09:22:16
+So you can do any… either one of them. That is one thing. Clear this?
+
+[Vaibhav] 09:22:21
+Hmm. Mm-hmm.
+
+[rochak agrawal] 09:22:21
+Then, when you swap the slot, so for example.
+
+[rochak agrawal] 09:22:29
+Okay? So, you see, um…
+
+[rochak agrawal] 09:22:39
+This is some URL.
+
+[rochak agrawal] 09:22:46
+Let's say abc.com.
+
+[rochak agrawal] 09:22:49
+is my URL.
+
+[rochak agrawal] 09:22:51
+And then you created a slot, ABC.
+
+[rochak agrawal] 09:22:56
+Test.com, Azure.
+
+[rochak agrawal] 09:22:59
+Test URL, correct. Now, abc.com is pointing to V1.
+
+[rochak agrawal] 09:23:05
+Which is your production? AVCTest.com is pointing to V2.
+
+[rochak agrawal] 09:23:11
+8.
+
+[Vaibhav] 09:23:13
+Hmm.
+
+[rochak agrawal] 09:23:13
+Which is your production?
+
+[rochak agrawal] 09:23:21
+They will have their own config setting, either cloned or not cloned, you will decide when you are creating the slot. Clear till now?
+
+[Vaibhav] 09:23:31
+Mm-hmm.
+
+[rochak agrawal] 09:23:33
+When you swap.
+
+[rochak agrawal] 09:23:35
+What is going to happen is…
+
+[rochak agrawal] 09:23:39
+Now…
+
+[rochak agrawal] 09:23:40
+ABC.com prod will point to V2, will start pointing to V2, and ABC.com test.com will start pointing to V1.
+
+[rochak agrawal] 09:23:48
+That is what had got changed.
+
+[rochak agrawal] 09:23:52
+Okay. Setting B1 and B2 will have its own, correct?
+
+[Vaibhav] 09:23:56
+Mm-hmm.
+
+[rochak agrawal] 09:23:57
+Which you decide either to clone or not clone.
+
+[rochak agrawal] 09:24:02
+So it is… swiping will just change the pointing.
+
+[rochak agrawal] 09:24:07
+Okay, and you can have, again, multiple slots, uh, right, abcdev.com.
+
+[rochak agrawal] 09:24:16
+And so on and so forth. I can have multiple slots, depending on, um, of course, um, like, um, what my app service plan is offering me. So, for example, if you go to app service plan.
+
+[rochak agrawal] 09:24:36
+So you can see apps, there is app 1, and slot is 2.
+
+[rochak agrawal] 09:24:41
+Okay? And then, if you go to the App Service Plan.
+
+[rochak agrawal] 09:24:57
+And if we create… try to create a new one, and if you go to the pricing tier.
+
+[rochak agrawal] 09:25:27
+The information is not coming here.
+
+[rochak agrawal] 09:25:31
+A standard app service plan can have the five deployment slot.
+
+[rochak agrawal] 09:25:37
+Okay, they have the limitation…
+
+[rochak agrawal] 09:25:43
+Check in the official documentation. App service plan.
+
+[rochak agrawal] 09:25:49
+deployment slots
+
+[rochak agrawal] 09:25:59
+You see standard tier select up to five deployment slot per app. Premium and isolated tiers can support up to 20 deployment slot per application.
+
+[rochak agrawal] 09:26:11
+But again, remember, they… this is not available in the standard, uh, basic and free tier. So if you, uh… when we were using the basic tier, uh, it was not allowing us to create a deployment slot.
+
+[Vaibhav] 09:26:11
+Mm-hmm.
+
+[rochak agrawal] 09:26:24
+So that is what also you need to take care.
+
+[rochak agrawal] 09:26:30
+Then you want to use the, the…
+
+[rochak agrawal] 09:26:34
+Deployment slots, you need to have either the premium isolated and the standard one.
+
+[rochak agrawal] 09:26:40
+So, right now, this standard is not an option for me, so I used… previously, I was creating a basic B1 tier, so which was not allowing me to create the deployment slot, so I moved it to premium P3, and that allowed me to have the deployment slot, so…
+
+[rochak agrawal] 09:26:56
+Standard will allow you five deployment slots. Premium and isolated, we can create 20 deployment slots.
+
+[rochak agrawal] 09:27:03
+Not more than 20. And of course, you don't need more than 20, right? Because, like, how many environments you are going to create? And anyways, if you need more than 20, and these are for different applications, you can create another web app altogether.
+
+[Vaibhav] 09:27:05
+Mmhm.
+
+[rochak agrawal] 09:27:20
+Okay.
+
+[Vaibhav] 09:27:23
+Hmm.
+
+[rochak agrawal] 09:27:27
+Okay.
+
+[rochak agrawal] 09:27:32
+So…
+
+[Vaibhav] 09:27:34
+Uh, one more thing, like, I'm just asking about, like, um, we use the app service plan for just, uh, I mean…
+
+[rochak agrawal] 09:27:37
+Mm-hmm.
+
+[rochak agrawal] 09:27:40
+Correct. App services.
+
+[Vaibhav] 09:27:43
+use… yeah, we can use the… like, we can say we use that for the… like, we use our virtual resource to run our web apps, right? But what is the actual… along with that, what is the actual major use of that is this…
+
+[rochak agrawal] 09:27:50
+Hmm?
+
+[rochak agrawal] 09:27:51
+Mm-hmm.
+
+[rochak agrawal] 09:27:58
+Major use of that, you do not need to manage the virtual machines in this case, Weber. See, if you're using the virtual machines, for example, uh, you need to manage the patching of the virtual machine, you need to manage the installation of the software on the virtual machine.
+
+[Vaibhav] 09:27:59
+Apps are explained.
+
+[rochak agrawal] 09:28:13
+Right? Uh, here, what we are doing, we… we are just saying, I need to run the Python, uh, and I am just providing my code. Correct?
+
+[Vaibhav] 09:28:23
+Mm-hmm.
+
+[rochak agrawal] 09:28:24
+That's it. You do not need to manage the virtual machine. See, it is all about the shared responsibility model. See, for example, I can create my own mailing service altogether on my local system. For example, I can create a server.
+
+[rochak agrawal] 09:28:40
+Uh, and I can deploy a mail server there, and I can use my mailing functionality, correct? Why do we use Gmail? Is that because I do not need… I don't want to manage my… I don't want to manage the mail server, correct?
+
+[Vaibhav] 09:28:53
+Mm-hmm.
+
+[rochak agrawal] 09:28:54
+Right. So it is about what responsibilities do you want or you don't want. So for example, if you are already running thousand virtual machine and you need to deploy another application with the five virtual machine, you'll say it doesn't matter to me. I will create five more virtual machine. Anyways, I'm managing thousand virtual machine. I'll manage five more.
+
+[Vaibhav] 09:29:11
+Mm-hmm.
+
+[Vaibhav] 09:29:14
+Mm-hmm.
+
+[rochak agrawal] 09:29:14
+Correct. So, but you, let's say, but compared to that, let's say, if you say you are a very small company, you do not have any infrared networking guys available to you, you do not, uh, you do not have much information about what operating system patches.
+
+[Vaibhav] 09:29:25
+Mm-hmm.
+
+[rochak agrawal] 09:29:30
+You need to deploy when to deploy. What are the security implications they can have. So you don't want to manage the virtual machines. Correct. So those cases is there that you use the app services so that you are directly deploying your code to the server.
+
+[Vaibhav] 09:29:38
+Mm-hmm.
+
+[rochak agrawal] 09:29:46
+Uh, to this app service, and without managing any infrastructure.
+
+[rochak agrawal] 09:29:51
+The benefit is the passing of the responsibility to the Cloud service provider.
+
+[rochak agrawal] 09:29:57
+I just… I am now focused only on my application. I have no infrastructure to manage. I will just say, boss, this is my plan, this is what infrastructure I need, and this is my code. That's it.
+
+[Vaibhav] 09:30:11
+Okay.
+
+[rochak agrawal] 09:30:13
+Okay?
+
+[rochak agrawal] 09:30:16
+Okay, cool, guys.
+
+[rochak agrawal] 09:30:23
+Thank you.
+
+[Vaibhav] 09:30:29
+Uh, I asked about a few, uh, DevOps-related interview questions to you. Have you posted that?
+
+[rochak agrawal] 09:30:34
+Mm-hmm.
+
+[rochak agrawal] 09:30:35
+Yeah, I have uploaded that, uh, can you check once on the shared drive? I uploaded yesterday evening.
+
+[Vaibhav] 09:30:39
+Okay, okay.
+
+[Vaibhav] 09:30:42
+Okay, okay, thank you, thank you.
+
+[rochak agrawal] 09:30:42
+Ensemble and Kubernetes separately, and then one DevOps file.
+
+[Vaibhav] 09:30:48
+Okay.
+
+[rochak agrawal] 09:30:49
+Yeah? Sure.
+
+[rochak agrawal] 09:30:51
+Okay, thank you
+
