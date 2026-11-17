@@ -1,0 +1,1035 @@
+[rochak agrawal] 08:50:12
+Okay.
+
+[rochak agrawal] 08:50:14
+Now let me give it 10.0.
+
+[rochak agrawal] 08:50:17
+Yeah, see, if you give it like this, for example.
+
+[rochak agrawal] 08:50:21
+Okay, now it is not a valid TIDR block because.
+
+[rochak agrawal] 08:50:25
+You see?
+
+[rochak agrawal] 08:50:31
+It is… see, this is a full IP address in itself.
+
+[rochak agrawal] 08:50:35
+When you give a range, you need to have a range from A to B. This is a complete address in itself, correct? You have used all the 32 bits of an address.
+
+[rochak agrawal] 08:50:47
+Correct.
+
+[arif] 08:50:49
+Okay, okay, got it. So… so every time it will start from… it will end with 0, right? Subnet?
+
+[rochak agrawal] 08:50:51
+Right!
+
+[rochak agrawal] 08:50:54
+Correct. Correct, correct. So see, um, and the second thing is, um, uh, five IP address, this is reserved. So this, see, there's two things in it.
+
+[rochak agrawal] 08:51:05
+First is a CADR notation, slash 16, slash 24, slash 32. Uh, and I'll tell you one very important question, which you might get in interviews, as well in the exams, as well.
+
+[rochak agrawal] 08:51:16
+So this is universal. You use Azure, AWS, GCP, on-prem, Cisco, Juniper, whatsoever. This is applicable to everywhere. This is how we are going to assign the range to a network. This is called the CIDR notation.
+
+[rochak agrawal] 08:51:31
+Correct? 10.0.0.1 slash 24, for example. Right? Now…
+
+[rochak agrawal] 08:51:38
+Comes so someone will ask you a question.
+
+[rochak agrawal] 08:51:41
+Let's say, if I give…
+
+[rochak agrawal] 08:51:43
+27.
+
+[rochak agrawal] 08:51:45
+Or let's say 28.
+
+[rochak agrawal] 08:51:47
+Okay.
+
+[rochak agrawal] 08:51:50
+Or 29. This is very frequently asked question.
+
+[rochak agrawal] 08:51:53
+Now…
+
+[rochak agrawal] 08:51:54
+In the Azure 104 exam.
+
+[rochak agrawal] 08:51:57
+Okay? Or, in the, um…
+
+[rochak agrawal] 08:52:01
+Interview.
+
+[rochak agrawal] 08:52:03
+Someone will ask you that I have.
+
+[rochak agrawal] 08:52:06
+let's say, if you are using 28, so you can have the 16 address. Now, someone is coming and saying, I have 12 virtual machines which I want to place in a subnet, for example, okay?
+
+[rochak agrawal] 08:52:18
+Which is the minimum subnet range you are going to use?
+
+[rochak agrawal] 08:52:23
+And many people make this mistake, they will calculate, and they'll say 28 will have a 16 IP address, so I'll say it's less 28, since I have a 12 virtual machine, and there is 16 IP address, and uh…
+
+[rochak agrawal] 08:52:37
+We'll be able to place them easily, correct?
+
+[rochak agrawal] 08:52:45
+Right, Dennis? Yes, no?
+
+[arif] 08:52:47
+We had
+
+[rochak agrawal] 08:52:48
+But then, out of these 16 address.
+
+[arif] 08:52:51
+$5 is also…
+
+[rochak agrawal] 08:52:53
+5 are reserved, so how many you have, effectively?
+
+[rochak agrawal] 08:52:55
+11. You have virtual machine, 12. So instead of 28, you need to have 27.
+
+[rochak agrawal] 08:53:04
+Okay.
+
+[rochak agrawal] 08:53:05
+So, see, the bigger will be the number.
+
+[rochak agrawal] 08:53:08
+Okay
+
+[rochak agrawal] 08:53:11
+this number, slash 16. So you can see slash 16 has…
+
+[rochak agrawal] 08:53:20
+65,000 address. Now, the reason for that is, if you see this.
+
+[rochak agrawal] 08:53:29
+the range is… when I'm using slash 16, my two bits are fixed, 10.0. Then I have a range, 0.02.
+
+[rochak agrawal] 08:53:38
+It could be 0.1, 0.2, 0.3, then 1.0, 1.1, 2.0, 2.1 slash slash. So the range is 10.0.0. Sorry.
+
+[rochak agrawal] 08:53:50
+255.255.
+
+[rochak agrawal] 08:53:52
+Correct.
+
+[rochak agrawal] 08:53:53
+So you can see from 01 to 255, 255, there is multiple permutation combination.
+
+[rochak agrawal] 08:54:00
+But on the… on the other hand.
+
+[rochak agrawal] 08:54:11
+If I'm using 10.0.0.0 slash 24, correct? Then my 3 bits are fixed.
+
+[rochak agrawal] 08:54:18
+10.0.0.
+
+[rochak agrawal] 08:54:21
+Dot zero.
+
+[rochak agrawal] 08:54:26
+2, n.0.0.
+
+[rochak agrawal] 08:54:28
+dot 255.
+
+[rochak agrawal] 08:54:31
+Correct. So the bigger this number would be, this number.
+
+[rochak agrawal] 08:54:34
+Lower will be the number of the IP addresses, and if you go… if you go do a slash 8, for example, you see?
+
+[rochak agrawal] 08:54:44
+You see the number of the IP address.
+
+[rochak agrawal] 08:54:52
+There's so many. Hey, so most of the time, um, in a private IP range, whenever you will be defining.
+
+[rochak agrawal] 08:55:01
+Virtual network, you will define with the slash 16.
+
+[rochak agrawal] 08:55:07
+Network, VNet, you define as a slash 16, and then subnet, you would be defining probably at slash 24. But again, uh, this is just a general trend.
+
+[rochak agrawal] 08:55:18
+Final is what you will be having because at the time.
+
+[rochak agrawal] 08:55:22
+C slash 24 also have 250 IP addresses, correct?
+
+[rochak agrawal] 08:55:26
+250 is also a big number, like, there will not be a net much application which would be running with a 250, uh, virtual machines. But then again, it is up to end, or up to the application, how many application, how many virtual machine it is consuming.
+
+[rochak agrawal] 08:55:42
+And then accordingly, you will take the decision.
+
+[arif] 08:55:48
+Okay. Rojak, I have one question.
+
+[rochak agrawal] 08:55:49
+Okay?
+
+[arif] 08:55:54
+So let's suppose Cisco, Cisco have that cloud management application where they manage all the devices deployed in the customer environment. So what exactly the additional services or the feature they might be using?
+
+[rochak agrawal] 08:55:58
+Okay?
+
+[arif] 08:56:08
+Uh, for, like, managing those things.
+
+[arif] 08:56:12
+On the device.
+
+[rochak agrawal] 08:56:12
+RFI… sorry, can you elaborate your question a bit?
+
+[arif] 08:56:17
+Yeah, so Cisco have multiple devices in the customer deployment, like routers and switches.
+
+[rochak agrawal] 08:56:20
+Correct.
+
+[rochak agrawal] 08:56:21
+Mm-hmm. Mm-hmm.
+
+[arif] 08:56:23
+And they are, they have an application like the cloud management platform for the customers, uh, so that, uh, they can manage, uh, the devices. Manage means like they can configure the central location, all the devices, all those things. So what, what type of networking or services, uh, they might be using, suppose in, in Azure or something if they have a.
+
+[rochak agrawal] 08:56:27
+Mm-hmm.
+
+[rochak agrawal] 08:56:35
+Got it? Mm. Mm.
+
+[arif] 08:56:44
+Cloud, like, private cloud network.
+
+[rochak agrawal] 08:56:46
+Okay, see, I did, um…
+
+[rochak agrawal] 08:56:50
+or, like, how… like…
+
+[rochak agrawal] 08:56:51
+See, the thing is…
+
+[rochak agrawal] 08:56:54
+You
+
+[rochak agrawal] 08:56:56
+Why are you moving to Azure, for example? Because you want to remove the dependencies on these type of devices, correct?
+
+[rochak agrawal] 08:57:04
+So that is where we are learning this, because now.
+
+[rochak agrawal] 08:57:08
+From a networking perspective also, when we discussed starting it.
+
+[rochak agrawal] 08:57:16
+We say we are going to use virtual network for multiple things. Communication of Azure resources with the Internet, communication between the Azure resources. We are doing the filtering of the network traffic. We are doing the routing of the network traffic. A Cisco device.
+
+[rochak agrawal] 08:57:30
+in networking, if you see, there are multiple devices are there. There are routers are there, there are switches are there, uh, multiplexers are there, okay? And, see, what…
+
+[arif] 08:57:35
+Yep.
+
+[rochak agrawal] 08:57:42
+If you…
+
+[rochak agrawal] 08:57:43
+generically we talk about, okay? Uh, see, also, I do not know the specification of these devices, because I've not worked on them, okay? But if you ask me very generically what these devices do.
+
+[rochak agrawal] 08:57:56
+So, basically, what the device do, they make the communication to other, uh, networks possible. So, for example, what a router does. Router does the routing of the traffic. It will tell you where to go next, correct?
+
+[rochak agrawal] 08:58:09
+Filtering it does. So, for example, if you are using Cisco Firewall, so it will, um, and if you've noticed that when you are working in your, let's say, enterprise network on your office laptop, and you will try to type instagram.com, it might be blocked.
+
+[rochak agrawal] 08:58:25
+Or you type facebook.com, it might be blogged, correct?
+
+[rochak agrawal] 08:58:29
+Because someone is filtering the traffic, someone is… some machine is there which is noticing that the request is coming for Instagram.com, I need to block this, right?
+
+[rochak agrawal] 08:58:40
+So, what your Cisco devices are doing, they are doing the communication possible, they are doing the routing of your traffic, they are doing the filtering of your traffic, correct?
+
+[rochak agrawal] 08:58:51
+Now, all of those things I am going to do with the Azure networking.
+
+[rochak agrawal] 08:58:56
+As simple as that.
+
+[arif] 08:58:58
+So how, how we can do this, like, how device actually communicate with the application? That's my question.
+
+[rochak agrawal] 08:59:04
+Okay, so how… see, first of all, first of all, if, let's say, you have your complete application in Azure, okay?
+
+[arif] 08:59:05
+My device is in the field.
+
+[rochak agrawal] 08:59:13
+Then, do you need those devices? No.
+
+[rochak agrawal] 08:59:20
+Hey!
+
+[rochak agrawal] 08:59:21
+Where is the need of those devices if my application is running on Azure?
+
+[arif] 08:59:26
+So, in Azure itself, uh… but… but that is, I think… I'm not able to explain it, but…
+
+[rochak agrawal] 08:59:31
+Mm-hmm.
+
+[arif] 08:59:32
+Uh, maybe they are still working on the on-premise environment.
+
+[rochak agrawal] 08:59:35
+Behind, correct.
+
+[rochak agrawal] 08:59:36
+Huh? See, see, see, if you need to understand one thing, um…
+
+[rochak agrawal] 08:59:42
+Very simply, let's say when you set up your on-prem networking.
+
+[rochak agrawal] 08:59:46
+You will need all those devices which you are seeing, Cisco, Juniper, routers, which is correct.
+
+[rochak agrawal] 08:59:53
+But the whole point of using the Cloud is you are passing off the responsibility of managing the physical infrastructure to the Cloud service provider. We discussed this at the time of using the virtual machines also.
+
+[rochak agrawal] 09:00:10
+If you are using your on-premises environment, you will have a physical server, you will have a virtualization software, and then, finally, you will have a virtual machine, correct?
+
+[rochak agrawal] 09:00:20
+But since I am using the Azure, who is managing the physical infra?
+
+[rochak agrawal] 09:00:27
+Azure.
+
+[arif] 09:00:27
+Azure.
+
+[rochak agrawal] 09:00:28
+Similar case with the networking.
+
+[rochak agrawal] 09:00:31
+They might be using some devices in the back, and why should I care?
+
+[rochak agrawal] 09:00:36
+8.
+
+[arif] 09:00:40
+but those devices are always external, like, it is not connected, it is not the Azure property or Azure thing, it's a… it's, uh, like a…
+
+[arif] 09:00:50
+Uh, the organization have their own product. Yeah.
+
+[rochak agrawal] 09:00:50
+No
+
+[rochak agrawal] 09:00:51
+Understood, understood. So, Azure, uh, RF, you… yeah, there is two parts of your question, what you are saying. You're mixing two things, so I'll explain.
+
+[rochak agrawal] 09:01:00
+Now, okay, so there is one thing is…
+
+[rochak agrawal] 09:01:05
+Till now, whatever we discussed is…
+
+[rochak agrawal] 09:01:11
+Then, your application…
+
+[rochak agrawal] 09:01:16
+is completely…
+
+[rochak agrawal] 09:01:19
+Depending on Azure.
+
+[rochak agrawal] 09:01:21
+Okay.
+
+[arif] 09:01:21
+Okay, yeah.
+
+[rochak agrawal] 09:01:22
+So, when your application is completely running on Azure.
+
+[rochak agrawal] 09:01:25
+There is no on-premises infrastructure, correct?
+
+[arif] 09:01:28
+Yep.
+
+[rochak agrawal] 09:01:29
+There is no devices, then there is no on-prem infrastructure. See, whole point is, you are saying, these devices are not the, uh…
+
+[rochak agrawal] 09:01:37
+You're the.
+
+[rochak agrawal] 09:01:38
+Uh, Azure's property, these are individual organizations' devices, correct?
+
+[arif] 09:01:43
+Yeah.
+
+[rochak agrawal] 09:01:43
+But when I do not have on-premises infrastructure, I will not have those devices. For example, if my application is completely running on Azure, I'll create the VNet, I'll create the subnets, and then in the later slides, we will see for the filtering of the traffic, we have the Azure Firewall.
+
+[rochak agrawal] 09:02:00
+For the routing of the traffic, we have the route tables. So we can manage everything on the Azure side, correct?
+
+[rochak agrawal] 09:02:07
+Agree on that?
+
+[arif] 09:02:08
+Mmhm.
+
+[rochak agrawal] 09:02:10
+Second thing is, let's say…
+
+[rochak agrawal] 09:02:13
+Now I come to your point, when you say, I have a…
+
+[rochak agrawal] 09:02:18
+hybrid environment.
+
+[rochak agrawal] 09:02:22
+Okay.
+
+[rochak agrawal] 09:02:24
+Now, your application is running in Azure, but your AD server, your database server is running in an on-premises environment, where you want to connect your on-premises to Azure environment. And that is where your devices is coming into the picture.
+
+[rochak agrawal] 09:02:40
+You are you you are trying to ask.
+
+[arif] 09:02:42
+Yeah, yeah, yeah, I think, yeah.
+
+[rochak agrawal] 09:02:44
+Okay, so see, we have yet to cover that, but since you asked it right now, is… so, there is something called the hybrid connectivity.
+
+[rochak agrawal] 09:02:58
+Okay, I can connect…
+
+[rochak agrawal] 09:03:01
+Two Azure VNet networks.
+
+[rochak agrawal] 09:03:04
+Okay, I can connect one Azure VNet.
+
+[rochak agrawal] 09:03:10
+2… 1… Azure VPC?
+
+[rochak agrawal] 09:03:12
+Sorry.
+
+[rochak agrawal] 09:03:13
+AWS BPC.
+
+[rochak agrawal] 09:03:17
+Okay, and I can connect my…
+
+[rochak agrawal] 09:03:21
+On-prem network, too.
+
+[rochak agrawal] 09:03:27
+Azure VNAT. I can do all of that.
+
+[rochak agrawal] 09:03:30
+Okay. Now, your question is mostly…
+
+[rochak agrawal] 09:03:34
+What's this?
+
+[arif] 09:03:35
+Yeah, yeah, correct.
+
+[rochak agrawal] 09:03:36
+Correct? How can I connect my on-prem network to Azure Virtual Network?
+
+[arif] 09:03:37
+No.
+
+[rochak agrawal] 09:03:41
+So, um…
+
+[rochak agrawal] 09:03:43
+there are multiple ways, not multiple, there are two ways of doing this. So what… if you… I'll explain this from a point. So let's say, uh…
+
+[rochak agrawal] 09:03:54
+You are working on your office laptop.
+
+[rochak agrawal] 09:03:56
+Okay, um, so in your office, you go, your Wi-Fi automatically, you connect to your Wi-Fi, or if you're using the desktop, your desktop will lend connectivity with your office network, correct?
+
+[rochak agrawal] 09:04:09
+But when you come to your home, and you are doing work from home.
+
+[rochak agrawal] 09:04:12
+How do you connect to your office network?
+
+[arif] 09:04:18
+Over the internet.
+
+[rochak agrawal] 09:04:20
+How? Over the internet, yes, but how?
+
+[arif] 09:04:23
+I think some VPN, uh…
+
+[rochak agrawal] 09:04:25
+VPN, correct? Simple. VPN, yes. Right. VPN is nothing.
+
+[arif] 09:04:27
+Yeah.
+
+[arif] 09:04:29
+Okay, okay.
+
+[rochak agrawal] 09:04:31
+VPN is Virtual Private Network.
+
+[rochak agrawal] 09:04:34
+Okay, so similarly, when you want to connect to our on-prem network.
+
+[rochak agrawal] 09:04:40
+and to Azure Virtual Network, we create something called the VPN tunnel.
+
+[rochak agrawal] 09:04:48
+Okay? Between my Azure and my on-prem network. Okay?
+
+[rochak agrawal] 09:04:52
+VPN channel is one way, there is something called ExpressRoute also.
+
+[rochak agrawal] 09:04:58
+Express how it is, you will probably never, um, going to work in your lifetime as well, because it's a very, um…
+
+[rochak agrawal] 09:05:06
+very high-level, enterprise-level thing, and it is… it is a very time-consuming service. So, uh, similar to ExpressRoute, we have something called Direct Connect in AWS, okay? I was working with a customer, and Direct Connect took one and a half year to set up. One and a half year, I'm telling.
+
+[rochak agrawal] 09:05:23
+Okay. So, forget ExpressRoute, VPN tunnel we are going to create. Now, when you set up the VPN tunnel.
+
+[rochak agrawal] 09:05:31
+This is my on-prem network.
+
+[rochak agrawal] 09:05:33
+Okay.
+
+[rochak agrawal] 09:05:35
+This is my Azure network.
+
+[rochak agrawal] 09:05:38
+And I'm going to set up the VPN tunnel.
+
+[rochak agrawal] 09:05:42
+Okay.
+
+[rochak agrawal] 09:05:43
+Azure side, I am Azure admin. So, whatever the network, whatever the devices, what, uh, not devices, whatever the configuration on the Azure side, I need to do. Who will do? I will do.
+
+[rochak agrawal] 09:05:55
+Correct.
+
+[rochak agrawal] 09:05:59
+In your on-premises, you will already have Cisco devices, other devices, whatsoever. I don't know.
+
+[rochak agrawal] 09:06:06
+I will just get the IP address of your device here, which your on-premises networking team will provide to you. Once you have this IP, I will create the VPN tunnel.
+
+[rochak agrawal] 09:06:16
+That's it.
+
+[arif] 09:06:19
+Okay.
+
+[rochak agrawal] 09:06:20
+Okay? So that is how we are going to do it.
+
+[rochak agrawal] 09:06:25
+Again, uh, like, I'm not bothered about how many Cisco devices are there, how many Juniper devices are there. You must have a gateway on your side, correct?
+
+[arif] 09:06:36
+Gateway on the premises side, on premises side.
+
+[rochak agrawal] 09:06:38
+On-premise side. On-premises side. Correct. I just need the IP address of that gateway. That's it.
+
+[arif] 09:06:46
+Okay.
+
+[rochak agrawal] 09:06:46
+Okay, once I get the…
+
+[arif] 09:06:48
+So it can be…
+
+[rochak agrawal] 09:06:50
+once I get the IP address of this gateway, then I'll create a tunnel.
+
+[rochak agrawal] 09:06:57
+That's it.
+
+[arif] 09:06:58
+I'll go back.
+
+[rochak agrawal] 09:06:58
+Now, from this gateway, see, understand this.
+
+[rochak agrawal] 09:07:02
+from this gateway, how this is talking to this device, this device, this device, this device. This is not my headache as an Azure person, this is your on-prem team will be handling.
+
+[rochak agrawal] 09:07:15
+The routing and everything. I don't care.
+
+[arif] 09:07:18
+Yeah, good.
+
+[rochak agrawal] 09:07:19
+Understood. So that is how, generally, we work. Now, for example, as a… in a very small company, uh…
+
+[rochak agrawal] 09:07:27
+uh, you are the only one, Azure and on-premises, both environment you are handling, so then, yes, of course, you might need to look into it, and you would need certain device-specific knowledge also at that time, but generally, that is not the case.
+
+[arif] 09:07:43
+So, we can create multiple VPNs, right, with virtual… with multiple virtual networks, or just…
+
+[rochak agrawal] 09:07:47
+Got it.
+
+[rochak agrawal] 09:07:48
+No. So, one virtual network, one VPN tunnel. Okay, so let's say if you have another, uh…
+
+[rochak agrawal] 09:07:54
+Network. So then you need to create another tunnel.
+
+[rochak agrawal] 09:07:59
+Okay, but then we have, again, there is something called the hub-and-spoke architecture, which we will also cover, because, let's say, if you have 100 virtual machines, or sorry, 100 virtual networks, then you're not going to create the 100 VPN tunnels for it, because every VPN tunnel.
+
+[rochak agrawal] 09:08:15
+is going to cost you something, correct? So, that is where we have a better alternative, which I'll discuss, um, subsequently.
+
+[arif] 09:08:17
+Mmhm, mmhm.
+
+[rochak agrawal] 09:08:23
+Which we call it as a hub and spoke architecture and.
+
+[arif] 09:08:24
+What's that?
+
+[rochak agrawal] 09:08:27
+If you are going into Azure Interview.
+
+[rochak agrawal] 09:08:31
+Not any of the cloud interview, and you say you know networking.
+
+[rochak agrawal] 09:08:41
+This is the first thing.
+
+[rochak agrawal] 09:08:44
+People are going to ask, what is the hub and spoke architecture? So we will discuss that, but…
+
+[rochak agrawal] 09:08:50
+Like, as of now, you understand, yes. So, for example, if you have multiple virtual networks, so then…
+
+[rochak agrawal] 09:08:57
+A VPN tunnel is going to create one virtual network to your on-premises environment, so you might need multiple VPN tunnels.
+
+[rochak agrawal] 09:09:04
+But from a design perspective, we can do it in a more optimized way, but a VPN tunnel is one-on-one.
+
+[arif] 09:09:18
+Okay.
+
+[rochak agrawal] 09:09:18
+Hope that is clear, Arif.
+
+[arif] 09:09:20
+Yeah, yeah, absolutely, yeah.
+
+[rochak agrawal] 09:09:21
+Just give me a second, uh, 2 minutes.
+
+[rochak agrawal] 09:11:44
+Okay, so now, next we have, uh…
+
+[rochak agrawal] 09:11:51
+Network security group, this is we have already seen while we were creating our virtual machine. By default, what happens is all the network traffic, even though connectivity is there or not, that's a separate thing. Network security group, a virtual firewall.
+
+[rochak agrawal] 09:12:08
+Uh, to your, uh, network traffic. Again, so, basically, limit network traffic to the resources in a virtual network. So, what is going to happen is…
+
+[rochak agrawal] 09:12:23
+When you create a VNet.
+
+[rochak agrawal] 09:12:25
+Now, inside the VNet, there is a subnet.
+
+[rochak agrawal] 09:12:32
+Inside the subnet, you will have your.
+
+[rochak agrawal] 09:12:37
+Virtual machine.
+
+[rochak agrawal] 09:12:38
+So, even though your application is running, let's say, on port 80.
+
+[rochak agrawal] 09:12:43
+By default, this is, uh… there is something called the NSG, which will be guarding your machines.
+
+[rochak agrawal] 09:12:51
+By default, any traffic which is coming to your machines.
+
+[rochak agrawal] 09:12:57
+will be blocked. So then you need to open the required routes, uh, sorry, required ports to open up, okay? So that is where it can be associated. Now, very important, your network security group.
+
+[rochak agrawal] 09:13:12
+can be associated to a subnet or a network interface.
+
+[rochak agrawal] 09:13:18
+Network interface is basically the machine, okay? While if you have multiple machines and you want to apply a certain rules on multiple virtual machine, so instead of assigning it on the… on one machine, you can assign it on a subnet so that whatever machines are there.
+
+[rochak agrawal] 09:13:35
+In that subnet, you are going to have that. So, very simple is this. I'll go to the network security group.
+
+[rochak agrawal] 09:13:52
+Currently, you see, I have a demo VM NSG group is there. If you open this.
+
+[rochak agrawal] 09:13:59
+Now, it will have, uh…
+
+[rochak agrawal] 09:14:02
+two rules, inbound security rule and outbound security rule. Inbound security rule means.
+
+[rochak agrawal] 09:14:10
+Whatever the traffic coming to the… coming from outside to this machine, and outward means whatever traffic going from…
+
+[rochak agrawal] 09:14:19
+machine to the, uh, outside world. So you see, by default, okay, by default, these three rules will be there, okay? Uh, so you can see SSRCB have created it.
+
+[rochak agrawal] 09:14:31
+So, if you read this rule, it says, allow VNet inbound.
+
+[rochak agrawal] 09:14:36
+allow Azure Load Balancer inbound, and deny all inbound, okay? It means whatever traffic is originating, and you can see these are default. We cannot change this, okay?
+
+[rochak agrawal] 09:14:48
+Allow VNet inbound means whatever traffic originating from within the VNet. It should be allowed.
+
+[rochak agrawal] 09:14:54
+Whatever traffic coming from Azure Load Balancer should be allowed, but deny all inbound. Apart from it, any traffic which is coming, it should be denied.
+
+[rochak agrawal] 09:15:05
+Okay? Then, outbound is… allow VNet outbound is allowed, allow internet outbound is allowed.
+
+[rochak agrawal] 09:15:12
+So you can see.
+
+[rochak agrawal] 09:15:15
+To somebody, this is…
+
+[rochak agrawal] 09:15:18
+By default.
+
+[rochak agrawal] 09:15:19
+All inbound is blocked, all outbound is allowed.
+
+[rochak agrawal] 09:15:23
+So now whatever is that we need to allow or block, we need to create a security rule for it. For example, we create the security rule for the SSH which is coming on port 22 source and destination and the action is allowed.
+
+[rochak agrawal] 09:15:38
+Correct. Now, here, if you create a security rule.
+
+[rochak agrawal] 09:15:45
+There are certain things. Source. Source means if you want to give IP addresses. So let's say any means from the internet. Then if you don't want to allow it for the any, then IP addresses, service tag, application security groups, you can define it.
+
+[rochak agrawal] 09:16:01
+I'll choose any source port range star, not destination. Again, in your…
+
+[rochak agrawal] 09:16:13
+In your room.
+
+[rochak agrawal] 09:16:17
+VNet or subnet, there can be multiple IP addresses is there. So if you want to give only a particular IP range, I can give it here, but let's say any, and then the custom service. So you can see there's a different, different services are there, right?
+
+[rochak agrawal] 09:16:31
+Neo4j, CouchDB, Redis, RabbitMQ, SMTPS, LDAP, IMAP, FTP, RDP, SSH, HTTP.
+
+[rochak agrawal] 09:16:42
+And, uh, you can see, so, if you are running any particular service, so you can use that, otherwise you can define. So, for example, if you select HTTP, you can see the service port is disabled.
+
+[rochak agrawal] 09:16:53
+Right? Because HTTP always listens on port 80. If you use HTTPS, it is 443. But if you do not know which service you are running, you select the custom, and you can write your own port here as well.
+
+[rochak agrawal] 09:17:05
+And then the protocol.
+
+[rochak agrawal] 09:17:08
+Action, allow or deny. Now, this priority is very important, okay?
+
+[rochak agrawal] 09:17:14
+So…
+
+[rochak agrawal] 09:17:15
+Priority, if you need, rules are processed in the priority order.
+
+[rochak agrawal] 09:17:20
+The lower the number, higher the priority. We recommend leaving gaps between this, this, this, so that it is easier to add the new rules without having to edit existing rules.
+
+[rochak agrawal] 09:17:31
+Now what I'm going to do, I'll say SSH.
+
+[rochak agrawal] 09:17:35
+And I'll say deny. And I'll say 290.
+
+[rochak agrawal] 09:17:41
+Okay, and I'll say block SSH.
+
+[rochak agrawal] 09:17:50
+And you are going to add this.
+
+[rochak agrawal] 09:17:54
+Okay, now you see what's going to happen. I'll go to my virtual machine.
+
+[rochak agrawal] 09:18:14
+Okay, I'll connect.
+
+[rochak agrawal] 09:18:21
+Copy this.
+
+[rochak agrawal] 09:18:24
+Go to CloudShell.
+
+[rochak agrawal] 09:18:41
+Okay? Now let's… let me try it.
+
+[rochak agrawal] 09:18:48
+You see, it is not going to work.
+
+[rochak agrawal] 09:18:51
+You say, I have a allow SS>C rule, why it is not going to work?
+
+[rochak agrawal] 09:18:57
+The reason for that is…
+
+[rochak agrawal] 09:18:59
+If you see here, we have two rules, both port same, and one is a deny, one is allow.
+
+[rochak agrawal] 09:19:07
+Rules are processed in the priority order, lower the numerical value.
+
+[rochak agrawal] 09:19:13
+higher the priority, okay? So, you see the block rule priority is 290, which is higher, right? So, what I am going to do…
+
+[rochak agrawal] 09:19:24
+I am going to change the priority, so let me do a Ctrl-C.
+
+[rochak agrawal] 09:19:30
+Now, let's see…
+
+[rochak agrawal] 09:19:35
+You do a parity 390, for example, and save this.
+
+[rochak agrawal] 09:19:43
+Can you refresh this?
+
+[rochak agrawal] 09:19:45
+Okay? Now, if you try to do this…
+
+[rochak agrawal] 09:19:50
+You see? It is working.
+
+[rochak agrawal] 09:19:53
+Correct? So, how it is working, why it is working? Because, uh, now you have a rule, uh, so you see all of the rules are not processing, uh, together.
+
+[rochak agrawal] 09:20:05
+Rules are processed in a priority order. Once you match… once you match a rule, then the lower priority order rules will not be processed. So, previously, we had a rule.
+
+[rochak agrawal] 09:20:19
+block SSH, which the higher priority, and it is saying deny it. So it was not allowing the traffic to go. But now we have a rule with the higher priority, which is allowing the traffic. And that is why your traffic is being allowed, right? So that is how.
+
+[rochak agrawal] 09:20:33
+uh, these security rules are going to work. Now, I can add the security rule, you can see, uh, demo VM, okay?
+
+[rochak agrawal] 09:20:45
+So, it is not associated on a subnet, it is only associated with a network interface, right? Now, you see…
+
+[rochak agrawal] 09:20:55
+So NSG rules, we have discussed that. And you can see NSG effective rules.
+
+[rochak agrawal] 09:21:00
+So, NSG you can apply on the network level.
+
+[rochak agrawal] 09:21:05
+as well as on the subnet level. So, NSGs are evaluated independently for the subnet and the NIC. NIC is basically a virtual machine. Now, a loud rule must exist at both levels for traffic to be admitted.
+
+[rochak agrawal] 09:21:18
+So this is very important. For example, if you are…
+
+[rochak agrawal] 09:21:23
+Um, having an NSG, your NIC level, it is allowed, but on a subnet level, it is being blocked. Then, it is effectively blocked for you.
+
+[rochak agrawal] 09:21:31
+The allow rule must exist at both levels for traffic to be admitted. Now, for example, if I go…
+
+[rochak agrawal] 09:21:41
+create, uh, another.
+
+[rochak agrawal] 09:21:44
+NSG?
+
+[rochak agrawal] 09:21:48
+Subnet NSG.
+
+[rochak agrawal] 09:21:51
+And go to text Libyan create.
+
+[rochak agrawal] 09:22:36
+Okay.
+
+[rochak agrawal] 09:22:40
+Now, for example, if I go to subnet, associate the subnet.
+
+[rochak agrawal] 09:22:56
+Okay, now I go to inbound security rule, add…
+
+[rochak agrawal] 09:23:01
+Any, any, any.
+
+[rochak agrawal] 09:23:16
+lock.
+
+[rochak agrawal] 09:23:22
+Okay. Now, again, if you try…
+
+[rochak agrawal] 09:23:30
+You see? Not going to work.
+
+[rochak agrawal] 09:23:34
+Why? The reason for that is… so see, you understand what is happening here.
+
+[rochak agrawal] 09:23:40
+You have a VNet.
+
+[rochak agrawal] 09:23:44
+Now, inside the VNet, you have a subnet.
+
+[rochak agrawal] 09:23:48
+And inside the subnet, you have a machine.
+
+[rochak agrawal] 09:23:51
+Okay. But…
+
+[rochak agrawal] 09:23:54
+Your subnet is also protected via NSG?
+
+[rochak agrawal] 09:23:59
+And your VM is also protected via NSG.
+
+[rochak agrawal] 09:24:03
+Now to reach…
+
+[rochak agrawal] 09:24:07
+to your VM application. A rule must be allowed here.
+
+[rochak agrawal] 09:24:12
+A rule must be allowed here.
+
+[rochak agrawal] 09:24:13
+Correct.
+
+[rochak agrawal] 09:24:15
+If it is a block at any place, then your traffic is not going to block, and that is what it is happening at our case. Now, if I delete this rule.
+
+[rochak agrawal] 09:24:41
+Okay. I need to allow rule for create.
+
+[rochak agrawal] 09:25:03
+Okay, now if you can…
+
+[rochak agrawal] 09:25:06
+See? It's working. Because we have created an allow rule here. We have created an allow rule here. At any point of time, it is blocked.
+
+[rochak agrawal] 09:25:16
+It will be blocked.
+
+[rochak agrawal] 09:25:17
+So that is where we call it as a…
+
+[rochak agrawal] 09:25:21
+effective rules, NSGs are evaluated independently, so first, it will.
+
+[rochak agrawal] 09:25:27
+be evaluated at a subnet level. If it is allowed on the subnet level, then it will be evaluated at the machine level. So an allow rule must exist.
+
+[rochak agrawal] 09:25:37
+At both levels, for traffic to be admitted, and uh…
+
+[rochak agrawal] 09:25:41
+If you see, use the effective rule range if you're not sure which security rules are being applied.
+
+[rochak agrawal] 09:25:47
+Now, where is this?
+
+[rochak agrawal] 09:25:59
+Network.
+
+[rochak agrawal] 09:26:01
+Interface.
+
+[rochak agrawal] 09:26:21
+You can see this is demo VM energy is there of this. And this I search for.
+
+[rochak agrawal] 09:26:32
+effective security rules.
+
+[rochak agrawal] 09:26:48
+If this is not enabled for us.
+
+[rochak agrawal] 09:26:59
+This is disabled for us, but from here you will see that what are the effective security rules are there, this.
+
+[rochak agrawal] 09:27:12
+So, yes, it is saying associated NSG. There's two NSGs there, subnet NSG and MOBM NSG.
+
+[rochak agrawal] 09:27:20
+8.
+
+[rochak agrawal] 09:27:26
+So, we have seen how to create the energy rules
+
+[rochak agrawal] 09:27:30
+I think we are good for today. The next topic is Azure Firewall, where we will see how we are going to control the flow of traffic. Of course, with the help of NSG also, we can control the flow of the traffic, but NSG is again on the VM level.
+
+[rochak agrawal] 09:27:48
+and the subnet level. How if I want to control the traffic on a network level? And that is where Azure Firewall comes into the picture. So, now, next, uh, we are going to see in tomorrow's session.
+
+[rochak agrawal] 09:28:13
+Thank you.
+
